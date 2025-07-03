@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Learning System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <link rel="stylesheet" href="lms.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="logo">
+            <span id="courseIcon">📚</span>
+            <span id="courseTitle">Interactive Learning System</span>
+        </div>
+        <div class="current-topic" id="currentTopic">Select a Course</div>
+        <div class="nav-controls">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <button class="home-btn" onclick="scrollToTop()">🏠 Home</button>
+        </div>
+    </nav>
+
+    <!-- Course Selection -->
+    <div class="course-selector" id="courseSelector">
+        <div class="course-selection-container">
+            <h1>Choose Your Learning Path</h1>
+            <div class="course-grid">
+                <!-- Course cards will be generated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar" style="display: none;">
+        <div class="sidebar-header">
+            <h3 id="sidebarTitle">📖 Table of Contents</h3>
+            <button class="back-btn" onclick="goBackToCourseSelection()">← Back to Courses</button>
+        </div>
+        <div class="toc-container" id="tocContainer">
+            <!-- Table of contents will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Course content will be loaded here -->
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="loading-indicator" id="loadingIndicator">
+        <div class="spinner"></div>
+        <p>Loading course content...</p>
+    </div>
+
+    <!-- Scripts in correct order -->
+    <script>
+        // Debug: Check if scripts are loading
+        console.log('HTML loaded, starting script loading...');
+    </script>
+    
+    <!-- Content files first -->
+    <script src="test_content.js"></script>
+    <script src="git_content.js"></script>
+    
+    <!-- Config file -->
+    <script src="test_config.js"></script>
+    
+    <!-- Main system file last -->
+    <script src="lms.js"></script>
+    
+    <script>
+        // Debug: Check what's available after all scripts load
+        console.log('All scripts loaded');
+        console.log('TEST_CONTENT available:', typeof TEST_CONTENT !== 'undefined');
+        console.log('GIT_CONTENT available:', typeof GIT_CONTENT !== 'undefined');
+        console.log('COURSE_CONFIG available:', typeof COURSE_CONFIG !== 'undefined');
+        console.log('LearningSystem available:', typeof LearningSystem !== 'undefined');
+    </script>
+</body>
+</html>
