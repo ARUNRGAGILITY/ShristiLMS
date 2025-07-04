@@ -1,23 +1,15 @@
-// lms.js - Updated to use config.js and fix progress marking
+// learning-system.js
 class LearningSystem {
     constructor() {
         this.currentCourse = null;
         this.currentChapter = null;
         this.chapters = [];
         this.courseData = null;
-        this.contentLoadingPromises = new Map();
         this.init();
     }
 
     init() {
-        // Check if COURSE_CONFIG is available
-        if (typeof COURSE_CONFIG === 'undefined') {
-            console.error('❌ COURSE_CONFIG not found. Make sure config.js is loaded before lms.js');
-            return;
-        }
-
         this.initializeMermaid();
-        this.setupContentLoaders();
         this.setupEventListeners();
         this.generateCourseCards();
         this.showCourseSelection();
@@ -33,38 +25,16 @@ class LearningSystem {
         });
     }
 
-    setupContentLoaders() {
-        // Listen for Python content ready event
-        window.addEventListener('pythonContentReady', (event) => {
-            console.log('Python content loaded successfully!');
-            this.contentLoadingPromises.set('python', Promise.resolve(event.detail.content));
-        });
-
-        // Check if other content is already available
-        if (typeof TEST_CONTENT !== 'undefined') {
-            this.contentLoadingPromises.set('test', Promise.resolve(TEST_CONTENT));
-        }
-        
-        if (typeof GIT_CONTENT !== 'undefined') {
-            this.contentLoadingPromises.set('git', Promise.resolve(GIT_CONTENT));
-        }
-
-        // Check if Python content is already loaded
-        if (typeof PYTHON_CONTENT !== 'undefined' && Object.keys(PYTHON_CONTENT.chapters || {}).length > 0) {
-            this.contentLoadingPromises.set('python', Promise.resolve(PYTHON_CONTENT));
-        }
-    }
-
     generateCourseCards() {
         const courseGrid = document.querySelector('.course-grid');
         if (!courseGrid) return;
 
+        // Clear existing cards except the "coming soon" card
+        const comingSoonCard = courseGrid.querySelector('.coming-soon');
         courseGrid.innerHTML = '';
 
-        // Get courses from config.js instead of hardcoded array
-        const courses = COURSE_CONFIG.getAllCourses();
-        
-        courses.forEach(course => {
+        // Generate cards for all courses
+        COURSE_CONFIG.getAllCourses().forEach(course => {
             const courseCard = document.createElement('div');
             courseCard.className = course.available ? 'course-card' : 'course-card coming-soon';
             courseCard.dataset.course = course.id;
@@ -82,18 +52,22 @@ class LearningSystem {
             courseGrid.appendChild(courseCard);
         });
 
-        // Add "More Coming Soon" card
-        const moreCourses = document.createElement('div');
-        moreCourses.className = 'course-card coming-soon';
-        moreCourses.innerHTML = `
-            <div class="course-icon">🚀</div>
-            <h3>More Coming Soon</h3>
-            <p>Docker, Kubernetes, AWS and more...</p>
-            <div class="course-meta">
-                <span class="difficulty">Coming Soon</span>
-            </div>
-        `;
-        courseGrid.appendChild(moreCourses);
+        // Add the "More Coming Soon" card at the end
+        if (comingSoonCard) {
+            courseGrid.appendChild(comingSoonCard);
+        } else {
+            const moreCourses = document.createElement('div');
+            moreCourses.className = 'course-card coming-soon';
+            moreCourses.innerHTML = `
+                <div class="course-icon">🚀</div>
+                <h3>More Coming Soon</h3>
+                <p>Docker, Kubernetes, AWS and more...</p>
+                <div class="course-meta">
+                    <span class="difficulty">Coming Soon</span>
+                </div>
+            `;
+            courseGrid.appendChild(moreCourses);
+        }
     }
 
     setupEventListeners() {
@@ -118,21 +92,18 @@ class LearningSystem {
         this.setupScrollTracking();
     }
 
-    async loadCourse(courseId) {
+    loadCourse(courseId) {
         try {
             this.showLoading();
             
             console.log("Loading course: " + courseId);
             
-            // Check if course is available using config
+            // Check if course is available
             if (!COURSE_CONFIG.isCourseAvailable(courseId)) {
                 throw new Error(`Course ${courseId} is not available`);
             }
-            
-            // Wait for content to be available
-            await this.waitForContent(courseId);
-            
-            // Get course content using config
+
+            // Get course content from configuration
             this.courseData = COURSE_CONFIG.getCourseContent(courseId);
             
             if (!this.courseData) {
@@ -152,38 +123,6 @@ class LearningSystem {
             console.error('Error loading course:', error);
             this.showError(`Failed to load course content: ${error.message}`);
         }
-    }
-
-    async waitForContent(courseId) {
-        const maxWaitTime = 10000; // 10 seconds
-        const startTime = Date.now();
-
-        while (Date.now() - startTime < maxWaitTime) {
-            // Check if content is ready
-            if (this.contentLoadingPromises.has(courseId)) {
-                return await this.contentLoadingPromises.get(courseId);
-            }
-
-            // For Python, check if the content is being loaded
-            if (courseId === 'python') {
-                if (typeof PYTHON_CONTENT !== 'undefined') {
-                    // If chapters are being loaded dynamically, wait a bit
-                    if (Object.keys(PYTHON_CONTENT.chapters || {}).length === 0) {
-                        console.log('Waiting for Python chapters to load...');
-                        await new Promise(resolve => setTimeout(resolve, 500));
-                        continue;
-                    } else {
-                        // Chapters are loaded
-                        this.contentLoadingPromises.set('python', Promise.resolve(PYTHON_CONTENT));
-                        return PYTHON_CONTENT;
-                    }
-                }
-            }
-
-            await new Promise(resolve => setTimeout(resolve, 100));
-        }
-
-        throw new Error(`Timeout waiting for ${courseId} content to load`);
     }
 
     updateNavigation() {
@@ -270,6 +209,13 @@ class LearningSystem {
             rootMargin: '-80px 0px -20% 0px'
         });
 
+        // Observe chapters when they're loaded
+        this.observeChapters = (observer) => {
+            document.querySelectorAll('.chapter').forEach(chapter => {
+                observer.observe(chapter);
+            });
+        };
+
         // Store observer for later use
         this.scrollObserver = observer;
     }
@@ -296,7 +242,7 @@ class LearningSystem {
             }
         });
         
-        // Mark completed chapters (including the last one)
+        // Mark completed chapters
         this.markCompletedChapters();
     }
 
@@ -308,107 +254,14 @@ class LearningSystem {
 
     markCompletedChapters() {
         const currentIndex = this.chapters.indexOf(this.currentChapter);
-        
         this.chapters.forEach((chapterId, index) => {
             const tocItem = document.querySelector(`[data-chapter="${chapterId}"]`);
-            if (tocItem) {
-                // Mark as completed if it's before current chapter
-                if (index < currentIndex) {
-                    tocItem.classList.add('completed');
-                    tocItem.classList.remove('active');
-                } 
-                // Mark current chapter as active
-                else if (index === currentIndex) {
-                    tocItem.classList.add('active');
-                    tocItem.classList.remove('completed');
-                    
-                    // FIXED: Mark last chapter as completed when we reach it
-                    if (index === this.chapters.length - 1) {
-                        // Add a slight delay to show completion of the last chapter
-                        setTimeout(() => {
-                            tocItem.classList.add('completed');
-                        }, 1000);
-                    }
-                } 
-                // Remove completed and active from future chapters
-                else {
-                    tocItem.classList.remove('completed', 'active');
-                }
+            if (index < currentIndex) {
+                tocItem.classList.add('completed');
+            } else if (index > currentIndex) {
+                tocItem.classList.remove('completed');
             }
         });
-        
-        // FIXED: Additional check for when user has scrolled to the very end
-        this.checkIfAtEnd();
-    }
-
-    checkIfAtEnd() {
-        // Check if user has scrolled to the bottom of the page
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        
-        // If we're near the bottom (within 100px), mark the last chapter as completed
-        if (scrollTop + windowHeight >= documentHeight - 100) {
-            const lastChapterId = this.chapters[this.chapters.length - 1];
-            const lastTocItem = document.querySelector(`[data-chapter="${lastChapterId}"]`);
-            
-            if (lastTocItem && this.currentChapter === lastChapterId) {
-                lastTocItem.classList.add('completed');
-                
-                // Update progress to 100%
-                document.getElementById('progressBar').style.width = '100%';
-                
-                // Show completion message
-                this.showCompletionMessage();
-            }
-        }
-    }
-
-    showCompletionMessage() {
-        // Only show once per course load
-        if (this.completionMessageShown) return;
-        this.completionMessageShown = true;
-        
-        // Create completion notification
-        const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #4CAF50, #45a049);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-            z-index: 1000;
-            font-weight: bold;
-            animation: slideIn 0.3s ease-out;
-        `;
-        
-        notification.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 1.2em;">🎉</span>
-                <span>Course Completed!</span>
-            </div>
-        `;
-        
-        // Add CSS animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        document.body.appendChild(notification);
-        
-        // Remove notification after 3 seconds
-        setTimeout(() => {
-            notification.remove();
-            style.remove();
-        }, 3000);
     }
 
     setupFadeInAnimations() {
@@ -426,9 +279,7 @@ class LearningSystem {
 
         // Start observing for scroll tracking
         if (this.scrollObserver) {
-            document.querySelectorAll('.chapter').forEach(chapter => {
-                this.scrollObserver.observe(chapter);
-            });
+            this.observeChapters(this.scrollObserver);
         }
     }
 
@@ -438,9 +289,6 @@ class LearningSystem {
         document.getElementById('mainContent').classList.remove('with-sidebar');
         document.getElementById('currentTopic').textContent = 'Select a Course';
         document.getElementById('progressBar').style.width = '0%';
-        
-        // Reset completion flag
-        this.completionMessageShown = false;
     }
 
     showCourseContent() {
@@ -498,21 +346,19 @@ class LearningSystem {
 
 // Global functions
 function scrollToTop() {
-    if (window.learningSystem && window.learningSystem.chapters.length > 0) {
-        window.learningSystem.navigateToChapter(window.learningSystem.chapters[0]);
+    if (learningSystem.chapters.length > 0) {
+        learningSystem.navigateToChapter(learningSystem.chapters[0]);
     } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
 
 function goBackToCourseSelection() {
-    if (!window.learningSystem) return;
-    
-    window.learningSystem.showCourseSelection();
-    window.learningSystem.currentCourse = null;
-    window.learningSystem.currentChapter = null;
-    window.learningSystem.chapters = [];
-    window.learningSystem.courseData = null;
+    learningSystem.showCourseSelection();
+    learningSystem.currentCourse = null;
+    learningSystem.currentChapter = null;
+    learningSystem.chapters = [];
+    learningSystem.courseData = null;
     
     // Reset navigation
     document.getElementById('courseIcon').textContent = '📚';
@@ -548,4 +394,5 @@ function showBranch(stage) {
     output.innerHTML = stages[stage] || stages['initial'];
 }
 
-// Note: LearningSystem will be initialized from index.html after all dependencies are loaded
+// Initialize the learning system
+const learningSystem = new LearningSystem();

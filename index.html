@@ -28,7 +28,7 @@
         <div class="course-selection-container">
             <h1>Choose Your Learning Path</h1>
             <div class="course-grid">
-                <!-- Course cards will be generated dynamically -->
+                <!-- Course cards will be generated dynamically from config.js -->
             </div>
         </div>
     </div>
@@ -65,8 +65,9 @@
     <script src="python_content.js"></script>
     <script src="test_content.js"></script>
     <script src="git_content.js"></script>
-    <!-- Config file -->
-    <script src="test_config.js"></script>
+    
+    <!-- Config file - now loaded before lms.js -->
+    <script src="config.js"></script>
     
     <!-- Main system file last -->
     <script src="lms.js"></script>
@@ -79,6 +80,14 @@
         console.log('PYTHON_CONTENT available:', typeof PYTHON_CONTENT !== 'undefined');
         console.log('COURSE_CONFIG available:', typeof COURSE_CONFIG !== 'undefined');
         console.log('LearningSystem available:', typeof LearningSystem !== 'undefined');
+        
+        // Initialize the learning system after all scripts are loaded
+        if (typeof LearningSystem !== 'undefined' && typeof COURSE_CONFIG !== 'undefined') {
+            console.log('✅ Initializing LearningSystem...');
+            window.learningSystem = new LearningSystem();
+        } else {
+            console.error('❌ Failed to initialize: Missing dependencies');
+        }
     </script>
 </body>
 </html>
