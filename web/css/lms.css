@@ -1,4 +1,4 @@
-/* learning-system.css */
+/* learning-system.css - Updated with proper code block indentation */
 * {
     margin: 0;
     padding: 0;
@@ -393,38 +393,126 @@ body {
     color: #333;
 }
 
+/* Updated Code Block Styles - MAIN FIX */
 .code-block {
     background: #2d3748;
     color: #e2e8f0;
-    padding: 20px;
+    padding: 0;
     border-radius: 10px;
     margin: 20px 0;
     overflow-x: auto;
-    font-family: 'Fira Code', 'Consolas', monospace;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
     position: relative;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .code-block::before {
-    content: 'Terminal';
+    content: 'Python';
     position: absolute;
     top: 10px;
     right: 15px;
     font-size: 0.8em;
     color: #a0aec0;
+    background: #1a202c;
+    padding: 2px 8px;
+    border-radius: 4px;
+    z-index: 1;
 }
 
+/* For pre/code structure (RECOMMENDED) */
+.code-block pre {
+    margin: 0;
+    padding: 20px;
+    background: transparent;
+    border: none;
+    white-space: pre;
+    overflow-x: auto;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.code-block code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+/* For div-based structure (YOUR CURRENT APPROACH) - FIXED */
 .command {
     color: #68d391;
+    font-weight: normal;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+    white-space: pre-wrap; /* THIS IS THE KEY FIX */
+    margin: 2px 0;
+    padding: 0 20px;
+    line-height: 1.5;
+}
+
+/* First command in a code block gets top padding */
+.code-block .command:first-child,
+.code-block .comment:first-child {
+    padding-top: 20px;
+}
+
+/* Last command in a code block gets bottom padding */
+.code-block .command:last-of-type {
+    padding-bottom: 10px;
+}
+
+/* Output styles - UPDATED */
+.output {
+    color: #fbb6ce;
+    margin: 0;
+    padding: 0 20px;
+    background: #1a202c;
+    white-space: pre-wrap;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+    line-height: 1.5;
+}
+
+/* First output gets top padding and border */
+.output:first-of-type {
+    padding-top: 15px;
+    border-top: 1px solid #4a5568;
+}
+
+/* Last output gets bottom padding */
+.output:last-of-type {
+    padding-bottom: 20px;
+}
+
+/* Comment styles - UPDATED */
+.comment {
+    color: #a0aec0;
+    font-style: italic;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+    white-space: pre-wrap; /* IMPORTANT */
+    margin: 2px 0;
+    padding: 0 20px;
+    line-height: 1.5;
+}
+
+/* Syntax highlighting for Python */
+.code-block .keyword {
+    color: #9f7aea;
     font-weight: bold;
 }
 
-.output {
-    color: #fbb6ce;
-    margin-left: 20px;
+.code-block .string {
+    color: #68d391;
 }
 
-.comment {
-    color: #a0aec0;
+.code-block .number {
+    color: #f6ad55;
+}
+
+.code-block .function {
+    color: #63b3ed;
 }
 
 .mermaid-container {
@@ -579,6 +667,18 @@ body {
 
     .course-selection-container h1 {
         font-size: 2em;
+    }
+
+    /* Code blocks responsive */
+    .code-block {
+        font-size: 12px;
+    }
+
+    .command,
+    .comment,
+    .output {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 

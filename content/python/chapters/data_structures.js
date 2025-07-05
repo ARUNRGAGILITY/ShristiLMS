@@ -1,4 +1,4 @@
-// chapters/data_structures.js
+// chapters/data_structures.js - Fixed version
 console.log('Loading enhanced data_structures chapter...');
 
 window.PYTHON_CONTENT.chapters.data_structures = {
@@ -41,40 +41,40 @@ window.PYTHON_CONTENT.chapters.data_structures = {
             <div class="command">numbers = [1, 2, 3, 4, 5]</div>
             <div class="command">mixed = [1, "hello", 3.14, True]</div>
             <div class="command">empty_list = []</div>
-            
+            <br>
             <span class="comment"># Accessing elements</span>
-            <div class="command">print(fruits[0])        # First element</div>
-            <div class="command">print(fruits[-1])       # Last element</div>
-            <div class="command">print(fruits[1:3])      # Slicing</div>
-            
+            <div class="command">print(fruits[0])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# First element</div>
+            <div class="command">print(fruits[-1])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Last element</div>
+            <div class="command">print(fruits[1:3])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Slicing</div>
+            <br>
             <span class="comment"># Advanced slicing</span>
             <div class="command">numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</div>
-            <div class="command">print(numbers[::2])     # Every second element</div>
-            <div class="command">print(numbers[1::2])    # Every second from index 1</div>
-            <div class="command">print(numbers[::-1])    # Reverse</div>
-            
+            <div class="command">print(numbers[::2])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Every second element</div>
+            <div class="command">print(numbers[1::2])&nbsp;&nbsp;&nbsp;&nbsp;# Every second from index 1</div>
+            <div class="command">print(numbers[::-1])&nbsp;&nbsp;&nbsp;&nbsp;# Reverse</div>
+            <br>
             <span class="comment"># Modifying lists</span>
-            <div class="command">fruits[1] = "grape"     # Change element</div>
-            <div class="command">fruits.append("kiwi")   # Add to end</div>
-            <div class="command">fruits.insert(1, "mango")  # Insert at index</div>
-            <div class="command">fruits.remove("orange") # Remove by value</div>
-            <div class="command">popped = fruits.pop()   # Remove and return last</div>
-            
+            <div class="command">fruits[1] = "grape"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Change element</div>
+            <div class="command">fruits.append("kiwi")&nbsp;&nbsp;&nbsp;# Add to end</div>
+            <div class="command">fruits.insert(1, "mango")&nbsp;&nbsp;# Insert at index</div>
+            <div class="command">fruits.remove("orange")&nbsp;# Remove by value</div>
+            <div class="command">popped = fruits.pop()&nbsp;&nbsp;&nbsp;# Remove and return last</div>
+            <br>
             <span class="comment"># List operations</span>
             <div class="command">list1 = [1, 2, 3]</div>
             <div class="command">list2 = [4, 5, 6]</div>
-            <div class="command">combined = list1 + list2   # Concatenation</div>
-            <div class="command">repeated = list1 * 3       # Repetition</div>
-            
+            <div class="command">combined = list1 + list2&nbsp;&nbsp;&nbsp;# Concatenation</div>
+            <div class="command">repeated = list1 * 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Repetition</div>
+            <br>
             <span class="comment"># List methods</span>
-            <div class="command">print(len(fruits))      # Length</div>
-            <div class="command">print("apple" in fruits)  # Check membership</div>
-            <div class="command">fruits.sort()          # Sort in place</div>
-            <div class="command">fruits.reverse()       # Reverse in place</div>
-            
+            <div class="command">print(len(fruits))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Length</div>
+            <div class="command">print("apple" in fruits)&nbsp;&nbsp;# Check membership</div>
+            <div class="command">fruits.sort()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Sort in place</div>
+            <div class="command">fruits.reverse()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Reverse in place</div>
+            <br>
             <span class="comment"># Custom sorting</span>
             <div class="command">students = [("Alice", 85), ("Bob", 92), ("Charlie", 78)]</div>
-            <div class="command">students.sort(key=lambda x: x[1])  # Sort by grade</div>
+            <div class="command">students.sort(key=lambda x: x[1])&nbsp;&nbsp;# Sort by grade</div>
             
             <div class="output">apple</div>
             <div class="output">orange</div>
@@ -117,32 +117,32 @@ window.PYTHON_CONTENT.chapters.data_structures = {
             <span class="comment"># Creating tuples</span>
             <div class="command">coordinates = (10, 20)</div>
             <div class="command">person = ("John", "Doe", 30)</div>
-            <div class="command">single_item = ("hello",)  # Note the comma</div>
+            <div class="command">single_item = ("hello",)&nbsp;&nbsp;# Note the comma</div>
             <div class="command">empty_tuple = ()</div>
-            
+            <br>
             <span class="comment"># Accessing elements</span>
-            <div class="command">print(coordinates[0])     # First element</div>
-            <div class="command">print(person[-1])        # Last element</div>
-            
+            <div class="command">print(coordinates[0])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# First element</div>
+            <div class="command">print(person[-1])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Last element</div>
+            <br>
             <span class="comment"># Tuple unpacking</span>
             <div class="command">x, y = coordinates</div>
             <div class="command">first_name, last_name, age = person</div>
             <div class="command">print(f"Name: {first_name} {last_name}, Age: {age}")</div>
-            
+            <br>
             <span class="comment"># Advanced tuple usage</span>
             <div class="command">from collections import namedtuple</div>
             <div class="command">Point = namedtuple('Point', ['x', 'y'])</div>
             <div class="command">p1 = Point(10, 20)</div>
-            <div class="command">print(p1.x, p1.y)  # More readable access</div>
-            
+            <div class="command">print(p1.x, p1.y)&nbsp;&nbsp;# More readable access</div>
+            <br>
             <span class="comment"># Tuple methods</span>
             <div class="command">numbers = (1, 2, 3, 2, 4, 2)</div>
-            <div class="command">print(numbers.count(2))   # Count occurrences</div>
-            <div class="command">print(numbers.index(3))   # Find index</div>
-            
+            <div class="command">print(numbers.count(2))&nbsp;&nbsp;&nbsp;# Count occurrences</div>
+            <div class="command">print(numbers.index(3))&nbsp;&nbsp;&nbsp;# Find index</div>
+            <br>
             <span class="comment"># Tuple as function arguments</span>
             <div class="command">def calculate_distance(point1, point2):</div>
-            <div class="command">    return ((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2)**0.5</div>
+            <div class="command">&nbsp;&nbsp;&nbsp;&nbsp;return ((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2)**0.5</div>
             <div class="command">distance = calculate_distance((0, 0), (3, 4))</div>
             
             <div class="output">10</div>
@@ -181,44 +181,44 @@ window.PYTHON_CONTENT.chapters.data_structures = {
         <div class="code-block">
             <span class="comment"># Creating dictionaries</span>
             <div class="command">student = {</div>
-            <div class="command">    "name": "Alice",</div>
-            <div class="command">    "age": 20,</div>
-            <div class="command">    "grades": [85, 92, 78]</div>
+            <div class="command">&nbsp;&nbsp;&nbsp;&nbsp;"name": "Alice",</div>
+            <div class="command">&nbsp;&nbsp;&nbsp;&nbsp;"age": 20,</div>
+            <div class="command">&nbsp;&nbsp;&nbsp;&nbsp;"grades": [85, 92, 78]</div>
             <div class="command">}</div>
-            
+            <br>
             <span class="comment"># Alternative creation methods</span>
             <div class="command">student2 = dict(name="Bob", age=21, major="CS")</div>
             <div class="command">student3 = dict([("name", "Charlie"), ("age", 19)])</div>
-            
+            <br>
             <span class="comment"># Accessing values</span>
             <div class="command">print(student["name"])</div>
             <div class="command">print(student.get("age", "Unknown"))</div>
             <div class="command">print(student.get("height", "Not specified"))</div>
-            
+            <br>
             <span class="comment"># Modifying dictionaries</span>
-            <div class="command">student["age"] = 21          # Update value</div>
-            <div class="command">student["major"] = "Computer Science"  # Add new key</div>
-            <div class="command">del student["grades"]       # Remove key</div>
-            <div class="command">removed_value = student.pop("age", None)  # Remove with default</div>
-            
+            <div class="command">student["age"] = 21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Update value</div>
+            <div class="command">student["major"] = "Computer Science"&nbsp;&nbsp;# Add new key</div>
+            <div class="command">del student["grades"]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Remove key</div>
+            <div class="command">removed_value = student.pop("age", None)&nbsp;&nbsp;# Remove with default</div>
+            <br>
             <span class="comment"># Dictionary methods</span>
-            <div class="command">print(student.keys())       # All keys</div>
-            <div class="command">print(student.values())     # All values</div>
-            <div class="command">print(student.items())      # Key-value pairs</div>
-            
+            <div class="command">print(student.keys())&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# All keys</div>
+            <div class="command">print(student.values())&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# All values</div>
+            <div class="command">print(student.items())&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Key-value pairs</div>
+            <br>
             <span class="comment"># Advanced dictionary operations</span>
             <div class="command">defaults = {"country": "USA", "language": "English"}</div>
-            <div class="command">student.update(defaults)    # Merge dictionaries</div>
-            <div class="command">student.setdefault("gpa", 3.5)  # Set if key doesn't exist</div>
-            
+            <div class="command">student.update(defaults)&nbsp;&nbsp;&nbsp;&nbsp;# Merge dictionaries</div>
+            <div class="command">student.setdefault("gpa", 3.5)&nbsp;&nbsp;# Set if key doesn't exist</div>
+            <br>
             <span class="comment"># Dictionary from lists</span>
             <div class="command">keys = ["a", "b", "c"]</div>
             <div class="command">values = [1, 2, 3]</div>
             <div class="command">combined_dict = dict(zip(keys, values))</div>
-            
+            <br>
             <span class="comment"># Iterating through dictionaries</span>
             <div class="command">for key, value in student.items():</div>
-            <div class="command">    print(f"{key}: {value}")</div>
+            <div class="command">&nbsp;&nbsp;&nbsp;&nbsp;print(f"{key}: {value}")</div>
             
             <div class="output">Alice</div>
             <div class="output">20</div>
@@ -232,61 +232,58 @@ window.PYTHON_CONTENT.chapters.data_structures = {
         <p>Sets are unordered collections of unique elements. They're perfect for removing duplicates and mathematical operations.</p>
 
         <div class="mermaid-container">
-            <div class="mermaid-container">
-                <div class="mermaid">
-                graph TD
-                    A[Set Features] --> B[Unique Elements]
-                    A --> C[Mutable]
-                    A --> D[Unordered]
-                    A --> E[Mathematical Ops]
-                    
-                    B --> F[No Duplicates]
-                    C --> G[Can Add Items]
-                    D --> H[No Index Access]
-                    E --> I[Union and Intersection]
-                    
-                    style A fill:#795548
-                    style B fill:#f44336
-                    style C fill:#2196f3
-                    style D fill:#ff9800
-                    style E fill:#4caf50
-                </div>
+            <div class="mermaid">
+            graph TD
+                A[Set Features] --> B[Unique Elements]
+                A --> C[Mutable]
+                A --> D[Unordered]
+                A --> E[Mathematical Ops]
+                
+                B --> F[No Duplicates]
+                C --> G[Can Add Items]
+                D --> H[No Index Access]
+                E --> I[Union and Intersection]
+                
+                style A fill:#795548
+                style B fill:#f44336
+                style C fill:#2196f3
+                style D fill:#ff9800
+                style E fill:#4caf50
             </div>
-
         </div>
 
         <div class="code-block">
             <span class="comment"># Creating sets</span>
             <div class="command">fruits = {"apple", "banana", "orange"}</div>
             <div class="command">numbers = {1, 2, 3, 4, 5}</div>
-            <div class="command">empty_set = set()  # Note: {} creates an empty dict</div>
-            <div class="command">set_from_list = set([1, 2, 2, 3, 3, 4])  # Removes duplicates</div>
-            
+            <div class="command">empty_set = set()&nbsp;&nbsp;# Note: {} creates an empty dict</div>
+            <div class="command">set_from_list = set([1, 2, 2, 3, 3, 4])&nbsp;&nbsp;# Removes duplicates</div>
+            <br>
             <span class="comment"># Set operations</span>
-            <div class="command">fruits.add("grape")        # Add element</div>
-            <div class="command">fruits.remove("banana")    # Remove element (raises error if not found)</div>
-            <div class="command">fruits.discard("kiwi")     # Remove if exists (no error)</div>
-            <div class="command">random_fruit = fruits.pop()  # Remove and return random element</div>
-            
+            <div class="command">fruits.add("grape")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Add element</div>
+            <div class="command">fruits.remove("banana")&nbsp;&nbsp;&nbsp;&nbsp;# Remove element (raises error if not found)</div>
+            <div class="command">fruits.discard("kiwi")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Remove if exists (no error)</div>
+            <div class="command">random_fruit = fruits.pop()&nbsp;&nbsp;# Remove and return random element</div>
+            <br>
             <span class="comment"># Set mathematics</span>
             <div class="command">set1 = {1, 2, 3, 4}</div>
             <div class="command">set2 = {3, 4, 5, 6}</div>
             <div class="command">set3 = {1, 2}</div>
-            
-            <div class="command">print(set1 | set2)         # Union</div>
-            <div class="command">print(set1 & set2)         # Intersection</div>
-            <div class="command">print(set1 - set2)         # Difference</div>
-            <div class="command">print(set1 ^ set2)         # Symmetric difference</div>
-            
+            <br>
+            <div class="command">print(set1 | set2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Union</div>
+            <div class="command">print(set1 & set2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Intersection</div>
+            <div class="command">print(set1 - set2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Difference</div>
+            <div class="command">print(set1 ^ set2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Symmetric difference</div>
+            <br>
             <span class="comment"># Set comparisons</span>
-            <div class="command">print(set3.issubset(set1))     # Is subset</div>
-            <div class="command">print(set1.issuperset(set3))   # Is superset</div>
-            <div class="command">print(set1.isdisjoint(set2))   # No common elements</div>
-            
+            <div class="command">print(set3.issubset(set1))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Is subset</div>
+            <div class="command">print(set1.issuperset(set3))&nbsp;&nbsp;&nbsp;# Is superset</div>
+            <div class="command">print(set1.isdisjoint(set2))&nbsp;&nbsp;&nbsp;# No common elements</div>
+            <br>
             <span class="comment"># Advanced set operations</span>
-            <div class="command">set1.update([7, 8, 9])     # Add multiple elements</div>
-            <div class="command">set1.intersection_update(set2)  # Keep only common elements</div>
-            
+            <div class="command">set1.update([7, 8, 9])&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Add multiple elements</div>
+            <div class="command">set1.intersection_update(set2)&nbsp;&nbsp;# Keep only common elements</div>
+            <br>
             <span class="comment"># Remove duplicates from list</span>
             <div class="command">numbers_with_duplicates = [1, 2, 2, 3, 3, 3, 4]</div>
             <div class="command">unique_numbers = list(set(numbers_with_duplicates))</div>
@@ -310,62 +307,62 @@ window.PYTHON_CONTENT.chapters.data_structures = {
             <span class="comment"># List comprehensions</span>
             <div class="command">squares = [x**2 for x in range(10)]</div>
             <div class="command">print(squares)</div>
-            
+            <br>
             <span class="comment"># List comprehension with condition</span>
             <div class="command">even_squares = [x**2 for x in range(10) if x % 2 == 0]</div>
             <div class="command">print(even_squares)</div>
-            
+            <br>
             <span class="comment"># List comprehension with if-else</span>
             <div class="command">numbers = [1, 2, 3, 4, 5]</div>
             <div class="command">labels = ["even" if x % 2 == 0 else "odd" for x in numbers]</div>
             <div class="command">print(labels)</div>
-            
+            <br>
             <span class="comment"># Processing strings</span>
             <div class="command">words = ["hello", "world", "python", "programming"]</div>
             <div class="command">lengths = [len(word) for word in words]</div>
             <div class="command">upper_words = [word.upper() for word in words]</div>
             <div class="command">long_words = [word for word in words if len(word) > 5]</div>
-            
+            <br>
             <span class="comment"># Nested list comprehension</span>
             <div class="command">matrix = [[i*j for j in range(3)] for i in range(3)]</div>
             <div class="command">print(matrix)</div>
-            
+            <br>
             <span class="comment"># Flattening nested lists</span>
             <div class="command">nested = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</div>
             <div class="command">flattened = [item for sublist in nested for item in sublist]</div>
             <div class="command">print(flattened)</div>
-            
+            <br>
             <span class="comment"># Dictionary comprehension</span>
             <div class="command">word_lengths = {word: len(word) for word in words}</div>
             <div class="command">print(word_lengths)</div>
-            
+            <br>
             <span class="comment"># Dictionary comprehension with condition</span>
             <div class="command">long_word_lengths = {word: len(word) for word in words if len(word) > 5}</div>
             <div class="command">print(long_word_lengths)</div>
-            
+            <br>
             <span class="comment"># Dictionary from two lists</span>
             <div class="command">names = ["Alice", "Bob", "Charlie"]</div>
             <div class="command">ages = [25, 30, 35]</div>
             <div class="command">name_age_dict = {name: age for name, age in zip(names, ages)}</div>
-            
+            <br>
             <span class="comment"># Set comprehension</span>
             <div class="command">unique_lengths = {len(word) for word in words}</div>
             <div class="command">print(unique_lengths)</div>
-            
+            <br>
             <span class="comment"># Set comprehension with condition</span>
             <div class="command">vowels_in_words = {char for word in words for char in word if char in 'aeiou'}</div>
             <div class="command">print(vowels_in_words)</div>
-            
+            <br>
             <span class="comment"># Generator expression (memory efficient)</span>
-            <div class="command">squares_gen = (x**2 for x in range(1000000))  # Creates generator, not list</div>
+            <div class="command">squares_gen = (x**2 for x in range(1000000))&nbsp;&nbsp;# Creates generator, not list</div>
             <div class="command">first_five_squares = [next(squares_gen) for _ in range(5)]</div>
             <div class="command">print(first_five_squares)</div>
-            
+            <br>
             <span class="comment"># Complex comprehension example</span>
             <div class="command">students = [</div>
-            <div class="command">    {"name": "Alice", "grades": [85, 92, 78]},</div>
-            <div class="command">    {"name": "Bob", "grades": [90, 88, 95]},</div>
-            <div class="command">    {"name": "Charlie", "grades": [75, 80, 85]}</div>
+            <div class="command">&nbsp;&nbsp;&nbsp;&nbsp;{"name": "Alice", "grades": [85, 92, 78]},</div>
+            <div class="command">&nbsp;&nbsp;&nbsp;&nbsp;{"name": "Bob", "grades": [90, 88, 95]},</div>
+            <div class="command">&nbsp;&nbsp;&nbsp;&nbsp;{"name": "Charlie", "grades": [75, 80, 85]}</div>
             <div class="command">]</div>
             <div class="command">averages = {student["name"]: sum(student["grades"]) / len(student["grades"]) for student in students}</div>
             <div class="command">high_performers = [name for name, avg in averages.items() if avg > 85]</div>
@@ -392,29 +389,29 @@ window.PYTHON_CONTENT.chapters.data_structures = {
             <div class="command">text = "hello world"</div>
             <div class="command">letter_count = Counter(text)</div>
             <div class="command">print(letter_count)</div>
-            <div class="command">print(letter_count.most_common(3))  # Top 3 most common</div>
-            
+            <div class="command">print(letter_count.most_common(3))&nbsp;&nbsp;# Top 3 most common</div>
+            <br>
             <span class="comment"># defaultdict - default values for missing keys</span>
             <div class="command">from collections import defaultdict</div>
-            <div class="command">dd = defaultdict(list)  # Default value is empty list</div>
-            <div class="command">dd['fruits'].append('apple')  # No KeyError</div>
+            <div class="command">dd = defaultdict(list)&nbsp;&nbsp;# Default value is empty list</div>
+            <div class="command">dd['fruits'].append('apple')&nbsp;&nbsp;# No KeyError</div>
             <div class="command">dd['fruits'].append('banana')</div>
             <div class="command">print(dict(dd))</div>
-            
+            <br>
             <span class="comment"># OrderedDict - maintains insertion order (Python 3.7+ dicts do this by default)</span>
             <div class="command">from collections import OrderedDict</div>
             <div class="command">od = OrderedDict([('a', 1), ('b', 2), ('c', 3)])</div>
-            <div class="command">od.move_to_end('a')  # Move 'a' to end</div>
+            <div class="command">od.move_to_end('a')&nbsp;&nbsp;# Move 'a' to end</div>
             <div class="command">print(od)</div>
-            
+            <br>
             <span class="comment"># deque - double-ended queue</span>
             <div class="command">from collections import deque</div>
             <div class="command">dq = deque([1, 2, 3, 4, 5])</div>
-            <div class="command">dq.appendleft(0)   # Add to left</div>
-            <div class="command">dq.append(6)       # Add to right</div>
+            <div class="command">dq.appendleft(0)&nbsp;&nbsp;&nbsp;# Add to left</div>
+            <div class="command">dq.append(6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Add to right</div>
             <div class="command">print(dq)</div>
-            <div class="command">print(dq.popleft())  # Remove from left</div>
-            <div class="command">print(dq.pop())      # Remove from right</div>
+            <div class="command">print(dq.popleft())&nbsp;&nbsp;# Remove from left</div>
+            <div class="command">print(dq.pop())&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Remove from right</div>
             
             <div class="output">Counter({'l': 3, 'o': 2, 'h': 1, 'e': 1, ' ': 1, 'w': 1, 'r': 1, 'd': 1})</div>
             <div class="output">[('l', 3), ('o', 2), ('h', 1)]</div>
@@ -423,136 +420,6 @@ window.PYTHON_CONTENT.chapters.data_structures = {
             <div class="output">deque([0, 1, 2, 3, 4, 5, 6])</div>
             <div class="output">0</div>
             <div class="output">6</div>
-        </div>
-
-        <div class="exercise">
-            <h4>🎯 Exercise 4: Student Grade Manager</h4>
-            <div class="exercise-step">
-                <strong>Step 1:</strong> Create a dictionary to store student names and their grades (list of scores)
-            </div>
-            <div class="exercise-step">
-                <strong>Step 2:</strong> Add functions to add new students, add grades, and calculate averages
-            </div>
-            <div class="exercise-step">
-                <strong>Step 3:</strong> Use list comprehensions to find students with averages above 85
-            </div>
-            <div class="exercise-step">
-                <strong>Step 4:</strong> Create a set of all unique grades across all students
-            </div>
-            <div class="exercise-step">
-                <strong>Step 5:</strong> Use dictionary comprehension to create a grade distribution counter
-            </div>
-            <div class="exercise-step">
-                <strong>Step 6:</strong> Display the results in a formatted table
-            </div>
-        </div>
-
-        <div class="exercise">
-            <h4>🎯 Exercise 5: Data Analysis with Comprehensions</h4>
-            <div class="exercise-step">
-                <strong>Step 1:</strong> Create a list of sales data (dictionaries with date, product, amount)
-            </div>
-            <div class="exercise-step">
-                <strong>Step 2:</strong> Use list comprehension to filter sales above $1000
-            </div>
-            <div class="exercise-step">
-                <strong>Step 3:</strong> Use dictionary comprehension to group sales by product
-            </div>
-            <div class="exercise-step">
-                <strong>Step 4:</strong> Use set comprehension to find unique products sold
-            </div>
-            <div class="exercise-step">
-                <strong>Step 5:</strong> Create a nested comprehension to calculate monthly totals
-            </div>
-        </div>
-
-        <div class="scenario-box">
-            <h4>Choosing the Right Data Structure</h4>
-            <ul>
-                <li><strong>List:</strong> When you need ordered, changeable data with possible duplicates</li>
-                <li><strong>Tuple:</strong> When you need ordered, unchangeable data (coordinates, database records)</li>
-                <li><strong>Dictionary:</strong> When you need key-value pairs for fast lookups</li>
-                <li><strong>Set:</strong> When you need unique elements or mathematical set operations</li>
-                <li><strong>Counter:</strong> When you need to count occurrences of elements</li>
-                <li><strong>defaultdict:</strong> When you need dictionaries with default values</li>
-                <li><strong>deque:</strong> When you need efficient operations at both ends</li>
-            </ul>
-        </div>
-
-        <div class="scenario-box">
-            <h4>When to Use Comprehensions</h4>
-            <ul>
-                <li><strong>List Comprehension:</strong> Creating new lists from existing iterables</li>
-                <li><strong>Dict Comprehension:</strong> Creating dictionaries with transformed keys/values</li>
-                <li><strong>Set Comprehension:</strong> Creating sets with unique elements</li>
-                <li><strong>Generator Expression:</strong> Memory-efficient iteration over large datasets</li>
-                <li><strong>Nested Comprehensions:</strong> Working with nested data structures</li>
-            </ul>
-        </div>
-
-        <div class="tip">
-            <strong>💡 Performance Tips:</strong>
-            <ul>
-                <li>Use sets for membership testing - O(1) vs O(n) for lists</li>
-                <li>Use dictionaries for key-based lookups - O(1) average case</li>
-                <li>List comprehensions are faster than equivalent for loops</li>
-                <li>Generator expressions save memory for large datasets</li>
-                <li>Use appropriate data structure: Counter for counting, defaultdict for default values</li>
-                <li>deque is faster than list for operations at both ends</li>
-            </ul>
-        </div>
-
-        <div class="warning">
-            <strong>⚠️ Common Mistakes:</strong>
-            <ul>
-                <li><strong>Modifying lists while iterating:</strong> Use list comprehension or iterate over a copy</li>
-                <li><strong>Using mutable objects as dictionary keys:</strong> Only use immutable types (strings, numbers, tuples)</li>
-                <li><strong>Confusing '{}' with 'set()':</strong> '{}' creates an empty dict, not a set</li>
-                <li><strong>Overcomplicating comprehensions:</strong> If it's hard to read, use a regular loop</li>
-                <li><strong>Using list when set is appropriate:</strong> Sets are much faster for membership testing</li>
-                <li><strong>Not using get() for dictionaries:</strong> Prevents KeyError for missing keys</li>
-            </ul>
-        </div>
-
-        <div class="theory-box">
-            <h4>Time Complexity Comparison</h4>
-            <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-                <tr style="background-color: #f5f5f5;">
-                    <th style="border: 1px solid #ddd; padding: 8px;">Operation</th>
-                    <th style="border: 1px solid #ddd; padding: 8px;">List</th>
-                    <th style="border: 1px solid #ddd; padding: 8px;">Tuple</th>
-                    <th style="border: 1px solid #ddd; padding: 8px;">Dict</th>
-                    <th style="border: 1px solid #ddd; padding: 8px;">Set</th>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Access by index/key</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(1)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(1)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(1)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">N/A</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Search (membership)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(n)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(n)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(1)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(1)</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Insert/Add</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(1) append, O(n) insert</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Immutable</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(1)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(1)</td>
-                </tr>
-                <tr>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Delete</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(n)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">Immutable</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(1)</td>
-                    <td style="border: 1px solid #ddd; padding: 8px;">O(1)</td>
-                </tr>
-            </table>
         </div>
     `
 };

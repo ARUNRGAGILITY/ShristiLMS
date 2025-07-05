@@ -11,19 +11,19 @@ window.PYTHON_CONTENT = {
 
 // List of chapter files to load
 const CHAPTER_FILES = [
-    'python/chapters/intro.js',
-    'python/chapters/basics.js',
-    'python/chapters/control_flow.js',
-    'python/chapters/data_structures.js',
-    'python/chapters/functions.js',
-    'python/chapters/lamda.js',
-    'python/chapters/collections.js',
-    'python/chapters/oop.js',
-    'python/chapters/modules.js',
-    'python/chapters/file_handling.js',
-    'python/chapters/error_handling.js',
-    'python/chapters/libraries.js',
-    'python/chapters/best_practices.js'
+    'content/python/chapters/intro.js',
+    'content/python/chapters/basics.js',
+    'content/python/chapters/control_flow.js',
+    'content/python/chapters/data_structures.js',
+    'content/python/chapters/functions.js',
+    'content/python/chapters/lamda.js',
+    'content/python/chapters/collections.js',
+    'content/python/chapters/oop.js',
+    'content/python/chapters/modules.js',
+    'content/python/chapters/file_handling.js',
+    'content/python/chapters/error_handling.js',
+    'content/python/chapters/libraries.js',
+    'content/python/chapters/best_practices.js'
 ];
 
 // Function to load a script dynamically

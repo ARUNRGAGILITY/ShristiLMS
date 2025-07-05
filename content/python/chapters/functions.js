@@ -74,58 +74,6 @@ window.PYTHON_CONTENT.chapters.functions = {
             <div class="output">city: New York</div>
         </div>
 
-        <h2>Lambda Functions</h2>
-        <div class="code-block">
-            <span class="comment"># Basic lambda function</span>
-            <div class="command">square = lambda x: x ** 2</div>
-            <div class="command">print(square(5))</div>
-            
-            <span class="comment"># Lambda with multiple parameters</span>
-            <div class="command">add = lambda x, y: x + y</div>
-            <div class="command">print(add(3, 7))</div>
-            
-            <span class="comment"># Using lambda with built-in functions</span>
-            <div class="command">numbers = [1, 2, 3, 4, 5]</div>
-            <div class="command">squared = list(map(lambda x: x ** 2, numbers))</div>
-            <div class="command">print(squared)</div>
-            
-            <div class="command">even_numbers = list(filter(lambda x: x % 2 == 0, numbers))</div>
-            <div class="command">print(even_numbers)</div>
-            
-            <div class="output">25</div>
-            <div class="output">10</div>
-            <div class="output">[1, 4, 9, 16, 25]</div>
-            <div class="output">[2, 4]</div>
-        </div>
-
-        <div class="exercise">
-            <h4>🎯 Exercise 5: Temperature Converter</h4>
-            <div class="exercise-step">
-                <strong>Step 1:</strong> Create functions to convert between Celsius, Fahrenheit, and Kelvin
-            </div>
-            <div class="exercise-step">
-                <strong>Step 2:</strong> Add parameter validation to ensure reasonable temperature values
-            </div>
-            <div class="exercise-step">
-                <strong>Step 3:</strong> Create a main function that presents a menu to the user
-            </div>
-            <div class="exercise-step">
-                <strong>Step 4:</strong> Use lambda functions to create a temperature validation function
-            </div>
-            <div class="exercise-step">
-                <strong>Step 5:</strong> Add a decorator to log all temperature conversions
-            </div>
-        </div>
-
-        <div class="tip">
-            <strong>💡 Function Best Practices:</strong>
-            <ul>
-                <li>Use descriptive function names that indicate what they do</li>
-                <li>Keep functions small and focused on a single task</li>
-                <li>Use docstrings to document function purpose and parameters</li>
-                <li>Avoid using global variables inside functions when possible</li>
-                <li>Use type hints for better code documentation</li>
-            </ul>
-        </div>
+       
     `
 };
