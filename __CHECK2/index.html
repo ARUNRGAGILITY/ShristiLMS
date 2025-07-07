@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShristiLMS - Learning Management System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .learning-paths {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .path-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .path-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+        }
+
+        .path-card h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .path-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .mermaid {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px solid #e9ecef;
+            overflow-x: auto;
+        }
+
+        .mermaid svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: white;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .course-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .course-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .course-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .course-level {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .learning-paths {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+
+        /* Mermaid node click styles */
+        .mermaid .node {
+            cursor: pointer !important;
+        }
+
+        .mermaid .node:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 ShristiLMS</h1>
+            <p>Your Complete Learning Management System</p>
+            <p>Master Technology Through Structured Learning Paths</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Courses</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Learning Paths</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Interactive Learning</h3>
+                <p>Hands-on projects and real-world applications</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Progress Tracking</h3>
+                <p>Monitor your learning journey and achievements</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Structured Paths</h3>
+                <p>Clear learning roadmaps from beginner to expert</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <h3>Expert Content</h3>
+                <p>Industry-relevant curriculum by professionals</p>
+            </div>
+        </div>
+
+        <div class="learning-paths">
+            <div class="path-card">
+                <h2>🏗️ Foundation Technologies</h2>
+                <p class="path-description">
+                    Start your journey with core programming languages and fundamental concepts that form the backbone of modern software development.
+                </p>
+                <div class="mermaid" id="foundation-path">
+                    graph TD
+                        A[Programming Fundamentals] --> B[Java]
+                        A --> C[Python]
+                        A --> D[JavaScript]
+                        A --> E[TypeScript]
+                        B --> F[Java Applications]
+                        C --> G[Python Applications]
+                        D --> H[Web Applications]
+                        E --> H
+                        F --> I[Spring Framework]
+                        G --> J[Django/Flask]
+                        H --> K[React/Vue/Angular]
+                        I --> L[Microservices]
+                        J --> L
+                        K --> L
+                        
+                        style A fill:#e1f5fe
+                        style B fill:#fff3e0
+                        style C fill:#f3e5f5
+                        style D fill:#e8f5e8
+                        style E fill:#fff8e1
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>🌐 Web Development</h2>
+                <p class="path-description">
+                    Master frontend and backend technologies to build modern, responsive web applications with the latest frameworks and tools.
+                </p>
+                <div class="mermaid" id="web-path">
+                    graph TD
+                        A[HTML/CSS Basics] --> B[JavaScript ES6+]
+                        B --> C[React.js]
+                        B --> D[Vue.js]
+                        B --> E[Angular]
+                        C --> F[Next.js]
+                        D --> G[Nuxt.js]
+                        E --> H[Angular Universal]
+                        F --> I[Full-Stack Apps]
+                        G --> I
+                        H --> I
+                        B --> J[Node.js]
+                        J --> K[Express.js]
+                        K --> L[API Development]
+                        L --> I
+                        
+                        style A fill:#e3f2fd
+                        style B fill:#f1f8e9
+                        style C fill:#e8f5e8
+                        style D fill:#f3e5f5
+                        style E fill:#fff3e0
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>🗄️ Database & Backend</h2>
+                <p class="path-description">
+                    Learn database design, backend architecture, and API development to build scalable and efficient server-side applications.
+                </p>
+                <div class="mermaid" id="database-path">
+                    graph TD
+                        A[Database Fundamentals] --> B[SQL Basics]
+                        A --> C[NoSQL Basics]
+                        B --> D[MySQL]
+                        B --> E[PostgreSQL]
+                        C --> F[MongoDB]
+                        C --> G[Redis]
+                        D --> H[Database Design]
+                        E --> H
+                        F --> H
+                        G --> H
+                        H --> I[API Development]
+                        I --> J[RESTful APIs]
+                        I --> K[GraphQL]
+                        J --> L[Microservices]
+                        K --> L
+                        
+                        style A fill:#e8f5e8
+                        style B fill:#e3f2fd
+                        style C fill:#f3e5f5
+                        style D fill:#fff8e1
+                        style E fill:#f1f8e9
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>☁️ Cloud & DevOps</h2>
+                <p class="path-description">
+                    Master cloud platforms, containerization, and DevOps practices to deploy and manage applications at scale.
+                </p>
+                <div class="mermaid" id="devops-path">
+                    graph TD
+                        A[Linux Fundamentals] --> B[Git/GitHub]
+                        B --> C[Docker]
+                        C --> D[Kubernetes]
+                        B --> E[CI/CD Pipelines]
+                        E --> F[Jenkins]
+                        E --> G[GitHub Actions]
+                        C --> H[AWS/Azure/GCP]
+                        D --> H
+                        F --> I[Infrastructure as Code]
+                        G --> I
+                        H --> I
+                        I --> J[Terraform]
+                        I --> K[Ansible]
+                        J --> L[Monitoring & Logging]
+                        K --> L
+                        
+                        style A fill:#e8f5e8
+                        style B fill:#fff3e0
+                        style C fill:#e3f2fd
+                        style D fill:#f3e5f5
+                        style E fill:#fff8e1
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>📱 Mobile Development</h2>
+                <p class="path-description">
+                    Build native and cross-platform mobile applications for iOS and Android using modern frameworks and tools.
+                </p>
+                <div class="mermaid" id="mobile-path">
+                    graph TD
+                        A[Mobile Fundamentals] --> B[React Native]
+                        A --> C[Flutter]
+                        A --> D[Native iOS]
+                        A --> E[Native Android]
+                        B --> F[Cross-Platform Apps]
+                        C --> F
+                        D --> G[iOS Applications]
+                        E --> H[Android Applications]
+                        F --> I[App Store Deployment]
+                        G --> I
+                        H --> I
+                        I --> J[Mobile DevOps]
+                        
+                        style A fill:#e8f5e8
+                        style B fill:#e3f2fd
+                        style C fill:#f3e5f5
+                        style D fill:#fff8e1
+                        style E fill:#f1f8e9
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>🤖 AI & Machine Learning</h2>
+                <p class="path-description">
+                    Dive into artificial intelligence, machine learning, and data science to build intelligent applications and systems.
+                </p>
+                <div class="mermaid" id="ai-path">
+                    graph TD
+                        A[Math & Statistics] --> B[Python for Data Science]
+                        B --> C[NumPy/Pandas]
+                        C --> D[Data Visualization]
+                        D --> E[Machine Learning]
+                        E --> F[Scikit-learn]
+                        E --> G[TensorFlow]
+                        E --> H[PyTorch]
+                        F --> I[Deep Learning]
+                        G --> I
+                        H --> I
+                        I --> J[AI Applications]
+                        
+                        style A fill:#e8f5e8
+                        style B fill:#f3e5f5
+                        style C fill:#e3f2fd
+                        style D fill:#fff8e1
+                        style E fill:#f1f8e9
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>🛡️ Cybersecurity</h2>
+                <p class="path-description">
+                    Learn security fundamentals, ethical hacking, and how to protect systems from cyber threats and vulnerabilities.
+                </p>
+                <div class="mermaid" id="security-path">
+                    graph TD
+                        A[Security Fundamentals] --> B[Network Security]
+                        A --> C[Web Security]
+                        B --> D[Penetration Testing]
+                        C --> E[OWASP Top 10]
+                        D --> F[Ethical Hacking]
+                        E --> F
+                        F --> G[Security Tools]
+                        G --> H[Security Auditing]
+                        H --> I[Security Certifications]
+                        
+                        style A fill:#e8f5e8
+                        style B fill:#f3e5f5
+                        style C fill:#e3f2fd
+                        style D fill:#fff8e1
+                        style E fill:#f1f8e9
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>💼 Software Engineering</h2>
+                <p class="path-description">
+                    Master software engineering principles, design patterns, and best practices for building maintainable applications.
+                </p>
+                <div class="mermaid" id="engineering-path">
+                    graph TD
+                        A[Software Engineering Principles] --> B[Design Patterns]
+                        A --> C[Software Architecture]
+                        B --> D[Clean Code]
+                        C --> E[System Design]
+                        D --> F[Testing Strategies]
+                        E --> F
+                        F --> G[Code Review]
+                        G --> H[Team Collaboration]
+                        H --> I[Project Management]
+                        
+                        style A fill:#e8f5e8
+                        style B fill:#f3e5f5
+                        style C fill:#e3f2fd
+                        style D fill:#fff8e1
+                        style E fill:#f1f8e9
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Course content mapping
+        const courseContent = {
+            // Foundation Technologies
+            'Programming Fundamentals': 'programming-fundamentals',
+            'Java': 'java-basics',
+            'Python': 'python-basics',
+            'JavaScript': 'javascript-basics',
+            'TypeScript': 'typescript-basics',
+            'Java Applications': 'java-applications',
+            'Python Applications': 'python-applications',
+            'Web Applications': 'web-applications',
+            'Spring Framework': 'spring-framework',
+            'Django/Flask': 'django-flask',
+            'React/Vue/Angular': 'frontend-frameworks',
+            'Microservices': 'microservices',
+            
+            // Web Development
+            'HTML/CSS Basics': 'html-css-basics',
+            'JavaScript ES6+': 'javascript-es6',
+            'React.js': 'react-js',
+            'Vue.js': 'vue-js',
+            'Angular': 'angular',
+            'Next.js': 'next-js',
+            'Nuxt.js': 'nuxt-js',
+            'Angular Universal': 'angular-universal',
+            'Full-Stack Apps': 'fullstack-apps',
+            'Node.js': 'node-js',
+            'Express.js': 'express-js',
+            'API Development': 'api-development',
+            
+            // Database & Backend
+            'Database Fundamentals': 'database-fundamentals',
+            'SQL Basics': 'sql-basics',
+            'NoSQL Basics': 'nosql-basics',
+            'MySQL': 'mysql',
+            'PostgreSQL': 'postgresql',
+            'MongoDB': 'mongodb',
+            'Redis': 'redis',
+            'Database Design': 'database-design',
+            'RESTful APIs': 'restful-apis',
+            'GraphQL': 'graphql',
+            
+            // Cloud & DevOps
+            'Linux Fundamentals': 'linux-fundamentals',
+            'Git/GitHub': 'git-github',
+            'Docker': 'docker',
+            'Kubernetes': 'kubernetes',
+            'CI/CD Pipelines': 'cicd-pipelines',
+            'Jenkins': 'jenkins',
+            'GitHub Actions': 'github-actions',
+            'AWS/Azure/GCP': 'cloud-platforms',
+            'Infrastructure as Code': 'infrastructure-as-code',
+            'Terraform': 'terraform',
+            'Ansible': 'ansible',
+            'Monitoring & Logging': 'monitoring-logging',
+            
+            // Mobile Development
+            'Mobile Fundamentals': 'mobile-fundamentals',
+            'React Native': 'react-native',
+            'Flutter': 'flutter',
+            'Native iOS': 'native-ios',
+            'Native Android': 'native-android',
+            'Cross-Platform Apps': 'cross-platform-apps',
+            'iOS Applications': 'ios-applications',
+            'Android Applications': 'android-applications',
+            'App Store Deployment': 'app-store-deployment',
+            'Mobile DevOps': 'mobile-devops',
+            
+            // AI & Machine Learning
+            'Math & Statistics': 'math-statistics',
+            'Python for Data Science': 'python-data-science',
+            'NumPy/Pandas': 'numpy-pandas',
+            'Data Visualization': 'data-visualization',
+            'Machine Learning': 'machine-learning',
+            'Scikit-learn': 'scikit-learn',
+            'TensorFlow': 'tensorflow',
+            'PyTorch': 'pytorch',
+            'Deep Learning': 'deep-learning',
+            'AI Applications': 'ai-applications',
+            
+            // Cybersecurity
+            'Security Fundamentals': 'security-fundamentals',
+            'Network Security': 'network-security',
+            'Web Security': 'web-security',
+            'Penetration Testing': 'penetration-testing',
+            'OWASP Top 10': 'owasp-top-10',
+            'Ethical Hacking': 'ethical-hacking',
+            'Security Tools': 'security-tools',
+            'Security Auditing': 'security-auditing',
+            'Security Certifications': 'security-certifications',
+            
+            // Software Engineering
+            'Software Engineering Principles': 'software-engineering-principles',
+            'Design Patterns': 'design-patterns',
+            'Software Architecture': 'software-architecture',
+            'Clean Code': 'clean-code',
+            'System Design': 'system-design',
+            'Testing Strategies': 'testing-strategies',
+            'Code Review': 'code-review',
+            'Team Collaboration': 'team-collaboration',
+            'Project Management': 'project-management'
+        };
+
+        // Initialize mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            themeVariables: {
+                primaryColor: '#667eea',
+                primaryTextColor: '#2c3e50',
+                primaryBorderColor: '#667eea',
+                lineColor: '#495057',
+                sectionBkgColor: '#f8f9fa',
+                altSectionBkgColor: '#ffffff',
+                gridColor: '#e9ecef',
+                secondaryColor: '#f8f9fa',
+                tertiaryColor: '#ffffff'
+            }
+        });
+
+        // Function to handle node clicks
+        function handleNodeClick(nodeId) {
+            const courseKey = courseContent[nodeId];
+            if (courseKey) {
+                // Navigate to content.html with course parameter
+                window.location.href = `content.html?course=${encodeURIComponent(courseKey)}&title=${encodeURIComponent(nodeId)}`;
+            } else {
+                // For demonstration, load test content
+                window.location.href = `content.html?course=test_content&title=${encodeURIComponent(nodeId)}`;
+            }
+        }
+
+        // Add click event listeners to mermaid nodes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for mermaid to render
+            setTimeout(() => {
+                const nodes = document.querySelectorAll('.mermaid .node');
+                nodes.forEach(node => {
+                    node.addEventListener('click', function() {
+                        // Extract node text
+                        const nodeText = this.querySelector('span')?.textContent || 
+                                       this.querySelector('p')?.textContent || 
+                                       this.textContent;
+                        
+                        if (nodeText) {
+                            const cleanText = nodeText.trim();
+                            console.log('Clicked node:', cleanText);
+                            handleNodeClick(cleanText);
+                        }
+                    });
+                    
+                    // Add hover effect
+                    node.style.cursor = 'pointer';
+                    node.addEventListener('mouseenter', function() {
+                        this.style.opacity = '0.7';
+                    });
+                    node.addEventListener('mouseleave', function() {
+                        this.style.opacity = '1';
+                    });
+                });
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

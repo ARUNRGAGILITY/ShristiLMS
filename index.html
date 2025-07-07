@@ -3,106 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Learning System</title>
-    
-    <!-- External Dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    
-    <!-- Local CSS -->
+    <title>Interactive Learning Management System</title>
     <link rel="stylesheet" href="web/css/lms_md.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
 </head>
 <body>
-    <!-- Top Navigation -->
-    <nav class="top-nav">
-        <div class="logo">
-            <span id="courseIcon">📚</span>
-            <span id="courseTitle">Interactive Learning System</span>
-        </div>
-        <div class="current-topic" id="currentTopic">Select a Course</div>
-        <div class="nav-controls">
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-left">
+                <span class="course-icon" id="courseIcon">📚</span>
+                <div class="course-info">
+                    <h1 class="course-title" id="courseTitle">Interactive Learning System</h1>
+                    <p class="current-topic" id="currentTopic">Select a Course</p>
+                </div>
             </div>
-            <button class="home-btn" onclick="scrollToTop()">🏠 Home</button>
+            <div class="navbar-right">
+                <button class="scroll-top-btn" onclick="scrollToTop()" title="Scroll to Top">
+                    <span>⬆️</span>
+                </button>
+                <button class="home-btn" onclick="goBackToCourseSelection()" title="Back to Course Selection">
+                    <span>🏠</span>
+                </button>
+            </div>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
         </div>
     </nav>
 
-    <!-- Course Selection -->
+    <!-- Course Selection Screen -->
     <div class="course-selector" id="courseSelector">
-        <div class="course-selection-container">
-            <h1>Choose Your Learning Path</h1>
+        <div class="course-selector-content">
+            <h1>📚 Choose Your Learning Path</h1>
+            <p>Select a course to begin your interactive learning journey</p>
+            
             <div class="course-grid">
-                <!-- Course cards will be generated dynamically from config.js -->
+                <div class="course-card" data-course="git" onclick="loadCourse('test_git')">
+                    <div class="course-icon">🔄</div>
+                    <h3>Git Version Control</h3>
+                    <p>Master Git workflows, branching, and collaboration</p>
+                    <div class="course-meta">
+                        <span class="difficulty">Beginner</span>
+                        <span class="duration">2 hours</span>
+                    </div>
+                </div>
+
+                <div class="course-card" data-course="python" onclick="loadCourse('python')">
+                    <div class="course-icon">🐍</div>
+                    <h3>Python Programming</h3>
+                    <p>Learn Python from basics to advanced concepts</p>
+                    <div class="course-meta">
+                        <span class="difficulty">Beginner</span>
+                        <span class="duration">4 hours</span>
+                    </div>
+                </div>
+
+                <div class="course-card coming-soon">
+                    <div class="course-icon">🐳</div>
+                    <h3>Docker Containers</h3>
+                    <p>Containerization and deployment strategies</p>
+                    <div class="course-meta">
+                        <span class="difficulty">Coming Soon</span>
+                    </div>
+                </div>
+
+                <div class="course-card coming-soon">
+                    <div class="course-icon">☁️</div>
+                    <h3>AWS Cloud</h3>
+                    <p>Cloud computing and AWS services</p>
+                    <div class="course-meta">
+                        <span class="difficulty">Coming Soon</span>
+                    </div>
+                </div>
+
+                <div class="course-card coming-soon">
+                    <div class="course-icon">⚛️</div>
+                    <h3>React Development</h3>
+                    <p>Modern React development and best practices</p>
+                    <div class="course-meta">
+                        <span class="difficulty">Coming Soon</span>
+                    </div>
+                </div>
+
+                <div class="course-card coming-soon">
+                    <div class="course-icon">🚀</div>
+                    <h3>More Coming Soon</h3>
+                    <p>Node.js, Kubernetes, DevOps and more...</p>
+                    <div class="course-meta">
+                        <span class="difficulty">Coming Soon</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Main Layout for Course Content -->
-    <div class="layout" style="display: none;">
-        <!-- Sidebar -->
-        <div class="sidebar">
+    <!-- Main Content Area -->
+    <div class="main-container">
+        <!-- Left Sidebar - Table of Contents -->
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <h3>📖 Table of Contents</h3>
-                <button class="back-btn" onclick="goBackToCourseSelection()">← Back to Courses</button>
+                <h3>📋 Course Contents</h3>
             </div>
-            <div id="toc-container">
-                <!-- Table of contents will be generated by markdown renderer -->
+            <div class="toc-container" id="tocContainer">
+                <!-- TOC will be populated by JavaScript -->
             </div>
-        </div>
+        </aside>
 
-        <!-- Main Content -->
-        <div id="markdown-content" data-auto-init="false">
-            <!-- Markdown content will be rendered here -->
-        </div>
+        <!-- Right Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Course content will be loaded here -->
+        </main>
     </div>
 
     <!-- Loading Indicator -->
     <div class="loading-indicator" id="loadingIndicator">
-        <div class="spinner"></div>
+        <div class="loading-spinner"></div>
         <p>Loading course content...</p>
     </div>
 
-    <!-- Scripts in correct order -->
+    <!-- Load JavaScript -->
+    <script src="web/js/lms_md.js"></script>
+    
     <script>
-        // Debug: Check if scripts are loading
-        console.log('📄 HTML loaded, starting script loading...');
+        // Initialize the learning system
+        window.learningSystem = new LearningSystem();
         
-        // Global initialization function
-        window.initializeSystem = function() {
-            console.log('🔍 Checking dependencies for initialization...');
-            console.log('COURSE_CONFIG available:', typeof COURSE_CONFIG !== 'undefined');
-            console.log('MarkdownLearningSystem available:', typeof MarkdownLearningSystem !== 'undefined');
+        // Global function to load courses (called from course cards)
+        function loadCourse(courseId) {
+            window.learningSystem.loadCourse(courseId);
+        }
+        
+        // Global function for scroll to top
+        function scrollToTop() {
+            if (window.learningSystem && window.learningSystem.chapters.length > 0) {
+                window.learningSystem.navigateToChapter(window.learningSystem.chapters[0]);
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+        
+        // Global function to go back to course selection
+        function goBackToCourseSelection() {
+            if (!window.learningSystem) return;
             
-            if (typeof COURSE_CONFIG === 'undefined') {
-                console.error('❌ COURSE_CONFIG not found - check config.js');
-                return false;
-            }
-            if (typeof MarkdownLearningSystem === 'undefined') {
-                console.error('❌ MarkdownLearningSystem not found - check lms_md.js');
-                return false;
-            }
+            window.learningSystem.showCourseSelection();
+            window.learningSystem.currentCourse = null;
+            window.learningSystem.currentChapter = null;
+            window.learningSystem.chapters = [];
+            window.learningSystem.courseData = null;
             
-            console.log('✅ All dependencies loaded, initializing system...');
-            if (!window.markdownLearningSystem) {
-                window.markdownLearningSystem = new MarkdownLearningSystem();
-                console.log('✅ MarkdownLearningSystem initialized successfully');
-            }
-            return true;
-        };
+            // Reset navigation
+            document.getElementById('courseIcon').textContent = '📚';
+            document.getElementById('courseTitle').textContent = 'Interactive Learning System';
+            document.getElementById('currentTopic').textContent = 'Select a Course';
+            document.getElementById('progressBar').style.width = '0%';
+        }
     </script>
-    
-    <!-- Config file first -->
-    <script src="config/config.js"></script>
-    
-    <!-- Main LMS system (includes MarkdownRenderer) -->
-    <script src="web/js/lms_md.js" onload="console.log('✅ lms_md.js loaded'); window.initializeSystem();"></script>
 </body>
 </html>

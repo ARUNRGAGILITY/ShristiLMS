@@ -1,0 +1,428 @@
+/* tutorial-styles.css - Modular CSS for all programming tutorials */
+
+:root {
+    --primary-blue: #2563eb;
+    --light-blue: #3b82f6;
+    --dark-blue: #1e40af;
+    --accent-blue: #60a5fa;
+    --success-green: #10b981;
+    --warning-yellow: #f59e0b;
+    --error-red: #ef4444;
+    --dark-gray: #374151;
+    --light-gray: #f3f4f6;
+    --border-gray: #e5e7eb;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: #374151;
+    background-color: #f9fafb;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.tutorial-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.tutorial-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.tutorial-header p {
+    margin: 0.5rem 0 0;
+    font-size: 1.1rem;
+    text-align: center;
+    opacity: 0.9;
+}
+
+/* Navigation */
+.tutorial-nav {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    padding: 1rem;
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    background: var(--light-gray);
+    color: var(--dark-gray);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.nav-link:hover {
+    background: var(--accent-blue);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.nav-link.active {
+    background: var(--primary-blue);
+    color: white;
+}
+
+/* Content Sections */
+.tutorial-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.topic-section {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-left: 4px solid var(--primary-blue);
+}
+
+.topic-section h2 {
+    color: var(--dark-blue);
+    margin-top: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.topic-section h3 {
+    color: var(--primary-blue);
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.topic-section h4 {
+    color: var(--dark-gray);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Code Blocks */
+.code-container {
+    background: #1e293b;
+    border-radius: 8px;
+    margin: 1rem 0;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.code-header {
+    background: #0f172a;
+    color: white;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #334155;
+}
+
+.code-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.copy-btn {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    background: var(--light-blue);
+    transform: translateY(-1px);
+}
+
+.copy-btn.copied {
+    background: var(--success-green);
+}
+
+pre {
+    margin: 0;
+    padding: 1.5rem;
+    background: transparent;
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+code {
+    color: #e2e8f0;
+    background: transparent;
+}
+
+/* Inline code */
+p code, li code {
+    background: var(--light-gray);
+    color: var(--dark-blue);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: 'Fira Code', monospace;
+}
+
+/* Output Blocks */
+.output-container {
+    background: #0f172a;
+    border-radius: 8px;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.output-header {
+    background: var(--success-green);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.output-content {
+    padding: 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    color: #22c55e;
+    white-space: pre-wrap;
+}
+
+/* Mermaid Diagrams */
+.mermaid-container {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-gray);
+}
+
+.mermaid {
+    background: transparent !important;
+}
+
+/* Info Boxes */
+.info-box {
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border-left: 4px solid;
+}
+
+.info-box.tip {
+    background: #f0f9ff;
+    border-left-color: var(--primary-blue);
+    color: var(--dark-blue);
+}
+
+.info-box.warning {
+    background: #fffbeb;
+    border-left-color: var(--warning-yellow);
+    color: #92400e;
+}
+
+.info-box.error {
+    background: #fef2f2;
+    border-left-color: var(--error-red);
+    color: #991b1b;
+}
+
+.info-box.success {
+    background: #f0fdf4;
+    border-left-color: var(--success-green);
+    color: #166534;
+}
+
+/* Lists */
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+th {
+    background: var(--primary-blue);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+tr:hover {
+    background: var(--light-gray);
+}
+
+/* Progress Indicator */
+.progress-container {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border-gray);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+    transition: width 0.3s ease;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--light-blue);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .tutorial-header h1 {
+        font-size: 2rem;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .topic-section {
+        padding: 1.5rem;
+    }
+    
+    .code-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+    
+    pre {
+        padding: 1rem;
+    }
+}
+
+/* Syntax Highlighting */
+.hljs-keyword { color: #c678dd; }
+.hljs-string { color: #98c379; }
+.hljs-comment { color: #5c6370; font-style: italic; }
+.hljs-number { color: #d19a66; }
+.hljs-function { color: #61afef; }
+.hljs-class { color: #e06c75; }
+.hljs-variable { color: #e2e8f0; }
+.hljs-operator { color: #56b6c2; }
+.hljs-built_in { color: #e6c07b; }
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+/* Print Styles */
+@media print {
+    .tutorial-nav,
+    .back-to-top,
+    .copy-btn {
+        display: none;
+    }
+    
+    .topic-section {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid var(--border-gray);
+    }
+}

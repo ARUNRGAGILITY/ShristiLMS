@@ -33,9 +33,9 @@ Version control is a system that records changes to files over time so you can r
 
 Imagine you're working on a important project and suddenly realize you've broken something that was working perfectly yesterday. Without version control, you'd have to manually undo all your changes or start from scratch. With version control, you can simply revert to yesterday's working version!
 
-> **Real-World Scenario - The Freelancer's Nightmare:**
->
-> Sarah is a freelance web developer. She's been working on a client's website for weeks. One day, she decides to "improve" the navigation system. After several hours of changes, she realizes the new approach won't work and wants to go back to the original design. Without version control, she'd have to recreate everything from memory. With Git, she can simply revert to any previous version in seconds!
+**Real-World Scenario - The Freelancer's Nightmare:**
+
+Sarah is a freelance web developer. She's been working on a client's website for weeks. One day, she decides to "improve" the navigation system. After several hours of changes, she realizes the new approach won't work and wants to go back to the original design. Without version control, she'd have to recreate everything from memory. With Git, she can simply revert to any previous version in seconds!
 
 ### Version Control vs. Traditional File Management
 

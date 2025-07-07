@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShristiLMS - Professional Development Learning Paths</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .learning-paths {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .path-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .path-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+        }
+
+        .path-card h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .path-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .path-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .path-stat {
+            text-align: center;
+        }
+
+        .path-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .path-stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .mermaid {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #e9ecef;
+            overflow-x: auto;
+        }
+
+        .mermaid svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: white;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .learning-paths {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+
+        /* Mermaid node click styles */
+        .mermaid .node {
+            cursor: pointer !important;
+        }
+
+        .mermaid .node:hover {
+            opacity: 0.8;
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .difficulty-beginner {
+            background: #28a745;
+            color: white;
+        }
+
+        .difficulty-intermediate {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .difficulty-advanced {
+            background: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 ShristiLMS</h1>
+            <p>Professional Development Learning Management System</p>
+            <p>Master Full Stack Development, Data Science & DevOps</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Learning Paths</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">80+</div>
+                <div class="stat-label">Topics</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Hands-on Projects</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Learning Hours</div>
+            </div>
+        </div>
+
+        <div class="learning-paths">
+            <div class="path-card">
+                <h2>☕ Java Full Stack Development</h2>
+                <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                <p class="path-description">
+                    Complete Java ecosystem from core programming to enterprise applications. Master Spring Boot, microservices, and modern Java development practices.
+                </p>
+                <div class="path-stats">
+                    <div class="path-stat">
+                        <div class="path-stat-number">16</div>
+                        <div class="path-stat-label">Modules</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">120</div>
+                        <div class="path-stat-label">Hours</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">25</div>
+                        <div class="path-stat-label">Projects</div>
+                    </div>
+                </div>
+                <div class="mermaid" id="java-fullstack-path">
+                    graph TD
+                        A[Java Fundamentals] --> B[OOP Concepts]
+                        B --> C[Collections & Generics]
+                        C --> D[Exception Handling]
+                        D --> E[Multithreading]
+                        E --> F[Java 8+ Features]
+                        F --> G[Maven/Gradle]
+                        G --> H[Spring Framework]
+                        H --> I[Spring Boot]
+                        I --> J[Spring Data JPA]
+                        J --> K[Spring Security]
+                        K --> L[RESTful APIs]
+                        L --> M[Microservices]
+                        
+                        N[HTML5/CSS3] --> O[JavaScript ES6+]
+                        O --> P[Bootstrap/Tailwind]
+                        P --> Q[React.js/Angular]
+                        Q --> R[TypeScript]
+                        R --> S[State Management]
+                        
+                        T[Database Design] --> U[MySQL/PostgreSQL]
+                        U --> V[JPA/Hibernate]
+                        V --> W[Database Optimization]
+                        
+                        X[Testing] --> Y[JUnit 5]
+                        Y --> Z[Mockito]
+                        Z --> AA[Integration Testing]
+                        
+                        BB[DevOps] --> CC[Docker]
+                        CC --> DD[CI/CD Pipeline]
+                        DD --> EE[AWS/Azure Deployment]
+                        
+                        M --> FF[Full Stack Project]
+                        S --> FF
+                        W --> FF
+                        AA --> FF
+                        EE --> FF
+                        
+                        style A fill:#e3f2fd
+                        style H fill:#e8f5e8
+                        style I fill:#e8f5e8
+                        style N fill:#fff3e0
+                        style Q fill:#fff3e0
+                        style T fill:#f3e5f5
+                        style X fill:#f1f8e9
+                        style BB fill:#ffe0e6
+                        style FF fill:#fff8dc
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>🐍 Python Full Stack Development</h2>
+                <span class="difficulty-badge difficulty-beginner">Beginner Friendly</span>
+                <p class="path-description">
+                    From Python basics to advanced web applications. Learn Django, Flask, FastAPI, and modern Python development with real-world projects.
+                </p>
+                <div class="path-stats">
+                    <div class="path-stat">
+                        <div class="path-stat-number">14</div>
+                        <div class="path-stat-label">Modules</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">100</div>
+                        <div class="path-stat-label">Hours</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">20</div>
+                        <div class="path-stat-label">Projects</div>
+                    </div>
+                </div>
+                <div class="mermaid" id="python-fullstack-path">
+                    graph TD
+                        A[Python Fundamentals] --> B[Data Structures]
+                        B --> C[OOP in Python]
+                        C --> D[File Handling]
+                        D --> E[Error Handling]
+                        E --> F[Modules & Packages]
+                        F --> G[Virtual Environments]
+                        G --> H[pip & Poetry]
+                        
+                        H --> I[Django Framework]
+                        I --> J[Django Models]
+                        J --> K[Django Views & Templates]
+                        K --> L[Django REST Framework]
+                        L --> M[Django Admin]
+                        
+                        H --> N[Flask Framework]
+                        N --> O[Flask-SQLAlchemy]
+                        O --> P[Flask-API]
+                        P --> Q[Flask-Login]
+                        
+                        H --> R[FastAPI]
+                        R --> S[Pydantic Models]
+                        S --> T[API Documentation]
+                        
+                        U[Frontend Skills] --> V[HTML5/CSS3]
+                        V --> W[JavaScript/jQuery]
+                        W --> X[React.js/Vue.js]
+                        X --> Y[AJAX/Fetch API]
+                        
+                        Z[Database] --> AA[SQLite/PostgreSQL]
+                        AA --> BB[SQLAlchemy ORM]
+                        BB --> CC[Database Migrations]
+                        
+                        DD[Testing] --> EE[pytest]
+                        EE --> FF[Unit Testing]
+                        FF --> GG[API Testing]
+                        
+                        HH[Deployment] --> II[Docker]
+                        II --> JJ[AWS/Heroku]
+                        JJ --> KK[CI/CD with GitHub Actions]
+                        
+                        M --> LL[E-commerce Project]
+                        Q --> LL
+                        T --> LL
+                        Y --> LL
+                        CC --> LL
+                        GG --> LL
+                        KK --> LL
+                        
+                        style A fill:#e3f2fd
+                        style I fill:#e8f5e8
+                        style N fill:#f3e5f5
+                        style R fill:#fff3e0
+                        style U fill:#fff8e1
+                        style Z fill:#f1f8e9
+                        style DD fill:#ffe0e6
+                        style HH fill:#e0f2f1
+                        style LL fill:#fff8dc
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>📊 Data Analytics</h2>
+                <span class="difficulty-badge difficulty-beginner">Beginner Friendly</span>
+                <p class="path-description">
+                    Transform raw data into actionable insights. Master Excel, SQL, Python, and visualization tools to become a data-driven decision maker.
+                </p>
+                <div class="path-stats">
+                    <div class="path-stat">
+                        <div class="path-stat-number">12</div>
+                        <div class="path-stat-label">Modules</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">80</div>
+                        <div class="path-stat-label">Hours</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">15</div>
+                        <div class="path-stat-label">Projects</div>
+                    </div>
+                </div>
+                <div class="mermaid" id="data-analytics-path">
+                    graph TD
+                        A[Statistics Fundamentals] --> B[Descriptive Statistics]
+                        B --> C[Probability & Distributions]
+                        C --> D[Hypothesis Testing]
+                        D --> E[Correlation & Regression]
+                        
+                        F[Excel Mastery] --> G[Advanced Functions]
+                        G --> H[Pivot Tables]
+                        H --> I[Excel Charts]
+                        I --> J[Power Query]
+                        J --> K[Excel Macros/VBA]
+                        
+                        L[SQL for Analytics] --> M[Database Design]
+                        M --> N[Advanced Queries]
+                        N --> O[Joins & Subqueries]
+                        O --> P[Window Functions]
+                        P --> Q[Stored Procedures]
+                        
+                        R[Python for Analytics] --> S[NumPy/Pandas]
+                        S --> T[Data Cleaning]
+                        T --> U[Data Transformation]
+                        U --> V[Exploratory Data Analysis]
+                        
+                        W[Data Visualization] --> X[Matplotlib/Seaborn]
+                        X --> Y[Plotly/Bokeh]
+                        Y --> Z[Tableau]
+                        Z --> AA[Power BI]
+                        
+                        BB[Business Intelligence] --> CC[KPI Development]
+                        CC --> DD[Dashboard Design]
+                        DD --> EE[Report Automation]
+                        
+                        FF[Real Projects] --> GG[Sales Analysis]
+                        GG --> HH[Customer Segmentation]
+                        HH --> II[Financial Modeling]
+                        
+                        E --> FF
+                        K --> FF
+                        Q --> FF
+                        V --> FF
+                        AA --> FF
+                        EE --> FF
+                        
+                        style A fill:#e3f2fd
+                        style F fill:#e8f5e8
+                        style L fill:#f3e5f5
+                        style R fill:#fff3e0
+                        style W fill:#fff8e1
+                        style BB fill:#f1f8e9
+                        style FF fill:#fff8dc
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>🤖 Data Science</h2>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <p class="path-description">
+                    Advanced analytics, machine learning, and AI. Build predictive models, work with big data, and create intelligent systems.
+                </p>
+                <div class="path-stats">
+                    <div class="path-stat">
+                        <div class="path-stat-number">18</div>
+                        <div class="path-stat-label">Modules</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">150</div>
+                        <div class="path-stat-label">Hours</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">30</div>
+                        <div class="path-stat-label">Projects</div>
+                    </div>
+                </div>
+                <div class="mermaid" id="data-science-path">
+                    graph TD
+                        A[Mathematics Foundation] --> B[Linear Algebra]
+                        B --> C[Calculus]
+                        C --> D[Statistics & Probability]
+                        D --> E[Optimization]
+                        
+                        F[Python Ecosystem] --> G[NumPy/Pandas]
+                        G --> H[Matplotlib/Seaborn]
+                        H --> I[Jupyter Notebooks]
+                        I --> J[Scikit-learn]
+                        
+                        K[Data Engineering] --> L[Data Collection]
+                        L --> M[Data Cleaning]
+                        M --> N[Feature Engineering]
+                        N --> O[Data Pipelines]
+                        
+                        P[Machine Learning] --> Q[Supervised Learning]
+                        Q --> R[Unsupervised Learning]
+                        R --> S[Model Selection]
+                        S --> T[Cross Validation]
+                        T --> U[Hyperparameter Tuning]
+                        
+                        V[Deep Learning] --> W[Neural Networks]
+                        W --> X[TensorFlow/Keras]
+                        X --> Y[PyTorch]
+                        Y --> Z[CNN/RNN]
+                        Z --> AA[Transfer Learning]
+                        
+                        BB[Big Data] --> CC[Apache Spark]
+                        CC --> DD[Hadoop]
+                        DD --> EE[NoSQL Databases]
+                        EE --> FF[Cloud Platforms]
+                        
+                        GG[MLOps] --> HH[Model Deployment]
+                        HH --> II[Model Monitoring]
+                        II --> JJ[A/B Testing]
+                        JJ --> KK[ML Pipelines]
+                        
+                        LL[Capstone Projects] --> MM[Predictive Analytics]
+                        MM --> NN[NLP Project]
+                        NN --> OO[Computer Vision]
+                        OO --> PP[Recommendation System]
+                        
+                        E --> LL
+                        J --> LL
+                        O --> LL
+                        U --> LL
+                        AA --> LL
+                        FF --> LL
+                        KK --> LL
+                        
+                        style A fill:#e3f2fd
+                        style F fill:#e8f5e8
+                        style K fill:#f3e5f5
+                        style P fill:#fff3e0
+                        style V fill:#fff8e1
+                        style BB fill:#f1f8e9
+                        style GG fill:#ffe0e6
+                        style LL fill:#fff8dc
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>🔧 Git & GitHub Mastery</h2>
+                <span class="difficulty-badge difficulty-beginner">Essential for All</span>
+                <p class="path-description">
+                    Master version control, collaboration, and code management. Essential skills for any developer working in teams or open source.
+                </p>
+                <div class="path-stats">
+                    <div class="path-stat">
+                        <div class="path-stat-number">8</div>
+                        <div class="path-stat-label">Modules</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">40</div>
+                        <div class="path-stat-label">Hours</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">12</div>
+                        <div class="path-stat-label">Projects</div>
+                    </div>
+                </div>
+                <div class="mermaid" id="git-github-path">
+                    graph TD
+                        A[Git Fundamentals] --> B[Repository Setup]
+                        B --> C[Basic Commands]
+                        C --> D[add, commit, push]
+                        D --> E[Working with Remotes]
+                        E --> F[Branching Strategy]
+                        F --> G[Merge vs Rebase]
+                        G --> H[Conflict Resolution]
+                        
+                        I[GitHub Essentials] --> J[Account Setup]
+                        J --> K[Repository Creation]
+                        K --> L[README & Documentation]
+                        L --> M[Issues & Project Management]
+                        M --> N[Pull Requests]
+                        N --> O[Code Review Process]
+                        
+                        P[Advanced Git] --> Q[Git Hooks]
+                        Q --> R[Submodules]
+                        R --> S[Git Bisect]
+                        S --> T[Advanced Rebasing]
+                        T --> U[Git Stash]
+                        
+                        V[GitHub Advanced] --> W[GitHub Actions]
+                        W --> X[CI/CD Pipelines]
+                        X --> Y[GitHub Pages]
+                        Y --> Z[GitHub API]
+                        Z --> AA[GitHub CLI]
+                        
+                        BB[Team Collaboration] --> CC[Gitflow Workflow]
+                        CC --> DD[Feature Branch Workflow]
+                        DD --> EE[Code Standards]
+                        EE --> FF[Team Guidelines]
+                        
+                        GG[Open Source] --> HH[Contributing Guidelines]
+                        HH --> II[Fork & Pull Request]
+                        II --> JJ[Maintaining Projects]
+                        JJ --> KK[Community Building]
+                        
+                        H --> LL[Portfolio Project]
+                        O --> LL
+                        U --> LL
+                        AA --> LL
+                        FF --> LL
+                        KK --> LL
+                        
+                        style A fill:#e3f2fd
+                        style I fill:#e8f5e8
+                        style P fill:#f3e5f5
+                        style V fill:#fff3e0
+                        style BB fill:#fff8e1
+                        style GG fill:#f1f8e9
+                        style LL fill:#fff8dc
+                </div>
+            </div>
+
+            <div class="path-card">
+                <h2>🚀 DevOps & Cloud</h2>
+                <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                <p class="path-description">
+                    Modern DevOps practices, cloud platforms, and infrastructure automation. Build scalable, reliable systems with industry best practices.
+                </p>
+                <div class="path-stats">
+                    <div class="path-stat">
+                        <div class="path-stat-number">20</div>
+                        <div class="path-stat-label">Modules</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">160</div>
+                        <div class="path-stat-label">Hours</div>
+                    </div>
+                    <div class="path-stat">
+                        <div class="path-stat-number">35</div>
+                        <div class="path-stat-label">Projects</div>
+                    </div>
+                </div>
+                <div class="mermaid" id="devops-path">
+                    graph TD
+                        A[Linux Fundamentals] --> B[Command Line Mastery]
+                        B --> C[System Administration]
+                        C --> D[Shell Scripting]
+                        D --> E[Process Management]
+                        E --> F[Network Configuration]
+                        
+                        G[Containerization] --> H[Docker Fundamentals]
+                        H --> I[Dockerfile Best Practices]
+                        I --> J[Docker Compose]
+                        J --> K[Container Orchestration]
+                        K --> L[Kubernetes]
+                        L --> M[Helm Charts]
+                        
+                        N[CI/CD Pipelines] --> O[Jenkins]
+                        O --> P[GitHub Actions]
+                        P --> Q[GitLab CI]
+                        Q --> R[Azure DevOps]
+                        R --> S[Pipeline as Code]
+                        S --> T[Automated Testing]
+                        T --> U[Deployment Strategies]
+                        
+                        V[Cloud Platforms] --> W[AWS Services]
+                        W --> X[Azure Services]
+                        X --> Y[Google Cloud]
+                        Y --> Z[Multi-Cloud Strategy]
+                        Z --> AA[Cloud Security]
+                        
+                        BB[Infrastructure as Code] --> CC[Terraform]
+                        CC --> DD[CloudFormation]
+                        DD --> EE[Ansible]
+                        EE --> FF[Chef/Puppet]
+                        FF --> GG[Infrastructure Testing]
+                        
+                        HH[Monitoring & Logging] --> II[Prometheus]
+                        II --> JJ[Grafana]
+                        JJ --> KK[ELK Stack]
+                        KK --> LL[Application Monitoring]
+                        LL --> MM[Alert Management]
+                        
+                        NN[Security & Compliance] --> OO[DevSecOps]
+                        OO --> PP[Vulnerability Scanning]
+                        PP --> QQ[Compliance as Code]
+                        QQ --> RR[Security Policies]
+                        
+                        SS[Capstone Project] --> TT[Microservices Deployment]
+                        TT --> UU[Auto-scaling Setup]
+                        UU --> VV[Disaster Recovery]
+                        VV --> WW[Performance Optimization]
+                        
+                        F --> SS
+                        M --> SS
+                        U --> SS
+                        AA --> SS
+                        GG --> SS
+                        MM --> SS
+                        RR --> SS
+                        
+                        style A fill:#e3f2fd
+                        style G fill:#e8f5e8
+                        style N fill:#f3e5f5
+                        style V fill:#fff3e0
+                        style BB fill:#fff8e1
+                        style HH fill:#f1f8e9
+                        style NN fill:#ffe0e6
+                        style SS fill:#fff8dc
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Industry-Focused Curriculum</h3>
+                <p>Real-world projects and current industry practices</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Expert Content</h3>
+                <p>Curated by industry professionals and senior developers</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛠️</div>
+                <h3>Hands-on Projects</h3>
+                <p>Build portfolio-worthy applications and systems</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Structured Learning</h3>
+                <p>Progressive skill building with clear milestones</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Course content mapping
+        const courseContent = {
+            // Java Full Stack
+            'Java Fundamentals': 'java-fundamentals',
+            'OOP Concepts': 'java-oop',
+            'Collections & Generics': 'java-collections',
+            'Exception Handling': 'java-exceptions',
+            'Multithreading': 'java-multithreading',
+            'Java 8+ Features': 'java-modern-features',
+            'Maven/Gradle': 'java-build-tools',
+            'Spring Framework': 'spring-framework',
+            'Spring Boot': 'spring-boot',
+            'Spring Data JPA': 'spring-data-jpa',
+            'Spring Security': 'spring-security',
+            'RESTful APIs': 'java-rest-apis',
+            'Microservices': 'java-microservices',
+            'HTML5/CSS3': 'html-css',
+            'JavaScript ES6+': 'javascript-es6',
+            'Bootstrap/Tailwind': 'css-frameworks',
+            'React.js/Angular': 'frontend-frameworks',
+            'TypeScript': 'typescript',
+            'State Management': 'state-management',
+            'Database Design': 'database-design',
+            'MySQL/PostgreSQL': 'relational-databases',
+            'JPA/Hibernate': 'java-orm',
+            'Database Optimization': 'database-optimization',
+            'Testing': 'java-testing',
+            'JUnit 5': 'junit-testing',
+            'Mockito': 'mockito-testing',
+            'Integration Testing': 'integration-testing',
+            'DevOps': 'java-devops',
+            'Docker': 'docker-java',
+            'CI/CD Pipeline': 'java-cicd',
+            'AWS/Azure Deployment': 'java-cloud-deployment',
+            'Full Stack Project': 'java-fullstack-project',
+            
+            // Python Full Stack
+            'Python Fundamentals': 'python-fundamentals',
+            'Data Structures': 'python-data-structures',
+            'OOP in Python': 'python-oop',
+            'File Handling': 'python-file-handling',
+            'Error Handling': 'python-error-handling',
+            'Modules & Packages': 'python-modules',
+            'Virtual Environments': 'python-virtualenv',
+            'pip & Poetry': 'python-package-management',
+            'Django Framework': 'django-framework',
+            'Django Models': 'django-models',
+            'Django Views & Templates': 'django-views-templates',
+            'Django REST Framework': 'django-rest-framework',
+            'Django Admin': 'django-admin',
+            'Flask Framework': 'flask-framework',
+            'Flask-SQLAlchemy': 'flask-sqlalchemy',
+            'Flask-API': 'flask-api',
+            'Flask-Login': 'flask-login',
+            'FastAPI': 'fastapi',
+            'Pydantic Models': 'pydantic-models',
+            'API Documentation': 'api-documentation',
+            'Frontend Skills': 'python-frontend',
+            'HTML5/CSS3': 'html-css-python',
+            'JavaScript/jQuery': 'javascript-jquery',
+            'React.js/Vue.js': 'python-frontend-frameworks',
+            'AJAX/Fetch API': 'ajax-fetch-api',
+            'Database': 'python-database',
+            'SQLite/PostgreSQL': 'python-databases',
+            'SQLAlchemy ORM': 'sqlalchemy-orm',
+            'Database Migrations': 'database-migrations',
+            'pytest': 'pytest-testing',
+            'Unit Testing': 'python-unit-testing',
+            'API Testing': 'python-api-testing',
+            'Deployment': 'python-deployment',
+            'AWS/Heroku': 'python-cloud-deployment',
+            'CI/CD with GitHub Actions': 'python-cicd',
+            'E-commerce Project': 'python-ecommerce-project',
+            
+            // Data Analytics
+            'Statistics Fundamentals': 'statistics-fundamentals',
+            'Descriptive Statistics': 'descriptive-statistics',
+            'Probability & Distributions': 'probability-distributions',
+            'Hypothesis Testing': 'hypothesis-testing',
+            'Correlation & Regression': 'correlation-regression',
+            'Excel Mastery': 'excel-mastery',
+            'Advanced Functions': 'excel-advanced-functions',
+            'Pivot Tables': 'excel-pivot-tables',
+            'Excel Charts': 'excel-charts',
+            'Power Query': 'excel-power-query',
+            'Excel Macros/VBA': 'excel-macros-vba',
+            'SQL for Analytics': 'sql-analytics',
+            'Database Design': 'analytics-database-design',
+            'Advanced Queries': 'sql-advanced-queries',
+            'Joins & Subqueries': 'sql-joins-subqueries',
+            'Window Functions': 'sql-window-functions',
+            'Stored Procedures': 'sql-stored-procedures',
+            'Python for Analytics': 'python-analytics',
+            'NumPy/Pandas': 'numpy-pandas',
+            'Data Cleaning': 'data-cleaning',
+            'Data Transformation': 'data-transformation',
+            'Exploratory Data Analysis': 'exploratory-data-analysis',
+            'Data Visualization': 'data-visualization',
+            'Matplotlib/Seaborn': 'matplotlib-seaborn',
+            'Plotly/Bokeh': 'plotly-bokeh',
+            'Tableau': 'tableau',
+            'Power BI': 'power-bi',
+            'Business Intelligence': 'business-intelligence',
+            'KPI Development': 'kpi-development',
+            'Dashboard Design': 'dashboard-design',
+            'Report Automation': 'report-automation',
+            'Real Projects': 'analytics-real-projects',
+            'Sales Analysis': 'sales-analysis',
+            'Customer Segmentation': 'customer-segmentation',
+            'Financial Modeling': 'financial-modeling',
+            
+            // Data Science
+            'Mathematics Foundation': 'data-science-mathematics',
+            'Linear Algebra': 'linear-algebra',
+            'Calculus': 'calculus',
+            'Statistics & Probability': 'statistics-probability',
+            'Optimization': 'optimization',
+            'Python Ecosystem': 'python-ecosystem',
+            'Jupyter Notebooks': 'jupyter-notebooks',
+            'Scikit-learn': 'scikit-learn',
+            'Data Engineering': 'data-engineering',
+            'Data Collection': 'data-collection',
+            'Feature Engineering': 'feature-engineering',
+            'Data Pipelines': 'data-pipelines',
+            'Machine Learning': 'machine-learning',
+            'Supervised Learning': 'supervised-learning',
+            'Unsupervised Learning': 'unsupervised-learning',
+            'Model Selection': 'model-selection',
+            'Cross Validation': 'cross-validation',
+            'Hyperparameter Tuning': 'hyperparameter-tuning',
+            'Deep Learning': 'deep-learning',
+            'Neural Networks': 'neural-networks',
+            'TensorFlow/Keras': 'tensorflow-keras',
+            'PyTorch': 'pytorch',
+            'CNN/RNN': 'cnn-rnn',
+            'Transfer Learning': 'transfer-learning',
+            'Big Data': 'big-data',
+            'Apache Spark': 'apache-spark',
+            'Hadoop': 'hadoop',
+            'NoSQL Databases': 'nosql-databases',
+            'Cloud Platforms': 'cloud-platforms',
+            'MLOps': 'mlops',
+            'Model Deployment': 'model-deployment',
+            'Model Monitoring': 'model-monitoring',
+            'A/B Testing': 'ab-testing',
+            'ML Pipelines': 'ml-pipelines',
+            'Capstone Projects': 'data-science-capstone',
+            'Predictive Analytics': 'predictive-analytics',
+            'NLP Project': 'nlp-project',
+            'Computer Vision': 'computer-vision',
+            'Recommendation System': 'recommendation-system',
+            
+            // Git & GitHub
+            'Git Fundamentals': 'git-fundamentals',
+            'Repository Setup': 'git-repository-setup',
+            'Basic Commands': 'git-basic-commands',
+            'add, commit, push': 'git-basic-workflow',
+            'Working with Remotes': 'git-remotes',
+            'Branching Strategy': 'git-branching',
+            'Merge vs Rebase': 'git-merge-rebase',
+            'Conflict Resolution': 'git-conflict-resolution',
+            'GitHub Essentials': 'github-essentials',
+            'Account Setup': 'github-account-setup',
+            'Repository Creation': 'github-repository',
+            'README & Documentation': 'github-documentation',
+            'Issues & Project Management': 'github-issues',
+            'Pull Requests': 'github-pull-requests',
+            'Code Review Process': 'github-code-review',
+            'Advanced Git': 'git-advanced',
+            'Git Hooks': 'git-hooks',
+            'Submodules': 'git-submodules',
+            'Git Bisect': 'git-bisect',
+            'Advanced Rebasing': 'git-advanced-rebasing',
+            'Git Stash': 'git-stash',
+            'GitHub Advanced': 'github-advanced',
+            'GitHub Actions': 'github-actions',
+            'CI/CD Pipelines': 'github-cicd',
+            'GitHub Pages': 'github-pages',
+            'GitHub API': 'github-api',
+            'GitHub CLI': 'github-cli',
+            'Team Collaboration': 'git-team-collaboration',
+            'Gitflow Workflow': 'gitflow-workflow',
+            'Feature Branch Workflow': 'feature-branch-workflow',
+            'Code Standards': 'code-standards',
+            'Team Guidelines': 'team-guidelines',
+            'Open Source': 'open-source',
+            'Contributing Guidelines': 'contributing-guidelines',
+            'Fork & Pull Request': 'fork-pull-request',
+            'Maintaining Projects': 'maintaining-projects',
+            'Community Building': 'community-building',
+            'Portfolio Project': 'git-portfolio-project',
+            
+            // DevOps
+            'Linux Fundamentals': 'linux-fundamentals',
+            'Command Line Mastery': 'command-line-mastery',
+            'System Administration': 'system-administration',
+            'Shell Scripting': 'shell-scripting',
+            'Process Management': 'process-management',
+            'Network Configuration': 'network-configuration',
+            'Containerization': 'containerization',
+            'Docker Fundamentals': 'docker-fundamentals',
+            'Dockerfile Best Practices': 'dockerfile-best-practices',
+            'Docker Compose': 'docker-compose',
+            'Container Orchestration': 'container-orchestration',
+            'Kubernetes': 'kubernetes',
+            'Helm Charts': 'helm-charts',
+            'CI/CD Pipelines': 'cicd-pipelines',
+            'Jenkins': 'jenkins',
+            'GitLab CI': 'gitlab-ci',
+            'Azure DevOps': 'azure-devops',
+            'Pipeline as Code': 'pipeline-as-code',
+            'Automated Testing': 'automated-testing',
+            'Deployment Strategies': 'deployment-strategies',
+            'Cloud Platforms': 'devops-cloud-platforms',
+            'AWS Services': 'aws-services',
+            'Azure Services': 'azure-services',
+            'Google Cloud': 'google-cloud',
+            'Multi-Cloud Strategy': 'multi-cloud-strategy',
+            'Cloud Security': 'cloud-security',
+            'Infrastructure as Code': 'infrastructure-as-code',
+            'Terraform': 'terraform',
+            'CloudFormation': 'cloudformation',
+            'Ansible': 'ansible',
+            'Chef/Puppet': 'chef-puppet',
+            'Infrastructure Testing': 'infrastructure-testing',
+            'Monitoring & Logging': 'monitoring-logging',
+            'Prometheus': 'prometheus',
+            'Grafana': 'grafana',
+            'ELK Stack': 'elk-stack',
+            'Application Monitoring': 'application-monitoring',
+            'Alert Management': 'alert-management',
+            'Security & Compliance': 'security-compliance',
+            'DevSecOps': 'devsecops',
+            'Vulnerability Scanning': 'vulnerability-scanning',
+            'Compliance as Code': 'compliance-as-code',
+            'Security Policies': 'security-policies',
+            'Capstone Project': 'devops-capstone',
+            'Microservices Deployment': 'microservices-deployment',
+            'Auto-scaling Setup': 'auto-scaling-setup',
+            'Disaster Recovery': 'disaster-recovery',
+            'Performance Optimization': 'performance-optimization'
+        };
+
+        // Initialize mermaid
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            themeVariables: {
+                primaryColor: '#667eea',
+                primaryTextColor: '#2c3e50',
+                primaryBorderColor: '#667eea',
+                lineColor: '#495057',
+                sectionBkgColor: '#f8f9fa',
+                altSectionBkgColor: '#ffffff',
+                gridColor: '#e9ecef',
+                secondaryColor: '#f8f9fa',
+                tertiaryColor: '#ffffff'
+            }
+        });
+
+        // Function to handle node clicks
+        function handleNodeClick(nodeId) {
+            const courseKey = courseContent[nodeId];
+            if (courseKey) {
+                window.location.href = `content.html?course=${encodeURIComponent(courseKey)}&title=${encodeURIComponent(nodeId)}`;
+            } else {
+                // For demonstration, load test content
+                window.location.href = `content.html?course=test_content&title=${encodeURIComponent(nodeId)}`;
+            }
+        }
+
+        // Add click event listeners to mermaid nodes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for mermaid to render
+            setTimeout(() => {
+                const nodes = document.querySelectorAll('.mermaid .node');
+                nodes.forEach(node => {
+                    node.addEventListener('click', function() {
+                        // Extract node text
+                        const nodeText = this.querySelector('span')?.textContent || 
+                                       this.querySelector('p')?.textContent || 
+                                       this.textContent;
+                        
+                        if (nodeText) {
+                            const cleanText = nodeText.trim();
+                            console.log('Clicked node:', cleanText);
+                            handleNodeClick(cleanText);
+                        }
+                    });
+                    
+                    // Add hover effect
+                    node.style.cursor = 'pointer';
+                    node.addEventListener('mouseenter', function() {
+                        this.style.opacity = '0.7';
+                    });
+                    node.addEventListener('mouseleave', function() {
+                        this.style.opacity = '1';
+                    });
+                });
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

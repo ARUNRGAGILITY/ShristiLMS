@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Renderer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .markdown-body {
+            max-width: none;
+        }
+
+        .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .markdown-body h1 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .markdown-body h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+
+        .markdown-body h3 {
+            font-size: 1.5rem;
+            color: #495057;
+        }
+
+        .markdown-body p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .markdown-body blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        .markdown-body ul, .markdown-body ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .markdown-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .markdown-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .markdown-body th, .markdown-body td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .markdown-body th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        .markdown-body tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .markdown-body a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .markdown-body a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-body code {
+            background: #f1f3f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+
+        .code-container {
+            position: relative;
+            margin: 1.5rem 0;
+        }
+
+        .code-container pre {
+            background: #2d3748 !important;
+            border-radius: 8px !important;
+            padding: 1.5rem !important;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-container pre code {
+            background: none !important;
+            padding: 0 !important;
+            color: #e2e8f0 !important;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #4a5568;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            opacity: 0.8;
+            z-index: 10;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .copy-btn:hover {
+            background: #2d3748;
+            opacity: 1;
+        }
+
+        .copy-btn.copied {
+            background: #38a169;
+        }
+
+        .code-container:hover .copy-btn {
+            opacity: 1;
+        }
+
+        .mermaid {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .mermaid-code {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            white-space: pre-wrap;
+            display: none; /* Hide during processing */
+        }
+
+        .task-list-item {
+            list-style: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .task-list-item input[type="checkbox"] {
+            position: absolute;
+            left: 0;
+            top: 0.3rem;
+            transform: scale(1.2);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .markdown-body h1 {
+                font-size: 2rem;
+            }
+            
+            .markdown-body h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Markdown Renderer</h1>
+            <p>Beautiful rendering of markdown files with syntax highlighting and diagrams</p>
+        </div>
+        
+        <div class="content">
+            <div id="markdown-content" class="markdown-body">
+                <div class="loading">Loading markdown content...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize mermaid
+        mermaid.initialize({
+            startOnLoad: false,
+            theme: 'default',
+            securityLevel: 'loose',
+            themeVariables: {
+                primaryColor: '#667eea',
+                primaryTextColor: '#2c3e50',
+                primaryBorderColor: '#667eea',
+                lineColor: '#495057',
+                sectionBkgColor: '#f8f9fa',
+                altSectionBkgColor: '#ffffff',
+                gridColor: '#e9ecef',
+                secondaryColor: '#f8f9fa',
+                tertiaryColor: '#ffffff'
+            }
+        });
+
+        // Configure marked
+        marked.setOptions({
+            highlight: function(code, lang) {
+                if (lang === 'mermaid') {
+                    return code; // Don't highlight mermaid code
+                }
+                if (Prism.languages[lang]) {
+                    return Prism.highlight(code, Prism.languages[lang], lang);
+                }
+                return code;
+            },
+            breaks: true,
+            gfm: true
+        });
+
+        // Custom renderer for code blocks
+        const renderer = new marked.Renderer();
+        
+        renderer.code = function(code, language) {
+            if (language === 'mermaid') {
+                return `<div class="mermaid-code" data-mermaid="${encodeURIComponent(code)}">${code}</div>`;
+            }
+            
+            const validLanguage = language && Prism.languages[language] ? language : 'plaintext';
+            const highlightedCode = Prism.languages[validLanguage] 
+                ? Prism.highlight(code, Prism.languages[validLanguage], validLanguage)
+                : code;
+            
+            const copyButtonId = `copy-${Math.random().toString(36).substr(2, 9)}`;
+            
+            return `
+                <div class="code-container">
+                    <button class="copy-btn" id="${copyButtonId}" onclick="copyToClipboard('${copyButtonId}')">Copy</button>
+                    <pre><code class="language-${validLanguage}">${highlightedCode}</code></pre>
+                </div>
+            `;
+        };
+
+        // Handle task lists
+        renderer.listitem = function(text) {
+            if (/^\s*\[[x ]\]\s*/.test(text)) {
+                text = text
+                    .replace(/^\s*\[ \]\s*/, '<input type="checkbox" disabled> ')
+                    .replace(/^\s*\[x\]\s*/, '<input type="checkbox" checked disabled> ');
+                return `<li class="task-list-item">${text}</li>`;
+            }
+            return `<li>${text}</li>`;
+        };
+
+        marked.use({ renderer });
+
+        // Function to copy code to clipboard
+        window.copyToClipboard = function(buttonId) {
+            const button = document.getElementById(buttonId);
+            const codeBlock = button.nextElementSibling.querySelector('code');
+            const text = codeBlock.textContent;
+            
+            console.log('Copy button clicked:', buttonId); // Debug log
+            
+            // Try using the modern clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    button.textContent = 'Copied!';
+                    button.classList.add('copied');
+                    
+                    setTimeout(() => {
+                        button.textContent = 'Copy';
+                        button.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    fallbackCopy(text, button);
+                });
+            } else {
+                fallbackCopy(text, button);
+            }
+        };
+
+        // Alternative method using event delegation
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('copy-btn')) {
+                const button = e.target;
+                const codeBlock = button.nextElementSibling.querySelector('code');
+                const text = codeBlock.textContent;
+                
+                console.log('Copy button clicked via delegation'); // Debug log
+                
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        button.textContent = 'Copied!';
+                        button.classList.add('copied');
+                        
+                        setTimeout(() => {
+                            button.textContent = 'Copy';
+                            button.classList.remove('copied');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                        fallbackCopy(text, button);
+                    });
+                } else {
+                    fallbackCopy(text, button);
+                }
+            }
+        });
+
+        // Fallback copy function
+        function fallbackCopy(text, button) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Fallback copy failed:', err);
+                button.textContent = 'Copy Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Function to render mermaid diagrams
+        async function renderMermaidDiagrams() {
+            const mermaidElements = document.querySelectorAll('.mermaid-code');
+            
+            for (let i = 0; i < mermaidElements.length; i++) {
+                const element = mermaidElements[i];
+                const code = decodeURIComponent(element.dataset.mermaid);
+                const mermaidId = `mermaid-${Date.now()}-${i}`;
+                
+                try {
+                    // Create mermaid container
+                    const mermaidContainer = document.createElement('div');
+                    mermaidContainer.className = 'mermaid';
+                    mermaidContainer.id = mermaidId;
+                    
+                    // Replace the code element with mermaid container
+                    element.parentNode.replaceChild(mermaidContainer, element);
+                    
+                    // Render mermaid diagram
+                    const { svg } = await mermaid.render(`diagram-${mermaidId}`, code);
+                    mermaidContainer.innerHTML = svg;
+                    
+                } catch (error) {
+                    console.error('Mermaid rendering error:', error);
+                    element.innerHTML = `<div class="error">Error rendering diagram: ${error.message}</div>`;
+                }
+            }
+        }
+
+        // Main function to render markdown
+        async function renderMarkdown(fileName) {
+            const contentDiv = document.getElementById('markdown-content');
+            
+            try {
+                // Show loading state
+                contentDiv.innerHTML = '<div class="loading">Loading markdown content...</div>';
+                
+                // Fetch the markdown file
+                const response = await fetch(fileName);
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${fileName}: ${response.status}`);
+                }
+                
+                const markdownContent = await response.text();
+                
+                // Parse markdown to HTML
+                const htmlContent = marked.parse(markdownContent);
+                
+                // Insert HTML content
+                contentDiv.innerHTML = htmlContent;
+                
+                // Debug: Check if copy buttons are created
+                console.log('Code containers found:', document.querySelectorAll('.code-container').length);
+                console.log('Copy buttons found:', document.querySelectorAll('.copy-btn').length);
+                
+                // Render mermaid diagrams after a short delay
+                setTimeout(() => {
+                    renderMermaidDiagrams();
+                }, 200);
+                
+            } catch (error) {
+                console.error('Error rendering markdown:', error);
+                contentDiv.innerHTML = `
+                    <div class="error">
+                        <h3>Error Loading Content</h3>
+                        <p>Failed to load "${fileName}". Please make sure the file exists and is accessible.</p>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Load test content on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMarkdown('test_content.md');
+        });
+    </script>
+</body>
+</html>

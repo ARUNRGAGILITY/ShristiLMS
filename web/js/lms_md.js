@@ -1,59 +1,406 @@
-// lms_md.js - Learning Management System for Markdown Content
-
-// MarkdownRenderer class (embedded)
-class MarkdownRenderer {
-    constructor(options = {}) {
-        this.options = {
-            container: options.container || 'markdown-content',
-            enableMermaid: options.enableMermaid !== false,
-            enableTOC: options.enableTOC !== false,
-            enableScrollspy: options.enableScrollspy !== false,
-            enableSyntaxHighlight: options.enableSyntaxHighlight !== false,
-            theme: options.theme || 'default',
-            ...options
-        };
-        
-        this.tocItems = [];
-        this.currentSection = null;
-        this.scrollObserver = null;
-        this.events = {};
-        
+// LMS JavaScript - Learning Management System
+class LearningSystem {
+    constructor() {
+        this.currentCourse = null;
+        this.currentChapter = null;
+        this.chapters = [];
+        this.courseData = null;
+        this.completionMessageShown = false;
         this.init();
     }
 
     init() {
-        this.setupContainer();
-        this.setupMermaid();
-        this.setupScrollspy();
+        this.initializeMermaid();
+        this.setupEventListeners();
+        this.showCourseSelection();
     }
 
-    setupContainer() {
-        const container = document.getElementById(this.options.container);
-        if (!container) {
-            console.error(`Container element with id '${this.options.container}' not found`);
-            return;
+    initializeMermaid() {
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                curve: 'basis'
+            },
+            gitGraph: {
+                theme: 'base',
+                themeVariables: {
+                    primaryColor: '#667eea',
+                    primaryTextColor: '#fff',
+                    primaryBorderColor: '#764ba2',
+                    lineColor: '#667eea'
+                }
+            }
+        });
+    }
+
+    setupEventListeners() {
+        // Table of contents navigation
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('toc-item')) {
+                const chapterId = e.target.dataset.chapter;
+                this.navigateToChapter(chapterId);
+            }
+        });
+
+        // Scroll tracking
+        this.setupScrollTracking();
+    }
+
+    async loadCourse(courseId) {
+        try {
+            this.showLoading();
+            
+            console.log("Loading course: " + courseId);
+            
+            // Construct filename based on course ID
+            const filename = `content/${courseId}_content.md`;
+            
+            // Load markdown content
+            const response = await fetch(filename);
+            
+            if (!response.ok) {
+                throw new Error(`Failed to load ${filename}: ${response.status} ${response.statusText}`);
+            }
+            
+            const markdownContent = await response.text();
+            
+            // Parse markdown and extract chapters
+            this.courseData = this.parseMarkdownIntoChapters(markdownContent, courseId);
+            
+            if (!this.courseData || Object.keys(this.courseData.chapters).length === 0) {
+                throw new Error(`No chapters found in ${filename}`);
+            }
+            
+            this.currentCourse = courseId;
+            this.chapters = Object.keys(this.courseData.chapters);
+            
+            this.updateNavigation();
+            this.generateTableOfContents();
+            this.renderCourseContent();
+            this.showCourseContent();
+            
+            this.hideLoading();
+        } catch (error) {
+            console.error('Error loading course:', error);
+            this.showError(`Failed to load course content: ${error.message}`);
+        }
+    }
+
+    parseMarkdownIntoChapters(markdown, courseId) {
+        // Get course metadata
+        const courseInfo = this.getCourseInfo(courseId);
+        
+        // Split markdown by H1 headers to create chapters
+        const sections = markdown.split(/^# /m);
+        const chapters = {};
+        
+        // Remove empty first section if it exists
+        if (sections[0].trim() === '') {
+            sections.shift();
         }
         
-        container.className = `markdown-container ${this.options.theme}-theme`;
+        sections.forEach((section, index) => {
+            const lines = section.trim().split('\n');
+            const title = lines[0];
+            const content = this.parseMarkdown('# ' + section);
+            
+            const chapterId = `chapter-${index + 1}`;
+            chapters[chapterId] = {
+                title: title,
+                content: content
+            };
+        });
+        
+        return {
+            ...courseInfo,
+            chapters: chapters
+        };
     }
 
-    setupMermaid() {
-        if (this.options.enableMermaid && typeof mermaid !== 'undefined') {
-            mermaid.initialize({
-                startOnLoad: false,
-                theme: 'default',
-                flowchart: {
-                    curve: 'basis',
-                    htmlLabels: true
+    getCourseInfo(courseId) {
+        const courseInfo = {
+            'git': {
+                title: 'Git Version Control',
+                icon: '🔄',
+                description: 'Master Git workflows, branching, and collaboration'
+            },
+            'python': {
+                title: 'Python Programming',
+                icon: '🐍',
+                description: 'Learn Python from basics to advanced concepts'
+            }
+        };
+        
+        return courseInfo[courseId] || {
+            title: 'Unknown Course',
+            icon: '📚',
+            description: 'Course description not available'
+        };
+    }
+
+    parseMarkdown(markdown) {
+        let html = markdown;
+
+        // Escape HTML first, but preserve special markers
+        html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+        // Process special content boxes first
+        html = this.processSpecialBoxes(html);
+
+        // Process Mermaid diagrams
+        html = this.processMermaidDiagrams(html);
+
+        // Code blocks (do this before other processing)
+        html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
+            const languageLabel = lang ? `data-language="${lang}"` : '';
+            return `<pre ${languageLabel}><code class="language-${lang || ''}">${code.trim()}</code><button class="copy-button" onclick="copyCode(this)">Copy</button></pre>`;
+        });
+
+        // Headers (order matters - do longer ones first)
+        html = html.replace(/^###### (.*$)/gm, '<h6>$1</h6>');
+        html = html.replace(/^##### (.*$)/gm, '<h5>$1</h5>');
+        html = html.replace(/^#### (.*$)/gm, '<h4>$1</h4>');
+        html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>');
+        html = html.replace(/^## (.*$)/gm, '<h2>$1</h2>');
+        html = html.replace(/^# (.*$)/gm, '<h1>$1</h1>');
+
+        // Bold and italic
+        html = html.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
+        html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        html = html.replace(/~~(.*?)~~/g, '<del>$1</del>');
+
+        // Links
+        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+
+        // Images
+        html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
+
+        // Inline code
+        html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+        // Blockquotes
+        html = html.replace(/^&gt; (.*$)/gm, '<blockquote>$1</blockquote>');
+
+        // Horizontal rules
+        html = html.replace(/^---$/gm, '<hr>');
+        html = html.replace(/^\*\*\*$/gm, '<hr>');
+
+        // Tables
+        html = this.processMarkdownTables(html);
+
+        // Lists
+        html = this.processMarkdownLists(html);
+
+        // Paragraphs - only wrap lines that aren't already HTML
+        html = html.replace(/^([^<\n].+)$/gm, (match) => {
+            return '<p>' + match + '</p>';
+        });
+
+        // Clean up multiple consecutive newlines
+        html = html.replace(/\n\s*\n/g, '\n');
+
+        return html;
+    }
+
+    processSpecialBoxes(html) {
+        // Theory boxes
+        html = html.replace(/:::theory\s*\n([\s\S]*?)\n:::/g, (match, content) => {
+            return `<div class="theory-box">${content.trim()}</div>`;
+        });
+
+        // Practice boxes
+        html = html.replace(/:::practice\s*\n([\s\S]*?)\n:::/g, (match, content) => {
+            return `<div class="practice-box">${content.trim()}</div>`;
+        });
+
+        // Warning boxes
+        html = html.replace(/:::warning\s*\n([\s\S]*?)\n:::/g, (match, content) => {
+            return `<div class="warning-box">${content.trim()}</div>`;
+        });
+
+        // Tip boxes
+        html = html.replace(/:::tip\s*\n([\s\S]*?)\n:::/g, (match, content) => {
+            return `<div class="tip-box">${content.trim()}</div>`;
+        });
+
+        // Exercise boxes
+        html = html.replace(/:::exercise\s*\n([\s\S]*?)\n:::/g, (match, content) => {
+            return `<div class="exercise-box">${content.trim()}</div>`;
+        });
+
+        // Interactive demo boxes
+        html = html.replace(/:::demo\s*\n([\s\S]*?)\n:::/g, (match, content) => {
+            return `<div class="interactive-demo">${content.trim()}</div>`;
+        });
+
+        return html;
+    }
+
+    processMermaidDiagrams(html) {
+        html = html.replace(/```mermaid\n([\s\S]*?)```/g, (match, diagram) => {
+            return `<div class="mermaid-container"><div class="mermaid">${diagram.trim()}</div></div>`;
+        });
+        return html;
+    }
+
+    processMarkdownTables(html) {
+        const lines = html.split('\n');
+        let result = [];
+        let inTable = false;
+        let tableRows = [];
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            
+            if (line.match(/^\|(.+)\|$/)) {
+                if (!inTable) {
+                    inTable = true;
+                    tableRows = [];
                 }
+                
+                const cells = line.slice(1, -1).split('|').map(cell => cell.trim());
+                
+                // Check if this is a separator row
+                if (cells.every(cell => cell.match(/^:?-+:?$/))) {
+                    continue; // Skip separator rows
+                }
+                
+                const isHeader = tableRows.length === 0;
+                const tag = isHeader ? 'th' : 'td';
+                const row = cells.map(cell => `<${tag}>${cell}</${tag}>`).join('');
+                tableRows.push(`<tr>${row}</tr>`);
+            } else {
+                if (inTable) {
+                    result.push(`<table>${tableRows.join('')}</table>`);
+                    inTable = false;
+                    tableRows = [];
+                }
+                result.push(line);
+            }
+        }
+
+        if (inTable) {
+            result.push(`<table>${tableRows.join('')}</table>`);
+        }
+
+        return result.join('\n');
+    }
+
+    processMarkdownLists(html) {
+        const lines = html.split('\n');
+        let result = [];
+        let inList = false;
+        let listType = null;
+        let listItems = [];
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            
+            if (line.match(/^\s*\* (.+)$/)) {
+                if (!inList || listType !== 'ul') {
+                    if (inList) {
+                        result.push(`<${listType}>${listItems.join('')}</${listType}>`);
+                    }
+                    inList = true;
+                    listType = 'ul';
+                    listItems = [];
+                }
+                listItems.push('<li>' + line.replace(/^\s*\* (.+)$/, '$1') + '</li>');
+            } else if (line.match(/^\s*\d+\. (.+)$/)) {
+                if (!inList || listType !== 'ol') {
+                    if (inList) {
+                        result.push(`<${listType}>${listItems.join('')}</${listType}>`);
+                    }
+                    inList = true;
+                    listType = 'ol';
+                    listItems = [];
+                }
+                listItems.push('<li>' + line.replace(/^\s*\d+\. (.+)$/, '$1') + '</li>');
+            } else {
+                if (inList) {
+                    result.push(`<${listType}>${listItems.join('')}</${listType}>`);
+                    inList = false;
+                    listType = null;
+                    listItems = [];
+                }
+                result.push(line);
+            }
+        }
+
+        if (inList) {
+            result.push(`<${listType}>${listItems.join('')}</${listType}>`);
+        }
+
+        return result.join('\n');
+    }
+
+    updateNavigation() {
+        const courseIcon = document.getElementById('courseIcon');
+        const courseTitle = document.getElementById('courseTitle');
+        const currentTopic = document.getElementById('currentTopic');
+        
+        courseIcon.textContent = this.courseData.icon;
+        courseTitle.textContent = this.courseData.title;
+        currentTopic.textContent = this.courseData.chapters[this.chapters[0]].title;
+    }
+
+    generateTableOfContents() {
+        const tocContainer = document.getElementById('tocContainer');
+        tocContainer.innerHTML = '';
+        
+        this.chapters.forEach((chapterId, index) => {
+            const chapter = this.courseData.chapters[chapterId];
+            const tocItem = document.createElement('div');
+            tocItem.className = 'toc-item';
+            tocItem.dataset.chapter = chapterId;
+            tocItem.textContent = `${index + 1}. ${chapter.title}`;
+            
+            if (index === 0) {
+                tocItem.classList.add('active');
+                this.currentChapter = chapterId;
+            }
+            
+            tocContainer.appendChild(tocItem);
+        });
+    }
+
+    renderCourseContent() {
+        const mainContent = document.getElementById('mainContent');
+        mainContent.innerHTML = '';
+        
+        this.chapters.forEach(chapterId => {
+            const chapter = this.courseData.chapters[chapterId];
+            const chapterElement = document.createElement('div');
+            chapterElement.className = 'chapter';
+            chapterElement.id = chapterId;
+            chapterElement.innerHTML = chapter.content;
+            
+            mainContent.appendChild(chapterElement);
+        });
+        
+        // Re-initialize Mermaid for new content
+        mermaid.init();
+        
+        // Setup fade-in animations
+        this.setupFadeInAnimations();
+    }
+
+    navigateToChapter(chapterId) {
+        const element = document.getElementById(chapterId);
+        if (element) {
+            const navbarHeight = 80;
+            const elementPosition = element.offsetTop - navbarHeight;
+            window.scrollTo({ 
+                top: elementPosition, 
+                behavior: 'smooth' 
             });
         }
     }
 
-    setupScrollspy() {
-        if (!this.options.enableScrollspy) return;
-
-        this.scrollObserver = new IntersectionObserver((entries) => {
+    setupScrollTracking() {
+        const observer = new IntersectionObserver((entries) => {
             let mostVisibleEntry = null;
             let maxIntersectionRatio = 0;
             
@@ -65,567 +412,113 @@ class MarkdownRenderer {
             });
             
             if (mostVisibleEntry) {
-                this.updateActiveSection(mostVisibleEntry.target.id);
+                const chapterId = mostVisibleEntry.target.id;
+                this.updateActiveChapter(chapterId);
             }
         }, { 
-            threshold: [0.1, 0.3, 0.5, 0.7, 0.9],
+            threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
             rootMargin: '-80px 0px -20% 0px'
         });
+
+        // Store observer for later use
+        this.scrollObserver = observer;
     }
 
-    updateActiveSection(sectionId) {
-        if (this.currentSection === sectionId) return;
+    updateActiveChapter(chapterId) {
+        if (this.currentChapter === chapterId) return;
         
-        this.currentSection = sectionId;
+        this.currentChapter = chapterId;
         
-        // Update TOC if enabled
-        if (this.options.enableTOC) {
-            document.querySelectorAll('.toc-item').forEach(item => {
-                item.classList.remove('active');
-                if (item.dataset.section === sectionId) {
-                    item.classList.add('active');
-                }
-            });
+        // Update current topic
+        if (this.courseData && this.courseData.chapters[chapterId]) {
+            document.getElementById('currentTopic').textContent = 
+                this.courseData.chapters[chapterId].title;
         }
-        
-        // Emit event for custom handling
-        this.emit('sectionChange', { sectionId, element: document.getElementById(sectionId) });
-    }
-
-    async render(markdown) {
-        const container = document.getElementById(this.options.container);
-        if (!container) return;
-
-        try {
-            // Show loading state
-            container.innerHTML = '<div class="loading">Loading content...</div>';
-            
-            // Parse markdown to HTML
-            const html = this.parseMarkdown(markdown);
-            
-            // Render to container
-            container.innerHTML = html;
-            
-            // Post-process the rendered content
-            await this.postProcess(container);
-            
-            // Generate TOC if enabled
-            if (this.options.enableTOC) {
-                this.generateTOC(container);
-            }
-            
-            // Setup scroll observation
-            this.setupScrollObservation(container);
-            
-            // Emit render complete event
-            this.emit('renderComplete', { container, markdown });
-            
-        } catch (error) {
-            console.error('Error rendering markdown:', error);
-            container.innerHTML = `<div class="error">Error rendering content: ${error.message}</div>`;
-        }
-    }
-
-    parseMarkdown(markdown) {
-        let html = markdown;
-        
-        // Headers with proper IDs
-        html = html.replace(/^(#{1,6})\s+(.*$)/gm, (match, hashes, text) => {
-            const level = hashes.length;
-            const cleanId = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-            return `<h${level} id="${cleanId}">${text}</h${level}>`;
-        });
-        
-        // Bold and italic
-        html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-        
-        // Code blocks with language specification
-        html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
-            const language = lang || 'text';
-            return `<pre data-language="${language}"><code class="language-${language}">${this.escapeHtml(code.trim())}</code></pre>`;
-        });
-        
-        // Inline code
-        html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-        
-        // Mermaid diagrams
-        html = html.replace(/```mermaid\n([\s\S]*?)```/g, (match, diagram) => {
-            return `<div class="mermaid-container"><div class="mermaid">${diagram.trim()}</div></div>`;
-        });
-        
-        // Special content boxes
-        html = this.parseSpecialBoxes(html);
-        
-        // Lists (improved)
-        html = html.replace(/^[\*\-\+]\s+(.*$)/gm, '<li>$1</li>');
-        html = html.replace(/^\d+\.\s+(.*$)/gm, '<li>$1</li>');
-        
-        // Wrap consecutive list items in ul
-        html = html.replace(/(<li>.*<\/li>)(\s*<li>.*<\/li>)*/g, (match) => {
-            return `<ul>${match}</ul>`;
-        });
-        
-        // Blockquotes
-        html = html.replace(/^>\s+(.*$)/gm, '<blockquote>$1</blockquote>');
-        
-        // Links
-        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
-        
-        // Paragraphs (improved to avoid wrapping headers and other elements)
-        html = html.replace(/^(?!<[hul]|<div|<blockquote|```|>)([^\n<]+)$/gm, '<p>$1</p>');
-        
-        // Clean up extra line breaks
-        html = html.replace(/\n\s*\n/g, '\n');
-        
-        return html;
-    }
-
-    parseSpecialBoxes(html) {
-        // Theory boxes
-        html = html.replace(/>\s*\*\*([^*]+):\*\*\s*\n((?:>\s*.*\n?)*)/g, (match, title, content) => {
-            const cleanContent = content.replace(/^>\s*/gm, '').trim();
-            return `<div class="theory-box">
-                <h4>${title}</h4>
-                ${cleanContent}
-            </div>`;
-        });
-
-        // Warning boxes
-        html = html.replace(/>\s*⚠️\s*\*\*([^*]+):\*\*\s*\n((?:>\s*.*\n?)*)/g, (match, title, content) => {
-            const cleanContent = content.replace(/^>\s*/gm, '').trim();
-            return `<div class="warning-box">
-                <h4>⚠️ ${title}</h4>
-                ${cleanContent}
-            </div>`;
-        });
-
-        // Practice boxes
-        html = html.replace(/>\s*🛠️\s*\*\*([^*]+):\*\*\s*\n((?:>\s*.*\n?)*)/g, (match, title, content) => {
-            const cleanContent = content.replace(/^>\s*/gm, '').trim();
-            return `<div class="practice-box">
-                <h4>🛠️ ${title}</h4>
-                ${cleanContent}
-            </div>`;
-        });
-
-        // Tip boxes
-        html = html.replace(/>\s*💡\s*\*\*([^*]+):\*\*\s*\n((?:>\s*.*\n?)*)/g, (match, title, content) => {
-            const cleanContent = content.replace(/^>\s*/gm, '').trim();
-            return `<div class="tip-box">
-                <h4>💡 ${title}</h4>
-                ${cleanContent}
-            </div>`;
-        });
-
-        // Exercise boxes
-        html = html.replace(/###\s*🎯\s*Exercise\s*\d*:\s*([^\n]+)\n\n([\s\S]*?)(?=\n###|\n##|\n#|$)/g, (match, title, content) => {
-            const steps = content.split(/\d+\.\s*\*\*Step\s*\d+:\*\*/).slice(1);
-            const stepHtml = steps.map((step, index) => 
-                `<div class="exercise-step">
-                    <strong>Step ${index + 1}:</strong> ${step.trim()}
-                </div>`
-            ).join('');
-            
-            return `<div class="exercise-box">
-                <h4>🎯 Exercise: ${title}</h4>
-                ${stepHtml}
-            </div>`;
-        });
-
-        return html;
-    }
-
-    escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-
-    async postProcess(container) {
-        // Process Mermaid diagrams
-        if (this.options.enableMermaid && typeof mermaid !== 'undefined') {
-            const mermaidElements = container.querySelectorAll('.mermaid');
-            for (let i = 0; i < mermaidElements.length; i++) {
-                const element = mermaidElements[i];
-                try {
-                    const id = `mermaid-${Date.now()}-${i}`;
-                    const { svg } = await mermaid.render(id, element.textContent);
-                    element.innerHTML = svg;
-                } catch (error) {
-                    console.error('Mermaid rendering error:', error);
-                    element.innerHTML = `<div class="error">Error rendering diagram</div>`;
-                }
-            }
-        }
-
-        // Apply syntax highlighting
-        if (this.options.enableSyntaxHighlight && typeof Prism !== 'undefined') {
-            Prism.highlightAllUnder(container);
-        }
-
-        // Setup animations
-        this.setupAnimations(container);
-
-        // Process interactive elements
-        this.processInteractiveElements(container);
-    }
-
-    setupAnimations(container) {
-        // Fade in animation for content blocks
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        // Observe all major content blocks
-        container.querySelectorAll('h1, h2, h3, .theory-box, .practice-box, .warning-box, .tip-box, .exercise-box, pre').forEach(element => {
-            element.classList.add('fade-in');
-            observer.observe(element);
-        });
-    }
-
-    processInteractiveElements(container) {
-        // Process code blocks with copy buttons
-        container.querySelectorAll('pre code').forEach(codeBlock => {
-            const pre = codeBlock.parentElement;
-            const copyBtn = document.createElement('button');
-            copyBtn.className = 'copy-button';
-            copyBtn.innerHTML = '📋 Copy';
-            copyBtn.onclick = () => this.copyToClipboard(codeBlock.textContent, copyBtn);
-            
-            pre.style.position = 'relative';
-            pre.appendChild(copyBtn);
-        });
-    }
-
-    copyToClipboard(text, button) {
-        navigator.clipboard.writeText(text).then(() => {
-            const originalText = button.innerHTML;
-            button.innerHTML = '✅ Copied!';
-            button.style.background = '#4CAF50';
-            
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.style.background = '';
-            }, 2000);
-        }).catch(err => {
-            console.error('Copy failed:', err);
-            button.innerHTML = '❌ Failed';
-            setTimeout(() => {
-                button.innerHTML = '📋 Copy';
-            }, 2000);
-        });
-    }
-
-    generateTOC(container) {
-        const headers = container.querySelectorAll('h1, h2, h3, h4');
-        this.tocItems = [];
-        
-        headers.forEach(header => {
-            const level = parseInt(header.tagName.charAt(1));
-            const text = header.textContent;
-            const id = header.id || text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-            
-            if (!header.id) {
-                header.id = id;
-            }
-            
-            this.tocItems.push({
-                level,
-                text,
-                id,
-                element: header
-            });
-        });
-        
-        this.renderTOC();
-    }
-
-    renderTOC() {
-        const tocContainer = document.getElementById('toc-container');
-        if (!tocContainer || this.tocItems.length === 0) return;
-        
-        const tocHtml = this.tocItems.map(item => 
-            `<div class="toc-item toc-level-${item.level}" data-section="${item.id}">
-                ${item.text}
-            </div>`
-        ).join('');
-        
-        tocContainer.innerHTML = tocHtml;
-        
-        // Add click handlers
-        tocContainer.querySelectorAll('.toc-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const sectionId = item.dataset.section;
-                this.scrollToSection(sectionId);
-            });
-        });
-    }
-
-    scrollToSection(sectionId) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            const offset = 80; // Account for fixed header
-            const elementPosition = element.offsetTop - offset;
-            window.scrollTo({ 
-                top: elementPosition, 
-                behavior: 'smooth' 
-            });
-        }
-    }
-
-    setupScrollObservation(container) {
-        if (!this.scrollObserver) return;
-        
-        // Observe all headers for scrollspy
-        container.querySelectorAll('h1, h2, h3, h4').forEach(header => {
-            this.scrollObserver.observe(header);
-        });
-    }
-
-    // Event system
-    on(event, callback) {
-        if (!this.events) this.events = {};
-        if (!this.events[event]) this.events[event] = [];
-        this.events[event].push(callback);
-    }
-
-    emit(event, data) {
-        if (!this.events || !this.events[event]) return;
-        this.events[event].forEach(callback => callback(data));
-    }
-
-    // Theme switching
-    setTheme(theme) {
-        this.options.theme = theme;
-        const container = document.getElementById(this.options.container);
-        if (container) {
-            container.className = `markdown-container ${theme}-theme`;
-        }
-    }
-}
-
-console.log('✅ MarkdownRenderer class defined successfully');
-
-// MarkdownLearningSystem class
-class MarkdownLearningSystem {
-    constructor() {
-        this.currentCourse = null;
-        this.currentSection = null;
-        this.markdownRenderer = null;
-        this.progress = {};
-        this.completionMessageShown = false;
-        
-        this.init();
-    }
-
-    init() {
-        // Check if COURSE_CONFIG is available
-        if (typeof COURSE_CONFIG === 'undefined') {
-            console.error('❌ COURSE_CONFIG not found. Make sure config.js is loaded before lms_md.js');
-            return;
-        }
-
-        console.log('✅ Initializing Markdown Learning System...');
-        
-        this.setupEventListeners();
-        this.generateCourseCards();
-        this.showCourseSelection();
-        this.loadProgress();
-    }
-
-    setupEventListeners() {
-        // Course selection
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('.course-card')) {
-                const courseCard = e.target.closest('.course-card');
-                const courseId = courseCard.dataset.course;
-                if (courseId) {
-                    this.loadCourse(courseId);
-                }
-            }
-        });
-
-        // TOC navigation
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('toc-item')) {
-                const sectionId = e.target.dataset.section;
-                this.scrollToSection(sectionId);
-            }
-        });
-
-        // Progress tracking
-        this.setupProgressTracking();
-    }
-
-    generateCourseCards() {
-        const courseGrid = document.querySelector('.course-grid');
-        if (!courseGrid) return;
-
-        courseGrid.innerHTML = '';
-
-        // Get courses from config.js
-        const courses = COURSE_CONFIG.getAllCourses();
-        
-        courses.forEach(course => {
-            const courseCard = document.createElement('div');
-            courseCard.className = course.available ? 'course-card' : 'course-card coming-soon';
-            courseCard.dataset.course = course.id;
-            
-            courseCard.innerHTML = `
-                <div class="course-icon">${course.icon}</div>
-                <h3>${course.title}</h3>
-                <p>${course.description}</p>
-                <div class="course-meta">
-                    <span class="difficulty">${course.difficulty}</span>
-                    ${course.available ? `<span class="duration">${course.duration}</span>` : '<span class="duration">Coming Soon</span>'}
-                </div>
-            `;
-
-            courseGrid.appendChild(courseCard);
-        });
-
-        // Add "More Coming Soon" card
-        const moreCourses = document.createElement('div');
-        moreCourses.className = 'course-card coming-soon';
-        moreCourses.innerHTML = `
-            <div class="course-icon">🚀</div>
-            <h3>More Coming Soon</h3>
-            <p>Docker, Kubernetes, AWS and more...</p>
-            <div class="course-meta">
-                <span class="difficulty">Coming Soon</span>
-            </div>
-        `;
-        courseGrid.appendChild(moreCourses);
-    }
-
-    async loadCourse(courseId) {
-        try {
-            this.showLoading();
-            
-            console.log("🔄 Loading course:", courseId);
-            
-            // Check if course is available
-            if (!COURSE_CONFIG.isCourseAvailable(courseId)) {
-                throw new Error(`Course ${courseId} is not available`);
-            }
-            
-            // Get course content
-            const courseData = await COURSE_CONFIG.getCourseContent(courseId);
-            
-            if (!courseData || !courseData.markdownContent) {
-                throw new Error(`Failed to load content for course ${courseId}`);
-            }
-            
-            this.currentCourse = courseId;
-            
-            // Update navigation
-            this.updateNavigation(courseData);
-            
-            // Initialize markdown renderer if not already done
-            if (!this.markdownRenderer) {
-                this.markdownRenderer = new MarkdownRenderer({
-                    container: 'markdown-content',
-                    ...COURSE_CONFIG.settings
-                });
-                
-                // Listen for section changes
-                this.markdownRenderer.on('sectionChange', (data) => {
-                    this.onSectionChange(data.sectionId);
-                });
-            }
-            
-            // Render the markdown content
-            await this.markdownRenderer.render(courseData.markdownContent);
-            
-            // Show course content
-            this.showCourseContent();
-            
-            // Reset completion flag
-            this.completionMessageShown = false;
-            
-            this.hideLoading();
-            
-        } catch (error) {
-            console.error('❌ Error loading course:', error);
-            this.showError(`Failed to load course content: ${error.message}`);
-        }
-    }
-
-    updateNavigation(courseData) {
-        const courseIcon = document.getElementById('courseIcon');
-        const courseTitle = document.getElementById('courseTitle');
-        const currentTopic = document.getElementById('currentTopic');
-        
-        if (courseIcon) courseIcon.textContent = courseData.icon;
-        if (courseTitle) courseTitle.textContent = courseData.title;
-        if (currentTopic) currentTopic.textContent = courseData.title;
-    }
-
-    onSectionChange(sectionId) {
-        this.currentSection = sectionId;
         
         // Update progress
         this.updateProgress();
         
-        // Save progress
-        this.saveProgress();
+        // Update active TOC item
+        document.querySelectorAll('.toc-item').forEach(item => {
+            item.classList.remove('active');
+            if (item.dataset.chapter === chapterId) {
+                item.classList.add('active');
+            }
+        });
         
-        // Check if completed
-        this.checkCompletion();
+        // Mark completed chapters
+        this.markCompletedChapters();
     }
 
     updateProgress() {
-        const tocItems = document.querySelectorAll('.toc-item');
-        const currentIndex = Array.from(tocItems).findIndex(item => 
-            item.classList.contains('active')
-        );
-        
-        if (currentIndex >= 0 && tocItems.length > 0) {
-            const progress = ((currentIndex + 1) / tocItems.length) * 100;
-            const progressBar = document.getElementById('progressBar');
-            if (progressBar) {
-                progressBar.style.width = progress + '%';
-            }
-        }
+        const currentIndex = this.chapters.indexOf(this.currentChapter);
+        const progress = ((currentIndex + 1) / this.chapters.length) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
     }
 
-    checkCompletion() {
-        // Check if user has scrolled to the bottom
-        setTimeout(() => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
+    markCompletedChapters() {
+        const currentIndex = this.chapters.indexOf(this.currentChapter);
+        
+        this.chapters.forEach((chapterId, index) => {
+            const tocItem = document.querySelector(`[data-chapter="${chapterId}"]`);
+            if (tocItem) {
+                // Mark as completed if it's before current chapter
+                if (index < currentIndex) {
+                    tocItem.classList.add('completed');
+                    tocItem.classList.remove('active');
+                } 
+                // Mark current chapter as active
+                else if (index === currentIndex) {
+                    tocItem.classList.add('active');
+                    tocItem.classList.remove('completed');
+                    
+                    // Mark last chapter as completed when we reach it
+                    if (index === this.chapters.length - 1) {
+                        setTimeout(() => {
+                            tocItem.classList.add('completed');
+                        }, 1000);
+                    }
+                } 
+                // Remove completed and active from future chapters
+                else {
+                    tocItem.classList.remove('completed', 'active');
+                }
+            }
+        });
+        
+        // Check if user has scrolled to the very end
+        this.checkIfAtEnd();
+    }
+
+    checkIfAtEnd() {
+        // Check if user has scrolled to the bottom of the page
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        // If we're near the bottom (within 100px), mark the last chapter as completed
+        if (scrollTop + windowHeight >= documentHeight - 100) {
+            const lastChapterId = this.chapters[this.chapters.length - 1];
+            const lastTocItem = document.querySelector(`[data-chapter="${lastChapterId}"]`);
             
-            if (scrollTop + windowHeight >= documentHeight - 100) {
-                this.markCourseComplete();
+            if (lastTocItem && this.currentChapter === lastChapterId) {
+                lastTocItem.classList.add('completed');
+                
+                // Update progress to 100%
+                document.getElementById('progressBar').style.width = '100%';
+                
+                // Show completion message
+                this.showCompletionMessage();
             }
-        }, 1000);
-    }
-
-    markCourseComplete() {
-        if (this.completionMessageShown) return;
-        
-        this.completionMessageShown = true;
-        
-        // Update progress to 100%
-        const progressBar = document.getElementById('progressBar');
-        if (progressBar) {
-            progressBar.style.width = '100%';
         }
-        
-        // Show completion message
-        this.showCompletionMessage();
-        
-        // Save completion
-        this.saveProgress();
     }
 
     showCompletionMessage() {
+        // Only show once per course load
+        if (this.completionMessageShown) return;
+        this.completionMessageShown = true;
+        
+        // Create completion notification
         const notification = document.createElement('div');
         notification.style.cssText = `
             position: fixed;
@@ -667,104 +560,61 @@ class MarkdownLearningSystem {
         }, 3000);
     }
 
-    setupProgressTracking() {
-        // Track scroll position for progress
-        let ticking = false;
-        
-        const updateScrollProgress = () => {
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    this.checkCompletion();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        };
-        
-        window.addEventListener('scroll', updateScrollProgress);
-    }
+    setupFadeInAnimations() {
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
 
-    scrollToSection(sectionId) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            const offset = COURSE_CONFIG.settings.scrollOffset || 80;
-            const elementPosition = element.offsetTop - offset;
-            window.scrollTo({ 
-                top: elementPosition, 
-                behavior: 'smooth' 
+        document.querySelectorAll('.chapter').forEach(chapter => {
+            fadeObserver.observe(chapter);
+        });
+
+        // Start observing for scroll tracking
+        if (this.scrollObserver) {
+            document.querySelectorAll('.chapter').forEach(chapter => {
+                this.scrollObserver.observe(chapter);
             });
         }
     }
 
     showCourseSelection() {
-        const courseSelector = document.getElementById('courseSelector');
-        const layout = document.querySelector('.layout');
+        document.getElementById('courseSelector').style.display = 'flex';
+        document.getElementById('sidebar').style.display = 'none';
+        document.getElementById('mainContent').classList.remove('with-sidebar');
+        document.getElementById('currentTopic').textContent = 'Select a Course';
+        document.getElementById('progressBar').style.width = '0%';
         
-        if (courseSelector) {
-            courseSelector.style.display = 'flex';
-        }
-        
-        if (layout) {
-            layout.style.display = 'none';
-        }
-        
-        // Update navigation
-        const courseIcon = document.getElementById('courseIcon');
-        const courseTitle = document.getElementById('courseTitle');
-        const currentTopic = document.getElementById('currentTopic');
-        const progressBar = document.getElementById('progressBar');
-        
-        if (courseIcon) courseIcon.textContent = '📚';
-        if (courseTitle) courseTitle.textContent = 'Interactive Learning System';
-        if (currentTopic) currentTopic.textContent = 'Select a Course';
-        if (progressBar) progressBar.style.width = '0%';
-        
-        // Reset state
-        this.currentCourse = null;
-        this.currentSection = null;
+        // Reset completion flag
         this.completionMessageShown = false;
     }
 
     showCourseContent() {
-        const courseSelector = document.getElementById('courseSelector');
-        const layout = document.querySelector('.layout');
-        const sidebar = document.querySelector('.sidebar');
+        document.getElementById('courseSelector').style.display = 'none';
+        document.getElementById('sidebar').style.display = 'block';
+        document.getElementById('mainContent').classList.add('with-sidebar');
         
-        if (courseSelector) {
-            courseSelector.style.display = 'none';
-        }
-        
-        if (layout) {
-            layout.style.display = 'grid';
-        }
-        
-        if (sidebar) {
-            sidebar.classList.add('show');
-        }
-        
-        // Scroll to top after a brief delay
+        // Scroll to first chapter
         setTimeout(() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            this.navigateToChapter(this.chapters[0]);
         }, 100);
     }
 
     showLoading() {
-        const loadingIndicator = document.getElementById('loadingIndicator');
-        if (loadingIndicator) {
-            loadingIndicator.classList.add('show');
-        }
+        document.getElementById('loadingIndicator').classList.add('show');
     }
 
     hideLoading() {
-        const loadingIndicator = document.getElementById('loadingIndicator');
-        if (loadingIndicator) {
-            loadingIndicator.classList.remove('show');
-        }
+        document.getElementById('loadingIndicator').classList.remove('show');
     }
 
     showError(message) {
         this.hideLoading();
         
+        // Create a better error display
         const errorDiv = document.createElement('div');
         errorDiv.style.cssText = `
             position: fixed;
@@ -785,7 +635,7 @@ class MarkdownLearningSystem {
             <div style="color: #e53e3e; font-size: 2em; margin-bottom: 15px;">⚠️</div>
             <h3 style="color: #e53e3e; margin-bottom: 15px;">Error Loading Course</h3>
             <p style="margin-bottom: 20px;">${message}</p>
-            <button onclick="this.parentElement.remove(); window.markdownLearningSystem.showCourseSelection();" 
+            <button onclick="this.parentElement.remove(); learningSystem.showCourseSelection();" 
                     style="background: #e53e3e; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
                 Back to Course Selection
             </button>
@@ -793,94 +643,50 @@ class MarkdownLearningSystem {
         
         document.body.appendChild(errorDiv);
     }
-
-    // Progress persistence
-    saveProgress() {
-        if (!COURSE_CONFIG.settings.enableProgressSaving) return;
-        
-        const progressData = {
-            currentCourse: this.currentCourse,
-            currentSection: this.currentSection,
-            completed: this.completionMessageShown,
-            timestamp: Date.now()
-        };
-        
-        try {
-            localStorage.setItem('lms_progress', JSON.stringify(progressData));
-        } catch (error) {
-            console.warn('Failed to save progress:', error);
-        }
-    }
-
-    loadProgress() {
-        if (!COURSE_CONFIG.settings.enableProgressSaving) return;
-        
-        try {
-            const savedProgress = localStorage.getItem('lms_progress');
-            if (savedProgress) {
-                this.progress = JSON.parse(savedProgress);
-                console.log('📊 Loaded saved progress:', this.progress);
-            }
-        } catch (error) {
-            console.warn('Failed to load progress:', error);
-        }
-    }
-
-    // Theme switching
-    setTheme(theme) {
-        if (this.markdownRenderer) {
-            this.markdownRenderer.setTheme(theme);
-        }
-    }
-
-    // Utility methods
-    exportProgress() {
-        return {
-            currentCourse: this.currentCourse,
-            progress: this.progress,
-            timestamp: Date.now()
-        };
-    }
-
-    clearProgress() {
-        this.progress = {};
-        localStorage.removeItem('lms_progress');
-        console.log('🧹 Progress cleared');
-    }
 }
 
-console.log('✅ MarkdownLearningSystem class defined successfully');
-
-// Global functions for HTML onclick handlers
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function goBackToCourseSelection() {
-    if (window.markdownLearningSystem) {
-        window.markdownLearningSystem.showCourseSelection();
-    }
-}
-
-// Initialize when DOM is loaded (if not already initialized)
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 DOM loaded...');
-    if (!window.markdownLearningSystem) {
-        console.log('🔄 Auto-initializing Markdown Learning System...');
+// Copy code functionality
+function copyCode(button) {
+    const codeBlock = button.previousElementSibling;
+    const text = codeBlock.textContent;
+    
+    navigator.clipboard.writeText(text).then(() => {
+        button.textContent = 'Copied!';
         setTimeout(() => {
-            if (window.initializeSystem) {
-                window.initializeSystem();
-            }
-        }, 100);
-    }
-});
-
-// Attach to window for global access
-window.MarkdownLearningSystem = MarkdownLearningSystem;
-
-// Export for module systems
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = MarkdownLearningSystem;
+            button.textContent = 'Copy';
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+        button.textContent = 'Error';
+        setTimeout(() => {
+            button.textContent = 'Copy';
+        }, 2000);
+    });
 }
 
-console.log('✅ MarkdownLearningSystem class loaded and attached to window');
+// Interactive demo functions (for courses that need them)
+function showStatus(type) {
+    const output = document.getElementById('statusOutput');
+    if (!output) return;
+    
+    const statuses = {
+        'clean': 'On branch main<br>nothing to commit, working tree clean',
+        'modified': 'On branch main<br>Changes not staged for commit:<br>&nbsp;&nbsp;modified:   index.html<br>&nbsp;&nbsp;modified:   styles.css',
+        'staged': 'On branch main<br>Changes to be committed:<br>&nbsp;&nbsp;modified:   index.html<br>&nbsp;&nbsp;new file:   styles.css',
+        'committed': 'On branch main<br>nothing to commit, working tree clean<br><br>[main 1a2b3c4] Update homepage design<br>&nbsp;2 files changed, 15 insertions(+), 3 deletions(-)'
+    };
+    output.innerHTML = statuses[type] || statuses['clean'];
+}
+
+function showBranch(stage) {
+    const output = document.getElementById('branchOutput');
+    if (!output) return;
+    
+    const stages = {
+        'initial': 'main: A --- B --- C',
+        'branch': 'main: A --- B --- C<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\<br>feature:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C',
+        'commits': 'main: A --- B --- C<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\<br>feature:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D --- E',
+        'merge': 'main: A --- B --- C -------- F<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<br>feature:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D --- E'
+    };
+    output.innerHTML = stages[stage] || stages['initial'];
+}
