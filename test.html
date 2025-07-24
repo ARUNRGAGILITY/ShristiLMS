@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="test.css" />
+    <title>Test Webpage - Working!</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="success">✅ Website is Working!</h1>
+
+      <div class="test-item">
+        <h3>HTML Test</h3>
+        <p>This HTML page loaded successfully.</p>
+      </div>
+
+      <div class="test-item">
+        <h3>CSS Test</h3>
+        <p>
+          Styles are being applied correctly - you can see the styling on this
+          page.
+        </p>
+      </div>
+
+      <div class="test-item">
+        <h3>JavaScript Test</h3>
+        <button onclick="testFunction()">Click to Test JavaScript</button>
+        <button onclick="showDateTime()">Show Current Time</button>
+        <button onclick="changeColors()">Change Theme</button>
+        <div id="output">
+          Click a button above to test JavaScript functionality...
+        </div>
+      </div>
+
+      <div class="test-item">
+        <h3>System Info</h3>
+        <p><strong>Current Date:</strong> <span id="current-date"></span></p>
+        <p><strong>Browser:</strong> <span id="browser-info"></span></p>
+        <p><strong>Screen Size:</strong> <span id="screen-size"></span></p>
+      </div>
+
+      <div class="test-item">
+        <h3>Interactive Test</h3>
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Type something here..."
+          style="padding: 8px; margin: 5px"
+        />
+        <button onclick="echoInput()">Echo Text</button>
+        <div
+          id="echo-output"
+          style="margin-top: 10px; font-style: italic"
+        ></div>
+      </div>
+    </div>
+    <script src="test.js"></script>
+  </body>
+</html>
