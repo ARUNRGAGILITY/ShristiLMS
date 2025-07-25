@@ -1,0 +1,1978 @@
+<!DOCTYPE html><html><head>
+<title>git_content.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*
+
+Arduino® Light Theme - Stefania Mellai <s.mellai@arduino.cc>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #FFFFFF;
+}
+
+.hljs,
+.hljs-subst {
+  color: #434f54;
+}
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-doctag,
+.hljs-name {
+  color: #00979D;
+}
+
+.hljs-built_in,
+.hljs-literal,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #D35400;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #00979D;
+}
+
+.hljs-type,
+.hljs-string,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #005C5F;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #880000;
+  font-weight: bold;
+}
+
+.hljs-comment {
+  color: rgba(149,165,166,.8);
+}
+
+.hljs-meta-keyword {
+  color: #728E00;
+}
+
+.hljs-meta {
+  color: #434f54;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-function {
+  color: #728E00;
+}
+
+.hljs-number {
+  color: #8A7B52;  
+}
+
+</style>
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family:   "HelveticaNeue-Light", sans-serif, "宋体","Segoe WPC", "Segoe UI", "SFUIText-Light","Droid Sans Fallback";
+	font-size: 18px;
+	padding: 0 12px;
+	line-height: 1.6;
+	word-wrap: break-word;
+	color: #333333;
+}
+
+.content-wrapper{
+	max-width: 860px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom: 1px solid #eee;
+}
+
+
+h2{
+	padding-bottom: .3em;
+    font-size: 2em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+h3{
+	font-size: 1.75em;
+    line-height: 1.225;
+}
+
+h1, h2, h3 {
+	font-weight: bold;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+.table-of-contents li{
+	list-style-type: initial;
+}
+</style>
+
+<style>
+@font-face{font-family:KaTeX_AMS;font-style:normal;font-weight:400;src:url(fonts/KaTeX_AMS-Regular.woff2) format("woff2"),url(fonts/KaTeX_AMS-Regular.woff) format("woff"),url(fonts/KaTeX_AMS-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Caligraphic;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Caligraphic-Bold.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Bold.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Caligraphic;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Caligraphic-Regular.woff2) format("woff2"),url(fonts/KaTeX_Caligraphic-Regular.woff) format("woff"),url(fonts/KaTeX_Caligraphic-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Fraktur;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Fraktur-Bold.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Bold.woff) format("woff"),url(fonts/KaTeX_Fraktur-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Fraktur;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Fraktur-Regular.woff2) format("woff2"),url(fonts/KaTeX_Fraktur-Regular.woff) format("woff"),url(fonts/KaTeX_Fraktur-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:normal;font-weight:700;src:url(fonts/KaTeX_Main-Bold.woff2) format("woff2"),url(fonts/KaTeX_Main-Bold.woff) format("woff"),url(fonts/KaTeX_Main-Bold.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:italic;font-weight:700;src:url(fonts/KaTeX_Main-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Main-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Main-BoldItalic.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:italic;font-weight:400;src:url(fonts/KaTeX_Main-Italic.woff2) format("woff2"),url(fonts/KaTeX_Main-Italic.woff) format("woff"),url(fonts/KaTeX_Main-Italic.ttf) format("truetype")}@font-face{font-family:KaTeX_Main;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Main-Regular.woff2) format("woff2"),url(fonts/KaTeX_Main-Regular.woff) format("woff"),url(fonts/KaTeX_Main-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Math;font-style:italic;font-weight:700;src:url(fonts/KaTeX_Math-BoldItalic.woff2) format("woff2"),url(fonts/KaTeX_Math-BoldItalic.woff) format("woff"),url(fonts/KaTeX_Math-BoldItalic.ttf) format("truetype")}@font-face{font-family:KaTeX_Math;font-style:italic;font-weight:400;src:url(fonts/KaTeX_Math-Italic.woff2) format("woff2"),url(fonts/KaTeX_Math-Italic.woff) format("woff"),url(fonts/KaTeX_Math-Italic.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:normal;font-weight:700;src:url(fonts/KaTeX_SansSerif-Bold.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Bold.woff) format("woff"),url(fonts/KaTeX_SansSerif-Bold.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:italic;font-weight:400;src:url(fonts/KaTeX_SansSerif-Italic.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Italic.woff) format("woff"),url(fonts/KaTeX_SansSerif-Italic.ttf) format("truetype")}@font-face{font-family:"KaTeX_SansSerif";font-style:normal;font-weight:400;src:url(fonts/KaTeX_SansSerif-Regular.woff2) format("woff2"),url(fonts/KaTeX_SansSerif-Regular.woff) format("woff"),url(fonts/KaTeX_SansSerif-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Script;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Script-Regular.woff2) format("woff2"),url(fonts/KaTeX_Script-Regular.woff) format("woff"),url(fonts/KaTeX_Script-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size1;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size1-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size1-Regular.woff) format("woff"),url(fonts/KaTeX_Size1-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size2;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size2-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size2-Regular.woff) format("woff"),url(fonts/KaTeX_Size2-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size3;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size3-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size3-Regular.woff) format("woff"),url(fonts/KaTeX_Size3-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Size4;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Size4-Regular.woff2) format("woff2"),url(fonts/KaTeX_Size4-Regular.woff) format("woff"),url(fonts/KaTeX_Size4-Regular.ttf) format("truetype")}@font-face{font-family:KaTeX_Typewriter;font-style:normal;font-weight:400;src:url(fonts/KaTeX_Typewriter-Regular.woff2) format("woff2"),url(fonts/KaTeX_Typewriter-Regular.woff) format("woff"),url(fonts/KaTeX_Typewriter-Regular.ttf) format("truetype")}.katex{text-rendering:auto;font:normal 1.21em KaTeX_Main,Times New Roman,serif;line-height:1.2;text-indent:0}.katex *{-ms-high-contrast-adjust:none!important;border-color:currentColor}.katex .katex-version:after{content:"0.16.2"}.katex .katex-mathml{clip:rect(1px,1px,1px,1px);border:0;height:1px;overflow:hidden;padding:0;position:absolute;width:1px}.katex .katex-html>.newline{display:block}.katex .base{position:relative;white-space:nowrap;width:-webkit-min-content;width:-moz-min-content;width:min-content}.katex .base,.katex .strut{display:inline-block}.katex .textbf{font-weight:700}.katex .textit{font-style:italic}.katex .textrm{font-family:KaTeX_Main}.katex .textsf{font-family:KaTeX_SansSerif}.katex .texttt{font-family:KaTeX_Typewriter}.katex .mathnormal{font-family:KaTeX_Math;font-style:italic}.katex .mathit{font-family:KaTeX_Main;font-style:italic}.katex .mathrm{font-style:normal}.katex .mathbf{font-family:KaTeX_Main;font-weight:700}.katex .boldsymbol{font-family:KaTeX_Math;font-style:italic;font-weight:700}.katex .amsrm,.katex .mathbb,.katex .textbb{font-family:KaTeX_AMS}.katex .mathcal{font-family:KaTeX_Caligraphic}.katex .mathfrak,.katex .textfrak{font-family:KaTeX_Fraktur}.katex .mathtt{font-family:KaTeX_Typewriter}.katex .mathscr,.katex .textscr{font-family:KaTeX_Script}.katex .mathsf,.katex .textsf{font-family:KaTeX_SansSerif}.katex .mathboldsf,.katex .textboldsf{font-family:KaTeX_SansSerif;font-weight:700}.katex .mathitsf,.katex .textitsf{font-family:KaTeX_SansSerif;font-style:italic}.katex .mainrm{font-family:KaTeX_Main;font-style:normal}.katex .vlist-t{border-collapse:collapse;display:inline-table;table-layout:fixed}.katex .vlist-r{display:table-row}.katex .vlist{display:table-cell;position:relative;vertical-align:bottom}.katex .vlist>span{display:block;height:0;position:relative}.katex .vlist>span>span{display:inline-block}.katex .vlist>span>.pstrut{overflow:hidden;width:0}.katex .vlist-t2{margin-right:-2px}.katex .vlist-s{display:table-cell;font-size:1px;min-width:2px;vertical-align:bottom;width:2px}.katex .vbox{align-items:baseline;display:inline-flex;flex-direction:column}.katex .hbox{width:100%}.katex .hbox,.katex .thinbox{display:inline-flex;flex-direction:row}.katex .thinbox{max-width:0;width:0}.katex .msupsub{text-align:left}.katex .mfrac>span>span{text-align:center}.katex .mfrac .frac-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline,.katex .hline,.katex .mfrac .frac-line,.katex .overline .overline-line,.katex .rule,.katex .underline .underline-line{min-height:1px}.katex .mspace{display:inline-block}.katex .clap,.katex .llap,.katex .rlap{position:relative;width:0}.katex .clap>.inner,.katex .llap>.inner,.katex .rlap>.inner{position:absolute}.katex .clap>.fix,.katex .llap>.fix,.katex .rlap>.fix{display:inline-block}.katex .llap>.inner{right:0}.katex .clap>.inner,.katex .rlap>.inner{left:0}.katex .clap>.inner>span{margin-left:-50%;margin-right:50%}.katex .rule{border:0 solid;display:inline-block;position:relative}.katex .hline,.katex .overline .overline-line,.katex .underline .underline-line{border-bottom-style:solid;display:inline-block;width:100%}.katex .hdashline{border-bottom-style:dashed;display:inline-block;width:100%}.katex .sqrt>.root{margin-left:.27777778em;margin-right:-.55555556em}.katex .fontsize-ensurer.reset-size1.size1,.katex .sizing.reset-size1.size1{font-size:1em}.katex .fontsize-ensurer.reset-size1.size2,.katex .sizing.reset-size1.size2{font-size:1.2em}.katex .fontsize-ensurer.reset-size1.size3,.katex .sizing.reset-size1.size3{font-size:1.4em}.katex .fontsize-ensurer.reset-size1.size4,.katex .sizing.reset-size1.size4{font-size:1.6em}.katex .fontsize-ensurer.reset-size1.size5,.katex .sizing.reset-size1.size5{font-size:1.8em}.katex .fontsize-ensurer.reset-size1.size6,.katex .sizing.reset-size1.size6{font-size:2em}.katex .fontsize-ensurer.reset-size1.size7,.katex .sizing.reset-size1.size7{font-size:2.4em}.katex .fontsize-ensurer.reset-size1.size8,.katex .sizing.reset-size1.size8{font-size:2.88em}.katex .fontsize-ensurer.reset-size1.size9,.katex .sizing.reset-size1.size9{font-size:3.456em}.katex .fontsize-ensurer.reset-size1.size10,.katex .sizing.reset-size1.size10{font-size:4.148em}.katex .fontsize-ensurer.reset-size1.size11,.katex .sizing.reset-size1.size11{font-size:4.976em}.katex .fontsize-ensurer.reset-size2.size1,.katex .sizing.reset-size2.size1{font-size:.83333333em}.katex .fontsize-ensurer.reset-size2.size2,.katex .sizing.reset-size2.size2{font-size:1em}.katex .fontsize-ensurer.reset-size2.size3,.katex .sizing.reset-size2.size3{font-size:1.16666667em}.katex .fontsize-ensurer.reset-size2.size4,.katex .sizing.reset-size2.size4{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size2.size5,.katex .sizing.reset-size2.size5{font-size:1.5em}.katex .fontsize-ensurer.reset-size2.size6,.katex .sizing.reset-size2.size6{font-size:1.66666667em}.katex .fontsize-ensurer.reset-size2.size7,.katex .sizing.reset-size2.size7{font-size:2em}.katex .fontsize-ensurer.reset-size2.size8,.katex .sizing.reset-size2.size8{font-size:2.4em}.katex .fontsize-ensurer.reset-size2.size9,.katex .sizing.reset-size2.size9{font-size:2.88em}.katex .fontsize-ensurer.reset-size2.size10,.katex .sizing.reset-size2.size10{font-size:3.45666667em}.katex .fontsize-ensurer.reset-size2.size11,.katex .sizing.reset-size2.size11{font-size:4.14666667em}.katex .fontsize-ensurer.reset-size3.size1,.katex .sizing.reset-size3.size1{font-size:.71428571em}.katex .fontsize-ensurer.reset-size3.size2,.katex .sizing.reset-size3.size2{font-size:.85714286em}.katex .fontsize-ensurer.reset-size3.size3,.katex .sizing.reset-size3.size3{font-size:1em}.katex .fontsize-ensurer.reset-size3.size4,.katex .sizing.reset-size3.size4{font-size:1.14285714em}.katex .fontsize-ensurer.reset-size3.size5,.katex .sizing.reset-size3.size5{font-size:1.28571429em}.katex .fontsize-ensurer.reset-size3.size6,.katex .sizing.reset-size3.size6{font-size:1.42857143em}.katex .fontsize-ensurer.reset-size3.size7,.katex .sizing.reset-size3.size7{font-size:1.71428571em}.katex .fontsize-ensurer.reset-size3.size8,.katex .sizing.reset-size3.size8{font-size:2.05714286em}.katex .fontsize-ensurer.reset-size3.size9,.katex .sizing.reset-size3.size9{font-size:2.46857143em}.katex .fontsize-ensurer.reset-size3.size10,.katex .sizing.reset-size3.size10{font-size:2.96285714em}.katex .fontsize-ensurer.reset-size3.size11,.katex .sizing.reset-size3.size11{font-size:3.55428571em}.katex .fontsize-ensurer.reset-size4.size1,.katex .sizing.reset-size4.size1{font-size:.625em}.katex .fontsize-ensurer.reset-size4.size2,.katex .sizing.reset-size4.size2{font-size:.75em}.katex .fontsize-ensurer.reset-size4.size3,.katex .sizing.reset-size4.size3{font-size:.875em}.katex .fontsize-ensurer.reset-size4.size4,.katex .sizing.reset-size4.size4{font-size:1em}.katex .fontsize-ensurer.reset-size4.size5,.katex .sizing.reset-size4.size5{font-size:1.125em}.katex .fontsize-ensurer.reset-size4.size6,.katex .sizing.reset-size4.size6{font-size:1.25em}.katex .fontsize-ensurer.reset-size4.size7,.katex .sizing.reset-size4.size7{font-size:1.5em}.katex .fontsize-ensurer.reset-size4.size8,.katex .sizing.reset-size4.size8{font-size:1.8em}.katex .fontsize-ensurer.reset-size4.size9,.katex .sizing.reset-size4.size9{font-size:2.16em}.katex .fontsize-ensurer.reset-size4.size10,.katex .sizing.reset-size4.size10{font-size:2.5925em}.katex .fontsize-ensurer.reset-size4.size11,.katex .sizing.reset-size4.size11{font-size:3.11em}.katex .fontsize-ensurer.reset-size5.size1,.katex .sizing.reset-size5.size1{font-size:.55555556em}.katex .fontsize-ensurer.reset-size5.size2,.katex .sizing.reset-size5.size2{font-size:.66666667em}.katex .fontsize-ensurer.reset-size5.size3,.katex .sizing.reset-size5.size3{font-size:.77777778em}.katex .fontsize-ensurer.reset-size5.size4,.katex .sizing.reset-size5.size4{font-size:.88888889em}.katex .fontsize-ensurer.reset-size5.size5,.katex .sizing.reset-size5.size5{font-size:1em}.katex .fontsize-ensurer.reset-size5.size6,.katex .sizing.reset-size5.size6{font-size:1.11111111em}.katex .fontsize-ensurer.reset-size5.size7,.katex .sizing.reset-size5.size7{font-size:1.33333333em}.katex .fontsize-ensurer.reset-size5.size8,.katex .sizing.reset-size5.size8{font-size:1.6em}.katex .fontsize-ensurer.reset-size5.size9,.katex .sizing.reset-size5.size9{font-size:1.92em}.katex .fontsize-ensurer.reset-size5.size10,.katex .sizing.reset-size5.size10{font-size:2.30444444em}.katex .fontsize-ensurer.reset-size5.size11,.katex .sizing.reset-size5.size11{font-size:2.76444444em}.katex .fontsize-ensurer.reset-size6.size1,.katex .sizing.reset-size6.size1{font-size:.5em}.katex .fontsize-ensurer.reset-size6.size2,.katex .sizing.reset-size6.size2{font-size:.6em}.katex .fontsize-ensurer.reset-size6.size3,.katex .sizing.reset-size6.size3{font-size:.7em}.katex .fontsize-ensurer.reset-size6.size4,.katex .sizing.reset-size6.size4{font-size:.8em}.katex .fontsize-ensurer.reset-size6.size5,.katex .sizing.reset-size6.size5{font-size:.9em}.katex .fontsize-ensurer.reset-size6.size6,.katex .sizing.reset-size6.size6{font-size:1em}.katex .fontsize-ensurer.reset-size6.size7,.katex .sizing.reset-size6.size7{font-size:1.2em}.katex .fontsize-ensurer.reset-size6.size8,.katex .sizing.reset-size6.size8{font-size:1.44em}.katex .fontsize-ensurer.reset-size6.size9,.katex .sizing.reset-size6.size9{font-size:1.728em}.katex .fontsize-ensurer.reset-size6.size10,.katex .sizing.reset-size6.size10{font-size:2.074em}.katex .fontsize-ensurer.reset-size6.size11,.katex .sizing.reset-size6.size11{font-size:2.488em}.katex .fontsize-ensurer.reset-size7.size1,.katex .sizing.reset-size7.size1{font-size:.41666667em}.katex .fontsize-ensurer.reset-size7.size2,.katex .sizing.reset-size7.size2{font-size:.5em}.katex .fontsize-ensurer.reset-size7.size3,.katex .sizing.reset-size7.size3{font-size:.58333333em}.katex .fontsize-ensurer.reset-size7.size4,.katex .sizing.reset-size7.size4{font-size:.66666667em}.katex .fontsize-ensurer.reset-size7.size5,.katex .sizing.reset-size7.size5{font-size:.75em}.katex .fontsize-ensurer.reset-size7.size6,.katex .sizing.reset-size7.size6{font-size:.83333333em}.katex .fontsize-ensurer.reset-size7.size7,.katex .sizing.reset-size7.size7{font-size:1em}.katex .fontsize-ensurer.reset-size7.size8,.katex .sizing.reset-size7.size8{font-size:1.2em}.katex .fontsize-ensurer.reset-size7.size9,.katex .sizing.reset-size7.size9{font-size:1.44em}.katex .fontsize-ensurer.reset-size7.size10,.katex .sizing.reset-size7.size10{font-size:1.72833333em}.katex .fontsize-ensurer.reset-size7.size11,.katex .sizing.reset-size7.size11{font-size:2.07333333em}.katex .fontsize-ensurer.reset-size8.size1,.katex .sizing.reset-size8.size1{font-size:.34722222em}.katex .fontsize-ensurer.reset-size8.size2,.katex .sizing.reset-size8.size2{font-size:.41666667em}.katex .fontsize-ensurer.reset-size8.size3,.katex .sizing.reset-size8.size3{font-size:.48611111em}.katex .fontsize-ensurer.reset-size8.size4,.katex .sizing.reset-size8.size4{font-size:.55555556em}.katex .fontsize-ensurer.reset-size8.size5,.katex .sizing.reset-size8.size5{font-size:.625em}.katex .fontsize-ensurer.reset-size8.size6,.katex .sizing.reset-size8.size6{font-size:.69444444em}.katex .fontsize-ensurer.reset-size8.size7,.katex .sizing.reset-size8.size7{font-size:.83333333em}.katex .fontsize-ensurer.reset-size8.size8,.katex .sizing.reset-size8.size8{font-size:1em}.katex .fontsize-ensurer.reset-size8.size9,.katex .sizing.reset-size8.size9{font-size:1.2em}.katex .fontsize-ensurer.reset-size8.size10,.katex .sizing.reset-size8.size10{font-size:1.44027778em}.katex .fontsize-ensurer.reset-size8.size11,.katex .sizing.reset-size8.size11{font-size:1.72777778em}.katex .fontsize-ensurer.reset-size9.size1,.katex .sizing.reset-size9.size1{font-size:.28935185em}.katex .fontsize-ensurer.reset-size9.size2,.katex .sizing.reset-size9.size2{font-size:.34722222em}.katex .fontsize-ensurer.reset-size9.size3,.katex .sizing.reset-size9.size3{font-size:.40509259em}.katex .fontsize-ensurer.reset-size9.size4,.katex .sizing.reset-size9.size4{font-size:.46296296em}.katex .fontsize-ensurer.reset-size9.size5,.katex .sizing.reset-size9.size5{font-size:.52083333em}.katex .fontsize-ensurer.reset-size9.size6,.katex .sizing.reset-size9.size6{font-size:.5787037em}.katex .fontsize-ensurer.reset-size9.size7,.katex .sizing.reset-size9.size7{font-size:.69444444em}.katex .fontsize-ensurer.reset-size9.size8,.katex .sizing.reset-size9.size8{font-size:.83333333em}.katex .fontsize-ensurer.reset-size9.size9,.katex .sizing.reset-size9.size9{font-size:1em}.katex .fontsize-ensurer.reset-size9.size10,.katex .sizing.reset-size9.size10{font-size:1.20023148em}.katex .fontsize-ensurer.reset-size9.size11,.katex .sizing.reset-size9.size11{font-size:1.43981481em}.katex .fontsize-ensurer.reset-size10.size1,.katex .sizing.reset-size10.size1{font-size:.24108004em}.katex .fontsize-ensurer.reset-size10.size2,.katex .sizing.reset-size10.size2{font-size:.28929605em}.katex .fontsize-ensurer.reset-size10.size3,.katex .sizing.reset-size10.size3{font-size:.33751205em}.katex .fontsize-ensurer.reset-size10.size4,.katex .sizing.reset-size10.size4{font-size:.38572806em}.katex .fontsize-ensurer.reset-size10.size5,.katex .sizing.reset-size10.size5{font-size:.43394407em}.katex .fontsize-ensurer.reset-size10.size6,.katex .sizing.reset-size10.size6{font-size:.48216008em}.katex .fontsize-ensurer.reset-size10.size7,.katex .sizing.reset-size10.size7{font-size:.57859209em}.katex .fontsize-ensurer.reset-size10.size8,.katex .sizing.reset-size10.size8{font-size:.69431051em}.katex .fontsize-ensurer.reset-size10.size9,.katex .sizing.reset-size10.size9{font-size:.83317261em}.katex .fontsize-ensurer.reset-size10.size10,.katex .sizing.reset-size10.size10{font-size:1em}.katex .fontsize-ensurer.reset-size10.size11,.katex .sizing.reset-size10.size11{font-size:1.19961427em}.katex .fontsize-ensurer.reset-size11.size1,.katex .sizing.reset-size11.size1{font-size:.20096463em}.katex .fontsize-ensurer.reset-size11.size2,.katex .sizing.reset-size11.size2{font-size:.24115756em}.katex .fontsize-ensurer.reset-size11.size3,.katex .sizing.reset-size11.size3{font-size:.28135048em}.katex .fontsize-ensurer.reset-size11.size4,.katex .sizing.reset-size11.size4{font-size:.32154341em}.katex .fontsize-ensurer.reset-size11.size5,.katex .sizing.reset-size11.size5{font-size:.36173633em}.katex .fontsize-ensurer.reset-size11.size6,.katex .sizing.reset-size11.size6{font-size:.40192926em}.katex .fontsize-ensurer.reset-size11.size7,.katex .sizing.reset-size11.size7{font-size:.48231511em}.katex .fontsize-ensurer.reset-size11.size8,.katex .sizing.reset-size11.size8{font-size:.57877814em}.katex .fontsize-ensurer.reset-size11.size9,.katex .sizing.reset-size11.size9{font-size:.69453376em}.katex .fontsize-ensurer.reset-size11.size10,.katex .sizing.reset-size11.size10{font-size:.83360129em}.katex .fontsize-ensurer.reset-size11.size11,.katex .sizing.reset-size11.size11{font-size:1em}.katex .delimsizing.size1{font-family:KaTeX_Size1}.katex .delimsizing.size2{font-family:KaTeX_Size2}.katex .delimsizing.size3{font-family:KaTeX_Size3}.katex .delimsizing.size4{font-family:KaTeX_Size4}.katex .delimsizing.mult .delim-size1>span{font-family:KaTeX_Size1}.katex .delimsizing.mult .delim-size4>span{font-family:KaTeX_Size4}.katex .nulldelimiter{display:inline-block;width:.12em}.katex .delimcenter,.katex .op-symbol{position:relative}.katex .op-symbol.small-op{font-family:KaTeX_Size1}.katex .op-symbol.large-op{font-family:KaTeX_Size2}.katex .accent>.vlist-t,.katex .op-limits>.vlist-t{text-align:center}.katex .accent .accent-body{position:relative}.katex .accent .accent-body:not(.accent-full){width:0}.katex .overlay{display:block}.katex .mtable .vertical-separator{display:inline-block;min-width:1px}.katex .mtable .arraycolsep{display:inline-block}.katex .mtable .col-align-c>.vlist-t{text-align:center}.katex .mtable .col-align-l>.vlist-t{text-align:left}.katex .mtable .col-align-r>.vlist-t{text-align:right}.katex .svg-align{text-align:left}.katex svg{fill:currentColor;stroke:currentColor;fill-rule:nonzero;fill-opacity:1;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:block;height:inherit;position:absolute;width:100%}.katex svg path{stroke:none}.katex img{border-style:none;max-height:none;max-width:none;min-height:0;min-width:0}.katex .stretchy{display:block;overflow:hidden;position:relative;width:100%}.katex .stretchy:after,.katex .stretchy:before{content:""}.katex .hide-tail{overflow:hidden;position:relative;width:100%}.katex .halfarrow-left{left:0;overflow:hidden;position:absolute;width:50.2%}.katex .halfarrow-right{overflow:hidden;position:absolute;right:0;width:50.2%}.katex .brace-left{left:0;overflow:hidden;position:absolute;width:25.1%}.katex .brace-center{left:25%;overflow:hidden;position:absolute;width:50%}.katex .brace-right{overflow:hidden;position:absolute;right:0;width:25.1%}.katex .x-arrow-pad{padding:0 .5em}.katex .cd-arrow-pad{padding:0 .55556em 0 .27778em}.katex .mover,.katex .munder,.katex .x-arrow{text-align:center}.katex .boxpad{padding:0 .3em}.katex .fbox,.katex .fcolorbox{border:.04em solid;box-sizing:border-box}.katex .cancel-pad{padding:0 .2em}.katex .cancel-lap{margin-left:-.2em;margin-right:-.2em}.katex .sout{border-bottom-style:solid;border-bottom-width:.08em}.katex .angl{border-right:.049em solid;border-top:.049em solid;box-sizing:border-box;margin-right:.03889em}.katex .anglpad{padding:0 .03889em}.katex .eqn-num:before{content:"(" counter(katexEqnNo) ")";counter-increment:katexEqnNo}.katex .mml-eqn-num:before{content:"(" counter(mmlEqnNo) ")";counter-increment:mmlEqnNo}.katex .mtr-glue{width:50%}.katex .cd-vert-arrow{display:inline-block;position:relative}.katex .cd-label-left{display:inline-block;position:absolute;right:calc(50% + .3em);text-align:left}.katex .cd-label-right{display:inline-block;left:calc(50% + .3em);position:absolute;text-align:right}.katex-display{display:block;margin:1em 0;text-align:center}.katex-display>.katex{display:block;text-align:center;white-space:nowrap}.katex-display>.katex>.katex-html{display:block;position:relative}.katex-display>.katex>.katex-html>.tag{position:absolute;right:0}.katex-display.leqno>.katex>.katex-html>.tag{left:0;right:auto}.katex-display.fleqn>.katex{padding-left:2em;text-align:left}body{counter-reset:katexEqnNo mmlEqnNo}
+
+</style>
+
+</head>
+<body>
+    <div class="content-wrapper">
+        <h1 id="%F0%9F%94%A7-git-mastery---complete-guide" tabindex="-1">🔧 Git Mastery - Complete Guide</h1>
+<p>Master Git and version control fundamentals</p>
+<h2 id="table-of-contents" tabindex="-1">Table of Contents</h2>
+<ol>
+<li><a href="https://claude.ai/chat/ba607c2b-590a-42fb-8d2a-8801f2d23c4d#introduction-to-version-control">Introduction to Version Control</a></li>
+<li><a href="https://claude.ai/chat/ba607c2b-590a-42fb-8d2a-8801f2d23c4d#git-fundamentals">Git Fundamentals</a></li>
+<li><a href="https://claude.ai/chat/ba607c2b-590a-42fb-8d2a-8801f2d23c4d#working-with-repositories">Working with Repositories</a></li>
+<li><a href="https://claude.ai/chat/ba607c2b-590a-42fb-8d2a-8801f2d23c4d#branching-and-merging">Branching and Merging</a></li>
+<li><a href="https://claude.ai/chat/ba607c2b-590a-42fb-8d2a-8801f2d23c4d#remote-repositories">Remote Repositories</a></li>
+<li><a href="https://claude.ai/chat/ba607c2b-590a-42fb-8d2a-8801f2d23c4d#advanced-git-operations">Advanced Git Operations</a></li>
+<li><a href="https://claude.ai/chat/ba607c2b-590a-42fb-8d2a-8801f2d23c4d#git-workflows">Git Workflows</a></li>
+<li><a href="https://claude.ai/chat/ba607c2b-590a-42fb-8d2a-8801f2d23c4d#team-collaboration">Team Collaboration</a></li>
+<li><a href="https://claude.ai/chat/ba607c2b-590a-42fb-8d2a-8801f2d23c4d#best-practices">Best Practices</a></li>
+<li><a href="https://claude.ai/chat/ba607c2b-590a-42fb-8d2a-8801f2d23c4d#troubleshooting">Troubleshooting</a></li>
+<li><a href="https://claude.ai/chat/ba607c2b-590a-42fb-8d2a-8801f2d23c4d#quick-reference">Quick Reference</a></li>
+</ol>
+<hr>
+<h2 id="%F0%9F%9A%80-introduction-to-version-control" tabindex="-1">🚀 Introduction to Version Control</h2>
+<h3 id="what-is-version-control%3F" tabindex="-1">What is Version Control?</h3>
+<p>Version control is a system that records changes to files over time so you can recall specific versions later. Think of it as a sophisticated "time machine" for your code that allows you to:</p>
+<ul>
+<li>Track every change made to your files</li>
+<li>See who made what changes and when</li>
+<li>Revert to previous versions if something goes wrong</li>
+<li>Collaborate with others without conflicts</li>
+</ul>
+<h3 id="why-version-control-matters" tabindex="-1">Why Version Control Matters</h3>
+<p>Imagine you're working on a important project and suddenly realize you've broken something that was working perfectly yesterday. Without version control, you'd have to manually undo all your changes or start from scratch. With version control, you can simply revert to yesterday's working version!</p>
+<p><strong>Real-World Scenario - The Freelancer's Nightmare:</strong></p>
+<p>Sarah is a freelance web developer. She's been working on a client's website for weeks. One day, she decides to "improve" the navigation system. After several hours of changes, she realizes the new approach won't work and wants to go back to the original design. Without version control, she'd have to recreate everything from memory. With Git, she can simply revert to any previous version in seconds!</p>
+<h3 id="version-control-vs.-traditional-file-management" tabindex="-1">Version Control vs. Traditional File Management</h3>
+<div class="mermaid">graph TD
+    A[Traditional Approach] --&gt; B[File_v1.docx]
+    A --&gt; C[File_v2.docx]
+    A --&gt; D[File_FINAL.docx]
+    A --&gt; E[File_FINAL_REVISED.docx]
+    A --&gt; F[File_FINAL_FINAL.docx]
+  
+    G[Version Control] --&gt; H[Single File]
+    H --&gt; I[Version History]
+    I --&gt; J[All Changes Tracked]
+    I --&gt; K[Who Changed What]
+    I --&gt; L[When Changes Made]
+    I --&gt; M[Why Changes Made]</div><h4 id="hands-on-understanding" tabindex="-1">Hands-On Understanding</h4>
+<p>Let's understand this with a simple analogy. Think of version control like a detailed diary for your project:</p>
+<ul>
+<li><strong>Entry 1:</strong> "Created initial project structure"</li>
+<li><strong>Entry 2:</strong> "Added user login functionality"</li>
+<li><strong>Entry 3:</strong> "Fixed bug in password validation"</li>
+<li><strong>Entry 4:</strong> "Added user dashboard"</li>
+</ul>
+<p>Each entry represents a "commit" in Git terminology - a snapshot of your project at that moment.</p>
+<h3 id="types-of-version-control-systems" tabindex="-1">Types of Version Control Systems</h3>
+<div class="mermaid">graph LR
+    A[Version Control Systems] --&gt; B[Local VCS]
+    A --&gt; C[Centralized VCS]
+    A --&gt; D[Distributed VCS]
+  
+    B --&gt; E[RCS, SCCS]
+    C --&gt; F[SVN, Perforce]
+    D --&gt; G[Git, Mercurial]
+  
+    style D fill:#e1f5fe
+    style G fill:#c8e6c9</div><h4 id="1.-local-version-control" tabindex="-1">1. Local Version Control</h4>
+<p>Simple database that keeps all changes to files under revision control on your local machine. Limited to single-user scenarios.</p>
+<h4 id="2.-centralized-version-control" tabindex="-1">2. Centralized Version Control</h4>
+<p>Single server contains all versioned files. Clients check out files from this central place. Examples: SVN, Perforce.</p>
+<div class="mermaid">graph TD
+    A[Central Server] --&gt; B[Developer 1]
+    A --&gt; C[Developer 2]
+    A --&gt; D[Developer 3]
+  
+    B --&gt; A
+    C --&gt; A
+    D --&gt; A
+  
+    style A fill:#ffcdd2</div><h4 id="3.-distributed-version-control-(git)" tabindex="-1">3. Distributed Version Control (Git)</h4>
+<p>Every client has a complete copy of the project history. No single point of failure. Can work offline.</p>
+<div class="mermaid">graph TD
+    A[Remote Repository] --&gt; B[Developer 1 Local Repo]
+    A --&gt; C[Developer 2 Local Repo]
+    A --&gt; D[Developer 3 Local Repo]
+  
+    B --&gt; A
+    C --&gt; A
+    D --&gt; A
+  
+    B --&gt; E[Full History]
+    C --&gt; F[Full History]
+    D --&gt; G[Full History]
+  
+    style A fill:#c8e6c9
+    style B fill:#c8e6c9
+    style C fill:#c8e6c9
+    style D fill:#c8e6c9</div><h3 id="%F0%9F%8E%AF-exercise-1%3A-understanding-version-control" tabindex="-1">🎯 Exercise 1: Understanding Version Control</h3>
+<ol>
+<li><strong>Step 1:</strong> Think of a project you're currently working on (could be code, writing, design, etc.)</li>
+<li><strong>Step 2:</strong> List 3 scenarios where you wished you could go back to a previous version</li>
+<li><strong>Step 3:</strong> Imagine collaborating with 3 other people on this project. What challenges would you face without version control?</li>
+</ol>
+<blockquote>
+<p><strong>💡 Key Takeaway:</strong> Version control isn't just about backing up files—it's about giving you the confidence to experiment, collaborate, and iterate without fear of losing work or breaking things permanently.</p>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%94%A7-git-fundamentals" tabindex="-1">🔧 Git Fundamentals</h2>
+<h3 id="what-makes-git-special%3F" tabindex="-1">What Makes Git Special?</h3>
+<p>Git is a distributed version control system created by Linus Torvalds (the creator of Linux) in 2005. Unlike other VCS, Git thinks of data as snapshots, not differences. Every time you commit, Git takes a picture of all your files and stores a reference to that snapshot.</p>
+<h3 id="the-three-states-of-git" tabindex="-1">The Three States of Git</h3>
+<p>Git has three main states that your files can reside in:  <strong>working directory</strong> ,  <strong>staging area</strong> , and  <strong>repository</strong> .</p>
+<div class="mermaid">graph LR
+    A[Working Directory] --&gt;|git add| B[Staging Area]
+    B --&gt;|git commit| C[Repository]
+    C --&gt;|git checkout| A
+  
+    A --&gt; D[Modified Files]
+    B --&gt; E[Staged Files]
+    C --&gt; F[Committed Files]
+  
+    style A fill:#ffeb3b
+    style B fill:#ff9800
+    style C fill:#4caf50</div><blockquote>
+<p><strong>Real-World Analogy: The Photography Studio</strong></p>
+<p>Think of Git like a photography studio:</p>
+<ul>
+<li><strong>Working Directory:</strong> Your models getting ready (files being edited)</li>
+<li><strong>Staging Area:</strong> Models positioned and ready for the shot (files selected for commit)</li>
+<li><strong>Repository:</strong> The final photographs in your portfolio (committed snapshots)</li>
+</ul>
+</blockquote>
+<h4 id="1.-working-directory" tabindex="-1">1. Working Directory</h4>
+<p>This is where you make changes to your files. It's your current project folder where you edit, create, and delete files.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check what's in your working directory</span>
+$ <span class="hljs-built_in">ls</span> -la
+total 16
+drwxr-xr-x  4 user user 4096 Jan 15 10:30 .
+drwxr-xr-x  3 user user 4096 Jan 15 10:29 ..
+drwxr-xr-x  8 user user 4096 Jan 15 10:30 .git
+-rw-r--r--  1 user user   23 Jan 15 10:30 README.md
+-rw-r--r--  1 user user  156 Jan 15 10:30 index.html
+</div></code></pre>
+<h4 id="2.-staging-area-(index)" tabindex="-1">2. Staging Area (Index)</h4>
+<p>The staging area is like a loading dock where you prepare your next commit. You can add and remove files from the staging area before making a commit.</p>
+<p><strong>Understanding Staging:</strong> The staging area is Git's unique feature. It allows you to carefully control what goes into each commit. You might change 10 files but only want to commit 3 of them that relate to a specific feature.</p>
+<h4 id="3.-repository" tabindex="-1">3. Repository</h4>
+<p>The repository is where Git stores all the committed snapshots of your project. Each commit creates a new snapshot that you can return to later.</p>
+<h3 id="git-configuration" tabindex="-1">Git Configuration</h3>
+<p>Before using Git, you need to configure it with your identity. This information is used for every commit you make.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Set your name and email (do this once)</span>
+$ git config --global user.name <span class="hljs-string">"John Doe"</span>
+$ git config --global user.email <span class="hljs-string">"john@example.com"</span>
+
+<span class="hljs-comment"># Check your configuration</span>
+$ git config --list
+user.name=John Doe
+user.email=john@example.com
+core.editor=vim
+
+<span class="hljs-comment"># Set your default editor</span>
+$ git config --global core.editor <span class="hljs-string">"code --wait"</span>
+</div></code></pre>
+<h3 id="%F0%9F%8E%AF-exercise-2%3A-first-git-setup" tabindex="-1">🎯 Exercise 2: First Git Setup</h3>
+<ol>
+<li><strong>Step 1:</strong> Install Git on your system (git-scm.com)</li>
+<li><strong>Step 2:</strong> Configure your name and email</li>
+<li><strong>Step 3:</strong> Set your preferred text editor</li>
+<li><strong>Step 4:</strong> Run <code>git config --list</code> to verify your settings</li>
+</ol>
+<h3 id="creating-your-first-repository" tabindex="-1">Creating Your First Repository</h3>
+<p>There are two ways to get a Git repository: create one from scratch or clone an existing one.</p>
+<div class="mermaid">graph TD
+    A[Getting a Git Repository] --&gt; B[git init]
+    A --&gt; C[git clone]
+  
+    B --&gt; D[Create new repository]
+    C --&gt; E[Copy existing repository]
+  
+    D --&gt; F[Empty .git folder]
+    E --&gt; G[Full project history]
+  
+    style B fill:#4caf50
+    style C fill:#2196f3</div><h4 id="method-1%3A-initialize-a-new-repository" tabindex="-1">Method 1: Initialize a New Repository</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Create a new directory and initialize Git</span>
+$ <span class="hljs-built_in">mkdir</span> my-awesome-project
+$ <span class="hljs-built_in">cd</span> my-awesome-project
+$ git init
+Initialized empty Git repository <span class="hljs-keyword">in</span> /path/to/my-awesome-project/.git/
+
+<span class="hljs-comment"># Check the status</span>
+$ git status
+On branch main
+No commits yet
+nothing to commit (create/copy files and use <span class="hljs-string">"git add"</span> to track)
+</div></code></pre>
+<h4 id="method-2%3A-clone-an-existing-repository" tabindex="-1">Method 2: Clone an Existing Repository</h4>
+<pre class="hljs"><code><div><span class="hljs-comment"># Clone a repository from GitHub</span>
+$ git <span class="hljs-built_in">clone</span> https://github.com/user/repo.git
+Cloning into <span class="hljs-string">'repo'</span>...
+remote: Counting objects: 100, <span class="hljs-keyword">done</span>.
+remote: Compressing objects: 100% (50/50), <span class="hljs-keyword">done</span>.
+remote: Total 100 (delta 25), reused 100 (delta 25)
+Receiving objects: 100% (100/100), 15.50 KiB | 0 bytes/s, <span class="hljs-keyword">done</span>.
+Resolving deltas: 100% (25/25), <span class="hljs-keyword">done</span>.
+</div></code></pre>
+<blockquote>
+<p><strong>⚠️ Important:</strong> The .git folder contains all the repository history. Never delete it unless you want to lose all version control history!</p>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%93%81-working-with-repositories" tabindex="-1">📁 Working with Repositories</h2>
+<h3 id="the-git-workflow" tabindex="-1">The Git Workflow</h3>
+<p>Working with Git follows a predictable pattern: modify files, stage changes, commit snapshots, and optionally push to remote repositories. Understanding this workflow is crucial for effective Git usage.</p>
+<h3 id="the-basic-git-workflow" tabindex="-1">The Basic Git Workflow</h3>
+<div class="mermaid">graph TD
+    A[1. Edit Files] --&gt; B[2. Stage Changes]
+    B --&gt; C[3. Commit Snapshot]
+    C --&gt; D[4. Push to Remote]
+    D --&gt; E[5. Pull Updates]
+    E --&gt; A
+  
+    A --&gt; F[git add]
+    B --&gt; G[git commit]
+    C --&gt; H[git push]
+    D --&gt; I[git pull]
+  
+    style A fill:#ffeb3b
+    style B fill:#ff9800
+    style C fill:#4caf50
+    style D fill:#2196f3
+    style E fill:#9c27b0</div><blockquote>
+<p><strong>Daily Developer Workflow:</strong></p>
+<p>Emma starts her day by pulling the latest changes from the remote repository. She then works on a new feature, adds her changes to staging, commits them with a descriptive message, and pushes her work to share with the team.</p>
+</blockquote>
+<h3 id="checking-repository-status" tabindex="-1">Checking Repository Status</h3>
+<p>The <code>git status</code> command is your best friend. It shows you exactly what's happening in your repository.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check the status of your repository</span>
+$ git status
+On branch main
+Your branch is up to <span class="hljs-built_in">date</span> with <span class="hljs-string">'origin/main'</span>.
+
+Changes to be committed:
+  (use <span class="hljs-string">"git reset HEAD &lt;file&gt;..."</span> to unstage)
+        new file:   index.html
+
+Changes not staged <span class="hljs-keyword">for</span> commit:
+  (use <span class="hljs-string">"git add &lt;file&gt;..."</span> to update what will be committed)
+  (use <span class="hljs-string">"git restore &lt;file&gt;..."</span> to discard changes <span class="hljs-keyword">in</span> working directory)
+        modified:   README.md
+
+Untracked files:
+  (use <span class="hljs-string">"git add &lt;file&gt;..."</span> to include <span class="hljs-keyword">in</span> what will be committed)
+        styles.css
+</div></code></pre>
+<p><strong>Understanding Git Status Output:</strong></p>
+<ul>
+<li><strong>Changes to be committed:</strong> Files in the staging area</li>
+<li><strong>Changes not staged for commit:</strong> Modified files in working directory</li>
+<li><strong>Untracked files:</strong> New files Git doesn't know about</li>
+</ul>
+<h3 id="staging-changes" tabindex="-1">Staging Changes</h3>
+<p>The staging area lets you carefully control what goes into each commit. You can stage individual files, parts of files, or everything at once.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Stage a specific file</span>
+$ git add index.html
+
+<span class="hljs-comment"># Stage multiple files</span>
+$ git add index.html styles.css script.js
+
+<span class="hljs-comment"># Stage all modified files</span>
+$ git add .
+
+<span class="hljs-comment"># Stage all files including deletions</span>
+$ git add -A
+
+<span class="hljs-comment"># Stage interactively (choose what to stage)</span>
+$ git add -i
+</div></code></pre>
+<div class="mermaid">graph LR
+    A[Working Directory] --&gt; B[Staging Area]
+    B --&gt; C[Repository]
+  
+    A --&gt; D[file1.txt modified]
+    A --&gt; E[file2.txt modified]
+    A --&gt; F[file3.txt new]
+  
+    B --&gt; G[file1.txt staged]
+    B --&gt; H[file3.txt staged]
+  
+    C --&gt; I[Previous commits]
+  
+    style B fill:#ff9800</div><h4 id="selective-staging" tabindex="-1">Selective Staging</h4>
+<p>Sometimes you've made multiple changes to a file but only want to commit some of them. Git allows you to stage parts of a file.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Stage parts of a file interactively</span>
+$ git add -p filename.txt
+diff --git a/filename.txt b/filename.txt
+index 1234567..abcdefg 100644
+--- a/filename.txt
++++ b/filename.txt
+@@ -1,4 +1,6 @@
+ Line 1
+ Line 2
++New line added
+ Line 3
+ Line 4
+Stage this hunk [y,n,q,a,d,/,s,e,?]?
+</div></code></pre>
+<h3 id="%F0%9F%8E%AF-exercise-3%3A-staging-practice" tabindex="-1">🎯 Exercise 3: Staging Practice</h3>
+<ol>
+<li><strong>Step 1:</strong> Create a new file called <code>index.html</code> with some basic HTML</li>
+<li><strong>Step 2:</strong> Modify an existing file (like README.md)</li>
+<li><strong>Step 3:</strong> Run <code>git status</code> to see the changes</li>
+<li><strong>Step 4:</strong> Stage only the new file using <code>git add index.html</code></li>
+<li><strong>Step 5:</strong> Run <code>git status</code> again to see the difference</li>
+</ol>
+<h3 id="making-commits" tabindex="-1">Making Commits</h3>
+<p>A commit is a snapshot of your staged changes. Each commit should represent a logical unit of work.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Commit with a message</span>
+$ git commit -m <span class="hljs-string">"Add homepage HTML structure"</span>
+[main 1a2b3c4] Add homepage HTML structure
+ 1 file changed, 20 insertions(+)
+ create mode 100644 index.html
+
+<span class="hljs-comment"># Commit with a detailed message</span>
+$ git commit -m <span class="hljs-string">"Add user authentication"</span> -m <span class="hljs-string">"Implement login/logout functionality with session management"</span>
+
+<span class="hljs-comment"># Stage and commit in one command</span>
+$ git commit -am <span class="hljs-string">"Update README with installation instructions"</span>
+</div></code></pre>
+<h4 id="anatomy-of-a-good-commit-message" tabindex="-1">Anatomy of a Good Commit Message</h4>
+<ul>
+<li><strong>Subject line:</strong> 50 characters or less, imperative mood</li>
+<li><strong>Body:</strong> Explain what and why, not how</li>
+<li><strong>Footer:</strong> Reference issues, breaking changes</li>
+</ul>
+<h3 id="viewing-history" tabindex="-1">Viewing History</h3>
+<p>Git provides powerful tools to explore your project's history.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Basic log</span>
+$ git <span class="hljs-built_in">log</span>
+commit 1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0
+Author: John Doe &lt;john@example.com&gt;
+Date:   Mon Jan 15 10:30:00 2024 -0500
+
+    Add homepage HTML structure
+
+    Created the basic HTML structure <span class="hljs-keyword">for</span> the homepage
+    including navigation, header, and main content areas.
+
+<span class="hljs-comment"># Compact log</span>
+$ git <span class="hljs-built_in">log</span> --oneline
+1a2b3c4 Add homepage HTML structure
+5d6e7f8 Initial commit
+
+<span class="hljs-comment"># Visual log</span>
+$ git <span class="hljs-built_in">log</span> --graph --oneline --all
+* 1a2b3c4 Add homepage HTML structure
+* 5d6e7f8 Initial commit
+</div></code></pre>
+<pre>Parse error on line 1:
+gitGraph    commit id: "Ini
+--------^
+Expecting ':', 'DIR', got 'NL'</pre><blockquote>
+<p><strong>💡 Pro Tip:</strong> Use <code>git log --oneline --graph --all</code> to see a visual representation of your commit history, including branches and merges.</p>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%8C%BF-branching-and-merging" tabindex="-1">🌿 Branching and Merging</h2>
+<h3 id="understanding-branches" tabindex="-1">Understanding Branches</h3>
+<p>Branches in Git are incredibly lightweight and fast. They're simply movable pointers to specific commits. The default branch is usually called 'main' or 'master'. Creating a new branch essentially creates a new pointer to the current commit.</p>
+<h3 id="why-use-branches%3F" tabindex="-1">Why Use Branches?</h3>
+<p>Branches allow you to diverge from the main line of development and work on features, experiments, or bug fixes in isolation.</p>
+<blockquote>
+<p><strong>The Feature Development Scenario:</strong></p>
+<p>Your team is working on a web application. While you're implementing a new user profile feature, your teammate is fixing a critical bug in the payment system. Without branches, you'd interfere with each other's work. With branches, you can work independently and merge when ready.</p>
+</blockquote>
+<pre>Parse error on line 1:
+gitGraph    commit id: "Ini
+--------^
+Expecting ':', 'DIR', got 'NL'</pre><h3 id="creating-and-switching-branches" tabindex="-1">Creating and Switching Branches</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Create a new branch</span>
+$ git branch feature-user-profile
+
+<span class="hljs-comment"># List all branches</span>
+$ git branch
+  feature-user-profile
+* main
+
+<span class="hljs-comment"># Switch to a branch</span>
+$ git checkout feature-user-profile
+Switched to branch <span class="hljs-string">'feature-user-profile'</span>
+
+<span class="hljs-comment"># Create and switch in one command</span>
+$ git checkout -b feature-dashboard
+Switched to a new branch <span class="hljs-string">'feature-dashboard'</span>
+
+<span class="hljs-comment"># Modern way (Git 2.23+)</span>
+$ git switch feature-user-profile
+$ git switch -c feature-new-feature
+</div></code></pre>
+<h3 id="branch-management" tabindex="-1">Branch Management</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># List all branches (including remote)</span>
+$ git branch -a
+* feature-user-profile
+  main
+  remotes/origin/main
+  remotes/origin/feature-dashboard
+
+<span class="hljs-comment"># Show last commit on each branch</span>
+$ git branch -v
+* feature-user-profile 1a2b3c4 Add profile form
+  main                 5d6e7f8 Update README
+
+<span class="hljs-comment"># Delete a branch (safe)</span>
+$ git branch -d feature-completed
+Deleted branch feature-completed (was 1a2b3c4).
+
+<span class="hljs-comment"># Force delete a branch</span>
+$ git branch -D feature-abandoned
+Deleted branch feature-abandoned (was 9x8y7z6).
+</div></code></pre>
+<h3 id="%F0%9F%8E%AF-exercise-4%3A-working-with-branches" tabindex="-1">🎯 Exercise 4: Working with Branches</h3>
+<ol>
+<li><strong>Step 1:</strong> Create a new branch called <code>feature-navbar</code></li>
+<li><strong>Step 2:</strong> Switch to this branch</li>
+<li><strong>Step 3:</strong> Create a new file called <code>navbar.html</code></li>
+<li><strong>Step 4:</strong> Add and commit this file</li>
+<li><strong>Step 5:</strong> Switch back to main and notice the file is gone</li>
+<li><strong>Step 6:</strong> Switch back to your feature branch and see the file return</li>
+</ol>
+<h3 id="merging-branches" tabindex="-1">Merging Branches</h3>
+<p>Once you've finished work on a branch, you can merge it back into the main branch.</p>
+<div class="mermaid">graph TD
+    A[main branch] --&gt; B[Create feature branch]
+    B --&gt; C[Work on feature]
+    C --&gt; D[Feature complete]
+    D --&gt; E[Switch to main]
+    E --&gt; F[Merge feature]
+    F --&gt; G[Delete feature branch]
+  
+    style F fill:#4caf50</div><h4 id="fast-forward-merge" tabindex="-1">Fast-Forward Merge</h4>
+<p>When the main branch hasn't diverged, Git can simply move the pointer forward.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Switch to main branch</span>
+$ git checkout main
+Switched to branch <span class="hljs-string">'main'</span>
+
+<span class="hljs-comment"># Merge feature branch</span>
+$ git merge feature-navbar
+Updating 5d6e7f8..1a2b3c4
+Fast-forward
+ navbar.html | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+ create mode 100644 navbar.html
+</div></code></pre>
+<pre>Parse error on line 1:
+gitGraph    commit id: "A"
+--------^
+Expecting ':', 'DIR', got 'NL'</pre><h4 id="three-way-merge" tabindex="-1">Three-Way Merge</h4>
+<p>When both branches have diverged, Git creates a new commit that combines both histories.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Three-way merge example</span>
+$ git merge feature-user-profile
+Merge made by the <span class="hljs-string">'recursive'</span> strategy.
+ profile.html | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ profile.css  | 23 +++++++++++++++++++++++
+ 2 files changed, 68 insertions(+)
+ create mode 100644 profile.html
+ create mode 100644 profile.css
+</div></code></pre>
+<blockquote>
+<p><strong>⚠️ Merge Conflicts:</strong> Sometimes Git can't automatically merge branches. When this happens, you'll need to manually resolve conflicts before completing the merge.</p>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%8C%90-remote-repositories" tabindex="-1">🌐 Remote Repositories</h2>
+<h3 id="understanding-remote-repositories" tabindex="-1">Understanding Remote Repositories</h3>
+<p>Remote repositories are versions of your project that are hosted on the internet or network. They enable collaboration with other developers. The most common remote hosting services are GitHub, GitLab, and Bitbucket.</p>
+<h3 id="what-are-remote-repositories%3F" tabindex="-1">What Are Remote Repositories?</h3>
+<p>A remote repository is a Git repository that's stored on a server, accessible over the internet. It serves as a central point where team members can share their work.</p>
+<div class="mermaid">graph TD
+    A[Developer 1] --&gt; B[Local Repository]
+    C[Developer 2] --&gt; D[Local Repository]
+    E[Developer 3] --&gt; F[Local Repository]
+  
+    B --&gt; G[Remote Repository]
+    D --&gt; G
+    F --&gt; G
+  
+    G --&gt; B
+    G --&gt; D
+    G --&gt; F
+  
+    style G fill:#4caf50
+    style B fill:#2196f3
+    style D fill:#2196f3
+    style F fill:#2196f3</div><blockquote>
+<p><strong>Real-World Scenario: The Startup Team</strong></p>
+<p>TechStart Inc. has 5 developers working on their new app. Each developer works on their local machine, but they need to share code. They use GitHub as their remote repository. When Alice finishes a feature, she pushes it to GitHub. Bob can then pull Alice's changes and continue building on top of her work.</p>
+</blockquote>
+<h3 id="setting-up-remote-repositories" tabindex="-1">Setting Up Remote Repositories</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Add a remote repository</span>
+$ git remote add origin https://github.com/username/repo.git
+
+<span class="hljs-comment"># List remote repositories</span>
+$ git remote -v
+origin  https://github.com/username/repo.git (fetch)
+origin  https://github.com/username/repo.git (push)
+
+<span class="hljs-comment"># Add multiple remotes</span>
+$ git remote add upstream https://github.com/original/repo.git
+$ git remote add backup https://gitlab.com/username/repo.git
+</div></code></pre>
+<h4 id="common-remote-operations" tabindex="-1">Common Remote Operations</h4>
+<div class="mermaid">graph LR
+    A[Local Repository] --&gt;|git push| B[Remote Repository]
+    B --&gt;|git pull| A
+    B --&gt;|git fetch| C[Local Remote Tracking]
+    C --&gt; A
+  
+    style A fill:#ffeb3b
+    style B fill:#4caf50
+    style C fill:#ff9800</div><h3 id="pushing-changes" tabindex="-1">Pushing Changes</h3>
+<p>Pushing sends your local commits to the remote repository, making them available to other team members.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Push to remote repository</span>
+$ git push origin main
+Counting objects: 3, <span class="hljs-keyword">done</span>.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), <span class="hljs-keyword">done</span>.
+Writing objects: 100% (3/3), 312 bytes | 312.00 KiB/s, <span class="hljs-keyword">done</span>.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/username/repo.git
+   1a2b3c4..5d6e7f8  main -&gt; main
+
+<span class="hljs-comment"># Push and set upstream</span>
+$ git push -u origin feature-branch
+Branch <span class="hljs-string">'feature-branch'</span> <span class="hljs-built_in">set</span> up to track remote branch <span class="hljs-string">'feature-branch'</span> from <span class="hljs-string">'origin'</span>.
+
+<span class="hljs-comment"># Push all branches</span>
+$ git push --all origin
+
+<span class="hljs-comment"># Push tags</span>
+$ git push --tags
+</div></code></pre>
+<h3 id="pulling-changes" tabindex="-1">Pulling Changes</h3>
+<p>Pulling fetches changes from the remote repository and merges them into your current branch.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Pull changes from remote</span>
+$ git pull origin main
+From https://github.com/username/repo
+ * branch            main     -&gt; FETCH_HEAD
+Updating 1a2b3c4..9x8y7z6
+Fast-forward
+ README.md | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+<span class="hljs-comment"># Pull with rebase</span>
+$ git pull --rebase origin main
+
+<span class="hljs-comment"># Just fetch (don't merge)</span>
+$ git fetch origin
+From https://github.com/username/repo
+ * [new branch]      feature-new    -&gt; origin/feature-new
+   1a2b3c4..5d6e7f8  main           -&gt; origin/main
+</div></code></pre>
+<p><strong>Understanding Pull vs Fetch:</strong></p>
+<ul>
+<li><strong>git fetch:</strong> Downloads changes but doesn't merge them</li>
+<li><strong>git pull:</strong> Downloads changes and merges them (fetch + merge)</li>
+<li><strong>git pull --rebase:</strong> Downloads changes and rebases your work on top</li>
+</ul>
+<h3 id="handling-merge-conflicts" tabindex="-1">Handling Merge Conflicts</h3>
+<p>When multiple developers modify the same lines of code, Git can't automatically merge the changes.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Conflict occurs during pull</span>
+$ git pull origin main
+Auto-merging index.html
+CONFLICT (content): Merge conflict <span class="hljs-keyword">in</span> index.html
+Automatic merge failed; fix conflicts and <span class="hljs-keyword">then</span> commit the result.
+
+<span class="hljs-comment"># Check conflict status</span>
+$ git status
+On branch main
+You have unmerged paths.
+  (fix conflicts and run <span class="hljs-string">"git commit"</span>)
+  (use <span class="hljs-string">"git merge --abort"</span> to abort the merge)
+
+Unmerged paths:
+  (use <span class="hljs-string">"git add &lt;file&gt;..."</span> to mark resolution)
+        both modified:   index.html
+</div></code></pre>
+<h4 id="resolving-conflicts-step-by-step" tabindex="-1">Resolving Conflicts Step by Step</h4>
+<p>When you open the conflicted file, you'll see conflict markers:</p>
+<pre class="hljs"><code><div>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Your changes
+=======
+Changes from remote
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; commit-hash
+</div></code></pre>
+<p>Choose which changes to keep, remove the markers, then add and commit.</p>
+<h3 id="%F0%9F%8E%AF-exercise-5%3A-working-with-remotes" tabindex="-1">🎯 Exercise 5: Working with Remotes</h3>
+<ol>
+<li><strong>Step 1:</strong> Create a new repository on GitHub</li>
+<li><strong>Step 2:</strong> Add it as a remote to your local repository</li>
+<li><strong>Step 3:</strong> Push your local commits to GitHub</li>
+<li><strong>Step 4:</strong> Make a change on GitHub's web interface</li>
+<li><strong>Step 5:</strong> Pull the changes to your local repository</li>
+</ol>
+<blockquote>
+<p><strong>💡 Best Practice:</strong> Always pull before pushing to avoid conflicts. The command <code>git pull --rebase</code> often creates cleaner history than regular pulls.</p>
+</blockquote>
+<hr>
+<h2 id="%E2%9A%A1-advanced-git-operations" tabindex="-1">⚡ Advanced Git Operations</h2>
+<h3 id="beyond-basic-git" tabindex="-1">Beyond Basic Git</h3>
+<p>Once you're comfortable with basic Git operations, these advanced techniques will help you manage complex scenarios, clean up your history, and work more efficiently with your team.</p>
+<h3 id="git-stash%3A-temporary-storage" tabindex="-1">Git Stash: Temporary Storage</h3>
+<p>Stashing allows you to temporarily save your work without committing it. Perfect for when you need to quickly switch branches or pull updates.</p>
+<div class="mermaid">graph LR
+    A[Working Directory] --&gt;|git stash| B[Stash Storage]
+    B --&gt;|git stash pop| A
+    B --&gt;|git stash apply| A
+  
+    A --&gt; C[Uncommitted Changes]
+    B --&gt; D[Temporary Safe Storage]
+  
+    style B fill:#ff9800
+    style A fill:#ffeb3b</div><pre class="hljs"><code><div><span class="hljs-comment"># Stash current changes</span>
+$ git stash
+Saved working directory and index state WIP on main: 1a2b3c4 Latest commit
+
+<span class="hljs-comment"># Stash with a message</span>
+$ git stash save <span class="hljs-string">"Work in progress on user authentication"</span>
+
+<span class="hljs-comment"># List all stashes</span>
+$ git stash list
+stash@{0}: WIP on main: 1a2b3c4 Latest commit
+stash@{1}: On feature-branch: Work <span class="hljs-keyword">in</span> progress on user authentication
+
+<span class="hljs-comment"># Apply and remove stash</span>
+$ git stash pop
+On branch main
+Changes not staged <span class="hljs-keyword">for</span> commit:
+        modified:   index.html
+Dropped refs/stash@{0}
+
+<span class="hljs-comment"># Apply specific stash</span>
+$ git stash apply stash@{1}
+
+<span class="hljs-comment"># Delete a stash</span>
+$ git stash drop stash@{0}
+</div></code></pre>
+<blockquote>
+<p><strong>Stash Use Case - The Urgent Bug Fix:</strong></p>
+<p>You're working on a new feature when your manager asks you to fix a critical bug immediately. You're not ready to commit your current work, but you need to switch branches. Solution: stash your work, fix the bug, then return to your feature and pop the stash!</p>
+</blockquote>
+<h3 id="rebasing%3A-rewriting-history" tabindex="-1">Rebasing: Rewriting History</h3>
+<p>Rebasing allows you to move or combine commits, creating a cleaner project history.</p>
+<pre>Parse error on line 1:
+gitGraph    commit id: "A"
+--------^
+Expecting ':', 'DIR', got 'NL'</pre><pre class="hljs"><code><div><span class="hljs-comment"># Rebase current branch onto main</span>
+$ git rebase main
+First, rewinding <span class="hljs-built_in">head</span> to replay your work on top of it...
+Applying: Add user authentication
+Applying: Fix login validation
+
+<span class="hljs-comment"># Interactive rebase (last 3 commits)</span>
+$ git rebase -i HEAD~3
+<span class="hljs-comment"># This opens an editor with:</span>
+pick 1a2b3c4 Add user authentication
+pick 5d6e7f8 Fix typo <span class="hljs-keyword">in</span> login form
+pick 9x8y7z6 Add <span class="hljs-built_in">logout</span> functionality
+
+<span class="hljs-comment"># Rebase options:</span>
+<span class="hljs-comment"># pick = keep the commit</span>
+<span class="hljs-comment"># reword = change commit message</span>
+<span class="hljs-comment"># edit = stop to modify commit</span>
+<span class="hljs-comment"># squash = combine with previous commit</span>
+<span class="hljs-comment"># drop = remove commit</span>
+</div></code></pre>
+<p><strong>Interactive Rebase Use Cases:</strong></p>
+<ul>
+<li><strong>Squashing:</strong> Combine multiple small commits into one</li>
+<li><strong>Reordering:</strong> Change the order of commits</li>
+<li><strong>Editing:</strong> Modify commit messages or content</li>
+<li><strong>Dropping:</strong> Remove commits from history</li>
+</ul>
+<h3 id="cherry-picking" tabindex="-1">Cherry Picking</h3>
+<p>Cherry picking applies specific commits from one branch to another without merging the entire branch.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Cherry pick a specific commit</span>
+$ git cherry-pick 1a2b3c4
+[main 5d6e7f8] Fix critical security vulnerability
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+<span class="hljs-comment"># Cherry pick multiple commits</span>
+$ git cherry-pick 1a2b3c4 5d6e7f8 9x8y7z6
+
+<span class="hljs-comment"># Cherry pick a range of commits</span>
+$ git cherry-pick 1a2b3c4..9x8y7z6
+</div></code></pre>
+<pre>Parse error on line 1:
+gitGraph    commit id: "A"
+--------^
+Expecting ':', 'DIR', got 'NL'</pre><h3 id="git-reset%3A-undoing-changes" tabindex="-1">Git Reset: Undoing Changes</h3>
+<p>Git reset allows you to undo commits in various ways, depending on how much you want to preserve.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Soft reset (keep changes staged)</span>
+$ git reset --soft HEAD~1
+<span class="hljs-comment"># Commit is undone, changes remain staged</span>
+
+<span class="hljs-comment"># Mixed reset (default - unstage changes)</span>
+$ git reset HEAD~1
+<span class="hljs-comment"># Commit is undone, changes remain in working directory</span>
+
+<span class="hljs-comment"># Hard reset (discard all changes)</span>
+$ git reset --hard HEAD~1
+HEAD is now at 1a2b3c4 Previous commit
+</div></code></pre>
+<blockquote>
+<p><strong>⚠️ Danger Zone:</strong> <code>git reset --hard</code> permanently deletes your changes. Use with extreme caution, especially on shared branches!</p>
+</blockquote>
+<h3 id="git-revert%3A-safe-undoing" tabindex="-1">Git Revert: Safe Undoing</h3>
+<p>Unlike reset, revert creates a new commit that undoes the changes from a previous commit.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Revert a specific commit</span>
+$ git revert 1a2b3c4
+[main 5d6e7f8] Revert <span class="hljs-string">"Add broken feature"</span>
+ 1 file changed, 0 insertions(+), 25 deletions(-)
+
+<span class="hljs-comment"># Revert without creating a commit</span>
+$ git revert --no-commit 1a2b3c4
+
+<span class="hljs-comment"># Revert a merge commit</span>
+$ git revert -m 1 5d6e7f8
+</div></code></pre>
+<h3 id="%F0%9F%8E%AF-exercise-6%3A-advanced-operations" tabindex="-1">🎯 Exercise 6: Advanced Operations</h3>
+<ol>
+<li><strong>Step 1:</strong> Make some changes to a file but don't commit</li>
+<li><strong>Step 2:</strong> Stash your changes</li>
+<li><strong>Step 3:</strong> Make a few small commits</li>
+<li><strong>Step 4:</strong> Use interactive rebase to squash the commits</li>
+<li><strong>Step 5:</strong> Pop your stashed changes</li>
+</ol>
+<blockquote>
+<p><strong>💡 Golden Rule:</strong> Never rebase commits that have been pushed to a shared repository. It rewrites history and can cause problems for other developers.</p>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%94%84-git-workflows" tabindex="-1">🔄 Git Workflows</h2>
+<h3 id="choosing-the-right-workflow" tabindex="-1">Choosing the Right Workflow</h3>
+<p>Different teams and projects require different workflows. The key is choosing one that matches your team size, release schedule, and collaboration style. A good workflow reduces conflicts and makes collaboration smooth.</p>
+<h3 id="feature-branch-workflow" tabindex="-1">Feature Branch Workflow</h3>
+<p>The most popular workflow where each feature is developed in its own branch, then merged back to main.</p>
+<pre>Parse error on line 1:
+gitGraph    commit id: "Ini
+--------^
+Expecting ':', 'DIR', got 'NL'</pre><pre class="hljs"><code><div><span class="hljs-comment"># Feature Branch Workflow</span>
+$ git checkout -b feature-user-profile
+Switched to a new branch <span class="hljs-string">'feature-user-profile'</span>
+
+<span class="hljs-comment"># Work on feature, make commits</span>
+$ git add .
+$ git commit -m <span class="hljs-string">"Add user profile page"</span>
+
+<span class="hljs-comment"># Push feature branch</span>
+$ git push -u origin feature-user-profile
+
+<span class="hljs-comment"># Switch back to main and merge</span>
+$ git checkout main
+$ git merge feature-user-profile
+
+<span class="hljs-comment"># Delete feature branch</span>
+$ git branch -d feature-user-profile
+</div></code></pre>
+<h3 id="gitflow-workflow" tabindex="-1">GitFlow Workflow</h3>
+<p>A more structured approach with specific branch types for different purposes.</p>
+<pre>Parse error on line 1:
+gitGraph    commit id: "Ini
+--------^
+Expecting ':', 'DIR', got 'NL'</pre><p><strong>GitFlow Branch Types:</strong></p>
+<ul>
+<li><strong>main:</strong> Production-ready code</li>
+<li><strong>develop:</strong> Integration branch for features</li>
+<li><strong>feature/*:</strong> New features</li>
+<li><strong>release/*:</strong> Prepare new releases</li>
+<li><strong>hotfix/*:</strong> Critical production fixes</li>
+</ul>
+<h3 id="github-flow" tabindex="-1">GitHub Flow</h3>
+<p>A simpler workflow perfect for continuous deployment.</p>
+<div class="mermaid">graph TD
+    A[Create Branch] --&gt; B[Make Changes]
+    B --&gt; C[Open Pull Request]
+    C --&gt; D[Code Review]
+    D --&gt; E[Tests Pass?]
+    E --&gt;|Yes| F[Merge to Main]
+    E --&gt;|No| B
+    F --&gt; G[Deploy to Production]
+  
+    style C fill:#4caf50
+    style D fill:#ff9800
+    style F fill:#2196f3</div><blockquote>
+<p><strong>GitHub Flow in Action:</strong></p>
+<p>DevCorp deploys multiple times per day. They use GitHub Flow: create a branch, make changes, open a pull request, get reviewed, merge to main, and deploy. Simple, fast, and effective for their rapid release cycle.</p>
+</blockquote>
+<h3 id="forking-workflow" tabindex="-1">Forking Workflow</h3>
+<p>Popular for open-source projects where contributors don't have write access to the main repository.</p>
+<div class="mermaid">graph TD
+    A[Original Repository] --&gt; B[Fork Repository]
+    B --&gt; C[Clone Fork]
+    C --&gt; D[Create Feature Branch]
+    D --&gt; E[Make Changes]
+    E --&gt; F[Push to Fork]
+    F --&gt; G[Create Pull Request]
+    G --&gt; H[Code Review]
+    H --&gt; I[Merge to Original]
+  
+    style A fill:#4caf50
+    style B fill:#ff9800
+    style G fill:#2196f3</div><pre class="hljs"><code><div><span class="hljs-comment"># Forking Workflow Steps</span>
+<span class="hljs-comment"># 1. Fork the repository on GitHub</span>
+<span class="hljs-comment"># 2. Clone your fork</span>
+$ git <span class="hljs-built_in">clone</span> https://github.com/yourusername/project.git
+
+<span class="hljs-comment"># 3. Add upstream remote</span>
+$ git remote add upstream https://github.com/original/project.git
+
+<span class="hljs-comment"># 4. Create feature branch</span>
+$ git checkout -b feature-awesome
+
+<span class="hljs-comment"># 5. Make changes and push to your fork</span>
+$ git push origin feature-awesome
+
+<span class="hljs-comment"># 6. Create pull request on GitHub</span>
+<span class="hljs-comment"># 7. Keep your fork updated</span>
+$ git fetch upstream
+$ git checkout main
+$ git merge upstream/main
+</div></code></pre>
+<h3 id="centralized-workflow" tabindex="-1">Centralized Workflow</h3>
+<p>Simple workflow where everyone works on the main branch. Best for small teams transitioning from SVN.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Centralized Workflow</span>
+$ git pull origin main
+Already up to <span class="hljs-built_in">date</span>.
+
+<span class="hljs-comment"># Make changes and commit</span>
+$ git add .
+$ git commit -m <span class="hljs-string">"Add new feature"</span>
+
+<span class="hljs-comment"># Push to shared repository</span>
+$ git push origin main
+</div></code></pre>
+<h3 id="%F0%9F%8E%AF-exercise-7%3A-implementing-a-workflow" tabindex="-1">🎯 Exercise 7: Implementing a Workflow</h3>
+<ol>
+<li><strong>Step 1:</strong> Choose a workflow that fits your project</li>
+<li><strong>Step 2:</strong> Create a feature branch</li>
+<li><strong>Step 3:</strong> Make several commits on the feature branch</li>
+<li><strong>Step 4:</strong> Practice the merge/pull request process</li>
+<li><strong>Step 5:</strong> Clean up by deleting the feature branch</li>
+</ol>
+<blockquote>
+<p><strong>💡 Workflow Selection Tips:</strong></p>
+<ul>
+<li><strong>Small team, simple project:</strong> GitHub Flow</li>
+<li><strong>Large team, scheduled releases:</strong> GitFlow</li>
+<li><strong>Open source project:</strong> Forking Workflow</li>
+<li><strong>Transitioning from SVN:</strong> Centralized Workflow</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%91%A5-team-collaboration" tabindex="-1">👥 Team Collaboration</h2>
+<h3 id="effective-git-collaboration" tabindex="-1">Effective Git Collaboration</h3>
+<p>Successful team collaboration with Git requires clear communication, consistent workflows, and good practices. The goal is to enable multiple developers to work together efficiently without stepping on each other's toes.</p>
+<h3 id="pull-requests-%2F-merge-requests" tabindex="-1">Pull Requests / Merge Requests</h3>
+<p>Pull requests are the cornerstone of collaborative development. They provide a way to propose changes, discuss them, and review code before merging.</p>
+<div class="mermaid">graph TD
+    A[Create Feature Branch] --&gt; B[Make Changes]
+    B --&gt; C[Push Branch]
+    C --&gt; D[Open Pull Request]
+    D --&gt; E[Team Review]
+    E --&gt; F[Request Changes?]
+    F --&gt;|Yes| G[Make Updates]
+    G --&gt; E
+    F --&gt;|No| H[Approve &amp; Merge]
+    H --&gt; I[Delete Branch]
+  
+    style D fill:#4caf50
+    style E fill:#ff9800
+    style H fill:#2196f3</div><blockquote>
+<p><strong>Pull Request Best Practices:</strong></p>
+<p>At TechCorp, every change goes through a pull request. Sarah creates a PR for her authentication feature. Her teammates review the code, suggest improvements, and test the feature. This process catches bugs early and ensures code quality.</p>
+</blockquote>
+<h3 id="code-review-guidelines" tabindex="-1">Code Review Guidelines</h3>
+<p><strong>What to Look for in Code Reviews:</strong></p>
+<ul>
+<li><strong>Functionality:</strong> Does the code work as intended?</li>
+<li><strong>Readability:</strong> Is the code easy to understand?</li>
+<li><strong>Performance:</strong> Are there any performance issues?</li>
+<li><strong>Security:</strong> Are there any security vulnerabilities?</li>
+<li><strong>Testing:</strong> Are there adequate tests?</li>
+<li><strong>Documentation:</strong> Is the code well-documented?</li>
+</ul>
+<h3 id="managing-conflicts-in-teams" tabindex="-1">Managing Conflicts in Teams</h3>
+<p>Conflicts are inevitable in team environments. The key is to handle them gracefully and learn from them.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Common conflict scenario</span>
+$ git pull origin main
+Auto-merging src/auth.js
+CONFLICT (content): Merge conflict <span class="hljs-keyword">in</span> src/auth.js
+Automatic merge failed; fix conflicts and <span class="hljs-keyword">then</span> commit the result.
+
+<span class="hljs-comment"># View conflicted files</span>
+$ git status
+On branch feature-auth
+You have unmerged paths.
+  (fix conflicts and run <span class="hljs-string">"git commit"</span>)
+Unmerged paths:
+        both modified:   src/auth.js
+
+<span class="hljs-comment"># Use merge tool</span>
+$ git mergetool
+
+<span class="hljs-comment"># Or resolve manually and commit</span>
+$ git add src/auth.js
+$ git commit -m <span class="hljs-string">"Resolve merge conflict in auth.js"</span>
+</div></code></pre>
+<blockquote>
+<p><strong>💡 Conflict Prevention:</strong></p>
+<ul>
+<li>Pull frequently to stay updated</li>
+<li>Make smaller, focused commits</li>
+<li>Communicate with team about overlapping work</li>
+<li>Use feature branches to isolate changes</li>
+</ul>
+</blockquote>
+<h3 id="git-hooks-for-team-standards" tabindex="-1">Git Hooks for Team Standards</h3>
+<p>Git hooks are scripts that run automatically at certain points in the Git workflow. They help enforce team standards and automate common tasks.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/sh</span>
+<span class="hljs-comment"># Pre-commit hook example (saved as .git/hooks/pre-commit)</span>
+<span class="hljs-comment"># Run tests before commit</span>
+npm <span class="hljs-built_in">test</span>
+<span class="hljs-keyword">if</span> [ $? -ne 0 ]; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Tests failed! Commit aborted."</span>
+    <span class="hljs-built_in">exit</span> 1
+<span class="hljs-keyword">fi</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/sh</span>
+<span class="hljs-comment"># Commit message hook (saved as .git/hooks/commit-msg)</span>
+<span class="hljs-comment"># Check commit message format</span>
+commit_regex=<span class="hljs-string">'^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .{1,50}'</span>
+<span class="hljs-keyword">if</span> ! grep -qE <span class="hljs-string">"<span class="hljs-variable">$commit_regex</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$1</span>"</span>; <span class="hljs-keyword">then</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">"Invalid commit message format!"</span>
+    <span class="hljs-built_in">exit</span> 1
+<span class="hljs-keyword">fi</span>
+</div></code></pre>
+<h3 id="branch-protection-rules" tabindex="-1">Branch Protection Rules</h3>
+<p>Protect important branches from direct pushes and enforce quality standards.</p>
+<p><strong>Common Branch Protection Rules:</strong></p>
+<ul>
+<li><strong>Require pull requests:</strong> No direct pushes to main</li>
+<li><strong>Require reviews:</strong> At least one approval needed</li>
+<li><strong>Require status checks:</strong> Tests must pass</li>
+<li><strong>Require up-to-date branches:</strong> Must be current with main</li>
+<li><strong>Restrict push access:</strong> Only certain users can push</li>
+</ul>
+<h3 id="team-communication-strategies" tabindex="-1">Team Communication Strategies</h3>
+<p><strong>Communication Best Practices:</strong></p>
+<ul>
+<li><strong>Daily standups:</strong> Discuss what you're working on</li>
+<li><strong>Feature planning:</strong> Coordinate overlapping work</li>
+<li><strong>Code reviews:</strong> Provide constructive feedback</li>
+<li><strong>Documentation:</strong> Keep README and docs updated</li>
+<li><strong>Issue tracking:</strong> Use GitHub issues or similar tools</li>
+</ul>
+<h3 id="%F0%9F%8E%AF-exercise-8%3A-team-collaboration-simulation" tabindex="-1">🎯 Exercise 8: Team Collaboration Simulation</h3>
+<ol>
+<li><strong>Step 1:</strong> Set up a shared repository with a teammate</li>
+<li><strong>Step 2:</strong> Both create different feature branches</li>
+<li><strong>Step 3:</strong> Modify the same file in different ways</li>
+<li><strong>Step 4:</strong> One person merges first, the other resolves conflicts</li>
+<li><strong>Step 5:</strong> Practice the pull request review process</li>
+</ol>
+<blockquote>
+<p><strong>⚠️ Team Anti-Patterns to Avoid:</strong></p>
+<ul>
+<li>Force pushing to shared branches</li>
+<li>Committing directly to main/master</li>
+<li>Large, monolithic commits</li>
+<li>Ignoring code review feedback</li>
+<li>Not communicating about major changes</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="%E2%9C%A8-best-practices" tabindex="-1">✨ Best Practices</h2>
+<h3 id="git-mastery-through-good-habits" tabindex="-1">Git Mastery Through Good Habits</h3>
+<p>Following best practices makes Git a powerful ally rather than a source of frustration. These practices will help you maintain clean repositories, collaborate effectively, and avoid common pitfalls.</p>
+<h3 id="writing-great-commit-messages" tabindex="-1">Writing Great Commit Messages</h3>
+<p>A good commit message tells a story about what changed and why. Future you (and your teammates) will thank you for clear, descriptive messages.</p>
+<h4 id="commit-message-format" tabindex="-1">Commit Message Format</h4>
+<pre class="hljs"><code><div>type(scope): subject
+
+body
+
+footer
+</div></code></pre>
+<ul>
+<li><strong>Type:</strong> feat, fix, docs, style, refactor, test, chore</li>
+<li><strong>Subject:</strong> 50 characters or less, imperative mood</li>
+<li><strong>Body:</strong> Explain what and why, not how</li>
+<li><strong>Footer:</strong> Reference issues, breaking changes</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-comment"># Good commit messages</span>
+$ git commit -m <span class="hljs-string">"feat(auth): add password reset functionality
+
+Implement password reset via email with secure tokens.
+Users can now reset forgotten passwords safely.
+
+Closes #123"</span>
+
+<span class="hljs-comment"># Bad commit messages</span>
+❌ <span class="hljs-string">"fix stuff"</span>
+❌ <span class="hljs-string">"update"</span>
+❌ <span class="hljs-string">"working on login"</span>
+❌ <span class="hljs-string">"asdf"</span>
+
+<span class="hljs-comment"># Good commit messages</span>
+✅ <span class="hljs-string">"fix(auth): prevent SQL injection in login form"</span>
+✅ <span class="hljs-string">"docs: update installation instructions"</span>
+✅ <span class="hljs-string">"refactor: extract user validation logic"</span>
+✅ <span class="hljs-string">"test: add unit tests for payment processing"</span>
+</div></code></pre>
+<h3 id="repository-structure" tabindex="-1">Repository Structure</h3>
+<p>A well-organized repository makes it easy for new contributors to understand and contribute to your project.</p>
+<pre class="hljs"><code><div>my-project/
+├── .github/
+│   ├── workflows/        # GitHub Actions
+│   ├── ISSUE_TEMPLATE/   # Issue templates
+│   └── PULL_REQUEST_TEMPLATE.md
+├── .gitignore           # Files to ignore
+├── README.md            # Project overview
+├── CONTRIBUTING.md      # How to contribute
+├── LICENSE              # License information
+├── package.json         # Dependencies
+├── src/                 # Source code
+│   ├── components/
+│   ├── utils/
+│   └── index.js
+├── tests/               # Test files
+├── docs/                # Documentation
+└── examples/            # Usage examples
+</div></code></pre>
+<h3 id="the-.gitignore-file" tabindex="-1">The .gitignore File</h3>
+<p>A proper .gitignore file prevents unnecessary files from being tracked and keeps your repository clean.</p>
+<pre class="hljs"><code><div># Example .gitignore for a Node.js project
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids
+*.pid
+*.seed
+</div></code></pre>
+<h3 id="branching-strategy" tabindex="-1">Branching Strategy</h3>
+<p><strong>Branch Naming Conventions:</strong></p>
+<ul>
+<li><strong>feature/</strong> - New features (feature/user-authentication)</li>
+<li><strong>bugfix/</strong> - Bug fixes (bugfix/login-validation)</li>
+<li><strong>hotfix/</strong> - Critical production fixes (hotfix/security-patch)</li>
+<li><strong>release/</strong> - Release preparation (release/v1.2.0)</li>
+<li><strong>chore/</strong> - Maintenance tasks (chore/update-dependencies)</li>
+</ul>
+<h3 id="security-best-practices" tabindex="-1">Security Best Practices</h3>
+<blockquote>
+<p><strong>⚠️ Security Considerations:</strong></p>
+<ul>
+<li>Never commit secrets, API keys, or passwords</li>
+<li>Use environment variables for sensitive data</li>
+<li>Regularly update dependencies</li>
+<li>Be careful with public repositories</li>
+<li>Use signed commits for verification</li>
+</ul>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-comment"># Set up GPG signing</span>
+$ git config --global user.signingkey YOUR_GPG_KEY_ID
+$ git config --global commit.gpgsign <span class="hljs-literal">true</span>
+
+<span class="hljs-comment"># Sign a commit</span>
+$ git commit -S -m <span class="hljs-string">"feat: add secure payment processing"</span>
+
+<span class="hljs-comment"># Verify signatures</span>
+$ git <span class="hljs-built_in">log</span> --show-signature
+</div></code></pre>
+<h3 id="performance-optimization" tabindex="-1">Performance Optimization</h3>
+<p><strong>Keep Your Repository Fast:</strong></p>
+<ul>
+<li><strong>Avoid large files:</strong> Use Git LFS for binary files</li>
+<li><strong>Regular cleanup:</strong> Use git gc to optimize</li>
+<li><strong>Shallow clones:</strong> Use --depth for faster clones</li>
+<li><strong>Prune remotes:</strong> Clean up deleted branches</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-comment"># Repository maintenance</span>
+$ git gc --aggressive
+Counting objects: 1000, <span class="hljs-keyword">done</span>.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (500/500), <span class="hljs-keyword">done</span>.
+
+<span class="hljs-comment"># Shallow clone</span>
+$ git <span class="hljs-built_in">clone</span> --depth 1 https://github.com/user/repo.git
+
+<span class="hljs-comment"># Prune remote branches</span>
+$ git remote prune origin
+
+<span class="hljs-comment"># Clean up local branches</span>
+$ git branch --merged | grep -v <span class="hljs-string">"main\|develop"</span> | xargs -n 1 git branch -d
+</div></code></pre>
+<h3 id="%F0%9F%8E%AF-exercise-9%3A-repository-audit" tabindex="-1">🎯 Exercise 9: Repository Audit</h3>
+<ol>
+<li><strong>Step 1:</strong> Review your commit messages - are they descriptive?</li>
+<li><strong>Step 2:</strong> Check your .gitignore - is it comprehensive?</li>
+<li><strong>Step 3:</strong> Audit your repository structure - is it organized?</li>
+<li><strong>Step 4:</strong> Set up branch naming conventions</li>
+<li><strong>Step 5:</strong> Configure GPG signing for commits</li>
+</ol>
+<blockquote>
+<p><strong>💡 Remember:</strong> Good practices become habits with repetition. Start with one or two practices and gradually incorporate more as they become natural.</p>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%94%A7-troubleshooting" tabindex="-1">🔧 Troubleshooting</h2>
+<h3 id="git-recovery-and-problem-solving" tabindex="-1">Git Recovery and Problem Solving</h3>
+<p>Even experienced Git users encounter problems. The key is knowing how to diagnose issues and having the right tools to fix them. Git is very forgiving - most "disasters" can be recovered from.</p>
+<h3 id="common-git-problems" tabindex="-1">Common Git Problems</h3>
+<p><strong>The "Oh No!" Moments:</strong></p>
+<ul>
+<li>😱 "I committed to the wrong branch!"</li>
+<li>😱 "I pushed sensitive data to GitHub!"</li>
+<li>😱 "I lost my work after a hard reset!"</li>
+<li>😱 "I can't push because of conflicts!"</li>
+<li>😱 "I accidentally deleted my branch!"</li>
+</ul>
+<p>Don't panic! Git has solutions for all of these problems.</p>
+<h3 id="undoing-commits" tabindex="-1">Undoing Commits</h3>
+<div class="mermaid">graph TD
+    A[Commit Problem] --&gt; B{Already Pushed?}
+    B --&gt;|No| C[git reset]
+    B --&gt;|Yes| D[git revert]
+  
+    C --&gt; E[--soft: Keep changes staged]
+    C --&gt; F[--mixed: Keep changes unstaged]
+    C --&gt; G[--hard: Discard changes]
+  
+    D --&gt; H[Create new commit that undoes changes]
+  
+    style C fill:#ff9800
+    style D fill:#4caf50</div><pre class="hljs"><code><div><span class="hljs-comment"># Undo last commit (not pushed)</span>
+$ git reset --soft HEAD~1
+<span class="hljs-comment"># Commit undone, changes still staged</span>
+
+<span class="hljs-comment"># Undo last commit and unstage changes</span>
+$ git reset HEAD~1
+
+<span class="hljs-comment"># Undo last commit and discard changes</span>
+$ git reset --hard HEAD~1
+HEAD is now at 1a2b3c4 Previous commit
+
+<span class="hljs-comment"># Undo a pushed commit safely</span>
+$ git revert HEAD
+[main 5d6e7f8] Revert <span class="hljs-string">"Bad commit"</span>
+</div></code></pre>
+<h3 id="recovering-lost-work" tabindex="-1">Recovering Lost Work</h3>
+<p>Git's reflog keeps track of all your actions, making it possible to recover "lost" work.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># View reflog to find lost commits</span>
+$ git reflog
+1a2b3c4 (HEAD -&gt; main) HEAD@{0}: reset: moving to HEAD~1
+5d6e7f8 HEAD@{1}: commit: Important work
+9x8y7z6 HEAD@{2}: commit: Previous commit
+
+<span class="hljs-comment"># Recover the lost commit</span>
+$ git checkout 5d6e7f8
+You are <span class="hljs-keyword">in</span> <span class="hljs-string">'detached HEAD'</span> state...
+
+<span class="hljs-comment"># Create a new branch to save the work</span>
+$ git checkout -b recovery-branch
+Switched to a new branch <span class="hljs-string">'recovery-branch'</span>
+
+<span class="hljs-comment"># Or reset main to the lost commit</span>
+$ git checkout main
+$ git reset --hard 5d6e7f8
+</div></code></pre>
+<h3 id="fixing-merge-conflicts" tabindex="-1">Fixing Merge Conflicts</h3>
+<p>Merge conflicts happen when Git can't automatically merge changes. Here's how to resolve them systematically.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Conflict occurs during merge</span>
+$ git merge feature-branch
+Auto-merging index.html
+CONFLICT (content): Merge conflict <span class="hljs-keyword">in</span> index.html
+Automatic merge failed; fix conflicts and <span class="hljs-keyword">then</span> commit the result.
+
+<span class="hljs-comment"># See conflicted files</span>
+$ git status
+Unmerged paths:
+  (use <span class="hljs-string">"git add &lt;file&gt;..."</span> to mark resolution)
+        both modified:   index.html
+
+<span class="hljs-comment"># View the conflict</span>
+$ <span class="hljs-built_in">cat</span> index.html
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="hljs-string">HEAD
+    &lt;h1&gt;Welcome to our site&lt;/h1&gt;
+=======
+    &lt;h1&gt;Welcome to our website&lt;/h1&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-branch
+
+# After manually resolving:
+$ git add index.html
+$ git commit -m "Resolve merge conflict in index.html"
+</span></div></code></pre>
+<p><strong>Merge Conflict Resolution Steps:</strong></p>
+<ol>
+<li>Open the conflicted file in your editor</li>
+<li>Look for conflict markers (&lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt;)</li>
+<li>Decide which changes to keep</li>
+<li>Remove the conflict markers</li>
+<li>Test that the file works correctly</li>
+<li>Stage the resolved file with git add</li>
+<li>Commit the resolution</li>
+</ol>
+<h3 id="removing-sensitive-data" tabindex="-1">Removing Sensitive Data</h3>
+<p>Accidentally committed passwords or API keys? Here's how to remove them from history.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Remove file from all history (dangerous!)</span>
+$ git filter-branch --force --index-filter \
+  <span class="hljs-string">'git rm --cached --ignore-unmatch secrets.txt'</span> \
+  --prune-empty --tag-name-filter <span class="hljs-built_in">cat</span> -- --all
+
+<span class="hljs-comment"># Better: use BFG Repo-Cleaner</span>
+$ java -jar bfg.jar --delete-files secrets.txt
+$ git reflog expire --expire=now --all
+$ git gc --prune=now --aggressive
+
+<span class="hljs-comment"># Force push (after backup!)</span>
+$ git push --force-with-lease origin main
+</div></code></pre>
+<blockquote>
+<p><strong>⚠️ Important:</strong> After removing sensitive data, change all exposed credentials immediately. The data might still be cached or accessible through other means.</p>
+</blockquote>
+<h3 id="fixing-detached-head" tabindex="-1">Fixing Detached HEAD</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># You're in detached HEAD state</span>
+$ git status
+HEAD detached at 1a2b3c4
+
+<span class="hljs-comment"># Create a branch to save your work</span>
+$ git checkout -b fix-detached-head
+Switched to a new branch <span class="hljs-string">'fix-detached-head'</span>
+
+<span class="hljs-comment"># Or go back to main</span>
+$ git checkout main
+Warning: you are leaving 1 commit behind
+</div></code></pre>
+<h3 id="repository-corruption" tabindex="-1">Repository Corruption</h3>
+<p>In rare cases, Git repositories can become corrupted. Here's how to fix them.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check repository integrity</span>
+$ git fsck --full
+Checking object directories: 100% (256/256), <span class="hljs-keyword">done</span>.
+Checking objects: 100% (1000/1000), <span class="hljs-keyword">done</span>.
+
+<span class="hljs-comment"># Find and recover dangling commits</span>
+$ git fsck --lost-found
+dangling commit 1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0
+
+<span class="hljs-comment"># Recover a dangling commit</span>
+$ git show 1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0
+$ git cherry-pick 1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0
+</div></code></pre>
+<h3 id="diagnostic-commands" tabindex="-1">Diagnostic Commands</h3>
+<p><strong>Git Debugging Toolkit:</strong></p>
+<ul>
+<li><strong>git status:</strong> See current state</li>
+<li><strong>git log --oneline:</strong> View recent commits</li>
+<li><strong>git reflog:</strong> See all actions taken</li>
+<li><strong>git diff:</strong> See what changed</li>
+<li><strong>git blame:</strong> See who changed what</li>
+<li><strong>git bisect:</strong> Find when bug was introduced</li>
+</ul>
+<h3 id="%F0%9F%8E%AF-exercise-10%3A-disaster-recovery" tabindex="-1">🎯 Exercise 10: Disaster Recovery</h3>
+<ol>
+<li><strong>Step 1:</strong> Create a test repository with several commits</li>
+<li><strong>Step 2:</strong> Simulate a problem (hard reset, accidental deletion)</li>
+<li><strong>Step 3:</strong> Use git reflog to find the lost work</li>
+<li><strong>Step 4:</strong> Recover the lost commits</li>
+<li><strong>Step 5:</strong> Practice creating and resolving a merge conflict</li>
+</ol>
+<blockquote>
+<p><strong>💡 Prevention is Better Than Cure:</strong></p>
+<ul>
+<li>Commit frequently</li>
+<li>Use descriptive commit messages</li>
+<li>Test before committing</li>
+<li>Keep backups of important work</li>
+<li>Use branches for experiments</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="%F0%9F%93%9A-quick-reference" tabindex="-1">📚 Quick Reference</h2>
+<h3 id="your-git-command-cheat-sheet" tabindex="-1">Your Git Command Cheat Sheet</h3>
+<p>This comprehensive reference covers all the Git commands you'll need in your daily workflow. Bookmark this page and refer to it whenever you need a quick reminder!</p>
+<h3 id="repository-setup" tabindex="-1">Repository Setup</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Initialize a new repository</span>
+$ git init
+$ git init my-project
+
+<span class="hljs-comment"># Clone an existing repository</span>
+$ git <span class="hljs-built_in">clone</span> https://github.com/user/repo.git
+$ git <span class="hljs-built_in">clone</span> https://github.com/user/repo.git my-project
+
+<span class="hljs-comment"># Configure Git</span>
+$ git config --global user.name <span class="hljs-string">"Your Name"</span>
+$ git config --global user.email <span class="hljs-string">"your.email@example.com"</span>
+$ git config --global init.defaultBranch main
+$ git config --list
+</div></code></pre>
+<h3 id="basic-workflow" tabindex="-1">Basic Workflow</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Check repository status</span>
+$ git status
+$ git status -s
+
+<span class="hljs-comment"># Add files to staging</span>
+$ git add file.txt
+$ git add .
+$ git add -A
+$ git add -p
+
+<span class="hljs-comment"># Commit changes</span>
+$ git commit -m <span class="hljs-string">"Commit message"</span>
+$ git commit -am <span class="hljs-string">"Stage and commit"</span>
+$ git commit --amend
+
+<span class="hljs-comment"># View history</span>
+$ git <span class="hljs-built_in">log</span>
+$ git <span class="hljs-built_in">log</span> --oneline
+$ git <span class="hljs-built_in">log</span> --graph --oneline --all
+$ git show HEAD
+</div></code></pre>
+<h3 id="branching-and-merging" tabindex="-1">Branching and Merging</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Branch operations</span>
+$ git branch
+$ git branch feature-name
+$ git branch -d feature-name
+$ git branch -D feature-name
+$ git branch -m old-name new-name
+
+<span class="hljs-comment"># Switch branches</span>
+$ git checkout branch-name
+$ git checkout -b new-branch
+$ git switch branch-name
+$ git switch -c new-branch
+
+<span class="hljs-comment"># Merging</span>
+$ git merge branch-name
+$ git merge --no-ff branch-name
+$ git merge --squash branch-name
+</div></code></pre>
+<h3 id="remote-operations" tabindex="-1">Remote Operations</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Remote management</span>
+$ git remote -v
+$ git remote add origin url
+$ git remote remove origin
+$ git remote rename old-name new-name
+
+<span class="hljs-comment"># Fetch and pull</span>
+$ git fetch
+$ git fetch origin
+$ git pull
+$ git pull origin main
+$ git pull --rebase
+
+<span class="hljs-comment"># Push operations</span>
+$ git push
+$ git push origin main
+$ git push -u origin branch-name
+$ git push --force-with-lease
+</div></code></pre>
+<h3 id="undoing-changes" tabindex="-1">Undoing Changes</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Unstage files</span>
+$ git restore --staged file.txt
+$ git reset HEAD file.txt
+
+<span class="hljs-comment"># Discard working directory changes</span>
+$ git restore file.txt
+$ git checkout -- file.txt
+
+<span class="hljs-comment"># Reset commits</span>
+$ git reset --soft HEAD~1
+$ git reset HEAD~1
+$ git reset --hard HEAD~1
+
+<span class="hljs-comment"># Revert commits</span>
+$ git revert HEAD
+$ git revert commit-hash
+</div></code></pre>
+<h3 id="stashing" tabindex="-1">Stashing</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Stash operations</span>
+$ git stash
+$ git stash save <span class="hljs-string">"message"</span>
+$ git stash list
+$ git stash pop
+$ git stash apply
+$ git stash drop
+$ git stash clear
+</div></code></pre>
+<h3 id="advanced-operations" tabindex="-1">Advanced Operations</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Rebasing</span>
+$ git rebase main
+$ git rebase -i HEAD~3
+$ git rebase --<span class="hljs-built_in">continue</span>
+$ git rebase --abort
+
+<span class="hljs-comment"># Cherry picking</span>
+$ git cherry-pick commit-hash
+$ git cherry-pick commit1..commit2
+
+<span class="hljs-comment"># Tagging</span>
+$ git tag
+$ git tag v1.0.0
+$ git tag -a v1.0.0 -m <span class="hljs-string">"Version 1.0"</span>
+$ git push --tags
+</div></code></pre>
+<h3 id="information-and-inspection" tabindex="-1">Information and Inspection</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># View differences</span>
+$ git diff
+$ git diff --staged
+$ git diff HEAD
+$ git diff branch1..branch2
+
+<span class="hljs-comment"># Search and blame</span>
+$ git grep <span class="hljs-string">"search term"</span>
+$ git blame file.txt
+$ git <span class="hljs-built_in">log</span> --grep=<span class="hljs-string">"search"</span>
+$ git <span class="hljs-built_in">log</span> -p file.txt
+
+<span class="hljs-comment"># Repository information</span>
+$ git reflog
+$ git fsck
+$ git gc
+</div></code></pre>
+<h3 id="useful-aliases" tabindex="-1">Useful Aliases</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Set up helpful aliases</span>
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+$ git config --global alias.unstage <span class="hljs-string">'reset HEAD --'</span>
+$ git config --global alias.last <span class="hljs-string">'log -1 HEAD'</span>
+$ git config --global alias.visual <span class="hljs-string">'!gitk'</span>
+$ git config --global alias.lg <span class="hljs-string">"log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset' --abbrev-commit"</span>
+</div></code></pre>
+<h3 id="git-flow-commands" tabindex="-1">Git Flow Commands</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Git Flow initialization</span>
+$ git flow init
+
+<span class="hljs-comment"># Feature branches</span>
+$ git flow feature start feature-name
+$ git flow feature finish feature-name
+$ git flow feature publish feature-name
+
+<span class="hljs-comment"># Release branches</span>
+$ git flow release start 1.0.0
+$ git flow release finish 1.0.0
+
+<span class="hljs-comment"># Hotfix branches</span>
+$ git flow hotfix start hotfix-name
+$ git flow hotfix finish hotfix-name
+</div></code></pre>
+<h3 id="emergency-commands" tabindex="-1">Emergency Commands</h3>
+<blockquote>
+<p><strong>⚠️ Use with Caution:</strong> These commands can cause data loss if used incorrectly.</p>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-comment"># Force operations (dangerous!)</span>
+$ git push --force
+$ git push --force-with-lease
+$ git reset --hard HEAD
+$ git clean -fd
+
+<span class="hljs-comment"># Recovery operations</span>
+$ git reflog
+$ git fsck --lost-found
+$ git filter-branch --force --index-filter <span class="hljs-string">'git rm --cached --ignore-unmatch filename'</span> HEAD
+</div></code></pre>
+<h3 id="git-configuration-reference" tabindex="-1">Git Configuration Reference</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># User configuration</span>
+$ git config --global user.name <span class="hljs-string">"Your Name"</span>
+$ git config --global user.email <span class="hljs-string">"email@example.com"</span>
+$ git config --global core.editor <span class="hljs-string">"code --wait"</span>
+
+<span class="hljs-comment"># Behavior configuration</span>
+$ git config --global init.defaultBranch main
+$ git config --global push.default simple
+$ git config --global pull.rebase <span class="hljs-literal">false</span>
+$ git config --global merge.tool vimdiff
+
+<span class="hljs-comment"># Security configuration</span>
+$ git config --global user.signingkey GPG-KEY-ID
+$ git config --global commit.gpgsign <span class="hljs-literal">true</span>
+</div></code></pre>
+<h3 id="git-mastery-journey" tabindex="-1">Git Mastery Journey</h3>
+<pre>Lexical error on line 8. Unrecognized text.
+...G --&gt; H[Git Master! 🏆]      style A f
+-----------------------^</pre><h3 id="%F0%9F%8E%93-congratulations!" tabindex="-1">🎓 Congratulations!</h3>
+<p>You've completed the comprehensive Git guide! You now have the knowledge and tools to:</p>
+<ul>
+<li>✅ Understand version control fundamentals</li>
+<li>✅ Master the Git workflow</li>
+<li>✅ Work effectively with branches</li>
+<li>✅ Collaborate seamlessly with teams</li>
+<li>✅ Handle complex scenarios with confidence</li>
+<li>✅ Troubleshoot and recover from problems</li>
+</ul>
+<h3 id="next-steps-in-your-git-journey" tabindex="-1">Next Steps in Your Git Journey</h3>
+<ul>
+<li><strong>Practice regularly:</strong> Use Git daily to build muscle memory</li>
+<li><strong>Contribute to open source:</strong> Practice with real projects</li>
+<li><strong>Learn advanced topics:</strong> Git hooks, submodules, LFS</li>
+<li><strong>Teach others:</strong> Sharing knowledge reinforces learning</li>
+<li><strong>Stay updated:</strong> Git continues to evolve with new features</li>
+</ul>
+<h3 id="%F0%9F%92%A1-final-pro-tips" tabindex="-1">💡 Final Pro Tips</h3>
+<ul>
+<li>Commit early and often</li>
+<li>Write meaningful commit messages</li>
+<li>Use branches for all new work</li>
+<li>Keep your repository clean and organized</li>
+<li>Don't be afraid to experiment - Git has your back!</li>
+</ul>
+<hr>
+<h2 id="%F0%9F%8E%89-happy-git-ing!" tabindex="-1">🎉 Happy Git-ing!</h2>
+<p>You're now equipped with the knowledge to version control like a pro. Go forth and build amazing things!</p>
+<hr>
+<p><em>This guide covers everything from Git basics to advanced techniques. Keep practicing, and remember that mastery comes with experience. The Git community is always ready to help when you need it!</em></p>
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    </body></html>

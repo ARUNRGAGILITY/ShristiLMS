@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Learning Management System</title>
+    <link rel="stylesheet" href="web/css/lms_md.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-content">
+        <div class="navbar-left">
+          <div class="course-info">
+            <h1 class="course-title" id="courseTitle">ShristiLMS</h1>
+          </div>
+        </div>
+        <div class="navbar-right">
+          <button
+            class="scroll-top-btn"
+            onclick="scrollToTop()"
+            title="Scroll to Top"
+          >
+            <span>⬆️</span>
+          </button>
+          <button
+            class="home-btn"
+            onclick="goBackToCourseSelection()"
+            title="Back to Course Selection"
+          >
+            <span>Home</span>
+          </button>
+        </div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </nav>
+
+    <!-- Course Selection Screen -->
+    <div class="course-selector" id="courseSelector">
+      <div class="course-selector-content">
+        <h1>📚 Choose Your Learning Path</h1>
+        <p>Select a course to begin your interactive learning journey</p>
+
+        <div class="course-grid">
+          <a href="content/git_content.html">
+            <div
+              class="course-card"
+              data-course="git"
+              onclick="loadCourse('test_git')"
+            >
+              <div class="course-icon">🔄</div>
+              <h3>Git Version Control</h3>
+              <p>Master Git workflows, branching, and collaboration</p>
+              <div class="course-meta">
+                <span class="difficulty">Beginner</span>
+                <span class="duration">2 hours</span>
+              </div>
+            </div>
+          </a>
+
+          <div
+            class="course-card"
+            data-course="python"
+            onclick="loadCourse('python')"
+          >
+            <div class="course-icon">🐍</div>
+            <h3>Python Programming</h3>
+            <p>Learn Python from basics to advanced concepts</p>
+            <div class="course-meta">
+              <span class="difficulty">Beginner</span>
+              <span class="duration">4 hours</span>
+            </div>
+          </div>
+
+          <div class="course-card coming-soon">
+            <div class="course-icon">🐳</div>
+            <h3>Docker Containers</h3>
+            <p>Containerization and deployment strategies</p>
+            <div class="course-meta">
+              <span class="difficulty">Coming Soon</span>
+            </div>
+          </div>
+
+          <div class="course-card coming-soon">
+            <div class="course-icon">☁️</div>
+            <h3>AWS Cloud</h3>
+            <p>Cloud computing and AWS services</p>
+            <div class="course-meta">
+              <span class="difficulty">Coming Soon</span>
+            </div>
+          </div>
+
+          <div class="course-card coming-soon">
+            <div class="course-icon">⚛️</div>
+            <h3>React Development</h3>
+            <p>Modern React development and best practices</p>
+            <div class="course-meta">
+              <span class="difficulty">Coming Soon</span>
+            </div>
+          </div>
+
+          <div class="course-card coming-soon">
+            <div class="course-icon">🚀</div>
+            <h3>More Coming Soon</h3>
+            <p>Node.js, Kubernetes, DevOps and more...</p>
+            <div class="course-meta">
+              <span class="difficulty">Coming Soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-container">
+      <!-- Left Sidebar - Table of Contents -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h3>📋 Course Contents</h3>
+        </div>
+        <div class="toc-container" id="tocContainer">
+          <!-- TOC will be populated by JavaScript -->
+        </div>
+      </aside>
+
+      <!-- Right Main Content -->
+      <main class="main-content" id="mainContent">
+        <!-- Course content will be loaded here -->
+      </main>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="loading-indicator" id="loadingIndicator">
+      <div class="loading-spinner"></div>
+      <p>Loading course content...</p>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script src="web/js/lms_md.js"></script>
+
+    <script>
+      // Initialize the learning system
+      window.learningSystem = new LearningSystem();
+
+      // Global function to load courses (called from course cards)
+      function loadCourse(courseId) {
+        window.learningSystem.loadCourse(courseId);
+      }
+
+      // Global function for scroll to top
+      function scrollToTop() {
+        if (
+          window.learningSystem &&
+          window.learningSystem.chapters.length > 0
+        ) {
+          window.learningSystem.navigateToChapter(
+            window.learningSystem.chapters[0]
+          );
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      // Global function to go back to course selection
+      function goBackToCourseSelection() {
+        if (!window.learningSystem) return;
+
+        window.learningSystem.showCourseSelection();
+        window.learningSystem.currentCourse = null;
+        window.learningSystem.currentChapter = null;
+        window.learningSystem.chapters = [];
+        window.learningSystem.courseData = null;
+
+        // Reset navigation
+        document.getElementById("courseIcon").textContent = "📚";
+        document.getElementById("courseTitle").textContent =
+          "Interactive Learning System";
+        document.getElementById("currentTopic").textContent = "Select a Course";
+        document.getElementById("progressBar").style.width = "0%";
+      }
+    </script>
+  </body>
+</html>
