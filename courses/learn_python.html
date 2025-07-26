@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Python Programming - Shristi LMS</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+
+  </head>
+  <body data-theme="dark">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+      <div class="bg-shape shape-1"></div>
+      <div class="bg-shape shape-2"></div>
+      <div class="bg-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <a href="/" class="logo">
+            <span class="logo-icon">⚡</span>
+            <span class="shristi-font">Shristi</span>
+          </a>
+          <ul class="nav-links">
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li><a href="#features" class="nav-link">Features</a></li>
+            <li><a href="#courses" class="nav-link">Courses</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+          <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+              <i class="fas fa-moon" id="themeIcon"></i>
+            </button>            
+            <a href="#courses" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Course Header -->
+    <section class="course-header">
+      <div class="container">
+        <div class="course-header-content">
+          <div class="course-header-text">
+            <h1>
+              Master <span class="gradient-text">Python</span><br />
+              Programming from Scratch
+            </h1>
+            <p>
+              Learn Python fundamentals, build real-world projects, and become
+              job-ready fast.
+            </p>
+            <div class="course-actions">
+              <div>
+              <a href="/lessons/python_course.html" class="btn btn-primary">
+                <i class="fas fa-play"></i>
+                  Start Learning
+              </a>
+              </div>
+            </div>
+            <div class="course-meta">
+              <div class="meta-item">
+                <i class="fas fa-signal"></i>
+                <span>Beginner Friendly</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span>3 Hours</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-certificate"></i>
+                <span>Certificate Included</span>
+              </div>
+            </div>
+            </div>
+          <div class="course-visual">
+            <div class="git-window">
+              <div class="window-header">
+                <div class="window-controls">
+                  <span class="control red"></span>
+                  <span class="control yellow"></span>
+                  <span class="control green"></span>
+                </div>
+                <div class="window-title">terminal - python</div>
+              </div>
+              <div class="terminal-content">
+                <div class="terminal-line">
+                  <span class="prompt">$</span>
+                  <span class="command">python</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="output">Python 3.11.0 (default, Mar 2025)</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="prompt">&gt;&gt;&gt;</span>
+                  <span class="command">print("Hello, world!")</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="output">Hello, world!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Certificate Section -->
+    <section class="section certificate-section">
+      <div class="container">
+        <div class="certificate-box">
+          <div class="certificate-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="certificate-content">
+            <h3>Certificate Included</h3>
+            <p>Complete all lessons and quizzes to earn your Python programming certificate</p>
+            <div class="certificate-features">
+              <div class="certificate-feature">
+                <i class="fas fa-check"></i>
+                <span>Official Shristi Certificate</span>
+              </div>
+              <div class="certificate-feature">
+                <i class="fas fa-check"></i>
+                <span>Share on LinkedIn</span>
+              </div>
+              <div class="certificate-feature">
+                <i class="fas fa-check"></i>
+                <span>Download as PDF</span>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Modern Git Course Page Functionality
+      class GitCoursePage {
+        constructor() {
+          this.init();
+          this.initTheme();
+        }
+
+        init() {
+          this.setupNavigation();
+          this.setupAnimations();
+          this.setupLessonInteractions();
+        }
+
+        initTheme() {
+          // Get saved theme or default to dark
+          const savedTheme = localStorage.getItem("theme") || "dark";
+          this.setTheme(savedTheme);
+
+          // Theme toggle functionality
+          const themeToggle = document.getElementById("themeToggle");
+          themeToggle?.addEventListener("click", () => {
+            const currentTheme = document.body.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            this.setTheme(newTheme);
+          });
+        }
+
+        setTheme(theme) {
+          document.body.setAttribute("data-theme", theme);
+          localStorage.setItem("theme", theme);
+
+          const themeIcon = document.getElementById("themeIcon");
+          if (themeIcon) {
+            themeIcon.className =
+              theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+          }
+        }
+
+        setupNavigation() {
+          // Smooth scrolling for navigation links
+          document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", (e) => {
+              e.preventDefault();
+              const target = document.querySelector(
+                anchor.getAttribute("href")
+              );
+              if (target) {
+                target.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }
+            });
+          });
+
+          // Navigation scroll effect
+          window.addEventListener("scroll", () => {
+            const navbar = document.getElementById("navbar");
+            if (window.scrollY > 100) {
+              navbar?.classList.add("scrolled");
+            } else {
+              navbar?.classList.remove("scrolled");
+            }
+          });
+        }
+
+        setupAnimations() {
+          // Intersection Observer for animations
+          const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+              }
+            });
+          }, observerOptions);
+
+          // Observe all animated elements
+          document
+            .querySelectorAll(".lesson-card, .progress-card")
+            .forEach((el, index) => {
+              el.style.opacity = "0";
+              el.style.transform = "translateY(30px)";
+              el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+              observer.observe(el);
+            });
+        }
+
+        setupLessonInteractions() {
+          // Lesson button handlers
+          document.querySelectorAll(".btn-lesson").forEach((button) => {
+            // Skip if the button is already a link (has href attribute)
+            if (button.hasAttribute('href')) {
+              return;
+            }
+            
+            // Skip if the button is disabled
+            if (button.disabled) {
+              return;
+            }
+            
+            button.addEventListener("click", (e) => {
+              const lessonCard = e.target.closest(".lesson-card");
+              const lessonTitle = lessonCard.querySelector("h3").textContent;
+              this.startLesson(lessonTitle);
+            });
+          });
+
+          // Enhanced hover effects for lesson cards
+          document.querySelectorAll(".lesson-card").forEach((card) => {
+            card.addEventListener("mouseenter", () => {
+              card.style.transition = "transform 0.1s ease";
+              card.style.transform = "translateY(-10px) scale(1.02)";
+            });
+
+            card.addEventListener("mouseleave", () => {
+              card.style.transition = "transform 0.15s ease";
+              card.style.transform = "translateY(0) scale(1)";
+            });
+          });
+        }
+
+        startLesson(lessonTitle) {
+          // Navigate to coming soon page for interactive lessons
+          window.location.href = "../coming-soon.html";
+        }
+      }
+
+      // Initialize the Python course page
+      document.addEventListener("DOMContentLoaded", () => {
+        new GitCoursePage();
+      });
+    </script>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <!-- Main Footer Content -->
+        <div class="footer-main">
+          <!-- Brand Section -->
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span class="logo-icon">⚡</span>
+              <span class="shristi-font">Shristi</span>
+            </div>
+            <p class="footer-description">
+              Empowering developers worldwide with free, high-quality programming education. 
+              Learn to code with interactive courses and real-world projects.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="../index.html#hero">Home</a></li>
+              <li><a href="../index.html#features">Features</a></li>
+              <li><a href="../index.html#courses">Courses</a></li>
+              <li><a href="../index.html#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Courses -->
+          <div class="footer-section">
+            <h3>Courses</h3>
+            <ul class="footer-links">
+              <li><a href="learn_python.html">Python Programming</a></li>
+              <li><a href="#">JavaScript</a></li>
+              <li><a href="#">Git & GitHub</a></li>
+              <!-- <li><a href="#">Web Development</a></li> -->
+              <!-- <li><a href="#">Data Science</a></li> -->
+            </ul>
+          </div>
+
+          
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <div class="footer-copyright">
+              <p>&copy; 2024 Shristi. All rights reserved.</p>
+            </div>
+            <div class="footer-legal">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

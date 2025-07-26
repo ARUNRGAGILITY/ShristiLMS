@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Quiz - Shristi LMS</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles/main.css" />
+  </head>
+  <body data-theme="dark">
+
+    <!-- Animated Background -->
+    <div class="animated-bg">
+      <div class="bg-shape shape-1"></div>
+      <div class="bg-shape shape-2"></div>
+      <div class="bg-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <a href="/" class="logo">
+            <span class="logo-icon">⚡</span>
+            <span class="shristi-font">Shristi</span>
+          </a>
+          <ul class="nav-links">
+            <li><a href="/" class="nav-link">Home</a></li>
+            <li><a href="#features" class="nav-link">Features</a></li>
+            <li><a href="#courses" class="nav-link">Courses</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+          <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+              <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+            <a href="#courses" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+      <div class="container">
+        <div class="quiz-content-section" id="quiz-container">
+          <!-- Quiz Header -->
+          <div class="quiz-header">
+            <div class="quiz-meta">
+              <div class="meta-item">
+                <i class="fas fa-question-circle"></i>
+                <span id="question-counter">Question 1 of 10</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="quiz-progress">
+            <div class="progress-fill" id="progress-fill" style="width: 10%"></div>
+          </div>
+
+          <!-- Question Container -->
+          <div class="question-container" id="question-container">
+            <h2 class="lesson-title question-text" id="question-text"></h2>
+            
+            <div class="options-container" id="options-container"></div>
+            
+
+            
+            <div class="quiz-actions">
+              <button class="btn btn-primary" id="next-btn" style="display: none;">
+                Next Question
+              </button>
+            </div>
+          </div>
+
+          <!-- Final Screen -->
+          <div class="final-screen" id="final-screen" style="display: none;">
+            <h2 class="final-title">🎉 Great Job!</h2>
+            <div class="final-score" id="final-score"></div>
+            <p class="final-message">You've completed the Python quiz! Keep learning and practicing!</p>
+            <div class="quiz-actions">
+              <button class="btn btn-primary" onclick="window.location.href='../../index.html'">
+                Back to Home
+              </button>
+              <button class="btn btn-secondary" onclick="restartQuiz()">
+                Try Again
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <!-- Main Footer Content -->
+        <div class="footer-main">
+          <!-- Brand Section -->
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <span class="logo-icon">⚡</span>
+              <span class="shristi-font">Shristi</span>
+            </div>
+            <p class="footer-description">
+              Empowering developers worldwide with free, high-quality programming education. 
+              Learn to code with interactive courses and real-world projects.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#courses">Courses</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Courses -->
+          <div class="footer-section">
+            <h3>Courses</h3>
+            <ul class="footer-links">
+              <li><a href="courses/learn_python.html">Python Programming</a></li>
+              <li><a href="#">JavaScript</a></li>
+              <li><a href="#">Git & GitHub</a></li>
+              <!-- <li><a href="#">Web Development</a></li> -->
+              <!-- <li><a href="#">Data Science</a></li> -->
+            </ul>
+          </div>
+
+
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <div class="footer-copyright">
+              <p>&copy; 2024 Shristi. All rights reserved.</p>
+            </div>
+            <div class="footer-legal">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Theme Toggle Functionality
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const body = document.body;
+
+      const currentTheme = localStorage.getItem('theme') || 'dark';
+      body.setAttribute('data-theme', currentTheme);
+      updateThemeIcon(currentTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      function updateThemeIcon(theme) {
+        if (theme === 'dark') {
+          themeIcon.className = 'fas fa-moon';
+        } else {
+          themeIcon.className = 'fas fa-sun';
+        }
+      }
+
+      // Navbar Scroll Effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      // Quiz Questions
+      const questions = [
+        {
+          question: "What is the correct way to print 'Hello, World!' in Python?",
+          options: [
+            "echo 'Hello, World!'",
+            "print('Hello, World!')",
+            "printf('Hello, World!')",
+            "console.log('Hello, World!')"
+          ],
+          answer: 1,
+          hint: "Python uses the print() function for output",
+          explanation: "The print() function is Python's built-in way to output text to the console."
+        },
+        {
+          question: "Which of these is a valid variable name in Python?",
+          options: [
+            "2nd_value",
+            "value_2",
+            "value-2",
+            "value 2"
+          ],
+          answer: 1,
+          hint: "Variable names can't start with numbers or contain hyphens",
+          explanation: "Variable names must start with a letter or underscore and can contain letters, numbers, and underscores."
+        },
+        {
+          question: "What is the output of: print(3 + 4 * 2)?",
+          options: [
+            "14",
+            "11",
+            "10",
+            "Error"
+          ],
+          answer: 1,
+          hint: "Remember the order of operations (PEMDAS)",
+          explanation: "Multiplication (4 * 2 = 8) happens before addition (3 + 8 = 11)."
+        },
+        {
+          question: "How do you start a comment in Python?",
+          options: [
+            "// comment",
+            "# comment",
+            "<!-- comment -->",
+            "/* comment */"
+          ],
+          answer: 1,
+          hint: "Python uses a single character for comments",
+          explanation: "The # symbol is used for single-line comments in Python."
+        },
+        {
+          question: "Which data type is used to store text?",
+          options: [
+            "int",
+            "str",
+            "bool",
+            "float"
+          ],
+          answer: 1,
+          hint: "Think of 'string' as a sequence of characters",
+          explanation: "The str (string) data type is used to store text in Python."
+        },
+        {
+          question: "What is the value of x after: x = 5; x += 3?",
+          options: [
+            "8",
+            "2",
+            "15",
+            "53"
+          ],
+          answer: 0,
+          hint: "+= is a compound assignment operator",
+          explanation: "x += 3 is equivalent to x = x + 3, so 5 + 3 = 8."
+        },
+        {
+          question: "Which function gets user input as a string?",
+          options: [
+            "input()",
+            "scan()",
+            "read()",
+            "get()"
+          ],
+          answer: 0,
+          hint: "This function waits for user input",
+          explanation: "The input() function reads user input and returns it as a string."
+        },
+        {
+          question: "How do you create a list in Python?",
+          options: [
+            "list = (1, 2, 3)",
+            "list = [1, 2, 3]",
+            "list = {1, 2, 3}",
+            "list = <1, 2, 3>"
+          ],
+          answer: 1,
+          hint: "Lists use square brackets",
+          explanation: "Lists are created using square brackets [ ] in Python."
+        },
+        {
+          question: "What is the output of: print(len('Python'))?",
+          options: [
+            "5",
+            "6",
+            "7",
+            "Error"
+          ],
+          answer: 1,
+          hint: "Count the characters in 'Python'",
+          explanation: "The len() function returns the length of a string. 'Python' has 6 characters."
+        },
+        {
+          question: "Which operator is used for exponentiation (power)?",
+          options: [
+            "^",
+            "**",
+            "%",
+            "//"
+          ],
+          answer: 1,
+          hint: "It's two symbols together",
+          explanation: "The ** operator is used for exponentiation in Python (e.g., 2**3 = 8)."
+        }
+      ];
+
+      let currentQuestion = 0;
+      let userAnswers = [];
+      let answered = false;
+
+      const questionCounter = document.getElementById('question-counter');
+      const progressFill = document.getElementById('progress-fill');
+      const questionText = document.getElementById('question-text');
+      const optionsContainer = document.getElementById('options-container');
+      const nextBtn = document.getElementById('next-btn');
+      const questionContainer = document.getElementById('question-container');
+      const finalScreen = document.getElementById('final-screen');
+      const finalScore = document.getElementById('final-score');
+
+      function renderQuestion() {
+        answered = false;
+        const question = questions[currentQuestion];
+        
+        questionCounter.textContent = `Question ${currentQuestion + 1} of 10`;
+        progressFill.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+        questionText.textContent = question.question;
+        
+        optionsContainer.innerHTML = '';
+        question.options.forEach((option, index) => {
+          const button = document.createElement('button');
+          button.className = 'btn btn-secondary option-btn';
+          button.textContent = option;
+          button.addEventListener('click', () => selectOption(index));
+          optionsContainer.appendChild(button);
+        });
+        
+        nextBtn.style.display = 'none';
+      }
+
+      function selectOption(optionIndex) {
+        if (answered) return;
+        
+        answered = true;
+        userAnswers[currentQuestion] = optionIndex;
+        
+        const buttons = document.querySelectorAll('.option-btn');
+        const question = questions[currentQuestion];
+        
+        buttons.forEach((button, index) => {
+          button.disabled = true;
+          button.style.pointerEvents = 'none';
+          if (index === question.answer) {
+            button.classList.add('correct');
+          } else if (index === optionIndex && optionIndex !== question.answer) {
+            button.classList.add('incorrect');
+          }
+        });
+        
+        nextBtn.style.display = 'inline-block';
+      }
+
+      nextBtn.addEventListener('click', () => {
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+          renderQuestion();
+        } else {
+          showFinalScreen();
+        }
+      });
+
+      function showFinalScreen() {
+        const correctAnswers = userAnswers.filter((answer, index) => 
+          answer === questions[index].answer
+        ).length;
+        
+        const score = Math.round((correctAnswers / questions.length) * 100);
+        
+        questionContainer.style.display = 'none';
+        finalScreen.style.display = 'block';
+        finalScore.textContent = `Score: ${correctAnswers}/${questions.length} (${score}%)`;
+      }
+
+      function restartQuiz() {
+        currentQuestion = 0;
+        userAnswers = [];
+        answered = false;
+        questionContainer.style.display = 'block';
+        finalScreen.style.display = 'none';
+        renderQuestion();
+      }
+
+      // Initialize quiz
+      renderQuestion();
+    </script>
+  </body>
+</html>
