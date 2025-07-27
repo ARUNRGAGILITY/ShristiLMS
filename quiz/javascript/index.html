@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Python Quiz - Shristi LMS</title>
+    <title>JavaScript Quiz - Shristi LMS</title>
     <link rel="icon" type="image/png" href="../../assets/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -91,7 +91,7 @@
           <div class="final-screen" id="final-screen" style="display: none;">
             <h2 class="final-title">🎉 Great Job!</h2>
             <div class="final-score" id="final-score"></div>
-            <p class="final-message">You've completed the Python quiz! Keep learning and practicing!</p>
+            <p class="final-message">You've completed the JavaScript quiz! Keep learning and practicing!</p>
             <div class="quiz-actions">
               <button class="btn btn-primary" onclick="window.location.href='../../index.html'">
                 Back to Home
@@ -204,31 +204,31 @@
       // Quiz Questions
       const questions = [
         {
-          question: "What is the correct way to print 'Hello, World!' in Python?",
+          question: "What is the correct way to print 'Hello, World!' in JavaScript?",
           options: [
             "echo 'Hello, World!'",
             "print('Hello, World!')",
-            "printf('Hello, World!')",
-            "console.log('Hello, World!')"
+            "console.log('Hello, World!')",
+            "printf('Hello, World!')"
           ],
-          answer: 1,
-          hint: "Python uses the print() function for output",
-          explanation: "The print() function is Python's built-in way to output text to the console."
+          answer: 2,
+          hint: "JavaScript uses console.log() for output",
+          explanation: "The console.log() function is JavaScript's way to output text to the console."
         },
         {
-          question: "Which of these is a valid variable name in Python?",
+          question: "Which of these is a valid variable declaration in JavaScript?",
           options: [
-            "2nd_value",
-            "value_2",
-            "value-2",
-            "value 2"
+            "var name = 'John'",
+            "let name = 'John'",
+            "const name = 'John'",
+            "All of the above"
           ],
-          answer: 1,
-          hint: "Variable names can't start with numbers or contain hyphens",
-          explanation: "Variable names must start with a letter or underscore and can contain letters, numbers, and underscores."
+          answer: 3,
+          hint: "JavaScript has multiple ways to declare variables",
+          explanation: "JavaScript supports var, let, and const for variable declarations, each with different scoping rules."
         },
         {
-          question: "What is the output of: print(3 + 4 * 2)?",
+          question: "What is the output of: console.log(3 + 4 * 2)?",
           options: [
             "14",
             "11",
@@ -240,31 +240,31 @@
           explanation: "Multiplication (4 * 2 = 8) happens before addition (3 + 8 = 11)."
         },
         {
-          question: "How do you start a comment in Python?",
+          question: "How do you start a comment in JavaScript?",
           options: [
             "// comment",
             "# comment",
             "<!-- comment -->",
             "/* comment */"
           ],
-          answer: 1,
-          hint: "Python uses a single character for comments",
-          explanation: "The # symbol is used for single-line comments in Python."
+          answer: 0,
+          hint: "JavaScript uses // for single-line comments",
+          explanation: "The // symbol is used for single-line comments in JavaScript."
         },
         {
-          question: "Which data type is used to store text?",
+          question: "Which data type is used to store text in JavaScript?",
           options: [
-            "int",
-            "str",
-            "bool",
-            "float"
+            "number",
+            "string",
+            "boolean",
+            "array"
           ],
           answer: 1,
           hint: "Think of 'string' as a sequence of characters",
-          explanation: "The str (string) data type is used to store text in Python."
+          explanation: "The string data type is used to store text in JavaScript."
         },
         {
-          question: "What is the value of x after: x = 5; x += 3?",
+          question: "What is the value of x after: let x = 5; x += 3?",
           options: [
             "8",
             "2",
@@ -276,52 +276,52 @@
           explanation: "x += 3 is equivalent to x = x + 3, so 5 + 3 = 8."
         },
         {
-          question: "Which function gets user input as a string?",
+          question: "How do you create an array in JavaScript?",
           options: [
-            "input()",
-            "scan()",
-            "read()",
-            "get()"
-          ],
-          answer: 0,
-          hint: "This function waits for user input",
-          explanation: "The input() function reads user input and returns it as a string."
-        },
-        {
-          question: "How do you create a list in Python?",
-          options: [
-            "list = (1, 2, 3)",
-            "list = [1, 2, 3]",
-            "list = {1, 2, 3}",
-            "list = <1, 2, 3>"
+            "array = (1, 2, 3)",
+            "array = [1, 2, 3]",
+            "array = {1, 2, 3}",
+            "array = <1, 2, 3>"
           ],
           answer: 1,
-          hint: "Lists use square brackets",
-          explanation: "Lists are created using square brackets [ ] in Python."
+          hint: "Arrays use square brackets",
+          explanation: "Arrays are created using square brackets [ ] in JavaScript."
         },
         {
-          question: "What is the output of: print(len('Python'))?",
+          question: "What is the output of: console.log('JavaScript'.length)?",
           options: [
-            "5",
-            "6",
-            "7",
+            "9",
+            "10",
+            "11",
             "Error"
           ],
           answer: 1,
-          hint: "Count the characters in 'Python'",
-          explanation: "The len() function returns the length of a string. 'Python' has 6 characters."
+          hint: "Count the characters in 'JavaScript'",
+          explanation: "The length property returns the length of a string. 'JavaScript' has 10 characters."
         },
         {
-          question: "Which operator is used for exponentiation (power)?",
+          question: "Which operator is used for strict equality comparison?",
           options: [
-            "^",
-            "**",
-            "%",
-            "//"
+            "==",
+            "===",
+            "=",
+            "!="
           ],
           answer: 1,
-          hint: "It's two symbols together",
-          explanation: "The ** operator is used for exponentiation in Python (e.g., 2**3 = 8)."
+          hint: "It's three equal signs",
+          explanation: "The === operator is used for strict equality comparison in JavaScript."
+        },
+        {
+          question: "How do you declare a function in JavaScript?",
+          options: [
+            "function myFunction() {}",
+            "let myFunction = function() {}",
+            "const myFunction = () => {}",
+            "All of the above"
+          ],
+          answer: 3,
+          hint: "JavaScript has multiple ways to declare functions",
+          explanation: "JavaScript supports function declarations, function expressions, and arrow functions."
         }
       ];
 
@@ -414,4 +414,4 @@
       renderQuestion();
     </script>
   </body>
-</html>
+</html> 

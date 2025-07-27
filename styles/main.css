@@ -192,15 +192,15 @@ body {
 }
 
 .logo-icon {
-  font-size: 2rem;
-  background: var(--primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
 }
 
 .footer-section .logo-icon {
-  font-size: 1.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -2272,7 +2272,7 @@ body {
 }
 
 .lesson-title {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 1rem;
   background: var(--primary);
