@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Course - Shristi LMS</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;1,400&family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:wght@400;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body data-theme="dark">
+  <div class="responsive-overlay" id="responsive-overlay">
+    <div class="responsive-message">
+      <h2>Desktop Only Zone</h2>
+      <p>The JavaScript Quiz needs some elbow room. Hop on a laptop or desktop (769px+) for the best ride.</p>
+      <a href="../index.html" class="btn btn-primary">Back to Home</a>
+    </div>
+  </div>
+
+  <div class="animated-bg">
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="nav-content">
+        <a href="/" class="logo">
+          <span class="logo-icon">⚡</span>
+          <span class="shristi-font">Shristi</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#courses" class="nav-link">Courses</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <i class="fas fa-moon" id="themeIcon"></i>
+          </button>
+          <a href="#courses" class="btn btn-primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="lesson-container">
+    <aside class="lesson-sidebar">
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">JavaScript Course</h2>
+        <p class="sidebar-subtitle">Complete JavaScript Programming</p>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <h3 class="nav-section-title">Module 1: JS Basics</h3>
+          <a href="#" class="nav-item active" data-content="overview"><span>Course Overview</span></a>
+          <a href="#" class="nav-item" data-content="setup-environment"><span>1.1 Setup Environment</span></a>
+          <a href="#" class="nav-item" data-content="console-variables"><span>1.2 Console & Variables</span></a>
+          <a href="#" class="nav-item" data-content="if-else"><span>1.3 If-Else</span></a>
+          <a href="#" class="nav-item" data-content="loops"><span>1.4 Loops</span></a>
+        </div>
+        <div class="nav-section">
+          <h3 class="nav-section-title">Module 2: Functions & Arrays</h3>
+          <a href="#" class="nav-item" data-content="functions"><span>2.1 Functions</span></a>
+          <a href="#" class="nav-item" data-content="arrays"><span>2.2 Arrays</span></a>
+          <a href="#" class="nav-item" data-content="objects"><span>2.3 Objects</span></a>
+          <a href="#" class="nav-item" data-content="dom"><span>2.4 DOM Basics</span></a>
+        </div>
+        <div class="nav-section">
+          <h3 class="nav-section-title">Module 3: Projects & Advanced</h3>
+          <a href="#" class="nav-item" data-content="tip-calculator"><span>3.1 Tip Calculator Project</span></a>
+          <a href="#" class="nav-item" data-content="events"><span>3.2 Event Listeners</span></a>
+          <a href="#" class="nav-item" data-content="fetch-api"><span>3.3 Fetch API</span></a>
+          <a href="#" class="nav-item" data-content="error-handling"><span>3.4 Error Handling</span></a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="lesson-content">
+      <div class="lesson-header">
+        <h1 class="lesson-title">JavaScript Programming</h1>
+        <div class="lesson-meta">
+          <div class="meta-item">
+            <i class="fas fa-clock"></i>
+            <span>3 Hours</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-signal"></i>
+            <span>Beginner</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-certificate"></i>
+            <span>Certificate</span>
+          </div>
+        </div>
+        <div class="lesson-progress">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+      <div id="content-area">
+        <!-- Course Overview Content -->
+        <div class="content-section active" id="overview">
+          <h2>Course Overview</h2>
+          <p>Welcome to the comprehensive JavaScript programming course! This course is designed to take you from a complete beginner to a confident JavaScript developer.</p>
+          
+          <div class="highlight-box">
+            <h4>What You'll Learn</h4>
+            <ul>
+              <li>JavaScript fundamentals and syntax</li>
+              <li>Control structures and data types</li>
+              <li>Functions and modules</li>
+              <li>DOM manipulation</li>
+              <li>Event handling and user interaction</li>
+              <li>Real-world project building</li>
+            </ul>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Why JavaScript?</h4>
+            <ul>
+              <li>Most popular programming language in the world</li>
+              <li>Essential for web development</li>
+              <li>Runs on browsers, servers, and mobile devices</li>
+              <li>Huge ecosystem of libraries and frameworks</li>
+              <li>High demand in the job market</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Setup Environment Content -->
+        <div class="content-section" id="setup-environment">
+          <h2>1.1 Setup Environment</h2>
+          <p>Before we start coding, let's set up your JavaScript development environment. This is the foundation for all your JavaScript programming work.</p>
+          
+          <div class="highlight-box">
+            <h4>What You'll Learn</h4>
+            <ul>
+              <li>Setting up a code editor</li>
+              <li>Using browser developer tools</li>
+              <li>Running your first JavaScript program</li>
+              <li>Understanding the JavaScript runtime</li>
+            </ul>
+          </div>
+
+          <h3>Step 1: Choose a Code Editor</h3>
+          <p>We recommend using VS Code, Sublime Text, or WebStorm for the best development experience.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">// Download VS Code from: https://code.visualstudio.com/</span><br>
+              <span class="code-comment">// Install JavaScript extensions for better development</span>
+            </div>
+          </div>
+
+          <h3>Step 2: Browser Developer Tools</h3>
+          <p>Every modern browser has built-in developer tools that include a JavaScript console.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">// Open Developer Tools:</span><br>
+              <span class="code-comment">// Chrome/Edge: F12 or Ctrl+Shift+I</span><br>
+              <span class="code-comment">// Firefox: F12 or Ctrl+Shift+I</span><br>
+              <span class="code-comment">// Safari: Cmd+Option+I</span>
+            </div>
+          </div>
+
+          <h3>Step 3: Create Your First HTML File</h3>
+          <p>JavaScript runs in the browser, so we need an HTML file to include our JavaScript code.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">&lt;!DOCTYPE html&gt;</span><br>
+              <span class="code-comment">&lt;html&gt;</span><br>
+              <span class="code-comment">&lt;head&gt;</span><br>
+              <span class="code-comment">&nbsp;&nbsp;&lt;title&gt;My First JavaScript&lt;/title&gt;</span><br>
+              <span class="code-comment">&lt;/head&gt;</span><br>
+              <span class="code-comment">&lt;body&gt;</span><br>
+              <span class="code-comment">&nbsp;&nbsp;&lt;script&gt;</span><br>
+              <span class="code-comment">&nbsp;&nbsp;&nbsp;&nbsp;console.log("Hello, JavaScript!");</span><br>
+              <span class="code-comment">&nbsp;&nbsp;&lt;/script&gt;</span><br>
+              <span class="code-comment">&lt;/body&gt;</span><br>
+              <span class="code-comment">&lt;/html&gt;</span>
+            </div>
+          </div>
+
+          <div class="exercise-box">
+            <h4>Practice Exercise</h4>
+            <p>Create the HTML file above and open it in your browser. Then open the developer tools and check the console to see your first JavaScript output!</p>
+          </div>
+        </div>
+
+        <!-- Console & Variables Content -->
+        <div class="content-section" id="console-variables">
+          <h2>1.2 Console & Variables</h2>
+          <p>Learn the basics of outputting text and storing data in variables - the building blocks of JavaScript programming.</p>
+          
+          <h3>Console Output</h3>
+          <p>The <code>console.log()</code> function is used to output text to the browser's console.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">console.log("Hello, World!");</span><br>
+              <span class="code-output">Hello, World!</span><br><br>
+              <span class="code-command">console.log("Welcome to JavaScript!");</span><br>
+              <span class="code-output">Welcome to JavaScript!</span>
+            </div>
+          </div>
+
+          <h3>Variables</h3>
+          <p>Variables are containers for storing data values. JavaScript has three ways to declare variables.</p>
+          
+          <div class="code-block">    
+            <div class="code-content">
+              <span class="code-comment">// Using let (recommended for variables that change)</span><br>
+              <span class="code-command">let name = "Alice";</span><br>
+              <span class="code-command">let age = 25;</span><br>
+              <span class="code-command">let height = 1.75;</span><br><br>
+              <span class="code-comment">// Using const (for values that don't change)</span><br>
+              <span class="code-command">const PI = 3.14159;</span><br>
+              <span class="code-command">const MAX_SIZE = 100;</span><br><br>
+              <span class="code-comment">// Using var (older way, avoid in modern code)</span><br>
+              <span class="code-command">var oldWay = "not recommended";</span>
+            </div>
+          </div>
+
+          <h3>Data Types</h3>
+          <p>JavaScript has several basic data types:</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">// String</span><br>
+              <span class="code-command">let message = "Hello";</span><br>
+              <span class="code-command">let singleQuote = 'Single quotes work too';</span><br><br>
+              <span class="code-comment">// Number</span><br>
+              <span class="code-command">let integer = 42;</span><br>
+              <span class="code-command">let decimal = 3.14;</span><br><br>
+              <span class="code-comment">// Boolean</span><br>
+              <span class="code-command">let isTrue = true;</span><br>
+              <span class="code-command">let isFalse = false;</span><br><br>
+              <span class="code-comment">// Undefined</span><br>
+              <span class="code-command">let notDefined;</span><br><br>
+              <span class="code-comment">// Null</span><br>
+              <span class="code-command">let empty = null;</span>
+            </div>
+          </div>
+
+          <h3>Template Literals</h3>
+          <p>Template literals (using backticks) allow you to embed expressions in strings.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let name = "Alice";</span><br>
+              <span class="code-command">let age = 25;</span><br><br>
+              <span class="code-command">console.log(`Hello, my name is ${name} and I am ${age} years old.`);</span><br>
+              <span class="code-output">Hello, my name is Alice and I am 25 years old.</span>
+            </div>
+          </div>
+
+          <div class="exercise-box">
+            <h4>Practice Exercise</h4>
+            <p>Create variables for your name, age, and favorite color. Then use template literals to print a sentence about yourself.</p>
+          </div>
+        </div>
+
+        <!-- If-Else Content -->
+        <div class="content-section" id="if-else">
+          <h2>1.3 If-Else</h2>
+          <p>Learn how to make decisions in your code using conditional statements. This is one of the most fundamental concepts in programming.</p>
+          
+          <div class="highlight-box">
+            <h4>What You'll Learn</h4>
+            <ul>
+              <li>Basic if statements and conditions</li>
+              <li>If-else and if-else if-else structures</li>
+              <li>Comparison operators and logical operators</li>
+              <li>Ternary operators</li>
+              <li>Switch statements</li>
+            </ul>
+          </div>
+
+          <h3>Understanding Conditions</h3>
+          <p>Conditions are expressions that evaluate to either <code>true</code> or <code>false</code>. JavaScript uses these boolean values to decide which code to execute.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">// Simple conditions</span><br>
+              <span class="code-command">let x = 5;</span><br>
+              <span class="code-command">let y = 10;</span><br><br>
+              <span class="code-command">console.log(x > y);</span><br>
+              <span class="code-output">false</span><br><br>
+              <span class="code-command">console.log(x < y);</span><br>
+              <span class="code-output">true</span><br><br>
+              <span class="code-command">console.log(x === 5);</span><br>
+              <span class="code-output">true</span>
+            </div>
+          </div>
+
+          <h3>Comparison Operators</h3>
+          <p>JavaScript provides several operators to compare values:</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">// Comparison operators</span><br>
+              <span class="code-command">let a = 10;</span><br>
+              <span class="code-command">let b = 5;</span><br><br>
+              <span class="code-command">console.log(`a > b: ${a > b}`);</span><br>
+              <span class="code-output">a > b: true</span><br><br>
+              <span class="code-command">console.log(`a < b: ${a < b}`);</span><br>
+              <span class="code-output">a < b: false</span><br><br>
+              <span class="code-command">console.log(`a === b: ${a === b}`);</span><br>
+              <span class="code-output">a === b: false</span><br><br>
+              <span class="code-command">console.log(`a !== b: ${a !== b}`);</span><br>
+              <span class="code-output">a !== b: true</span><br><br>
+              <span class="code-command">console.log(`a >= b: ${a >= b}`);</span><br>
+              <span class="code-output">a >= b: true</span><br><br>
+              <span class="code-command">console.log(`a <= b: ${a <= b}`);</span><br>
+              <span class="code-output">a <= b: false</span>
+            </div>
+          </div>
+
+          <h3>Basic If Statement</h3>
+          <p>The <code>if</code> statement allows you to execute code only when a condition is true.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let age = 18;</span><br><br>
+              <span class="code-command">if (age >= 18) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log("You are an adult");</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log("You can vote!");</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-output">You are an adult</span><br>
+              <span class="code-output">You can vote!</span>
+            </div>
+          </div>
+
+          <h3>If-Else Statement</h3>
+          <p>Use <code>else</code> to provide an alternative when the condition is false.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let temperature = 25;</span><br><br>
+              <span class="code-command">if (temperature > 30) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log("It's hot!");</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log("Stay hydrated!");</span><br>
+              <span class="code-command">} else {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log("It's comfortable");</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log("Enjoy the weather!");</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-output">It's comfortable</span><br>
+              <span class="code-output">Enjoy the weather!</span>
+            </div>
+          </div>
+
+          <h3>If-Else If-Else Statement</h3>
+          <p>Use <code>else if</code> to check multiple conditions in sequence.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let score = 85;</span><br><br>
+              <span class="code-command">if (score >= 90) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;grade = "A";</span><br>
+              <span class="code-command">} else if (score >= 80) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;grade = "B";</span><br>
+              <span class="code-command">} else if (score >= 70) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;grade = "C";</span><br>
+              <span class="code-command">} else if (score >= 60) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;grade = "D";</span><br>
+              <span class="code-command">} else {</span><br>
+              <span class="code-command">&nbsp;&nbsp;grade = "F";</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-command">console.log(`Your grade is: ${grade}`);</span><br><br>
+              <span class="code-output">Your grade is: B</span>
+            </div>
+          </div>
+
+          <h3>Logical Operators</h3>
+          <p>Combine multiple conditions using logical operators: <code>&&</code> (AND), <code>||</code> (OR), and <code>!</code> (NOT).</p>
+          
+          <div class="code-block">                    
+            <div class="code-content">
+              <span class="code-command">let age = 25;</span><br>
+              <span class="code-command">let hasLicense = true;</span><br>
+              <span class="code-command">let hasCar = true;</span><br><br>
+              <span class="code-comment">// Using AND operator</span><br>
+              <span class="code-command">if (age >= 18 && hasLicense) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log("You can drive!");</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-comment">// Using OR operator</span><br>
+              <span class="code-command">if (hasCar || hasLicense) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log("You have transportation options");</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-comment">// Using NOT operator</span><br>
+              <span class="code-command">if (!hasLicense) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log("You need to get a license first");</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-output">You can drive!</span><br>
+              <span class="code-output">You have transportation options</span>
+            </div>
+          </div>
+
+          <h3>Ternary Operator</h3>
+          <p>The ternary operator provides a shorthand way to write simple if-else statements.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let age = 20;</span><br>
+              <span class="code-command">let status = age >= 18 ? "adult" : "minor";</span><br>
+              <span class="code-command">console.log(`You are an ${status}`);</span><br><br>
+              <span class="code-output">You are an adult</span>
+            </div>
+          </div>
+
+          <h3>Switch Statement</h3>
+          <p>Use <code>switch</code> statements when you have many conditions to check against a single value.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let day = "Monday";</span><br><br>
+              <span class="code-command">switch (day) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;case "Monday":</span><br>
+              <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;console.log("Start of the work week");</span><br>
+              <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;break;</span><br>
+              <span class="code-command">&nbsp;&nbsp;case "Friday":</span><br>
+              <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;console.log("TGIF!");</span><br>
+              <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;break;</span><br>
+              <span class="code-command">&nbsp;&nbsp;case "Saturday":</span><br>
+              <span class="code-command">&nbsp;&nbsp;case "Sunday":</span><br>
+              <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;console.log("Weekend!");</span><br>
+              <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;break;</span><br>
+              <span class="code-command">&nbsp;&nbsp;default:</span><br>
+              <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;console.log("Regular work day");</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-output">Start of the work week</span>
+            </div>
+          </div>
+
+          <div class="exercise-box">
+            <h4>Practice Exercise 1: Grade Calculator</h4>
+            <p>Create a program that takes a student's score (0-100) and assigns a letter grade using if-else statements.</p>
+          </div>
+
+          <div class="exercise-box">
+            <h4>Practice Exercise 2: Password Validator</h4>
+            <p>Write a program that checks if a password meets these criteria:</p>
+            <ul>
+              <li>At least 8 characters long</li>
+              <li>Contains at least one uppercase letter</li>
+              <li>Contains at least one lowercase letter</li>
+              <li>Contains at least one number</li>
+            </ul>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Key Takeaways</h4>
+            <ul>
+              <li>Use <code>if</code> for single conditions</li>
+              <li>Use <code>if-else</code> for binary decisions</li>
+              <li>Use <code>if-else if-else</code> for multiple conditions</li>
+              <li>Combine conditions with <code>&&</code>, <code>||</code>, <code>!</code></li>
+              <li>Use ternary operator for simple conditions</li>
+              <li>Use switch statements for multiple value comparisons</li>
+              <li>Always use <code>===</code> for strict equality</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Loops Content -->
+        <div class="content-section" id="loops">
+          <h2>1.4 Loops</h2>
+          <p>Learn how to repeat code using loops - a fundamental concept in programming that allows you to execute code multiple times.</p>
+          
+          <div class="highlight-box">
+            <h4>What You'll Learn</h4>
+            <ul>
+              <li>For loops and while loops</li>
+              <li>Loop control with break and continue</li>
+              <li>Iterating over arrays and objects</li>
+              <li>Nested loops</li>
+              <li>Common loop patterns</li>
+            </ul>
+          </div>
+
+          <h3>For Loop</h3>
+          <p>The <code>for</code> loop is used to repeat code a specific number of times.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">// Basic for loop</span><br>
+              <span class="code-command">for (let i = 0; i < 5; i++) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log(`Count: ${i}`);</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-output">Count: 0</span><br>
+              <span class="code-output">Count: 1</span><br>
+              <span class="code-output">Count: 2</span><br>
+              <span class="code-output">Count: 3</span><br>
+              <span class="code-output">Count: 4</span>
+            </div>
+          </div>
+
+          <h3>For...of Loop</h3>
+          <p>The <code>for...of</code> loop is used to iterate over iterable objects like arrays.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">// Loop through an array</span><br>
+              <span class="code-command">let fruits = ["apple", "banana", "orange"];</span><br>
+              <span class="code-command">for (let fruit of fruits) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log(fruit);</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-output">apple</span><br>
+              <span class="code-output">banana</span><br>
+              <span class="code-output">orange</span>
+            </div>
+          </div>
+
+          <h3>For...in Loop</h3>
+          <p>The <code>for...in</code> loop is used to iterate over object properties.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">// Loop through object properties</span><br>
+              <span class="code-command">let person = {</span><br>
+              <span class="code-command">&nbsp;&nbsp;name: "Alice",</span><br>
+              <span class="code-command">&nbsp;&nbsp;age: 25,</span><br>
+              <span class="code-command">&nbsp;&nbsp;city: "New York"</span><br>
+              <span class="code-command">};</span><br><br>
+              <span class="code-command">for (let key in person) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log(`${key}: ${person[key]}`);</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-output">name: Alice</span><br>
+              <span class="code-output">age: 25</span><br>
+              <span class="code-output">city: New York</span>
+            </div>
+          </div>
+
+          <h3>While Loop</h3>
+          <p>The <code>while</code> loop repeats code as long as a condition is true.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let count = 1;</span><br>
+              <span class="code-command">while (count <= 5) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log(`Count: ${count}`);</span><br>
+              <span class="code-command">&nbsp;&nbsp;count++;</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-output">Count: 1</span><br>
+              <span class="code-output">Count: 2</span><br>
+              <span class="code-output">Count: 3</span><br>
+              <span class="code-output">Count: 4</span><br>
+              <span class="code-output">Count: 5</span>
+            </div>
+          </div>
+
+          <h3>Do...While Loop</h3>
+          <p>The <code>do...while</code> loop executes the code block at least once, then checks the condition.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let number = 1;</span><br>
+              <span class="code-command">do {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log(`Number: ${number}`);</span><br>
+              <span class="code-command">&nbsp;&nbsp;number++;</span><br>
+              <span class="code-command">} while (number <= 3);</span><br><br>
+              <span class="code-output">Number: 1</span><br>
+              <span class="code-output">Number: 2</span><br>
+              <span class="code-output">Number: 3</span>
+            </div>
+          </div>
+
+          <h3>Break and Continue</h3>
+          <p>Use <code>break</code> to exit a loop early and <code>continue</code> to skip the current iteration.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">// Using break</span><br>
+              <span class="code-command">for (let i = 1; i <= 10; i++) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;if (i === 6) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;break;</span><br>
+              <span class="code-command">&nbsp;&nbsp;}</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log(i);</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-output">1</span><br>
+              <span class="code-output">2</span><br>
+              <span class="code-output">3</span><br>
+              <span class="code-output">4</span><br>
+              <span class="code-output">5</span>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">// Using continue</span><br>
+              <span class="code-command">for (let i = 1; i <= 5; i++) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;if (i === 3) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;continue;</span><br>
+              <span class="code-command">&nbsp;&nbsp;}</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log(i);</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-output">1</span><br>
+              <span class="code-output">2</span><br>
+              <span class="code-output">4</span><br>
+              <span class="code-output">5</span>
+            </div>
+          </div>
+
+          <h3>Nested Loops</h3>
+          <p>You can nest loops inside other loops to create complex patterns.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-comment">// Creating a multiplication table</span><br>
+              <span class="code-command">for (let i = 1; i <= 3; i++) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;for (let j = 1; j <= 3; j++) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;console.log(`${i} x ${j} = ${i * j}`);</span><br>
+              <span class="code-command">&nbsp;&nbsp;}</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-output">1 x 1 = 1</span><br>
+              <span class="code-output">1 x 2 = 2</span><br>
+              <span class="code-output">1 x 3 = 3</span><br>
+              <span class="code-output">2 x 1 = 2</span><br>
+              <span class="code-output">2 x 2 = 4</span><br>
+              <span class="code-output">2 x 3 = 6</span><br>
+              <span class="code-output">3 x 1 = 3</span><br>
+              <span class="code-output">3 x 2 = 6</span><br>
+              <span class="code-output">3 x 3 = 9</span>
+            </div>
+          </div>
+
+          <div class="exercise-box">
+            <h4>Practice Exercise 1: Number Pattern</h4>
+            <p>Create a program that prints the first 10 even numbers using a for loop.</p>
+          </div>
+
+          <div class="exercise-box">
+            <h4>Practice Exercise 2: Sum Calculator</h4>
+            <p>Write a program that calculates the sum of numbers from 1 to 100 using a loop.</p>
+          </div>
+
+          <div class="exercise-box">
+            <h4>Practice Exercise 3: Array Processing</h4>
+            <p>Create an array of numbers and use a loop to find the largest and smallest numbers in the array.</p>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Key Takeaways</h4>
+            <ul>
+              <li>Use <code>for</code> loops when you know the number of iterations</li>
+              <li>Use <code>while</code> loops when you don't know the number of iterations</li>
+              <li>Use <code>for...of</code> to iterate over arrays</li>
+              <li>Use <code>for...in</code> to iterate over object properties</li>
+              <li>Use <code>break</code> to exit loops early</li>
+              <li>Use <code>continue</code> to skip iterations</li>
+              <li>Be careful with infinite loops!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon">⚡</span>
+            <span class="shristi-font">Shristi</span>
+          </div>
+          <p class="footer-description">
+            Empowering developers worldwide with free, high-quality programming education.
+            Learn to code with interactive courses and real-world projects.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Courses</h3>
+          <ul class="footer-links">
+            <li><a href="courses/learn_python.html">Python Programming</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">Git & GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <div class="footer-copyright">
+            <p>&copy; 2024 Shristi. All rights reserved.</p>
+          </div>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    // Check for saved theme preference or default to dark
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', currentTheme);
+    updateThemeIcon(currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+
+    function updateThemeIcon(theme) {
+      if (theme === 'dark') {
+        themeIcon.className = 'fas fa-moon';
+      } else {
+        themeIcon.className = 'fas fa-sun';
+      }
+    }
+
+    // Navbar Scroll Effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Sidebar Navigation with Content Switching
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Remove active class from all items
+        document.querySelectorAll('.nav-item').forEach(navItem => {
+          navItem.classList.remove('active');
+        });
+        
+        // Add active class to clicked item
+        item.classList.add('active');
+        
+        // Get the content ID from data attribute
+        const contentId = item.getAttribute('data-content');
+        
+        if (contentId) {
+          // Hide all content sections
+          document.querySelectorAll('.content-section').forEach(section => {
+            section.classList.remove('active');
+          });
+          
+          // Show the selected content section
+          const targetSection = document.getElementById(contentId);
+          if (targetSection) {
+            targetSection.classList.add('active');
+            
+            // Update lesson title and meta based on content
+            updateLessonHeader(contentId);
+            
+            // Scroll to top of content area
+            document.querySelector('.lesson-content').scrollTop = 0;
+          }
+        }
+      });
+    });
+
+    // Function to update lesson header based on content
+    function updateLessonHeader(contentId) {
+      const lessonTitle = document.querySelector('.lesson-title');
+      const lessonMeta = document.querySelector('.lesson-meta');
+      
+      // Define content mappings
+      const contentMappings = {
+        'overview': {
+          title: 'JavaScript Programming',
+          duration: '3 Hours',
+          level: 'Beginner',
+          certificate: 'Certificate'
+        },
+        'setup-environment': {
+          title: 'Setup Environment',
+          duration: '15 Minutes',
+          level: 'Beginner',
+          certificate: 'Certificate'
+        },
+        'console-variables': {
+          title: 'Console & Variables',
+          duration: '30 Minutes',
+          level: 'Beginner',
+          certificate: 'Certificate'
+        },
+        'if-else': {
+          title: 'If-Else Statements',
+          duration: '45 Minutes',
+          level: 'Beginner',
+          certificate: 'Certificate'
+        },
+        'loops': {
+          title: 'Loops',
+          duration: '40 Minutes',
+          level: 'Beginner',
+          certificate: 'Certificate'
+        },
+        'functions': {
+          title: 'Functions',
+          duration: '50 Minutes',
+          level: 'Intermediate',
+          certificate: 'Certificate'
+        },
+        'arrays': {
+          title: 'Arrays',
+          duration: '45 Minutes',
+          level: 'Intermediate',
+          certificate: 'Certificate'
+        },
+        'objects': {
+          title: 'Objects',
+          duration: '55 Minutes',
+          level: 'Intermediate',
+          certificate: 'Certificate'
+        },
+        'dom': {
+          title: 'DOM Basics',
+          duration: '60 Minutes',
+          level: 'Intermediate',
+          certificate: 'Certificate'
+        },
+        'tip-calculator': {
+          title: 'Tip Calculator Project',
+          duration: '75 Minutes',
+          level: 'Intermediate',
+          certificate: 'Certificate'
+        },
+        'events': {
+          title: 'Event Listeners',
+          duration: '50 Minutes',
+          level: 'Intermediate',
+          certificate: 'Certificate'
+        },
+        'fetch-api': {
+          title: 'Fetch API',
+          duration: '65 Minutes',
+          level: 'Advanced',
+          certificate: 'Certificate'
+        },
+        'error-handling': {
+          title: 'Error Handling',
+          duration: '40 Minutes',
+          level: 'Advanced',
+          certificate: 'Certificate'
+        }
+      };
+      
+      // Update lesson title and meta if mapping exists
+      if (contentMappings[contentId]) {
+        const mapping = contentMappings[contentId];
+        lessonTitle.textContent = mapping.title;
+        
+        // Update meta items
+        const metaItems = lessonMeta.querySelectorAll('.meta-item span');
+        if (metaItems.length >= 3) {
+          metaItems[0].textContent = mapping.duration;
+          metaItems[1].textContent = mapping.level;
+          metaItems[2].textContent = mapping.certificate;
+        }
+      }
+    }
+
+    // Initialize the first lesson
+    updateLessonHeader('overview');
+
+
+
+    // Responsive overlay for mobile devices
+    function checkResponsive() {
+      const overlay = document.getElementById('responsive-overlay');
+      if (window.innerWidth < 769) {
+        overlay.style.display = 'flex';
+      } else {
+        overlay.style.display = 'none';
+      }
+    }
+
+    // Check on load and resize
+    window.addEventListener('load', checkResponsive);
+    window.addEventListener('resize', checkResponsive);
+  </script>
+</body>
+</html>
