@@ -661,6 +661,279 @@
             </ul>
           </div>
         </div>
+
+        <!-- Functions Content -->
+        <div class="content-section" id="functions">
+          <h2>2.1 Functions</h2>
+          <p>Functions are reusable blocks of code that perform a specific task. They help organize code and prevent repetition.</p>
+          
+          <div class="highlight-box">
+            <h4>What You'll Learn</h4>
+            <ul>
+              <li>Function declarations and expressions</li>
+              <li>Parameters and return values</li>
+              <li>Arrow functions</li>
+              <li>Scope and closures</li>
+              <li>Common function patterns</li>
+            </ul>
+          </div>
+
+          <h3>Function Declaration</h3>
+          <p>Use the <code>function</code> keyword to declare a function.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">function greet() {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log("Hello, World!");</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-command">greet();</span><br><br>
+              <span class="code-output">Hello, World!</span>
+            </div>
+          </div>
+
+          <h3>Parameters and Arguments</h3>
+          <p>Functions can accept parameters to work with dynamic data.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">function add(a, b) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;console.log(a + b);</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-command">add(5, 3);</span><br><br>
+              <span class="code-output">8</span>
+            </div>
+          </div>
+
+          <h3>Return Values</h3>
+          <p>Use <code>return</code> to output a value from a function.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">function multiply(x, y) {</span><br>
+              <span class="code-command">&nbsp;&nbsp;return x * y;</span><br>
+              <span class="code-command">}</span><br><br>
+              <span class="code-command">let result = multiply(4, 5);</span><br>
+              <span class="code-command">console.log(result);</span><br><br>
+              <span class="code-output">20</span>
+            </div>
+          </div>
+
+          <h3>Arrow Functions</h3>
+          <p>Arrow functions provide a concise syntax for writing functions.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">const square = (num) =&gt; num * num;</span><br><br>
+              <span class="code-command">console.log(square(7));</span><br><br>
+              <span class="code-output">49</span>
+            </div>
+          </div>
+
+          <div class="exercise-box">
+            <h4>Practice Exercise</h4>
+            <p>Create a function that calculates the area of a circle given its radius (use Math.PI).</p>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Key Takeaways</h4>
+            <ul>
+              <li>Functions help reuse code</li>
+              <li>Use parameters for input</li>
+              <li>Return values for output</li>
+              <li>Arrow functions are concise</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Arrays Content -->
+        <div class="content-section" id="arrays">
+          <h2>2.2 Arrays</h2>
+          <p>Arrays are ordered collections of values that allow you to store multiple items in a single variable.</p>
+          
+          <div class="highlight-box">
+            <h4>What You'll Learn</h4>
+            <ul>
+              <li>Creating and accessing arrays</li>
+              <li>Array methods</li>
+              <li>Iterating through arrays</li>
+              <li>Multi-dimensional arrays</li>
+            </ul>
+          </div>
+
+          <h3>Creating Arrays</h3>
+          <p>Use square brackets to create an array.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let fruits = ["apple", "banana", "orange"];</span><br>
+              <span class="code-command">console.log(fruits[0]);</span><br><br>
+              <span class="code-output">apple</span>
+            </div>
+          </div>
+
+          <h3>Array Methods</h3>
+          <p>Common methods include push, pop, shift, unshift.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let numbers = [1, 2, 3];</span><br>
+              <span class="code-command">numbers.push(4);</span><br>
+              <span class="code-command">console.log(numbers);</span><br><br>
+              <span class="code-output">[1, 2, 3, 4]</span>
+            </div>
+          </div>
+
+          <h3>Higher-Order Methods</h3>
+          <p>Use map, filter, reduce for array transformations.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let nums = [1, 2, 3, 4];</span><br>
+              <span class="code-command">let doubled = nums.map(n =&gt; n * 2);</span><br>
+              <span class="code-command">console.log(doubled);</span><br><br>
+              <span class="code-output">[2, 4, 6, 8]</span>
+            </div>
+          </div>
+
+          <div class="exercise-box">
+            <h4>Practice Exercise</h4>
+            <p>Create an array of numbers and use filter to get only even numbers.</p>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Key Takeaways</h4>
+            <ul>
+              <li>Arrays are zero-indexed</li>
+              <li>Use methods to manipulate</li>
+              <li>Higher-order functions are powerful</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Objects Content -->
+        <div class="content-section" id="objects">
+          <h2>2.3 Objects</h2>
+          <p>Objects are collections of key-value pairs that represent real-world entities.</p>
+          
+          <div class="highlight-box">
+            <h4>What You'll Learn</h4>
+            <ul>
+              <li>Creating objects</li>
+              <li>Accessing properties</li>
+              <li>Methods in objects</li>
+              <li>Object destructuring</li>
+            </ul>
+          </div>
+
+          <h3>Creating Objects</h3>
+          <p>Use curly braces to create objects.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let person = { name: "Alice", age: 25 };</span><br>
+              <span class="code-command">console.log(person.name);</span><br><br>
+              <span class="code-output">Alice</span>
+            </div>
+          </div>
+
+          <h3>Methods</h3>
+          <p>Functions inside objects are called methods.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let calculator = {</span><br>
+              <span class="code-command">&nbsp;&nbsp;add: function(a, b) { return a + b; }</span><br>
+              <span class="code-command">};</span><br>
+              <span class="code-command">console.log(calculator.add(2, 3));</span><br><br>
+              <span class="code-output">5</span>
+            </div>
+          </div>
+
+          <h3>Destructuring</h3>
+          <p>Extract values from objects easily.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let { name, age } = person;</span><br>
+              <span class="code-command">console.log(name, age);</span><br><br>
+              <span class="code-output">Alice 25</span>
+            </div>
+          </div>
+
+          <div class="exercise-box">
+            <h4>Practice Exercise</h4>
+            <p>Create an object representing a book with properties and a method to get summary.</p>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Key Takeaways</h4>
+            <ul>
+              <li>Objects store related data</li>
+              <li>Access via dot or bracket notation</li>
+              <li>Methods add behavior</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- DOM Basics Content -->
+        <div class="content-section" id="dom">
+          <h2>2.4 DOM Basics</h2>
+          <p>The Document Object Model (DOM) represents the structure of HTML documents.</p>
+          
+          <div class="highlight-box">
+            <h4>What You'll Learn</h4>
+            <ul>
+              <li>Selecting elements</li>
+              <li>Manipulating content</li>
+              <li>Changing attributes</li>
+              <li>Creating elements</li>
+            </ul>
+          </div>
+
+          <h3>Selecting Elements</h3>
+          <p>Use methods like getElementById, querySelector.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let element = document.getElementById("myId");</span><br>
+              <span class="code-command">let elements = document.querySelectorAll(".class");</span>
+            </div>
+          </div>
+
+          <h3>Manipulating Content</h3>
+          <p>Change text and HTML content.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">element.textContent = "New text";</span><br>
+              <span class="code-command">element.innerHTML = "&lt;p&gt;New HTML&lt;/p&gt;";</span>
+            </div>
+          </div>
+
+          <h3>Creating Elements</h3>
+          <p>Dynamically add elements to the page.</p>
+          
+          <div class="code-block">
+            <div class="code-content">
+              <span class="code-command">let newDiv = document.createElement("div");</span><br>
+              <span class="code-command">document.body.appendChild(newDiv);</span>
+            </div>
+          </div>
+
+          <div class="exercise-box">
+            <h4>Practice Exercise</h4>
+            <p>Create a button that changes the text of a paragraph when clicked.</p>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Key Takeaways</h4>
+            <ul>
+              <li>DOM allows JavaScript to interact with HTML</li>
+              <li>Select elements to manipulate</li>
+              <li>Change content and attributes dynamically</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </main>
   </div>
