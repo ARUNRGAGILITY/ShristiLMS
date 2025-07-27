@@ -20,6 +20,57 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../../styles/main.css" />
+    <style>
+      .name-input-section {
+        display: none;
+        text-align: center;
+        margin: 2rem 0;
+        padding: 2rem;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+      }
+      
+      .name-input-section h3 {
+        margin-bottom: 1.5rem;
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      
+      .name-input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      .name-input {
+        padding: 1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        background: var(--bg-color);
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+      
+      .name-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+      
+      .name-input::placeholder {
+        color: var(--text-secondary);
+      }
+      
+      @media (max-width: 768px) {
+        .name-input-container {
+          flex-direction: column;
+        }
+      }
+    </style>
   </head>
   <body data-theme="dark">
 
@@ -93,6 +144,15 @@
             <div class="final-score" id="final-score"></div>
             <p class="final-message" id="final-message">You've completed the JavaScript quiz! Keep learning and practicing!</p>
             
+            <!-- Name Input Section -->
+            <div class="name-input-section" id="name-input-section">
+              <h3>Enter Your Name for Certificate</h3>
+              <div class="name-input-container">
+                <input type="text" id="certificate-name-input" placeholder="Enter your full name" class="name-input">
+                <button class="btn btn-primary" onclick="generateCertificate()">Generate Certificate</button>
+              </div>
+            </div>
+            
             <!-- Certificate Section -->
             <div class="certificate-section" id="certificate-section">
               <div class="certificate-container">
@@ -103,7 +163,7 @@
                 <div class="certificate-content">
                   <h4>Certificate of Completion</h4>
                   <p class="certificate-text">This is to certify that</p>
-                  <p class="certificate-name">[Your Name]</p>
+                  <p class="certificate-name" id="certificate-name">[Your Name]</p>
                   <p class="certificate-text">has successfully completed the JavaScript Quiz with a score of</p>
                   <p class="certificate-score" id="cert-score"></p>
                   <p class="certificate-date" id="cert-date"></p>
@@ -425,22 +485,22 @@
         if (score >= 90) {
           finalTitle.innerHTML = "🏆 JavaScript Master!";
           finalMessage.textContent = "Outstanding! You have exceptional JavaScript knowledge. You're ready for advanced concepts and real-world projects!";
-          // Show certificate section
-          document.getElementById('certificate-section').style.display = 'flex';
+          // Show name input section for certificate
+          document.getElementById('name-input-section').style.display = 'block';
           document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
           document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
         } else if (score >= 80) {
           finalTitle.innerHTML = "🎯 Excellent Work!";
           finalMessage.textContent = "Great job! You have a solid understanding of JavaScript. Keep practicing to master the advanced concepts!";
-          // Show certificate section
-          document.getElementById('certificate-section').style.display = 'block';
+          // Show name input section for certificate
+          document.getElementById('name-input-section').style.display = 'block';
           document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
           document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
         } else if (score >= 70) {
           finalTitle.innerHTML = "👍 Good Progress!";
           finalMessage.textContent = "Well done! You have a good foundation in JavaScript. Focus on the areas you missed to improve further!";
-          // Show certificate section
-          document.getElementById('certificate-section').style.display = 'block';
+          // Show name input section for certificate
+          document.getElementById('name-input-section').style.display = 'block';
           document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
           document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
         } else if (score >= 60) {
@@ -459,6 +519,23 @@
         finalScore.textContent = `Score: ${correctAnswers}/${questions.length} (${score}%)`;
       }
 
+      function generateCertificate() {
+        const nameInput = document.getElementById('certificate-name-input');
+        const name = nameInput.value.trim();
+        
+        if (!name) {
+          alert('Please enter your name to generate the certificate.');
+          return;
+        }
+        
+        // Update certificate with user's name
+        document.getElementById('certificate-name').textContent = name;
+        
+        // Hide name input section and show certificate
+        document.getElementById('name-input-section').style.display = 'none';
+        document.getElementById('certificate-section').style.display = 'flex';
+      }
+
       function restartQuiz() {
         currentQuestion = 0;
         userAnswers = [];
@@ -466,6 +543,7 @@
         questionContainer.style.display = 'block';
         finalScreen.style.display = 'none';
         document.getElementById('certificate-section').style.display = 'none';
+        document.getElementById('name-input-section').style.display = 'none';
         renderQuestion();
       }
 
