@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Python Quiz - Shristi LMS</title>
+    <title>Python Quiz - Shristi</title>
     <link rel="icon" type="image/png" href="../../assets/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,6 +20,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../../styles/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js"></script>
     <style>
       .name-input-section {
         display: none;
@@ -65,8 +67,40 @@
         color: var(--text-secondary);
       }
       
+      .certificate-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+      
+      .btn-download {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .btn-download:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+      }
+      
       @media (max-width: 768px) {
         .name-input-container {
+          flex-direction: column;
+        }
+        
+        .certificate-actions {
           flex-direction: column;
         }
       }
@@ -158,7 +192,7 @@
               <div class="certificate-container">
                 <div class="certificate-header">
                   <img src="../../assets/logo.png" alt="Shristi Logo" class="certificate-logo">
-                  <h3 class="shristi-font">Shristi LMS</h3>
+                  <h3 class="shristi-font">Shristi</h3>
                 </div>
                 <div class="certificate-content">
                   <h4>Certificate of Completion</h4>
@@ -170,6 +204,13 @@
                 </div>
                 <div class="certificate-footer">
                   <p>Congratulations on your achievement!</p>
+                    <!-- Certificate Actions -->
+              <div class="certificate-actions">
+                <button class="btn-download" onclick="downloadCertificate()">
+                  <i class="fas fa-download"></i>
+                  Generate Certificate
+                </button>
+              </div>
                 </div>
               </div>
             </div>
@@ -505,12 +546,21 @@
         } else if (score >= 60) {
           finalTitle.innerHTML = "📚 Keep Learning!";
           finalMessage.textContent = "You're on the right track! Review the concepts you missed and practice more to strengthen your Python skills!";
+          // Hide certificate sections for scores below 70%
+          document.getElementById('name-input-section').style.display = 'none';
+          document.getElementById('certificate-section').style.display = 'none';
         } else if (score >= 50) {
           finalTitle.innerHTML = "💪 Don't Give Up!";
           finalMessage.textContent = "You've got the basics! Take time to review the fundamentals and practice regularly. Every expert was once a beginner!";
+          // Hide certificate sections for scores below 70%
+          document.getElementById('name-input-section').style.display = 'none';
+          document.getElementById('certificate-section').style.display = 'none';
         } else {
           finalTitle.innerHTML = "🌱 Beginner's Journey!";
           finalMessage.textContent = "Don't worry! Python takes time to master. Start with the basics, practice daily, and you'll see improvement quickly!";
+          // Hide certificate sections for scores below 70%
+          document.getElementById('name-input-section').style.display = 'none';
+          document.getElementById('certificate-section').style.display = 'none';
         }
         
         questionContainer.style.display = 'none';
@@ -533,6 +583,103 @@
         // Hide name input section and show certificate
         document.getElementById('name-input-section').style.display = 'none';
         document.getElementById('certificate-section').style.display = 'flex';
+      }
+
+      function downloadCertificate() {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('landscape', 'mm', 'a4');
+
+        const pageWidth = 297;
+        const pageHeight = 210;
+        const centerX = pageWidth / 2;
+
+        const name = document.getElementById('certificate-name').textContent;
+        const date = document.getElementById('cert-date').textContent;
+        const certificateId = generateCertificateId();
+
+        const bg = '#1a1a2e';
+        const accent = '#667eea';
+        const white = '#ffffff';
+        const muted = '#a1a1aa';
+        const gold = '#fbbf24';
+
+        // Load the image from assets/logo.png
+        const logo = new Image();
+        logo.src = '../../assets/logo.png';
+
+        logo.onload = () => {
+          // Background
+          pdf.setFillColor(bg);
+          pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+
+          // Logo (inserted after load)
+          const logoWidth = 30;
+          const logoHeight = 30;
+          const logoX = centerX - logoWidth / 2;
+          const logoY = 20;
+          pdf.addImage(logo, 'PNG', logoX, logoY, logoWidth, logoHeight);
+
+          let y = logoY + logoHeight + 10;
+
+          // Platform Name
+          pdf.setFont('helvetica', 'bold');
+          pdf.setFontSize(24);
+          pdf.setTextColor(accent);
+          pdf.text('Shristi', centerX, y, { align: 'center' });
+          y += 15;
+
+          // Certificate Title
+          pdf.setFontSize(18);
+          pdf.setTextColor(gold);
+          pdf.text('Certificate of Completion', centerX, y, { align: 'center' });
+          y += 20;
+
+          // Certify Line
+          pdf.setFont('helvetica', 'normal');
+          pdf.setFontSize(12);
+          pdf.setTextColor(muted);
+          pdf.text('This is to certify that', centerX, y, { align: 'center' });
+          y += 15;
+
+          // Recipient Name
+          pdf.setFont('helvetica', 'bold');
+          pdf.setFontSize(20);
+          pdf.setTextColor(white);
+          pdf.text(name, centerX, y, { align: 'center' });
+          y += 20;
+
+          // Course Achievement Text
+          pdf.setFont('helvetica', 'normal');
+          pdf.setFontSize(12);
+          pdf.setTextColor(muted);
+          pdf.text('has successfully completed the Python Programming Quiz', centerX, y, { align: 'center' });
+          y += 10;
+          pdf.text('with outstanding performance and dedication to learning.', centerX, y, { align: 'center' });
+          y += 12;
+
+          // Date
+          pdf.setFontSize(12);
+          pdf.text(`Date: ${date}`, centerX, y, { align: 'center' });
+          y += 20;
+
+          // Certificate ID
+          pdf.setFontSize(10);
+          pdf.setTextColor(accent);
+          pdf.text(`Certificate ID: ${certificateId}`, centerX, y, { align: 'center' });
+
+          // Save
+          pdf.save(`Python_Certificate_${name.replace(/\s+/g, '_')}.pdf`);
+        };
+
+        logo.onerror = () => {
+          alert('Failed to load logo image.');
+        };
+      }
+
+      function generateCertificateId() {
+        const timestamp = Date.now().toString(36);
+        const random = Math.random().toString(36).substr(2, 5);
+        return `PY-${timestamp}-${random}`.toUpperCase();
       }
 
       function restartQuiz() {
