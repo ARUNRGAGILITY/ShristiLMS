@@ -89,9 +89,9 @@
 
           <!-- Final Screen -->
           <div class="final-screen" id="final-screen" style="display: none;">
-            <h2 class="final-title">🎉 Great Job!</h2>
+            <h2 class="final-title" id="final-title">🎉 Great Job!</h2>
             <div class="final-score" id="final-score"></div>
-            <p class="final-message">You've completed the JavaScript quiz! Keep learning and practicing!</p>
+            <p class="final-message" id="final-message">You've completed the JavaScript quiz! Keep learning and practicing!</p>
             <div class="quiz-actions">
               <button class="btn btn-primary" onclick="window.location.href='../../index.html'">
                 Back to Home
@@ -204,124 +204,184 @@
       // Quiz Questions
       const questions = [
         {
-          question: "What is the correct way to print 'Hello, World!' in JavaScript?",
+          question: "What is the output of: typeof null?",
           options: [
-            "echo 'Hello, World!'",
-            "print('Hello, World!')",
-            "console.log('Hello, World!')",
-            "printf('Hello, World!')"
+            "null",
+            "undefined",
+            "object",
+            "number"
           ],
           answer: 2,
-          hint: "JavaScript uses console.log() for output",
-          explanation: "The console.log() function is JavaScript's way to output text to the console."
+          hint: "This is a famous JavaScript quirk",
+          explanation: "typeof null returns 'object' - this is a known bug in JavaScript that has persisted for historical reasons."
         },
         {
-          question: "Which of these is a valid variable declaration in JavaScript?",
+          question: "What does the 'this' keyword refer to in a regular function?",
           options: [
-            "var name = 'John'",
-            "let name = 'John'",
-            "const name = 'John'",
-            "All of the above"
-          ],
-          answer: 3,
-          hint: "JavaScript has multiple ways to declare variables",
-          explanation: "JavaScript supports var, let, and const for variable declarations, each with different scoping rules."
-        },
-        {
-          question: "What is the output of: console.log(3 + 4 * 2)?",
-          options: [
-            "14",
-            "11",
-            "10",
-            "Error"
+            "The function itself",
+            "The global object (window/global)",
+            "The object that called the function",
+            "The parent scope"
           ],
           answer: 1,
-          hint: "Remember the order of operations (PEMDAS)",
-          explanation: "Multiplication (4 * 2 = 8) happens before addition (3 + 8 = 11)."
+          hint: "Think about function context vs arrow functions",
+          explanation: "In regular functions, 'this' refers to the global object (window in browsers, global in Node.js) unless the function is called as a method."
         },
         {
-          question: "How do you start a comment in JavaScript?",
+          question: "What is the output of: console.log(1 + '2' + 3)?",
           options: [
-            "// comment",
-            "# comment",
-            "<!-- comment -->",
-            "/* comment */"
-          ],
-          answer: 0,
-          hint: "JavaScript uses // for single-line comments",
-          explanation: "The // symbol is used for single-line comments in JavaScript."
-        },
-        {
-          question: "Which data type is used to store text in JavaScript?",
-          options: [
-            "number",
-            "string",
-            "boolean",
-            "array"
-          ],
-          answer: 1,
-          hint: "Think of 'string' as a sequence of characters",
-          explanation: "The string data type is used to store text in JavaScript."
-        },
-        {
-          question: "What is the value of x after: let x = 5; x += 3?",
-          options: [
-            "8",
-            "2",
+            "6",
+            "123",
             "15",
-            "53"
-          ],
-          answer: 0,
-          hint: "+= is a compound assignment operator",
-          explanation: "x += 3 is equivalent to x = x + 3, so 5 + 3 = 8."
-        },
-        {
-          question: "How do you create an array in JavaScript?",
-          options: [
-            "array = (1, 2, 3)",
-            "array = [1, 2, 3]",
-            "array = {1, 2, 3}",
-            "array = <1, 2, 3>"
-          ],
-          answer: 1,
-          hint: "Arrays use square brackets",
-          explanation: "Arrays are created using square brackets [ ] in JavaScript."
-        },
-        {
-          question: "What is the output of: console.log('JavaScript'.length)?",
-          options: [
-            "9",
-            "10",
-            "11",
             "Error"
           ],
           answer: 1,
-          hint: "Count the characters in 'JavaScript'",
-          explanation: "The length property returns the length of a string. 'JavaScript' has 10 characters."
+          hint: "JavaScript type coercion happens from left to right",
+          explanation: "1 + '2' becomes '12' (string), then '12' + 3 becomes '123' (string concatenation)."
         },
         {
-          question: "Which operator is used for strict equality comparison?",
+          question: "Which method removes the last element from an array?",
           options: [
-            "==",
-            "===",
-            "=",
-            "!="
+            "shift()",
+            "unshift()",
+            "pop()",
+            "push()"
+          ],
+          answer: 2,
+          hint: "Think of 'pop' as removing from the end",
+          explanation: "pop() removes and returns the last element of an array, while shift() removes the first element."
+        },
+        {
+          question: "What is closure in JavaScript?",
+          options: [
+            "A function that has access to variables in its outer scope",
+            "A way to close browser tabs",
+            "A method to end loops",
+            "A type of variable declaration"
+          ],
+          answer: 0,
+          hint: "Think about function scope and lexical environment",
+          explanation: "A closure is a function that has access to variables in its outer (enclosing) scope even after the outer function has returned."
+        },
+        {
+          question: "What is the output of: console.log([] == false)?",
+          options: [
+            "true",
+            "false",
+            "Error",
+            "undefined"
+          ],
+          answer: 0,
+          hint: "JavaScript type coercion with arrays and booleans",
+          explanation: "[] is converted to 0, false is converted to 0, so 0 == 0 is true."
+        },
+        {
+          question: "Which method creates a new array with elements that pass a test?",
+          options: [
+            "map()",
+            "filter()",
+            "reduce()",
+            "forEach()"
           ],
           answer: 1,
-          hint: "It's three equal signs",
-          explanation: "The === operator is used for strict equality comparison in JavaScript."
+          hint: "Think about filtering out unwanted items",
+          explanation: "filter() creates a new array with all elements that pass the provided test function."
         },
         {
-          question: "How do you declare a function in JavaScript?",
+          question: "What is the difference between let and var?",
           options: [
-            "function myFunction() {}",
-            "let myFunction = function() {}",
-            "const myFunction = () => {}",
-            "All of the above"
+            "let is block-scoped, var is function-scoped",
+            "let is function-scoped, var is block-scoped",
+            "There is no difference",
+            "let is global, var is local"
           ],
-          answer: 3,
-          hint: "JavaScript has multiple ways to declare functions",
-          explanation: "JavaScript supports function declarations, function expressions, and arrow functions."
+          answer: 0,
+          hint: "Think about scope and hoisting",
+          explanation: "let is block-scoped and not hoisted, while var is function-scoped and hoisted to the top of its scope."
+        },
+        {
+          question: "What is the output of: console.log(typeof function() {})?",
+          options: [
+            "function",
+            "object",
+            "undefined",
+            "Error"
+          ],
+          answer: 0,
+          hint: "Functions are a special type in JavaScript",
+          explanation: "typeof returns 'function' for function declarations and expressions, even though functions are objects in JavaScript."
+        },
+        {
+          question: "What does the spread operator (...) do?",
+          options: [
+            "Only spreads arrays",
+            "Expands iterables into individual elements",
+            "Only works with objects",
+            "Creates copies of variables"
+          ],
+          answer: 1,
+          hint: "Think about expanding or spreading out elements",
+          explanation: "The spread operator expands iterables (arrays, strings, objects) into individual elements."
+        },
+        {
+          question: "What is the output of: console.log(0.1 + 0.2 === 0.3)?",
+          options: [
+            "true",
+            "false",
+            "Error",
+            "undefined"
+          ],
+          answer: 1,
+          hint: "Think about floating-point precision",
+          explanation: "Due to floating-point precision issues, 0.1 + 0.2 equals approximately 0.30000000000000004, not exactly 0.3."
+        },
+        {
+          question: "Which method executes a function for each array element?",
+          options: [
+            "map()",
+            "filter()",
+            "forEach()",
+            "reduce()"
+          ],
+          answer: 2,
+          hint: "Think about iterating through each element",
+          explanation: "forEach() executes a provided function once for each array element, but doesn't return a new array like map()."
+        },
+        {
+          question: "What is the output of: console.log(2 ** 3)?",
+          options: [
+            "6",
+            "8",
+            "5",
+            "Error"
+          ],
+          answer: 1,
+          hint: "** is the exponentiation operator",
+          explanation: "The ** operator is the exponentiation operator, so 2 ** 3 equals 2³ = 8."
+        },
+        {
+          question: "What is a Promise in JavaScript?",
+          options: [
+            "A guarantee that code will run",
+            "An object representing eventual completion of async operation",
+            "A type of function",
+            "A way to declare variables"
+          ],
+          answer: 1,
+          hint: "Think about asynchronous operations",
+          explanation: "A Promise is an object representing the eventual completion (or failure) of an asynchronous operation."
+        },
+        {
+          question: "What is the output of: console.log(typeof undefined)?",
+          options: [
+            "undefined",
+            "null",
+            "object",
+            "string"
+          ],
+          answer: 0,
+          hint: "undefined is its own type",
+          explanation: "typeof undefined returns 'undefined' - undefined is a primitive type in JavaScript."
         }
       ];
 
@@ -337,12 +397,14 @@
       const questionContainer = document.getElementById('question-container');
       const finalScreen = document.getElementById('final-screen');
       const finalScore = document.getElementById('final-score');
+      const finalTitle = document.getElementById('final-title');
+      const finalMessage = document.getElementById('final-message');
 
       function renderQuestion() {
         answered = false;
         const question = questions[currentQuestion];
         
-        questionCounter.textContent = `Question ${currentQuestion + 1} of 10`;
+        questionCounter.textContent = `Question ${currentQuestion + 1} of 15`;
         progressFill.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
         questionText.textContent = question.question;
         
@@ -395,6 +457,27 @@
         ).length;
         
         const score = Math.round((correctAnswers / questions.length) * 100);
+        
+        // Set title and message based on score
+        if (score >= 90) {
+          finalTitle.innerHTML = "🏆 JavaScript Master!";
+          finalMessage.textContent = "Outstanding! You have exceptional JavaScript knowledge. You're ready for advanced concepts and real-world projects!";
+        } else if (score >= 80) {
+          finalTitle.innerHTML = "🎯 Excellent Work!";
+          finalMessage.textContent = "Great job! You have a solid understanding of JavaScript. Keep practicing to master the advanced concepts!";
+        } else if (score >= 70) {
+          finalTitle.innerHTML = "👍 Good Progress!";
+          finalMessage.textContent = "Well done! You have a good foundation in JavaScript. Focus on the areas you missed to improve further!";
+        } else if (score >= 60) {
+          finalTitle.innerHTML = "📚 Keep Learning!";
+          finalMessage.textContent = "You're on the right track! Review the concepts you missed and practice more to strengthen your JavaScript skills!";
+        } else if (score >= 50) {
+          finalTitle.innerHTML = "💪 Don't Give Up!";
+          finalMessage.textContent = "You've got the basics! Take time to review the fundamentals and practice regularly. Every expert was once a beginner!";
+        } else {
+          finalTitle.innerHTML = "🌱 Beginner's Journey!";
+          finalMessage.textContent = "Don't worry! JavaScript takes time to master. Start with the basics, practice daily, and you'll see improvement quickly!";
+        }
         
         questionContainer.style.display = 'none';
         finalScreen.style.display = 'block';

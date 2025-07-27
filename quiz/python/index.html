@@ -89,9 +89,9 @@
 
           <!-- Final Screen -->
           <div class="final-screen" id="final-screen" style="display: none;">
-            <h2 class="final-title">🎉 Great Job!</h2>
+            <h2 class="final-title" id="final-title">🎉 Great Job!</h2>
             <div class="final-score" id="final-score"></div>
-            <p class="final-message">You've completed the Python quiz! Keep learning and practicing!</p>
+            <p class="final-message" id="final-message">You've completed the Python quiz! Keep learning and practicing!</p>
             <div class="quiz-actions">
               <button class="btn btn-primary" onclick="window.location.href='../../index.html'">
                 Back to Home
@@ -337,6 +337,8 @@
       const questionContainer = document.getElementById('question-container');
       const finalScreen = document.getElementById('final-screen');
       const finalScore = document.getElementById('final-score');
+      const finalTitle = document.getElementById('final-title');
+      const finalMessage = document.getElementById('final-message');
 
       function renderQuestion() {
         answered = false;
@@ -395,6 +397,27 @@
         ).length;
         
         const score = Math.round((correctAnswers / questions.length) * 100);
+        
+        // Set title and message based on score
+        if (score >= 90) {
+          finalTitle.innerHTML = "🏆 Python Master!";
+          finalMessage.textContent = "Outstanding! You have exceptional Python knowledge. You're ready for advanced concepts and real-world projects!";
+        } else if (score >= 80) {
+          finalTitle.innerHTML = "🎯 Excellent Work!";
+          finalMessage.textContent = "Great job! You have a solid understanding of Python. Keep practicing to master the advanced concepts!";
+        } else if (score >= 70) {
+          finalTitle.innerHTML = "👍 Good Progress!";
+          finalMessage.textContent = "Well done! You have a good foundation in Python. Focus on the areas you missed to improve further!";
+        } else if (score >= 60) {
+          finalTitle.innerHTML = "📚 Keep Learning!";
+          finalMessage.textContent = "You're on the right track! Review the concepts you missed and practice more to strengthen your Python skills!";
+        } else if (score >= 50) {
+          finalTitle.innerHTML = "💪 Don't Give Up!";
+          finalMessage.textContent = "You've got the basics! Take time to review the fundamentals and practice regularly. Every expert was once a beginner!";
+        } else {
+          finalTitle.innerHTML = "🌱 Beginner's Journey!";
+          finalMessage.textContent = "Don't worry! Python takes time to master. Start with the basics, practice daily, and you'll see improvement quickly!";
+        }
         
         questionContainer.style.display = 'none';
         finalScreen.style.display = 'block';
