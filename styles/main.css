@@ -481,7 +481,7 @@ body {
 
 .final-screen {
   text-align: center;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .final-title {
@@ -501,6 +501,173 @@ body {
   font-size: 0.85rem;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
+}
+
+/* Certificate Styles */
+.certificate-section {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.certificate-container {
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary);
+}
+
+.certificate-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.certificate-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.certificate-header h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.certificate-content {
+  margin-bottom: 1.5rem;
+}
+
+.certificate-content h4 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.certificate-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0.5rem 0;
+}
+
+.certificate-name {
+  font-size: 1.1rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background: var(--glass);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.certificate-score {
+  font-size: 1.2rem;
+  color: var(--success);
+  font-weight: 700;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1.5rem;
+  background: var(--glass);
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.certificate-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0.5rem 0;
+  font-style: italic;
+}
+
+.certificate-footer {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.certificate-footer p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Responsive Certificate Styles */
+@media (max-width: 768px) {
+  .certificate-container {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .certificate-header h3 {
+    font-size: 1.25rem;
+  }
+  
+  .certificate-content h4 {
+    font-size: 1.1rem;
+  }
+  
+  .certificate-name {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .certificate-score {
+    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .certificate-container {
+    padding: 1rem;
+  }
+  
+  .certificate-logo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .certificate-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .certificate-content h4 {
+    font-size: 1rem;
+  }
+  
+  .certificate-text {
+    font-size: 0.85rem;
+  }
+  
+  .certificate-name {
+    font-size: 0.95rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .certificate-score {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -565,10 +732,16 @@ body {
   }
   
   .quiz-content-section {
-    max-width: 600px;
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
   }
+}
+
+@media (min-width: 1440px) {
+  .quiz-content-section {
+    max-width: 1000px;
+}
 }
 
 /* Responsive Footer Styles */
@@ -1836,7 +2009,7 @@ body {
 /* Certificate Section */
 .certificate-section {
   background: var(--surface);
-  padding: 4rem 0;
+    display: flex;
 }
 
 .certificate-box {

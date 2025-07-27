@@ -92,6 +92,28 @@
             <h2 class="final-title" id="final-title">🎉 Great Job!</h2>
             <div class="final-score" id="final-score"></div>
             <p class="final-message" id="final-message">You've completed the JavaScript quiz! Keep learning and practicing!</p>
+            
+            <!-- Certificate Section -->
+            <div class="certificate-section" id="certificate-section">
+              <div class="certificate-container">
+                <div class="certificate-header">
+                  <img src="../../assets/logo.png" alt="Shristi Logo" class="certificate-logo">
+                  <h3 class="shristi-font">Shristi LMS</h3>
+                </div>
+                <div class="certificate-content">
+                  <h4>Certificate of Completion</h4>
+                  <p class="certificate-text">This is to certify that</p>
+                  <p class="certificate-name">[Your Name]</p>
+                  <p class="certificate-text">has successfully completed the JavaScript Quiz with a score of</p>
+                  <p class="certificate-score" id="cert-score"></p>
+                  <p class="certificate-date" id="cert-date"></p>
+                </div>
+                <div class="certificate-footer">
+                  <p>Congratulations on your achievement!</p>
+                </div>
+              </div>
+            </div>
+            
             <div class="quiz-actions">
               <button class="btn btn-primary" onclick="window.location.href='../../index.html'">
                 Back to Home
@@ -323,66 +345,7 @@
           hint: "Think about expanding or spreading out elements",
           explanation: "The spread operator expands iterables (arrays, strings, objects) into individual elements."
         },
-        {
-          question: "What is the output of: console.log(0.1 + 0.2 === 0.3)?",
-          options: [
-            "true",
-            "false",
-            "Error",
-            "undefined"
-          ],
-          answer: 1,
-          hint: "Think about floating-point precision",
-          explanation: "Due to floating-point precision issues, 0.1 + 0.2 equals approximately 0.30000000000000004, not exactly 0.3."
-        },
-        {
-          question: "Which method executes a function for each array element?",
-          options: [
-            "map()",
-            "filter()",
-            "forEach()",
-            "reduce()"
-          ],
-          answer: 2,
-          hint: "Think about iterating through each element",
-          explanation: "forEach() executes a provided function once for each array element, but doesn't return a new array like map()."
-        },
-        {
-          question: "What is the output of: console.log(2 ** 3)?",
-          options: [
-            "6",
-            "8",
-            "5",
-            "Error"
-          ],
-          answer: 1,
-          hint: "** is the exponentiation operator",
-          explanation: "The ** operator is the exponentiation operator, so 2 ** 3 equals 2³ = 8."
-        },
-        {
-          question: "What is a Promise in JavaScript?",
-          options: [
-            "A guarantee that code will run",
-            "An object representing eventual completion of async operation",
-            "A type of function",
-            "A way to declare variables"
-          ],
-          answer: 1,
-          hint: "Think about asynchronous operations",
-          explanation: "A Promise is an object representing the eventual completion (or failure) of an asynchronous operation."
-        },
-        {
-          question: "What is the output of: console.log(typeof undefined)?",
-          options: [
-            "undefined",
-            "null",
-            "object",
-            "string"
-          ],
-          answer: 0,
-          hint: "undefined is its own type",
-          explanation: "typeof undefined returns 'undefined' - undefined is a primitive type in JavaScript."
-        }
+
       ];
 
       let currentQuestion = 0;
@@ -404,7 +367,7 @@
         answered = false;
         const question = questions[currentQuestion];
         
-        questionCounter.textContent = `Question ${currentQuestion + 1} of 15`;
+        questionCounter.textContent = `Question ${currentQuestion + 1} of 10`;
         progressFill.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
         questionText.textContent = question.question;
         
@@ -462,12 +425,24 @@
         if (score >= 90) {
           finalTitle.innerHTML = "🏆 JavaScript Master!";
           finalMessage.textContent = "Outstanding! You have exceptional JavaScript knowledge. You're ready for advanced concepts and real-world projects!";
+          // Show certificate section
+          document.getElementById('certificate-section').style.display = 'flex';
+          document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
+          document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
         } else if (score >= 80) {
           finalTitle.innerHTML = "🎯 Excellent Work!";
           finalMessage.textContent = "Great job! You have a solid understanding of JavaScript. Keep practicing to master the advanced concepts!";
+          // Show certificate section
+          document.getElementById('certificate-section').style.display = 'block';
+          document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
+          document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
         } else if (score >= 70) {
           finalTitle.innerHTML = "👍 Good Progress!";
           finalMessage.textContent = "Well done! You have a good foundation in JavaScript. Focus on the areas you missed to improve further!";
+          // Show certificate section
+          document.getElementById('certificate-section').style.display = 'block';
+          document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
+          document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
         } else if (score >= 60) {
           finalTitle.innerHTML = "📚 Keep Learning!";
           finalMessage.textContent = "You're on the right track! Review the concepts you missed and practice more to strengthen your JavaScript skills!";
@@ -490,6 +465,7 @@
         answered = false;
         questionContainer.style.display = 'block';
         finalScreen.style.display = 'none';
+        document.getElementById('certificate-section').style.display = 'none';
         renderQuestion();
       }
 

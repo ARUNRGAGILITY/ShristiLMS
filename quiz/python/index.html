@@ -92,6 +92,28 @@
             <h2 class="final-title" id="final-title">🎉 Great Job!</h2>
             <div class="final-score" id="final-score"></div>
             <p class="final-message" id="final-message">You've completed the Python quiz! Keep learning and practicing!</p>
+            
+            <!-- Certificate Section -->
+            <div class="certificate-section" id="certificate-section">
+              <div class="certificate-container">
+                <div class="certificate-header">
+                  <img src="../../assets/logo.png" alt="Shristi Logo" class="certificate-logo">
+                  <h3 class="shristi-font">Shristi LMS</h3>
+                </div>
+                <div class="certificate-content">
+                  <h4>Certificate of Completion</h4>
+                  <p class="certificate-text">This is to certify that</p>
+                  <p class="certificate-name">[Your Name]</p>
+                  <p class="certificate-text">has successfully completed the Python Quiz with a score of</p>
+                  <p class="certificate-score" id="cert-score"></p>
+                  <p class="certificate-date" id="cert-date"></p>
+                </div>
+                <div class="certificate-footer">
+                  <p>Congratulations on your achievement!</p>
+                </div>
+              </div>
+            </div>
+            
             <div class="quiz-actions">
               <button class="btn btn-primary" onclick="window.location.href='../../index.html'">
                 Back to Home
@@ -402,12 +424,24 @@
         if (score >= 90) {
           finalTitle.innerHTML = "🏆 Python Master!";
           finalMessage.textContent = "Outstanding! You have exceptional Python knowledge. You're ready for advanced concepts and real-world projects!";
+          // Show certificate section
+          document.getElementById('certificate-section').style.display = 'flex';
+          document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
+          document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
         } else if (score >= 80) {
           finalTitle.innerHTML = "🎯 Excellent Work!";
           finalMessage.textContent = "Great job! You have a solid understanding of Python. Keep practicing to master the advanced concepts!";
+          // Show certificate section
+          document.getElementById('certificate-section').style.display = 'block';
+          document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
+          document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
         } else if (score >= 70) {
           finalTitle.innerHTML = "👍 Good Progress!";
           finalMessage.textContent = "Well done! You have a good foundation in Python. Focus on the areas you missed to improve further!";
+          // Show certificate section
+          document.getElementById('certificate-section').style.display = 'block';
+          document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
+          document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
         } else if (score >= 60) {
           finalTitle.innerHTML = "📚 Keep Learning!";
           finalMessage.textContent = "You're on the right track! Review the concepts you missed and practice more to strengthen your Python skills!";
@@ -430,6 +464,7 @@
         answered = false;
         questionContainer.style.display = 'block';
         finalScreen.style.display = 'none';
+        document.getElementById('certificate-section').style.display = 'none';
         renderQuestion();
       }
 
