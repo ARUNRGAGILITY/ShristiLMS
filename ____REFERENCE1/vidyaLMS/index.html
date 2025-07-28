@@ -15,10 +15,19 @@
         }
         .course-card {
             transition: all 0.3s ease;
+            height: 320px; /* Fixed height for all cards */
         }
         .course-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .course-description {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 4.5rem; /* Fixed height for descriptions */
         }
     </style>
 </head>
@@ -81,19 +90,57 @@
             </p>
         </div>
 
-        <!-- Filter Buttons -->
-        <div class="flex justify-center mb-8">
+        <!-- Controls Section -->
+        <div class="flex justify-between items-center mb-8">
+            <!-- Filter Buttons -->
             <div class="bg-white rounded-lg shadow p-2 flex space-x-2">
                 <button onclick="filterCourses('all')" class="filter-btn active px-4 py-2 rounded-md transition">All</button>
                 <button onclick="filterCourses('Foundation')" class="filter-btn px-4 py-2 rounded-md transition">Foundation</button>
                 <button onclick="filterCourses('Programming')" class="filter-btn px-4 py-2 rounded-md transition">Programming</button>
                 <button onclick="filterCourses('Specialization')" class="filter-btn px-4 py-2 rounded-md transition">Specialization</button>
             </div>
+
+            <!-- View Toggle -->
+            <div class="bg-white rounded-lg shadow p-2 flex space-x-2">
+                <button onclick="toggleView('card')" id="cardViewBtn" class="view-btn active px-4 py-2 rounded-md transition flex items-center space-x-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                    </svg>
+                    <span>Cards</span>
+                </button>
+                <button onclick="toggleView('table')" id="tableViewBtn" class="view-btn px-4 py-2 rounded-md transition flex items-center space-x-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Table</span>
+                </button>
+            </div>
         </div>
 
         <!-- Course Grid -->
         <div id="courseGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <!-- Courses will be populated here -->
+        </div>
+
+        <!-- Course Table -->
+        <div id="courseTable" class="hidden bg-white rounded-lg shadow-lg overflow-hidden mb-12">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Course</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Difficulty</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Modules</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="courseTableBody" class="bg-white divide-y divide-gray-200">
+                        <!-- Table rows will be populated here -->
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Features Section -->
@@ -140,28 +187,58 @@
 
     <script src="js/courses.js"></script>
     <script>
+        let currentView = 'card';
+        let currentFilter = 'all';
+
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             renderCourses();
         });
 
-        function renderCourses(filter = 'all') {
-            const grid = document.getElementById('courseGrid');
-            grid.innerHTML = '';
+        function truncateDescription(description, wordLimit = 25) {
+            const words = description.split(' ');
+            if (words.length <= wordLimit) {
+                return description;
+            }
+            return words.slice(0, wordLimit).join(' ') + '...';
+        }
 
+        function renderCourses(filter = 'all') {
+            currentFilter = filter;
             const filteredCourses = filter === 'all' 
                 ? courses 
                 : courses.filter(course => course.type === filter);
 
-            filteredCourses.forEach(course => {
+            if (currentView === 'card') {
+                renderCardView(filteredCourses);
+            } else {
+                renderTableView(filteredCourses);
+            }
+        }
+
+        function renderCardView(coursesToRender) {
+            const grid = document.getElementById('courseGrid');
+            grid.innerHTML = '';
+
+            coursesToRender.forEach(course => {
                 const courseCard = createCourseCard(course);
                 grid.appendChild(courseCard);
             });
         }
 
+        function renderTableView(coursesToRender) {
+            const tableBody = document.getElementById('courseTableBody');
+            tableBody.innerHTML = '';
+
+            coursesToRender.forEach(course => {
+                const row = createTableRow(course);
+                tableBody.appendChild(row);
+            });
+        }
+
         function createCourseCard(course) {
             const card = document.createElement('div');
-            card.className = 'course-card bg-white rounded-lg shadow-lg overflow-hidden';
+            card.className = 'course-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col';
             
             const difficultyColor = {
                 'Beginner': 'bg-green-100 text-green-800',
@@ -175,17 +252,21 @@
                 'Specialization': '🎯'
             };
 
+            const truncatedDescription = truncateDescription(course.description, 25);
+
             card.innerHTML = `
-                <div class="p-6">
+                <div class="p-6 flex flex-col h-full">
                     <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center space-x-2">
+                        <div class="flex items-center space-x-2 flex-1">
                             <span class="text-2xl">${typeIcon[course.type]}</span>
                             <h3 class="text-xl font-bold text-gray-800">${course.name}</h3>
                         </div>
-                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${difficultyColor[course.difficulty]}">${course.difficulty}</span>
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${difficultyColor[course.difficulty]} ml-2 flex-shrink-0">${course.difficulty}</span>
                     </div>
-                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">${course.description}</p>
-                    <div class="flex justify-between items-center text-sm text-gray-500 mb-6">
+                    <div class="course-description text-gray-600 mb-4 text-sm leading-relaxed flex-grow">
+                        ${truncatedDescription}
+                    </div>
+                    <div class="flex justify-between items-center text-sm text-gray-500 mb-6 mt-auto">
                         <div class="flex items-center space-x-1">
                             <span>📅</span>
                             <span>${course.duration}</span>
@@ -211,6 +292,85 @@
             `;
 
             return card;
+        }
+
+        function createTableRow(course) {
+            const row = document.createElement('tr');
+            row.className = 'hover:bg-gray-50';
+            
+            const difficultyColor = {
+                'Beginner': 'bg-green-100 text-green-800',
+                'Intermediate': 'bg-yellow-100 text-yellow-800',
+                'Advanced': 'bg-red-100 text-red-800'
+            };
+
+            const typeIcon = {
+                'Foundation': '🏗️',
+                'Programming': '💻',
+                'Specialization': '🎯'
+            };
+
+            row.innerHTML = `
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-3">${typeIcon[course.type]}</span>
+                        <div>
+                            <div class="text-sm font-medium text-gray-900">${course.name}</div>
+                            <div class="text-sm text-gray-500">${course.instructor}</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="text-sm text-gray-900">${course.type}</span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${difficultyColor[course.difficulty]}">
+                        ${course.difficulty}
+                    </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    ${course.duration}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    ${course.modules} modules
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <div class="flex space-x-2">
+                        <button onclick="startLearning('${course.id}')" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition">
+                            🎓 Learn
+                        </button>
+                        <button onclick="startQuiz('${course.id}')" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition">
+                            📝 Quiz
+                        </button>
+                    </div>
+                </td>
+            `;
+
+            return row;
+        }
+
+        function toggleView(view) {
+            currentView = view;
+            
+            // Update view buttons
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                btn.classList.add('text-gray-600');
+            });
+            
+            if (view === 'card') {
+                document.getElementById('cardViewBtn').classList.add('active', 'bg-blue-600', 'text-white');
+                document.getElementById('cardViewBtn').classList.remove('text-gray-600');
+                document.getElementById('courseGrid').classList.remove('hidden');
+                document.getElementById('courseTable').classList.add('hidden');
+            } else {
+                document.getElementById('tableViewBtn').classList.add('active', 'bg-blue-600', 'text-white');
+                document.getElementById('tableViewBtn').classList.remove('text-gray-600');
+                document.getElementById('courseGrid').classList.add('hidden');
+                document.getElementById('courseTable').classList.remove('hidden');
+            }
+            
+            renderCourses(currentFilter);
         }
 
         function filterCourses(filter) {
@@ -246,6 +406,16 @@
             color: white;
         }
         .filter-btn:hover:not(.active) {
+            background-color: #f3f4f6;
+        }
+        .view-btn {
+            color: #6b7280;
+        }
+        .view-btn.active {
+            background-color: #2563eb;
+            color: white;
+        }
+        .view-btn:hover:not(.active) {
             background-color: #f3f4f6;
         }
     </style>

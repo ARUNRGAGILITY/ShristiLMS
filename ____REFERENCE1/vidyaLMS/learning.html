@@ -694,6 +694,12 @@ function startLearning() {
             
             // Update chapter styling without re-rendering
             updateChapterStyling();
+
+             // Scroll to top of the page smoothly
+            window.scrollTo({ 
+                top: 0, 
+                behavior: 'smooth' 
+            });
         }
 
         function updateChapterStyling() {
