@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidyaLMS - Learning Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        .course-card {
+            transition: all 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-blue-600 font-bold text-lg">V</span>
+                    </div>
+                    <h1 class="text-xl font-bold">VidyaLMS</h1>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="px-4 py-2 bg-blue-700 rounded-lg hover:bg-blue-800 transition">
+                        Home
+                    </a>
+                    <a href="#about" class="px-4 py-2 hover:bg-blue-700 rounded-lg transition">
+                        About
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold mb-6 fade-in">Welcome to VidyaLMS</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto fade-in">
+                Master the future of technology with our comprehensive learning platform. 
+                From AI foundations to full-stack development, embark on your journey to become 
+                a skilled developer with interactive courses, hands-on coding, and certified assessments.
+            </p>
+            <div class="flex justify-center space-x-4 fade-in">
+                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-lg">
+                    <div class="text-2xl font-bold">8+</div>
+                    <div class="text-sm">Courses</div>
+                </div>
+                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-lg">
+                    <div class="text-2xl font-bold">100+</div>
+                    <div class="text-sm">Lessons</div>
+                </div>
+                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-lg">
+                    <div class="text-2xl font-bold">1000+</div>
+                    <div class="text-sm">Students</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12">
+        <!-- Course Categories -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Choose Your Learning Path</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Explore our comprehensive curriculum designed to take you from beginner to expert
+            </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-white rounded-lg shadow p-2 flex space-x-2">
+                <button onclick="filterCourses('all')" class="filter-btn active px-4 py-2 rounded-md transition">All</button>
+                <button onclick="filterCourses('Foundation')" class="filter-btn px-4 py-2 rounded-md transition">Foundation</button>
+                <button onclick="filterCourses('Programming')" class="filter-btn px-4 py-2 rounded-md transition">Programming</button>
+                <button onclick="filterCourses('Specialization')" class="filter-btn px-4 py-2 rounded-md transition">Specialization</button>
+            </div>
+        </div>
+
+        <!-- Course Grid -->
+        <div id="courseGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Courses will be populated here -->
+        </div>
+
+        <!-- Features Section -->
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-12">
+            <h3 class="text-2xl font-bold text-center mb-8">Why Choose VidyaLMS?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🎓</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Interactive Learning</h4>
+                    <p class="text-gray-600">Hands-on coding exercises and real-world projects</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">📝</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Certified Assessments</h4>
+                    <p class="text-gray-600">Test your knowledge with comprehensive quizzes</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">🚀</span>
+                    </div>
+                    <h4 class="font-bold mb-2">Career Ready</h4>
+                    <p class="text-gray-600">Industry-relevant skills and practical knowledge</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                    <span class="text-white font-bold text-lg">V</span>
+                </div>
+                <span class="text-xl font-bold">VidyaLMS</span>
+            </div>
+            <p class="text-gray-400">© 2025 VidyaLMS. Empowering learners worldwide.</p>
+        </div>
+    </footer>
+
+    <script src="js/courses.js"></script>
+    <script>
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCourses();
+        });
+
+        function renderCourses(filter = 'all') {
+            const grid = document.getElementById('courseGrid');
+            grid.innerHTML = '';
+
+            const filteredCourses = filter === 'all' 
+                ? courses 
+                : courses.filter(course => course.type === filter);
+
+            filteredCourses.forEach(course => {
+                const courseCard = createCourseCard(course);
+                grid.appendChild(courseCard);
+            });
+        }
+
+        function createCourseCard(course) {
+            const card = document.createElement('div');
+            card.className = 'course-card bg-white rounded-lg shadow-lg overflow-hidden';
+            
+            const difficultyColor = {
+                'Beginner': 'bg-green-100 text-green-800',
+                'Intermediate': 'bg-yellow-100 text-yellow-800',
+                'Advanced': 'bg-red-100 text-red-800'
+            };
+
+            const typeIcon = {
+                'Foundation': '🏗️',
+                'Programming': '💻',
+                'Specialization': '🎯'
+            };
+
+            card.innerHTML = `
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl">${typeIcon[course.type]}</span>
+                            <h3 class="text-xl font-bold text-gray-800">${course.name}</h3>
+                        </div>
+                        <span class="px-2 py-1 text-xs font-semibold rounded-full ${difficultyColor[course.difficulty]}">${course.difficulty}</span>
+                    </div>
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">${course.description}</p>
+                    <div class="flex justify-between items-center text-sm text-gray-500 mb-6">
+                        <div class="flex items-center space-x-1">
+                            <span>📅</span>
+                            <span>${course.duration}</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <span>📚</span>
+                            <span>${course.modules} modules</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <span>🏷️</span>
+                            <span>${course.type}</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-3">
+                        <button onclick="startLearning('${course.id}')" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition font-medium">
+                            🎓 Learn
+                        </button>
+                        <button onclick="startQuiz('${course.id}')" class="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition font-medium">
+                            📝 Quiz
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function filterCourses(filter) {
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                btn.classList.add('text-gray-600');
+            });
+            
+            event.target.classList.add('active', 'bg-blue-600', 'text-white');
+            event.target.classList.remove('text-gray-600');
+            
+            renderCourses(filter);
+        }
+
+        function startLearning(courseId) {
+            // Navigate to learning page
+            window.location.href = `learning.html?course=${courseId}`;
+        }
+
+        function startQuiz(courseId) {
+            // Navigate to quiz page
+            window.location.href = `quiz.html?course=${courseId}`;
+        }
+    </script>
+
+    <style>
+        .filter-btn {
+            color: #6b7280;
+        }
+        .filter-btn.active {
+            background-color: #2563eb;
+            color: white;
+        }
+        .filter-btn:hover:not(.active) {
+            background-color: #f3f4f6;
+        }
+    </style>
+</body>
+</html>
