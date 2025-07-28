@@ -1,9 +1,20 @@
-// courses.js - Course Configuration
+/**
+ * courses.js - Course Configuration
+ * 
+ * This file contains all course data and utility functions for the VidyaLMS platform.
+ * Each course object includes metadata, prerequisites, learning outcomes, and instructor information.
+ * 
+ * @author VidyaLMS Team
+ * @version 1.0
+ */
+
+// ===== COURSE DATA =====
+// Array of all available courses with complete metadata
 const courses = [
     {
         id: 'ai-foundations',
-        name: 'AI Foundations',
-        description: 'Learn the fundamentals of Artificial Intelligence including machine learning, neural networks, and deep learning concepts. Perfect for beginners starting their AI journey.',
+        name: 'AI',
+        description: 'Master AI fundamentals — machine learning, neural networks, and deep learning basics.',
         duration: '8 weeks',
         type: 'Foundation',
         difficulty: 'Beginner',
@@ -21,8 +32,8 @@ const courses = [
     },
     {
         id: 'programming-foundations',
-        name: 'Programming Foundations',
-        description: 'Master the core concepts of programming including algorithms, data structures, and problem-solving techniques. Essential foundation for any programming language.',
+        name: 'Programming',
+        description: 'Build programming foundations — algorithms, data structures, and problem-solving skills.',
         duration: '6 weeks',
         type: 'Foundation',
         difficulty: 'Beginner',
@@ -37,11 +48,11 @@ const courses = [
         instructor: 'Prof. Michael Chen',
         rating: 4.9,
         enrollments: 3200
-    },
+        },
     {
         id: 'python-programming',
-        name: 'Python Programming',
-        description: 'Comprehensive Python course covering syntax, libraries, frameworks, and real-world applications. From basics to advanced Python development.',
+        name: 'Python',
+        description: 'Learn Python programming — from basics to advanced libraries, frameworks, and real-world apps.',
         duration: '10 weeks',
         type: 'Programming',
         difficulty: 'Intermediate',
@@ -59,8 +70,8 @@ const courses = [
     },
     {
         id: 'java-programming',
-        name: 'Java Programming',
-        description: 'Learn Java from basics to advanced concepts including OOP, collections, and enterprise development. Industry-standard programming language.',
+        name: 'Java ',
+        description: 'Learn core Java — from basics to advanced OOP, collections, and enterprise dev.',
         duration: '12 weeks',
         type: 'Programming',
         difficulty: 'Intermediate',
@@ -78,8 +89,8 @@ const courses = [
     },
     {
         id: 'javascript-programming',
-        name: 'JavaScript Programming',
-        description: 'Master modern JavaScript including ES6+, DOM manipulation, async programming, and frameworks. Essential for web development.',
+        name: 'JavaScript ',
+        description: 'Master modern JS — ES6+, DOM, async programming, and frameworks.',
         duration: '8 weeks',
         type: 'Programming',
         difficulty: 'Intermediate',
@@ -97,8 +108,8 @@ const courses = [
     },
     {
         id: 'typescript-programming',
-        name: 'TypeScript Programming',
-        description: 'Learn TypeScript for type-safe JavaScript development with advanced features and tooling. Perfect for large-scale applications.',
+        name: 'TypeScript',
+        description: 'Build type-safe JS apps with TypeScript — advanced features and tooling.',
         duration: '6 weeks',
         type: 'Programming',
         difficulty: 'Advanced',
@@ -117,7 +128,7 @@ const courses = [
     {
         id: 'fullstack-development',
         name: 'Full Stack Development',
-        description: 'Complete web development course covering frontend, backend, databases, and deployment. Build modern web applications end-to-end.',
+        description: 'Build complete web apps — frontend, backend, databases, and deployment.',
         duration: '16 weeks',
         type: 'Specialization',
         difficulty: 'Advanced',
@@ -136,7 +147,7 @@ const courses = [
     {
         id: 'devops',
         name: 'DevOps',
-        description: 'Learn DevOps practices including CI/CD, containerization, orchestration, and cloud deployment. Modern software development lifecycle.',
+        description: 'Master CI/CD, containers, orchestration, and cloud deployment.',
         duration: '12 weeks',
         type: 'Specialization',
         difficulty: 'Advanced',
@@ -154,8 +165,8 @@ const courses = [
     },
     {
         id: 'data-science',
-        name: 'Data Science Foundations',
-        description: 'Master the complete data science pipeline from statistics to machine learning. Learn to extract insights from data, build predictive models, and make data-driven decisions using Python, statistics, and real-world projects.',
+        name: 'Data Science',
+        description: 'Master data science pipeline — statistics, ML, and data-driven insights with Python.',
         duration: '12 weeks',
         type: 'Foundation',
         difficulty: 'Intermediate',
@@ -175,22 +186,40 @@ const courses = [
     }
 ];
 
-// Function to get course by ID
+// ===== UTILITY FUNCTIONS =====
+
+/**
+ * Retrieves a course by its unique identifier
+ * @param {string} id - The course ID to search for
+ * @returns {Object|null} Course object if found, null otherwise
+ */
 function getCourseById(id) {
     return courses.find(course => course.id === id);
 }
 
-// Function to get courses by type
+/**
+ * Filters courses by their type/category
+ * @param {string} type - Course type ('Foundation', 'Programming', 'Specialization')
+ * @returns {Array} Array of courses matching the type
+ */
 function getCoursesByType(type) {
     return courses.filter(course => course.type === type);
 }
 
-// Function to get courses by difficulty
+/**
+ * Filters courses by difficulty level
+ * @param {string} difficulty - Difficulty level ('Beginner', 'Intermediate', 'Advanced')
+ * @returns {Array} Array of courses matching the difficulty
+ */
 function getCoursesByDifficulty(difficulty) {
     return courses.filter(course => course.difficulty === difficulty);
 }
 
-// Function to get prerequisite courses
+/**
+ * Gets all prerequisite courses for a given course
+ * @param {string} courseId - ID of the course to get prerequisites for
+ * @returns {Array} Array of prerequisite course objects
+ */
 function getPrerequisiteCourses(courseId) {
     const course = getCourseById(courseId);
     if (!course || !course.prerequisites) return [];
@@ -198,7 +227,8 @@ function getPrerequisiteCourses(courseId) {
     return course.prerequisites.map(prereqId => getCourseById(prereqId));
 }
 
-// Export for use in other files
+// ===== MODULE EXPORTS =====
+// Export functions for use in other files (Node.js compatibility)
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { 
         courses, 

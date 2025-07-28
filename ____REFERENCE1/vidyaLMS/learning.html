@@ -4,319 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VidyaLMS - Learning</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <style>
-        /* Mobile-first responsive styles */
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        
-        @media (min-width: 640px) {
-            .container {
-                max-width: 640px;
-                padding: 0 1.5rem;
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .container {
-                max-width: 768px;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 1024px;
-                padding: 0 2rem;
-            }
-        }
-        
-        @media (min-width: 1280px) {
-            .container {
-                max-width: 1280px;
-            }
-        }
-        
-        /* Mobile-first layout */
-        .mobile-layout {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        @media (min-width: 1024px) {
-            .mobile-layout {
-                flex-direction: row;
-            }
-        }
-        
-        /* Mobile-first sidebar */
-        .mobile-sidebar {
-            width: 100%;
-            background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-        
-        @media (min-width: 1024px) {
-            .mobile-sidebar {
-                width: 25%;
-                margin-bottom: 0;
-                margin-right: 1.5rem;
-                position: sticky;
-                top: 5rem;
-                height: fit-content;
-            }
-        }
-        
-        /* Mobile-first content area */
-        .mobile-content {
-            flex: 1;
-            min-width: 0;
-        }
-        
-        /* Mobile-first cards */
-        .mobile-card {
-            background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Mobile-first buttons */
-        .mobile-btn {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            font-size: 0.875rem;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        @media (min-width: 640px) {
-            .mobile-btn {
-                width: auto;
-                padding: 0.75rem 1.5rem;
-                font-size: 1rem;
-            }
-        }
-        
-        /* Mobile-first text scaling */
-        .mobile-text-xs { font-size: 0.75rem; line-height: 1rem; }
-        .mobile-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
-        .mobile-text-base { font-size: 1rem; line-height: 1.5rem; }
-        .mobile-text-lg { font-size: 1.125rem; line-height: 1.75rem; }
-        .mobile-text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-        .mobile-text-2xl { font-size: 1.5rem; line-height: 2rem; }
-        
-        @media (min-width: 640px) {
-            .mobile-text-xs { font-size: 0.875rem; line-height: 1.25rem; }
-            .mobile-text-sm { font-size: 1rem; line-height: 1.5rem; }
-            .mobile-text-base { font-size: 1.125rem; line-height: 1.75rem; }
-            .mobile-text-lg { font-size: 1.25rem; line-height: 1.75rem; }
-            .mobile-text-xl { font-size: 1.5rem; line-height: 2rem; }
-            .mobile-text-2xl { font-size: 1.875rem; line-height: 2.25rem; }
-        }
-        
-        @media (min-width: 1024px) {
-            .mobile-text-xs { font-size: 1rem; line-height: 1.5rem; }
-            .mobile-text-sm { font-size: 1.125rem; line-height: 1.75rem; }
-            .mobile-text-base { font-size: 1.25rem; line-height: 1.75rem; }
-            .mobile-text-lg { font-size: 1.5rem; line-height: 2rem; }
-            .mobile-text-xl { font-size: 1.875rem; line-height: 2.25rem; }
-            .mobile-text-2xl { font-size: 2.25rem; line-height: 2.5rem; }
-        }
-        
-        /* Mobile-first spacing */
-        .mobile-spacing-xs { padding: 0.5rem; }
-        .mobile-spacing-sm { padding: 1rem; }
-        .mobile-spacing-md { padding: 1.5rem; }
-        .mobile-spacing-lg { padding: 2rem; }
-        
-        @media (min-width: 640px) {
-            .mobile-spacing-xs { padding: 0.75rem; }
-            .mobile-spacing-sm { padding: 1.25rem; }
-            .mobile-spacing-md { padding: 1.75rem; }
-            .mobile-spacing-lg { padding: 2.5rem; }
-        }
-        
-        @media (min-width: 1024px) {
-            .mobile-spacing-xs { padding: 1rem; }
-            .mobile-spacing-sm { padding: 1.5rem; }
-            .mobile-spacing-md { padding: 2rem; }
-            .mobile-spacing-lg { padding: 3rem; }
-        }
-        
-        /* Chapter item styles */
-        .chapter-item {
-            transition: all 0.3s ease;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            margin-bottom: 0.5rem;
-        }
-        
-        .chapter-item:hover {
-            transform: translateX(4px);
-        }
-        
-        .chapter-item.active {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-        }
-        
-        /* Content section styles */
-        .content-section {
-            animation: fadeIn 0.5s ease-out;
-            margin-bottom: 2rem;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Progress circle */
-        .progress-circle {
-            transition: stroke-dasharray 0.5s ease-in-out;
-        }
-        
-        /* Copy button */
-        .copy-btn {
-            transition: all 0.3s ease;
-        }
-        
-        /* Responsive content styles */
-        .content-section .prose {
-            max-width: none;
-        }
-        
-        .content-section .prose h3 {
-            font-size: 1.25rem;
-            line-height: 1.75rem;
-        }
-        
-        .content-section .prose h4 {
-            font-size: 1.125rem;
-            line-height: 1.5rem;
-        }
-        
-        .content-section .prose p {
-            font-size: 0.875rem;
-            line-height: 1.25rem;
-        }
-        
-        /* Mobile responsive adjustments */
-        @media (max-width: 640px) {
-            .content-section .prose h3 {
-                font-size: 1.125rem;
-                line-height: 1.5rem;
-            }
-            
-            .content-section .prose h4 {
-                font-size: 1rem;
-                line-height: 1.375rem;
-            }
-            
-            .content-section .prose p {
-                font-size: 0.75rem;
-                line-height: 1.125rem;
-            }
-            
-            .content-section .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Tablet responsive adjustments */
-        @media (min-width: 641px) and (max-width: 1023px) {
-            .content-section .grid.grid-cols-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .content-section .grid.grid-cols-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        /* Ensure code blocks are responsive */
-        .content-section pre {
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        
-        .content-section code {
-            font-size: 0.75rem;
-            line-height: 1.125rem;
-        }
-        
-        @media (min-width: 640px) {
-            .content-section code {
-                font-size: 0.875rem;
-                line-height: 1.25rem;
-            }
-        }
-        
-        /* Prevent content overflow */
-        .content-section {
-            max-width: 100%;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-        }
-        
-        .content-section img {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        .content-section table {
-            max-width: 100%;
-            overflow-x: auto;
-            display: block;
-        }
-        
-        /* Ensure grid items don't overflow */
-        .content-section .grid {
-            max-width: 100%;
-        }
-        
-        .content-section .grid > * {
-            min-width: 0;
-            overflow-wrap: break-word;
-        }
-    </style>
+    
+    <!-- Global CSS for custom styles -->
+    <link rel="stylesheet" href="global.css">
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="min-h-screen bg-slate-900 text-white">
     <!-- Standard Navigation -->
-    <nav class="bg-blue-600 text-white shadow-lg sticky top-0 z-50">
+    <nav class="text-white shadow-lg sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md">
         <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center">
-                        <span class="text-blue-600 font-bold text-lg sm:text-xl">V</span>
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
+                        <img src="assets/logo.png" alt="VidyaLMS Logo" class="w-full h-full object-contain">
                     </div>
-                    <h1 class="text-lg sm:text-xl lg:text-2xl font-bold">VidyaLMS</h1>
                 </div>
                 <div class="flex items-center space-x-2 sm:space-x-4">
-                    <a href="index.html" class="mobile-btn bg-blue-700 hover:bg-blue-800 transition text-xs sm:text-sm">
-                        🏠 <span class="hidden sm:inline">Home</span>
+                    <a href="index.html" class="mobile-btn ripple-btn transition text-xs sm:text-sm hover:scale-105 hover:shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-home"></i> <span class="hidden sm:inline">Home</span>
                     </a>
-                    <button id="quizBtn" class="mobile-btn bg-green-600 hover:bg-green-700 transition text-xs sm:text-sm">
-                        📝 <span class="hidden sm:inline">Take Quiz</span>
+                                            <button id="quizBtn" class="mobile-btn ripple-btn transition text-xs sm:text-sm hover:scale-105 hover:shadow-lg" style="background: linear-gradient(135deg, #00BFA6 0%, #00C9A7 100%);">
+                        <i class="fas fa-clipboard-list"></i> <span class="hidden sm:inline">Take Quiz</span>
                     </button>
                 </div>
             </div>
@@ -324,38 +41,38 @@
     </nav>
 
     <!-- Mobile-First Course Header -->
-    <div class="bg-white shadow-sm border-b">
+    <div class="bg-slate-800 shadow-lg border-b border-slate-700">
         <div class="container mx-auto px-4 py-4">
             <div class="flex flex-col sm:flex-row lg:flex-row items-start sm:items-center justify-between gap-4">
                 <div class="flex-1 min-w-0">
-                    <h1 id="courseTitle" class="mobile-text-lg sm:mobile-text-xl lg:mobile-text-2xl font-bold text-gray-800 mb-1 break-words">Loading...</h1>
-                    <p id="courseInstructor" class="mobile-text-sm sm:mobile-text-base text-gray-600 break-words">Loading instructor...</p>
+                    <h1 id="courseTitle" class="mobile-text-lg sm:mobile-text-xl lg:mobile-text-2xl font-bold text-white mb-1 break-words">Loading...</h1>
+                    <p id="courseInstructor" class="mobile-text-sm sm:mobile-text-base text-slate-300 break-words">Loading instructor...</p>
                 </div>
                 <div class="flex flex-col sm:flex-row items-center gap-4 lg:gap-6">
                     <!-- Progress Circle -->
                     <div class="relative w-12 h-12 sm:w-16 sm:h-16">
                         <svg class="w-12 h-12 sm:w-16 sm:h-16 transform -rotate-90" viewBox="0 0 64 64">
-                            <circle cx="32" cy="32" r="28" fill="none" stroke="#e5e7eb" stroke-width="4"/>
+                            <circle cx="32" cy="32" r="28" fill="none" stroke="#475569" stroke-width="4"/>
                             <circle id="progressCircle" cx="32" cy="32" r="28" fill="none" stroke="#3b82f6" 
                                     stroke-width="4" stroke-dasharray="0 176" class="progress-circle"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <span id="progressPercent" class="mobile-text-xs sm:mobile-text-sm font-bold text-blue-600">0%</span>
+                            <span id="progressPercent" class="mobile-text-xs sm:mobile-text-sm font-bold text-blue-400">0%</span>
                         </div>
                     </div>
                     <!-- Content Filters -->
-                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 lg:gap-4 bg-gray-100 px-3 sm:px-4 py-2 rounded-lg">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 lg:gap-4 bg-slate-700 px-3 sm:px-4 py-2 rounded-lg border border-slate-600">
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" id="showTheory" checked class="rounded text-blue-600 w-4 h-4 sm:w-5 sm:h-5 accent-blue-600">
-                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap">📖 Theory</span>
+                            <input type="checkbox" id="showTheory" checked class="content-filter rounded text-blue-400 w-4 h-4 sm:w-5 sm:h-5 accent-blue-400">
+                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap text-slate-200">Theory</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" id="showCode" checked class="rounded text-blue-600 w-4 h-4 sm:w-5 sm:h-5 accent-blue-600">
-                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap">💻 Code</span>
+                            <input type="checkbox" id="showCode" checked class="content-filter rounded text-blue-400 w-4 h-4 sm:w-5 sm:h-5 accent-blue-400">
+                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap text-slate-200">Code</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" id="showTips" checked class="rounded text-blue-600 w-4 h-4 sm:w-5 sm:h-5 accent-blue-600">
-                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap">💡 Tips</span>
+                            <input type="checkbox" id="showTips" checked class="content-filter rounded text-blue-400 w-4 h-4 sm:w-5 sm:h-5 accent-blue-400">
+                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap text-slate-200">Tips</span>
                         </label>
                     </div>
                 </div>
@@ -370,28 +87,28 @@
             <div class="mobile-sidebar">
                 <div class="mobile-spacing-sm">
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="mobile-text-lg font-bold text-gray-800">📚 Chapters</h3>
-                        <span id="chapterCount" class="mobile-text-sm text-gray-500">0 chapters</span>
+                        <h3 class="mobile-text-lg font-bold text-white"><i class="fas fa-book mr-2"></i>Lessons</h3>
+                        <span id="chapterCount" class="mobile-text-sm text-slate-400">0</span>
                     </div>
                     <div id="chaptersList" class="space-y-2 max-h-96 lg:max-h-none overflow-y-auto">
                         <!-- Chapters will be populated here -->
                     </div>
                     
                     <!-- Course Info -->
-                    <div class="mt-8 pt-6 border-t border-gray-200">
-                        <h4 class="font-medium text-gray-800 mb-3 mobile-text-sm">📊 Course Details</h4>
-                        <div class="space-y-2 mobile-text-xs text-gray-600">
+                    <div class="mt-8 pt-6 border-t border-slate-600">
+                        <h4 class="font-medium text-white mb-3 mobile-text-sm"><i class="fas fa-info mr-2"></i>Info</h4>
+                        <div class="space-y-2 mobile-text-xs text-slate-300">
                             <div class="flex justify-between">
-                                <span>Duration:</span>
-                                <span id="courseDuration" class="font-medium">-</span>
+                                <span>Time:</span>
+                                <span id="courseDuration" class="font-medium text-slate-200">-</span>
                             </div>
                             <div class="flex justify-between">
-                                <span>Difficulty:</span>
-                                <span id="courseDifficulty" class="font-medium">-</span>
+                                <span>Level:</span>
+                                <span id="courseDifficulty" class="font-medium text-slate-200">-</span>
                             </div>
                             <div class="flex justify-between">
-                                <span>Modules:</span>
-                                <span id="courseModules" class="font-medium">-</span>
+                                <span>Units:</span>
+                                <span id="courseModules" class="font-medium text-slate-200">-</span>
                             </div>
                         </div>
                     </div>
@@ -400,6 +117,20 @@
 
             <!-- Mobile-First Content Area -->
             <div class="mobile-content">
+                <!-- Top Navigation Buttons -->
+                <div class="flex justify-between items-center mb-6">
+                    <button id="prevChapterBtnTop" 
+                            class="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition disabled:opacity-50 disabled:cursor-not-allowed" 
+                            disabled>
+                        ← Previous
+                    </button>
+                    
+                    <button id="nextChapterBtnTop" 
+                            class="px-6 py-3 ripple-btn text-white rounded-lg transition hover:scale-105 hover:shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" disabled>
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
                 <!-- Chapter Content -->
                 <div class="mobile-card">
                     <div id="chapterHeader" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white mobile-spacing-sm">
@@ -409,20 +140,26 @@
 
                     <div id="chapterContent" class="mobile-spacing-sm lg:mobile-spacing-md overflow-x-auto">
                         <div class="text-center py-8 sm:py-12">
-                            <div class="text-4xl sm:text-6xl mb-4">📚</div>
-                            <h3 class="mobile-text-lg sm:mobile-text-xl font-medium text-gray-600 mb-2">Ready to Learn?</h3>
-                            <p class="text-gray-500 mobile-text-sm sm:mobile-text-base">Select a chapter from the left sidebar to begin your learning journey</p>
+                            <div class="text-4xl sm:text-6xl mb-4">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3 class="mobile-text-lg sm:mobile-text-xl font-medium text-slate-300 mb-2">Ready to Learn?</h3>
+                            <p class="text-slate-400 mobile-text-sm sm:mobile-text-base">Select a chapter from the left sidebar to begin your learning journey</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Navigation Buttons -->
-                <div class="flex flex-col sm:flex-row justify-between mt-6 gap-4">
-                    <button id="prevChapterBtn" class="mobile-btn bg-gray-300 text-gray-700 hover:bg-gray-400 transition disabled:opacity-50 mobile-text-sm sm:mobile-text-base" disabled>
-                        ← Previous Chapter
+                <!-- Bottom Navigation Buttons -->
+                <div class="flex justify-between items-center mt-6">
+                    <button id="prevChapterBtn" 
+                            class="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition disabled:opacity-50 disabled:cursor-not-allowed" 
+                            disabled>
+                        ← Previous
                     </button>
-                    <button id="nextChapterBtn" class="mobile-btn bg-blue-600 text-white hover:bg-blue-700 transition disabled:opacity-50 mobile-text-sm sm:mobile-text-base" disabled>
-                        Next Chapter →
+                    
+                    <button id="nextChapterBtn" 
+                            class="px-6 py-3 ripple-btn text-white rounded-lg transition hover:scale-105 hover:shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" disabled>
+                        Next <i class="fas fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
@@ -433,6 +170,62 @@
     <script src="js/courses.js"></script>
     <script src="js/shared-nav.js"></script>
     <script>
+        /**
+         * Creates a modern multi-layered ripple effect on button click
+         * @param {Event} event - The click event
+         */
+        function rippleEffect(event) {
+            const btn = event.currentTarget;
+
+            // Create main ripple
+            const circle = document.createElement("span");
+            const diameter = Math.max(btn.clientWidth, btn.clientHeight);
+            const radius = diameter / 2;
+
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - (btn.offsetLeft + radius)}px`;
+            circle.style.top = `${event.clientY - (btn.offsetTop + radius)}px`;
+            circle.classList.add("ripple");
+
+            // Remove existing ripples
+            const existingRipples = btn.getElementsByClassName("ripple");
+            Array.from(existingRipples).forEach(ripple => ripple.remove());
+
+            // Add new ripple
+            btn.appendChild(circle);
+
+            // Create additional ripple layers for more complex effect
+            setTimeout(() => {
+                const secondaryCircle = document.createElement("span");
+                secondaryCircle.style.width = secondaryCircle.style.height = `${diameter * 0.8}px`;
+                secondaryCircle.style.left = `${event.clientX - (btn.offsetLeft + radius * 0.8)}px`;
+                secondaryCircle.style.top = `${event.clientY - (btn.offsetTop + radius * 0.8)}px`;
+                secondaryCircle.classList.add("ripple");
+                secondaryCircle.style.animationDelay = "0.1s";
+                secondaryCircle.style.opacity = "0.6";
+                
+                btn.appendChild(secondaryCircle);
+            }, 50);
+
+            // Clean up ripples after animation
+            setTimeout(() => {
+                if (circle.parentNode) {
+                    circle.remove();
+                }
+                const secondaryRipples = btn.getElementsByClassName("ripple");
+                Array.from(secondaryRipples).forEach(ripple => {
+                    if (ripple !== circle) ripple.remove();
+                });
+            }, 800);
+        }
+
+        // Add ripple effect to all buttons with ripple-btn class
+        document.addEventListener('DOMContentLoaded', function() {
+            const rippleButtons = document.querySelectorAll('.ripple-btn');
+            rippleButtons.forEach(button => {
+                button.addEventListener('click', rippleEffect);
+            });
+        });
         let currentCourse = null;
         let courseContent = null;
         let currentChapterIndex = 0;
@@ -464,6 +257,8 @@
             // Navigation buttons
             document.getElementById('prevChapterBtn').addEventListener('click', () => navigateChapter(-1));
             document.getElementById('nextChapterBtn').addEventListener('click', () => navigateChapter(1));
+            document.getElementById('prevChapterBtnTop').addEventListener('click', () => navigateChapter(-1));
+            document.getElementById('nextChapterBtnTop').addEventListener('click', () => navigateChapter(1));
 
             // Quiz button
             document.getElementById('quizBtn').addEventListener('click', () => {
@@ -552,8 +347,8 @@
                     chapters: [
                         {
                             id: 1,
-                            title: 'Introduction to Artificial Intelligence',
-                            description: 'Understanding the fundamentals of AI and its applications',
+                            title: 'AI Basics',
+                            description: 'Core concepts & applications',
                             theory: `
                                 <div class="prose max-w-none">
                                     <h3 class="mobile-text-lg sm:mobile-text-xl font-bold mb-4">What is Artificial Intelligence?</h3>
@@ -589,6 +384,68 @@
                                     </div>
                                 </div>
                             `
+                        },
+                        {
+                            id: 2,
+                            title: 'Machine Learning',
+                            description: 'Algorithms & training',
+                            theory: `
+                                <div class="prose max-w-none">
+                                    <h3 class="mobile-text-lg sm:mobile-text-xl font-bold mb-4">Machine Learning Fundamentals</h3>
+                                    <p class="mobile-text-sm sm:mobile-text-base mb-4">Machine learning is a subset of AI that enables computers to learn and improve from experience without being explicitly programmed.</p>
+                                    
+                                    <h4 class="mobile-text-base sm:mobile-text-lg font-semibold mb-3 mt-6">Types of Machine Learning</h4>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                                        <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                            <h5 class="font-bold text-green-800 mobile-text-sm">Supervised Learning</h5>
+                                            <p class="text-green-700 mobile-text-xs sm:mobile-text-sm">Learning from labeled training data to make predictions.</p>
+                                            <p class="text-xs text-green-600 mt-2">Examples: Classification, Regression</p>
+                                        </div>
+                                        <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                                            <h5 class="font-bold text-purple-800 mobile-text-sm">Unsupervised Learning</h5>
+                                            <p class="text-purple-700 mobile-text-xs sm:mobile-text-sm">Finding patterns in data without labels.</p>
+                                            <p class="text-xs text-purple-600 mt-2">Examples: Clustering, Dimensionality reduction</p>
+                                        </div>
+                                        <div class="bg-teal-50 p-4 rounded-lg border-l-4 border-teal-500">
+                                            <h5 class="font-bold text-teal-800 mobile-text-sm">Reinforcement Learning</h5>
+                                            <p class="text-teal-700 mobile-text-xs sm:mobile-text-sm">Learning through trial and error with rewards.</p>
+                                            <p class="text-xs text-teal-600 mt-2">Examples: Game playing, Robotics</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `
+                        },
+                        {
+                            id: 3,
+                            title: 'Neural Networks',
+                            description: 'Deep learning & architecture',
+                            theory: `
+                                <div class="prose max-w-none">
+                                    <h3 class="mobile-text-lg sm:mobile-text-xl font-bold mb-4">Neural Networks and Deep Learning</h3>
+                                    <p class="mobile-text-sm sm:mobile-text-base mb-4">Neural networks are computing systems inspired by biological neural networks in human brains.</p>
+                                    
+                                    <h4 class="mobile-text-base sm:mobile-text-lg font-semibold mb-3 mt-6">Key Components</h4>
+                                    <ul class="list-disc pl-6 mb-4 mobile-text-sm sm:mobile-text-base">
+                                        <li><strong>Neurons:</strong> Basic processing units</li>
+                                        <li><strong>Layers:</strong> Input, hidden, and output layers</li>
+                                        <li><strong>Weights:</strong> Connection strengths between neurons</li>
+                                        <li><strong>Activation Functions:</strong> Determine neuron output</li>
+                                        <li><strong>Backpropagation:</strong> Learning algorithm</li>
+                                    </ul>
+
+                                    <h4 class="mobile-text-base sm:mobile-text-lg font-semibold mb-3 mt-6">Applications</h4>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                                        <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
+                                            <h5 class="font-bold text-indigo-800 mobile-text-sm">Computer Vision</h5>
+                                            <p class="text-indigo-700 mobile-text-xs sm:mobile-text-sm">Image recognition, object detection, facial recognition</p>
+                                        </div>
+                                        <div class="bg-pink-50 p-4 rounded-lg border-l-4 border-pink-500">
+                                            <h5 class="font-bold text-pink-800 mobile-text-sm">Natural Language Processing</h5>
+                                            <p class="text-pink-700 mobile-text-xs sm:mobile-text-sm">Text analysis, translation, chatbots</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `
                         }
                     ]
                 };
@@ -609,21 +466,21 @@
             const chaptersList = document.getElementById('chaptersList');
             chaptersList.innerHTML = '';
 
-            document.getElementById('chapterCount').textContent = `${courseContent.chapters.length} chapters`;
+            document.getElementById('chapterCount').textContent = `${courseContent.chapters.length}`;
 
             courseContent.chapters.forEach((chapter, index) => {
                 const chapterItem = document.createElement('div');
-                chapterItem.className = `chapter-item ${index === currentChapterIndex ? 'active' : 'bg-gray-50 hover:bg-gray-100 text-gray-700'}`;
+                chapterItem.className = `chapter-item ${index === currentChapterIndex ? 'active' : 'text-slate-200'}`;
                 
                 const isCompleted = completedChapters.has(index);
                 chapterItem.innerHTML = `
                     <div class="flex items-center justify-between">
                         <div class="flex-1 min-w-0">
                             <div class="font-medium mobile-text-sm break-words">${chapter.id}. ${chapter.title}</div>
-                            <div class="mobile-text-xs opacity-75 mt-1 break-words">${chapter.description}</div>
+                            <div class="mobile-text-xs opacity-75 mt-1 break-words text-slate-300">${chapter.description}</div>
                         </div>
                         <div class="text-right ml-2">
-                            ${isCompleted ? '<span class="text-green-500">✓</span>' : '<span class="text-gray-400">○</span>'}
+                            ${isCompleted ? '<span class="text-green-400">✓</span>' : '<span class="text-slate-500">○</span>'}
                         </div>
                     </div>
                 `;
@@ -665,14 +522,14 @@
                 if (index === currentChapterIndex) {
                     item.className = 'chapter-item active';
                 } else {
-                    item.className = 'chapter-item bg-gray-50 hover:bg-gray-100 text-gray-700';
+                    item.className = 'chapter-item text-slate-200';
                 }
                 
                 // Update completion status
                 const isCompleted = completedChapters.has(index);
                 const statusSpan = item.querySelector('.text-right span');
                 if (statusSpan) {
-                    statusSpan.className = isCompleted ? 'text-green-500' : 'text-gray-400';
+                    statusSpan.className = isCompleted ? 'text-green-400' : 'text-slate-500';
                     statusSpan.textContent = isCompleted ? '✓' : '○';
                 }
             });
@@ -722,9 +579,13 @@
         function updateNavigationButtons() {
             const prevBtn = document.getElementById('prevChapterBtn');
             const nextBtn = document.getElementById('nextChapterBtn');
+            const prevBtnTop = document.getElementById('prevChapterBtnTop');
+            const nextBtnTop = document.getElementById('nextChapterBtnTop');
             
             prevBtn.disabled = currentChapterIndex === 0;
             nextBtn.disabled = currentChapterIndex === courseContent.chapters.length - 1;
+            prevBtnTop.disabled = currentChapterIndex === 0;
+            nextBtnTop.disabled = currentChapterIndex === courseContent.chapters.length - 1;
         }
 
         function navigateChapter(direction) {

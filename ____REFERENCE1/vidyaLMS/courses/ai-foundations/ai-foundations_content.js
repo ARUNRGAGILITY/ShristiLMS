@@ -130,7 +130,7 @@ window.courseContent = {
                             </ul>
                         </div>
                         <div class="bg-white p-4 rounded-lg shadow border">
-                            <h5 class="font-semibold mb-3 flex items-center text-orange-700">
+                            <h5 class="font-semibold mb-3 flex items-center text-teal-700">
                                 🎯 Marketing & Business
                             </h5>
                             <ul class="text-sm text-gray-700 space-y-1">
@@ -242,7 +242,7 @@ If you study 0.5 hours → Predicted score: 46.8
             `,
             tips: `
                 <div class="tips-content">
-                    <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-400 p-6 rounded-lg">
+                    <div class="bg-gradient-to-r from-yellow-50 to-teal-50 border-l-4 border-yellow-400 p-6 rounded-lg">
                         <h4 class="text-xl font-bold text-yellow-800 mb-4 flex items-center">
                             💡 Essential Tips for AI Beginners
                         </h4>
@@ -320,9 +320,9 @@ If you study 0.5 hours → Predicted score: 46.8
                                     <div class="text-purple-600 text-xs">Deep Learning, NLP</div>
                                 </div>
                                 <div class="text-center">
-                                    <div class="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center mx-auto mb-2 text-xs font-bold">4</div>
-                                    <div class="font-medium text-orange-700">Specialization</div>
-                                    <div class="text-orange-600 text-xs">Computer Vision, Robotics</div>
+                                                            <div class="bg-teal-500 text-white rounded-full w-8 h-8 flex items-center justify-center mx-auto mb-2 text-xs font-bold">4</div>
+                        <div class="font-medium text-teal-700">Specialization</div>
+                        <div class="text-teal-600 text-xs">Computer Vision, Robotics</div>
                                 </div>
                             </div>
                         </div>
@@ -489,8 +489,8 @@ print(classification_report(y_test, predictions, target_names=iris.target_names)
                             <h5 class="font-bold text-purple-700 mb-2">🎵 Speech & Audio</h5>
                             <p class="text-gray-700 text-sm">Voice recognition, music generation</p>
                         </div>
-                        <div class="bg-white p-4 rounded-lg border-l-4 border-orange-500 shadow">
-                            <h5 class="font-bold text-orange-700 mb-2">🎨 Generative AI</h5>
+                                            <div class="bg-white p-4 rounded-lg border-l-4 border-teal-500 shadow">
+                        <h5 class="font-bold text-teal-700 mb-2">🎨 Generative AI</h5>
                             <p class="text-gray-700 text-sm">Creating images, text, music, videos</p>
                         </div>
                     </div>

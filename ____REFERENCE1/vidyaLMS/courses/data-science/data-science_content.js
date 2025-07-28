@@ -67,13 +67,13 @@ window.courseContent = {
                             </ul>
                         </div>
 
-                        <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-lg border border-orange-200">
-                            <div class="flex items-center mb-3">
-                                <div class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</div>
-                                <h5 class="font-bold text-orange-700">Data Understanding</h5>
-                            </div>
-                            <p class="text-sm text-orange-700 mb-2">Collect initial data and get familiar with it</p>
-                            <ul class="text-xs text-orange-600 list-disc pl-4">
+                                        <div class="bg-gradient-to-br from-teal-50 to-teal-100 p-4 rounded-lg border border-teal-200">
+                    <div class="flex items-center mb-3">
+                        <div class="w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</div>
+                        <h5 class="font-bold text-teal-700">Data Understanding</h5>
+                    </div>
+                    <p class="text-sm text-teal-700 mb-2">Collect initial data and get familiar with it</p>
+                    <ul class="text-xs text-teal-600 list-disc pl-4">
                                 <li>Collect initial data</li>
                                 <li>Describe data</li>
                                 <li>Explore data</li>
@@ -204,10 +204,10 @@ window.courseContent = {
                                         <p class="text-sm text-gray-600">Organized in rows and columns (databases, spreadsheets)</p>
                                         <div class="text-xs text-blue-600 mt-1">Examples: Sales records, customer databases, financial transactions</div>
                                     </div>
-                                    <div class="bg-white p-3 rounded border-l-4 border-orange-400">
-                                        <h6 class="font-semibold text-orange-700">Semi-Structured Data</h6>
+                                    <div class="bg-white p-3 rounded border-l-4 border-teal-400">
+                                        <h6 class="font-semibold text-teal-700">Semi-Structured Data</h6>
                                         <p class="text-sm text-gray-600">Has some organizational properties (JSON, XML)</p>
-                                        <div class="text-xs text-orange-600 mt-1">Examples: Web logs, API responses, configuration files</div>
+                                        <div class="text-xs text-teal-600 mt-1">Examples: Web logs, API responses, configuration files</div>
                                     </div>
                                     <div class="bg-white p-3 rounded border-l-4 border-red-400">
                                         <h6 class="font-semibold text-red-700">Unstructured Data</h6>
@@ -506,7 +506,7 @@ print("\\n🎉 Ready for deployment and monitoring!")</code></pre>
             `,
             tips: `
                 <div class="tips-content">
-                    <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-400 p-6 rounded-lg">
+                    <div class="bg-gradient-to-r from-yellow-50 to-teal-50 border-l-4 border-yellow-400 p-6 rounded-lg">
                         <h4 class="text-xl font-bold text-yellow-800 mb-4 flex items-center">
                             💡 Data Science Success Principles
                         </h4>
@@ -589,8 +589,8 @@ print("\\n🎉 Ready for deployment and monitoring!")</code></pre>
                                 </div>
                                 <div class="text-center p-3 bg-white rounded-lg">
                                     <div class="text-2xl mb-2">☁️</div>
-                                    <div class="font-medium text-orange-700">Deployment</div>
-                                    <div class="text-orange-600 text-xs">AWS, Azure, Docker</div>
+                                                            <div class="font-medium text-teal-700">Deployment</div>
+                        <div class="text-teal-600 text-xs">AWS, Azure, Docker</div>
                                 </div>
                             </div>
                         </div>
@@ -713,20 +713,20 @@ print("\\n🎉 Ready for deployment and monitoring!")</code></pre>
                             </div>
                         </div>
 
-                        <div class="bg-orange-50 p-5 rounded-lg border border-orange-200">
-                            <h5 class="font-bold text-orange-700 mb-3">📈 Common Distributions</h5>
+                                        <div class="bg-teal-50 p-5 rounded-lg border border-teal-200">
+                    <h5 class="font-bold text-teal-700 mb-3">📈 Common Distributions</h5>
                             <div class="space-y-3 text-sm">
-                                <div class="bg-white p-3 rounded border-l-2 border-orange-400">
+                                <div class="bg-white p-3 rounded border-l-2 border-teal-400">
                                     <strong>Normal Distribution:</strong>
                                     <div class="text-xs text-gray-600 mt-1">Bell curve, symmetric, defined by mean (μ) and std dev (σ)</div>
                                     <div class="text-xs text-blue-600 mt-1">Used for: Heights, test scores, measurement errors</div>
                                 </div>
-                                <div class="bg-white p-3 rounded border-l-2 border-orange-400">
+                                <div class="bg-white p-3 rounded border-l-2 border-teal-400">
                                     <strong>Binomial Distribution:</strong>
                                     <div class="text-xs text-gray-600 mt-1">Number of successes in n independent trials</div>
                                     <div class="text-xs text-blue-600 mt-1">Used for: Pass/fail outcomes, A/B testing</div>
                                 </div>
-                                <div class="bg-white p-3 rounded border-l-2 border-orange-400">
+                                <div class="bg-white p-3 rounded border-l-2 border-teal-400">
                                     <strong>Poisson Distribution:</strong>
                                     <div class="text-xs text-gray-600 mt-1">Number of events in fixed time/space interval</div>
                                     <div class="text-xs text-blue-600 mt-1">Used for: Website visits, customer arrivals</div>
@@ -784,7 +784,7 @@ print("\\n🎉 Ready for deployment and monitoring!")</code></pre>
                                     <td class="px-4 py-3">Gender vs product preference</td>
                                 </tr>
                                 <tr class="bg-gray-50">
-                                    <td class="px-4 py-3 font-semibold text-orange-700">Mann-Whitney U</td>
+                                    <td class="px-4 py-3 font-semibold text-teal-700">Mann-Whitney U</td>
                                     <td class="px-4 py-3">Non-parametric comparison</td>
                                     <td class="px-4 py-3">Ordinal/Non-normal</td>
                                     <td class="px-4 py-3">Compare customer satisfaction ratings</td>
@@ -1173,7 +1173,7 @@ print("📈 Ready for business implementation and A/B testing validation")</code
                                 </ul>
                             </div>
 
-                            <div class="bg-white p-4 rounded-lg shadow-sm border border-orange-200">
+                            <div class="bg-white p-4 rounded-lg shadow-sm border border-teal-200">
                                 <h5 class="font-semibold text-gray-800 mb-2 flex items-center">
                                     💡 Interpret Results Carefully
                                 </h5>
