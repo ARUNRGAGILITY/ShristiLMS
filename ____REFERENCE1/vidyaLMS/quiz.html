@@ -7,6 +7,57 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
+        /* Mobile-first responsive styles */
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+                padding: 0 2rem;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+        
+        /* Mobile-first buttons */
+        .mobile-btn {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        @media (min-width: 640px) {
+            .mobile-btn {
+                width: auto;
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Quiz-specific styles */
         .quiz-option {
             transition: all 0.3s ease;
         }
@@ -51,22 +102,22 @@
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
-    <!-- Navigation -->
+    <!-- Standard Navigation -->
     <nav class="bg-blue-600 text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                        <span class="text-blue-600 font-bold text-lg">V</span>
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-blue-600 font-bold text-lg sm:text-xl">V</span>
                     </div>
-                    <h1 class="text-xl font-bold">VidyaLMS Quiz</h1>
+                    <h1 class="text-lg sm:text-xl lg:text-2xl font-bold">VidyaLMS</h1>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <a href="index.html" class="px-4 py-2 bg-blue-700 rounded-lg hover:bg-blue-800 transition">
-                        🏠 Home
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <a href="index.html" class="mobile-btn bg-blue-700 hover:bg-blue-800 transition text-xs sm:text-sm">
+                        🏠 <span class="hidden sm:inline">Home</span>
                     </a>
-                    <button id="learningBtn" class="px-4 py-2 bg-green-600 rounded-lg hover:bg-green-700 transition">
-                        📚 Learn
+                    <button id="learningBtn" class="mobile-btn bg-green-600 hover:bg-green-700 transition text-xs sm:text-sm">
+                        📚 <span class="hidden sm:inline">Learn</span>
                     </button>
                 </div>
             </div>
@@ -281,7 +332,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/courses.js"></script>
+            <script src="js/courses.js"></script>
+        <script src="js/shared-nav.js"></script>
     <script>
         let currentCourse = null;
         let quizData = null;
