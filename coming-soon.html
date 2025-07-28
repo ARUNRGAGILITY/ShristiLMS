@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coming Soon - Lesson Content | Shristi</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../main.css" />
+  </head>
+  <body data-theme="dark">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+      <div class="bg-shape shape-1"></div>
+      <div class="bg-shape shape-2"></div>
+      <div class="bg-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <a href="../index.html" class="logo">
+            <img src="../assets/logo.png" alt="Shristi Logo" class="logo-icon">
+            <span class="shristi-font">Shristi</span>
+          </a>
+          <ul class="nav-links">
+            <li><a href="../index.html#hero" class="nav-link">Home</a></li>
+            <li>
+              <a href="../index.html#features" class="nav-link">Features</a>
+            </li>
+            <li>
+              <a href="../index.html#courses" class="nav-link">Courses</a>
+            </li>
+
+            <li>
+              
+            </li>
+          </ul>
+          <div class="nav-actions">
+            <button
+              class="theme-toggle"
+              id="themeToggle"
+              aria-label="Toggle theme"
+            >
+              <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+            <a href="../index.html#courses" class="btn btn-primary"
+              >All Courses</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <div class="coming-soon-container">
+          <div class="coming-soon-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+
+          <h1 class="coming-soon-title">Coming Soon!</h1>
+
+          <p class="coming-soon-subtitle">
+            Interactive lesson content is under development
+          </p>
+
+          <p class="coming-soon-description">
+            We're working hard to create an amazing interactive learning
+            experience for you. Our lessons will feature hands-on coding
+            exercises, real-time feedback, and project-based learning to help
+            you master programming concepts effectively.
+          </p>
+
+          <div class="coming-soon-actions">
+            <button class="btn btn-primary" onclick="goBack()">
+              <i class="fas fa-arrow-left"></i>
+              Go Back to Course
+            </button>
+            <button class="btn btn-outline"">
+              <i class="fas fa-bell"></i>
+              Notify Me When Ready
+            </button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Theme functionality
+      class ComingSoonThemeManager {
+        constructor() {
+          this.initTheme();
+        }
+
+        initTheme() {
+          const savedTheme = localStorage.getItem("theme") || "dark";
+          this.setTheme(savedTheme);
+
+          const themeToggle = document.getElementById("themeToggle");
+          themeToggle?.addEventListener("click", () => {
+            const currentTheme = document.body.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            this.setTheme(newTheme);
+          });
+        }
+
+        setTheme(theme) {
+          document.body.setAttribute("data-theme", theme);
+          localStorage.setItem("theme", theme);
+
+          const themeIcon = document.getElementById("themeIcon");
+          if (themeIcon) {
+            themeIcon.className =
+              theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+          }
+        }
+      }
+
+      // Navigation scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 100) {
+          navbar?.classList.add("scrolled");
+        } else {
+          navbar?.classList.remove("scrolled");
+        }
+      });
+
+      // Page functionality
+      function goBack() {
+        if (document.referrer && document.referrer.includes("learn_")) {
+          window.history.back();
+        } else {
+          window.location.href = "../index.html#courses";
+        }
+      }
+
+
+      // Initialize the page
+      document.addEventListener("DOMContentLoaded", () => {
+        new ComingSoonThemeManager();
+      });
+    </script>
+  </body>
+</html>

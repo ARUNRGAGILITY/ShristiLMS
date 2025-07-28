@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Course - Shristi</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body data-theme="dark">
+    <!-- Responsive Overlay for Mobile/Tablet -->
+    <div class="responsive-overlay" id="responsive-overlay">
+      <div class="responsive-message">
+        <h2>Desktop Only Zone</h2>
+        <p>
+          The Python Quiz needs some elbow room. Hop on a laptop or desktop (769px+) for the best ride.
+        </p>
+        <a href="../index.html" class="btn btn-primary">
+          Back to Home
+        </a>
+      </div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg">
+      <div class="bg-shape shape-1"></div>
+      <div class="bg-shape shape-2"></div>
+      <div class="bg-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-content">
+                  <a href="../" class="logo">
+          <img src="../assets/logo.png" alt="Shristi Logo" class="logo-icon">
+          <span class="shristi-font">Shristi</span>
+        </a>
+          <ul class="nav-links">
+            <li><a href="../" class="nav-link">Home</a></li>
+                      <li><a href="../#features" class="nav-link">Features</a></li>
+          <li><a href="../#courses" class="nav-link">Courses</a></li>
+          </ul>
+          <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+              <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+            <a href="../#courses" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content with Sidebar -->
+    <div class="lesson-container">
+      <!-- Sidebar -->
+      <aside class="lesson-sidebar">
+        <div class="sidebar-header">
+          <h2 class="sidebar-title">Python Course</h2>
+          <p class="sidebar-subtitle">Complete Python Programming</p>
+        </div>
+        
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <h3 class="nav-section-title">Module 1: Python Basics</h3>
+            <a href="#" class="nav-item active" data-content="overview">
+              
+              <span>Course Overview</span>
+            </a>
+            <a href="#" class="nav-item" data-content="setup-environment">
+              
+              <span>1.1 Setup Environment</span>
+            </a>
+            <a href="#" class="nav-item" data-content="print-variables">
+              
+              <span>1.2 Print & Variables</span>
+            </a>
+            <a href="#" class="nav-item" data-content="if-else-logic">
+              
+              <span>1.3 If-Else Logic</span>
+            </a>
+            <a href="#" class="nav-item" data-content="loops">
+              
+              <span>1.4 Loops</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <h3 class="nav-section-title">Module 2: Functions & Collections</h3>
+            <a href="#" class="nav-item" data-content="functions">
+              
+              <span>2.1 Functions</span>
+            </a>
+            <a href="#" class="nav-item" data-content="lists-tuples">
+              
+              <span>2.2 Lists & Tuples</span>
+            </a>
+            <a href="#" class="nav-item" data-content="dictionaries">
+              
+              <span>2.3 Dictionaries</span>
+            </a>
+            <a href="#" class="nav-item" data-content="sets">
+              
+              <span>2.4 Sets</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <h3 class="nav-section-title">Module 3: Advanced Topics</h3>
+            <a href="#" class="nav-item" data-content="file-handling">
+              
+              <span>3.1 File Handling</span>
+            </a>
+            <a href="#" class="nav-item" data-content="error-handling">
+              
+              <span>3.2 Error Handling</span>
+            </a>
+            <a href="#" class="nav-item" data-content="modules-packages">
+              
+              <span>3.3 Modules & Packages</span>
+            </a>
+            <a href="#" class="nav-item" data-content="oop">
+              
+              <span>3.4 Object-Oriented Programming</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <!-- Projects section removed as requested -->
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="lesson-content">
+        <div class="lesson-header">
+          <h1 class="lesson-title">Python Programming</h1>
+          <div class="lesson-meta">
+            <div class="meta-item">
+              
+              <span>3 Hours</span>
+            </div>
+            <div class="meta-item">
+              
+              <span>Beginner</span>
+            </div>
+            <div class="meta-item">
+              
+              <span>Certificate</span>
+            </div>
+          </div>
+          <div class="lesson-progress">
+            <div class="progress-fill" style="width: 25%"></div>
+          </div>
+        </div>
+
+        <!-- Content Sections -->
+        <div id="content-area">
+          <!-- Course Overview Content -->
+          <div class="content-section active" id="overview">
+            <h2>Course Overview</h2>
+            <p>Welcome to the comprehensive Python programming course! This course is designed to take you from a complete beginner to a confident Python developer.</p>
+            
+            <div class="highlight-box">
+              <h4>What You'll Learn</h4>
+              <ul>
+                <li>Python fundamentals and syntax</li>
+                <li>Control structures and data types</li>
+                <li>Functions and modules</li>
+                <li>Object-oriented programming</li>
+                <li>File handling and error management</li>
+                <li>Real-world project building</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Setup Environment Content -->
+          <div class="content-section" id="setup-environment">
+            <h2>1.1 Setup Environment</h2>
+            <p>Before we start coding, let's set up your Python development environment. This is the foundation for all your Python programming work.</p>
+            
+            <div class="highlight-box">
+              <h4>What You'll Learn</h4>
+              <ul>
+                <li>Installing Python on your system</li>
+                <li>Setting up a code editor</li>
+                <li>Running your first Python program</li>
+                <li>Understanding the Python interpreter</li>
+              </ul>
+            </div>
+
+            <h3>Step 1: Install Python</h3>
+            <p>Download Python from the official website: <a style="color: #007bff; text-decoration: none;" href="https://python.org" target="_blank">python.org</a></p>
+            
+            <div class="code-block">
+
+              <div class="code-content">
+                <span class="code-comment"># Check if Python is installed</span><br>
+                <span class="code-command">python --version</span><br>
+                <span class="code-output">Python 3.11.0</span>
+              </div>
+            </div>
+
+            <h3>Step 2: Choose a Code Editor</h3>
+            <p>We recommend using VS Code or PyCharm for the best development experience.</p>
+            
+            <div class="exercise-box">
+              <h4>Practice Exercise</h4>
+              <p>Try running the version check command in your terminal. What version of Python do you have installed?</p>
+            </div>
+          </div>
+
+          <!-- Print & Variables Content -->
+          <div class="content-section" id="print-variables">
+            <h2>1.2 Print & Variables</h2>
+            <p>Learn the basics of outputting text and storing data in variables - the building blocks of Python programming.</p>
+            
+            <h3>Print Function</h3>
+            <p>The <code>print()</code> function is used to output text to the console.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">print("Hello, World!")</span><br>
+                <span class="code-output">Hello, World!</span><br><br>
+                <span class="code-command">print("Welcome to Python!")</span><br>
+                <span class="code-output">Welcome to Python!</span>
+              </div>
+            </div>
+
+            <h3>Variables</h3>
+            <p>Variables are containers for storing data values.</p>
+            
+            <div class="code-block">    
+              <div class="code-content">
+                <span class="code-comment"># Creating variables</span><br>
+                <span class="code-command">name = "Alice"</span><br>
+                <span class="code-command">age = 25</span><br>
+                <span class="code-command">height = 1.75</span><br><br>
+                <span class="code-comment"># Using variables</span><br>
+                <span class="code-command">print(name)</span><br>
+                <span class="code-output">Alice</span><br>
+                <span class="code-command">print("Age:", age)</span><br>
+                <span class="code-output">Age: 25</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise</h4>
+              <p>Create variables for your name, age, and favorite color. Then print them using the print function.</p>
+            </div>
+          </div>
+
+          <!-- If-Else Logic Content -->
+          <div class="content-section" id="if-else-logic">
+            <h2>1.3 If-Else Logic</h2>
+            <p>Learn how to make decisions in your code using conditional statements. This is one of the most fundamental concepts in programming that allows your code to respond differently based on various conditions.</p>
+            
+            <div class="highlight-box">
+              <h4>What You'll Learn</h4>
+              <ul>
+                <li>Basic if statements and conditions</li>
+                <li>If-else and if-elif-else structures</li>
+                <li>Comparison operators and logical operators</li>
+                <li>Nested conditions and complex logic</li>
+                <li>Real-world applications of conditional logic</li>
+              </ul>
+            </div>
+
+            <h3>Understanding Conditions</h3>
+            <p>Conditions are expressions that evaluate to either <code>True</code> or <code>False</code>. Python uses these boolean values to decide which code to execute.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># Simple conditions</span><br>
+                <span class="code-command">x = 5</span><br>
+                <span class="code-command">y = 10</span><br><br>
+                <span class="code-command">print(x > y)</span><br>
+                <span class="code-output">False</span><br><br>
+                <span class="code-command">print(x < y)</span><br>
+                <span class="code-output">True</span><br><br>
+                <span class="code-command">print(x == 5)</span><br>
+                <span class="code-output">True</span>
+              </div>
+            </div>
+
+            <h3>Comparison Operators</h3>
+            <p>Python provides several operators to compare values:</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># Comparison operators</span><br>
+                <span class="code-command">a = 10</span><br>
+                <span class="code-command">b = 5</span><br><br>
+                <span class="code-command">print(f"a > b: {a > b}")</span><br>
+                <span class="code-output">a > b: True</span><br><br>
+                <span class="code-command">print(f"a < b: {a < b}")</span><br>
+                <span class="code-output">a < b: False</span><br><br>
+                <span class="code-command">print(f"a == b: {a == b}")</span><br>
+                <span class="code-output">a == b: False</span><br><br>
+                <span class="code-command">print(f"a != b: {a != b}")</span><br>
+                <span class="code-output">a != b: True</span><br><br>
+                <span class="code-command">print(f"a >= b: {a >= b}")</span><br>
+                <span class="code-output">a >= b: True</span><br><br>
+                <span class="code-command">print(f"a <= b: {a <= b}")</span><br>
+                <span class="code-output">a <= b: False</span>
+              </div>
+            </div>
+
+            <h3>Basic If Statement</h3>
+            <p>The <code>if</code> statement allows you to execute code only when a condition is true. The code block must be indented (typically 4 spaces).</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">age = 18</span><br><br>
+                <span class="code-command">if age >= 18:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("You are an adult")</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("You can vote!")</span><br><br>
+                <span class="code-output">You are an adult</span><br>
+                <span class="code-output">You can vote!</span>
+              </div>
+            </div>
+
+            <h3>If-Else Statement</h3>
+            <p>Use <code>else</code> to provide an alternative when the condition is false. This ensures that some code always executes.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">temperature = 25</span><br><br>
+                <span class="code-command">if temperature > 30:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("It's hot!")</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("Stay hydrated!")</span><br>
+                <span class="code-command">else:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("It's comfortable")</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("Enjoy the weather!")</span><br><br>
+                <span class="code-output">It's comfortable</span><br>
+                <span class="code-output">Enjoy the weather!</span>
+              </div>
+            </div>
+
+            <h3>If-Elif-Else Statement</h3>
+            <p>Use <code>elif</code> (else if) to check multiple conditions in sequence. This is more efficient than multiple separate if statements.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">score = 85</span><br><br>
+                <span class="code-command">if score >= 90:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;grade = "A"</span><br>
+                <span class="code-command">elif score >= 80:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;grade = "B"</span><br>
+                <span class="code-command">elif score >= 70:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;grade = "C"</span><br>
+                <span class="code-command">elif score >= 60:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;grade = "D"</span><br>
+                <span class="code-command">else:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;grade = "F"</span><br><br>
+                <span class="code-command">print(f"Your grade is: {grade}")</span><br><br>
+                <span class="code-output">Your grade is: B</span>
+              </div>
+            </div>
+
+            <h3>Logical Operators</h3>
+            <p>Combine multiple conditions using logical operators: <code>and</code>, <code>or</code>, and <code>not</code>.</p>
+            
+            <div class="code-block">                    
+              <div class="code-content">
+                <span class="code-command">age = 25</span><br>
+                <span class="code-command">has_license = True</span><br>
+                <span class="code-command">has_car = True</span><br><br>
+                <span class="code-comment"># Using AND operator</span><br>
+                <span class="code-command">if age >= 18 and has_license:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("You can drive!")</span><br><br>
+                <span class="code-comment"># Using OR operator</span><br>
+                <span class="code-command">if has_car or has_license:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("You have transportation options")</span><br><br>
+                <span class="code-comment"># Using NOT operator</span><br>
+                <span class="code-command">if not has_license:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("You need to get a license first")</span><br><br>
+                <span class="code-output">You can drive!</span><br>
+                <span class="code-output">You have transportation options</span>
+              </div>
+            </div>
+
+            <h3>Nested Conditions</h3>
+            <p>You can nest if statements inside other if statements to create complex decision trees.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">weather = "sunny"</span><br>
+                <span class="code-command">temperature = 75</span><br><br>
+                <span class="code-command">if weather == "sunny":</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;if temperature > 80:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Go to the beach!")</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;elif temperature > 60:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Go for a walk in the park")</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;else:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Stay inside, it's chilly")</span><br>
+                <span class="code-command">else:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("Check the weather forecast")</span><br><br>
+                <span class="code-output">Go for a walk in the park</span>
+              </div>
+            </div>
+
+            <h3>Checking for Membership</h3>
+            <p>Use <code>in</code> and <code>not in</code> to check if a value exists in a sequence (list, tuple, string).</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">fruits = ["apple", "banana", "orange"]</span><br>
+                <span class="code-command">favorite = "banana"</span><br><br>
+                <span class="code-command">if favorite in fruits:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print(f"{favorite} is available!")</span><br>
+                <span class="code-command">else:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print(f"{favorite} is not available")</span><br><br>
+                <span class="code-command">name = "Alice"</span><br>
+                <span class="code-command">if "a" in name.lower():</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("The name contains 'a'")</span><br><br>
+                <span class="code-output">banana is available!</span><br>
+                <span class="code-output">The name contains 'a'</span>
+              </div>
+            </div>
+
+            <h3>Truthiness in Python</h3>
+            <p>Python has a concept of "truthiness" - some values are considered False while others are True.</p>
+            
+            <div class="code-block">
+
+              <div class="code-content">
+                <span class="code-comment"># False values: False, 0, "", [], (), {}, None</span><br>
+                <span class="code-command">empty_list = []</span><br>
+                <span class="code-command">empty_string = ""</span><br>
+                <span class="code-command">zero = 0</span><br><br>
+                <span class="code-command">if empty_list:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("List has items")</span><br>
+                <span class="code-command">else:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("List is empty")</span><br><br>
+                <span class="code-command">if empty_string:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("String has content")</span><br>
+                <span class="code-command">else:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("String is empty")</span><br><br>
+                <span class="code-output">List is empty</span><br>
+                <span class="code-output">String is empty</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise 1: Grade Calculator</h4>
+              <p>Create a program that takes a student's score (0-100) and assigns a letter grade:</p>
+              <ul>
+                <li>A: 90-100</li>
+                <li>B: 80-89</li>
+                <li>C: 70-79</li>
+                <li>D: 60-69</li>
+                <li>F: 0-59</li>
+              </ul>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise 2: Password Validator</h4>
+              <p>Write a program that checks if a password meets these criteria:</p>
+              <ul>
+                <li>At least 8 characters long</li>
+                <li>Contains at least one uppercase letter</li>
+                <li>Contains at least one lowercase letter</li>
+                <li>Contains at least one number</li>
+              </ul>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise 3: Number Classifier</h4>
+              <p>Write a program that takes a number and determines if it is:</p>
+              <ul>
+                <li>Positive, negative, or zero</li>
+                <li>Even or odd</li>
+                <li>Prime or composite (for positive numbers)</li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h4>Key Takeaways</h4>
+              <ul>
+                <li>Use <code>if</code> for single conditions</li>
+                <li>Use <code>if-else</code> for binary decisions</li>
+                <li>Use <code>if-elif-else</code> for multiple conditions</li>
+                <li>Combine conditions with <code>and</code>, <code>or</code>, <code>not</code></li>
+                <li>Use <code>in</code> to check membership</li>
+                <li>Remember Python's truthiness rules</li>
+                <li>Always use proper indentation (4 spaces)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Loops Content -->
+          <div class="content-section" id="loops">
+            <h2>1.4 Loops</h2>
+            <p>Learn how to repeat code using loops - a fundamental concept in programming.</p>
+            
+            <h3>For Loop</h3>
+            <p>The <code>for</code> loop is used to iterate over sequences like lists, tuples, or strings.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># Loop through a list</span><br>
+                <span class="code-command">fruits = ["apple", "banana", "orange"]</span><br>
+                <span class="code-command">for fruit in fruits:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print(fruit)</span><br><br>
+                <span class="code-output">apple</span><br>
+                <span class="code-output">banana</span><br>
+                <span class="code-output">orange</span>
+              </div>
+            </div>
+
+            <h3>While Loop</h3>
+            <p>The <code>while</code> loop repeats code as long as a condition is true.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">count = 1</span><br>
+                <span class="code-command">while count <= 5:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print(f"Count: {count}")</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;count += 1</span><br><br>
+                <span class="code-output">Count: 1</span><br>
+                <span class="code-output">Count: 2</span><br>
+                <span class="code-output">Count: 3</span><br>
+                <span class="code-output">Count: 4</span><br>
+                <span class="code-output">Count: 5</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise</h4>
+              <p>Create a program that prints the first 10 even numbers using a for loop and the range() function.</p>
+            </div>
+          </div>
+
+          <!-- Tip Calculator Project -->
+          <div class="content-section" id="tip-calculator">
+            <h2>Mini Project: Tip Calculator</h2>
+            <p>Let's build a practical tip calculator using everything we've learned so far!</p>
+            
+            <div class="highlight-box">
+              <h4>Project Requirements</h4>
+              <ul>
+                <li>Ask user for bill amount</li>
+                <li>Ask for tip percentage</li>
+                <li>Calculate tip and total</li>
+                <li>Display results nicely</li>
+              </ul>
+            </div>
+
+            <h3>Complete Solution</h3>
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># Tip Calculator</span><br><br>
+                <span class="code-command">print("=== Tip Calculator ===")</span><br><br>
+                <span class="code-command">bill = float(input("Enter bill amount: $"))</span><br>
+                <span class="code-command">tip_percent = float(input("Enter tip percentage: "))</span><br><br>
+                <span class="code-command">tip_amount = bill * (tip_percent / 100)</span><br>
+                <span class="code-command">total = bill + tip_amount</span><br><br>
+                <span class="code-command">print(f"\nBill: ${bill:.2f}")</span><br>
+                <span class="code-command">print(f"Tip: ${tip_amount:.2f}")</span><br>
+                <span class="code-command">print(f"Total: ${total:.2f}")</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Challenge</h4>
+              <p>Enhance the tip calculator by adding options for different tip percentages (15%, 18%, 20%) and split the bill among multiple people.</p>
+            </div>
+          </div>
+
+          <!-- Functions Content -->
+          <div class="content-section" id="functions">
+            <h2>2.1 Functions</h2>
+            <p>Functions are reusable blocks of code that perform specific tasks. They help organize and modularize your code.</p>
+            
+            <h3>Defining Functions</h3>
+            <p>Use the <code>def</code> keyword to create a function.</p>
+            
+            <div class="code-block">
+              
+              <div class="code-content">
+                <span class="code-command">def greet(name):</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print(f"Hello, {name}!")</span><br><br>
+                <span class="code-command">greet("Alice")</span><br><br>
+                <span class="code-output">Hello, Alice!</span>
+              </div>
+            </div>
+
+            <h3>Functions with Parameters</h3>
+            <p>Functions can accept multiple parameters and have default values.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">def greet_with_title(name, title="Mr."):</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print(f"Hello, {title} {name}!")</span><br><br>
+                <span class="code-command">greet_with_title("Smith")</span><br>
+                <span class="code-output">Hello, Mr. Smith!</span><br><br>
+                <span class="code-command">greet_with_title("Johnson", "Dr.")</span><br>
+                <span class="code-output">Hello, Dr. Johnson!</span>
+              </div>
+            </div>
+
+            <h3>Functions with Return Values</h3>
+            <p>Functions can return values using the <code>return</code> statement.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">def add_numbers(a, b):</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;return a + b</span><br><br>
+                <span class="code-command">result = add_numbers(5, 3)</span><br>
+                <span class="code-command">print(result)</span><br><br>
+                <span class="code-output">8</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise</h4>
+              <p>Create a function that calculates the area of a circle given its radius. Use the formula: area = π × radius²</p>
+            </div>
+          </div>
+
+          <!-- Lists & Tuples Content -->
+          <div class="content-section" id="lists-tuples">
+            <h2>2.2 Lists & Tuples</h2>
+            <p>Lists and tuples are ordered collections that can store multiple items. Lists are mutable, while tuples are immutable.</p>
+            
+            <h3>Lists</h3>
+            <p>Lists are created using square brackets and can be modified after creation.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># Creating a list</span><br>
+                <span class="code-command">fruits = ["apple", "banana", "orange"]</span><br>
+                <span class="code-command">print(fruits)</span><br>
+                <span class="code-output">['apple', 'banana', 'orange']</span><br><br>
+                <span class="code-comment"># Adding items</span><br>
+                <span class="code-command">fruits.append("grape")</span><br>
+                <span class="code-command">print(fruits)</span><br>
+                <span class="code-output">['apple', 'banana', 'orange', 'grape']</span><br><br>
+                <span class="code-comment"># Accessing items</span><br>
+                <span class="code-command">print(fruits[0])</span><br>
+                <span class="code-output">apple</span>
+              </div>
+            </div>
+
+            <h3>Tuples</h3>
+            <p>Tuples are created using parentheses and cannot be modified after creation.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># Creating a tuple</span><br>
+                <span class="code-command">coordinates = (10, 20)</span><br>
+                <span class="code-command">print(coordinates)</span><br>
+                <span class="code-output">(10, 20)</span><br><br>
+                <span class="code-comment"># Accessing tuple elements</span><br>
+                <span class="code-command">x, y = coordinates</span><br>
+                <span class="code-command">print(f"X: {x}, Y: {y}")</span><br>
+                <span class="code-output">X: 10, Y: 20</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise</h4>
+              <p>Create a list of your favorite movies and a tuple of your birth date. Then print the first movie and extract the year from your birth date.</p>
+            </div>
+          </div>
+
+          <!-- Dictionaries Content -->
+          <div class="content-section" id="dictionaries">
+            <h2>2.3 Dictionaries</h2>
+            <p>Dictionaries store key-value pairs and are perfect for organizing related data.</p>
+            
+            <h3>Creating Dictionaries</h3>
+            <p>Dictionaries use curly braces and store data as key-value pairs.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># Creating a dictionary</span><br>
+                <span class="code-command">person = {</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;"name": "Alice",</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;"age": 25,</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;"city": "New York"</span><br>
+                <span class="code-command">}</span><br><br>
+                <span class="code-command">print(person)</span><br>
+                <span class="code-output">{'name': 'Alice', 'age': 25, 'city': 'New York'}</span>
+              </div>
+            </div>
+
+            <h3>Accessing Dictionary Values</h3>
+            <p>You can access values using keys and modify dictionaries.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># Accessing values</span><br>
+                <span class="code-command">print(person["name"])</span><br>
+                <span class="code-output">Alice</span><br><br>
+                <span class="code-comment"># Adding new key-value pair</span><br>
+                <span class="code-command">person["email"] = "alice@email.com"</span><br>
+                <span class="code-command">print(person)</span><br>
+                <span class="code-output">{'name': 'Alice', 'age': 25, 'city': 'New York', 'email': 'alice@email.com'}</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise</h4>
+              <p>Create a dictionary for a book with keys for title, author, year, and genre. Then add a new key for the number of pages.</p>
+            </div>
+          </div>
+
+          <!-- Sets Content -->
+          <div class="content-section" id="sets">
+            <h2>2.4 Sets</h2>
+            <p>Sets are unordered collections of unique elements, perfect for removing duplicates and set operations.</p>
+            
+            <h3>Creating Sets</h3>
+            <p>Sets are created using curly braces or the set() function.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># Creating a set</span><br>
+                <span class="code-command">fruits = {"apple", "banana", "orange", "apple"}</span><br>
+                <span class="code-command">print(fruits)</span><br>
+                <span class="code-output">{'apple', 'banana', 'orange'}</span><br><br>
+                <span class="code-comment"># Note: duplicates are automatically removed</span><br>
+                <span class="code-command">numbers = set([1, 2, 2, 3, 3, 4])</span><br>
+                <span class="code-command">print(numbers)</span><br>
+                <span class="code-output">{1, 2, 3, 4}</span>
+              </div>
+            </div>
+
+            <h3>Set Operations</h3>
+            <p>Sets support mathematical set operations like union, intersection, and difference.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">set1 = {1, 2, 3, 4}</span><br>
+                <span class="code-command">set2 = {3, 4, 5, 6}</span><br><br>
+                <span class="code-comment"># Union</span><br>
+                <span class="code-command">union = set1 | set2</span><br>
+                <span class="code-command">print(union)</span><br>
+                <span class="code-output">{1, 2, 3, 4, 5, 6}</span><br><br>
+                <span class="code-comment"># Intersection</span><br>
+                <span class="code-command">intersection = set1 & set2</span><br>
+                <span class="code-command">print(intersection)</span><br>
+                <span class="code-output">{3, 4}</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise</h4>
+              <p>Create two sets of your favorite colors and your friend's favorite colors. Find the colors you both like and the colors only you like.</p>
+            </div>
+          </div>
+
+          <!-- File Handling Content -->
+          <div class="content-section" id="file-handling">
+            <h2>3.1 File Handling</h2>
+            <p>Learn how to read from and write to files, a crucial skill for data processing and persistence.</p>
+            
+            <h3>Reading Files</h3>
+            <p>Use the <code>open()</code> function with the <code>'r'</code> mode to read files.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># Reading a file</span><br>
+                <span class="code-command">with open("sample.txt", "r") as file:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;content = file.read()</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print(content)</span><br><br>
+                <span class="code-comment"># Reading line by line</span><br>
+                <span class="code-command">with open("sample.txt", "r") as file:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;for line in file:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(line.strip())</span>
+              </div>
+            </div>
+
+            <h3>Writing Files</h3>
+            <p>Use the <code>'w'</code> mode to write files. This will overwrite existing content.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># Writing to a file</span><br>
+                <span class="code-command">with open("output.txt", "w") as file:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;file.write("Hello, World!\n")</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;file.write("This is a test file.")</span><br><br>
+                <span class="code-comment"># Appending to a file</span><br>
+                <span class="code-command">with open("output.txt", "a") as file:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;file.write("\nThis line was appended.")</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise</h4>
+              <p>Create a program that reads a list of names from a file, adds a greeting to each name, and writes the results to a new file.</p>
+            </div>
+          </div>
+
+          <!-- Error Handling Content -->
+          <div class="content-section" id="error-handling">
+            <h2>3.2 Error Handling</h2>
+            <p>Learn how to handle errors gracefully using try-except blocks to make your programs more robust.</p>
+            
+            <h3>Basic Try-Except</h3>
+            <p>Use try-except blocks to catch and handle exceptions.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">try:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;number = int(input("Enter a number: "))</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;result = 10 / number</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print(f"Result: {result}")</span><br>
+                <span class="code-command">except ValueError:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("Please enter a valid number!")</span><br>
+                <span class="code-command">except ZeroDivisionError:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("Cannot divide by zero!")</span>
+              </div>
+            </div>
+
+            <h3>Finally Block</h3>
+            <p>The <code>finally</code> block always executes, regardless of whether an exception occurred.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">try:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;file = open("data.txt", "r")</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;content = file.read()</span><br>
+                <span class="code-command">except FileNotFoundError:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("File not found!")</span><br>
+                <span class="code-command">finally:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;file.close()</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;print("File closed successfully.")</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise</h4>
+              <p>Create a calculator function that handles division by zero and invalid input gracefully using try-except blocks.</p>
+            </div>
+          </div>
+
+          <!-- Modules & Packages Content -->
+          <div class="content-section" id="modules-packages">
+            <h2>3.3 Modules & Packages</h2>
+            <p>Learn how to organize code into modules and use external packages to extend Python's functionality.</p>
+            
+            <h3>Creating Modules</h3>
+            <p>Modules are Python files that can be imported and used in other programs.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-comment"># math_utils.py</span><br>
+                <span class="code-command">def add(a, b):</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;return a + b</span><br><br>
+                <span class="code-command">def multiply(a, b):</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;return a * b</span><br><br>
+                <span class="code-command">PI = 3.14159</span><br><br>
+                <span class="code-comment"># main.py</span><br>
+                <span class="code-command">import math_utils</span><br><br>
+                <span class="code-command">result = math_utils.add(5, 3)</span><br>
+                <span class="code-command">print(result)</span><br>
+                <span class="code-output">8</span>
+              </div>
+            </div>
+
+            <h3>Using Built-in Modules</h3>
+            <p>Python comes with many built-in modules like <code>math</code>, <code>random</code>, and <code>datetime</code>.</p>
+            
+            <div class="code-block">        
+              <div class="code-content">
+                <span class="code-command">import math</span><br>
+                <span class="code-command">import random</span><br>
+                <span class="code-command">from datetime import datetime</span><br><br>
+                <span class="code-comment"># Using math module</span><br>
+                <span class="code-command">print(math.sqrt(16))</span><br>
+                <span class="code-output">4.0</span><br><br>
+                <span class="code-comment"># Using random module</span><br>
+                <span class="code-command">print(random.randint(1, 10))</span><br>
+                <span class="code-output">7</span><br><br>
+                <span class="code-comment"># Using datetime</span><br>
+                <span class="code-command">print(datetime.now())</span><br>
+                <span class="code-output">2024-01-15 14:30:25.123456</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise</h4>
+              <p>Create a module with utility functions for string manipulation, then import and use it in another file.</p>
+            </div>
+          </div>
+
+          <!-- Object-Oriented Programming Content -->
+          <div class="content-section" id="oop">
+            
+            <h3>Creating Classes</h3>
+            <p>Classes are blueprints for creating objects with attributes and methods.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">class Car:</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, brand, model, year):</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.brand = brand</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.model = model</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.year = year</span><br><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;def display_info(self):</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"{self.year} {self.brand} {self.model}")</span><br><br>
+                <span class="code-command">my_car = Car("Toyota", "Camry", 2020)</span><br>
+                <span class="code-command">my_car.display_info()</span><br>
+                <span class="code-output">2020 Toyota Camry</span>
+              </div>
+            </div>
+
+            <h3>Inheritance</h3>
+            <p>Inheritance allows classes to inherit attributes and methods from parent classes.</p>
+            
+            <div class="code-block">
+              <div class="code-content">
+                <span class="code-command">class ElectricCar(Car):</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, brand, model, year, battery_capacity):</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super().__init__(brand, model, year)</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.battery_capacity = battery_capacity</span><br><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;def display_info(self):</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super().display_info()</span><br>
+                <span class="code-command">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"Battery: {self.battery_capacity} kWh")</span><br><br>
+                <span class="code-command">tesla = ElectricCar("Tesla", "Model 3", 2023, 75)</span><br>
+                <span class="code-command">tesla.display_info()</span><br>
+                <span class="code-output">2023 Tesla Model 3</span><br>
+                <span class="code-output">Battery: 75 kWh</span>
+              </div>
+            </div>
+
+            <div class="exercise-box">
+              <h4>Practice Exercise</h4>
+              <p>Create a class hierarchy for different types of animals (Animal, Dog, Cat) with appropriate attributes and methods.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <!-- Navigation buttons removed as requested -->
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <!-- Main Footer Content -->
+        <div class="footer-main">
+          <!-- Brand Section -->
+          <div class="footer-brand">
+                      <div class="footer-logo">
+            <img src="../assets/logo.png" alt="Shristi Logo" class="logo-icon">
+            <span class="shristi-font">Shristi</span>
+          </div>
+            <p class="footer-description">
+              Empowering developers worldwide with free, high-quality programming education. 
+              Learn to code with interactive courses and real-world projects.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                              <li><a href="#hero">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="../#courses">Courses</a></li>
+            </ul>
+          </div>
+
+          <!-- Courses -->
+          <div class="footer-section">
+            <h3>Courses</h3>
+            <ul class="footer-links">
+              <li><a href="courses/learn_python.html">Python Programming</a></li>
+              <li><a href="#">JavaScript</a></li>
+              <li><a href="#">Git & GitHub</a></li>
+              <!-- <li><a href="#">Web Development</a></li> -->
+              <!-- <li><a href="#">Data Science</a></li> -->
+            </ul>
+          </div>
+
+
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <div class="footer-copyright">
+              <p>&copy; 2024 Shristi. All rights reserved.</p>
+            </div>
+            <div class="footer-legal">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Theme Toggle Functionality
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const body = document.body;
+
+      // Check for saved theme preference or default to dark
+      const currentTheme = localStorage.getItem('theme') || 'dark';
+      body.setAttribute('data-theme', currentTheme);
+      updateThemeIcon(currentTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      function updateThemeIcon(theme) {
+        if (theme === 'dark') {
+          themeIcon.className = 'fas fa-moon';
+        } else {
+          themeIcon.className = 'fas fa-sun';
+        }
+      }
+
+      // Navbar Scroll Effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+
+
+
+      // Sidebar Navigation with Content Switching
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          // Remove active class from all items
+          document.querySelectorAll('.nav-item').forEach(navItem => {
+            navItem.classList.remove('active');
+          });
+          
+          // Add active class to clicked item
+          item.classList.add('active');
+          
+          // Get the content ID from data attribute
+          const contentId = item.getAttribute('data-content');
+          
+          if (contentId) {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+              section.classList.remove('active');
+            });
+            
+            // Show the selected content section
+            const targetSection = document.getElementById(contentId);
+            if (targetSection) {
+              targetSection.classList.add('active');
+              
+              // Update lesson title and meta based on content
+              updateLessonHeader(contentId);
+              
+              // Scroll to top of content area
+              document.querySelector('.lesson-content').scrollTop = 0;
+            }
+          }
+        });
+      });
+
+      // Function to update lesson header based on content
+      function updateLessonHeader(contentId) {
+        const lessonTitle = document.querySelector('.lesson-title');
+        const lessonMeta = document.querySelector('.lesson-meta');
+        
+        const contentData = {
+          'overview': {
+            title: 'Welcome to Python Course',
+            meta: [
+              { icon: 'fas fa-clock', text: '3 Hours' },
+              { icon: 'fas fa-signal', text: 'Beginner' },
+              { icon: 'fas fa-certificate', text: 'Certificate' }
+            ]
+          },
+          'setup-environment': {
+            title: '1.1 Setup Environment',
+            meta: [
+              { icon: 'fas fa-clock', text: '15 min' },
+              { icon: 'fas fa-signal', text: 'Beginner' },
+              { icon: 'fas fa-download', text: 'Setup Required' }
+            ]
+          },
+          'print-variables': {
+            title: '1.2 Print & Variables',
+            meta: [
+              { icon: 'fas fa-clock', text: '20 min' },
+              { icon: 'fas fa-signal', text: 'Beginner' },
+              { icon: 'fas fa-code', text: 'Coding' }
+            ]
+          },
+          'if-else-logic': {
+            title: '1.3 If-Else Logic',
+            meta: [
+              { icon: 'fas fa-clock', text: '25 min' },
+              { icon: 'fas fa-signal', text: 'Beginner' },
+              { icon: 'fas fa-code', text: 'Coding' }
+            ]
+          },
+          'loops': {
+            title: '1.4 Loops',
+            meta: [
+              { icon: 'fas fa-clock', text: '30 min' },
+              { icon: 'fas fa-signal', text: 'Beginner' },
+              { icon: 'fas fa-code', text: 'Coding' }
+            ]
+          },
+          'tip-calculator': {
+            title: 'Mini Project: Tip Calculator',
+            meta: [
+              { icon: 'fas fa-clock', text: '45 min' },
+              { icon: 'fas fa-signal', text: 'Beginner' },
+              { icon: 'fas fa-project-diagram', text: 'Project' }
+            ]
+          },
+          'functions': {
+            title: '2.1 Functions',
+            meta: [
+              { icon: 'fas fa-clock', text: '35 min' },
+              { icon: 'fas fa-signal', text: 'Beginner' },
+              { icon: 'fas fa-code', text: 'Coding' }
+            ]
+          },
+          'lists-tuples': {
+            title: '2.2 Lists & Tuples',
+            meta: [
+              { icon: 'fas fa-clock', text: '40 min' },
+              { icon: 'fas fa-signal', text: 'Beginner' },
+              { icon: 'fas fa-code', text: 'Coding' }
+            ]
+          },
+          'dictionaries': {
+            title: '2.3 Dictionaries',
+            meta: [
+              { icon: 'fas fa-clock', text: '35 min' },
+              { icon: 'fas fa-signal', text: 'Beginner' },
+              { icon: 'fas fa-code', text: 'Coding' }
+            ]
+          },
+          'sets': {
+            title: '2.4 Sets',
+            meta: [
+              { icon: 'fas fa-clock', text: '30 min' },
+              { icon: 'fas fa-signal', text: 'Beginner' },
+              { icon: 'fas fa-code', text: 'Coding' }
+            ]
+          },
+          'file-handling': {
+            title: '3.1 File Handling',
+            meta: [
+              { icon: 'fas fa-clock', text: '45 min' },
+              { icon: 'fas fa-signal', text: 'Intermediate' },
+              { icon: 'fas fa-file', text: 'File I/O' }
+            ]
+          },
+          'error-handling': {
+            title: '3.2 Error Handling',
+            meta: [
+              { icon: 'fas fa-clock', text: '40 min' },
+              { icon: 'fas fa-signal', text: 'Intermediate' },
+              { icon: 'fas fa-shield-alt', text: 'Robust Code' }
+            ]
+          },
+          'modules-packages': {
+            title: '3.3 Modules & Packages',
+            meta: [
+              { icon: 'fas fa-clock', text: '50 min' },
+              { icon: 'fas fa-signal', text: 'Intermediate' },
+              { icon: 'fas fa-box', text: 'Organization' }
+            ]
+          },
+          'oop': {
+            title: '3.4 Object-Oriented Programming',
+            meta: [
+              { icon: 'fas fa-clock', text: '60 min' },
+              { icon: 'fas fa-signal', text: 'Intermediate' },
+              { icon: 'fas fa-cube', text: 'OOP' }
+            ]
+          }
+        };
+        
+        if (contentData[contentId]) {
+          // Update title
+          lessonTitle.textContent = contentData[contentId].title;
+          
+          // Update meta items
+          const metaItems = lessonMeta.querySelectorAll('.meta-item');
+          contentData[contentId].meta.forEach((meta, index) => {
+            if (metaItems[index]) {
+              metaItems[index].innerHTML = `<i class="${meta.icon}"></i><span>${meta.text}</span>`;
+            }
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

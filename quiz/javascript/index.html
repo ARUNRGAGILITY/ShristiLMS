@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Quiz - Shristi</title>
+    <link rel="icon" type="image/png" href="../../assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js"></script>
+    <style>
+      .name-input-section {
+        display: none;
+        text-align: center;
+        margin: 2rem 0;
+        padding: 2rem;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+      }
+      
+      .name-input-section h3 {
+        margin-bottom: 1.5rem;
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      
+      .name-input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      .name-input {
+        padding: 1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        background: var(--bg-color);
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+      
+      .name-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+      
+      .name-input::placeholder {
+        color: var(--text-secondary);
+      }
+      
+      .certificate-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+      }
+      
+      .btn-download {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .btn-download:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+      }
+      
+      @media (max-width: 768px) {
+        .name-input-container {
+          flex-direction: column;
+        }
+        
+        .certificate-actions {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body data-theme="dark">
+
+    <!-- Animated Background -->
+    <div class="animated-bg">
+      <div class="bg-shape shape-1"></div>
+      <div class="bg-shape shape-2"></div>
+      <div class="bg-shape shape-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <div class="nav-content">
+                  <a href="../../" class="logo">
+          <img src="../../assets/logo.png" alt="Shristi Logo" class="logo-icon">
+          <span class="shristi-font">Shristi</span>
+        </a>
+          <ul class="nav-links">
+            <li><a href="../../" class="nav-link">Home</a></li>
+                      <li><a href="../../#features" class="nav-link">Features</a></li>
+          <li><a href="../../#courses" class="nav-link">Courses</a></li>
+          </ul>
+          <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+              <i class="fas fa-moon" id="themeIcon"></i>
+            </button>
+            <a href="../../#courses" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+      <div class="container">
+        <div class="quiz-content-section" id="quiz-container">
+          <!-- Quiz Header -->
+          <div class="quiz-header">
+            <div class="quiz-meta">
+              <div class="meta-item">
+                <i class="fas fa-question-circle"></i>
+                <span id="question-counter">Question 1 of 10</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="quiz-progress">
+            <div class="progress-fill" id="progress-fill" style="width: 10%"></div>
+          </div>
+
+          <!-- Question Container -->
+          <div class="question-container" id="question-container">
+            <h2 class="lesson-title question-text" id="question-text"></h2>
+            
+            <div class="options-container" id="options-container"></div>
+            
+
+            
+            <div class="quiz-actions">
+              <button class="btn btn-primary" id="next-btn" style="display: none;">
+                Next Question
+              </button>
+            </div>
+          </div>
+
+          <!-- Final Screen -->
+          <div class="final-screen" id="final-screen" style="display: none;">
+            <h2 class="final-title" id="final-title">🎉 Great Job!</h2>
+            <div class="final-score" id="final-score"></div>
+            <p class="final-message" id="final-message">You've completed the JavaScript quiz! Keep learning and practicing!</p>
+            
+            <!-- Name Input Section -->
+            <div class="name-input-section" id="name-input-section">
+              <h3>Enter Your Name for Certificate</h3>
+              <div class="name-input-container">
+                <input type="text" id="certificate-name-input" placeholder="Enter your full name" class="name-input">
+                <button class="btn btn-primary" onclick="generateCertificate()">Generate Certificate</button>
+              </div>
+            </div>
+            
+            <!-- Certificate Section -->
+            <div class="certificate-section" id="certificate-section">
+              <div class="certificate-container">
+                <div class="certificate-header">
+                  <img src="../../assets/logo.png" alt="Shristi Logo" class="certificate-logo">
+                  <h3 class="shristi-font">Shristi</h3>
+                </div>
+                <div class="certificate-content">
+                  <h4>Certificate of Completion</h4>
+                  <p class="certificate-text">This is to certify that</p>
+                  <p class="certificate-name" id="certificate-name">[Your Name]</p>
+                  <p class="certificate-text">has successfully completed the JavaScript Quiz with a score of</p>
+                  <p class="certificate-score" id="cert-score"></p>
+                  <p class="certificate-date" id="cert-date"></p>
+                </div>
+                <div class="certificate-footer">
+                  <p>Congratulations on your achievement!</p>
+                    <!-- Certificate Actions -->
+              <div class="certificate-actions">
+                <button class="btn-download" onclick="downloadCertificate()">
+                  <i class="fas fa-download"></i>
+                  Generate Certificate
+                </button>
+              </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="quiz-actions">
+              <button class="btn btn-primary" onclick="window.location.href='../../index.html'">
+                Back to Home
+              </button>
+              <button class="btn btn-secondary" onclick="restartQuiz()">
+                Try Again
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <!-- Main Footer Content -->
+        <div class="footer-main">
+          <!-- Brand Section -->
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <img src="../../assets/logo.png" alt="Shristi Logo" class="logo-icon">
+              <span class="shristi-font">Shristi</span>
+            </div>
+            <p class="footer-description">
+              Empowering developers worldwide with free, high-quality programming education. 
+              Learn to code with interactive courses and real-world projects.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#hero">Home</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="../../#courses">Courses</a></li>
+            </ul>
+          </div>
+
+          <!-- Courses -->
+          <div class="footer-section">
+            <h3>Courses</h3>
+            <ul class="footer-links">
+              <li><a href="courses/learn_python.html">Python Programming</a></li>
+              <li><a href="#">JavaScript</a></li>
+              <li><a href="#">Git & GitHub</a></li>
+              <!-- <li><a href="#">Web Development</a></li> -->
+              <!-- <li><a href="#">Data Science</a></li> -->
+            </ul>
+          </div>
+
+
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <div class="footer-copyright">
+              <p>&copy; 2024 Shristi. All rights reserved.</p>
+            </div>
+            <div class="footer-legal">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Theme Toggle Functionality
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const body = document.body;
+
+      const currentTheme = localStorage.getItem('theme') || 'dark';
+      body.setAttribute('data-theme', currentTheme);
+      updateThemeIcon(currentTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      function updateThemeIcon(theme) {
+        if (theme === 'dark') {
+          themeIcon.className = 'fas fa-moon';
+        } else {
+          themeIcon.className = 'fas fa-sun';
+        }
+      }
+
+      // Navbar Scroll Effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      // Quiz Questions
+      const questions = [
+        {
+          question: "What is the output of: typeof null?",
+          options: [
+            "null",
+            "undefined",
+            "object",
+            "number"
+          ],
+          answer: 2,
+          hint: "This is a famous JavaScript quirk",
+          explanation: "typeof null returns 'object' - this is a known bug in JavaScript that has persisted for historical reasons."
+        },
+        {
+          question: "What does the 'this' keyword refer to in a regular function?",
+          options: [
+            "The function itself",
+            "The global object (window/global)",
+            "The object that called the function",
+            "The parent scope"
+          ],
+          answer: 1,
+          hint: "Think about function context vs arrow functions",
+          explanation: "In regular functions, 'this' refers to the global object (window in browsers, global in Node.js) unless the function is called as a method."
+        },
+        {
+          question: "What is the output of: console.log(1 + '2' + 3)?",
+          options: [
+            "6",
+            "123",
+            "15",
+            "Error"
+          ],
+          answer: 1,
+          hint: "JavaScript type coercion happens from left to right",
+          explanation: "1 + '2' becomes '12' (string), then '12' + 3 becomes '123' (string concatenation)."
+        },
+        {
+          question: "Which method removes the last element from an array?",
+          options: [
+            "shift()",
+            "unshift()",
+            "pop()",
+            "push()"
+          ],
+          answer: 2,
+          hint: "Think of 'pop' as removing from the end",
+          explanation: "pop() removes and returns the last element of an array, while shift() removes the first element."
+        },
+        {
+          question: "What is closure in JavaScript?",
+          options: [
+            "A function that has access to variables in its outer scope",
+            "A way to close browser tabs",
+            "A method to end loops",
+            "A type of variable declaration"
+          ],
+          answer: 0,
+          hint: "Think about function scope and lexical environment",
+          explanation: "A closure is a function that has access to variables in its outer (enclosing) scope even after the outer function has returned."
+        },
+        {
+          question: "What is the output of: console.log([] == false)?",
+          options: [
+            "true",
+            "false",
+            "Error",
+            "undefined"
+          ],
+          answer: 0,
+          hint: "JavaScript type coercion with arrays and booleans",
+          explanation: "[] is converted to 0, false is converted to 0, so 0 == 0 is true."
+        },
+        {
+          question: "Which method creates a new array with elements that pass a test?",
+          options: [
+            "map()",
+            "filter()",
+            "reduce()",
+            "forEach()"
+          ],
+          answer: 1,
+          hint: "Think about filtering out unwanted items",
+          explanation: "filter() creates a new array with all elements that pass the provided test function."
+        },
+        {
+          question: "What is the difference between let and var?",
+          options: [
+            "let is block-scoped, var is function-scoped",
+            "let is function-scoped, var is block-scoped",
+            "There is no difference",
+            "let is global, var is local"
+          ],
+          answer: 0,
+          hint: "Think about scope and hoisting",
+          explanation: "let is block-scoped and not hoisted, while var is function-scoped and hoisted to the top of its scope."
+        },
+        {
+          question: "What is the output of: console.log(typeof function() {})?",
+          options: [
+            "function",
+            "object",
+            "undefined",
+            "Error"
+          ],
+          answer: 0,
+          hint: "Functions are a special type in JavaScript",
+          explanation: "typeof returns 'function' for function declarations and expressions, even though functions are objects in JavaScript."
+        },
+        {
+          question: "What does the spread operator (...) do?",
+          options: [
+            "Only spreads arrays",
+            "Expands iterables into individual elements",
+            "Only works with objects",
+            "Creates copies of variables"
+          ],
+          answer: 1,
+          hint: "Think about expanding or spreading out elements",
+          explanation: "The spread operator expands iterables (arrays, strings, objects) into individual elements."
+        },
+
+      ];
+
+      let currentQuestion = 0;
+      let userAnswers = [];
+      let answered = false;
+
+      const questionCounter = document.getElementById('question-counter');
+      const progressFill = document.getElementById('progress-fill');
+      const questionText = document.getElementById('question-text');
+      const optionsContainer = document.getElementById('options-container');
+      const nextBtn = document.getElementById('next-btn');
+      const questionContainer = document.getElementById('question-container');
+      const finalScreen = document.getElementById('final-screen');
+      const finalScore = document.getElementById('final-score');
+      const finalTitle = document.getElementById('final-title');
+      const finalMessage = document.getElementById('final-message');
+
+      function renderQuestion() {
+        answered = false;
+        const question = questions[currentQuestion];
+        
+        questionCounter.textContent = `Question ${currentQuestion + 1} of 10`;
+        progressFill.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+        questionText.textContent = question.question;
+        
+        optionsContainer.innerHTML = '';
+        question.options.forEach((option, index) => {
+          const button = document.createElement('button');
+          button.className = 'btn btn-secondary option-btn';
+          button.textContent = option;
+          button.addEventListener('click', () => selectOption(index));
+          optionsContainer.appendChild(button);
+        });
+        
+        nextBtn.style.display = 'none';
+      }
+
+      function selectOption(optionIndex) {
+        if (answered) return;
+        
+        answered = true;
+        userAnswers[currentQuestion] = optionIndex;
+        
+        const buttons = document.querySelectorAll('.option-btn');
+        const question = questions[currentQuestion];
+        
+        buttons.forEach((button, index) => {
+          button.disabled = true;
+          button.style.pointerEvents = 'none';
+          if (index === question.answer) {
+            button.classList.add('correct');
+          } else if (index === optionIndex && optionIndex !== question.answer) {
+            button.classList.add('incorrect');
+          }
+        });
+        
+        nextBtn.style.display = 'inline-block';
+      }
+
+      nextBtn.addEventListener('click', () => {
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+          renderQuestion();
+        } else {
+          showFinalScreen();
+        }
+      });
+
+      function showFinalScreen() {
+        const correctAnswers = userAnswers.filter((answer, index) => 
+          answer === questions[index].answer
+        ).length;
+        
+        const score = Math.round((correctAnswers / questions.length) * 100);
+        
+        // Set title and message based on score
+        if (score >= 90) {
+          finalTitle.innerHTML = "🏆 JavaScript Master!";
+          finalMessage.textContent = "Outstanding! You have exceptional JavaScript knowledge. You're ready for advanced concepts and real-world projects!";
+          // Show name input section for certificate
+          document.getElementById('name-input-section').style.display = 'block';
+          document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
+          document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
+        } else if (score >= 80) {
+          finalTitle.innerHTML = "🎯 Excellent Work!";
+          finalMessage.textContent = "Great job! You have a solid understanding of JavaScript. Keep practicing to master the advanced concepts!";
+          // Show name input section for certificate
+          document.getElementById('name-input-section').style.display = 'block';
+          document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
+          document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
+        } else if (score >= 70) {
+          finalTitle.innerHTML = "👍 Good Progress!";
+          finalMessage.textContent = "Well done! You have a good foundation in JavaScript. Focus on the areas you missed to improve further!";
+          // Show name input section for certificate
+          document.getElementById('name-input-section').style.display = 'block';
+          document.getElementById('cert-score').textContent = `${correctAnswers}/${questions.length} (${score}%)`;
+          document.getElementById('cert-date').textContent = new Date().toLocaleDateString();
+        } else if (score >= 60) {
+          finalTitle.innerHTML = "📚 Keep Learning!";
+          finalMessage.textContent = "You're on the right track! Review the concepts you missed and practice more to strengthen your JavaScript skills!";
+          // Hide certificate sections for scores below 70%
+          document.getElementById('name-input-section').style.display = 'none';
+          document.getElementById('certificate-section').style.display = 'none';
+        } else if (score >= 50) {
+          finalTitle.innerHTML = "💪 Don't Give Up!";
+          finalMessage.textContent = "You've got the basics! Take time to review the fundamentals and practice regularly. Every expert was once a beginner!";
+          // Hide certificate sections for scores below 70%
+          document.getElementById('name-input-section').style.display = 'none';
+          document.getElementById('certificate-section').style.display = 'none';
+        } else {
+          finalTitle.innerHTML = "🌱 Beginner's Journey!";
+          finalMessage.textContent = "Don't worry! JavaScript takes time to master. Start with the basics, practice daily, and you'll see improvement quickly!";
+          // Hide certificate sections for scores below 70%
+          document.getElementById('name-input-section').style.display = 'none';
+          document.getElementById('certificate-section').style.display = 'none';
+        }
+        
+        questionContainer.style.display = 'none';
+        finalScreen.style.display = 'block';
+        finalScore.textContent = `Score: ${correctAnswers}/${questions.length} (${score}%)`;
+      }
+
+      function generateCertificate() {
+        const nameInput = document.getElementById('certificate-name-input');
+        const name = nameInput.value.trim();
+        
+        if (!name) {
+          alert('Please enter your name to generate the certificate.');
+          return;
+        }
+        
+        // Update certificate with user's name
+        document.getElementById('certificate-name').textContent = name;
+        
+        // Hide name input section and show certificate
+        document.getElementById('name-input-section').style.display = 'none';
+        document.getElementById('certificate-section').style.display = 'flex';
+      }
+
+      function downloadCertificate() {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('landscape', 'mm', 'a4');
+
+        const pageWidth = 297;
+        const pageHeight = 210;
+        const centerX = pageWidth / 2;
+
+        const name = document.getElementById('certificate-name').textContent;
+        const date = document.getElementById('cert-date').textContent;
+        const certificateId = generateCertificateId();
+
+        const bg = '#1a1a2e';
+        const accent = '#667eea';
+        const white = '#ffffff';
+        const muted = '#a1a1aa';
+        const gold = '#fbbf24';
+
+        // Load the image from assets/logo.png
+        const logo = new Image();
+        logo.src = '../../assets/logo.png';
+
+        logo.onload = () => {
+          // Background
+          pdf.setFillColor(bg);
+          pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+
+          // Logo (inserted after load)
+          const logoWidth = 30;
+          const logoHeight = 30;
+          const logoX = centerX - logoWidth / 2;
+          const logoY = 20;
+          pdf.addImage(logo, 'PNG', logoX, logoY, logoWidth, logoHeight);
+
+          let y = logoY + logoHeight + 10;
+
+          // Platform Name
+          pdf.setFont('helvetica', 'bold');
+          pdf.setFontSize(24);
+          pdf.setTextColor(accent);
+          pdf.text('Shristi', centerX, y, { align: 'center' });
+          y += 15;
+
+          // Certificate Title
+          pdf.setFontSize(18);
+          pdf.setTextColor(gold);
+          pdf.text('Certificate of Completion', centerX, y, { align: 'center' });
+          y += 20;
+
+          // Certify Line
+          pdf.setFont('helvetica', 'normal');
+          pdf.setFontSize(12);
+          pdf.setTextColor(muted);
+          pdf.text('This is to certify that', centerX, y, { align: 'center' });
+          y += 15;
+
+          // Recipient Name
+          pdf.setFont('helvetica', 'bold');
+          pdf.setFontSize(20);
+          pdf.setTextColor(white);
+          pdf.text(name, centerX, y, { align: 'center' });
+          y += 20;
+
+          // Course Achievement Text
+          pdf.setFont('helvetica', 'normal');
+          pdf.setFontSize(12);
+          pdf.setTextColor(muted);
+          pdf.text('has successfully completed the JavaScript Programming Quiz', centerX, y, { align: 'center' });
+          y += 10;
+          pdf.text('with outstanding performance and dedication to learning.', centerX, y, { align: 'center' });
+          y += 12;
+
+          // Date
+          pdf.setFontSize(12);
+          pdf.text(`Date: ${date}`, centerX, y, { align: 'center' });
+          y += 20;
+
+          // Certificate ID
+          pdf.setFontSize(10);
+          pdf.setTextColor(accent);
+          pdf.text(`Certificate ID: ${certificateId}`, centerX, y, { align: 'center' });
+
+          // Save
+          pdf.save(`JavaScript_Certificate_${name.replace(/\s+/g, '_')}.pdf`);
+        };
+
+        logo.onerror = () => {
+          alert('Failed to load logo image.');
+        };
+      }
+
+      function generateCertificateId() {
+        const timestamp = Date.now().toString(36);
+        const random = Math.random().toString(36).substr(2, 5);
+        return `JS-${timestamp}-${random}`.toUpperCase();
+      }
+
+      function restartQuiz() {
+        currentQuestion = 0;
+        userAnswers = [];
+        answered = false;
+        questionContainer.style.display = 'block';
+        finalScreen.style.display = 'none';
+        document.getElementById('certificate-section').style.display = 'none';
+        document.getElementById('name-input-section').style.display = 'none';
+        renderQuestion();
+      }
+
+      // Initialize quiz
+      renderQuestion();
+    </script>
+  </body>
+</html> 

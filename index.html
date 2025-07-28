@@ -3,7 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shristi - Free Coding Platform | Learn Programming for Free</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Shristi  - Free Coding Education Platform | Learn Python, JavaScript & Git</title>
+    <meta name="title" content="Shristi - Free Coding Education Platform | Learn Python, JavaScript & Git">
+    <meta name="description" content="Master programming for FREE! Learn Python, JavaScript & Git with interactive courses, earn certificates, and join thousands of developers. Mobile-friendly, beginner-friendly coding education.">
+    <meta name="keywords" content="free coding courses, learn programming, Python tutorial, JavaScript course, Git training, web development, coding education, programming certificates, beginner coding, mobile-friendly learning">
+    <meta name="author" content="Shristi">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arunrgagility.github.io/ShristiLMS/">
+    <meta property="og:title" content="Shristi - Free Coding Education Platform">
+    <meta property="og:description" content="Master programming for FREE! Learn Python, JavaScript & Git with interactive courses, earn certificates, and join thousands of developers. Mobile-friendly, beginner-friendly coding education.">
+    <meta property="og:image" content="https://arunrgagility.github.io/ShristiLMS/assets/banner.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="Shristi - Free Coding Education Platform">
+    <meta property="og:site_name" content="Shristi">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://arunrgagility.github.io/ShristiLMS/">
+    <meta property="twitter:title" content="Shristi - Free Coding Education Platform">
+    <meta property="twitter:description" content="Master programming for FREE! Learn Python, JavaScript & Git with interactive courses, earn certificates, and join thousands of developers.">
+    <meta property="twitter:image" content="https://arunrgagility.github.io/ShristiLMS/assets/banner.jpg">
+    <meta property="twitter:image:alt" content="Shristi - Free Coding Education Platform">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Shristi">
+    
+    <!-- WhatsApp and Social Media Specific -->
+    <meta property="og:image:secure_url" content="https://arunrgagility.github.io/ShristiLMS/assets/banner.jpg">
+    <meta name="twitter:creator" content="@shristilms">
+    <meta name="twitter:site" content="@shristilms">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arunrgagility.github.io/ShristiLMS/">
+    
+    <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,1700 +56,14 @@
       rel="stylesheet"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
-    <style>
-      :root {
-        --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --primary-dark: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-        --secondary: #6366f1;
-        --accent: #f59e0b;
-        --success: #10b981;
-        --warning: #f59e0b;
-        --error: #ef4444;
-        --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-        --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-      }
-
-      /* Dark theme (default) */
-      [data-theme="dark"] {
-        --background: #0f0f23;
-        --surface: #1a1a2e;
-        --surface-light: #252547;
-        --text-primary: #ffffff;
-        --text-secondary: #a1a1aa;
-        --border: #374151;
-        --glass: rgba(255, 255, 255, 0.1);
-        --navbar-bg: rgba(15, 15, 35, 0.8);
-        --navbar-bg-scrolled: rgba(15, 15, 35, 0.95);
-      }
-
-      /* Light theme */
-      [data-theme="light"] {
-        --background: #ffffff;
-        --surface: #f8fafc;
-        --surface-light: #f1f5f9;
-        --text-primary: #1f2937;
-        --text-secondary: #6b7280;
-        --border: #e5e7eb;
-        --glass: rgba(0, 0, 0, 0.05);
-        --navbar-bg: rgba(255, 255, 255, 0.8);
-        --navbar-bg-scrolled: rgba(255, 255, 255, 0.95);
-        --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Inter", sans-serif;
-        background: var(--background);
-        color: var(--text-primary);
-        line-height: 1.7;
-        overflow-x: hidden;
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-      }
-
-      /* Animated Background */
-      .animated-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
-      }
-
-      .bg-shape {
-        position: absolute;
-        border-radius: 50%;
-        background: linear-gradient(
-          135deg,
-          rgba(102, 126, 234, 0.1),
-          rgba(118, 75, 162, 0.1)
-        );
-        animation: float 20s ease-in-out infinite;
-      }
-
-      [data-theme="light"] .bg-shape {
-        background: linear-gradient(
-          135deg,
-          rgba(102, 126, 234, 0.05),
-          rgba(118, 75, 162, 0.05)
-        );
-      }
-
-      .shape-1 {
-        width: 400px;
-        height: 400px;
-        top: -200px;
-        left: -200px;
-        animation-delay: 0s;
-      }
-
-      .shape-2 {
-        width: 300px;
-        height: 300px;
-        top: 50%;
-        right: -150px;
-        animation-delay: -7s;
-      }
-
-      .shape-3 {
-        width: 500px;
-        height: 500px;
-        bottom: -250px;
-        left: 50%;
-        transform: translateX(-50%);
-        animation-delay: -14s;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px) rotate(0deg);
-        }
-        33% {
-          transform: translateY(-30px) rotate(120deg);
-        }
-        66% {
-          transform: translateY(30px) rotate(240deg);
-        }
-      }
-
-      .particles {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-      }
-
-      .particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 50%;
-        animation: particle-float 15s infinite linear;
-      }
-
-      [data-theme="light"] .particle {
-        background: rgba(102, 126, 234, 0.3);
-      }
-
-      @keyframes particle-float {
-        0% {
-          transform: translateY(100vh) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        90% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-100px) rotate(360deg);
-          opacity: 0;
-        }
-      }
-
-      /* Navigation */
-      .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        padding: 1rem 0;
-        backdrop-filter: blur(20px);
-        background: var(--navbar-bg);
-        border-bottom: 1px solid var(--border);
-        transition: all 0.3s ease;
-      }
-
-      .navbar.scrolled {
-        background: var(--navbar-bg-scrolled);
-        box-shadow: var(--shadow);
-      }
-
-      .nav-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--text-primary);
-        text-decoration: none;
-      }
-
-      .logo-icon {
-        font-size: 2rem;
-        background: var(--primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-      }
-
-      .nav-link {
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      .nav-link:hover,
-      .nav-link.active {
-        color: var(--text-primary);
-        background: var(--glass);
-      }
-
-      .nav-actions {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-      }
-
-      /* Theme Toggle */
-      .theme-toggle {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 0.75rem;
-        padding: 0.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 2.5rem;
-        height: 2.5rem;
-      }
-
-      .theme-toggle:hover {
-        background: var(--surface-light);
-        border-color: var(--secondary);
-        transform: scale(1.05);
-      }
-
-      .theme-toggle i {
-        font-size: 1rem;
-        color: var(--text-primary);
-        transition: all 0.3s ease;
-      }
-
-      .btn {
-        padding: 0.75rem 1.5rem;
-        border: none;
-        border-radius: 0.75rem;
-        font-weight: 600;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 0.875rem;
-      }
-
-      .btn-primary {
-        background: var(--primary);
-        color: white;
-        box-shadow: var(--shadow);
-      }
-
-      .btn-primary:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .btn-secondary {
-        background: var(--surface);
-        color: var(--text-primary);
-        border: 1px solid var(--border);
-      }
-
-      .btn-secondary:hover {
-        background: var(--surface-light);
-        border-color: var(--secondary);
-      }
-
-      .btn-outline {
-        background: transparent;
-        color: var(--text-primary);
-        border: 2px solid var(--glass);
-        backdrop-filter: blur(10px);
-      }
-
-      .btn-outline:hover {
-        background: var(--glass);
-        border-color: var(--secondary);
-      }
-
-      /* Hero Section */
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        padding: 8rem 0 4rem;
-        position: relative;
-      }
-
-      .hero-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-      }
-
-      .hero-text h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-      }
-
-      .gradient-text {
-        background: var(--primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .hero-text p {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-        max-width: 500px;
-      }
-
-      .hero-actions {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 3rem;
-      }
-
-      /* Certificate Info */
-      .certificate-info {
-        margin-top: 3rem;
-      }
-
-      .certificate-card {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        background: var(--surface);
-        padding: 1.5rem;
-        border-radius: 1rem;
-        border: 1px solid var(--border);
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-        max-width: 400px;
-      }
-
-      .certificate-card:hover {
-        transform: translateY(-2px);
-        border-color: var(--accent);
-        box-shadow: var(--shadow);
-      }
-
-      .certificate-icon {
-        width: 3rem;
-        height: 3rem;
-        background: linear-gradient(135deg, var(--accent), #f97316);
-        border-radius: 0.75rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.25rem;
-        color: white;
-        flex-shrink: 0;
-      }
-
-      .certificate-text h4 {
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: var(--text-primary);
-      }
-
-      .certificate-text p {
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        line-height: 1.5;
-        margin: 0;
-      }
-
-      .hero-visual {
-        position: relative;
-      }
-
-      .code-window {
-        background: var(--surface);
-        border-radius: 1rem;
-        border: 1px solid var(--border);
-        overflow: hidden;
-        box-shadow: var(--shadow-lg);
-        transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-      }
-
-      .window-header {
-        background: var(--surface-light);
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .window-controls {
-        display: flex;
-        gap: 0.5rem;
-      }
-
-      .control {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-      }
-
-      .control.red {
-        background: #ff5f56;
-      }
-      .control.yellow {
-        background: #ffbd2e;
-      }
-      .control.green {
-        background: #27ca3f;
-      }
-
-      .window-title {
-        color: var(--text-secondary);
-        font-size: 0.875rem;
-      }
-
-      .code-content {
-        padding: 1.5rem;
-        font-family: "Monaco", "Menlo", monospace;
-        font-size: 0.875rem;
-        line-height: 1.6;
-      }
-
-      .code-line {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .line-number {
-        color: var(--text-secondary);
-        width: 2rem;
-        text-align: right;
-      }
-
-      .keyword {
-        color: #ff7b72;
-      }
-      .function {
-        color: #d2a8ff;
-      }
-      .string {
-        color: #a5d6ff;
-      }
-
-      [data-theme="light"] .keyword {
-        color: #d73a49;
-      }
-      [data-theme="light"] .function {
-        color: #6f42c1;
-      }
-      [data-theme="light"] .string {
-        color: #032f62;
-      }
-
-      .cursor {
-        animation: blink 1s infinite;
-      }
-
-      @keyframes blink {
-        0%,
-        50% {
-          opacity: 1;
-        }
-        51%,
-        100% {
-          opacity: 0;
-        }
-      }
-
-      /* Section Styles */
-      .section {
-        padding: 6rem 0;
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-
-      .section-title {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-      }
-
-      .section-subtitle {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      /* Features Section */
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-      }
-
-      .feature-card {
-        background: var(--surface);
-        padding: 2rem;
-        border-radius: 1rem;
-        border: 1px solid var(--border);
-        text-align: center;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-      }
-
-      .feature-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--secondary);
-        box-shadow: var(--shadow);
-      }
-
-      .feature-icon {
-        width: 4rem;
-        height: 4rem;
-        margin: 0 auto 1.5rem;
-        background: var(--primary);
-        border-radius: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: white;
-      }
-
-      .feature-card h3 {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-      }
-
-      .feature-card p {
-        color: var(--text-secondary);
-      }
-
-      /* Courses Section */
-      .courses {
-        background: var(--surface);
-      }
-
-      .courses-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-      }
-
-      .course-card {
-        background: var(--background);
-        border-radius: 1rem;
-        border: 1px solid var(--border);
-        overflow: hidden;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      .course-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--secondary);
-      }
-
-      .course-card.coming-soon {
-        opacity: 0.7;
-      }
-
-      .course-card.coming-soon:hover {
-        transform: none;
-      }
-
-      .course-header {
-        padding: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
-
-      .course-icon {
-        width: 3rem;
-        height: 3rem;
-        background: var(--primary);
-        border-radius: 0.75rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.25rem;
-        color: white;
-      }
-
-      .status-badge {
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-      }
-
-      .status-badge.available {
-        background: rgba(16, 185, 129, 0.2);
-        color: var(--success);
-        border: 1px solid var(--success);
-      }
-
-      .status-badge.coming-soon {
-        background: rgba(245, 158, 11, 0.2);
-        color: var(--warning);
-        border: 1px solid var(--warning);
-      }
-
-      .course-content {
-        padding: 0 1.5rem 1.5rem;
-      }
-
-      .course-content h3 {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-      }
-
-      .course-content p {
-        color: var(--text-secondary);
-        margin-bottom: 1.5rem;
-      }
-
-      .course-meta {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .meta-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-      }
-
-      .course-footer {
-        padding: 0 1.5rem 1.5rem;
-      }
-
-      .btn-course {
-        width: 100%;
-        padding: 0.75rem;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .btn-course:hover:not(.disabled) {
-        background: var(--primary-dark);
-        transform: translateY(-1px);
-      }
-
-      .btn-course.disabled {
-        background: var(--surface-light);
-        color: var(--text-secondary);
-        cursor: not-allowed;
-      }
-
-      /* About Section */
-      .about-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-      }
-
-      .about-visual .placeholder {
-        width: 100%;
-        height: 300px;
-        background: var(--surface);
-        border-radius: 1rem;
-        border: 1px solid var(--border);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        color: var(--text-secondary);
-      }
-
-      .placeholder i {
-        font-size: 3rem;
-      }
-
-      /* CTA Section */
-      .cta {
-        background: var(--surface);
-        text-align: center;
-      }
-
-      .cta-content h2 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-      }
-
-      .cta-content p {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-      }
-
-      .cta-actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-      }
-
-      /* Footer */
-      .footer {
-        background: var(--background);
-        padding: 4rem 0 2rem;
-        border-top: 1px solid var(--border);
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 4rem;
-        margin-bottom: 2rem;
-      }
-
-      .footer-brand .logo {
-        margin-bottom: 1rem;
-      }
-
-      .footer-brand p {
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-      }
-
-      .social-links {
-        display: flex;
-        gap: 1rem;
-      }
-
-      .social-link {
-        width: 2.5rem;
-        height: 2.5rem;
-        background: var(--surface);
-        border-radius: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-secondary);
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
-
-      .social-link:hover {
-        background: var(--secondary);
-        color: white;
-        transform: translateY(-2px);
-      }
-
-      .footer-links {
-        display: flex;
-        justify-content: flex-start;
-      }
-
-      .link-group h4 {
-        margin-bottom: 1rem;
-        font-weight: 600;
-      }
-
-      .link-group a {
-        display: block;
-        color: var(--text-secondary);
-        text-decoration: none;
-        margin-bottom: 0.5rem;
-        transition: color 0.3s ease;
-      }
-
-      .link-group a:hover {
-        color: var(--text-primary);
-      }
-
-      .footer-bottom {
-        text-align: center;
-        padding-top: 2rem;
-        border-top: 1px solid var(--border);
-        color: var(--text-secondary);
-      }
-
-      /* Mobile Responsive */
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
-
-        .hero-content {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-          text-align: center;
-        }
-
-        .hero-text h1 {
-          font-size: 2.5rem;
-        }
-
-        .hero-actions {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .certificate-info {
-          text-align: center;
-          margin-top: 2rem;
-        }
-
-        .certificate-card {
-          max-width: 100%;
-          flex-direction: column;
-          text-align: center;
-          gap: 1rem;
-        }
-
-        .features-grid,
-        .courses-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .about-content {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-
-        .footer-content {
-          grid-template-columns: 1fr;
-        }
-
-        .footer-links {
-          justify-content: center;
-        }
-
-        .cta-actions {
-          flex-direction: column;
-          align-items: center;
-        }
-      }
-    </style>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Inter", sans-serif;
-        background: var(--background);
-        color: var(--text-primary);
-        line-height: 1.7;
-        overflow-x: hidden;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-      }
-
-      /* Animated Background */
-      .animated-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
-      }
-
-      .bg-shape {
-        position: absolute;
-        border-radius: 50%;
-        background: linear-gradient(
-          135deg,
-          rgba(102, 126, 234, 0.1),
-          rgba(118, 75, 162, 0.1)
-        );
-        animation: float 20s ease-in-out infinite;
-      }
-
-      .shape-1 {
-        width: 400px;
-        height: 400px;
-        top: -200px;
-        left: -200px;
-        animation-delay: 0s;
-      }
-
-      .shape-2 {
-        width: 300px;
-        height: 300px;
-        top: 50%;
-        right: -150px;
-        animation-delay: -7s;
-      }
-
-      .shape-3 {
-        width: 500px;
-        height: 500px;
-        bottom: -250px;
-        left: 50%;
-        transform: translateX(-50%);
-        animation-delay: -14s;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px) rotate(0deg);
-        }
-        33% {
-          transform: translateY(-30px) rotate(120deg);
-        }
-        66% {
-          transform: translateY(30px) rotate(240deg);
-        }
-      }
-
-      .particles {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-      }
-
-      .particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 50%;
-        animation: particle-float 15s infinite linear;
-      }
-
-      @keyframes particle-float {
-        0% {
-          transform: translateY(100vh) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        90% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-100px) rotate(360deg);
-          opacity: 0;
-        }
-      }
-
-      /* Navigation */
-      .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        padding: 1rem 0;
-        backdrop-filter: blur(20px);
-        background: var(--navbar-bg);
-        border-bottom: 1px solid var(--border);
-        transition: all 0.3s ease;
-      }
-
-      .navbar.scrolled {
-        background: var(--navbar-bg-scrolled);
-        box-shadow: var(--shadow);
-      }
-
-      .nav-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--text-primary);
-        text-decoration: none;
-      }
-
-      .logo-icon {
-        font-size: 2rem;
-        background: var(--primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-      }
-
-      .nav-link {
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      .nav-link:hover,
-      .nav-link.active {
-        color: var(--text-primary);
-        background: var(--glass);
-      }
-
-      .nav-actions {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-      }
-
-      .btn {
-        padding: 0.75rem 1.5rem;
-        border: none;
-        border-radius: 0.75rem;
-        font-weight: 600;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 0.875rem;
-      }
-
-      .btn-primary {
-        background: var(--primary);
-        color: white;
-        box-shadow: var(--shadow);
-      }
-
-      .btn-primary:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .btn-secondary {
-        background: var(--surface);
-        color: var(--text-primary);
-        border: 1px solid var(--border);
-      }
-
-      .btn-secondary:hover {
-        background: var(--surface-light);
-        border-color: var(--secondary);
-      }
-
-      .btn-outline {
-        background: transparent;
-        color: var(--text-primary);
-        border: 2px solid var(--glass);
-        backdrop-filter: blur(10px);
-      }
-
-      .btn-outline:hover {
-        background: var(--glass);
-        border-color: var(--secondary);
-      }
-
-      /* Hero Section */
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        padding: 8rem 0 4rem;
-        position: relative;
-      }
-
-      .hero-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-      }
-
-      .hero-text h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-      }
-
-      .gradient-text {
-        background: var(--primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .hero-text p {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-        max-width: 500px;
-      }
-
-      .hero-actions {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 3rem;
-      }
-
-      /* Certificate Info */
-      .certificate-info {
-        margin-top: 3rem;
-      }
-
-      .certificate-card {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        background: var(--surface);
-        padding: 1.5rem;
-        border-radius: 1rem;
-        border: 1px solid var(--border);
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-        max-width: 400px;
-      }
-
-      .certificate-card:hover {
-        transform: translateY(-2px);
-        border-color: var(--accent);
-        box-shadow: var(--shadow);
-      }
-
-      .certificate-icon {
-        width: 3rem;
-        height: 3rem;
-        background: linear-gradient(135deg, var(--accent), #f97316);
-        border-radius: 0.75rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.25rem;
-        color: white;
-        flex-shrink: 0;
-      }
-
-      .certificate-text h4 {
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: var(--text-primary);
-      }
-
-      .certificate-text p {
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        line-height: 1.5;
-        margin: 0;
-      }
-
-      .hero-visual {
-        position: relative;
-      }
-
-      .code-window {
-        background: var(--surface);
-        border-radius: 1rem;
-        border: 1px solid var(--border);
-        overflow: hidden;
-        box-shadow: var(--shadow-lg);
-        transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-      }
-
-      .window-header {
-        background: var(--surface-light);
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .window-controls {
-        display: flex;
-        gap: 0.5rem;
-      }
-
-      .control {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-      }
-
-      .control.red {
-        background: #ff5f56;
-      }
-      .control.yellow {
-        background: #ffbd2e;
-      }
-      .control.green {
-        background: #27ca3f;
-      }
-
-      .window-title {
-        color: var(--text-secondary);
-        font-size: 0.875rem;
-      }
-
-      .code-content {
-        padding: 1.5rem;
-        font-family: "Monaco", "Menlo", monospace;
-        font-size: 0.875rem;
-        line-height: 1.6;
-      }
-
-      .code-line {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .line-number {
-        color: var(--text-secondary);
-        width: 2rem;
-        text-align: right;
-      }
-
-      .keyword {
-        color: #ff7b72;
-      }
-      .function {
-        color: #d2a8ff;
-      }
-      .string {
-        color: #a5d6ff;
-      }
-      .cursor {
-        animation: blink 1s infinite;
-      }
-
-      @keyframes blink {
-        0%,
-        50% {
-          opacity: 1;
-        }
-        51%,
-        100% {
-          opacity: 0;
-        }
-      }
-
-      /* Section Styles */
-      .section {
-        padding: 6rem 0;
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-
-      .section-title {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-      }
-
-      .section-subtitle {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      /* Features Section */
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-      }
-
-      .feature-card {
-        background: var(--surface);
-        padding: 2rem;
-        border-radius: 1rem;
-        border: 1px solid var(--border);
-        text-align: center;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-      }
-
-      .feature-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--secondary);
-        box-shadow: var(--shadow);
-      }
-
-      .feature-icon {
-        width: 4rem;
-        height: 4rem;
-        margin: 0 auto 1.5rem;
-        background: var(--primary);
-        border-radius: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: white;
-      }
-
-      .feature-card h3 {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-      }
-
-      .feature-card p {
-        color: var(--text-secondary);
-      }
-
-      /* Courses Section */
-      .courses {
-        background: var(--surface);
-      }
-
-      .courses-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-      }
-
-      .course-card {
-        background: var(--background);
-        border-radius: 1rem;
-        border: 1px solid var(--border);
-        overflow: hidden;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      .course-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--secondary);
-      }
-
-      .course-card.coming-soon {
-        opacity: 0.7;
-      }
-
-      .course-card.coming-soon:hover {
-        transform: none;
-      }
-
-      .course-header {
-        padding: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-      }
-
-      .course-icon {
-        width: 3rem;
-        height: 3rem;
-        background: var(--primary);
-        border-radius: 0.75rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.25rem;
-        color: white;
-      }
-
-      .status-badge {
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-      }
-
-      .status-badge.available {
-        background: rgba(16, 185, 129, 0.2);
-        color: var(--success);
-        border: 1px solid var(--success);
-      }
-
-      .status-badge.coming-soon {
-        background: rgba(245, 158, 11, 0.2);
-        color: var(--warning);
-        border: 1px solid var(--warning);
-      }
-
-      .course-content {
-        padding: 0 1.5rem 1.5rem;
-      }
-
-      .course-content h3 {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-      }
-
-      .course-content p {
-        color: var(--text-secondary);
-        margin-bottom: 1.5rem;
-      }
-
-      .course-meta {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .meta-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-      }
-
-      .course-footer {
-        padding: 0 1.5rem 1.5rem;
-      }
-
-      .btn-course {
-        width: 100%;
-        padding: 0.75rem;
-        background: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .btn-course:hover:not(.disabled) {
-        background: var(--primary-dark);
-        transform: translateY(-1px);
-      }
-
-      .btn-course.disabled {
-        background: var(--surface-light);
-        color: var(--text-secondary);
-        cursor: not-allowed;
-      }
-
-      /* About Section */
-      .about-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-      }
-
-      .about-visual .placeholder {
-        width: 100%;
-        height: 300px;
-        background: var(--surface);
-        border-radius: 1rem;
-        border: 1px solid var(--border);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        color: var(--text-secondary);
-      }
-
-      .placeholder i {
-        font-size: 3rem;
-      }
-
-      /* CTA Section */
-      .cta {
-        background: var(--surface);
-        text-align: center;
-      }
-
-      .cta-content h2 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-      }
-
-      .cta-content p {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-      }
-
-      .cta-actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-      }
-
-      /* Footer */
-      .footer {
-        background: var(--background);
-        padding: 4rem 0 2rem;
-        border-top: 1px solid var(--border);
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 4rem;
-        margin-bottom: 2rem;
-      }
-
-      .footer-brand .logo {
-        margin-bottom: 1rem;
-      }
-
-      .footer-brand p {
-        color: var(--text-secondary);
-        margin-bottom: 2rem;
-      }
-
-      .social-links {
-        display: flex;
-        gap: 1rem;
-      }
-
-      .social-link {
-        width: 2.5rem;
-        height: 2.5rem;
-        background: var(--surface);
-        border-radius: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-secondary);
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
-
-      .social-link:hover {
-        background: var(--secondary);
-        color: white;
-        transform: translateY(-2px);
-      }
-
-      .footer-links {
-        display: flex;
-        justify-content: flex-end;
-      }
-
-      .link-group h4 {
-        margin-bottom: 1rem;
-        font-weight: 600;
-      }
-
-      .link-group a {
-        display: block;
-        color: var(--text-secondary);
-        text-decoration: none;
-        margin-bottom: 0.5rem;
-        transition: color 0.3s ease;
-      }
-
-      .link-group a:hover {
-        color: var(--text-primary);
-      }
-
-      .footer-bottom {
-        text-align: center;
-        padding-top: 2rem;
-        border-top: 1px solid var(--border);
-        color: var(--text-secondary);
-      }
-
-      /* Mobile Responsive */
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
-
-        .hero-content {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-          text-align: center;
-        }
-
-        .hero-text h1 {
-          font-size: 2.5rem;
-        }
-
-        .hero-actions {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .certificate-info {
-          text-align: center;
-          margin-top: 2rem;
-        }
-
-        .certificate-card {
-          max-width: 100%;
-          flex-direction: column;
-          text-align: center;
-          gap: 1rem;
-        }
-
-        .features-grid,
-        .courses-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .about-content {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-
-        .footer-content {
-          grid-template-columns: 1fr;
-        }
-
-        .footer-links {
-          justify-content: center;
-        }
-
-        .cta-actions {
-          flex-direction: column;
-          align-items: center;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body data-theme="dark">
     <!-- Animated Background -->
@@ -1712,7 +71,6 @@
       <div class="bg-shape shape-1"></div>
       <div class="bg-shape shape-2"></div>
       <div class="bg-shape shape-3"></div>
-      <div class="particles" id="particles"></div>
     </div>
 
     <!-- Navigation -->
@@ -1720,22 +78,16 @@
       <div class="container">
         <div class="nav-content">
           <a href="#" class="logo">
-            <span class="logo-icon">⚡</span>
-            <span>Shristi</span>
+            <img src="assets/logo.png" alt="Shristi Logo" class="logo-icon">
+            <span class="shristi-font">Shristi</span>
           </a>
           <ul class="nav-links">
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#features" class="nav-link">Features</a></li>
-            <li><a href="#courses" class="nav-link">Courses</a></li>
-            <li><a href="#about" class="nav-link">About</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li><a href="#hero" class="nav-link">Home</a></li>
+                      <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#courses" class="nav-link">Courses</a></li>
           </ul>
           <div class="nav-actions">
-            <button
-              class="theme-toggle"
-              id="themeToggle"
-              aria-label="Toggle theme"
-            >
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
               <i class="fas fa-moon" id="themeIcon"></i>
             </button>
             <a href="#courses" class="btn btn-primary">Get Started</a>
@@ -1745,7 +97,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero" id="hero">
       <div class="container">
         <div class="hero-content">
           <div class="hero-text">
@@ -1754,88 +106,70 @@
               Without Limits
             </h1>
             <p>
-              Join thousands of developers learning programming for free.
-              Interactive lessons, real-world projects, and a supportive
-              community.
+              Join thousands of developers learning programming with our free,
+              interactive courses. From Python to JavaScript, master the skills
+              that matter.
             </p>
             <div class="hero-actions">
               <a href="#courses" class="btn btn-primary">
                 <i class="fas fa-play"></i>
-                Start Learning
+                <span>
+                  Start Learning
+                </span>
               </a>
-              <a href="#features" class="btn btn-outline">
+              <a href="#features" class="btn btn-secondary">
                 <i class="fas fa-info-circle"></i>
-                Learn More
+                <span>
+                  Learn More
+                </span>
               </a>
             </div>
-            <div class="certificate-info">
-              <div class="certificate-card">
-                <div class="certificate-icon">
-                  <i class="fas fa-certificate"></i>
-                </div>
-                <div class="certificate-text">
-                  <h4>Get Your Certificate</h4>
-                  <p>
-                    Earn official certificates after completing courses and
-                    passing quizzes
-                  </p>
-                </div>
+            <div class="hero-certificate">
+              <div class="cert-icon">
+                <i class="fas fa-award"></i>
               </div>
+              <span class="cert-text">Earn Certificate Now</span>
             </div>
           </div>
           <div class="hero-visual">
-            <div class="code-window">
+            <div class="git-window">
               <div class="window-header">
                 <div class="window-controls">
                   <span class="control red"></span>
                   <span class="control yellow"></span>
                   <span class="control green"></span>
                 </div>
-                <div class="window-title">learning.py</div>
+                <div class="window-title">terminal - python</div>
               </div>
-              <div class="code-content">
-                <div class="code-line">
-                  <span class="line-number">1</span>
-                  <span>
-                    <span class="keyword">def</span>
-                    <span class="function">learn_coding</span>():
-                  </span>
+              <div class="terminal-content">
+                <div class="terminal-line">
+                  <span class="prompt">$</span>
+                  <span class="command">python</span>
                 </div>
-                <div class="code-line">
-                  <span class="line-number">2</span>
-                  <span
-                    >&nbsp;&nbsp;&nbsp;&nbsp;<span class="string"
-                      >"Start your journey"</span
-                    ></span
-                  >
+                <div class="terminal-line">
+                  <span class="output">Python 3.9.0 (default, Oct 6 2020)</span>
                 </div>
-                <div class="code-line">
-                  <span class="line-number">3</span>
-                  <span
-                    >&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">while</span>
-                    True:</span
-                  >
+                <div class="terminal-line">
+                  <span class="prompt">&gt;&gt;&gt;</span>
+                  <span class="command">print("Hello, World!")</span>
                 </div>
-                <div class="code-line">
-                  <span class="line-number">4</span>
-                  <span
-                    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;practice()</span
-                  >
+                <div class="terminal-line">
+                  <span class="output">Hello, World!</span>
                 </div>
-                <div class="code-line">
-                  <span class="line-number">5</span>
-                  <span
-                    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;build_projects()</span
-                  >
+                <div class="terminal-line">
+                  <span class="prompt">&gt;&gt;&gt;</span>
+                  <span class="command">def learn_coding():</span>
                 </div>
-                <div class="code-line">
-                  <span class="line-number">6</span>
-                  <span
-                    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;become_developer()<span
-                      class="cursor"
-                      >|</span
-                    ></span
-                  >
+                <div class="terminal-line">
+                  <span class="prompt">... </span>
+                  <span class="command">return "Success"</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="prompt">&gt;&gt;&gt;</span>
+                  <span class="command">learn_coding()</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="output">'Success'</span>
                 </div>
               </div>
             </div>
@@ -1845,33 +179,43 @@
     </section>
 
     <!-- Features Section -->
-    <section class="section" id="features">
+    <section class="section features" id="features">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">Why Choose Shristi?</h2>
           <p class="section-subtitle">
-            Everything you need to become a successful developer
+            Experience the best learning platform designed for modern developers
           </p>
         </div>
-        <div class="features-grid">
+        <div class="content-grid">
           <div class="feature-card">
             <div class="feature-icon">
               <i class="fas fa-graduation-cap"></i>
             </div>
-            <h3>Interactive Learning</h3>
+            <h3>Free Learning</h3>
             <p>
-              Learn by doing with hands-on coding exercises and real-time
-              feedback
+              Access all courses completely free. No hidden fees, no premium
+              walls - just pure learning.
             </p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
-              <i class="fas fa-project-diagram"></i>
+              <i class="fas fa-code"></i>
             </div>
-            <h3>Real Projects</h3>
+            <h3>Interactive Code</h3>
             <p>
-              Build portfolio-worthy projects that showcase your skills to
-              employers
+              Practice coding directly in your browser with our interactive
+              code editor and real-time feedback.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <h3>Earn Certificates</h3>
+            <p>
+              Complete courses and earn certificates to showcase your skills to
+              employers and peers.
             </p>
           </div>
           <div class="feature-card">
@@ -1880,18 +224,8 @@
             </div>
             <h3>Community Support</h3>
             <p>
-              Connect with fellow learners and get help from experienced
-              developers
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <h3>Track Progress</h3>
-            <p>
-              Monitor your learning journey with detailed progress tracking and
-              certificates
+              Join our community of learners and get help from fellow developers
+              and mentors.
             </p>
           </div>
           <div class="feature-card">
@@ -1900,18 +234,18 @@
             </div>
             <h3>Learn Anywhere</h3>
             <p>
-              Access courses on any device, anytime, anywhere with our
-              responsive platform
+              Access your courses on any device - desktop, tablet, or mobile.
+              Learn at your own pace.
             </p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
-              <i class="fas fa-infinity"></i>
+              <i class="fas fa-rocket"></i>
             </div>
-            <h3>Lifetime Access</h3>
+            <h3>Project-Based</h3>
             <p>
-              Once enrolled, access course materials forever with regular
-              updates
+              Build real-world projects and apply your knowledge to practical
+              scenarios that matter.
             </p>
           </div>
         </div>
@@ -1924,305 +258,180 @@
         <div class="section-header">
           <h2 class="section-title">Popular Courses</h2>
           <p class="section-subtitle">
-            Start your coding journey with our most loved courses
+            Start your coding journey with our most popular courses
           </p>
         </div>
-        <div class="courses-grid">
-          <!-- Git Course -->
-          <div class="course-card available">
-            <div class="course-header">
-              <div class="course-icon">
-                <i class="fab fa-git-alt"></i>
-              </div>
-              <div class="course-status">
-                <span class="status-badge available">Available</span>
-              </div>
+        <div class="content-grid">
+          <div class="course-card">
+            <div class="course-image">
+              <i class="fab fa-python"></i>
             </div>
-            <div class="course-content">
-              <h3>Git & Version Control</h3>
+            <div class="course-info">
+              <h3>Learn Python</h3>
               <p>
-                Master Git workflows, branching strategies, and collaborative
-                development practices
+                Master Python programming from basics to advanced concepts.
+                Perfect for beginners and experienced developers.
               </p>
-              <div class="course-meta">
+              <div class="course-meta-grid">
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i>
+                  <span>8 Hours</span>
+                </div>
                 <div class="meta-item">
                   <i class="fas fa-signal"></i>
                   <span>Beginner</span>
                 </div>
-                <div class="meta-item">
-                  <i class="fas fa-clock"></i>
-                  <span>2 hours</span>
-                </div>
-                <div class="meta-item">
-                  <i class="fas fa-users"></i>
-                  <span>2.5K learners</span>
-                </div>
               </div>
-            </div>
-            <div class="course-footer">
-              <button class="btn-course">Start Course</button>
+              <div class="course-actions">
+                <a href="courses/learn_python.html" class="btn btn-primary">
+                  <span>
+                    Start Course
+                  </span>
+                </a>
+                <a href="quiz/python/index.html" class="btn btn-secondary">
+                  <span>
+                    Start Quiz
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
-
-          <!-- Python Course -->
-          <div class="course-card available">
-            <div class="course-header">
-              <div class="course-icon">
-                <i class="fab fa-python"></i>
-              </div>
-              <div class="course-status">
-                <span class="status-badge available">Available</span>
-              </div>
+          <div class="course-card">
+            <div class="course-image">
+              <i class="fab fa-js"></i>
             </div>
-            <div class="course-content">
-              <h3>Python Programming</h3>
+            <div class="course-info">
+              <h3>Learn JavaScript</h3>
               <p>
-                From basics to advanced concepts, become a Python developer with
-                hands-on projects
+                Build dynamic web applications with JavaScript. Learn DOM
+                manipulation, ES6+ features, and modern frameworks.
               </p>
-              <div class="course-meta">
+              <div class="course-meta-grid">
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i>
+                  <span>6 Hours</span>
+                </div>
                 <div class="meta-item">
                   <i class="fas fa-signal"></i>
                   <span>Beginner</span>
                 </div>
-                <div class="meta-item">
-                  <i class="fas fa-clock"></i>
-                  <span>8 hours</span>
-                </div>
-                <div class="meta-item">
-                  <i class="fas fa-users"></i>
-                  <span>5.2K learners</span>
-                </div>
               </div>
-            </div>
-            <div class="course-footer">
-              <button class="btn-course">Start Course</button>
+              <div class="course-actions">
+                <a href="courses/learn_javascript.html" class="btn btn-primary">
+                  <span>
+                    Start Course
+                  </span>
+                </a>
+                <a href="quiz/javascript/index.html" class="btn btn-secondary">
+                  <span>
+                    Start Quiz
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
-
-          <!-- JavaScript Course -->
-          <div class="course-card available">
-            <div class="course-header">
-              <div class="course-icon">
-                <i class="fab fa-js-square"></i>
-              </div>
-              <div class="course-status">
-                <span class="status-badge available">Available</span>
-              </div>
+          <!-- <div class="course-card">
+            <div class="course-image">
+              <i class="fab fa-git-alt"></i>
             </div>
-            <div class="course-content">
-              <h3>JavaScript Mastery</h3>
+            <div class="course-info">
+              <h3>Learn Git & GitHub</h3>
               <p>
-                Modern JavaScript, ES6+, DOM manipulation, and building dynamic
-                web applications
+                Master version control with Git and GitHub. Learn branching,
+                merging, collaboration, and best practices.
               </p>
-              <div class="course-meta">
+              <div class="course-meta-grid">
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i>
+                  <span>4 Hours</span>
+                </div>
                 <div class="meta-item">
                   <i class="fas fa-signal"></i>
-                  <span>Intermediate</span>
-                </div>
-                <div class="meta-item">
-                  <i class="fas fa-clock"></i>
-                  <span>6 hours</span>
-                </div>
-                <div class="meta-item">
-                  <i class="fas fa-users"></i>
-                  <span>4.1K learners</span>
+                  <span>Beginner</span>
                 </div>
               </div>
-            </div>
-            <div class="course-footer">
-              <button class="btn-course">Start Course</button>
-            </div>
-          </div>
-
-          <!-- React Course -->
-          <div class="course-card coming-soon">
-            <div class="course-header">
-              <div class="course-icon">
-                <i class="fab fa-react"></i>
-              </div>
-              <div class="course-status">
-                <span class="status-badge coming-soon">Coming Soon</span>
+              <div class="course-actions">
+                <a href="courses/learn_git.html" class="btn btn-primary">
+                  <span>
+                    Start Course
+                  </span>
+                </a>
+                <a href="#" class="btn btn-secondary" onclick="alert('Git Quiz coming soon!')">
+                  <span>
+                    Start Quiz
+                  </span>
+                </a>
               </div>
             </div>
-            <div class="course-content">
-              <h3>React Development</h3>
-              <p>
-                Build modern UIs with React, hooks, state management, and
-                component architecture
-              </p>
-              <div class="course-meta">
-                <div class="meta-item">
-                  <i class="fas fa-signal"></i>
-                  <span>Advanced</span>
-                </div>
-                <div class="meta-item">
-                  <i class="fas fa-clock"></i>
-                  <span>10 hours</span>
-                </div>
-              </div>
-            </div>
-            <div class="course-footer">
-              <button class="btn-course disabled">Notify Me</button>
-            </div>
-          </div>
-
-          <!-- Docker Course -->
-          <div class="course-card coming-soon">
-            <div class="course-header">
-              <div class="course-icon">
-                <i class="fab fa-docker"></i>
-              </div>
-              <div class="course-status">
-                <span class="status-badge coming-soon">Coming Soon</span>
-              </div>
-            </div>
-            <div class="course-content">
-              <h3>Docker & DevOps</h3>
-              <p>
-                Containerization, CI/CD pipelines, and modern DevOps practices
-                for scalable apps
-              </p>
-              <div class="course-meta">
-                <div class="meta-item">
-                  <i class="fas fa-signal"></i>
-                  <span>Advanced</span>
-                </div>
-                <div class="meta-item">
-                  <i class="fas fa-clock"></i>
-                  <span>7 hours</span>
-                </div>
-              </div>
-            </div>
-            <div class="course-footer">
-              <button class="btn-course disabled">Notify Me</button>
-            </div>
-          </div>
-
-          <!-- Cloud Computing Course -->
-          <div class="course-card coming-soon">
-            <div class="course-header">
-              <div class="course-icon">
-                <i class="fab fa-aws"></i>
-              </div>
-              <div class="course-status">
-                <span class="status-badge coming-soon">Coming Soon</span>
-              </div>
-            </div>
-            <div class="course-content">
-              <h3>Cloud Computing</h3>
-              <p>
-                AWS fundamentals, cloud architecture, and deploying scalable
-                applications
-              </p>
-              <div class="course-meta">
-                <div class="meta-item">
-                  <i class="fas fa-signal"></i>
-                  <span>Advanced</span>
-                </div>
-                <div class="meta-item">
-                  <i class="fas fa-clock"></i>
-                  <span>12 hours</span>
-                </div>
-              </div>
-            </div>
-            <div class="course-footer">
-              <button class="btn-course disabled">Notify Me</button>
-            </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="about-content">
-          <div class="about-text">
-            <div class="section-header">
-              <h2 class="section-title">About Shristi</h2>
-              <p class="section-subtitle">
-                Empowering the next generation of developers
-              </p>
-            </div>
-            <p>
-              Shristi was born from a simple belief: quality coding education
-              should be accessible to everyone, regardless of their background
-              or financial situation. We're building a community where aspiring
-              developers can learn, grow, and thrive together.
-            </p>
-            <p>
-              Our platform combines cutting-edge technology with proven
-              pedagogical methods to create an engaging learning experience that
-              adapts to your pace and learning style.
-            </p>
-          </div>
-          <div class="about-visual">
-            <div class="placeholder">
-              <i class="fas fa-code"></i>
-              <span>Building the Future of Education</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="section cta">
-      <div class="container">
-        <div class="cta-content">
-          <h2>Ready to Start Your Coding Journey?</h2>
-          <p>Join thousands of students already learning on Shristi</p>
-          <div class="cta-actions">
-            <a href="#courses" class="btn btn-primary">
-              <i class="fas fa-rocket"></i>
-              Get Started Now
-            </a>
-            <a href="#contact" class="btn btn-outline">
-              <i class="fas fa-envelope"></i>
-              Contact Us
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer" id="contact">
       <div class="container">
-        <div class="footer-content">
+        <!-- Main Footer Content -->
+        <div class="footer-main">
+          <!-- Brand Section -->
           <div class="footer-brand">
-            <a href="#" class="logo">
-              <span class="logo-icon">⚡</span>
-              <span>Shristi</span>
-            </a>
-            <p>Making coding education accessible to everyone, everywhere.</p>
+            <div class="footer-logo">
+              <img src="assets/logo.png" alt="Shristi Logo" class="logo-icon">
+              <span class="shristi-font">Shristi</span>
+            </div>
+            <p class="footer-description">
+              Empowering developers worldwide with free, high-quality programming education. 
+              Learn to code with interactive courses and real-world projects.
+            </p>
+
           </div>
-          <div
-            class="footer-links"
-            style="display: flex; justify-content: flex-start"
-          >
-            <div class="link-group">
-              <h4>Platform</h4>
-              <a href="#courses">Courses</a>
-              <a href="#features">Features</a>
-              <a href="#about">About</a>
+
+          <!-- Quick Links -->
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                          <li><a href="#hero">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#courses">Courses</a></li>
+            </ul>
+          </div>
+
+          <!-- Courses -->
+          <div class="footer-section">
+            <h3>Courses</h3>
+            <ul class="footer-links">
+              <li><a href="courses/learn_python.html">Python Programming</a></li>
+              <li><a href="#">JavaScript</a></li>
+              <li><a href="#">Git & GitHub</a></li>
+              <!-- <li><a href="#">Web Development</a></li> -->
+              <!-- <li><a href="#">Data Science</a></li> -->
+            </ul>
+          </div>
+
+
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <div class="footer-copyright">
+              <p>&copy; 2024 Shristi. All rights reserved.</p>
+            </div>
+            <div class="footer-legal">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Cookie Policy</a>
             </div>
           </div>
-        </div>
-        <div class="footer-bottom">
-          <p>
-            &copy; 2025 Shristi. All rights reserved. Made with ❤️ for the
-            coding community.
-          </p>
         </div>
       </div>
     </footer>
 
     <script>
-      // Modern Landing Page Functionality
-      class ModernLandingPage {
+      // Modern JavaScript for Shristi
+      class ShristiLMS {
         constructor() {
           this.init();
           this.initTheme();
@@ -2231,9 +440,7 @@
         init() {
           this.setupNavigation();
           this.setupAnimations();
-          this.setupParticles();
-          this.setupTypingEffect();
-          this.setupScrollEffects();
+          this.setupSmoothScrolling();
         }
 
         initTheme() {
@@ -2243,8 +450,6 @@
 
           // Theme toggle functionality
           const themeToggle = document.getElementById("themeToggle");
-          const themeIcon = document.getElementById("themeIcon");
-
           themeToggle?.addEventListener("click", () => {
             const currentTheme = document.body.getAttribute("data-theme");
             const newTheme = currentTheme === "dark" ? "light" : "dark";
@@ -2258,8 +463,7 @@
 
           const themeIcon = document.getElementById("themeIcon");
           if (themeIcon) {
-            themeIcon.className =
-              theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+            themeIcon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
           }
         }
 
@@ -2268,9 +472,7 @@
           document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
             anchor.addEventListener("click", (e) => {
               e.preventDefault();
-              const target = document.querySelector(
-                anchor.getAttribute("href")
-              );
+              const target = document.querySelector(anchor.getAttribute("href"));
               if (target) {
                 target.scrollIntoView({
                   behavior: "smooth",
@@ -2287,30 +489,6 @@
               navbar?.classList.add("scrolled");
             } else {
               navbar?.classList.remove("scrolled");
-            }
-
-            // Update active nav links
-            this.updateActiveNavLink();
-          });
-        }
-
-        updateActiveNavLink() {
-          const sections = document.querySelectorAll("section[id]");
-          const navLinks = document.querySelectorAll(".nav-link");
-
-          let current = "";
-          sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop - 200) {
-              current = section.getAttribute("id");
-            }
-          });
-
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === `#${current}`) {
-              link.classList.add("active");
             }
           });
         }
@@ -2332,102 +510,37 @@
           }, observerOptions);
 
           // Observe all animated elements
-          document
-            .querySelectorAll(".feature-card, .course-card")
-            .forEach((el, index) => {
-              el.style.opacity = "0";
-              el.style.transform = "translateY(30px)";
-              el.style.transition = `all 0.6s ease ${index * 0.1}s`;
-              observer.observe(el);
-            });
+          document.querySelectorAll(".feature-card, .course-card").forEach((el, index) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(el);
+          });
         }
 
-        setupParticles() {
-          const particlesContainer = document.getElementById("particles");
-          if (!particlesContainer) return;
-
-          for (let i = 0; i < 50; i++) {
-            const particle = document.createElement("div");
-            particle.className = "particle";
-            particle.style.left = Math.random() * 100 + "%";
-            particle.style.animationDelay = Math.random() * 15 + "s";
-            particle.style.animationDuration = Math.random() * 3 + 12 + "s";
-            particlesContainer.appendChild(particle);
-          }
-        }
-
-        setupTypingEffect() {
-          const cursorElement = document.querySelector(".cursor");
-          if (!cursorElement) return;
-
-          // Simple cursor blinking effect
-          setInterval(() => {
-            cursorElement.style.opacity =
-              cursorElement.style.opacity === "0" ? "1" : "0";
-          }, 500);
-        }
-
-        setupScrollEffects() {
-          // Parallax effect for hero section
-          window.addEventListener("scroll", () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector(".hero-visual");
-            if (parallax) {
-              parallax.style.transform = `translateY(${scrolled * 0.1}px)`;
-            }
-
-            // Background shapes movement
-            const shapes = document.querySelectorAll(".bg-shape");
-            shapes.forEach((shape, index) => {
-              const speed = 0.02 + index * 0.01;
-              shape.style.transform = `translateY(${
-                scrolled * speed
-              }px) rotate(${scrolled * 0.05}deg)`;
+        setupSmoothScrolling() {
+          // Enhanced smooth scrolling for better UX
+          document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", (e) => {
+              e.preventDefault();
+              const target = document.querySelector(anchor.getAttribute("href"));
+              if (target) {
+                const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                window.scrollTo({
+                  top: offsetTop,
+                  behavior: "smooth",
+                });
+              }
             });
           });
         }
       }
 
-      // Course interaction
-      function startCourse(courseName) {
-        alert(
-          `Starting ${courseName} course! This would normally redirect to the course content.`
-        );
-      }
-
-      function notifyMe(courseName) {
-        alert(`We'll notify you when ${courseName} becomes available!`);
-      }
-
-      // Add click handlers to course buttons
+      // Initialize the Shristi
       document.addEventListener("DOMContentLoaded", () => {
-        new ModernLandingPage();
-
-        // Course button handlers
-        document.querySelectorAll(".btn-course").forEach((button) => {
-          button.addEventListener("click", (e) => {
-            const courseCard = e.target.closest(".course-card");
-            const courseName = courseCard.querySelector("h3").textContent;
-
-            if (button.classList.contains("disabled")) {
-              notifyMe(courseName);
-            } else {
-              startCourse(courseName);
-            }
-          });
-        });
-
-        // Add hover effects to course cards
-        document.querySelectorAll(".course-card.available").forEach((card) => {
-          card.addEventListener("mouseenter", () => {
-            card.style.transform = "translateY(-10px) scale(1.02)";
-          });
-
-          card.addEventListener("mouseleave", () => {
-            card.style.transform = "translateY(0) scale(1)";
-          });
-        });
+        new ShristiLMS();
       });
     </script>
   </body>
 </html>
+ 
