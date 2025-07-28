@@ -10,87 +10,352 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
     <style>
-        .chapter-item {
+        /* Mobile-first responsive styles */
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+                padding: 0 2rem;
+            }
+        }
+        
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+        
+        /* Mobile-first layout */
+        .mobile-layout {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-layout {
+                flex-direction: row;
+            }
+        }
+        
+        /* Mobile-first sidebar */
+        .mobile-sidebar {
+            width: 100%;
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-sidebar {
+                width: 25%;
+                margin-bottom: 0;
+                margin-right: 1.5rem;
+                position: sticky;
+                top: 5rem;
+                height: fit-content;
+            }
+        }
+        
+        /* Mobile-first content area */
+        .mobile-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        /* Mobile-first cards */
+        .mobile-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             transition: all 0.3s ease;
         }
+        
+        .mobile-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Mobile-first buttons */
+        .mobile-btn {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        @media (min-width: 640px) {
+            .mobile-btn {
+                width: auto;
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Mobile-first text scaling */
+        .mobile-text-xs { font-size: 0.75rem; line-height: 1rem; }
+        .mobile-text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+        .mobile-text-base { font-size: 1rem; line-height: 1.5rem; }
+        .mobile-text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .mobile-text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+        .mobile-text-2xl { font-size: 1.5rem; line-height: 2rem; }
+        
+        @media (min-width: 640px) {
+            .mobile-text-xs { font-size: 0.875rem; line-height: 1.25rem; }
+            .mobile-text-sm { font-size: 1rem; line-height: 1.5rem; }
+            .mobile-text-base { font-size: 1.125rem; line-height: 1.75rem; }
+            .mobile-text-lg { font-size: 1.25rem; line-height: 1.75rem; }
+            .mobile-text-xl { font-size: 1.5rem; line-height: 2rem; }
+            .mobile-text-2xl { font-size: 1.875rem; line-height: 2.25rem; }
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-text-xs { font-size: 1rem; line-height: 1.5rem; }
+            .mobile-text-sm { font-size: 1.125rem; line-height: 1.75rem; }
+            .mobile-text-base { font-size: 1.25rem; line-height: 1.75rem; }
+            .mobile-text-lg { font-size: 1.5rem; line-height: 2rem; }
+            .mobile-text-xl { font-size: 1.875rem; line-height: 2.25rem; }
+            .mobile-text-2xl { font-size: 2.25rem; line-height: 2.5rem; }
+        }
+        
+        /* Mobile-first spacing */
+        .mobile-spacing-xs { padding: 0.5rem; }
+        .mobile-spacing-sm { padding: 1rem; }
+        .mobile-spacing-md { padding: 1.5rem; }
+        .mobile-spacing-lg { padding: 2rem; }
+        
+        @media (min-width: 640px) {
+            .mobile-spacing-xs { padding: 0.75rem; }
+            .mobile-spacing-sm { padding: 1.25rem; }
+            .mobile-spacing-md { padding: 1.75rem; }
+            .mobile-spacing-lg { padding: 2.5rem; }
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-spacing-xs { padding: 1rem; }
+            .mobile-spacing-sm { padding: 1.5rem; }
+            .mobile-spacing-md { padding: 2rem; }
+            .mobile-spacing-lg { padding: 3rem; }
+        }
+        
+        /* Chapter item styles */
+        .chapter-item {
+            transition: all 0.3s ease;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+        }
+        
         .chapter-item:hover {
             transform: translateX(4px);
         }
+        
         .chapter-item.active {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
         }
-        .copy-btn {
-            transition: all 0.3s ease;
-        }
+        
+        /* Content section styles */
         .content-section {
             animation: fadeIn 0.5s ease-out;
+            margin-bottom: 2rem;
         }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
+        /* Progress circle */
         .progress-circle {
             transition: stroke-dasharray 0.5s ease-in-out;
+        }
+        
+        /* Copy button */
+        .copy-btn {
+            transition: all 0.3s ease;
+        }
+        
+        /* Responsive content styles */
+        .content-section .prose {
+            max-width: none;
+        }
+        
+        .content-section .prose h3 {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        
+        .content-section .prose h4 {
+            font-size: 1.125rem;
+            line-height: 1.5rem;
+        }
+        
+        .content-section .prose p {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+        }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 640px) {
+            .content-section .prose h3 {
+                font-size: 1.125rem;
+                line-height: 1.5rem;
+            }
+            
+            .content-section .prose h4 {
+                font-size: 1rem;
+                line-height: 1.375rem;
+            }
+            
+            .content-section .prose p {
+                font-size: 0.75rem;
+                line-height: 1.125rem;
+            }
+            
+            .content-section .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Tablet responsive adjustments */
+        @media (min-width: 641px) and (max-width: 1023px) {
+            .content-section .grid.grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .content-section .grid.grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Ensure code blocks are responsive */
+        .content-section pre {
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .content-section code {
+            font-size: 0.75rem;
+            line-height: 1.125rem;
+        }
+        
+        @media (min-width: 640px) {
+            .content-section code {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+            }
+        }
+        
+        /* Prevent content overflow */
+        .content-section {
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+        
+        .content-section img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .content-section table {
+            max-width: 100%;
+            overflow-x: auto;
+            display: block;
+        }
+        
+        /* Ensure grid items don't overflow */
+        .content-section .grid {
+            max-width: 100%;
+        }
+        
+        .content-section .grid > * {
+            min-width: 0;
+            overflow-wrap: break-word;
         }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
-    <!-- Navigation -->
+    <!-- Standard Navigation -->
     <nav class="bg-blue-600 text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                        <span class="text-blue-600 font-bold text-lg">V</span>
+                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-blue-600 font-bold text-lg sm:text-xl">V</span>
                     </div>
-                    <h1 class="text-xl font-bold">VidyaLMS</h1>
+                    <h1 class="text-lg sm:text-xl lg:text-2xl font-bold">VidyaLMS</h1>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <a href="index.html" class="px-4 py-2 bg-blue-700 rounded-lg hover:bg-blue-800 transition">
-                        🏠 Home
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <a href="index.html" class="mobile-btn bg-blue-700 hover:bg-blue-800 transition text-xs sm:text-sm">
+                        🏠 <span class="hidden sm:inline">Home</span>
                     </a>
-                    <button id="quizBtn" class="px-4 py-2 bg-green-600 rounded-lg hover:bg-green-700 transition">
-                        📝 Take Quiz
+                    <button id="quizBtn" class="mobile-btn bg-green-600 hover:bg-green-700 transition text-xs sm:text-sm">
+                        📝 <span class="hidden sm:inline">Take Quiz</span>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Course Header -->
+    <!-- Mobile-First Course Header -->
     <div class="bg-white shadow-sm border-b">
         <div class="container mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-                <div>
-                    <h1 id="courseTitle" class="text-2xl font-bold text-gray-800 mb-1">Loading...</h1>
-                    <p id="courseInstructor" class="text-gray-600">Loading instructor...</p>
+            <div class="flex flex-col sm:flex-row lg:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex-1 min-w-0">
+                    <h1 id="courseTitle" class="mobile-text-lg sm:mobile-text-xl lg:mobile-text-2xl font-bold text-gray-800 mb-1 break-words">Loading...</h1>
+                    <p id="courseInstructor" class="mobile-text-sm sm:mobile-text-base text-gray-600 break-words">Loading instructor...</p>
                 </div>
-                <div class="flex items-center space-x-6">
+                <div class="flex flex-col sm:flex-row items-center gap-4 lg:gap-6">
                     <!-- Progress Circle -->
-                    <div class="relative w-16 h-16">
-                        <svg class="w-16 h-16 transform -rotate-90" viewBox="0 0 64 64">
+                    <div class="relative w-12 h-12 sm:w-16 sm:h-16">
+                        <svg class="w-12 h-12 sm:w-16 sm:h-16 transform -rotate-90" viewBox="0 0 64 64">
                             <circle cx="32" cy="32" r="28" fill="none" stroke="#e5e7eb" stroke-width="4"/>
                             <circle id="progressCircle" cx="32" cy="32" r="28" fill="none" stroke="#3b82f6" 
                                     stroke-width="4" stroke-dasharray="0 176" class="progress-circle"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <span id="progressPercent" class="text-sm font-bold text-blue-600">0%</span>
+                            <span id="progressPercent" class="mobile-text-xs sm:mobile-text-sm font-bold text-blue-600">0%</span>
                         </div>
                     </div>
                     <!-- Content Filters -->
-                    <div class="flex items-center space-x-4 bg-gray-100 px-4 py-2 rounded-lg">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 lg:gap-4 bg-gray-100 px-3 sm:px-4 py-2 rounded-lg">
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" id="showTheory" checked class="rounded text-blue-600">
-                            <span class="text-sm font-medium">📖 Theory</span>
+                            <input type="checkbox" id="showTheory" checked class="rounded text-blue-600 w-4 h-4 sm:w-5 sm:h-5 accent-blue-600">
+                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap">📖 Theory</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" id="showCode" checked class="rounded text-blue-600">
-                            <span class="text-sm font-medium">💻 Code</span>
+                            <input type="checkbox" id="showCode" checked class="rounded text-blue-600 w-4 h-4 sm:w-5 sm:h-5 accent-blue-600">
+                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap">💻 Code</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" id="showTips" checked class="rounded text-blue-600">
-                            <span class="text-sm font-medium">💡 Tips</span>
+                            <input type="checkbox" id="showTips" checked class="rounded text-blue-600 w-4 h-4 sm:w-5 sm:h-5 accent-blue-600">
+                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap">💡 Tips</span>
                         </label>
                     </div>
                 </div>
@@ -98,63 +363,65 @@
         </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- Mobile-First Main Content -->
     <div class="container mx-auto px-4 py-6">
-        <div class="flex gap-6">
-            <!-- Left Sidebar - Chapter Navigation -->
-            <div class="w-1/4 bg-white rounded-lg shadow-lg p-6 h-fit sticky top-24">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-bold text-gray-800">📚 Chapters</h3>
-                    <span id="chapterCount" class="text-sm text-gray-500">0 chapters</span>
-                </div>
-                <div id="chaptersList" class="space-y-2">
-                    <!-- Chapters will be populated here -->
-                </div>
-                
-                <!-- Course Info -->
-                <div class="mt-8 pt-6 border-t border-gray-200">
-                    <h4 class="font-medium text-gray-800 mb-3">📊 Course Details</h4>
-                    <div class="space-y-2 text-sm text-gray-600">
-                        <div class="flex justify-between">
-                            <span>Duration:</span>
-                            <span id="courseDuration" class="font-medium">-</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span>Difficulty:</span>
-                            <span id="courseDifficulty" class="font-medium">-</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span>Modules:</span>
-                            <span id="courseModules" class="font-medium">-</span>
+        <div class="mobile-layout">
+            <!-- Mobile-First Sidebar -->
+            <div class="mobile-sidebar">
+                <div class="mobile-spacing-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="mobile-text-lg font-bold text-gray-800">📚 Chapters</h3>
+                        <span id="chapterCount" class="mobile-text-sm text-gray-500">0 chapters</span>
+                    </div>
+                    <div id="chaptersList" class="space-y-2 max-h-96 lg:max-h-none overflow-y-auto">
+                        <!-- Chapters will be populated here -->
+                    </div>
+                    
+                    <!-- Course Info -->
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <h4 class="font-medium text-gray-800 mb-3 mobile-text-sm">📊 Course Details</h4>
+                        <div class="space-y-2 mobile-text-xs text-gray-600">
+                            <div class="flex justify-between">
+                                <span>Duration:</span>
+                                <span id="courseDuration" class="font-medium">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Difficulty:</span>
+                                <span id="courseDifficulty" class="font-medium">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Modules:</span>
+                                <span id="courseModules" class="font-medium">-</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Main Content Area -->
-            <div class="flex-1">
+            <!-- Mobile-First Content Area -->
+            <div class="mobile-content">
                 <!-- Chapter Content -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div id="chapterHeader" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6">
-                        <h2 id="chapterTitle" class="text-2xl font-bold mb-2">Select a chapter to begin</h2>
-                        <p id="chapterDescription" class="text-blue-100">Choose a chapter from the sidebar to start learning</p>
+                <div class="mobile-card">
+                    <div id="chapterHeader" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white mobile-spacing-sm">
+                        <h2 id="chapterTitle" class="mobile-text-lg sm:mobile-text-xl lg:mobile-text-2xl font-bold mb-2 break-words">Select a chapter to begin</h2>
+                        <p id="chapterDescription" class="text-blue-100 mobile-text-sm sm:mobile-text-base break-words">Choose a chapter from the sidebar to start learning</p>
                     </div>
 
-                    <div id="chapterContent" class="p-8">
-                        <div class="text-center py-12">
-                            <div class="text-6xl mb-4">📚</div>
-                            <h3 class="text-xl font-medium text-gray-600 mb-2">Ready to Learn?</h3>
-                            <p class="text-gray-500">Select a chapter from the left sidebar to begin your learning journey</p>
+                    <div id="chapterContent" class="mobile-spacing-sm lg:mobile-spacing-md overflow-x-auto">
+                        <div class="text-center py-8 sm:py-12">
+                            <div class="text-4xl sm:text-6xl mb-4">📚</div>
+                            <h3 class="mobile-text-lg sm:mobile-text-xl font-medium text-gray-600 mb-2">Ready to Learn?</h3>
+                            <p class="text-gray-500 mobile-text-sm sm:mobile-text-base">Select a chapter from the left sidebar to begin your learning journey</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Navigation Buttons -->
-                <div class="flex justify-between mt-6">
-                    <button id="prevChapterBtn" class="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition disabled:opacity-50" disabled>
+                <div class="flex flex-col sm:flex-row justify-between mt-6 gap-4">
+                    <button id="prevChapterBtn" class="mobile-btn bg-gray-300 text-gray-700 hover:bg-gray-400 transition disabled:opacity-50 mobile-text-sm sm:mobile-text-base" disabled>
                         ← Previous Chapter
                     </button>
-                    <button id="nextChapterBtn" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition disabled:opacity-50" disabled>
+                    <button id="nextChapterBtn" class="mobile-btn bg-blue-600 text-white hover:bg-blue-700 transition disabled:opacity-50 mobile-text-sm sm:mobile-text-base" disabled>
                         Next Chapter →
                     </button>
                 </div>
@@ -164,6 +431,7 @@
 
     <!-- Scripts -->
     <script src="js/courses.js"></script>
+    <script src="js/shared-nav.js"></script>
     <script>
         let currentCourse = null;
         let courseContent = null;
@@ -288,11 +556,11 @@
                             description: 'Understanding the fundamentals of AI and its applications',
                             theory: `
                                 <div class="prose max-w-none">
-                                    <h3 class="text-2xl font-bold mb-4">What is Artificial Intelligence?</h3>
-                                    <p class="text-lg mb-4">Artificial Intelligence (AI) is the simulation of human intelligence in machines that are programmed to think and learn like humans. AI systems can perform tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation.</p>
+                                    <h3 class="mobile-text-lg sm:mobile-text-xl font-bold mb-4">What is Artificial Intelligence?</h3>
+                                    <p class="mobile-text-sm sm:mobile-text-base mb-4">Artificial Intelligence (AI) is the simulation of human intelligence in machines that are programmed to think and learn like humans. AI systems can perform tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation.</p>
                                     
-                                    <h4 class="text-xl font-semibold mb-3 mt-6">Brief History of AI</h4>
-                                    <ul class="list-disc pl-6 mb-4">
+                                    <h4 class="mobile-text-base sm:mobile-text-lg font-semibold mb-3 mt-6">Brief History of AI</h4>
+                                    <ul class="list-disc pl-6 mb-4 mobile-text-sm sm:mobile-text-base">
                                         <li><strong>1950s:</strong> Alan Turing proposes the Turing Test</li>
                                         <li><strong>1956:</strong> Term "Artificial Intelligence" coined at Dartmouth Conference</li>
                                         <li><strong>1980s:</strong> Expert systems gain popularity</li>
@@ -301,329 +569,24 @@
                                         <li><strong>2020s:</strong> Large language models and generative AI emerge</li>
                                     </ul>
 
-                                    <h4 class="text-xl font-semibold mb-3 mt-6">Types of AI</h4>
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                    <h4 class="mobile-text-base sm:mobile-text-lg font-semibold mb-3 mt-6">Types of AI</h4>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                                         <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                                            <h5 class="font-bold text-blue-800">Narrow AI (ANI)</h5>
-                                            <p class="text-blue-700 text-sm">AI designed for specific tasks. This is what we have today.</p>
+                                            <h5 class="font-bold text-blue-800 mobile-text-sm">Narrow AI (ANI)</h5>
+                                            <p class="text-blue-700 mobile-text-xs sm:mobile-text-sm">AI designed for specific tasks. This is what we have today.</p>
                                             <p class="text-xs text-blue-600 mt-2">Examples: Siri, Chess programs, Image recognition</p>
                                         </div>
                                         <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
-                                            <h5 class="font-bold text-yellow-800">General AI (AGI)</h5>
-                                            <p class="text-yellow-700 text-sm">AI with human-level cognitive abilities across all domains.</p>
+                                            <h5 class="font-bold text-yellow-800 mobile-text-sm">General AI (AGI)</h5>
+                                            <p class="text-yellow-700 mobile-text-xs sm:mobile-text-sm">AI with human-level cognitive abilities across all domains.</p>
                                             <p class="text-xs text-yellow-600 mt-2">Status: Theoretical, not yet achieved</p>
                                         </div>
                                         <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-                                            <h5 class="font-bold text-red-800">Super AI (ASI)</h5>
-                                            <p class="text-red-700 text-sm">AI that surpasses human intelligence in all aspects.</p>
+                                            <h5 class="font-bold text-red-800 mobile-text-sm">Super AI (ASI)</h5>
+                                            <p class="text-red-700 mobile-text-xs sm:mobile-text-sm">AI that surpasses human intelligence in all aspects.</p>
                                             <p class="text-xs text-red-600 mt-2">Status: Hypothetical future possibility</p>
                                         </div>
                                     </div>
-
-                                    <h4 class="text-xl font-semibold mb-3 mt-6">AI Applications Today</h4>
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div>
-                                            <h5 class="font-semibold mb-2">🏥 Healthcare</h5>
-                                            <ul class="text-sm text-gray-700 list-disc pl-4">
-                                                <li>Medical image analysis</li>
-                                                <li>Drug discovery</li>
-                                                <li>Personalized treatment</li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <h5 class="font-semibold mb-2">🚗 Transportation</h5>
-                                            <ul class="text-sm text-gray-700 list-disc pl-4">
-                                                <li>Autonomous vehicles</li>
-                                                <li>Traffic optimization</li>
-                                                <li>Route planning</li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <h5 class="font-semibold mb-2">💰 Finance</h5>
-                                            <ul class="text-sm text-gray-700 list-disc pl-4">
-                                                <li>Fraud detection</li>
-                                                <li>Algorithmic trading</li>
-                                                <li>Credit scoring</li>
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <h5 class="font-semibold mb-2">🎯 Marketing</h5>
-                                            <ul class="text-sm text-gray-700 list-disc pl-4">
-                                                <li>Personalized recommendations</li>
-                                                <li>Customer segmentation</li>
-                                                <li>Chatbots and virtual assistants</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            `,
-                            code: `
-                                <div class="code-content">
-                                    <h4 class="text-xl font-semibold mb-4">🔬 Simple AI Example - Linear Regression</h4>
-                                    <p class="text-gray-700 mb-4">Let's start with a basic machine learning example using Python and scikit-learn:</p>
-                                    
-                                    <div class="bg-gray-900 rounded-lg p-4 mb-4">
-                                        <div class="flex justify-between items-center mb-2">
-                                            <span class="text-gray-400 text-sm">Python</span>
-                                            <button class="copy-btn bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm" onclick="copyCode(this)">
-                                                📋 Copy
-                                            </button>
-                                        </div>
-                                        <pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-
-# Sample data: Hours studied vs Exam scores
-hours_studied = np.array([[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]])
-exam_scores = np.array([50, 55, 65, 70, 80, 85, 90, 92, 95, 98])
-
-# Create and train the model
-model = LinearRegression()
-model.fit(hours_studied, exam_scores)
-
-# Make predictions
-predictions = model.predict(hours_studied)
-
-# Calculate metrics
-mse = mean_squared_error(exam_scores, predictions)
-r2 = r2_score(exam_scores, predictions)
-
-# Print results
-print(f"Model Equation: Score = {model.coef_[0]:.2f} * Hours + {model.intercept_:.2f}")
-print(f"R-squared Score: {r2:.3f}")
-print(f"Mean Squared Error: {mse:.2f}")
-
-# Predict for new data
-new_hours = np.array([[12], [15]])
-new_predictions = model.predict(new_hours)
-print(f"\\nPredictions for 12 and 15 hours: {new_predictions}")
-
-# Visualize the results
-plt.figure(figsize=(10, 6))
-plt.scatter(hours_studied, exam_scores, color='blue', alpha=0.7, label='Actual Data')
-plt.plot(hours_studied, predictions, color='red', linewidth=2, label='Linear Regression')
-plt.xlabel('Hours Studied')
-plt.ylabel('Exam Score')
-plt.title('Linear Regression: Hours Studied vs Exam Score')
-plt.legend()
-plt.grid(True, alpha=0.3)
-plt.show()</code></pre>
-                                    </div>
-
-                                    <div class="bg-blue-50 p-4 rounded-lg mb-4">
-                                        <h5 class="font-semibold text-blue-800 mb-2">📊 Expected Output:</h5>
-                                        <pre class="text-sm text-blue-700">Model Equation: Score = 5.68 * Hours + 44.00
-R-squared Score: 0.986
-Mean Squared Error: 6.48
-
-Predictions for 12 and 15 hours: [112.18 129.23]</pre>
-                                    </div>
-
-                                    <h4 class="text-xl font-semibold mb-4 mt-6">🧠 Understanding the Code</h4>
-                                    <div class="space-y-3">
-                                        <div class="bg-white p-3 rounded border-l-4 border-green-500">
-                                            <strong>Data Preparation:</strong> We create sample data showing the relationship between study hours and exam scores.
-                                        </div>
-                                        <div class="bg-white p-3 rounded border-l-4 border-blue-500">
-                                            <strong>Model Training:</strong> LinearRegression learns the pattern from our data.
-                                        </div>
-                                        <div class="bg-white p-3 rounded border-l-4 border-purple-500">
-                                            <strong>Prediction:</strong> The trained model can predict scores for new study hour values.
-                                        </div>
-                                        <div class="bg-white p-3 rounded border-l-4 border-orange-500">
-                                            <strong>Evaluation:</strong> R² score (0.986) shows our model explains 98.6% of the variance.
-                                        </div>
-                                    </div>
-                                </div>
-                            `,
-                            tips: `
-                                <div class="tips-content">
-                                    <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-400 p-6 rounded-lg">
-                                        <h4 class="text-xl font-bold text-yellow-800 mb-4 flex items-center">
-                                            💡 Pro Tips for AI Beginners
-                                        </h4>
-                                        
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                                <h5 class="font-semibold text-gray-800 mb-2">🎯 Start Simple</h5>
-                                                <p class="text-gray-700 text-sm">Begin with basic algorithms like linear regression before moving to complex neural networks.</p>
-                                            </div>
-                                            
-                                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                                <h5 class="font-semibold text-gray-800 mb-2">📚 Learn the Math</h5>
-                                                <p class="text-gray-700 text-sm">Understanding statistics, calculus, and linear algebra will make AI concepts clearer.</p>
-                                            </div>
-                                            
-                                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                                <h5 class="font-semibold text-gray-800 mb-2">🔧 Practice with Tools</h5>
-                                                <p class="text-gray-700 text-sm">Get comfortable with Python, Jupyter notebooks, and libraries like scikit-learn.</p>
-                                            </div>
-                                            
-                                            <div class="bg-white p-4 rounded-lg shadow-sm">
-                                                <h5 class="font-semibold text-gray-800 mb-2">📊 Focus on Data</h5>
-                                                <p class="text-gray-700 text-sm">Good data is more important than complex algorithms. Learn data cleaning and preparation.</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="mt-6 p-4 bg-yellow-100 rounded-lg">
-                                            <h5 class="font-semibold text-yellow-800 mb-2">🚀 Quick Start Checklist</h5>
-                                            <ul class="text-yellow-700 text-sm space-y-1">
-                                                <li>✅ Install Python and Jupyter Notebook</li>
-                                                <li>✅ Learn pandas for data manipulation</li>
-                                                <li>✅ Practice with scikit-learn examples</li>
-                                                <li>✅ Join AI communities and forums</li>
-                                                <li>✅ Work on small projects regularly</li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="mt-4 p-3 bg-blue-100 rounded border-l-4 border-blue-500">
-                                            <p class="text-blue-800 text-sm">
-                                                <strong>Remember:</strong> AI is a journey, not a destination. Every expert was once a beginner!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            `
-                        },
-                        {
-                            id: 2,
-                            title: 'Machine Learning Fundamentals',
-                            description: 'Core concepts of machine learning and its types',
-                            theory: `
-                                <div class="prose max-w-none">
-                                    <h3 class="text-2xl font-bold mb-4">Machine Learning Fundamentals</h3>
-                                    <p class="text-lg mb-4">Machine Learning (ML) is a subset of AI that enables computers to learn and improve from experience without being explicitly programmed for every task.</p>
-                                    
-                                    <div class="bg-blue-50 p-6 rounded-lg mb-6">
-                                        <h4 class="text-xl font-semibold mb-3">The Three Types of Machine Learning</h4>
-                                        <div class="space-y-4">
-                                            <div class="border-l-4 border-green-500 pl-4">
-                                                <h5 class="font-bold text-green-700">1. Supervised Learning</h5>
-                                                <p class="text-gray-700">Learning with labeled examples (input-output pairs)</p>
-                                                <p class="text-sm text-gray-600">Examples: Classification, Regression</p>
-                                            </div>
-                                            <div class="border-l-4 border-blue-500 pl-4">
-                                                <h5 class="font-bold text-blue-700">2. Unsupervised Learning</h5>
-                                                <p class="text-gray-700">Finding patterns in data without labels</p>
-                                                <p class="text-sm text-gray-600">Examples: Clustering, Dimensionality Reduction</p>
-                                            </div>
-                                            <div class="border-l-4 border-purple-500 pl-4">
-                                                <h5 class="font-bold text-purple-700">3. Reinforcement Learning</h5>
-                                                <p class="text-gray-700">Learning through trial and error with rewards</p>
-                                                <p class="text-sm text-gray-600">Examples: Game AI, Robotics</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            `,
-                            code: `
-                                <div class="code-content">
-                                    <h4 class="text-xl font-semibold mb-4">🔍 Classification Example</h4>
-                                    <div class="bg-gray-900 rounded-lg p-4 mb-4">
-                                        <div class="flex justify-between items-center mb-2">
-                                            <span class="text-gray-400 text-sm">Python - Iris Classification</span>
-                                            <button class="copy-btn bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm" onclick="copyCode(this)">
-                                                📋 Copy
-                                            </button>
-                                        </div>
-                                        <pre><code class="language-python">from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, classification_report
-import pandas as pd
-
-# Load the famous Iris dataset
-iris = load_iris()
-X, y = iris.data, iris.target
-
-# Split data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
-)
-
-# Create and train the model
-clf = RandomForestClassifier(n_estimators=100, random_state=42)
-clf.fit(X_train, y_train)
-
-# Make predictions
-predictions = clf.predict(X_test)
-
-# Evaluate the model
-accuracy = accuracy_score(y_test, predictions)
-print(f"Accuracy: {accuracy:.2f}")
-print("\\nClassification Report:")
-print(classification_report(y_test, predictions, 
-                          target_names=iris.target_names))</code></pre>
-                                    </div>
-                                </div>
-                            `,
-                            tips: `
-                                <div class="bg-green-50 border-l-4 border-green-400 p-6 rounded-lg">
-                                    <h4 class="font-bold text-green-800 mb-3">🎯 Machine Learning Best Practices</h4>
-                                    <ul class="text-green-700 space-y-2">
-                                        <li>• Always split your data into train/validation/test sets</li>
-                                        <li>• Start with simple models before trying complex ones</li>
-                                        <li>• Feature engineering often matters more than algorithm choice</li>
-                                        <li>• Cross-validation helps ensure robust model performance</li>
-                                    </ul>
-                                </div>
-                            `
-                        }
-                    ]
-                };
-            } else {
-                // Generic demo content for other courses
-                courseContent = {
-                    chapters: [
-                        {
-                            id: 1,
-                            title: `Introduction to ${currentCourse.name}`,
-                            description: `Getting started with ${currentCourse.name}`,
-                            theory: `
-                                <div class="prose max-w-none">
-                                    <h3 class="text-2xl font-bold mb-4">Welcome to ${currentCourse.name}</h3>
-                                    <p class="text-lg mb-4">This comprehensive course will take you through all the essential concepts and practical skills needed to master ${currentCourse.name.toLowerCase()}.</p>
-                                    
-                                    <h4 class="text-xl font-semibold mb-3">What You'll Learn</h4>
-                                    <ul class="list-disc pl-6 mb-4">
-                                        ${currentCourse.learningOutcomes?.map(outcome => `<li>${outcome}</li>`).join('') || '<li>Core concepts and principles</li><li>Practical applications</li><li>Best practices</li>'}
-                                    </ul>
-                                    
-                                    <div class="bg-blue-50 p-4 rounded-lg">
-                                        <h5 class="font-semibold text-blue-800">Course Duration: ${currentCourse.duration}</h5>
-                                        <p class="text-blue-700">Difficulty Level: ${currentCourse.difficulty}</p>
-                                    </div>
-                                </div>
-                            `,
-                            code: `
-                                <div class="code-content">
-                                    <h4 class="text-xl font-semibold mb-4">Sample Code Structure</h4>
-                                    <div class="bg-gray-900 rounded-lg p-4">
-                                        <div class="flex justify-between items-center mb-2">
-                                            <span class="text-gray-400 text-sm">Example Code</span>
-                                            <button class="copy-btn bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm" onclick="copyCode(this)">
-                                                📋 Copy
-                                            </button>
-                                        </div>
-                                        <pre><code class="language-javascript">// This is a sample code block for ${currentCourse.name}
-console.log("Welcome to ${currentCourse.name}!");
-
-// More detailed content will be available in the actual course files
-function startLearning() {
-    return "Let's begin your journey!";
-}</code></pre>
-                                    </div>
-                                </div>
-                            `,
-                            tips: `
-                                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg">
-                                    <h4 class="font-bold text-yellow-800">💡 Getting Started Tips</h4>
-                                    <ul class="text-yellow-700 mt-2">
-                                        <li>• Take your time with each chapter</li>
-                                        <li>• Practice the code examples</li>
-                                        <li>• Complete the quizzes to test your understanding</li>
-                                    </ul>
                                 </div>
                             `
                         }
@@ -650,16 +613,16 @@ function startLearning() {
 
             courseContent.chapters.forEach((chapter, index) => {
                 const chapterItem = document.createElement('div');
-                chapterItem.className = `chapter-item p-3 rounded-lg cursor-pointer ${index === currentChapterIndex ? 'active' : 'bg-gray-50 hover:bg-gray-100 text-gray-700'}`;
+                chapterItem.className = `chapter-item ${index === currentChapterIndex ? 'active' : 'bg-gray-50 hover:bg-gray-100 text-gray-700'}`;
                 
                 const isCompleted = completedChapters.has(index);
                 chapterItem.innerHTML = `
                     <div class="flex items-center justify-between">
-                        <div>
-                            <div class="font-medium">${chapter.id}. ${chapter.title}</div>
-                            <div class="text-xs opacity-75 mt-1">${chapter.description}</div>
+                        <div class="flex-1 min-w-0">
+                            <div class="font-medium mobile-text-sm break-words">${chapter.id}. ${chapter.title}</div>
+                            <div class="mobile-text-xs opacity-75 mt-1 break-words">${chapter.description}</div>
                         </div>
-                        <div class="text-right">
+                        <div class="text-right ml-2">
                             ${isCompleted ? '<span class="text-green-500">✓</span>' : '<span class="text-gray-400">○</span>'}
                         </div>
                     </div>
@@ -700,9 +663,9 @@ function startLearning() {
             const chapterItems = document.querySelectorAll('.chapter-item');
             chapterItems.forEach((item, index) => {
                 if (index === currentChapterIndex) {
-                    item.className = 'chapter-item p-3 rounded-lg cursor-pointer active';
+                    item.className = 'chapter-item active';
                 } else {
-                    item.className = 'chapter-item p-3 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 text-gray-700';
+                    item.className = 'chapter-item bg-gray-50 hover:bg-gray-100 text-gray-700';
                 }
                 
                 // Update completion status
@@ -737,7 +700,7 @@ function startLearning() {
                 html += `<div class="content-section tips-content">${chapter.tips}</div>`;
             }
 
-            document.getElementById('chapterContent').innerHTML = html || '<div class="text-center py-12 text-gray-500">Select content types to view</div>';
+            document.getElementById('chapterContent').innerHTML = html || '<div class="text-center py-12 text-gray-500 mobile-text-sm sm:mobile-text-base">Select content types to view</div>';
             
             // Fix: Use setTimeout to avoid call stack issues and only highlight if Prism exists
             if (typeof Prism !== 'undefined' && Prism.highlightElement) {
@@ -762,28 +725,6 @@ function startLearning() {
             
             prevBtn.disabled = currentChapterIndex === 0;
             nextBtn.disabled = currentChapterIndex === courseContent.chapters.length - 1;
-            
-            if (currentChapterIndex > 0) {
-                prevBtn.textContent = `← ${courseContent.chapters[currentChapterIndex - 1].title}`;
-            } else {
-                prevBtn.textContent = '← Previous Chapter';
-            }
-            
-            if (currentChapterIndex < courseContent.chapters.length - 1) {
-                nextBtn.textContent = `${courseContent.chapters[currentChapterIndex + 1].title} →`;
-            } else {
-                nextBtn.textContent = 'Next Chapter →';
-            }
-        }
-
-        function updateProgress() {
-            const progress = (completedChapters.size / courseContent.chapters.length) * 100;
-            const circumference = 2 * Math.PI * 28; // radius = 28
-            const offset = circumference - (progress / 100) * circumference;
-            
-            document.getElementById('progressCircle').style.strokeDasharray = `${circumference} ${circumference}`;
-            document.getElementById('progressCircle').style.strokeDashoffset = offset;
-            document.getElementById('progressPercent').textContent = `${Math.round(progress)}%`;
         }
 
         function navigateChapter(direction) {
@@ -793,20 +734,37 @@ function startLearning() {
             }
         }
 
+        function updateProgress() {
+            const progress = (completedChapters.size / courseContent.chapters.length) * 100;
+            const progressCircle = document.getElementById('progressCircle');
+            const progressPercent = document.getElementById('progressPercent');
+            
+            // Update progress circle
+            const circumference = 2 * Math.PI * 28; // r = 28
+            const dashArray = (progress / 100) * circumference;
+            progressCircle.style.strokeDasharray = `${dashArray} ${circumference}`;
+            
+            // Update percentage text
+            progressPercent.textContent = `${Math.round(progress)}%`;
+        }
+
         function copyCode(button) {
             const codeBlock = button.closest('.bg-gray-900').querySelector('code');
-            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-                const originalText = button.textContent;
-                button.textContent = '✅ Copied!';
-                button.classList.remove('bg-blue-500', 'hover:bg-blue-600');
-                button.classList.add('bg-green-500');
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.classList.remove('bg-green-500');
-                    button.classList.add('bg-blue-500', 'hover:bg-blue-600');
-                }, 2000);
-            });
+            const textArea = document.createElement('textarea');
+            textArea.value = codeBlock.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            // Visual feedback
+            const originalText = button.textContent;
+            button.textContent = '✅ Copied!';
+            button.classList.add('bg-green-600');
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('bg-green-600');
+            }, 2000);
         }
     </script>
 </body>
