@@ -1,0 +1,714 @@
+/* ===== GLOBAL CSS STYLES ===== */
+/* This file contains styles that cannot be converted to Tailwind CSS classes */
+
+/* ===== CSS VARIABLES ===== */
+/* Custom CSS variables for consistent theming across the application */
+:root {
+    /* Dark theme color palette (default) */
+    --background: #0f172a;          /* Dark blue background */
+    --surface: #1e293b;             /* Dark surface color */
+    --surface-light: #334155;       /* Lighter surface for cards */
+    --border: #475569;              /* Border color */
+    --text-primary: #f8fafc;       /* Primary text color (white) */
+    --text-secondary: #cbd5e1;     /* Secondary text color (light gray) */
+    --accent: #3b82f6;             /* Accent color (blue) */
+    --accent-light: #60a5fa;       /* Light accent color */
+    --success: #10b981;             /* Success color (green) */
+    --warning: #00BFA6;            /* Warning color (teal) */
+    --error: #ef4444;              /* Error color (red) */
+}
+
+/* ===== LIGHT MODE VARIABLES ===== */
+/* Light theme color palette */
+[data-theme="light"] {
+    --background: #ffffff;          /* White background */
+    --surface: #f8fafc;            /* Light surface color */
+    --surface-light: #e2e8f0;      /* Lighter surface for cards */
+    --border: #cbd5e1;             /* Border color */
+    --text-primary: #1e293b;       /* Primary text color (dark) */
+    --text-secondary: #475569;     /* Secondary text color (gray) */
+    --accent: #3b82f6;             /* Accent color (blue) */
+    --accent-light: #60a5fa;       /* Light accent color */
+    --success: #10b981;             /* Success color (green) */
+    --warning: #00BFA6;            /* Warning color (teal) */
+    --error: #ef4444;              /* Error color (red) */
+}
+
+/* ===== THEME TRANSITIONS ===== */
+/* Smooth transitions for theme changes */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ===== THEME-SPECIFIC STYLES ===== */
+/* Styles that change based on the current theme */
+
+/* Light mode body styling */
+[data-theme="light"] body {
+    background-color: var(--background);
+    color: var(--text-primary);
+}
+
+/* Light mode card styling */
+[data-theme="light"] .mobile-card,
+[data-theme="light"] .course-card,
+[data-theme="light"] .course-list-item {
+    background-color: var(--surface);
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+/* Light mode navigation styling */
+[data-theme="light"] nav {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    color: var(--text-primary);
+}
+
+/* Light mode text colors */
+[data-theme="light"] .text-gray-300 {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .text-slate-300 {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .text-slate-400 {
+    color: var(--text-secondary);
+}
+
+/* Light mode white text colors - these need to be dark in light mode */
+[data-theme="light"] .text-white {
+    color: var(--text-primary);
+}
+
+/* Keep button text white in light mode for better contrast */
+[data-theme="light"] button.text-white,
+[data-theme="light"] .mobile-btn.text-white,
+[data-theme="light"] .ripple-btn.text-white,
+[data-theme="light"] nav button.text-white,
+[data-theme="light"] nav .mobile-btn.text-white,
+[data-theme="light"] nav .ripple-btn.text-white,
+[data-theme="light"] nav a.mobile-btn,
+[data-theme="light"] nav a.ripple-btn,
+[data-theme="light"] .theme-toggle-btn {
+    color: white !important;
+}
+
+[data-theme="light"] nav.text-white {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .text-slate-200 {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .text-blue-100 {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .text-blue-400 {
+    color: #3b82f6;
+}
+
+[data-theme="light"] .text-red-400 {
+    color: #ef4444;
+}
+
+[data-theme="light"] .text-green-200 {
+    color: #10b981;
+}
+
+[data-theme="light"] .text-blue-200 {
+    color: #3b82f6;
+}
+
+[data-theme="light"] .text-purple-200 {
+    color: #8b5cf6;
+}
+
+[data-theme="light"] .text-teal-200 {
+    color: #14b8a6;
+}
+
+[data-theme="light"] .text-yellow-200 {
+    color: #eab308;
+}
+
+[data-theme="light"] .text-green-200 {
+    color: #10b981;
+}
+
+[data-theme="light"] .text-red-200 {
+    color: #ef4444;
+}
+
+/* Light mode background colors */
+[data-theme="light"] .bg-slate-800 {
+    background-color: var(--surface);
+}
+
+[data-theme="light"] .bg-slate-700 {
+    background-color: var(--surface-light);
+}
+
+[data-theme="light"] .bg-slate-900 {
+    background-color: var(--background);
+}
+
+/* Light mode border colors */
+[data-theme="light"] .border-gray-600,
+[data-theme="light"] .border-slate-600,
+[data-theme="light"] .border-slate-700 {
+    border-color: var(--border);
+}
+
+/* ===== MOBILE LAYOUT CLASSES ===== */
+/* Mobile-first responsive layout system */
+.mobile-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .mobile-layout {
+        grid-template-columns: 300px 1fr;
+        gap: 2rem;
+    }
+}
+
+.mobile-sidebar {
+    order: 2;
+    background-color: var(--surface);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    border: 1px solid var(--border);
+}
+
+@media (min-width: 1024px) {
+    .mobile-sidebar {
+        order: 1;
+        padding: 1.5rem;
+    }
+}
+
+.mobile-content {
+    order: 1;
+    min-width: 0;
+}
+
+@media (min-width: 1024px) {
+    .mobile-content {
+        order: 2;
+    }
+}
+
+/* Mobile spacing utilities */
+.mobile-spacing-sm {
+    padding: 1rem;
+}
+
+@media (min-width: 640px) {
+    .mobile-spacing-sm {
+        padding: 1.5rem;
+    }
+}
+
+.mobile-spacing-md {
+    padding: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .mobile-spacing-md {
+        padding: 2rem;
+    }
+}
+
+/* Mobile text sizing */
+.mobile-text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .mobile-text-sm {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+
+.mobile-text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .mobile-text-base {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+}
+
+.mobile-text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+@media (min-width: 640px) {
+    .mobile-text-lg {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+}
+
+.mobile-text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+@media (min-width: 640px) {
+    .mobile-text-xl {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
+
+.mobile-text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+@media (min-width: 640px) {
+    .mobile-text-2xl {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+/* Custom animations that cannot be achieved with Tailwind's built-in animations */
+
+/* Fade in animation for smooth content loading */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modern ripple animation for button interactions */
+@keyframes modern-ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* Inner ripple animation for multi-layered effect */
+@keyframes inner-ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Pulse animation for loading states */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* ===== RIPPLE EFFECT COMPONENTS ===== */
+/* Multi-layered ripple effect with modern animations */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 70%, transparent 100%);
+    animation: modern-ripple 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+}
+
+/* Inner ripple layer for depth effect */
+.ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    animation: inner-ripple 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Button with modern ripple effect */
+.ripple-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover shine effect for buttons */
+.ripple-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.ripple-btn:hover::after {
+    transform: translateX(100%);
+}
+
+/* ===== UTILITY CLASSES ===== */
+/* Custom utility classes that extend Tailwind's functionality */
+
+/* Fade in animation utility */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Pulse animation utility */
+.pulse-animation {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ===== RESPONSIVE UTILITIES ===== */
+/* Custom responsive utilities that complement Tailwind */
+
+/* Mobile-first text sizing */
+.mobile-text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+    .mobile-text-sm {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+
+/* ===== COMPONENT-SPECIFIC STYLES ===== */
+/* Styles for specific components that need custom CSS */
+
+/* Mobile-first cards */
+.mobile-card {
+    background-color: var(--surface);
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.mobile-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-color: var(--border);
+}
+
+/* Course card styling and hover effects */
+.course-card {
+    transition: all 0.3s ease;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-color: var(--border);
+}
+
+/* Progress bar animation */
+.progress-bar {
+    transition: width 0.3s ease;
+}
+
+/* Progress circle animation */
+.progress-circle {
+    transition: stroke-dasharray 0.3s ease;
+}
+
+/* Quiz timer styling */
+.timer-warning {
+    color: var(--warning);
+    animation: pulse 1s infinite;
+}
+
+.timer-danger {
+    color: var(--error);
+    animation: pulse 0.5s infinite;
+}
+
+/* ===== CHAPTER ITEM STYLES ===== */
+/* Styles for chapter list items in the learning page */
+.chapter-item {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.chapter-item:hover {
+    background-color: var(--surface-light);
+    border-color: var(--border);
+}
+
+.chapter-item.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* ===== CONTENT FILTER STYLES ===== */
+/* Styles for content type filters */
+.content-filter {
+    transition: all 0.3s ease;
+}
+
+.content-filter:checked + span {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.content-filter:not(:checked) + span {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+/* Focus states and accessibility improvements */
+
+/* Focus ring for better accessibility */
+.focus-ring:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --border: #64748b;
+        --text-secondary: #94a3b8;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .ripple,
+    .ripple::before {
+        animation: none;
+    }
+    
+    .ripple-btn::after {
+        transition: none;
+    }
+    
+    .course-card {
+        transition: none;
+    }
+    
+    .progress-bar {
+        transition: none;
+    }
+    
+    .progress-circle {
+        transition: none;
+    }
+    
+    .chapter-item {
+        transition: none;
+    }
+}
+
+/* ===== FILTER BUTTON STYLES ===== */
+/* Custom styles for interactive filter buttons */
+.filter-btn {
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.filter-btn:hover:not(.active) {
+    background-color: var(--surface-light);
+    color: var(--text-primary);
+    transform: scale(1.02);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== MOBILE BUTTON STYLES ===== */
+/* Responsive button design that works on all screen sizes */
+.mobile-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+@media (min-width: 640px) {
+    .mobile-btn {
+        width: auto;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* ===== VIEW TOGGLE STYLES ===== */
+/* Custom styles for the view toggle buttons */
+.view-toggle-btn {
+    color: var(--text-secondary);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.view-toggle-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.view-toggle-btn:hover:not(.active) {
+    background-color: var(--surface-light);
+    color: var(--text-primary);
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== COURSE LIST ITEM STYLES ===== */
+/* Styles for the list view course items */
+.course-list-item {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-lg */
+}
+
+.course-list-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-color: var(--border);
+}
+
+/* Smooth transition for view changes */
+#courseGrid {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Animation for view toggle transitions */
+@keyframes viewTransition {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.course-card,
+.course-list-item {
+    animation: viewTransition 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ===== THEME TOGGLE BUTTON STYLES ===== */
+/* Custom styles for the theme toggle button */
+.theme-toggle-btn {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Theme toggle icon animation */
+.theme-toggle-btn i {
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle-btn:hover i {
+    transform: rotate(180deg);
+}
+
+/* ===== COURSE ELEMENT STYLES ===== */
+/* Theme-aware styles for course elements */
+.course-icon {
+    color: var(--text-primary);
+}
+
+.course-title {
+    color: var(--text-primary);
+}
+
+.course-description {
+    color: var(--text-secondary);
+}
+
+.course-meta {
+    color: var(--text-secondary);
+}
+
+/* Light mode specific course element colors */
+[data-theme="light"] .course-icon {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .course-title {
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .course-description {
+    color: var(--text-secondary);
+}
+
+[data-theme="light"] .course-meta {
+    color: var(--text-secondary);
+} 

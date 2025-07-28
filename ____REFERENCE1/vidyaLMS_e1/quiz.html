@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidyaLMS - Quiz</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- Global CSS for custom styles -->
+    <link rel="stylesheet" href="global.css">
+</head>
+<body class="min-h-screen bg-slate-900 text-white">
+    <!-- Standard Navigation -->
+    <nav class="text-white shadow-lg sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
+                        <img src="assets/logo.png" alt="VidyaLMS Logo" class="w-full h-full object-contain">
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <a href="index.html" class="mobile-btn ripple-btn transition text-xs sm:text-sm hover:scale-105 hover:shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-home"></i> <span class="hidden sm:inline">Home</span>
+                    </a>
+                    <button id="learningBtn" class="mobile-btn ripple-btn transition text-xs sm:text-sm hover:scale-105 hover:shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-book"></i> <span class="hidden sm:inline">Learn</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Quiz Start Form -->
+        <div id="quizSetup" class="max-w-lg mx-auto bg-slate-800 rounded-lg shadow-lg p-8 fade-in border border-slate-700">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-clipboard-list text-3xl text-blue-600"></i>
+                </div>
+                <h2 id="quizTitle" class="text-2xl font-bold text-white mb-2">Quiz Setup</h2>
+                <p id="quizSubtitle" class="text-slate-300">Configure your quiz preferences</p>
+            </div>
+
+            <form id="quizSetupForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-slate-200 mb-2">
+                        Your Name
+                    </label>
+                    <input type="text" id="studentName" required 
+                           class="w-full px-4 py-3 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-slate-700 text-white placeholder-slate-400"
+                           placeholder="Enter your full name">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-200 mb-2">
+                        Difficulty Level
+                    </label>
+                    <select id="difficultyLevel" 
+                            class="w-full px-4 py-3 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-700 text-white">
+                        <option value="beginner">Beginner - Easy questions</option>
+                        <option value="intermediate">Intermediate - Moderate difficulty</option>
+                        <option value="advanced">Advanced - Challenging questions</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-200 mb-2">
+                            Questions
+                        </label>
+                        <select id="questionCount" 
+                                class="w-full px-4 py-3 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-700 text-white">
+                            <option value="5">5 Questions</option>
+                            <option value="10" selected>10 Questions</option>
+                            <option value="15">15 Questions</option>
+                            <option value="20">20 Questions</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-200 mb-2">
+                            Duration
+                        </label>
+                        <select id="timeDuration" 
+                                class="w-full px-4 py-3 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-700 text-white">
+                            <option value="5">5 Minutes</option>
+                            <option value="10">10 Minutes</option>
+                            <option value="15" selected>15 Minutes</option>
+                            <option value="30">30 Minutes</option>
+                            <option value="45">45 Minutes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" 
+                        class="w-full ripple-btn text-white py-3 px-6 rounded-lg transition duration-300 font-medium text-lg hover:scale-105 hover:shadow-lg" style="background: linear-gradient(135deg, #00BFA6 0%, #00C9A7 100%);">
+                    Start Quiz
+                </button>
+            </form>
+        </div>
+
+        <!-- Quiz Interface -->
+        <div id="quizInterface" class="hidden max-w-4xl mx-auto">
+            <!-- Quiz Header -->
+            <div class="bg-slate-800 rounded-lg shadow-lg p-6 mb-6 border border-slate-700">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-6">
+                        <div class="text-center">
+                            <div class="text-sm text-slate-400">Question</div>
+                            <div class="text-2xl font-bold text-blue-400">
+                                <span id="currentQuestion">1</span>/<span id="totalQuestions">10</span>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between text-sm text-slate-400 mb-1">
+                                <span>Progress</span>
+                                <span id="progressText">10%</span>
+                            </div>
+                            <div class="w-full bg-slate-600 rounded-full h-3">
+                                <div id="progressBar" class="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full progress-bar" style="width: 10%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-sm text-slate-400">Time Remaining</div>
+                        <div id="timer" class="text-2xl font-bold text-red-400">15:00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Container -->
+            <div class="bg-slate-800 rounded-lg shadow-lg p-8 mb-6 border border-slate-700">
+                <div id="questionContainer">
+                    <!-- Question content will be populated here -->
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex justify-between items-center">
+                <button id="prevBtn" 
+                        class="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition disabled:opacity-50 disabled:cursor-not-allowed" 
+                        disabled>
+                    ← Previous
+                </button>
+                
+                <div class="flex space-x-3">
+                    <button id="clearBtn" 
+                            class="px-4 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition">
+                        Clear
+                    </button>
+                </div>
+
+                <button id="nextBtn" 
+                        class="px-6 py-3 ripple-btn text-white rounded-lg transition hover:scale-105 hover:shadow-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                
+                <button id="submitBtn" 
+                        class="hidden px-6 py-3 ripple-btn text-white rounded-lg transition font-medium hover:scale-105 hover:shadow-lg" style="background: linear-gradient(135deg, #00BFA6 0%, #00C9A7 100%);">
+                    <i class="fas fa-bullseye mr-2"></i>Submit Quiz
+                </button>
+            </div>
+
+            <!-- Question Navigator -->
+            <div class="mt-6 bg-slate-800 rounded-lg shadow-lg p-4 border border-slate-700">
+                <h3 class="text-sm font-medium text-slate-200 mb-3">Question Navigator</h3>
+                <div id="questionNavigator" class="grid grid-cols-10 gap-2">
+                    <!-- Question navigation buttons will be populated here -->
+                </div>
+                <div class="flex items-center space-x-4 mt-3 text-xs text-slate-400">
+                    <div class="flex items-center space-x-1">
+                        <div class="w-3 h-3 bg-blue-500 rounded"></div>
+                        <span>Current</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <div class="w-3 h-3 bg-green-500 rounded"></div>
+                        <span>Answered</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <div class="w-3 h-3 bg-slate-500 rounded"></div>
+                        <span>Not Visited</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Results -->
+        <div id="quizResults" class="hidden max-w-4xl mx-auto">
+            <!-- Results Navigation -->
+            <div class="bg-slate-800 rounded-lg shadow-lg overflow-hidden mb-6 border border-slate-700">
+                <div class="border-b border-slate-600">
+                    <nav class="flex space-x-8 px-6" aria-label="Tabs">
+                        <button class="result-tab active py-4 border-b-2 border-blue-500 font-medium text-sm text-blue-400" data-tab="summary">
+                            Summary
+                        </button>
+                        <button class="result-tab py-4 border-b-2 border-transparent font-medium text-sm text-slate-400 hover:text-slate-200" data-tab="review">
+                            Review Answers
+                        </button>
+                        <button class="result-tab py-4 border-b-2 border-transparent font-medium text-sm text-slate-400 hover:text-slate-200" data-tab="certificate">
+                            Certificate
+                        </button>
+                    </nav>
+                </div>
+
+                <div class="p-8">
+                    <!-- Summary Tab -->
+                    <div id="summaryTab" class="result-content">
+                        <div id="quizSummary">
+                            <!-- Summary content will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Review Tab -->
+                    <div id="reviewTab" class="result-content hidden">
+                        <div id="reviewContent">
+                            <!-- Review content will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Certificate Tab -->
+                    <div id="certificateTab" class="result-content hidden">
+                        <div id="certificateContent">
+                            <!-- Certificate will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+                <script src="js/courses.js"></script>
+    <script src="js/shared-nav.js"></script>
+    <script>
+        /**
+         * Creates a modern multi-layered ripple effect on button click
+         * @param {Event} event - The click event
+         */
+        function rippleEffect(event) {
+            const btn = event.currentTarget;
+
+            // Create main ripple
+            const circle = document.createElement("span");
+            const diameter = Math.max(btn.clientWidth, btn.clientHeight);
+            const radius = diameter / 2;
+
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - (btn.offsetLeft + radius)}px`;
+            circle.style.top = `${event.clientY - (btn.offsetTop + radius)}px`;
+            circle.classList.add("ripple");
+
+            // Remove existing ripples
+            const existingRipples = btn.getElementsByClassName("ripple");
+            Array.from(existingRipples).forEach(ripple => ripple.remove());
+
+            // Add new ripple
+            btn.appendChild(circle);
+
+            // Create additional ripple layers for more complex effect
+            setTimeout(() => {
+                const secondaryCircle = document.createElement("span");
+                secondaryCircle.style.width = secondaryCircle.style.height = `${diameter * 0.8}px`;
+                secondaryCircle.style.left = `${event.clientX - (btn.offsetLeft + radius * 0.8)}px`;
+                secondaryCircle.style.top = `${event.clientY - (btn.offsetTop + radius * 0.8)}px`;
+                secondaryCircle.classList.add("ripple");
+                secondaryCircle.style.animationDelay = "0.1s";
+                secondaryCircle.style.opacity = "0.6";
+                
+                btn.appendChild(secondaryCircle);
+            }, 50);
+
+            // Clean up ripples after animation
+            setTimeout(() => {
+                if (circle.parentNode) {
+                    circle.remove();
+                }
+                const secondaryRipples = btn.getElementsByClassName("ripple");
+                Array.from(secondaryRipples).forEach(ripple => {
+                    if (ripple !== circle) ripple.remove();
+                });
+            }, 800);
+        }
+
+        // Add ripple effect to all buttons with ripple-btn class
+        document.addEventListener('DOMContentLoaded', function() {
+            const rippleButtons = document.querySelectorAll('.ripple-btn');
+            rippleButtons.forEach(button => {
+                button.addEventListener('click', rippleEffect);
+            });
+        });
+        let currentCourse = null;
+        let quizData = null;
+        let quizState = {
+            currentQuestion: 0,
+            answers: [],
+            timeRemaining: 0,
+            timer: null,
+            studentName: '',
+            difficulty: '',
+            totalQuestions: 0,
+            startTime: null,
+            endTime: null
+        };
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseId = urlParams.get('course');
+            
+            if (courseId) {
+                loadCourse(courseId);
+            } else {
+                alert('No course specified');
+                window.location.href = 'index.html';
+            }
+
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Quiz setup form
+            document.getElementById('quizSetupForm').addEventListener('submit', startQuiz);
+
+            // Quiz navigation
+            document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+            document.getElementById('prevBtn').addEventListener('click', prevQuestion);
+            document.getElementById('submitBtn').addEventListener('click', submitQuiz);
+            document.getElementById('clearBtn').addEventListener('click', clearAnswer);
+
+            // Learning button
+            document.getElementById('learningBtn').addEventListener('click', () => {
+                window.location.href = `learning.html?course=${currentCourse.id}`;
+            });
+
+            // Result tabs
+            document.querySelectorAll('.result-tab').forEach(tab => {
+                tab.addEventListener('click', (e) => switchResultTab(e.target.dataset.tab));
+            });
+        }
+
+        async function loadCourse(courseId) {
+            currentCourse = getCourseById(courseId);
+            if (!currentCourse) {
+                alert('Course not found');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            document.getElementById('quizTitle').textContent = `${currentCourse.name} Quiz`;
+            document.getElementById('quizSubtitle').textContent = `Test your knowledge of ${currentCourse.name}`;
+            document.title = `VidyaLMS - ${currentCourse.name} Quiz`;
+        }
+
+        function startQuiz(e) {
+            e.preventDefault();
+            
+            quizState.studentName = document.getElementById('studentName').value.trim();
+            quizState.difficulty = document.getElementById('difficultyLevel').value;
+            const questionCount = parseInt(document.getElementById('questionCount').value);
+            const timeDuration = parseInt(document.getElementById('timeDuration').value);
+            
+            if (!quizState.studentName) {
+                alert('Please enter your name');
+                return;
+            }
+
+            // Load quiz data
+            loadQuizData(quizState.difficulty, questionCount).then(() => {
+                quizState.totalQuestions = quizData.length;
+                quizState.answers = new Array(quizState.totalQuestions).fill(null);
+                quizState.currentQuestion = 0;
+                quizState.timeRemaining = timeDuration * 60;
+                quizState.startTime = new Date();
+                
+                // Hide setup and show quiz interface
+                document.getElementById('quizSetup').classList.add('hidden');
+                document.getElementById('quizInterface').classList.remove('hidden');
+                
+                // Initialize quiz interface
+                initializeQuizInterface();
+                startTimer();
+                displayQuestion();
+                updateQuizProgress();
+                createQuestionNavigator();
+            });
+        }
+
+        async function loadQuizData(difficulty, questionCount) {
+        return new Promise((resolve) => {
+        let contentLoaded = false;
+        
+        try {
+            // Create script element for the quiz content
+            const script = document.createElement('script');
+            script.src = `quiz/${currentCourse.id}/${currentCourse.id}_quiz_${difficulty}.js`;
+            
+            // Set a timeout to prevent infinite loading
+            const loadTimeout = setTimeout(() => {
+                if (!contentLoaded) {
+                    console.log('Quiz data loading timeout, using demo content');
+                    loadDemoQuizData(difficulty, questionCount);
+                    contentLoaded = true;
+                    resolve();
+                }
+            }, 3000); // 3 second timeout
+            
+            script.onload = function() {
+                if (!contentLoaded) {
+                    clearTimeout(loadTimeout);
+                    contentLoaded = true;
+                    
+                    // Quiz data should now be available in window.quizQuestions
+                    if (window.quizQuestions && Array.isArray(window.quizQuestions)) {
+                        quizData = window.quizQuestions.slice(0, questionCount);
+                    } else {
+                        console.log('Quiz questions not found in loaded script, using demo content');
+                        loadDemoQuizData(difficulty, questionCount);
+                    }
+                    resolve();
+                }
+            };
+            
+            script.onerror = function() {
+                if (!contentLoaded) {
+                    clearTimeout(loadTimeout);
+                    contentLoaded = true;
+                    console.log('Failed to load quiz data, using demo content');
+                    loadDemoQuizData(difficulty, questionCount);
+                    resolve();
+                }
+            };
+            
+            document.head.appendChild(script);
+            
+        } catch (error) {
+            if (!contentLoaded) {
+                contentLoaded = true;
+                console.log('Error loading quiz data, using demo content');
+                loadDemoQuizData(difficulty, questionCount);
+                resolve();
+            }
+        }
+    });
+}
+        function loadDemoQuizData(difficulty, questionCount) {
+            const demoQuestions = {
+                'ai-foundations': {
+                    beginner: [
+                        {
+                            type: 'mcq',
+                            question: 'What does AI stand for?',
+                            options: ['Artificial Intelligence', 'Advanced Internet', 'Automated Information', 'Applied Integration'],
+                            answer: 0,
+                            explanation: 'AI stands for Artificial Intelligence, which refers to the simulation of human intelligence in machines.',
+                            tips: 'AI is one of the most important technological advances of our time.'
+                        },
+                        {
+                            type: 'scq',
+                            question: 'Machine Learning is a subset of AI.',
+                            options: ['True', 'False'],
+                            answer: 0,
+                            explanation: 'Machine Learning is indeed a subset of Artificial Intelligence that focuses on algorithms that can learn from data.',
+                            tips: 'Understanding the relationship between AI and ML is fundamental to the field.'
+                        },
+                        {
+                            type: 'mcq',
+                            question: 'Which of the following is NOT a type of machine learning?',
+                            options: ['Supervised Learning', 'Unsupervised Learning', 'Reinforcement Learning', 'Systematic Learning'],
+                            answer: 3,
+                            explanation: 'Systematic Learning is not a recognized type of machine learning. The three main types are Supervised, Unsupervised, and Reinforcement Learning.',
+                            tips: 'Focus on understanding the three main paradigms of machine learning.'
+                        },
+                        {
+                            type: 'mcq',
+                            question: 'In supervised learning, what do we need?',
+                            options: ['Only input data', 'Only output data', 'Both input and output data', 'Neither input nor output data'],
+                            answer: 2,
+                            explanation: 'Supervised learning requires both input data (features) and output data (labels) to train the model.',
+                            tips: 'The "supervision" comes from having the correct answers during training.'
+                        },
+                        {
+                            type: 'scq',
+                            question: 'Neural networks are inspired by the human brain.',
+                            options: ['True', 'False'],
+                            answer: 0,
+                            explanation: 'Neural networks are indeed inspired by the structure and function of biological neural networks in the human brain.',
+                            tips: 'This biological inspiration is what gave neural networks their name.'
+                        }
+                    ]
+                }
+            };
+
+            // Generate questions for other courses
+            const genericQuestions = [
+                {
+                    type: 'mcq',
+                    question: `What is the primary focus of ${currentCourse.name}?`,
+                    options: ['Web Development', 'Data Science', 'Programming Fundamentals', 'All of the above'],
+                    answer: 2,
+                    explanation: `${currentCourse.name} focuses on building strong foundational knowledge in the subject area.`,
+                    tips: 'Understanding the fundamentals is crucial for mastering any technology.'
+                },
+                {
+                    type: 'scq',
+                    question: `${currentCourse.name} is suitable for beginners.`,
+                    options: ['True', 'False'],
+                    answer: currentCourse.difficulty === 'Beginner' ? 0 : 1,
+                    explanation: `This course is designed for ${currentCourse.difficulty.toLowerCase()} level learners.`,
+                    tips: 'Always check the prerequisites before starting a course.'
+                }
+            ];
+
+            const courseQuestions = demoQuestions[currentCourse.id] || { [difficulty]: genericQuestions };
+            quizData = (courseQuestions[difficulty] || genericQuestions).slice(0, questionCount);
+        }
+
+        function initializeQuizInterface() {
+            document.getElementById('totalQuestions').textContent = quizState.totalQuestions;
+        }
+
+        function startTimer() {
+            quizState.timer = setInterval(() => {
+                quizState.timeRemaining--;
+                updateTimerDisplay();
+                
+                if (quizState.timeRemaining <= 0) {
+                    clearInterval(quizState.timer);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(quizState.timeRemaining / 60);
+            const seconds = quizState.timeRemaining % 60;
+            const timerElement = document.getElementById('timer');
+            timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Add warning style when time is running low
+            if (quizState.timeRemaining <= 300) { // 5 minutes
+                timerElement.classList.add('timer-warning');
+            }
+        }
+
+        function displayQuestion() {
+            const question = quizData[quizState.currentQuestion];
+            const container = document.getElementById('questionContainer');
+            
+            let optionsHtml = '';
+            question.options.forEach((option, index) => {
+                const isSelected = quizState.answers[quizState.currentQuestion] === index;
+                optionsHtml += `
+                    <div class="quiz-option p-4 border-2 ${isSelected ? 'selected border-blue-500 bg-blue-900/50' : 'border-slate-600 bg-slate-700'} rounded-lg cursor-pointer mb-3 hover:shadow-md hover:bg-slate-700/80" onclick="selectAnswer(${index})">
+                        <label class="flex items-center cursor-pointer w-full">
+                            <input type="radio" name="answer" value="${index}" ${isSelected ? 'checked' : ''} class="mr-3 text-blue-400">
+                            <span class="text-slate-200">${option}</span>
+                        </label>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = `
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-white">Question ${quizState.currentQuestion + 1}</h3>
+                        <div class="flex items-center space-x-2">
+                            <span class="px-2 py-1 text-xs font-medium rounded ${question.type === 'mcq' ? 'bg-blue-900 text-blue-200' : 'bg-green-900 text-green-200'}">
+                                ${question.type === 'mcq' ? 'Multiple Choice' : 'True/False'}
+                            </span>
+                        </div>
+                    </div>
+                    <p class="text-lg text-slate-200 mb-6 leading-relaxed">${question.question}</p>
+                </div>
+                <div class="space-y-3">
+                    ${optionsHtml}
+                </div>
+            `;
+            
+            updateQuizProgress();
+            updateNavigationButtons();
+            updateQuestionNavigator();
+        }
+
+        function selectAnswer(answerIndex) {
+            quizState.answers[quizState.currentQuestion] = answerIndex;
+            displayQuestion();
+        }
+
+        function updateQuizProgress() {
+            document.getElementById('currentQuestion').textContent = quizState.currentQuestion + 1;
+            
+            const progress = ((quizState.currentQuestion + 1) / quizState.totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `${Math.round(progress)}%`;
+        }
+
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            prevBtn.disabled = quizState.currentQuestion === 0;
+            
+            if (quizState.currentQuestion === quizState.totalQuestions - 1) {
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            }
+        }
+
+        function createQuestionNavigator() {
+            const navigator = document.getElementById('questionNavigator');
+            navigator.innerHTML = '';
+            
+            for (let i = 0; i < quizState.totalQuestions; i++) {
+                const button = document.createElement('button');
+                button.className = 'w-10 h-10 text-sm font-medium rounded-lg transition';
+                button.textContent = i + 1;
+                button.onclick = () => navigateToQuestion(i);
+                
+                updateNavigatorButton(button, i);
+                navigator.appendChild(button);
+            }
+        }
+
+        function updateQuestionNavigator() {
+            const navigator = document.getElementById('questionNavigator');
+            const buttons = navigator.children;
+            
+            for (let i = 0; i < buttons.length; i++) {
+                updateNavigatorButton(buttons[i], i);
+            }
+        }
+
+        function updateNavigatorButton(button, index) {
+            button.className = 'w-10 h-10 text-sm font-medium rounded-lg transition';
+            
+            if (index === quizState.currentQuestion) {
+                button.className += ' bg-blue-500 text-white';
+            } else if (quizState.answers[index] !== null) {
+                button.className += ' bg-green-500 text-white';
+            } else {
+                button.className += ' bg-slate-600 text-slate-200 hover:bg-slate-500';
+            }
+        }
+
+        function navigateToQuestion(questionIndex) {
+            quizState.currentQuestion = questionIndex;
+            displayQuestion();
+        }
+
+        function nextQuestion() {
+            if (quizState.currentQuestion < quizState.totalQuestions - 1) {
+                quizState.currentQuestion++;
+                displayQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (quizState.currentQuestion > 0) {
+                quizState.currentQuestion--;
+                displayQuestion();
+            }
+        }
+
+
+
+        function clearAnswer() {
+            quizState.answers[quizState.currentQuestion] = null;
+            displayQuestion();
+        }
+
+        function submitQuiz() {
+            clearInterval(quizState.timer);
+            quizState.endTime = new Date();
+            
+            // Calculate results
+            let correctAnswers = 0;
+            quizData.forEach((question, index) => {
+                if (quizState.answers[index] === question.answer) {
+                    correctAnswers++;
+                }
+            });
+            
+            const score = (correctAnswers / quizState.totalQuestions) * 100;
+            const passed = score >= 60;
+            const timeTaken = Math.round((quizState.endTime - quizState.startTime) / 1000 / 60);
+            
+            // Hide quiz interface and show results
+            document.getElementById('quizInterface').classList.add('hidden');
+            document.getElementById('quizResults').classList.remove('hidden');
+            
+            displayResults(score, correctAnswers, passed, timeTaken);
+        }
+
+        function displayResults(score, correctAnswers, passed, timeTaken) {
+            // Summary Tab
+            const summaryHtml = `
+                <div class="text-center">
+                    <div class="mb-8">
+                        <h2 class="text-4xl font-bold ${passed ? 'text-green-400' : 'text-red-400'} mb-4">
+                            ${passed ? 'Congratulations!' : 'Keep Learning!'}
+                        </h2>
+                        <p class="text-xl text-slate-300 mb-2">You ${passed ? 'passed' : 'didn\'t pass'} the ${currentCourse.name} quiz</p>
+                        <p class="text-slate-400">Difficulty: ${quizState.difficulty.charAt(0).toUpperCase() + quizState.difficulty.slice(1)}</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-gradient-to-br from-blue-900/50 to-blue-800/50 p-6 rounded-xl border border-blue-600">
+                            <div class="text-3xl font-bold text-blue-400 mb-2">${score.toFixed(1)}%</div>
+                            <div class="text-blue-200 font-medium">Overall Score</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-900/50 to-green-800/50 p-6 rounded-xl border border-green-600">
+                            <div class="text-3xl font-bold text-green-400 mb-2">${correctAnswers}</div>
+                            <div class="text-green-200 font-medium">Correct Answers</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-900/50 to-purple-800/50 p-6 rounded-xl border border-purple-600">
+                            <div class="text-3xl font-bold text-purple-400 mb-2">${quizState.totalQuestions}</div>
+                            <div class="text-purple-200 font-medium">Total Questions</div>
+                        </div>
+                        <div class="bg-gradient-to-br from-teal-900/50 to-teal-800/50 p-6 rounded-xl border border-teal-600">
+                            <div class="text-3xl font-bold text-teal-400 mb-2">${timeTaken}</div>
+                            <div class="text-teal-200 font-medium">Minutes Taken</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center space-x-4">
+                        ${passed ? 
+                            '<button onclick="switchResultTab(\'certificate\')" class="bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-3 rounded-lg hover:from-green-700 hover:to-blue-700 transition font-medium">View Certificate</button>' : 
+                            `<a href="learning.html?course=${currentCourse.id}" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition font-medium">Continue Learning</a>`
+                        }
+                        <button onclick="switchResultTab('review')" class="bg-slate-600 text-white px-8 py-3 rounded-lg hover:bg-slate-700 transition font-medium">Review Answers</button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('quizSummary').innerHTML = summaryHtml;
+            
+            // Review Tab
+            generateReviewContent(correctAnswers);
+            
+            // Generate certificate if passed
+            if (passed) {
+                generateCertificate(score, timeTaken);
+            }
+        }
+
+        function generateReviewContent(correctAnswers) {
+            let reviewHtml = `
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold text-white mb-4">Answer Review</h3>
+                    <p class="text-slate-300 mb-4">Review your answers and learn from the explanations below.</p>
+                </div>
+            `;
+            
+            quizData.forEach((question, index) => {
+                const userAnswer = quizState.answers[index];
+                const isCorrect = userAnswer === question.answer;
+                const isFlagged = quizState.flagged.has(index);
+                
+                reviewHtml += `
+                    <div class="border-b border-slate-600 pb-8 mb-8 last:border-b-0">
+                        <div class="flex items-start justify-between mb-4">
+                            <h4 class="text-lg font-bold text-white">Question ${index + 1}</h4>
+                            <div class="flex items-center space-x-2">
+                                <span class="px-3 py-1 rounded-full text-sm font-medium ${isCorrect ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'}">
+                                    ${isCorrect ? '✓ Correct' : '✗ Incorrect'}
+                                </span>
+                            </div>
+                        </div>
+                        <p class="text-slate-200 mb-6 text-lg">${question.question}</p>
+                        
+                        <div class="space-y-3 mb-6">
+                            ${question.options.map((option, optIndex) => {
+                                let classes = 'p-4 rounded-lg border-2 ';
+                                let icon = '';
+                                
+                                if (optIndex === question.answer) {
+                                    classes += 'border-green-500 bg-green-900/50';
+                                    icon = '✓';
+                                } else if (optIndex === userAnswer && userAnswer !== question.answer) {
+                                    classes += 'border-red-500 bg-red-900/50';
+                                    icon = '✗';
+                                } else {
+                                    classes += 'border-slate-600 bg-slate-700';
+                                }
+                                
+                                const labels = ['', '(Your Answer)', '(Correct Answer)', ''];
+                                let label = '';
+                                if (optIndex === question.answer && optIndex === userAnswer) {
+                                    label = '(Your Answer - Correct)';
+                                } else if (optIndex === question.answer) {
+                                    label = '(Correct Answer)';
+                                } else if (optIndex === userAnswer) {
+                                    label = '(Your Answer)';
+                                }
+                                
+                                return `
+                                    <div class="${classes}">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-slate-200">${option}</span>
+                                            <div class="flex items-center space-x-2">
+                                                ${label ? `<span class="text-sm font-medium text-slate-300">${label}</span>` : ''}
+                                                ${icon ? `<span class="font-bold">${icon}</span>` : ''}
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                        
+                        <div class="bg-blue-900/50 border-l-4 border-blue-400 p-4 rounded-r-lg">
+                            <h5 class="text-blue-200 font-medium mb-2">Explanation:</h5>
+                            <p class="text-blue-100 mb-2">${question.explanation}</p>
+                            ${question.tips ? `<p class="text-blue-200 text-sm"><strong>Tip:</strong> ${question.tips}</p>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('reviewContent').innerHTML = reviewHtml;
+        }
+
+        function switchResultTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.result-tab').forEach(tab => {
+                tab.classList.remove('active', 'border-blue-500', 'text-blue-400');
+                tab.classList.add('border-transparent', 'text-slate-400');
+            });
+            
+            const activeTab = document.querySelector(`[data-tab="${tabName}"]`);
+            activeTab.classList.add('active', 'border-blue-500', 'text-blue-400');
+            activeTab.classList.remove('border-transparent', 'text-slate-400');
+            
+            // Show correct content
+            document.querySelectorAll('.result-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            document.getElementById(`${tabName}Tab`).classList.remove('hidden');
+        }
+
+        function generateCertificate(score, timeTaken) {
+            const currentDate = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            const certificateHtml = `
+                <div id="certificate" class="certificate max-w-4xl mx-auto p-12 text-white rounded-xl relative overflow-hidden">
+                    <div class="text-center relative z-10">
+                        <div class="mb-8">
+                            <h1 class="text-5xl font-bold mb-4">Certificate of Achievement</h1>
+                            <div class="w-32 h-1 bg-white mx-auto rounded"></div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <p class="text-xl mb-4">This is to certify that</p>
+                            <h2 class="text-4xl font-bold mb-4 border-b-2 border-white pb-2 inline-block">${quizState.studentName}</h2>
+                            <p class="text-xl">has successfully completed the assessment for</p>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-3xl font-bold text-yellow-300 mb-2">${currentCourse.name}</h3>
+                            <p class="text-lg opacity-90">with a score of ${score.toFixed(1)}% (${quizState.difficulty} level)</p>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <div class="grid grid-cols-3 gap-8 text-center">
+                                <div>
+                                    <div class="text-2xl font-bold mb-1">${score.toFixed(1)}%</div>
+                                    <div class="text-sm opacity-75">Final Score</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold mb-1">${timeTaken} min</div>
+                                    <div class="text-sm opacity-75">Time Taken</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold mb-1">${currentDate}</div>
+                                    <div class="text-sm opacity-75">Date Completed</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-end">
+                            <div class="text-left">
+                                <div class="w-32 h-px bg-white mb-2"></div>
+                                <p class="text-sm opacity-75">VidyaLMS Platform</p>
+                                <p class="text-xs opacity-60">Learning Management System</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-2">
+                                    <span class="text-blue-600 font-bold text-3xl">V</span>
+                                </div>
+                                <p class="text-xs opacity-60">Official Verification</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="w-32 h-px bg-white mb-2"></div>
+                                <p class="text-sm opacity-75">Course Instructor</p>
+                                <p class="text-xs opacity-60">${currentCourse.instructor}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative elements -->
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute top-8 left-8 w-16 h-16 border-4 border-white rounded-full"></div>
+                        <div class="absolute top-8 right-8 w-16 h-16 border-4 border-white rounded-full"></div>
+                        <div class="absolute bottom-8 left-8 w-16 h-16 border-4 border-white rounded-full"></div>
+                        <div class="absolute bottom-8 right-8 w-16 h-16 border-4 border-white rounded-full"></div>
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-8 border-white rounded-full opacity-20"></div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-8">
+                    <button onclick="downloadCertificate()" class="bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-3 rounded-lg hover:from-green-700 hover:to-blue-700 transition font-medium text-lg">
+                        Download PDF Certificate
+                    </button>
+                    <p class="text-gray-600 mt-3 text-sm">Certificate ID: VLM-${currentCourse.id.toUpperCase()}-${Date.now()}</p>
+                </div>
+            `;
+            
+            document.getElementById('certificateContent').innerHTML = certificateHtml;
+        }
+
+        function downloadCertificate() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                orientation: 'landscape',
+                unit: 'mm',
+                format: 'a4'
+            });
+            
+            const score = (quizData.filter((q, i) => quizState.answers[i] === q.answer).length / quizState.totalQuestions) * 100;
+            const timeTaken = Math.round((quizState.endTime - quizState.startTime) / 1000 / 60);
+            const currentDate = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            const currentTime = new Date().toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+            const certificateId = `VLM-${currentCourse.id.toUpperCase()}-${Date.now()}`;
+            
+            // Page dimensions
+            const pageWidth = 297;
+            const pageHeight = 210;
+            
+            // === ELEGANT DECORATIVE BORDER ===
+            // Outer ornate border
+            doc.setLineWidth(3);
+            doc.setDrawColor(25, 64, 149); // Deep blue
+            doc.roundedRect(8, 8, pageWidth-16, pageHeight-16, 8, 8);
+            
+            // Inner golden border
+            doc.setLineWidth(2);
+            doc.setDrawColor(184, 134, 11); // Gold
+            doc.roundedRect(12, 12, pageWidth-24, pageHeight-24, 6, 6);
+            
+            // Decorative corner flourishes
+            doc.setLineWidth(1.5);
+            doc.setDrawColor(25, 64, 149);
+            // Top left flourish
+            doc.circle(25, 25, 10, 'S');
+            doc.circle(25, 25, 6, 'S');
+            // Top right flourish
+            doc.circle(pageWidth-25, 25, 10, 'S');
+            doc.circle(pageWidth-25, 25, 6, 'S');
+            // Bottom left flourish
+            doc.circle(25, pageHeight-25, 10, 'S');
+            doc.circle(25, pageHeight-25, 6, 'S');
+            // Bottom right flourish
+            doc.circle(pageWidth-25, pageHeight-25, 10, 'S');
+            doc.circle(pageWidth-25, pageHeight-25, 6, 'S');
+            
+            // === ASCENDING WATERMARK (45 degrees) ===
+            doc.saveGraphicsState();
+            doc.setGState(new doc.GState({opacity: 0.08}));
+            doc.setFontSize(48);
+            doc.setTextColor(25, 64, 149);
+            doc.text('VidyaLMS', pageWidth/2, pageHeight/2, {
+                align: 'center',
+                angle: 45  // 45 degrees ascending
+            });
+            doc.restoreGraphicsState();
+            
+            // === OFFICIAL SEAL (Enhanced Design) ===
+            const sealX = 50;
+            const sealY = 65;
+            
+            // Outer seal with gradient effect
+            doc.setLineWidth(4);
+            doc.setDrawColor(184, 134, 11); // Gold
+            doc.circle(sealX, sealY, 30, 'S');
+            
+            // Inner seal circle
+            doc.setLineWidth(2);
+            doc.setDrawColor(25, 64, 149); // Blue
+            doc.circle(sealX, sealY, 25, 'S');
+            
+            // Innermost circle
+            doc.setLineWidth(1);
+            doc.setDrawColor(184, 134, 11);
+            doc.circle(sealX, sealY, 20, 'S');
+            
+            // Seal text with better alignment
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(10);
+            doc.setTextColor(25, 64, 149);
+            doc.text('OFFICIAL', sealX, sealY-8, { align: 'center' });
+            doc.text('SEAL', sealX, sealY-2, { align: 'center' });
+            doc.setFontSize(12);
+            doc.setTextColor(184, 134, 11);
+            doc.text('VidyaLMS', sealX, sealY+6, { align: 'center' });
+            doc.setFontSize(8);
+            doc.text('2025', sealX, sealY+12, { align: 'center' });
+            
+            // Decorative stars around seal
+            doc.setFontSize(8);
+            doc.setTextColor(184, 134, 11);
+            const starPositions = [
+                {x: sealX-20, y: sealY-20}, {x: sealX+20, y: sealY-20},
+                {x: sealX-20, y: sealY+20}, {x: sealX+20, y: sealY+20}
+            ];
+            starPositions.forEach(pos => {
+                doc.text('', pos.x, pos.y, { align: 'center' });
+            });
+            
+            // === MAIN HEADER ===
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(36);
+            doc.setTextColor(25, 64, 149);
+            doc.text('Certificate of Achievement', pageWidth/2, 45, { align: 'center' });
+            
+            // Elegant decorative line
+            doc.setLineWidth(2);
+            doc.setDrawColor(184, 134, 11);
+            doc.line(70, 50, pageWidth-70, 50);
+            
+            // Decorative elements on the line
+            doc.setFontSize(16);
+            doc.text('', 65, 52, { align: 'center' });
+            doc.text('', pageWidth-65, 52, { align: 'center' });
+            
+            // === BODY TEXT ===
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(16);
+            doc.setTextColor(0, 0, 0);
+            doc.text('This is to certify that', pageWidth/2, 70, { align: 'center' });
+            
+            // Student name with elegant styling
+            doc.setFont('times', 'bold');
+            doc.setFontSize(28);
+            doc.setTextColor(25, 64, 149);
+            doc.text(quizState.studentName, pageWidth/2, 88, { align: 'center' });
+            
+            // Decorative underline for name
+            const nameWidth = doc.getTextWidth(quizState.studentName);
+            doc.setLineWidth(1.5);
+            doc.setDrawColor(184, 134, 11);
+            doc.line((pageWidth/2) - (nameWidth/2) - 15, 93, (pageWidth/2) + (nameWidth/2) + 15, 93);
+            
+            // Achievement description
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(16);
+            doc.setTextColor(0, 0, 0);
+            doc.text('has successfully completed the comprehensive assessment for', pageWidth/2, 110, { align: 'center' });
+            
+            // Course name with distinction
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(24);
+            doc.setTextColor(184, 134, 11);
+            doc.text(currentCourse.name, pageWidth/2, 130, { align: 'center' });
+            
+            // === PERFORMANCE METRICS BOX ===
+            doc.setLineWidth(2);
+            doc.setDrawColor(46, 125, 50); // Green
+            doc.setFillColor(248, 255, 248); // Light green
+            doc.roundedRect(80, 140, pageWidth-160, 25, 3, 3, 'FD');
+            
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(14);
+            doc.setTextColor(46, 125, 50);
+            doc.text(`Score: ${score.toFixed(1)}% • Level: ${quizState.difficulty} • Duration: ${timeTaken} minutes`, pageWidth/2, 155, { align: 'center' });
+            
+            // === DATE AND TIME ===
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(14);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Issued on ${currentDate} at ${currentTime}`, pageWidth/2, 175, { align: 'center' });
+            
+            // === CERTIFICATE ID (Moved up) ===
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100);
+            doc.text(`Certificate ID: ${certificateId}`, pageWidth/2, 185, { align: 'center' });
+            
+            // === VERIFICATION INFO ===
+            doc.setFontSize(8);
+            doc.setTextColor(120, 120, 120);
+            //doc.text('Verify authenticity at: verify.vidyalms.com', pageWidth/2, pageHeight-15, { align: 'center' });
+            
+            // === SECURITY FEATURES ===
+            // Enhanced QR Code placeholder
+            doc.setLineWidth(2);
+            doc.setDrawColor(0, 0, 0);
+            doc.roundedRect(pageWidth-50, pageHeight-50, 20, 20, 2, 2);
+            doc.setFontSize(8);
+            doc.setTextColor(0, 0, 0);
+            doc.text('', pageWidth-40, pageHeight-42, { align: 'center' });
+            doc.text('', pageWidth-40, pageHeight-37, { align: 'center' });
+            
+            // Security hologram strip
+            doc.setLineWidth(4);
+            doc.setDrawColor(255, 215, 0); // Gold
+            doc.line(pageWidth-25, 25, pageWidth-25, pageHeight-25);
+            doc.setFontSize(8);
+            doc.setTextColor(255, 215, 0);
+            for(let i = 35; i < pageHeight-35; i += 25) {
+                doc.text('★', pageWidth-25, i, { align: 'center' });
+            }
+            
+            // === FINAL DECORATIVE TOUCHES ===
+            // Corner ornaments
+            doc.setFontSize(14);
+            doc.setTextColor(184, 134, 11);
+            doc.text('', 20, 45);
+            doc.text('', pageWidth-20, 45);
+            doc.text('', 20, pageHeight-20);
+            doc.text('', pageWidth-20, pageHeight-20);
+            
+            // Additional border flourishes
+            doc.setLineWidth(1);
+            doc.setDrawColor(184, 134, 11);
+            // Top border flourish
+            doc.line(pageWidth/2-30, 20, pageWidth/2+30, 20);
+            // Bottom border flourish
+            doc.line(pageWidth/2-30, pageHeight-10, pageWidth/2+30, pageHeight-10);
+            
+            // Save the PDF with descriptive filename
+            const fileName = `${quizState.studentName.replace(/\s+/g, '_')}_${currentCourse.name.replace(/\s+/g, '_')}_Certificate_${currentDate.replace(/\s+/g, '_')}.pdf`;
+            doc.save(fileName);
+        }
+    </script>
+</body>
+</html>
