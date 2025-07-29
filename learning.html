@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShristiLMS - Learning</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
@@ -198,6 +199,94 @@
         .copy-btn {
             transition: all 0.3s ease;
         }
+
+        /* Enhanced button styles with shine effect */
+        .btn-learn {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-learn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .btn-learn:hover::before {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+
+        .btn-learn:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-quiz {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-quiz::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .btn-quiz:hover::before {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+
+        .btn-quiz:hover {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-next::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: transform 0.6s ease;
+        }
+
+        .btn-next:hover::before {
+            transform: translateX(100%) translateY(100%) rotate(45deg);
+        }
+
+        .btn-next:hover {
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        }
         
         /* Responsive content styles */
         .content-section .prose {
@@ -306,14 +395,16 @@
         <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                    <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-12 h-12 sm:w-14 sm:h-14 object-contain">
+                    <a href="index.html" class="cursor-pointer hover:opacity-80 transition-opacity">
+                        <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-12 h-12 sm:w-14 sm:h-14 object-contain">
+                    </a>
                 </div>
                 <div class="flex items-center space-x-2 sm:space-x-4">
                     <a href="index.html" class="mobile-btn bg-blue-700 hover:bg-blue-800 transition text-xs sm:text-sm">
                         🏠 <span class="hidden sm:inline">Home</span>
                     </a>
-                    <button id="quizBtn" class="mobile-btn bg-green-600 hover:bg-green-700 transition text-xs sm:text-sm">
-                        📝 <span class="hidden sm:inline">Take Quiz</span>
+                    <button id="quizBtn" class="mobile-btn btn-quiz text-white transition text-xs sm:text-sm">
+                        <i class="fas fa-clipboard-check mr-1"></i><span class="hidden sm:inline">Take Quiz</span>
                     </button>
                 </div>
             </div>
@@ -418,9 +509,9 @@
                     <button id="prevChapterBtn" class="mobile-btn bg-gray-300 text-gray-700 hover:bg-gray-400 transition disabled:opacity-50 mobile-text-sm sm:mobile-text-base" disabled>
                         ← Previous Chapter
                     </button>
-                    <button id="nextChapterBtn" class="mobile-btn bg-blue-600 text-white hover:bg-blue-700 transition disabled:opacity-50 mobile-text-sm sm:mobile-text-base" disabled>
-                        Next Chapter →
-                    </button>
+                                    <button id="nextChapterBtn" class="mobile-btn btn-next text-white transition disabled:opacity-50 mobile-text-sm sm:mobile-text-base" disabled>
+                    <i class="fas fa-arrow-right mr-2"></i>Next Chapter
+                </button>
                 </div>
             </div>
         </div>
