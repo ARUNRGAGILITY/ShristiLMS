@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShristiLMS - Quiz</title>
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -214,6 +221,9 @@
                         <a href="index.html" class="px-4 py-2 nav-link rounded-lg transition">
                             Home
                         </a>
+                        <button id="learningBtn" class="px-4 py-2 nav-link rounded-lg transition">
+                            <i class="fas fa-book mr-1"></i>Learning
+                        </button>
                         <button id="quizBtn" class="px-4 py-2 nav-link rounded-lg transition">
                             <i class="fas fa-clipboard-check mr-1"></i>Take Quiz
                         </button>
@@ -441,29 +451,8 @@
             <script src="js/courses.js"></script>
         <script src="js/shared-nav.js"></script>
     <script>
-        // Theme management
-        function initTheme() {
-            const themeToggle = document.getElementById("themeToggle");
-            const themeIcon = document.getElementById("themeIcon");
-
-            // Load saved theme or default to light
-            const savedTheme = localStorage.getItem("theme") || "light";
-            setTheme(savedTheme);
-
-            themeToggle?.addEventListener("click", () => {
-                const currentTheme = document.body.getAttribute("data-theme");
-                const newTheme = currentTheme === "dark" ? "light" : "dark";
-                setTheme(newTheme);
-            });
-
-            function setTheme(theme) {
-                document.body.setAttribute("data-theme", theme);
-                localStorage.setItem("theme", theme);
-                if (themeIcon) {
-                    themeIcon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
-                }
-            }
-        }
+        // Theme management is handled by shared-nav.js
+        // No need for duplicate implementation here
 
         let currentCourse = null;
         let quizData = null;
@@ -482,8 +471,6 @@
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            initTheme(); // Initialize theme first
-            
             const urlParams = new URLSearchParams(window.location.search);
             const courseId = urlParams.get('course');
             

@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShristiLMS - Learning Management System</title>
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="global.css" />
@@ -360,28 +367,28 @@
         </div>
 
         <!-- Controls Section -->
-        <div class="flex justify-between items-center mb-8">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
             <!-- Filter Buttons -->
-            <div class="bg-white rounded-lg shadow p-2 flex space-x-2">
-                <button onclick="filterCourses('all')" class="filter-btn active px-4 py-2 rounded-md transition">All</button>
-                <button onclick="filterCourses('Foundation')" class="filter-btn px-4 py-2 rounded-md transition">Foundation</button>
-                <button onclick="filterCourses('Programming')" class="filter-btn px-4 py-2 rounded-md transition">Programming</button>
-                <button onclick="filterCourses('Specialization')" class="filter-btn px-4 py-2 rounded-md transition">Specialization</button>
+            <div class="bg-white rounded-lg shadow p-2 flex flex-wrap gap-2 w-full sm:w-auto justify-center sm:justify-start">
+                <button onclick="filterCourses('all')" class="filter-btn active px-3 py-2 rounded-md transition text-xs sm:text-sm lg:text-base whitespace-nowrap">All</button>
+                <button onclick="filterCourses('Foundation')" class="filter-btn px-3 py-2 rounded-md transition text-xs sm:text-sm lg:text-base whitespace-nowrap">Foundation</button>
+                <button onclick="filterCourses('Programming')" class="filter-btn px-3 py-2 rounded-md transition text-xs sm:text-sm lg:text-base whitespace-nowrap">Programming</button>
+                <button onclick="filterCourses('Specialization')" class="filter-btn px-3 py-2 rounded-md transition text-xs sm:text-sm lg:text-base whitespace-nowrap">Specialization</button>
             </div>
 
             <!-- View Toggle -->
-            <div class="bg-white rounded-lg shadow p-2 flex space-x-2">
-                <button onclick="toggleView('card')" id="cardViewBtn" class="view-btn active px-4 py-2 rounded-md transition flex items-center space-x-2">
+            <div class="bg-white rounded-lg shadow p-2 flex gap-2 w-full sm:w-auto justify-center sm:justify-start">
+                <button onclick="toggleView('card')" id="cardViewBtn" class="view-btn active px-3 py-2 rounded-md transition flex items-center gap-2 text-xs sm:text-sm lg:text-base whitespace-nowrap">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                     </svg>
-                    <span>Cards</span>
+                    <span class="hidden sm:inline">Cards</span>
                 </button>
-                <button onclick="toggleView('table')" id="tableViewBtn" class="view-btn px-4 py-2 rounded-md transition flex items-center space-x-2">
+                <button onclick="toggleView('table')" id="tableViewBtn" class="view-btn px-3 py-2 rounded-md transition flex items-center gap-2 text-xs sm:text-sm lg:text-base whitespace-nowrap">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z" clip-rule="evenodd"></path>
                     </svg>
-                    <span>Table</span>
+                    <span class="hidden sm:inline">Table</span>
                 </button>
             </div>
         </div>
@@ -929,8 +936,11 @@
     </script>
 
     <style>
+        /* Mobile responsive controls section */
         .filter-btn {
             color: #6b7280;
+            transition: all 0.3s ease;
+            min-width: fit-content;
         }
         .filter-btn.active {
             background-color: #2563eb;
@@ -939,8 +949,11 @@
         .filter-btn:hover:not(.active) {
             background-color: #f3f4f6;
         }
+        
         .view-btn {
             color: #6b7280;
+            transition: all 0.3s ease;
+            min-width: fit-content;
         }
         .view-btn.active {
             background-color: #2563eb;
@@ -948,6 +961,68 @@
         }
         .view-btn:hover:not(.active) {
             background-color: #f3f4f6;
+        }
+        
+        /* Mobile-specific improvements */
+        @media (max-width: 640px) {
+            .filter-btn, .view-btn {
+                font-size: 0.75rem;
+                padding: 0.375rem 0.5rem;
+                border-radius: 0.375rem;
+            }
+            
+            /* Ensure buttons don't wrap awkwardly */
+            .filter-btn, .view-btn {
+                flex-shrink: 0;
+            }
+            
+            /* Improve touch targets on mobile */
+            .filter-btn, .view-btn {
+                min-height: 2.25rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        
+        /* Tablet improvements */
+        @media (min-width: 641px) and (max-width: 1023px) {
+            .filter-btn, .view-btn {
+                font-size: 0.875rem;
+                padding: 0.625rem 1rem;
+            }
+        }
+        
+        /* Ensure proper spacing in flex containers */
+        .flex.flex-wrap.gap-2 > * {
+            margin: 0;
+        }
+        
+        /* Dark mode support for controls */
+        [data-theme="dark"] .filter-btn {
+            color: var(--text-secondary);
+        }
+        
+        [data-theme="dark"] .filter-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        [data-theme="dark"] .filter-btn:hover:not(.active) {
+            background-color: var(--surface-light);
+        }
+        
+        [data-theme="dark"] .view-btn {
+            color: var(--text-secondary);
+        }
+        
+        [data-theme="dark"] .view-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        [data-theme="dark"] .view-btn:hover:not(.active) {
+            background-color: var(--surface-light);
         }
     </style>
 </body>
