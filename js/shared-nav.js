@@ -1,7 +1,7 @@
-// Shared Navigation Component for VidyaLMS
+// Shared Navigation Component for ShristiLMS
 // This ensures consistent navigation behavior across all pages
 
-class VidyaLMSNavigation {
+class ShristiLMSNavigation {
     constructor() {
         this.init();
     }
@@ -83,7 +83,7 @@ class VidyaLMSNavigation {
             // Update page title or other context-specific elements
             const course = this.getCourseById(currentCourseId);
             if (course) {
-                document.title = `VidyaLMS - ${course.name}`;
+                document.title = `ShristiLMS - ${course.name}`;
             }
         }
     }
@@ -98,10 +98,10 @@ class VidyaLMSNavigation {
 
 // Initialize navigation when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    window.vidyaLMSNav = new VidyaLMSNavigation();
+    window.shristiLMSNav = new ShristiLMSNavigation();
 });
 
 // Export for use in other scripts
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = VidyaLMSNavigation;
+    module.exports = ShristiLMSNavigation;
 } 

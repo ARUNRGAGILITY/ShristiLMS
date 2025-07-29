@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VidyaLMS - Learning</title>
+    <title>ShristiLMS - Learning</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
@@ -306,10 +306,7 @@
         <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center">
-                        <span class="text-blue-600 font-bold text-lg sm:text-xl">V</span>
-                    </div>
-                    <h1 class="text-lg sm:text-xl lg:text-2xl font-bold">VidyaLMS</h1>
+                    <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-12 h-12 sm:w-14 sm:h-14 object-contain">
                 </div>
                 <div class="flex items-center space-x-2 sm:space-x-4">
                     <a href="index.html" class="mobile-btn bg-blue-700 hover:bg-blue-800 transition text-xs sm:text-sm">
@@ -542,7 +539,7 @@
             document.getElementById('courseDuration').textContent = currentCourse.duration;
             document.getElementById('courseDifficulty').textContent = currentCourse.difficulty;
             document.getElementById('courseModules').textContent = currentCourse.modules;
-            document.title = `VidyaLMS - ${currentCourse.name}`;
+            document.title = `ShristiLMS - ${currentCourse.name}`;
         }
 
         function loadDemoContent(courseId) {

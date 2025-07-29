@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VidyaLMS - Quiz</title>
+    <title>ShristiLMS - Quiz</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
@@ -107,10 +107,7 @@
         <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center">
-                        <span class="text-blue-600 font-bold text-lg sm:text-xl">V</span>
-                    </div>
-                    <h1 class="text-lg sm:text-xl lg:text-2xl font-bold">VidyaLMS</h1>
+                    <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-12 h-12 sm:w-14 sm:h-14 object-contain">
                 </div>
                 <div class="flex items-center space-x-2 sm:space-x-4">
                     <a href="index.html" class="mobile-btn bg-blue-700 hover:bg-blue-800 transition text-xs sm:text-sm">
@@ -397,7 +394,7 @@
 
             document.getElementById('quizTitle').textContent = `${currentCourse.name} Quiz`;
             document.getElementById('quizSubtitle').textContent = `Test your knowledge of ${currentCourse.name}`;
-            document.title = `VidyaLMS - ${currentCourse.name} Quiz`;
+            document.title = `ShristiLMS - ${currentCourse.name} Quiz`;
         }
 
         function startQuiz(e) {
@@ -951,7 +948,7 @@
                         <div class="flex justify-between items-end">
                             <div class="text-left">
                                 <div class="w-32 h-px bg-white mb-2"></div>
-                                <p class="text-sm opacity-75">VidyaLMS Platform</p>
+                                <p class="text-sm opacity-75">ShristiLMS Platform</p>
                                 <p class="text-xs opacity-60">Learning Management System</p>
                             </div>
                             <div class="text-center">
@@ -1047,7 +1044,7 @@
             doc.setGState(new doc.GState({opacity: 0.08}));
             doc.setFontSize(48);
             doc.setTextColor(25, 64, 149);
-            doc.text('VidyaLMS', pageWidth/2, pageHeight/2, {
+            doc.text('ShristiLMS', pageWidth/2, pageHeight/2, {
                 align: 'center',
                 angle: 45  // 45 degrees ascending
             });
@@ -1080,7 +1077,7 @@
             doc.text('SEAL', sealX, sealY-2, { align: 'center' });
             doc.setFontSize(12);
             doc.setTextColor(184, 134, 11);
-            doc.text('VidyaLMS', sealX, sealY+6, { align: 'center' });
+            doc.text('ShristiLMS', sealX, sealY+6, { align: 'center' });
             doc.setFontSize(8);
             doc.text('2025', sealX, sealY+12, { align: 'center' });
             
@@ -1166,7 +1163,7 @@
             // === VERIFICATION INFO ===
             doc.setFontSize(8);
             doc.setTextColor(120, 120, 120);
-            //doc.text('Verify authenticity at: verify.vidyalms.com', pageWidth/2, pageHeight-15, { align: 'center' });
+            //doc.text('Verify authenticity at: verify.shristilms.com', pageWidth/2, pageHeight-15, { align: 'center' });
             
             // === SECURITY FEATURES ===
             // Enhanced QR Code placeholder
