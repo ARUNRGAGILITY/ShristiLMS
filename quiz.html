@@ -732,10 +732,7 @@
                 const isSelected = quizState.answers[quizState.currentQuestion] === index;
                 optionsHtml += `
                     <div class="quiz-option p-4 border-2 ${isSelected ? 'selected border-blue-500 bg-blue-50' : 'border-gray-200'} rounded-lg cursor-pointer mb-3 hover:shadow-md" onclick="selectAnswer(${index})">
-                        <label class="flex items-center cursor-pointer w-full">
-                            <input type="radio" name="answer" value="${index}" ${isSelected ? 'checked' : ''} class="mr-3 text-blue-600">
-                            <span class="text-gray-800">${option}</span>
-                        </label>
+                        <span class="text-gray-800">${option}</span>
                     </div>
                 `;
             });
