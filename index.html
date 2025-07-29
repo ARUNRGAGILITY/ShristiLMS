@@ -6,69 +6,10 @@
     <title>ShristiLMS - Learning Management System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css" />
     <style>
-        /* Theme variable sets */
-        [data-theme="dark"] {
-            --background: #0f0f23;
-            --surface: #1a1a2e;
-            --surface-light: #252547;
-            --text-primary: #ffffff;
-            --text-secondary: #a1a1aa;
-            --border: #374151;
-            --glass: rgba(255, 255, 255, 0.1);
-            --navbar-bg: rgba(15, 15, 35, 0.8);
-            --navbar-bg-scrolled: rgba(15, 15, 35, 0.95);
-        }
 
-        [data-theme="light"] {
-            --background: #ffffff;
-            --surface: #f8fafc;
-            --surface-light: #f1f5f9;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --border: #e5e7eb;
-            --glass: rgba(0, 0, 0, 0.05);
-            --navbar-bg: rgba(255, 255, 255, 0.8);
-            --navbar-bg-scrolled: rgba(255, 255, 255, 0.95);
-            --primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            --primary-dark: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            --secondary: #3b82f6;
-        }
-
-        /* Theme toggle styles */
-        .theme-toggle {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 0.75rem;
-            padding: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.5rem;
-            height: 2.5rem;
-        }
-
-        .theme-toggle:hover {
-            background: var(--surface-light);
-            border-color: var(--secondary);
-            transform: scale(1.05);
-        }
-
-        .theme-toggle i {
-            font-size: 1rem;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        /* Apply theme variables to body */
-        body {
-            background-color: var(--background);
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
+        /* Page-specific styles */
 
         /* Override Tailwind classes with theme variables */
         [data-theme="dark"] .bg-gray-50 {
@@ -158,131 +99,9 @@
             background-color: rgba(59, 130, 246, 0.1) !important;
         }
 
-        /* Enhanced button styles with shine effect */
-        .btn-learn {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
 
-        .btn-learn::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            transition: transform 0.6s ease;
-        }
 
-        .btn-learn:hover::before {
-            transform: translateX(100%) translateY(100%) rotate(45deg);
-        }
 
-        .btn-learn:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-quiz {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .btn-quiz::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            transition: transform 0.6s ease;
-        }
-
-        .btn-quiz:hover::before {
-            transform: translateX(100%) translateY(100%) rotate(45deg);
-        }
-
-        .btn-quiz:hover {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-        }
-
-        /* Dark mode button adjustments */
-        [data-theme="dark"] .btn-learn {
-            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-        }
-
-        [data-theme="dark"] .btn-learn:hover {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
-        }
-
-        [data-theme="dark"] .btn-quiz {
-            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
-        }
-
-        [data-theme="dark"] .btn-quiz:hover {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            box-shadow: 0 8px 25px rgba(52, 211, 153, 0.4);
-        }
-
-        /* Navbar theme styles */
-        .navbar-theme {
-            background: var(--navbar-bg);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .nav-link {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-1px);
-        }
-
-        /* Dark mode navbar */
-        [data-theme="dark"] .navbar-theme {
-            background: var(--navbar-bg);
-            border-bottom: 1px solid var(--border);
-        }
-
-        [data-theme="dark"] .nav-link {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-        }
-
-        [data-theme="dark"] .nav-link:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Light mode navbar */
-        [data-theme="light"] .navbar-theme {
-            background: var(--navbar-bg);
-            border-bottom: 1px solid var(--border);
-        }
-
-        [data-theme="light"] .nav-link {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--text-primary);
-        }
-
-        [data-theme="light"] .nav-link:hover {
-            background: rgba(59, 130, 246, 0.2);
-        }
 
         /* Footer theme styles */
         .footer-theme {
@@ -383,7 +202,7 @@
 
         .section-subtitle {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             transition: all 0.6s ease;
         }
 
@@ -392,9 +211,10 @@
             transform: translateY(0);
         }
 
+        /* Course card animations */
         .course-card {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             transition: all 0.6s ease;
         }
 
@@ -402,6 +222,22 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Ensure smooth transitions during filtering */
+        .course-card {
+            transition: all 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        /* Prevent animation conflicts */
+        .scroll-section.animated {
+            pointer-events: auto;
+        }
+
+        .course-card.animated {
+            pointer-events: auto;
+        }
+
+
 
         /* Hero text animations */
         .hero-title {
@@ -766,6 +602,42 @@
             document.querySelectorAll('.scroll-section').forEach(section => {
                 observer.observe(section);
             });
+            
+            // Trigger animation for visible sections immediately
+            setTimeout(() => {
+                document.querySelectorAll('.scroll-section').forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    
+                    if (isVisible && !section.classList.contains('animated')) {
+                        section.classList.add('animate', 'animated');
+                        
+                        // Animate section title and subtitle
+                        const title = section.querySelector('.section-title');
+                        const subtitle = section.querySelector('.section-subtitle');
+                        
+                        if (title && !title.classList.contains('animated')) {
+                            title.classList.add('animated');
+                            setTimeout(() => title.classList.add('animate'), 200);
+                        }
+                        if (subtitle && !subtitle.classList.contains('animated')) {
+                            subtitle.classList.add('animated');
+                            setTimeout(() => subtitle.classList.add('animate'), 400);
+                        }
+
+                        // Animate course cards with stagger
+                        const cards = section.querySelectorAll('.course-card');
+                        cards.forEach((card, index) => {
+                            if (!card.classList.contains('animated')) {
+                                card.classList.add('animated');
+                                setTimeout(() => {
+                                    card.classList.add('animate');
+                                }, 600 + (index * 150));
+                            }
+                        });
+                    }
+                });
+            }, 100);
         }
 
         function truncateDescription(description, wordLimit = 25) {
@@ -788,8 +660,18 @@
                 renderTableView(filteredCourses);
             }
 
-            // Re-initialize scroll animations for new content
+            // Re-initialize scroll animations for new content with proper timing
             setTimeout(() => {
+                // Reset animation states first
+                document.querySelectorAll('.scroll-section').forEach(section => {
+                    section.classList.remove('animate', 'animated');
+                });
+                
+                document.querySelectorAll('.course-card').forEach(card => {
+                    card.classList.remove('animate', 'animated');
+                });
+                
+                // Re-initialize scroll animations
                 initScrollAnimations();
             }, 100);
         }
@@ -976,6 +858,21 @@
             }
             
             renderCourses(currentFilter);
+            
+            // Reset animation states and re-initialize after view change
+            setTimeout(() => {
+                // Reset animation classes
+                document.querySelectorAll('.scroll-section').forEach(section => {
+                    section.classList.remove('animate', 'animated');
+                });
+                
+                document.querySelectorAll('.course-card').forEach(card => {
+                    card.classList.remove('animate', 'animated');
+                });
+                
+                // Re-initialize scroll animations
+                initScrollAnimations();
+            }, 150);
         }
 
         function filterCourses(filter) {
@@ -990,7 +887,7 @@
             clickedButton.classList.add('active', 'bg-blue-600', 'text-white');
             clickedButton.classList.remove('text-gray-600');
             
-            // Clear existing content first
+            // Clear existing content
             const courseGrid = document.getElementById('courseGrid');
             const courseTableBody = document.getElementById('courseTableBody');
             
@@ -1001,7 +898,23 @@
                 courseTableBody.innerHTML = '';
             }
             
+            // Render courses immediately
             renderCourses(filter);
+            
+            // Reset animation states and re-initialize after content is rendered
+            setTimeout(() => {
+                // Reset animation classes
+                document.querySelectorAll('.scroll-section').forEach(section => {
+                    section.classList.remove('animate', 'animated');
+                });
+                
+                document.querySelectorAll('.course-card').forEach(card => {
+                    card.classList.remove('animate', 'animated');
+                });
+                
+                // Re-initialize scroll animations
+                initScrollAnimations();
+            }, 100);
         }
 
         function startLearning(courseId) {

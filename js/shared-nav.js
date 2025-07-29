@@ -10,6 +10,8 @@ class ShristiLMSNavigation {
         // Add any shared navigation functionality here
         this.setupMobileNavigation();
         this.setupActivePageHighlighting();
+        this.setupThemeToggle();
+        this.setupNavbarScroll();
     }
 
     setupMobileNavigation() {
@@ -93,6 +95,63 @@ class ShristiLMSNavigation {
         // This would typically access the courses data
         // For now, return null - this should be implemented based on your course data structure
         return null;
+    }
+
+    // Setup theme toggle functionality
+    setupThemeToggle() {
+        const themeToggle = document.getElementById("themeToggle");
+        const themeIcon = document.getElementById("themeIcon");
+
+        console.log('Setting up theme toggle:', { themeToggle, themeIcon });
+
+        if (themeToggle && themeIcon) {
+            // Load saved theme or default to light
+            const savedTheme = localStorage.getItem("theme") || "light";
+            console.log('Loading saved theme:', savedTheme);
+            this.setTheme(savedTheme);
+
+            themeToggle.addEventListener("click", () => {
+                const currentTheme = document.body.getAttribute("data-theme");
+                const newTheme = currentTheme === "dark" ? "light" : "dark";
+                console.log('Theme toggle clicked:', { currentTheme, newTheme });
+                this.setTheme(newTheme);
+            });
+        } else {
+            console.warn('Theme toggle elements not found:', { themeToggle, themeIcon });
+        }
+    }
+
+    // Set theme function
+    setTheme(theme) {
+        console.log('Setting theme to:', theme);
+        document.body.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+        
+        const themeIcon = document.getElementById("themeIcon");
+        if (themeIcon) {
+            themeIcon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+            console.log('Updated theme icon to:', themeIcon.className);
+        } else {
+            console.warn('Theme icon not found');
+        }
+    }
+
+    // Setup navbar scroll effects
+    setupNavbarScroll() {
+        const navbar = document.querySelector('.navbar-theme');
+        if (navbar) {
+            const handleScroll = () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            };
+
+            window.addEventListener('scroll', handleScroll);
+            // Initial check
+            handleScroll();
+        }
     }
 }
 

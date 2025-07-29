@@ -330,7 +330,7 @@ If you study 0.5 hours → Predicted score: 46.8
                         <div class="mt-4 p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
                             <p class="text-yellow-800 text-sm flex items-center">
                                 <span class="mr-2">⚡</span>
-                                <strong>Pro Tip:</strong> Don't try to learn everything at once. Master each concept before moving to the next. Consistency beats intensity!
+                                <strong>Pro Tip:</strong> Master one concept at a time. Consistency over intensity!
                             </p>
                         </div>
                     </div>
