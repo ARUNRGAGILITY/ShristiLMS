@@ -726,12 +726,12 @@ body[data-theme] {
 }
 
 [data-theme="sunset"] .btn-quiz {
-    background: linear-gradient(135deg, var(--accent-secondary) 0%, #9c27b0 100%);
+    background: linear-gradient(135deg, var(--accent-primary) 0%, #ff5722 100%);
 }
 
 [data-theme="sunset"] .btn-quiz:hover {
-    background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
-    box-shadow: 0 8px 25px rgba(171, 71, 188, 0.4);
+    background: linear-gradient(135deg, #ff5722 0%, #e64a19 100%);
+    box-shadow: 0 8px 25px rgba(255, 112, 67, 0.4);
 }
 
 /* Earth theme stat card styles */
@@ -991,4 +991,4 @@ body[data-theme] {
 
 [data-theme="sunset"] .theme-logo {
     filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(30deg) brightness(94%) contrast(119%);
-}
+} 
