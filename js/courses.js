@@ -7,7 +7,7 @@ const courses = [
         duration: '8 weeks',
         type: 'Foundation',
         difficulty: 'Beginner',
-        modules: 12,
+        modules: 6,
         prerequisites: [],
         learningOutcomes: [
             'Understand core AI concepts and terminology',
@@ -26,7 +26,7 @@ const courses = [
         duration: '6 weeks',
         type: 'Foundation',
         difficulty: 'Beginner',
-        modules: 10,
+        modules: 6,
         prerequisites: [],
         learningOutcomes: [
             'Understand fundamental programming concepts',
@@ -45,7 +45,7 @@ const courses = [
         duration: '10 weeks',
         type: 'Programming',
         difficulty: 'Intermediate',
-        modules: 15,
+        modules: 6,
         prerequisites: ['programming-foundations'],
         learningOutcomes: [
             'Master Python syntax and core concepts',
@@ -64,7 +64,7 @@ const courses = [
         duration: '12 weeks',
         type: 'Programming',
         difficulty: 'Intermediate',
-        modules: 18,
+        modules: 0,
         prerequisites: ['programming-foundations'],
         learningOutcomes: [
             'Master Java programming fundamentals',
@@ -83,7 +83,7 @@ const courses = [
         duration: '8 weeks',
         type: 'Programming',
         difficulty: 'Intermediate',
-        modules: 14,
+        modules: 0,
         prerequisites: ['programming-foundations'],
         learningOutcomes: [
             'Master modern JavaScript features',
@@ -102,7 +102,7 @@ const courses = [
         duration: '6 weeks',
         type: 'Programming',
         difficulty: 'Advanced',
-        modules: 12,
+        modules: 0,
         prerequisites: ['javascript-programming'],
         learningOutcomes: [
             'Understand TypeScript type system',
@@ -121,7 +121,7 @@ const courses = [
         duration: '16 weeks',
         type: 'Specialization',
         difficulty: 'Advanced',
-        modules: 24,
+        modules: 0,
         prerequisites: ['javascript-programming', 'python-programming'],
         learningOutcomes: [
             'Build complete web applications',
@@ -140,7 +140,7 @@ const courses = [
         duration: '12 weeks',
         type: 'Specialization',
         difficulty: 'Advanced',
-        modules: 20,
+        modules: 0,
         prerequisites: ['programming-foundations'],
         learningOutcomes: [
             'Understand DevOps principles and practices',
@@ -159,7 +159,7 @@ const courses = [
         duration: '12 weeks',
         type: 'Foundation',
         difficulty: 'Intermediate',
-        modules: 16,
+        modules: 0,
         prerequisites: ['programming-foundations'],
         learningOutcomes: [
             'Master statistical analysis and probability theory',

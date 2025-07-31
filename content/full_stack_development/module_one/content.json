@@ -1,0 +1,446 @@
+{
+  "module": "Full Stack Development - Module One",
+  "title": "Web Fundamentals and Frontend Basics",
+  "description": "This module provides a comprehensive introduction to full stack development, covering web fundamentals, HTML structure, CSS styling, and JavaScript basics. Students will learn the core technologies that power the modern web.",
+  "duration": "6-8 weeks",
+  "difficulty": "Beginner",
+  "prerequisites": "Basic computer literacy and fundamental programming concepts",
+  "learning_objectives": [
+    "Understand how the web works and client-server architecture",
+    "Master HTML structure and semantic markup",
+    "Learn CSS styling, layout, and responsive design",
+    "Understand JavaScript fundamentals and DOM manipulation",
+    "Build interactive web pages and forms",
+    "Develop a solid foundation for full stack development"
+  ],
+  "lessons": [
+    {
+      "lesson_id": "1.1",
+      "title": "Introduction to Web Development",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "1.1.1",
+          "title": "How the Web Works",
+          "content": "The World Wide Web is a system of interconnected documents and resources accessible via the internet. When you visit a website, your browser (client) sends a request to a web server, which responds with the requested content. This client-server model is the foundation of web development. Understanding HTTP protocols, URLs, and web architecture is essential for any web developer.",
+          "key_points": [
+            "Client-server architecture powers the web",
+            "HTTP is the protocol for web communication",
+            "URLs identify web resources uniquely",
+            "DNS translates domain names to IP addresses"
+          ]
+        },
+        {
+          "topic_id": "1.1.2",
+          "title": "Full Stack Development Overview",
+          "content": "Full stack development involves working on both the frontend (client-side) and backend (server-side) of web applications. Frontend technologies include HTML, CSS, and JavaScript, while backend technologies include server languages, databases, and APIs. Understanding both sides enables developers to create complete web solutions.",
+          "key_points": [
+            "Frontend: HTML, CSS, JavaScript",
+            "Backend: Server languages, databases, APIs",
+            "Full stack developers work on both sides",
+            "Modern development uses various frameworks and tools"
+          ]
+        },
+        {
+          "topic_id": "1.1.3",
+          "title": "Development Tools and Environment",
+          "content": "Modern web development requires various tools and technologies. Code editors like VS Code provide syntax highlighting and debugging features. Version control with Git helps manage code changes. Browser developer tools allow inspection and debugging of web pages. Understanding these tools is crucial for efficient development.",
+          "key_points": [
+            "VS Code is a popular code editor",
+            "Git provides version control capabilities",
+            "Browser dev tools help debug web pages",
+            "Package managers manage dependencies"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "setup",
+          "title": "Development Environment Setup",
+          "description": "Install and configure essential development tools"
+        },
+        {
+          "type": "exploration",
+          "title": "Web Architecture Research",
+          "description": "Research and document how different websites work"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.2",
+      "title": "HTML Fundamentals",
+      "duration": "120 minutes",
+      "topics": [
+        {
+          "topic_id": "1.2.1",
+          "title": "HTML Structure and Syntax",
+          "content": "HTML (HyperText Markup Language) is the standard markup language for creating web pages. HTML uses tags to structure content, with opening and closing tags defining elements. The basic HTML document includes DOCTYPE declaration, html, head, and body elements. Understanding proper HTML structure is fundamental to web development.",
+          "key_points": [
+            "HTML uses tags to structure content",
+            "DOCTYPE declaration defines document type",
+            "html, head, and body are essential elements",
+            "Proper nesting and closing tags is crucial"
+          ]
+        },
+        {
+          "topic_id": "1.2.2",
+          "title": "Semantic HTML Elements",
+          "content": "Semantic HTML elements provide meaning to web content beyond just presentation. Elements like header, nav, main, article, section, and footer help search engines and screen readers understand page structure. Using semantic HTML improves accessibility and SEO while making code more maintainable.",
+          "key_points": [
+            "header defines page or section header",
+            "nav contains navigation links",
+            "main contains primary page content",
+            "footer contains page footer information"
+          ]
+        },
+        {
+          "topic_id": "1.2.3",
+          "title": "Forms and Input Elements",
+          "content": "HTML forms allow users to submit data to web servers. Form elements include text inputs, checkboxes, radio buttons, select dropdowns, and textareas. Proper form structure with labels, fieldsets, and appropriate input types improves user experience and accessibility.",
+          "key_points": [
+            "form element contains form controls",
+            "input elements have various types",
+            "label elements improve accessibility",
+            "fieldset groups related form elements"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "HTML Page Structure",
+          "description": "Create a properly structured HTML page with semantic elements"
+        },
+        {
+          "type": "forms",
+          "title": "Contact Form Creation",
+          "description": "Build a contact form with various input types and validation"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.3",
+      "title": "CSS Styling and Layout",
+      "duration": "150 minutes",
+      "topics": [
+        {
+          "topic_id": "1.3.1",
+          "title": "CSS Selectors and Properties",
+          "content": "CSS (Cascading Style Sheets) controls the visual presentation of HTML elements. CSS selectors target specific elements, and properties define styling rules. Understanding CSS specificity, inheritance, and the cascade is crucial for effective styling. CSS can be applied inline, internally, or externally.",
+          "key_points": [
+            "CSS controls visual presentation",
+            "Selectors target specific elements",
+            "Properties define styling rules",
+            "CSS can be applied in multiple ways"
+          ]
+        },
+        {
+          "topic_id": "1.3.2",
+          "title": "Box Model and Layout",
+          "content": "The CSS box model describes how elements are sized and spaced. Each element has content, padding, border, and margin areas. Understanding the box model is essential for layout design. CSS provides various layout methods including normal flow, flexbox, and grid.",
+          "key_points": [
+            "Box model includes content, padding, border, margin",
+            "Flexbox provides flexible layout capabilities",
+            "CSS Grid enables complex layouts",
+            "Understanding box model is crucial for layout"
+          ]
+        },
+        {
+          "topic_id": "1.3.3",
+          "title": "Responsive Design",
+          "content": "Responsive design ensures websites work well on various screen sizes. Media queries allow CSS rules to apply based on device characteristics. Mobile-first design approaches prioritize mobile devices. Understanding responsive design principles is essential for modern web development.",
+          "key_points": [
+            "Media queries target different screen sizes",
+            "Mobile-first design prioritizes mobile devices",
+            "Flexible units (%, vw, vh) enable responsive layouts",
+            "Responsive images adapt to screen size"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "styling",
+          "title": "CSS Layout Practice",
+          "description": "Create responsive layouts using flexbox and grid"
+        },
+        {
+          "type": "responsive",
+          "title": "Responsive Website",
+          "description": "Build a responsive website that works on all devices"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.4",
+      "title": "JavaScript Basics",
+      "duration": "180 minutes",
+      "topics": [
+        {
+          "topic_id": "1.4.1",
+          "title": "JavaScript Fundamentals",
+          "content": "JavaScript is a programming language that adds interactivity to web pages. It runs in the browser and can manipulate HTML and CSS dynamically. JavaScript has variables, data types, operators, and control structures similar to other programming languages. Understanding JavaScript fundamentals is essential for modern web development.",
+          "key_points": [
+            "JavaScript adds interactivity to web pages",
+            "Variables store data values",
+            "Data types include strings, numbers, booleans",
+            "Operators perform operations on values"
+          ]
+        },
+        {
+          "topic_id": "1.4.2",
+          "title": "DOM Manipulation",
+          "content": "The Document Object Model (DOM) represents HTML documents as a tree structure. JavaScript can access and modify DOM elements to create dynamic web pages. Methods like getElementById, querySelector, and addEventListener enable interaction with page elements. DOM manipulation is core to interactive web development.",
+          "key_points": [
+            "DOM represents HTML as a tree structure",
+            "JavaScript can access and modify DOM elements",
+            "Event listeners respond to user interactions",
+            "DOM manipulation creates dynamic web pages"
+          ]
+        },
+        {
+          "topic_id": "1.4.3",
+          "title": "Functions and Events",
+          "content": "JavaScript functions are reusable blocks of code that perform specific tasks. Functions can be defined and called to execute code when needed. Event handling allows JavaScript to respond to user actions like clicks, form submissions, and keyboard input. Understanding functions and events is crucial for interactive web development.",
+          "key_points": [
+            "Functions are reusable code blocks",
+            "Events respond to user interactions",
+            "addEventListener attaches event handlers",
+            "Functions can accept parameters and return values"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "JavaScript Basics",
+          "description": "Practice JavaScript fundamentals with variables, functions, and control structures"
+        },
+        {
+          "type": "interactive",
+          "title": "Interactive Web Page",
+          "description": "Create an interactive web page with JavaScript event handling"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.5",
+      "title": "Forms and Validation",
+      "duration": "120 minutes",
+      "topics": [
+        {
+          "topic_id": "1.5.1",
+          "title": "HTML Form Elements",
+          "content": "HTML provides various form elements for collecting user input. Input types include text, email, password, number, date, and file uploads. Select elements create dropdown menus, while textarea elements allow multi-line text input. Proper form structure improves user experience and accessibility.",
+          "key_points": [
+            "Input elements collect user data",
+            "Different input types serve different purposes",
+            "Select elements create dropdown menus",
+            "Textarea allows multi-line text input"
+          ]
+        },
+        {
+          "topic_id": "1.5.2",
+          "title": "Client-Side Validation",
+          "content": "Form validation ensures data quality and user experience. HTML5 provides built-in validation attributes like required, pattern, and min/max. JavaScript can perform custom validation for complex requirements. Proper validation provides immediate feedback to users and prevents invalid data submission.",
+          "key_points": [
+            "HTML5 provides built-in validation",
+            "JavaScript enables custom validation",
+            "Validation provides user feedback",
+            "Client-side validation improves user experience"
+          ]
+        },
+        {
+          "topic_id": "1.5.3",
+          "title": "Form Handling with JavaScript",
+          "content": "JavaScript can handle form submission and process form data. Event listeners can capture form submission events and prevent default behavior. JavaScript can access form data, validate inputs, and provide user feedback. Understanding form handling is essential for interactive web applications.",
+          "key_points": [
+            "JavaScript can handle form submission",
+            "Form data can be accessed and processed",
+            "Event listeners capture form events",
+            "JavaScript provides dynamic form interaction"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "forms",
+          "title": "Registration Form",
+          "description": "Create a registration form with validation and JavaScript handling"
+        },
+        {
+          "type": "validation",
+          "title": "Form Validation",
+          "description": "Implement comprehensive form validation with user feedback"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.6",
+      "title": "Project: Personal Portfolio",
+      "duration": "240 minutes",
+      "topics": [
+        {
+          "topic_id": "1.6.1",
+          "title": "Project Planning and Structure",
+          "content": "Building a personal portfolio website demonstrates all the skills learned in this module. The project should include proper HTML structure, CSS styling, JavaScript interactivity, and responsive design. Planning the project structure and content organization is crucial for success.",
+          "key_points": [
+            "Plan project structure and content",
+            "Organize files and folders properly",
+            "Define project requirements and goals",
+            "Create wireframes and mockups"
+          ]
+        },
+        {
+          "topic_id": "1.6.2",
+          "title": "Implementation and Development",
+          "content": "Implement the portfolio website using HTML, CSS, and JavaScript. Include sections for introduction, skills, projects, and contact information. Use semantic HTML, responsive CSS, and interactive JavaScript features. Focus on clean, maintainable code and good user experience.",
+          "key_points": [
+            "Use semantic HTML structure",
+            "Implement responsive CSS design",
+            "Add JavaScript interactivity",
+            "Ensure accessibility and usability"
+          ]
+        },
+        {
+          "topic_id": "1.6.3",
+          "title": "Testing and Deployment",
+          "content": "Test the portfolio website across different browsers and devices. Validate HTML and CSS code for errors. Optimize performance and ensure accessibility. Deploy the website to a hosting service to make it publicly accessible. Document the development process and lessons learned.",
+          "key_points": [
+            "Test across browsers and devices",
+            "Validate HTML and CSS code",
+            "Optimize for performance",
+            "Deploy to hosting service"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "project",
+          "title": "Portfolio Development",
+          "description": "Build a complete personal portfolio website"
+        },
+        {
+          "type": "deployment",
+          "title": "Website Deployment",
+          "description": "Deploy the portfolio website to a hosting service"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "1",
+      "type": "quiz",
+      "title": "Web Fundamentals Quiz",
+      "description": "Comprehensive quiz covering HTML, CSS, and JavaScript basics",
+      "questions": [
+        {
+          "question": "What does HTML stand for?",
+          "type": "multiple_choice",
+          "options": [
+            "HyperText Markup Language",
+            "High Tech Modern Language",
+            "Home Tool Markup Language",
+            "Hyperlink and Text Markup Language"
+          ],
+          "correct_answer": 0
+        },
+        {
+          "question": "Which CSS property controls the space between elements?",
+          "type": "multiple_choice",
+          "options": [
+            "padding",
+            "margin",
+            "border",
+            "spacing"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What is the correct way to write a JavaScript function?",
+          "type": "multiple_choice",
+          "options": [
+            "function myFunction()",
+            "function = myFunction()",
+            "function: myFunction()",
+            "function myFunction:"
+          ],
+          "correct_answer": 0
+        },
+        {
+          "question": "Which HTML element is used for creating a hyperlink?",
+          "type": "multiple_choice",
+          "options": [
+            "<link>",
+            "<a>",
+            "<href>",
+            "<url>"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What does CSS stand for?",
+          "type": "multiple_choice",
+          "options": [
+            "Computer Style Sheets",
+            "Cascading Style Sheets",
+            "Creative Style Sheets",
+            "Colorful Style Sheets"
+          ],
+          "correct_answer": 1
+        }
+      ]
+    },
+    {
+      "assessment_id": "2",
+      "type": "project",
+      "title": "Personal Portfolio Website",
+      "description": "Create a complete personal portfolio website demonstrating all module skills",
+      "requirements": [
+        "Proper HTML structure with semantic elements",
+        "Responsive CSS design that works on all devices",
+        "JavaScript interactivity and form handling",
+        "Contact form with validation",
+        "Navigation menu with smooth scrolling",
+        "Project showcase section",
+        "Skills and experience section",
+        "Professional styling and layout",
+        "Cross-browser compatibility",
+        "Accessibility features"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "type": "reading",
+      "title": "MDN Web Docs",
+      "author": "Mozilla Developer Network",
+      "description": "Comprehensive documentation for HTML, CSS, and JavaScript"
+    },
+    {
+      "type": "video",
+      "title": "Web Development for Beginners",
+      "source": "freeCodeCamp",
+      "url": "https://www.freecodecamp.org/learn/responsive-web-design/"
+    },
+    {
+      "type": "article",
+      "title": "Modern CSS Layout Techniques",
+      "source": "CSS-Tricks",
+      "description": "Advanced CSS layout techniques using flexbox and grid"
+    },
+    {
+      "type": "interactive",
+      "title": "JavaScript Tutorial",
+      "source": "JavaScript.info",
+      "description": "Comprehensive JavaScript tutorial with interactive examples"
+    },
+    {
+      "type": "tool",
+      "title": "CodePen",
+      "source": "CodePen.io",
+      "description": "Online code editor for experimenting with HTML, CSS, and JavaScript"
+    }
+  ],
+  "next_module": "Full Stack Development - Module Two: Advanced Frontend and Backend Introduction"
+} 

@@ -1,0 +1,370 @@
+{
+  "module": "Programming Foundations - Module Three",
+  "title": "Object-Oriented Programming",
+  "description": "This module covers object-oriented programming concepts including classes, objects, inheritance, polymorphism, encapsulation, and abstraction. Learn to design and implement OOP solutions.",
+  "duration": "4-6 weeks",
+  "difficulty": "Intermediate",
+  "prerequisites": "Programming Foundations - Module Two",
+  "learning_objectives": [
+    "Understand the four pillars of object-oriented programming",
+    "Learn to design and implement classes and objects",
+    "Master inheritance and polymorphism concepts",
+    "Implement encapsulation and abstraction",
+    "Design object-oriented solutions to problems",
+    "Apply OOP principles in real-world scenarios"
+  ],
+  "lessons": [
+    {
+      "lesson_id": "3.1",
+      "title": "Introduction to Object-Oriented Programming",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "3.1.1",
+          "title": "What is Object-Oriented Programming?",
+          "content": "Object-Oriented Programming (OOP) is a programming paradigm that organizes code into objects that contain data and code. OOP focuses on creating reusable code and modeling real-world entities as software objects.",
+          "key_points": [
+            "OOP organizes code into objects",
+            "Objects contain data (attributes) and behavior (methods)",
+            "OOP promotes code reusability and maintainability",
+            "OOP models real-world entities as software objects"
+          ]
+        },
+        {
+          "topic_id": "3.1.2",
+          "title": "The Four Pillars of OOP",
+          "content": "Object-oriented programming is built on four fundamental principles: Encapsulation, Inheritance, Polymorphism, and Abstraction. These principles guide the design and implementation of object-oriented systems.",
+          "key_points": [
+            "Encapsulation: bundling data and methods together",
+            "Inheritance: creating new classes from existing ones",
+            "Polymorphism: same interface, different implementations",
+            "Abstraction: hiding complex implementation details"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "discussion",
+          "title": "OOP in Real World",
+          "description": "Discuss real-world examples of object-oriented design"
+        },
+        {
+          "type": "quiz",
+          "title": "OOP Fundamentals",
+          "description": "Test understanding of basic OOP concepts"
+        }
+      ]
+    },
+    {
+      "lesson_id": "3.2",
+      "title": "Classes and Objects",
+      "duration": "75 minutes",
+      "topics": [
+        {
+          "topic_id": "3.2.1",
+          "title": "Classes as Blueprints",
+          "content": "A class is a blueprint or template that defines the structure and behavior of objects. It contains attributes (data) and methods (functions) that operate on that data. Classes serve as the foundation for creating objects.",
+          "key_points": [
+            "Classes define the structure of objects",
+            "Classes contain attributes and methods",
+            "Classes serve as templates for creating objects",
+            "Classes define the interface for objects"
+          ]
+        },
+        {
+          "topic_id": "3.2.2",
+          "title": "Objects as Instances",
+          "content": "Objects are instances of classes. They are created from class blueprints and contain actual data. Each object has its own state (values of attributes) but shares the same behavior (methods) defined in the class.",
+          "key_points": [
+            "Objects are instances of classes",
+            "Each object has its own state",
+            "Objects share behavior defined in the class",
+            "Objects can interact with each other"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding_practice",
+          "title": "Creating Classes and Objects",
+          "description": "Practice creating simple classes and objects"
+        },
+        {
+          "type": "design_exercise",
+          "title": "Class Design",
+          "description": "Design classes for real-world entities"
+        }
+      ]
+    },
+    {
+      "lesson_id": "3.3",
+      "title": "Encapsulation",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "3.3.1",
+          "title": "Data Hiding",
+          "content": "Encapsulation is the bundling of data and methods that operate on that data within a single unit (class). It also involves hiding internal state and requiring all interaction to be performed through an object's methods.",
+          "key_points": [
+            "Bundles data and methods together",
+            "Hides internal implementation details",
+            "Controls access to object data",
+            "Promotes data integrity and security"
+          ]
+        },
+        {
+          "topic_id": "3.3.2",
+          "title": "Access Modifiers",
+          "content": "Access modifiers control the visibility and accessibility of class members. Common modifiers include public (accessible everywhere), private (accessible only within the class), and protected (accessible within the class and subclasses).",
+          "key_points": [
+            "Public: accessible from anywhere",
+            "Private: accessible only within the class",
+            "Protected: accessible within class and subclasses",
+            "Proper use ensures encapsulation"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "implementation",
+          "title": "Encapsulation Practice",
+          "description": "Implement classes with proper encapsulation"
+        },
+        {
+          "type": "debugging",
+          "title": "Access Control Issues",
+          "description": "Debug and fix encapsulation problems"
+        }
+      ]
+    },
+    {
+      "lesson_id": "3.4",
+      "title": "Inheritance",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "3.4.1",
+          "title": "Inheritance Basics",
+          "content": "Inheritance allows a class to inherit attributes and methods from another class. The class that is inherited from is called the parent or base class, and the class that inherits is called the child or derived class.",
+          "key_points": [
+            "Child classes inherit from parent classes",
+            "Promotes code reuse and hierarchy",
+            "Establishes 'is-a' relationships",
+            "Reduces code duplication"
+          ]
+        },
+        {
+          "topic_id": "3.4.2",
+          "title": "Types of Inheritance",
+          "content": "There are several types of inheritance: single inheritance (one parent), multiple inheritance (multiple parents), multilevel inheritance (chain of inheritance), and hierarchical inheritance (multiple children from one parent).",
+          "key_points": [
+            "Single inheritance: one parent class",
+            "Multiple inheritance: multiple parent classes",
+            "Multilevel: chain of inheritance",
+            "Hierarchical: multiple children from one parent"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "inheritance_design",
+          "title": "Class Hierarchy Design",
+          "description": "Design inheritance hierarchies for real-world scenarios"
+        },
+        {
+          "type": "implementation",
+          "title": "Inheritance Implementation",
+          "description": "Implement inheritance in code"
+        }
+      ]
+    },
+    {
+      "lesson_id": "3.5",
+      "title": "Polymorphism",
+      "duration": "75 minutes",
+      "topics": [
+        {
+          "topic_id": "3.5.1",
+          "title": "Method Overriding",
+          "content": "Method overriding occurs when a child class provides a specific implementation of a method that is already defined in its parent class. The method signature must be the same, but the implementation can be different.",
+          "key_points": [
+            "Child class redefines parent method",
+            "Same method signature, different implementation",
+            "Runtime polymorphism",
+            "Allows specialized behavior in subclasses"
+          ]
+        },
+        {
+          "topic_id": "3.5.2",
+          "title": "Method Overloading",
+          "content": "Method overloading allows multiple methods with the same name but different parameters. The compiler determines which method to call based on the number and types of arguments passed.",
+          "key_points": [
+            "Same method name, different parameters",
+            "Compile-time polymorphism",
+            "Different parameter types or numbers",
+            "Provides flexibility in method calls"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "polymorphism_practice",
+          "title": "Polymorphism Implementation",
+          "description": "Implement method overriding and overloading"
+        },
+        {
+          "type": "design_patterns",
+          "title": "Polymorphism in Design",
+          "description": "Use polymorphism in design patterns"
+        }
+      ]
+    },
+    {
+      "lesson_id": "3.6",
+      "title": "Abstraction and Interfaces",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "3.6.1",
+          "title": "Abstraction",
+          "content": "Abstraction is the process of hiding complex implementation details and showing only the necessary features of an object. It helps manage complexity by focusing on what an object does rather than how it does it.",
+          "key_points": [
+            "Hides complex implementation details",
+            "Shows only necessary features",
+            "Manages complexity",
+            "Focuses on what, not how"
+          ]
+        },
+        {
+          "topic_id": "3.6.2",
+          "title": "Interfaces and Abstract Classes",
+          "content": "Interfaces and abstract classes provide a way to achieve abstraction. Interfaces define a contract that implementing classes must follow, while abstract classes can provide some implementation and force subclasses to implement others.",
+          "key_points": [
+            "Interfaces define contracts",
+            "Abstract classes provide partial implementation",
+            "Both enforce structure and behavior",
+            "Promote loose coupling and flexibility"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "interface_design",
+          "title": "Interface Design",
+          "description": "Design interfaces for common scenarios"
+        },
+        {
+          "type": "abstraction_practice",
+          "title": "Abstraction Implementation",
+          "description": "Implement abstraction using interfaces and abstract classes"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "1",
+      "type": "quiz",
+      "title": "Module Three Knowledge Check",
+      "description": "Comprehensive quiz covering object-oriented programming concepts",
+      "questions": [
+        {
+          "question": "Which OOP principle bundles data and methods together?",
+          "type": "multiple_choice",
+          "options": [
+            "Inheritance",
+            "Encapsulation",
+            "Polymorphism",
+            "Abstraction"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What is the relationship between a class and an object?",
+          "type": "multiple_choice",
+          "options": [
+            "Class is an instance of object",
+            "Object is a blueprint for class",
+            "Class is a blueprint for object",
+            "They are the same thing"
+          ],
+          "correct_answer": 2
+        },
+        {
+          "question": "Which type of polymorphism occurs at compile time?",
+          "type": "multiple_choice",
+          "options": [
+            "Method overriding",
+            "Method overloading",
+            "Runtime polymorphism",
+            "Dynamic binding"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What is the main purpose of inheritance?",
+          "type": "multiple_choice",
+          "options": [
+            "To hide implementation details",
+            "To promote code reuse",
+            "To provide multiple implementations",
+            "To create abstract classes"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which access modifier allows access from anywhere?",
+          "type": "multiple_choice",
+          "options": [
+            "Private",
+            "Protected",
+            "Public",
+            "Default"
+          ],
+          "correct_answer": 2
+        }
+      ]
+    },
+    {
+      "assessment_id": "2",
+      "type": "project",
+      "title": "OOP Design Project",
+      "description": "Design and implement an object-oriented system",
+      "requirements": [
+        "Design a class hierarchy for a real-world domain",
+        "Implement classes with proper encapsulation",
+        "Use inheritance to create related classes",
+        "Implement polymorphism through method overriding",
+        "Create interfaces or abstract classes",
+        "Write comprehensive tests for your classes"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "type": "reading",
+      "title": "Object-Oriented Programming in Python",
+      "author": "Mark Lutz",
+      "description": "Comprehensive guide to OOP in Python"
+    },
+    {
+      "type": "video",
+      "title": "Object-Oriented Programming",
+      "source": "Stanford CS106A",
+      "url": "https://web.stanford.edu/class/cs106a/"
+    },
+    {
+      "type": "article",
+      "title": "The Four Pillars of OOP",
+      "source": "Computer Science Education",
+      "description": "Understanding encapsulation, inheritance, polymorphism, and abstraction"
+    },
+    {
+      "type": "interactive",
+      "title": "OOP Design Patterns",
+      "source": "Refactoring Guru",
+      "description": "Interactive tutorials on object-oriented design patterns"
+    }
+  ],
+  "next_module": "Programming Foundations - Module Four: Software Development Lifecycle"
+} 

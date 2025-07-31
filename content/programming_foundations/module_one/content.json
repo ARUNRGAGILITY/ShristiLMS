@@ -1,0 +1,405 @@
+{
+  "module": "Programming Foundations - Module One",
+  "title": "Introduction to Programming",
+  "description": "This module provides a comprehensive introduction to programming fundamentals, covering basic concepts, problem-solving approaches, programming paradigms, and essential programming concepts.",
+  "duration": "4-6 weeks",
+  "difficulty": "Beginner",
+  "prerequisites": "Basic computer literacy and high school mathematics",
+  "learning_objectives": [
+    "Understand fundamental programming concepts and terminology",
+    "Learn problem-solving approaches and algorithmic thinking",
+    "Explore different programming paradigms and languages",
+    "Master basic programming constructs (variables, control structures, functions)",
+    "Understand the software development lifecycle",
+    "Develop debugging and testing skills"
+  ],
+  "lessons": [
+    {
+      "lesson_id": "1.1",
+      "title": "What is Programming?",
+      "duration": "45 minutes",
+      "topics": [
+        {
+          "topic_id": "1.1.1",
+          "title": "Definition and Core Concepts",
+          "content": "Programming is the process of creating instructions for computers to follow. It involves writing code in programming languages to solve problems, automate tasks, and create software applications. Programming is essentially giving computers step-by-step instructions to perform specific tasks.",
+          "key_points": [
+            "Programming is creating instructions for computers",
+            "Code is written in programming languages",
+            "Programming solves problems and automates tasks",
+            "Programming enables software development"
+          ]
+        },
+        {
+          "topic_id": "1.1.2",
+          "title": "Why Learn Programming?",
+          "content": "Programming skills are essential in today's digital world. They enable you to create software, solve complex problems, automate repetitive tasks, and understand how technology works. Programming is a valuable skill across many industries and disciplines.",
+          "key_points": [
+            "High demand for programming skills in job market",
+            "Enables problem-solving and logical thinking",
+            "Creates opportunities for innovation and creativity",
+            "Essential for understanding modern technology"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "discussion",
+          "title": "Programming in Daily Life",
+          "description": "Identify and discuss programming applications you encounter daily"
+        },
+        {
+          "type": "quiz",
+          "title": "Programming Fundamentals Quiz",
+          "description": "Test understanding of basic programming concepts"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.2",
+      "title": "Problem-Solving and Algorithmic Thinking",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "1.2.1",
+          "title": "The Problem-Solving Process",
+          "content": "Effective programming starts with understanding the problem. The problem-solving process involves analyzing the problem, breaking it into smaller parts, designing a solution, implementing it, and testing the result. This systematic approach is fundamental to programming.",
+          "key_points": [
+            "Understand the problem completely",
+            "Break complex problems into smaller parts",
+            "Design a solution before coding",
+            "Test and refine the solution"
+          ]
+        },
+        {
+          "topic_id": "1.2.2",
+          "title": "Algorithmic Thinking",
+          "content": "Algorithmic thinking is the ability to solve problems by creating step-by-step procedures (algorithms). It involves logical reasoning, pattern recognition, and the ability to think abstractly about problems and their solutions.",
+          "key_points": [
+            "Algorithms are step-by-step problem-solving procedures",
+            "Focus on logic and systematic thinking",
+            "Consider efficiency and optimization",
+            "Practice with simple everyday problems"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "problem_solving",
+          "title": "Daily Problem Algorithm",
+          "description": "Create algorithms for common daily tasks"
+        },
+        {
+          "type": "pseudocode",
+          "title": "Pseudocode Practice",
+          "description": "Write pseudocode for simple problem solutions"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.3",
+      "title": "Programming Paradigms and Languages",
+      "duration": "75 minutes",
+      "topics": [
+        {
+          "topic_id": "1.3.1",
+          "title": "Programming Paradigms",
+          "content": "Programming paradigms are different approaches to writing code. The main paradigms include procedural, object-oriented, functional, and declarative programming. Each paradigm has its own principles and is suited for different types of problems.",
+          "key_points": [
+            "Procedural: Step-by-step instructions",
+            "Object-oriented: Objects with data and methods",
+            "Functional: Functions as primary building blocks",
+            "Declarative: Describing what to achieve, not how"
+          ]
+        },
+        {
+          "topic_id": "1.3.2",
+          "title": "Popular Programming Languages",
+          "content": "There are hundreds of programming languages, each designed for specific purposes. Popular languages include Python (general-purpose, beginner-friendly), JavaScript (web development), Java (enterprise applications), and C++ (system programming).",
+          "key_points": [
+            "Python: Beginner-friendly, versatile",
+            "JavaScript: Web development, frontend/backend",
+            "Java: Enterprise applications, Android",
+            "C++: System programming, performance-critical applications"
+          ]
+        },
+        {
+          "topic_id": "1.3.3",
+          "title": "Choosing a Programming Language",
+          "content": "The choice of programming language depends on the project requirements, target platform, team expertise, and specific use case. Consider factors like learning curve, community support, available libraries, and performance needs.",
+          "key_points": [
+            "Consider project requirements and goals",
+            "Evaluate team expertise and learning curve",
+            "Check community support and documentation",
+            "Assess available libraries and frameworks"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "language_comparison",
+          "title": "Language Comparison",
+          "description": "Compare different programming languages and their use cases"
+        },
+        {
+          "type": "paradigm_exploration",
+          "title": "Paradigm Exploration",
+          "description": "Explore different programming paradigms with examples"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.4",
+      "title": "Basic Programming Concepts",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "1.4.1",
+          "title": "Variables and Data Types",
+          "content": "Variables are containers for storing data in programs. Different data types include integers, floating-point numbers, strings, booleans, and more complex types. Understanding data types is crucial for effective programming.",
+          "key_points": [
+            "Variables store and reference data",
+            "Data types define what kind of data can be stored",
+            "Common types: int, float, string, boolean",
+            "Type safety prevents errors and improves code quality"
+          ]
+        },
+        {
+          "topic_id": "1.4.2",
+          "title": "Control Structures",
+          "content": "Control structures determine the flow of program execution. They include conditional statements (if/else) for decision-making and loops (for, while) for repetitive tasks. These are fundamental building blocks of programming.",
+          "key_points": [
+            "Conditional statements: if, else, elif",
+            "Loops: for, while, do-while",
+            "Control flow determines program execution path",
+            "Proper use prevents infinite loops and logic errors"
+          ]
+        },
+        {
+          "topic_id": "1.4.3",
+          "title": "Functions and Methods",
+          "content": "Functions are reusable blocks of code that perform specific tasks. They help organize code, reduce duplication, and make programs more modular and maintainable. Functions can take inputs (parameters) and return outputs.",
+          "key_points": [
+            "Functions encapsulate reusable code",
+            "Parameters pass data into functions",
+            "Return values provide output from functions",
+            "Functions improve code organization and reusability"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding_practice",
+          "title": "Basic Syntax Practice",
+          "description": "Practice writing variables, control structures, and functions"
+        },
+        {
+          "type": "debugging",
+          "title": "Code Debugging Exercise",
+          "description": "Find and fix errors in sample code"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.5",
+      "title": "Software Development Lifecycle",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "1.5.1",
+          "title": "Development Phases",
+          "content": "The software development lifecycle (SDLC) is a systematic approach to developing software. It includes phases like requirements analysis, design, implementation, testing, deployment, and maintenance. Understanding this process is essential for professional development.",
+          "key_points": [
+            "Requirements: Understanding what needs to be built",
+            "Design: Planning the solution architecture",
+            "Implementation: Writing the actual code",
+            "Testing: Verifying the solution works correctly",
+            "Deployment: Releasing the software",
+            "Maintenance: Updating and improving the software"
+          ]
+        },
+        {
+          "topic_id": "1.5.2",
+          "title": "Version Control and Collaboration",
+          "content": "Version control systems like Git help track changes in code and enable collaboration among developers. They allow multiple people to work on the same project, track changes, and maintain code history.",
+          "key_points": [
+            "Version control tracks code changes over time",
+            "Git is the most popular version control system",
+            "Enables collaboration among multiple developers",
+            "Provides backup and rollback capabilities"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "project_planning",
+          "title": "Project Planning Exercise",
+          "description": "Plan a simple software project using SDLC phases"
+        },
+        {
+          "type": "git_practice",
+          "title": "Git Basics Practice",
+          "description": "Learn basic Git commands and workflow"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.6",
+      "title": "Debugging and Testing",
+      "duration": "45 minutes",
+      "topics": [
+        {
+          "topic_id": "1.6.1",
+          "title": "Debugging Techniques",
+          "content": "Debugging is the process of finding and fixing errors in code. Effective debugging involves systematic problem-solving, using debugging tools, reading error messages, and testing code incrementally.",
+          "key_points": [
+            "Read and understand error messages",
+            "Use debugging tools and print statements",
+            "Test code incrementally",
+            "Systematic approach to problem-solving"
+          ]
+        },
+        {
+          "topic_id": "1.6.2",
+          "title": "Testing Strategies",
+          "content": "Testing ensures that code works correctly and handles various scenarios. Different types of testing include unit testing, integration testing, and user acceptance testing. Good testing practices prevent bugs and improve code quality.",
+          "key_points": [
+            "Unit testing: Testing individual components",
+            "Integration testing: Testing component interactions",
+            "Test edge cases and error conditions",
+            "Automated testing improves efficiency"
+          ]
+        },
+        {
+          "topic_id": "1.6.3",
+          "title": "Code Quality and Best Practices",
+          "content": "Writing quality code involves following best practices like meaningful variable names, proper indentation, comments, and modular design. Good code is readable, maintainable, and follows established conventions.",
+          "key_points": [
+            "Use meaningful variable and function names",
+            "Write clear comments and documentation",
+            "Follow consistent formatting and style",
+            "Keep functions small and focused"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "debugging_practice",
+          "title": "Debugging Exercise",
+          "description": "Practice debugging common programming errors"
+        },
+        {
+          "type": "code_review",
+          "title": "Code Review Practice",
+          "description": "Review and improve sample code following best practices"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "1",
+      "type": "quiz",
+      "title": "Module One Knowledge Check",
+      "description": "Comprehensive quiz covering all module topics",
+      "questions": [
+        {
+          "question": "What is the primary purpose of programming?",
+          "type": "multiple_choice",
+          "options": [
+            "To make computers faster",
+            "To create instructions for computers to follow",
+            "To replace human workers",
+            "To reduce energy consumption"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which of the following is NOT a programming paradigm?",
+          "type": "multiple_choice",
+          "options": [
+            "Object-oriented",
+            "Functional",
+            "Procedural",
+            "Mathematical"
+          ],
+          "correct_answer": 3
+        },
+        {
+          "question": "What is the first step in the problem-solving process?",
+          "type": "multiple_choice",
+          "options": [
+            "Start coding immediately",
+            "Understand the problem completely",
+            "Choose a programming language",
+            "Write documentation"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which data type is used for whole numbers?",
+          "type": "multiple_choice",
+          "options": [
+            "String",
+            "Integer",
+            "Boolean",
+            "Float"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What is the purpose of version control systems?",
+          "type": "multiple_choice",
+          "options": [
+            "To make code run faster",
+            "To track changes and enable collaboration",
+            "To prevent all bugs",
+            "To reduce code size"
+          ],
+          "correct_answer": 1
+        }
+      ]
+    },
+    {
+      "assessment_id": "2",
+      "type": "project",
+      "title": "Simple Calculator Project",
+      "description": "Create a basic calculator program demonstrating fundamental programming concepts",
+      "requirements": [
+        "Use variables to store numbers",
+        "Implement basic arithmetic operations",
+        "Use control structures for user input",
+        "Include error handling for invalid inputs",
+        "Write clear comments and documentation",
+        "Test the program with various inputs"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "type": "reading",
+      "title": "How to Think Like a Computer Scientist",
+      "author": "Allen B. Downey",
+      "description": "Excellent introduction to programming concepts and problem-solving"
+    },
+    {
+      "type": "video",
+      "title": "Introduction to Programming",
+      "source": "Harvard CS50",
+      "url": "https://cs50.harvard.edu/x/"
+    },
+    {
+      "type": "article",
+      "title": "The Art of Programming",
+      "source": "Computer Science Education",
+      "description": "Understanding the philosophy and practice of programming"
+    },
+    {
+      "type": "interactive",
+      "title": "Programming Fundamentals Tutorial",
+      "source": "Codecademy",
+      "description": "Interactive tutorials for learning programming basics"
+    }
+  ],
+  "next_module": "Programming Foundations - Module Two: Data Structures and Algorithms"
+}

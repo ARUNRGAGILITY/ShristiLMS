@@ -1,0 +1,438 @@
+{
+  "module": "Python Programming - Module Four",
+  "title": "File Handling and Exception Management",
+  "description": "This module covers file I/O operations, exception handling, and error management in Python applications.",
+  "duration": "5-6 weeks",
+  "difficulty": "Intermediate",
+  "prerequisites": "Python Programming - Module Three or equivalent OOP knowledge",
+  "learning_objectives": [
+    "Master file reading and writing operations",
+    "Understand exception handling mechanisms",
+    "Learn different file formats and processing",
+    "Master context managers and resource management",
+    "Understand error handling best practices",
+    "Apply file operations to real-world scenarios"
+  ],
+  "lessons": [
+    {
+      "lesson_id": "4.1",
+      "title": "File Operations Basics",
+      "duration": "80 minutes",
+      "topics": [
+        {
+          "topic_id": "4.1.1",
+          "title": "Opening and Closing Files",
+          "content": "File operations in Python are handled through the built-in open() function. Files can be opened in different modes: 'r' for reading, 'w' for writing, 'a' for appending, and 'x' for exclusive creation. It's crucial to properly close files to free system resources and prevent data corruption.",
+          "key_points": [
+            "Use open() function to open files",
+            "Different modes: r, w, a, x",
+            "Always close files when done",
+            "Use with statement for automatic closing"
+          ]
+        },
+        {
+          "topic_id": "4.1.2",
+          "title": "Reading from Files",
+          "content": "Python provides several methods for reading file content. read() reads the entire file, readline() reads one line at a time, and readlines() reads all lines into a list. For large files, it's more memory-efficient to iterate over the file object directly.",
+          "key_points": [
+            "read() reads entire file",
+            "readline() reads one line",
+            "readlines() reads all lines to list",
+            "Iterate directly for large files"
+          ]
+        },
+        {
+          "topic_id": "4.1.3",
+          "title": "Writing to Files",
+          "content": "Writing to files is done using the write() method for strings and writelines() for sequences of strings. When writing, you need to be careful about file modes and ensure proper encoding. Binary files require different handling than text files.",
+          "key_points": [
+            "write() writes strings to file",
+            "writelines() writes sequence of strings",
+            "Be careful with file modes",
+            "Consider encoding for text files"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "File Operations Practice",
+          "description": "Practice reading and writing files with different modes"
+        },
+        {
+          "type": "experiment",
+          "title": "File Mode Experimentation",
+          "description": "Experiment with different file opening modes"
+        }
+      ]
+    },
+    {
+      "lesson_id": "4.2",
+      "title": "Context Managers and the 'with' Statement",
+      "duration": "70 minutes",
+      "topics": [
+        {
+          "topic_id": "4.2.1",
+          "title": "Understanding Context Managers",
+          "content": "Context managers provide a way to properly manage resources like files, database connections, and network sockets. They ensure that resources are properly acquired and released, even if exceptions occur. The with statement is the primary way to use context managers in Python.",
+          "key_points": [
+            "Ensure proper resource management",
+            "Automatic cleanup even with exceptions",
+            "Use with statement for context managers",
+            "Prevents resource leaks"
+          ]
+        },
+        {
+          "topic_id": "4.2.2",
+          "title": "Using 'with' for File Operations",
+          "content": "The with statement automatically handles file opening and closing. It's the recommended way to work with files in Python because it ensures files are properly closed even if an exception occurs. This prevents resource leaks and makes code cleaner and safer.",
+          "key_points": [
+            "Automatic file opening and closing",
+            "Safer than manual open/close",
+            "Handles exceptions gracefully",
+            "Cleaner and more readable code"
+          ]
+        },
+        {
+          "topic_id": "4.2.3",
+          "title": "Creating Custom Context Managers",
+          "content": "You can create custom context managers using the @contextmanager decorator or by implementing __enter__ and __exit__ methods. Custom context managers are useful for managing any type of resource that needs proper setup and cleanup.",
+          "key_points": [
+            "Use @contextmanager decorator",
+            "Implement __enter__ and __exit__ methods",
+            "Useful for custom resource management",
+            "Follow context manager protocol"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "practice",
+          "title": "Context Manager Practice",
+          "description": "Practice using with statements with files"
+        },
+        {
+          "type": "custom",
+          "title": "Custom Context Manager",
+          "description": "Create custom context managers for specific resources"
+        }
+      ]
+    },
+    {
+      "lesson_id": "4.3",
+      "title": "Exception Handling",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "4.3.1",
+          "title": "What are Exceptions?",
+          "content": "Exceptions are events that occur during program execution that disrupt the normal flow of the program. They can be caused by errors in the code, invalid input, or external factors like file not found. Python uses exceptions to handle these situations gracefully.",
+          "key_points": [
+            "Disrupt normal program flow",
+            "Can be caused by various factors",
+            "Python uses exceptions for error handling",
+            "Allow graceful error handling"
+          ]
+        },
+        {
+          "topic_id": "4.3.2",
+          "title": "Try-Except Blocks",
+          "content": "The try-except block is the primary mechanism for handling exceptions in Python. Code that might raise an exception is placed in the try block, and code to handle the exception is placed in the except block. You can have multiple except blocks to handle different types of exceptions.",
+          "key_points": [
+            "try block contains risky code",
+            "except block handles exceptions",
+            "Multiple except blocks for different exceptions",
+            "Can specify exception types"
+          ]
+        },
+        {
+          "topic_id": "4.3.3",
+          "title": "Exception Types and Hierarchy",
+          "content": "Python has a hierarchy of built-in exception types. BaseException is the root, with Exception being the most common base class for user exceptions. Common exceptions include ValueError, TypeError, FileNotFoundError, and IndexError. Understanding the hierarchy helps in proper exception handling.",
+          "key_points": [
+            "BaseException is the root class",
+            "Exception is common base class",
+            "Common types: ValueError, TypeError, FileNotFoundError",
+            "Understand hierarchy for proper handling"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "Exception Handling Practice",
+          "description": "Practice writing try-except blocks for different scenarios"
+        },
+        {
+          "type": "debugging",
+          "title": "Exception Debugging",
+          "description": "Debug code with intentional exceptions"
+        }
+      ]
+    },
+    {
+      "lesson_id": "4.4",
+      "title": "Advanced Exception Handling",
+      "duration": "85 minutes",
+      "topics": [
+        {
+          "topic_id": "4.4.1",
+          "title": "Try-Except-Else-Finally",
+          "content": "The complete exception handling structure includes try, except, else, and finally blocks. The else block runs only if no exception occurs, and the finally block always runs, making it perfect for cleanup operations. This structure provides comprehensive exception handling.",
+          "key_points": [
+            "else runs if no exception occurs",
+            "finally always runs",
+            "Perfect for cleanup operations",
+            "Comprehensive exception handling"
+          ]
+        },
+        {
+          "topic_id": "4.4.2",
+          "title": "Raising Exceptions",
+          "content": "You can raise exceptions manually using the raise statement. This is useful for indicating error conditions in your code. You can raise built-in exceptions or custom exceptions. When raising exceptions, it's good practice to provide meaningful error messages.",
+          "key_points": [
+            "Use raise to raise exceptions",
+            "Can raise built-in or custom exceptions",
+            "Provide meaningful error messages",
+            "Useful for error conditions"
+          ]
+        },
+        {
+          "topic_id": "4.4.3",
+          "title": "Custom Exceptions",
+          "content": "You can create custom exception classes by inheriting from Exception or other built-in exception classes. Custom exceptions should be descriptive and follow Python naming conventions. They help make your code more readable and maintainable.",
+          "key_points": [
+            "Inherit from Exception or built-in exceptions",
+            "Use descriptive names",
+            "Follow Python naming conventions",
+            "Make code more readable"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "practice",
+          "title": "Advanced Exception Handling",
+          "description": "Practice using try-except-else-finally blocks"
+        },
+        {
+          "type": "custom",
+          "title": "Custom Exception Creation",
+          "description": "Create custom exception classes for specific scenarios"
+        }
+      ]
+    },
+    {
+      "lesson_id": "4.5",
+      "title": "File Formats and Processing",
+      "duration": "95 minutes",
+      "topics": [
+        {
+          "topic_id": "4.5.1",
+          "title": "Text File Processing",
+          "content": "Text files are the most common file type in Python. They can be processed line by line, character by character, or as a whole. Python provides various methods for text processing including string methods, regular expressions, and built-in functions.",
+          "key_points": [
+            "Most common file type",
+            "Process line by line or as whole",
+            "Use string methods for processing",
+            "Consider encoding and line endings"
+          ]
+        },
+        {
+          "topic_id": "4.5.2",
+          "title": "CSV File Handling",
+          "content": "CSV (Comma-Separated Values) files are commonly used for data storage and exchange. Python's csv module provides tools for reading and writing CSV files. It handles various CSV formats and edge cases like commas within fields and different delimiters.",
+          "key_points": [
+            "Use csv module for CSV files",
+            "Handles various CSV formats",
+            "Supports different delimiters",
+            "Handles edge cases automatically"
+          ]
+        },
+        {
+          "topic_id": "4.5.3",
+          "title": "JSON File Processing",
+          "content": "JSON (JavaScript Object Notation) is a popular format for data exchange. Python's json module provides functions for encoding and decoding JSON data. It can handle Python objects and convert them to JSON format and vice versa.",
+          "key_points": [
+            "Use json module for JSON files",
+            "Converts Python objects to JSON",
+            "Handles nested data structures",
+            "Popular for data exchange"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "processing",
+          "title": "File Format Processing",
+          "description": "Practice processing different file formats"
+        },
+        {
+          "type": "conversion",
+          "title": "Format Conversion",
+          "description": "Convert data between different file formats"
+        }
+      ]
+    },
+    {
+      "lesson_id": "4.6",
+      "title": "Error Handling Best Practices",
+      "duration": "80 minutes",
+      "topics": [
+        {
+          "topic_id": "4.6.1",
+          "title": "Exception Handling Guidelines",
+          "content": "Good exception handling follows certain guidelines. Only catch exceptions you can handle, avoid bare except clauses, use specific exception types, and provide meaningful error messages. Logging exceptions is also important for debugging and monitoring.",
+          "key_points": [
+            "Only catch exceptions you can handle",
+            "Avoid bare except clauses",
+            "Use specific exception types",
+            "Provide meaningful error messages"
+          ]
+        },
+        {
+          "topic_id": "4.6.2",
+          "title": "Logging and Debugging",
+          "content": "Logging is essential for debugging and monitoring applications. Python's logging module provides flexible logging capabilities. Proper logging helps track program execution and identify issues. Different log levels (DEBUG, INFO, WARNING, ERROR) serve different purposes.",
+          "key_points": [
+            "Use logging module for debugging",
+            "Different log levels for different purposes",
+            "Track program execution",
+            "Identify issues more easily"
+          ]
+        },
+        {
+          "topic_id": "4.6.3",
+          "title": "Defensive Programming",
+          "content": "Defensive programming involves writing code that anticipates and handles potential errors gracefully. This includes input validation, proper resource management, and robust error handling. Defensive programming makes code more reliable and maintainable.",
+          "key_points": [
+            "Anticipate potential errors",
+            "Validate inputs thoroughly",
+            "Manage resources properly",
+            "Write robust and reliable code"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "best_practices",
+          "title": "Error Handling Best Practices",
+          "description": "Apply best practices to error handling scenarios"
+        },
+        {
+          "type": "logging",
+          "title": "Logging Implementation",
+          "description": "Implement proper logging in file operations"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "1",
+      "type": "quiz",
+      "title": "Module Four Knowledge Check",
+      "description": "Comprehensive quiz covering file handling and exception management",
+      "questions": [
+        {
+          "question": "What is the correct way to open a file for reading in Python?",
+          "type": "multiple_choice",
+          "options": [
+            "file = open('filename.txt', 'r')",
+            "file = open('filename.txt', 'read')",
+            "file = open('filename.txt', 'readonly')",
+            "file = open('filename.txt')"
+          ],
+          "correct_answer": 0
+        },
+        {
+          "question": "Which statement automatically handles file closing?",
+          "type": "multiple_choice",
+          "options": [
+            "try-except",
+            "if-else",
+            "with",
+            "for"
+          ],
+          "correct_answer": 2
+        },
+        {
+          "question": "What happens if an exception occurs in a try block?",
+          "type": "multiple_choice",
+          "options": [
+            "The program crashes",
+            "The except block executes",
+            "The finally block executes",
+            "The else block executes"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which module is used for CSV file processing?",
+          "type": "multiple_choice",
+          "options": [
+            "csv",
+            "json",
+            "xml",
+            "yaml"
+          ],
+          "correct_answer": 0
+        },
+        {
+          "question": "What is the purpose of the finally block?",
+          "type": "multiple_choice",
+          "options": [
+            "To handle exceptions",
+            "To execute code only if no exception occurs",
+            "To execute cleanup code always",
+            "To raise new exceptions"
+          ],
+          "correct_answer": 2
+        }
+      ]
+    },
+    {
+      "assessment_id": "2",
+      "type": "project",
+      "title": "File Processing Application",
+      "description": "Create a file processing application with comprehensive error handling",
+      "requirements": [
+        "Read data from CSV files",
+        "Process and transform the data",
+        "Write results to JSON files",
+        "Implement proper exception handling",
+        "Use context managers for file operations",
+        "Add logging for debugging",
+        "Handle different file formats and edge cases",
+        "Create a user-friendly interface"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "type": "reading",
+      "title": "Python File I/O Tutorial",
+      "author": "Python Documentation",
+      "description": "Official Python tutorial on file input/output operations"
+    },
+    {
+      "type": "video",
+      "title": "Exception Handling in Python",
+      "source": "Real Python",
+      "description": "Comprehensive video tutorial on exception handling and error management"
+    },
+    {
+      "type": "article",
+      "title": "Python File Handling Best Practices",
+      "source": "Python File Operations",
+      "description": "Guidelines for efficient and safe file operations"
+    },
+    {
+      "type": "interactive",
+      "title": "File Processing Exercises",
+      "source": "Python Practice",
+      "description": "Hands-on exercises for file handling and exception management"
+    }
+  ],
+  "next_module": "Python Programming - Module Five: Advanced Python Concepts"
+} 

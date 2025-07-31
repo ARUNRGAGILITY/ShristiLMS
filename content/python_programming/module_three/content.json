@@ -1,0 +1,437 @@
+{
+  "module": "Python Programming - Module Three",
+  "title": "Object-Oriented Programming",
+  "description": "This module covers Object-Oriented Programming (OOP) concepts in Python including classes, objects, inheritance, polymorphism, and encapsulation.",
+  "duration": "6-8 weeks",
+  "difficulty": "Intermediate",
+  "prerequisites": "Python Programming - Module Two or equivalent Python data structure knowledge",
+  "learning_objectives": [
+    "Understand OOP principles and concepts",
+    "Master class and object creation in Python",
+    "Learn inheritance and polymorphism",
+    "Understand encapsulation and abstraction",
+    "Master special methods and operator overloading",
+    "Apply OOP to design and implement complex systems"
+  ],
+  "lessons": [
+    {
+      "lesson_id": "3.1",
+      "title": "Introduction to Object-Oriented Programming",
+      "duration": "75 minutes",
+      "topics": [
+        {
+          "topic_id": "3.1.1",
+          "title": "What is OOP?",
+          "content": "Object-Oriented Programming (OOP) is a programming paradigm that organizes code into objects that contain data and code. OOP focuses on creating reusable, modular code by grouping related data and functions together. The four main principles of OOP are encapsulation, inheritance, polymorphism, and abstraction.",
+          "key_points": [
+            "OOP organizes code into objects",
+            "Objects contain data and behavior",
+            "Four main principles: encapsulation, inheritance, polymorphism, abstraction",
+            "Promotes code reusability and modularity"
+          ]
+        },
+        {
+          "topic_id": "3.1.2",
+          "title": "Classes and Objects",
+          "content": "A class is a blueprint for creating objects. It defines the structure and behavior that objects of that class will have. An object is an instance of a class, containing actual data and methods. Classes define attributes (data) and methods (functions) that operate on that data.",
+          "key_points": [
+            "Class is a blueprint for objects",
+            "Object is an instance of a class",
+            "Classes define attributes and methods",
+            "Objects contain actual data"
+          ]
+        },
+        {
+          "topic_id": "3.1.3",
+          "title": "Benefits of OOP",
+          "content": "OOP provides several benefits including code reusability, modularity, maintainability, and scalability. It allows you to model real-world entities more naturally and provides better organization for large codebases. OOP also enables easier testing and debugging.",
+          "key_points": [
+            "Code reusability and modularity",
+            "Better organization for large codebases",
+            "Natural modeling of real-world entities",
+            "Easier testing and debugging"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "discussion",
+          "title": "OOP Concepts Discussion",
+          "description": "Discuss real-world examples of objects and classes"
+        },
+        {
+          "type": "analysis",
+          "title": "OOP vs Procedural Programming",
+          "description": "Compare OOP with procedural programming approaches"
+        }
+      ]
+    },
+    {
+      "lesson_id": "3.2",
+      "title": "Creating Classes and Objects",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "3.2.1",
+          "title": "Class Definition",
+          "content": "In Python, classes are defined using the class keyword followed by the class name. Class names typically use CamelCase convention. The class body contains attributes and methods. The __init__ method is a special constructor method that initializes object attributes.",
+          "key_points": [
+            "Use class keyword to define classes",
+            "Class names use CamelCase convention",
+            "__init__ is the constructor method",
+            "self refers to the instance being created"
+          ]
+        },
+        {
+          "topic_id": "3.2.2",
+          "title": "Instance Attributes and Methods",
+          "content": "Instance attributes are data that belongs to each object instance. They are defined in the __init__ method using self.attribute_name. Instance methods are functions that operate on the object's data and are defined within the class. They always take self as the first parameter.",
+          "key_points": [
+            "Instance attributes belong to each object",
+            "Defined in __init__ using self.attribute_name",
+            "Instance methods operate on object data",
+            "Methods always take self as first parameter"
+          ]
+        },
+        {
+          "topic_id": "3.2.3",
+          "title": "Creating and Using Objects",
+          "content": "Objects are created by calling the class name like a function. This calls the __init__ method and creates a new instance. You can access attributes and methods using dot notation (object.attribute). Objects can have different attribute values while sharing the same methods.",
+          "key_points": [
+            "Create objects by calling class name",
+            "Access attributes with dot notation",
+            "Objects can have different attribute values",
+            "Methods are shared between objects"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "Class Creation Practice",
+          "description": "Create simple classes and instantiate objects"
+        },
+        {
+          "type": "modeling",
+          "title": "Real-World Object Modeling",
+          "description": "Model real-world entities as classes"
+        }
+      ]
+    },
+    {
+      "lesson_id": "3.3",
+      "title": "Encapsulation and Data Hiding",
+      "duration": "80 minutes",
+      "topics": [
+        {
+          "topic_id": "3.3.1",
+          "title": "Public and Private Attributes",
+          "content": "Encapsulation is the bundling of data and methods that operate on that data within a single unit. In Python, attributes are public by default, but you can make them private by prefixing with underscore (_). Double underscore (__) creates name mangling for stronger privacy.",
+          "key_points": [
+            "Encapsulation bundles data and methods",
+            "Public attributes accessible from outside",
+            "Single underscore indicates private attribute",
+            "Double underscore creates name mangling"
+          ]
+        },
+        {
+          "topic_id": "3.3.2",
+          "title": "Property Decorators",
+          "content": "Property decorators (@property) allow you to control access to attributes. They let you define getter and setter methods that are accessed like regular attributes. This provides a way to add validation, computation, or other logic when accessing or modifying attributes.",
+          "key_points": [
+            "@property creates getter methods",
+            "@attribute.setter creates setter methods",
+            "Allows validation and computation",
+            "Accessed like regular attributes"
+          ]
+        },
+        {
+          "topic_id": "3.3.3",
+          "title": "Data Validation and Protection",
+          "content": "Encapsulation allows you to protect data integrity by controlling how attributes are accessed and modified. You can add validation logic in setter methods to ensure data remains consistent. This prevents invalid states and makes your code more robust.",
+          "key_points": [
+            "Control how attributes are accessed",
+            "Add validation in setter methods",
+            "Prevent invalid states",
+            "Make code more robust"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "practice",
+          "title": "Encapsulation Practice",
+          "description": "Create classes with proper encapsulation"
+        },
+        {
+          "type": "validation",
+          "title": "Data Validation Exercise",
+          "description": "Implement validation logic in setter methods"
+        }
+      ]
+    },
+    {
+      "lesson_id": "3.4",
+      "title": "Inheritance",
+      "duration": "95 minutes",
+      "topics": [
+        {
+          "topic_id": "3.4.1",
+          "title": "Basic Inheritance",
+          "content": "Inheritance allows a class to inherit attributes and methods from another class. The inheriting class is called the child or subclass, and the class being inherited from is called the parent or superclass. This promotes code reuse and establishes a hierarchical relationship between classes.",
+          "key_points": [
+            "Child class inherits from parent class",
+            "Promotes code reuse",
+            "Establishes hierarchical relationships",
+            "Child can override parent methods"
+          ]
+        },
+        {
+          "topic_id": "3.4.2",
+          "title": "Method Overriding",
+          "content": "Method overriding allows a child class to provide a different implementation of a method defined in the parent class. The child class can completely replace the parent's method or extend it using super(). This is a key feature of polymorphism.",
+          "key_points": [
+            "Child can override parent methods",
+            "Use super() to call parent methods",
+            "Enables polymorphism",
+            "Allows specialized behavior"
+          ]
+        },
+        {
+          "topic_id": "3.4.3",
+          "title": "Multiple Inheritance",
+          "content": "Python supports multiple inheritance, where a class can inherit from multiple parent classes. This is specified by listing multiple classes in the class definition. Multiple inheritance can be powerful but also complex, requiring careful design to avoid conflicts.",
+          "key_points": [
+            "Class can inherit from multiple parents",
+            "Specified by listing multiple classes",
+            "Can be powerful but complex",
+            "Requires careful design to avoid conflicts"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "Inheritance Practice",
+          "description": "Create class hierarchies with inheritance"
+        },
+        {
+          "type": "overriding",
+          "title": "Method Overriding Exercise",
+          "description": "Practice overriding methods in child classes"
+        }
+      ]
+    },
+    {
+      "lesson_id": "3.5",
+      "title": "Polymorphism",
+      "duration": "85 minutes",
+      "topics": [
+        {
+          "topic_id": "3.5.1",
+          "title": "What is Polymorphism?",
+          "content": "Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables you to write code that works with objects of multiple types through a common interface. Polymorphism is achieved through method overriding and method overloading.",
+          "key_points": [
+            "Objects of different types treated uniformly",
+            "Enables common interface for different types",
+            "Achieved through method overriding",
+            "Makes code more flexible and extensible"
+          ]
+        },
+        {
+          "topic_id": "3.5.2",
+          "title": "Method Overriding and Polymorphism",
+          "content": "Method overriding is the primary mechanism for achieving polymorphism in Python. When a child class overrides a method from its parent, objects of the child class can be used wherever objects of the parent class are expected. This is called the Liskov Substitution Principle.",
+          "key_points": [
+            "Method overriding enables polymorphism",
+            "Child objects can replace parent objects",
+            "Follows Liskov Substitution Principle",
+            "Enables flexible code design"
+          ]
+        },
+        {
+          "topic_id": "3.5.3",
+          "title": "Duck Typing",
+          "content": "Python uses duck typing, where the type of an object is determined by its behavior rather than its class. If an object has the required methods and attributes, it can be used regardless of its actual class. This makes Python code very flexible and promotes loose coupling.",
+          "key_points": [
+            "Type determined by behavior, not class",
+            "Objects with required methods can be used",
+            "Promotes loose coupling",
+            "Makes code very flexible"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "practice",
+          "title": "Polymorphism Practice",
+          "description": "Create polymorphic code using inheritance"
+        },
+        {
+          "type": "duck_typing",
+          "title": "Duck Typing Exercise",
+          "description": "Write code that uses duck typing principles"
+        }
+      ]
+    },
+    {
+      "lesson_id": "3.6",
+      "title": "Special Methods and Operator Overloading",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "3.6.1",
+          "title": "Magic Methods (Dunder Methods)",
+          "content": "Magic methods (also called dunder methods) are special methods in Python that start and end with double underscores. They define how objects of a class behave with built-in operations. Common magic methods include __init__, __str__, __repr__, __len__, and __eq__.",
+          "key_points": [
+            "Start and end with double underscores",
+            "Define behavior with built-in operations",
+            "Common methods: __init__, __str__, __repr__",
+            "Enable custom object behavior"
+          ]
+        },
+        {
+          "topic_id": "3.6.2",
+          "title": "Operator Overloading",
+          "content": "Operator overloading allows you to define how operators work with your custom objects. You can override operators like +, -, *, /, ==, <, >, etc. by implementing the corresponding magic methods. This makes your objects behave like built-in types.",
+          "key_points": [
+            "Define how operators work with objects",
+            "Override +, -, *, /, ==, <, >, etc.",
+            "Make objects behave like built-in types",
+            "Implement corresponding magic methods"
+          ]
+        },
+        {
+          "topic_id": "3.6.3",
+          "title": "Context Managers",
+          "content": "Context managers allow you to properly manage resources using the with statement. They are implemented using __enter__ and __exit__ magic methods. Context managers are commonly used for file handling, database connections, and other resource management scenarios.",
+          "key_points": [
+            "Manage resources with with statement",
+            "Implemented with __enter__ and __exit__",
+            "Common for file and database handling",
+            "Ensure proper resource cleanup"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "Magic Methods Practice",
+          "description": "Implement magic methods in custom classes"
+        },
+        {
+          "type": "operator_overloading",
+          "title": "Operator Overloading Exercise",
+          "description": "Create classes with custom operator behavior"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "1",
+      "type": "quiz",
+      "title": "Module Three Knowledge Check",
+      "description": "Comprehensive quiz covering OOP concepts and implementation",
+      "questions": [
+        {
+          "question": "Which of the following is NOT a principle of OOP?",
+          "type": "multiple_choice",
+          "options": [
+            "Encapsulation",
+            "Inheritance",
+            "Polymorphism",
+            "Sequentialization"
+          ],
+          "correct_answer": 3
+        },
+        {
+          "question": "What is the correct way to define a class in Python?",
+          "type": "multiple_choice",
+          "options": [
+            "def class MyClass:",
+            "class MyClass:",
+            "object MyClass:",
+            "type MyClass:"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What is the purpose of the __init__ method?",
+          "type": "multiple_choice",
+          "options": [
+            "To destroy objects",
+            "To initialize object attributes",
+            "To convert objects to strings",
+            "To compare objects"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which keyword is used to inherit from a parent class?",
+          "type": "multiple_choice",
+          "options": [
+            "extends",
+            "inherits",
+            "super",
+            "No keyword needed"
+          ],
+          "correct_answer": 3
+        },
+        {
+          "question": "What is duck typing?",
+          "type": "multiple_choice",
+          "options": [
+            "A way to create ducks in Python",
+            "Type checking based on behavior, not class",
+            "A method for hiding data",
+            "A way to override operators"
+          ],
+          "correct_answer": 1
+        }
+      ]
+    },
+    {
+      "assessment_id": "2",
+      "type": "project",
+      "title": "Library Management System",
+      "description": "Create a library management system using OOP principles",
+      "requirements": [
+        "Create classes for Book, Library, and Member",
+        "Implement inheritance for different types of books",
+        "Use encapsulation to protect member data",
+        "Implement polymorphism for different book types",
+        "Add magic methods for string representation",
+        "Include methods for borrowing and returning books",
+        "Create a simple interface to interact with the system"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "type": "reading",
+      "title": "Python OOP Tutorial",
+      "author": "Python Documentation",
+      "description": "Official Python tutorial on Object-Oriented Programming"
+    },
+    {
+      "type": "video",
+      "title": "Object-Oriented Programming in Python",
+      "source": "Real Python",
+      "description": "Comprehensive video tutorial on OOP concepts and implementation"
+    },
+    {
+      "type": "article",
+      "title": "Python OOP Best Practices",
+      "source": "Python Design Patterns",
+      "description": "Guidelines for writing clean and maintainable OOP code"
+    },
+    {
+      "type": "interactive",
+      "title": "OOP Interactive Tutorial",
+      "source": "Codecademy",
+      "description": "Hands-on exercises for learning OOP concepts"
+    }
+  ],
+  "next_module": "Python Programming - Module Four: File Handling and Exception Management"
+} 

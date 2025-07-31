@@ -1,0 +1,372 @@
+{
+  "module": "Programming Foundations - Module Four",
+  "title": "Software Development Lifecycle",
+  "description": "This module covers the complete software development lifecycle including requirements analysis, design, implementation, testing, deployment, and maintenance. Learn professional development practices.",
+  "duration": "4-6 weeks",
+  "difficulty": "Intermediate",
+  "prerequisites": "Programming Foundations - Module Three",
+  "learning_objectives": [
+    "Understand the complete software development lifecycle",
+    "Learn requirements gathering and analysis techniques",
+    "Master software design principles and patterns",
+    "Implement testing strategies and quality assurance",
+    "Understand deployment and maintenance practices",
+    "Apply professional development methodologies"
+  ],
+  "lessons": [
+    {
+      "lesson_id": "4.1",
+      "title": "Introduction to SDLC",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "4.1.1",
+          "title": "What is Software Development Lifecycle?",
+          "content": "The Software Development Lifecycle (SDLC) is a systematic approach to developing software that includes planning, creating, testing, and deploying software applications. It provides a structured framework for managing the entire development process.",
+          "key_points": [
+            "SDLC provides a structured development approach",
+            "Covers planning, development, testing, and deployment",
+            "Ensures quality and consistency in software development",
+            "Adaptable to different project requirements"
+          ]
+        },
+        {
+          "topic_id": "4.1.2",
+          "title": "SDLC Phases",
+          "content": "The SDLC consists of several phases: Requirements Analysis, Design, Implementation, Testing, Deployment, and Maintenance. Each phase has specific deliverables and objectives that contribute to the overall project success.",
+          "key_points": [
+            "Requirements: Understanding what needs to be built",
+            "Design: Planning the solution architecture",
+            "Implementation: Writing the actual code",
+            "Testing: Verifying the solution works correctly",
+            "Deployment: Releasing the software",
+            "Maintenance: Updating and improving the software"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "discussion",
+          "title": "SDLC in Practice",
+          "description": "Discuss real-world SDLC implementations"
+        },
+        {
+          "type": "quiz",
+          "title": "SDLC Fundamentals",
+          "description": "Test understanding of SDLC concepts"
+        }
+      ]
+    },
+    {
+      "lesson_id": "4.2",
+      "title": "Requirements Analysis",
+      "duration": "75 minutes",
+      "topics": [
+        {
+          "topic_id": "4.2.1",
+          "title": "Gathering Requirements",
+          "content": "Requirements analysis involves understanding what the software should do. This includes functional requirements (what the system should do), non-functional requirements (how the system should perform), and user stories that describe features from the user's perspective.",
+          "key_points": [
+            "Functional requirements define what the system does",
+            "Non-functional requirements define how the system performs",
+            "User stories describe features from user perspective",
+            "Clear requirements prevent scope creep and misunderstandings"
+          ]
+        },
+        {
+          "topic_id": "4.2.2",
+          "title": "Requirements Documentation",
+          "content": "Requirements must be documented clearly and comprehensively. This includes creating requirement specifications, use cases, user stories, and acceptance criteria. Good documentation ensures all stakeholders understand what needs to be built.",
+          "key_points": [
+            "Requirements must be clear and unambiguous",
+            "Documentation should be accessible to all stakeholders",
+            "Requirements should be testable and measurable",
+            "Regular review and updates are essential"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "requirements_gathering",
+          "title": "Requirements Workshop",
+          "description": "Practice gathering requirements for a sample project"
+        },
+        {
+          "type": "documentation",
+          "title": "Requirements Documentation",
+          "description": "Create comprehensive requirements documentation"
+        }
+      ]
+    },
+    {
+      "lesson_id": "4.3",
+      "title": "Software Design",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "4.3.1",
+          "title": "Design Principles",
+          "content": "Software design involves creating a blueprint for the software solution. Key principles include separation of concerns, single responsibility principle, and modularity. Good design makes software maintainable, scalable, and easy to understand.",
+          "key_points": [
+            "Separation of concerns: each component has a single purpose",
+            "Single responsibility: each class/module has one reason to change",
+            "Modularity: breaking system into manageable parts",
+            "Design should prioritize maintainability and scalability"
+          ]
+        },
+        {
+          "topic_id": "4.3.2",
+          "title": "Design Patterns",
+          "content": "Design patterns are proven solutions to common software design problems. They provide reusable templates for solving recurring design issues. Common patterns include Singleton, Factory, Observer, and Strategy patterns.",
+          "key_points": [
+            "Design patterns solve common design problems",
+            "Patterns provide proven, reusable solutions",
+            "Common patterns: Singleton, Factory, Observer, Strategy",
+            "Patterns improve code maintainability and flexibility"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "design_exercise",
+          "title": "System Design",
+          "description": "Design a software system architecture"
+        },
+        {
+          "type": "pattern_implementation",
+          "title": "Design Pattern Implementation",
+          "description": "Implement common design patterns"
+        }
+      ]
+    },
+    {
+      "lesson_id": "4.4",
+      "title": "Implementation and Coding Standards",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "4.4.1",
+          "title": "Coding Standards",
+          "content": "Coding standards ensure consistency, readability, and maintainability of code. They include naming conventions, code formatting, documentation requirements, and best practices. Following standards makes code easier to understand and maintain.",
+          "key_points": [
+            "Consistent naming conventions improve readability",
+            "Proper code formatting enhances maintainability",
+            "Documentation helps others understand the code",
+            "Standards should be team-agreed and consistently applied"
+          ]
+        },
+        {
+          "topic_id": "4.4.2",
+          "title": "Code Review Process",
+          "content": "Code reviews are systematic examinations of code to find and fix mistakes early. They improve code quality, share knowledge among team members, and ensure adherence to coding standards. Reviews should be constructive and educational.",
+          "key_points": [
+            "Code reviews catch bugs and improve quality",
+            "Reviews share knowledge among team members",
+            "Constructive feedback helps developers grow",
+            "Automated tools can assist in code reviews"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "code_review",
+          "title": "Code Review Practice",
+          "description": "Practice reviewing code for quality and standards"
+        },
+        {
+          "type": "standards_implementation",
+          "title": "Coding Standards",
+          "description": "Apply coding standards to sample code"
+        }
+      ]
+    },
+    {
+      "lesson_id": "4.5",
+      "title": "Testing and Quality Assurance",
+      "duration": "75 minutes",
+      "topics": [
+        {
+          "topic_id": "4.5.1",
+          "title": "Testing Types",
+          "content": "Software testing ensures that the application works as expected. Different types of testing include unit testing (testing individual components), integration testing (testing component interactions), and system testing (testing the entire system).",
+          "key_points": [
+            "Unit testing: testing individual components",
+            "Integration testing: testing component interactions",
+            "System testing: testing the entire application",
+            "User acceptance testing: testing with end users"
+          ]
+        },
+        {
+          "topic_id": "4.5.2",
+          "title": "Quality Assurance",
+          "content": "Quality assurance involves processes and activities that ensure software meets specified requirements and quality standards. This includes code reviews, automated testing, performance testing, and security testing.",
+          "key_points": [
+            "QA ensures software meets quality standards",
+            "Automated testing improves efficiency and coverage",
+            "Performance testing ensures acceptable response times",
+            "Security testing identifies vulnerabilities"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "test_writing",
+          "title": "Writing Tests",
+          "description": "Write unit tests for sample code"
+        },
+        {
+          "type": "qa_process",
+          "title": "QA Process Design",
+          "description": "Design a quality assurance process"
+        }
+      ]
+    },
+    {
+      "lesson_id": "4.6",
+      "title": "Deployment and Maintenance",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "4.6.1",
+          "title": "Deployment Strategies",
+          "content": "Deployment involves releasing software to users. Different deployment strategies include blue-green deployment, canary deployment, and rolling deployment. Each strategy has different benefits for minimizing downtime and risk.",
+          "key_points": [
+            "Blue-green: switch between two identical environments",
+            "Canary: gradually roll out to small user groups",
+            "Rolling: gradually replace old instances with new ones",
+            "Strategy choice depends on risk tolerance and requirements"
+          ]
+        },
+        {
+          "topic_id": "4.6.2",
+          "title": "Maintenance and Updates",
+          "content": "Software maintenance involves keeping the application running smoothly and making improvements. This includes bug fixes, performance optimizations, security updates, and feature enhancements. Regular maintenance ensures long-term success.",
+          "key_points": [
+            "Maintenance includes bug fixes and improvements",
+            "Regular updates address security vulnerabilities",
+            "Performance monitoring helps identify optimization opportunities",
+            "User feedback guides feature enhancements"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "deployment_planning",
+          "title": "Deployment Planning",
+          "description": "Plan a deployment strategy for a sample application"
+        },
+        {
+          "type": "maintenance_schedule",
+          "title": "Maintenance Schedule",
+          "description": "Create a maintenance schedule for software"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "1",
+      "type": "quiz",
+      "title": "Module Four Knowledge Check",
+      "description": "Comprehensive quiz covering software development lifecycle",
+      "questions": [
+        {
+          "question": "Which SDLC phase involves understanding what needs to be built?",
+          "type": "multiple_choice",
+          "options": [
+            "Design",
+            "Requirements Analysis",
+            "Implementation",
+            "Testing"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What type of testing focuses on individual components?",
+          "type": "multiple_choice",
+          "options": [
+            "Integration testing",
+            "Unit testing",
+            "System testing",
+            "User acceptance testing"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which deployment strategy gradually rolls out to small user groups?",
+          "type": "multiple_choice",
+          "options": [
+            "Blue-green deployment",
+            "Canary deployment",
+            "Rolling deployment",
+            "Big bang deployment"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What is the main purpose of code reviews?",
+          "type": "multiple_choice",
+          "options": [
+            "To criticize developers",
+            "To catch bugs and improve quality",
+            "To slow down development",
+            "To increase project costs"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which design principle states that each component should have a single purpose?",
+          "type": "multiple_choice",
+          "options": [
+            "Separation of concerns",
+            "Single responsibility",
+            "Open-closed principle",
+            "Dependency inversion"
+          ],
+          "correct_answer": 0
+        }
+      ]
+    },
+    {
+      "assessment_id": "2",
+      "type": "project",
+      "title": "SDLC Project",
+      "description": "Complete a full software development lifecycle for a small project",
+      "requirements": [
+        "Gather and document requirements for a simple application",
+        "Design the system architecture and components",
+        "Implement the application following coding standards",
+        "Write comprehensive tests for all components",
+        "Create a deployment plan and strategy",
+        "Document the maintenance and update process"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "type": "reading",
+      "title": "Software Engineering: A Practitioner's Approach",
+      "author": "Roger S. Pressman",
+      "description": "Comprehensive guide to software engineering practices"
+    },
+    {
+      "type": "video",
+      "title": "Software Development Lifecycle",
+      "source": "MIT OpenCourseWare",
+      "url": "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-170-software-studio-spring-2013/"
+    },
+    {
+      "type": "article",
+      "title": "Agile Software Development",
+      "source": "Agile Alliance",
+      "description": "Understanding modern software development methodologies"
+    },
+    {
+      "type": "interactive",
+      "title": "Software Design Patterns",
+      "source": "Refactoring Guru",
+      "description": "Interactive tutorials on software design patterns"
+    }
+  ],
+  "next_module": "Programming Foundations - Module Five: Advanced Programming Concepts"
+} 

@@ -1,0 +1,370 @@
+{
+  "module": "Programming Foundations - Module Two",
+  "title": "Data Structures and Algorithms",
+  "description": "This module covers fundamental data structures and algorithms, including arrays, linked lists, stacks, queues, trees, and basic sorting and searching algorithms.",
+  "duration": "4-6 weeks",
+  "difficulty": "Beginner to Intermediate",
+  "prerequisites": "Programming Foundations - Module One",
+  "learning_objectives": [
+    "Understand fundamental data structures and their use cases",
+    "Learn basic algorithms for sorting and searching",
+    "Analyze time and space complexity of algorithms",
+    "Implement common data structures in code",
+    "Understand when to use different data structures",
+    "Develop problem-solving skills with algorithmic thinking"
+  ],
+  "lessons": [
+    {
+      "lesson_id": "2.1",
+      "title": "Introduction to Data Structures",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "2.1.1",
+          "title": "What are Data Structures?",
+          "content": "Data structures are specialized formats for organizing, processing, retrieving, and storing data. They provide a way to manage large amounts of data efficiently for uses such as large databases and internet indexing services.",
+          "key_points": [
+            "Data structures organize and store data efficiently",
+            "Different structures are optimized for different operations",
+            "Choice of data structure affects program performance",
+            "Understanding data structures is crucial for algorithm design"
+          ]
+        },
+        {
+          "topic_id": "2.1.2",
+          "title": "Types of Data Structures",
+          "content": "Data structures can be classified into primitive and non-primitive types. Primitive structures include integers, floats, characters, and booleans. Non-primitive structures include arrays, linked lists, stacks, queues, trees, and graphs.",
+          "key_points": [
+            "Primitive: integers, floats, characters, booleans",
+            "Non-primitive: arrays, linked lists, stacks, queues",
+            "Linear structures: arrays, linked lists, stacks, queues",
+            "Non-linear structures: trees, graphs"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "discussion",
+          "title": "Data Structure Applications",
+          "description": "Discuss real-world applications of different data structures"
+        },
+        {
+          "type": "quiz",
+          "title": "Data Structure Fundamentals",
+          "description": "Test understanding of basic data structure concepts"
+        }
+      ]
+    },
+    {
+      "lesson_id": "2.2",
+      "title": "Arrays and Lists",
+      "duration": "75 minutes",
+      "topics": [
+        {
+          "topic_id": "2.2.1",
+          "title": "Arrays Fundamentals",
+          "content": "Arrays are collections of elements stored at contiguous memory locations. They are one of the most basic and widely used data structures. Arrays provide fast access to elements using indices.",
+          "key_points": [
+            "Arrays store elements in contiguous memory",
+            "Fast access using index (O(1) time complexity)",
+            "Fixed size in most programming languages",
+            "Index starts from 0 in most languages"
+          ]
+        },
+        {
+          "topic_id": "2.2.2",
+          "title": "Dynamic Arrays and Lists",
+          "content": "Dynamic arrays (like Python lists) can grow and shrink as needed. They provide the benefits of arrays with the flexibility of dynamic sizing. Most modern programming languages use dynamic arrays as their primary list structure.",
+          "key_points": [
+            "Dynamic arrays can grow and shrink",
+            "Automatic resizing when capacity is exceeded",
+            "Amortized O(1) time for append operations",
+            "Common in Python lists, JavaScript arrays, Java ArrayList"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding_practice",
+          "title": "Array Operations",
+          "description": "Practice creating and manipulating arrays"
+        },
+        {
+          "type": "problem_solving",
+          "title": "Array Problems",
+          "description": "Solve problems using array operations"
+        }
+      ]
+    },
+    {
+      "lesson_id": "2.3",
+      "title": "Linked Lists",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "2.3.1",
+          "title": "Linked List Structure",
+          "content": "Linked lists are linear data structures where elements are stored in nodes, and each node points to the next node in the sequence. Unlike arrays, linked lists are not stored in contiguous memory locations.",
+          "key_points": [
+            "Nodes contain data and reference to next node",
+            "Not stored in contiguous memory",
+            "Dynamic size - can grow and shrink easily",
+            "No random access - must traverse from beginning"
+          ]
+        },
+        {
+          "topic_id": "2.3.2",
+          "title": "Types of Linked Lists",
+          "content": "There are several types of linked lists: singly linked lists (each node points to the next), doubly linked lists (each node points to both next and previous), and circular linked lists (last node points to first).",
+          "key_points": [
+            "Singly linked: each node points to next only",
+            "Doubly linked: each node points to next and previous",
+            "Circular: last node points back to first",
+            "Each type has different trade-offs for operations"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "implementation",
+          "title": "Linked List Implementation",
+          "description": "Implement basic linked list operations"
+        },
+        {
+          "type": "comparison",
+          "title": "Array vs Linked List",
+          "description": "Compare performance characteristics of arrays and linked lists"
+        }
+      ]
+    },
+    {
+      "lesson_id": "2.4",
+      "title": "Stacks and Queues",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "2.4.1",
+          "title": "Stack Data Structure",
+          "content": "A stack is a linear data structure that follows the Last In First Out (LIFO) principle. Elements can only be added or removed from the top of the stack. Common operations are push (add) and pop (remove).",
+          "key_points": [
+            "LIFO (Last In First Out) principle",
+            "Push: add element to top",
+            "Pop: remove element from top",
+            "Peek: view top element without removing"
+          ]
+        },
+        {
+          "topic_id": "2.4.2",
+          "title": "Queue Data Structure",
+          "content": "A queue is a linear data structure that follows the First In First Out (FIFO) principle. Elements are added at the rear and removed from the front. Common operations are enqueue (add) and dequeue (remove).",
+          "key_points": [
+            "FIFO (First In First Out) principle",
+            "Enqueue: add element to rear",
+            "Dequeue: remove element from front",
+            "Peek: view front element without removing"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "implementation",
+          "title": "Stack and Queue Implementation",
+          "description": "Implement stack and queue data structures"
+        },
+        {
+          "type": "applications",
+          "title": "Real-world Applications",
+          "description": "Explore real-world uses of stacks and queues"
+        }
+      ]
+    },
+    {
+      "lesson_id": "2.5",
+      "title": "Trees and Binary Trees",
+      "duration": "75 minutes",
+      "topics": [
+        {
+          "topic_id": "2.5.1",
+          "title": "Tree Data Structure",
+          "content": "Trees are hierarchical data structures consisting of nodes connected by edges. Each node contains data and references to child nodes. Trees are used to represent hierarchical relationships and are fundamental in computer science.",
+          "key_points": [
+            "Hierarchical structure with parent-child relationships",
+            "Root node at the top, leaf nodes at the bottom",
+            "Each node can have multiple children",
+            "Used for representing hierarchical data"
+          ]
+        },
+        {
+          "topic_id": "2.5.2",
+          "title": "Binary Trees",
+          "content": "Binary trees are trees where each node has at most two children, typically called left and right child. Binary trees are widely used because they provide efficient searching, insertion, and deletion operations.",
+          "key_points": [
+            "Each node has at most two children",
+            "Left and right child nodes",
+            "Efficient for searching and sorting",
+            "Foundation for more complex tree structures"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "visualization",
+          "title": "Tree Traversal",
+          "description": "Learn different ways to traverse tree structures"
+        },
+        {
+          "type": "implementation",
+          "title": "Binary Tree Operations",
+          "description": "Implement basic binary tree operations"
+        }
+      ]
+    },
+    {
+      "lesson_id": "2.6",
+      "title": "Basic Algorithms",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "2.6.1",
+          "title": "Searching Algorithms",
+          "content": "Searching algorithms are used to find specific elements in data structures. Linear search checks each element sequentially, while binary search works on sorted data by repeatedly dividing the search space in half.",
+          "key_points": [
+            "Linear search: O(n) time complexity",
+            "Binary search: O(log n) time complexity",
+            "Binary search requires sorted data",
+            "Choice depends on data structure and requirements"
+          ]
+        },
+        {
+          "topic_id": "2.6.2",
+          "title": "Sorting Algorithms",
+          "content": "Sorting algorithms arrange elements in a specific order. Common algorithms include bubble sort, selection sort, insertion sort, and merge sort. Each has different time and space complexity characteristics.",
+          "key_points": [
+            "Bubble sort: O(n²) time complexity",
+            "Selection sort: O(n²) time complexity",
+            "Insertion sort: O(n²) time complexity",
+            "Merge sort: O(n log n) time complexity"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "algorithm_analysis",
+          "title": "Algorithm Complexity",
+          "description": "Analyze time and space complexity of algorithms"
+        },
+        {
+          "type": "implementation",
+          "title": "Sorting Implementation",
+          "description": "Implement basic sorting algorithms"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "1",
+      "type": "quiz",
+      "title": "Module Two Knowledge Check",
+      "description": "Comprehensive quiz covering data structures and algorithms",
+      "questions": [
+        {
+          "question": "Which data structure follows the LIFO principle?",
+          "type": "multiple_choice",
+          "options": [
+            "Queue",
+            "Stack",
+            "Array",
+            "Linked List"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What is the time complexity of accessing an element in an array?",
+          "type": "multiple_choice",
+          "options": [
+            "O(n)",
+            "O(log n)",
+            "O(1)",
+            "O(n²)"
+          ],
+          "correct_answer": 2
+        },
+        {
+          "question": "Which searching algorithm requires sorted data?",
+          "type": "multiple_choice",
+          "options": [
+            "Linear search",
+            "Binary search",
+            "Depth-first search",
+            "Breadth-first search"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What is the main advantage of linked lists over arrays?",
+          "type": "multiple_choice",
+          "options": [
+            "Faster access to elements",
+            "Dynamic size",
+            "Better memory usage",
+            "Easier to implement"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which sorting algorithm has O(n log n) time complexity?",
+          "type": "multiple_choice",
+          "options": [
+            "Bubble sort",
+            "Selection sort",
+            "Insertion sort",
+            "Merge sort"
+          ],
+          "correct_answer": 3
+        }
+      ]
+    },
+    {
+      "assessment_id": "2",
+      "type": "project",
+      "title": "Data Structure Implementation Project",
+      "description": "Implement and test various data structures",
+      "requirements": [
+        "Implement a linked list with basic operations",
+        "Create a stack and queue implementation",
+        "Build a simple binary tree structure",
+        "Implement a sorting algorithm of your choice",
+        "Write tests for your implementations",
+        "Compare performance of different data structures"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "type": "reading",
+      "title": "Data Structures and Algorithms in Python",
+      "author": "Michael T. Goodrich",
+      "description": "Comprehensive guide to data structures and algorithms"
+    },
+    {
+      "type": "video",
+      "title": "Data Structures and Algorithms",
+      "source": "MIT OpenCourseWare",
+      "url": "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/"
+    },
+    {
+      "type": "article",
+      "title": "Understanding Big O Notation",
+      "source": "Computer Science Education",
+      "description": "Learn about algorithm complexity analysis"
+    },
+    {
+      "type": "interactive",
+      "title": "Data Structure Visualizations",
+      "source": "University of San Francisco",
+      "description": "Interactive visualizations of data structures and algorithms"
+    }
+  ],
+  "next_module": "Programming Foundations - Module Three: Object-Oriented Programming"
+} 

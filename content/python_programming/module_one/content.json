@@ -1,0 +1,437 @@
+{
+  "module": "Python Programming - Module One",
+  "title": "Introduction to Python",
+  "description": "This module provides a comprehensive introduction to Python programming, covering basic syntax, data types, control structures, and fundamental programming concepts.",
+  "duration": "4-6 weeks",
+  "difficulty": "Beginner",
+  "prerequisites": "Basic computer literacy and fundamental programming concepts",
+  "learning_objectives": [
+    "Understand Python syntax and basic programming concepts",
+    "Learn Python data types and variables",
+    "Master control structures (conditionals and loops)",
+    "Understand functions and basic input/output operations",
+    "Learn string manipulation and basic data structures",
+    "Develop problem-solving skills using Python"
+  ],
+  "lessons": [
+    {
+      "lesson_id": "1.1",
+      "title": "Getting Started with Python",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "1.1.1",
+          "title": "What is Python?",
+          "content": "Python is a high-level, interpreted programming language known for its simplicity and readability. Created by Guido van Rossum in 1991, Python emphasizes code readability with its clean syntax and extensive standard library. Python is widely used in web development, data science, artificial intelligence, automation, and many other fields.",
+          "key_points": [
+            "Python is a high-level, interpreted language",
+            "Known for simplicity and readability",
+            "Extensive standard library and third-party packages",
+            "Widely used in multiple domains"
+          ]
+        },
+        {
+          "topic_id": "1.1.2",
+          "title": "Setting Up Python Environment",
+          "content": "To start programming in Python, you need to install Python on your system. Python can be downloaded from python.org. You'll also need a code editor or IDE. Popular options include VS Code, PyCharm, and Jupyter Notebooks. The Python interpreter allows you to run Python code and test your programs.",
+          "key_points": [
+            "Download Python from python.org",
+            "Choose a suitable code editor or IDE",
+            "Verify installation with python --version",
+            "Use IDLE for basic Python development"
+          ]
+        },
+        {
+          "topic_id": "1.1.3",
+          "title": "Your First Python Program",
+          "content": "The traditional first program in any programming language is 'Hello, World!'. In Python, this is achieved with a simple print statement. Python uses indentation to define code blocks, which makes the code more readable and enforces good programming practices.",
+          "key_points": [
+            "print() function for output",
+            "Python uses indentation for code blocks",
+            "Simple syntax makes learning easier",
+            "Comments start with #"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "installation",
+          "title": "Python Installation",
+          "description": "Install Python and set up your development environment"
+        },
+        {
+          "type": "coding",
+          "title": "Hello World Program",
+          "description": "Write and run your first Python program"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.2",
+      "title": "Variables and Data Types",
+      "duration": "75 minutes",
+      "topics": [
+        {
+          "topic_id": "1.2.1",
+          "title": "Variables in Python",
+          "content": "Variables in Python are containers for storing data values. Unlike some other programming languages, Python doesn't require explicit variable declaration. You simply assign a value to a variable name, and Python automatically determines the data type. Variable names must follow certain rules and conventions.",
+          "key_points": [
+            "Variables store data values",
+            "No explicit declaration required",
+            "Use meaningful variable names",
+            "Follow Python naming conventions"
+          ]
+        },
+        {
+          "topic_id": "1.2.2",
+          "title": "Basic Data Types",
+          "content": "Python has several built-in data types. Integers (int) represent whole numbers, floats represent decimal numbers, strings represent text, and booleans represent True/False values. Understanding these basic types is fundamental to Python programming.",
+          "key_points": [
+            "int: whole numbers (1, 100, -5)",
+            "float: decimal numbers (3.14, -0.001)",
+            "str: text strings ('hello', 'Python')",
+            "bool: True/False values"
+          ]
+        },
+        {
+          "topic_id": "1.2.3",
+          "title": "Type Conversion",
+          "content": "Python provides built-in functions to convert between different data types. The int(), float(), and str() functions allow you to convert values from one type to another. This is useful when you need to perform operations between different data types.",
+          "key_points": [
+            "int() converts to integer",
+            "float() converts to float",
+            "str() converts to string",
+            "Handle conversion errors gracefully"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "practice",
+          "title": "Variable Practice",
+          "description": "Create variables of different types and practice type conversion"
+        },
+        {
+          "type": "quiz",
+          "title": "Data Types Quiz",
+          "description": "Test understanding of Python data types and variables"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.3",
+      "title": "Control Structures",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "1.3.1",
+          "title": "Conditional Statements (if/else)",
+          "content": "Conditional statements allow your program to make decisions based on certain conditions. The if statement checks if a condition is True and executes the corresponding code block. You can use elif for additional conditions and else for a default case when no conditions are met.",
+          "key_points": [
+            "if statement checks conditions",
+            "elif provides additional conditions",
+            "else provides default case",
+            "Use proper indentation for code blocks"
+          ]
+        },
+        {
+          "topic_id": "1.3.2",
+          "title": "Comparison Operators",
+          "content": "Python provides various comparison operators to compare values. These include == (equal), != (not equal), < (less than), > (greater than), <= (less than or equal), and >= (greater than or equal). These operators return boolean values (True or False).",
+          "key_points": [
+            "== for equality comparison",
+            "!= for inequality comparison",
+            "<, >, <=, >= for numerical comparisons",
+            "Operators return boolean values"
+          ]
+        },
+        {
+          "topic_id": "1.3.3",
+          "title": "Logical Operators",
+          "content": "Logical operators allow you to combine multiple conditions. The and operator returns True only if both conditions are True. The or operator returns True if at least one condition is True. The not operator negates a boolean value.",
+          "key_points": [
+            "and: both conditions must be True",
+            "or: at least one condition must be True",
+            "not: negates a boolean value",
+            "Use parentheses for complex conditions"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "Conditional Statements Practice",
+          "description": "Write programs using if/else statements and comparison operators"
+        },
+        {
+          "type": "problem_solving",
+          "title": "Decision Making Programs",
+          "description": "Create programs that make decisions based on user input"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.4",
+      "title": "Loops and Iteration",
+      "duration": "80 minutes",
+      "topics": [
+        {
+          "topic_id": "1.4.1",
+          "title": "For Loops",
+          "content": "For loops in Python are used to iterate over sequences (like lists, tuples, strings) or execute a block of code a specific number of times. The for loop is more commonly used in Python than while loops, especially when you know the number of iterations in advance.",
+          "key_points": [
+            "Iterate over sequences with for",
+            "Use range() for numeric iteration",
+            "Loop through strings character by character",
+            "Nested loops for complex iteration"
+          ]
+        },
+        {
+          "topic_id": "1.4.2",
+          "title": "While Loops",
+          "content": "While loops continue executing a block of code as long as a condition remains True. They are useful when you don't know in advance how many times the loop should run. It's important to ensure the loop condition eventually becomes False to avoid infinite loops.",
+          "key_points": [
+            "Execute while condition is True",
+            "Must update condition to avoid infinite loops",
+            "Use break to exit loop early",
+            "Use continue to skip current iteration"
+          ]
+        },
+        {
+          "topic_id": "1.4.3",
+          "title": "Loop Control Statements",
+          "content": "Python provides control statements to modify loop behavior. The break statement exits the loop immediately. The continue statement skips the current iteration and continues with the next one. These statements give you fine control over loop execution.",
+          "key_points": [
+            "break: exit loop immediately",
+            "continue: skip current iteration",
+            "Use sparingly to maintain code readability",
+            "Nested loops require careful break/continue usage"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "Loop Practice",
+          "description": "Practice writing for and while loops with various scenarios"
+        },
+        {
+          "type": "pattern_printing",
+          "title": "Pattern Printing",
+          "description": "Create programs that print various patterns using loops"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.5",
+      "title": "Functions",
+      "duration": "70 minutes",
+      "topics": [
+        {
+          "topic_id": "1.5.1",
+          "title": "Defining Functions",
+          "content": "Functions are reusable blocks of code that perform specific tasks. In Python, you define a function using the def keyword followed by the function name and parameters. Functions help organize code, reduce duplication, and make programs more modular and maintainable.",
+          "key_points": [
+            "Use def keyword to define functions",
+            "Function names follow naming conventions",
+            "Parameters are optional",
+            "Functions can return values"
+          ]
+        },
+        {
+          "topic_id": "1.5.2",
+          "title": "Parameters and Arguments",
+          "content": "Functions can accept parameters (inputs) to make them more flexible and reusable. Parameters are variables that receive values when the function is called. Arguments are the actual values passed to the function. Python supports default parameters and keyword arguments.",
+          "key_points": [
+            "Parameters receive function inputs",
+            "Arguments are values passed to functions",
+            "Default parameters provide fallback values",
+            "Keyword arguments allow flexible parameter passing"
+          ]
+        },
+        {
+          "topic_id": "1.5.3",
+          "title": "Return Values",
+          "content": "Functions can return values to the calling code using the return statement. A function can return any data type, including multiple values as a tuple. If no return statement is used, the function returns None by default.",
+          "key_points": [
+            "return statement sends values back",
+            "Functions can return any data type",
+            "Multiple values returned as tuple",
+            "None is returned if no return statement"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "Function Creation",
+          "description": "Create various functions with different parameters and return values"
+        },
+        {
+          "type": "refactoring",
+          "title": "Code Refactoring",
+          "description": "Refactor repetitive code into reusable functions"
+        }
+      ]
+    },
+    {
+      "lesson_id": "1.6",
+      "title": "Input and Output",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "1.6.1",
+          "title": "Getting User Input",
+          "content": "The input() function allows your program to receive data from the user. It displays a prompt message and waits for the user to enter data. The input is always returned as a string, so you may need to convert it to the appropriate data type for your program.",
+          "key_points": [
+            "input() function gets user input",
+            "Input is always returned as string",
+            "Convert input to appropriate data type",
+            "Provide clear prompt messages"
+          ]
+        },
+        {
+          "topic_id": "1.6.2",
+          "title": "String Formatting",
+          "content": "Python provides several ways to format strings for output. The format() method and f-strings (formatted string literals) are the most common approaches. F-strings, introduced in Python 3.6, provide a concise and readable way to embed expressions in string literals.",
+          "key_points": [
+            "format() method for string formatting",
+            "F-strings provide concise formatting",
+            "Use placeholders for variable insertion",
+            "Format specifiers control output format"
+          ]
+        },
+        {
+          "topic_id": "1.6.3",
+          "title": "File Input/Output Basics",
+          "content": "Python can read from and write to files using built-in functions. The open() function creates a file object, and you can use methods like read(), write(), and close() to work with files. It's important to properly close files to free up system resources.",
+          "key_points": [
+            "open() function creates file objects",
+            "read() method reads file content",
+            "write() method writes to files",
+            "Always close files when done"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "interactive",
+          "title": "Interactive Programs",
+          "description": "Create programs that interact with users through input and output"
+        },
+        {
+          "type": "file_handling",
+          "title": "File Operations",
+          "description": "Practice reading from and writing to files"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "1",
+      "type": "quiz",
+      "title": "Module One Knowledge Check",
+      "description": "Comprehensive quiz covering all module topics",
+      "questions": [
+        {
+          "question": "What is the correct way to print 'Hello, World!' in Python?",
+          "type": "multiple_choice",
+          "options": [
+            "echo 'Hello, World!'",
+            "print('Hello, World!')",
+            "console.log('Hello, World!')",
+            "printf('Hello, World!')"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which of the following is NOT a Python data type?",
+          "type": "multiple_choice",
+          "options": [
+            "int",
+            "float",
+            "string",
+            "character"
+          ],
+          "correct_answer": 3
+        },
+        {
+          "question": "What is the result of 5 / 2 in Python?",
+          "type": "multiple_choice",
+          "options": [
+            "2",
+            "2.5",
+            "2.0",
+            "Error"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which operator is used for equality comparison in Python?",
+          "type": "multiple_choice",
+          "options": [
+            "=",
+            "==",
+            "===",
+            "!="
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What does the 'and' operator do in Python?",
+          "type": "multiple_choice",
+          "options": [
+            "Returns True if both conditions are True",
+            "Returns True if either condition is True",
+            "Returns True if the first condition is True",
+            "Returns True if the second condition is True"
+          ],
+          "correct_answer": 0
+        }
+      ]
+    },
+    {
+      "assessment_id": "2",
+      "type": "project",
+      "title": "Simple Calculator Project",
+      "description": "Create a basic calculator program that demonstrates Python fundamentals",
+      "requirements": [
+        "Accept user input for two numbers",
+        "Implement basic arithmetic operations (+, -, *, /)",
+        "Use functions for each operation",
+        "Handle division by zero errors",
+        "Use conditional statements for operation selection",
+        "Format output appropriately",
+        "Include input validation"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "type": "reading",
+      "title": "Python Tutorial",
+      "author": "Python Software Foundation",
+      "description": "Official Python tutorial covering all basic concepts"
+    },
+    {
+      "type": "video",
+      "title": "Python for Beginners",
+      "source": "Python.org",
+      "url": "https://www.python.org/about/gettingstarted/"
+    },
+    {
+      "type": "article",
+      "title": "Python Programming Best Practices",
+      "source": "Real Python",
+      "description": "Guidelines for writing clean and maintainable Python code"
+    },
+    {
+      "type": "interactive",
+      "title": "Python Interactive Tutorial",
+      "source": "Codecademy",
+      "description": "Hands-on Python programming exercises and projects"
+    }
+  ],
+  "next_module": "Python Programming - Module Two: Data Structures and Collections"
+} 

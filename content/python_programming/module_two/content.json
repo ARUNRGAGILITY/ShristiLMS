@@ -1,0 +1,437 @@
+{
+  "module": "Python Programming - Module Two",
+  "title": "Data Structures and Collections",
+  "description": "This module covers Python's built-in data structures including lists, tuples, dictionaries, sets, and advanced collection operations.",
+  "duration": "5-7 weeks",
+  "difficulty": "Beginner to Intermediate",
+  "prerequisites": "Python Programming - Module One or equivalent Python basics",
+  "learning_objectives": [
+    "Master Python lists, tuples, and dictionaries",
+    "Understand sets and their unique properties",
+    "Learn list comprehensions and generator expressions",
+    "Master data structure operations and methods",
+    "Understand memory efficiency and performance considerations",
+    "Apply data structures to solve real-world problems"
+  ],
+  "lessons": [
+    {
+      "lesson_id": "2.1",
+      "title": "Lists - Python's Most Versatile Data Structure",
+      "duration": "80 minutes",
+      "topics": [
+        {
+          "topic_id": "2.1.1",
+          "title": "Creating and Accessing Lists",
+          "content": "Lists are ordered, mutable sequences that can store elements of different types. They are created using square brackets [] and can contain any combination of data types. Lists support indexing and slicing operations, allowing you to access individual elements or sublists efficiently.",
+          "key_points": [
+            "Lists are ordered and mutable",
+            "Can store mixed data types",
+            "Use square brackets for creation",
+            "Support indexing and slicing"
+          ]
+        },
+        {
+          "topic_id": "2.1.2",
+          "title": "List Methods and Operations",
+          "content": "Python provides many built-in methods for manipulating lists. append() adds elements to the end, insert() adds at specific positions, remove() deletes elements by value, and pop() removes and returns elements by index. Understanding these methods is crucial for effective list manipulation.",
+          "key_points": [
+            "append() adds to end of list",
+            "insert() adds at specific position",
+            "remove() deletes by value",
+            "pop() removes and returns by index"
+          ]
+        },
+        {
+          "topic_id": "2.1.3",
+          "title": "List Comprehensions",
+          "content": "List comprehensions provide a concise way to create lists based on existing sequences. They combine the functionality of a for loop and conditional statements in a single, readable expression. List comprehensions are often more efficient than traditional loops and make code more Pythonic.",
+          "key_points": [
+            "Concise way to create lists",
+            "More efficient than traditional loops",
+            "Can include conditional statements",
+            "Makes code more readable"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "List Manipulation Practice",
+          "description": "Practice creating and manipulating lists with various operations"
+        },
+        {
+          "type": "comprehension",
+          "title": "List Comprehension Exercises",
+          "description": "Convert traditional loops to list comprehensions"
+        }
+      ]
+    },
+    {
+      "lesson_id": "2.2",
+      "title": "Tuples - Immutable Sequences",
+      "duration": "60 minutes",
+      "topics": [
+        {
+          "topic_id": "2.2.1",
+          "title": "Tuple Basics and Immutability",
+          "content": "Tuples are ordered, immutable sequences that can store elements of different types. They are created using parentheses () and, once created, cannot be modified. This immutability makes tuples useful for data that shouldn't change, such as coordinates or database records.",
+          "key_points": [
+            "Tuples are ordered and immutable",
+            "Created with parentheses ()",
+            "Cannot be modified after creation",
+            "Useful for constant data"
+          ]
+        },
+        {
+          "topic_id": "2.2.2",
+          "title": "Tuple Operations and Methods",
+          "content": "While tuples are immutable, they support many operations similar to lists. You can access elements by index, slice tuples, concatenate them, and use methods like count() and index(). Tuples are often used for returning multiple values from functions.",
+          "key_points": [
+            "Support indexing and slicing",
+            "count() counts occurrences",
+            "index() finds element position",
+            "Common for function return values"
+          ]
+        },
+        {
+          "topic_id": "2.2.3",
+          "title": "Tuple Unpacking",
+          "content": "Tuple unpacking allows you to assign multiple variables at once from a tuple. This feature is commonly used in Python for swapping variables, returning multiple values from functions, and iterating over sequences of tuples. It makes code more readable and efficient.",
+          "key_points": [
+            "Assign multiple variables at once",
+            "Useful for swapping variables",
+            "Common in function returns",
+            "Makes code more readable"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "practice",
+          "title": "Tuple Operations",
+          "description": "Practice creating and working with tuples"
+        },
+        {
+          "type": "unpacking",
+          "title": "Tuple Unpacking Exercises",
+          "description": "Practice tuple unpacking with various scenarios"
+        }
+      ]
+    },
+    {
+      "lesson_id": "2.3",
+      "title": "Dictionaries - Key-Value Pairs",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "2.3.1",
+          "title": "Dictionary Basics",
+          "content": "Dictionaries are unordered collections of key-value pairs. They are created using curly braces {} and provide fast access to values using keys. Keys must be immutable (strings, numbers, tuples) while values can be any data type. Dictionaries are essential for mapping relationships between data.",
+          "key_points": [
+            "Unordered key-value pairs",
+            "Keys must be immutable",
+            "Values can be any type",
+            "Fast access by key"
+          ]
+        },
+        {
+          "topic_id": "2.3.2",
+          "title": "Dictionary Methods and Operations",
+          "content": "Dictionaries provide many useful methods for manipulation. get() safely retrieves values with default fallbacks, update() merges dictionaries, keys(), values(), and items() provide views of dictionary contents. Understanding these methods is crucial for effective dictionary usage.",
+          "key_points": [
+            "get() safely retrieves values",
+            "update() merges dictionaries",
+            "keys(), values(), items() provide views",
+            "pop() removes and returns items"
+          ]
+        },
+        {
+          "topic_id": "2.3.3",
+          "title": "Dictionary Comprehensions",
+          "content": "Dictionary comprehensions provide a concise way to create dictionaries from existing sequences. They follow a similar pattern to list comprehensions but create key-value pairs. Dictionary comprehensions are useful for transforming data and creating lookup tables efficiently.",
+          "key_points": [
+            "Concise dictionary creation",
+            "Transform existing sequences",
+            "Create lookup tables efficiently",
+            "Similar syntax to list comprehensions"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "Dictionary Practice",
+          "description": "Create and manipulate dictionaries with various operations"
+        },
+        {
+          "type": "comprehension",
+          "title": "Dictionary Comprehension Exercises",
+          "description": "Practice creating dictionaries using comprehensions"
+        }
+      ]
+    },
+    {
+      "lesson_id": "2.4",
+      "title": "Sets - Unordered Unique Collections",
+      "duration": "70 minutes",
+      "topics": [
+        {
+          "topic_id": "2.4.1",
+          "title": "Set Basics and Properties",
+          "content": "Sets are unordered collections of unique elements. They are created using curly braces {} or the set() constructor. Sets automatically remove duplicates and provide fast membership testing. They are useful for mathematical operations and removing duplicates from sequences.",
+          "key_points": [
+            "Unordered unique elements",
+            "Automatically removes duplicates",
+            "Fast membership testing",
+            "Useful for mathematical operations"
+          ]
+        },
+        {
+          "topic_id": "2.4.2",
+          "title": "Set Operations and Methods",
+          "content": "Sets support mathematical set operations like union, intersection, difference, and symmetric difference. Methods like add(), remove(), and discard() modify sets, while operations like union() and intersection() return new sets. Sets are mutable by default but frozen sets are immutable.",
+          "key_points": [
+            "Union, intersection, difference operations",
+            "add(), remove(), discard() methods",
+            "Frozen sets are immutable",
+            "Efficient for set mathematics"
+          ]
+        },
+        {
+          "topic_id": "2.4.3",
+          "title": "Set Comprehensions",
+          "content": "Set comprehensions allow you to create sets using a concise syntax similar to list comprehensions. They are useful for creating sets from existing sequences while applying transformations or filters. Set comprehensions maintain the uniqueness property of sets.",
+          "key_points": [
+            "Concise set creation",
+            "Apply transformations and filters",
+            "Maintains uniqueness property",
+            "Similar syntax to list comprehensions"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "practice",
+          "title": "Set Operations",
+          "description": "Practice creating and manipulating sets"
+        },
+        {
+          "type": "mathematics",
+          "title": "Set Mathematics",
+          "description": "Solve problems using set operations"
+        }
+      ]
+    },
+    {
+      "lesson_id": "2.5",
+      "title": "Advanced Data Structure Operations",
+      "duration": "85 minutes",
+      "topics": [
+        {
+          "topic_id": "2.5.1",
+          "title": "Nested Data Structures",
+          "content": "Python data structures can be nested within each other, creating complex data organizations. Lists can contain dictionaries, dictionaries can contain lists, and any combination is possible. Understanding nested structures is essential for working with real-world data like JSON or database records.",
+          "key_points": [
+            "Structures can be nested",
+            "Lists can contain dictionaries",
+            "Dictionaries can contain lists",
+            "Essential for complex data"
+          ]
+        },
+        {
+          "topic_id": "2.5.2",
+          "title": "Data Structure Performance",
+          "content": "Different data structures have different performance characteristics. Lists are fast for indexing but slow for membership testing. Sets are fast for membership testing but unordered. Dictionaries provide fast key-based access. Understanding these trade-offs helps choose the right structure for your needs.",
+          "key_points": [
+            "Lists: fast indexing, slow membership",
+            "Sets: fast membership, unordered",
+            "Dictionaries: fast key access",
+            "Choose based on use case"
+          ]
+        },
+        {
+          "topic_id": "2.5.3",
+          "title": "Memory Efficiency",
+          "content": "Data structures consume different amounts of memory. Lists and dictionaries are more memory-intensive than tuples. Sets use more memory than lists for the same number of elements. Understanding memory usage is important for large datasets and performance optimization.",
+          "key_points": [
+            "Tuples use less memory than lists",
+            "Sets use more memory than lists",
+            "Consider memory for large datasets",
+            "Profile memory usage when needed"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "optimization",
+          "title": "Performance Analysis",
+          "description": "Compare performance of different data structures"
+        },
+        {
+          "type": "nested",
+          "title": "Nested Structure Practice",
+          "description": "Work with complex nested data structures"
+        }
+      ]
+    },
+    {
+      "lesson_id": "2.6",
+      "title": "Real-World Applications",
+      "duration": "75 minutes",
+      "topics": [
+        {
+          "topic_id": "2.6.1",
+          "title": "Data Processing with Collections",
+          "content": "Data structures are essential for processing real-world data. Lists are used for sequences of records, dictionaries for mapping relationships, and sets for finding unique values. Understanding how to choose and combine data structures is crucial for effective data processing.",
+          "key_points": [
+            "Lists for sequences of records",
+            "Dictionaries for mapping relationships",
+            "Sets for finding unique values",
+            "Combine structures for complex data"
+          ]
+        },
+        {
+          "topic_id": "2.6.2",
+          "title": "Algorithm Implementation",
+          "content": "Many algorithms rely on specific data structures. Hash tables (dictionaries) provide O(1) lookup, sets enable efficient duplicate removal, and lists support various sorting and searching algorithms. Understanding data structure properties helps implement efficient algorithms.",
+          "key_points": [
+            "Dictionaries for hash table operations",
+            "Sets for duplicate removal",
+            "Lists for sorting and searching",
+            "Choose structures for algorithm efficiency"
+          ]
+        },
+        {
+          "topic_id": "2.6.3",
+          "title": "Best Practices and Common Patterns",
+          "content": "Python has established patterns for working with data structures. List comprehensions are preferred over loops for creating lists, dictionary comprehensions for creating mappings, and generator expressions for memory efficiency. Following these patterns makes code more Pythonic and efficient.",
+          "key_points": [
+            "Use comprehensions over loops",
+            "Generator expressions for memory efficiency",
+            "Follow Python conventions",
+            "Write readable and maintainable code"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "project",
+          "title": "Data Processing Project",
+          "description": "Build a data processing application using various data structures"
+        },
+        {
+          "type": "algorithm",
+          "title": "Algorithm Implementation",
+          "description": "Implement common algorithms using appropriate data structures"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "1",
+      "type": "quiz",
+      "title": "Module Two Knowledge Check",
+      "description": "Comprehensive quiz covering data structures and collections",
+      "questions": [
+        {
+          "question": "Which data structure is mutable and ordered?",
+          "type": "multiple_choice",
+          "options": [
+            "Tuple",
+            "List",
+            "Set",
+            "Frozen Set"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What method adds an element to the end of a list?",
+          "type": "multiple_choice",
+          "options": [
+            "add()",
+            "append()",
+            "insert()",
+            "push()"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which data structure automatically removes duplicates?",
+          "type": "multiple_choice",
+          "options": [
+            "List",
+            "Tuple",
+            "Set",
+            "Dictionary"
+          ],
+          "correct_answer": 2
+        },
+        {
+          "question": "What is the correct way to create a dictionary?",
+          "type": "multiple_choice",
+          "options": [
+            "dict = [1, 2, 3]",
+            "dict = (1, 2, 3)",
+            "dict = {1: 'one', 2: 'two'}",
+            "dict = {1, 2, 3}"
+          ],
+          "correct_answer": 2
+        },
+        {
+          "question": "Which operation is fastest for membership testing?",
+          "type": "multiple_choice",
+          "options": [
+            "List",
+            "Tuple",
+            "Set",
+            "Dictionary"
+          ],
+          "correct_answer": 2
+        }
+      ]
+    },
+    {
+      "assessment_id": "2",
+      "type": "project",
+      "title": "Student Grade Management System",
+      "description": "Create a system to manage student grades using various data structures",
+      "requirements": [
+        "Use dictionaries to store student information",
+        "Use lists to store grades for each student",
+        "Implement functions to add students and grades",
+        "Calculate average grades for each student",
+        "Find students with highest and lowest averages",
+        "Use sets to track unique grade values",
+        "Display results in a formatted manner"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "type": "reading",
+      "title": "Python Data Structures",
+      "author": "Python Documentation",
+      "description": "Official documentation on Python's built-in data structures"
+    },
+    {
+      "type": "video",
+      "title": "Python Collections Tutorial",
+      "source": "Real Python",
+      "description": "Comprehensive tutorial on Python collections and data structures"
+    },
+    {
+      "type": "article",
+      "title": "Python Data Structure Performance",
+      "source": "Python Performance",
+      "description": "Analysis of performance characteristics of different data structures"
+    },
+    {
+      "type": "interactive",
+      "title": "Data Structure Visualization",
+      "source": "Python Tutor",
+      "description": "Interactive visualization of how data structures work in Python"
+    }
+  ],
+  "next_module": "Python Programming - Module Three: Object-Oriented Programming"
+} 

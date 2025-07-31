@@ -1,0 +1,438 @@
+{
+  "module": "Python Programming - Module Five",
+  "title": "Advanced Python Concepts",
+  "description": "This module covers advanced Python concepts including decorators, generators, context managers, and functional programming techniques.",
+  "duration": "6-8 weeks",
+  "difficulty": "Advanced",
+  "prerequisites": "Python Programming - Module Four or equivalent Python intermediate knowledge",
+  "learning_objectives": [
+    "Master decorators and their applications",
+    "Understand generators and iterators",
+    "Learn functional programming concepts",
+    "Master advanced data structures",
+    "Understand performance optimization techniques",
+    "Apply advanced concepts to real-world problems"
+  ],
+  "lessons": [
+    {
+      "lesson_id": "5.1",
+      "title": "Decorators",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "5.1.1",
+          "title": "What are Decorators?",
+          "content": "Decorators are functions that modify the behavior of other functions. They provide a way to add functionality to existing functions without modifying their code. Decorators use the @ syntax and are a powerful tool for code reuse and separation of concerns.",
+          "key_points": [
+            "Functions that modify other functions",
+            "Use @ syntax for application",
+            "Enable code reuse and separation of concerns",
+            "Powerful tool for function modification"
+          ]
+        },
+        {
+          "topic_id": "5.1.2",
+          "title": "Creating Simple Decorators",
+          "content": "A decorator is a function that takes another function as an argument and returns a new function. The new function typically wraps the original function, adding some behavior before and/or after the original function is called. This pattern is very common in Python.",
+          "key_points": [
+            "Takes function as argument",
+            "Returns new function",
+            "Wraps original function",
+            "Adds behavior before/after"
+          ]
+        },
+        {
+          "topic_id": "5.1.3",
+          "title": "Decorators with Arguments",
+          "content": "Decorators can accept arguments by creating a decorator factory. This involves creating a function that returns the actual decorator. This pattern allows decorators to be configurable and more flexible in their application.",
+          "key_points": [
+            "Use decorator factory pattern",
+            "Create function that returns decorator",
+            "Allows configurable decorators",
+            "More flexible than simple decorators"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "coding",
+          "title": "Decorator Creation",
+          "description": "Create simple decorators for common use cases"
+        },
+        {
+          "type": "advanced",
+          "title": "Decorator with Arguments",
+          "description": "Create decorators that accept parameters"
+        }
+      ]
+    },
+    {
+      "lesson_id": "5.2",
+      "title": "Generators and Iterators",
+      "duration": "85 minutes",
+      "topics": [
+        {
+          "topic_id": "5.2.1",
+          "title": "Understanding Iterators",
+          "content": "Iterators are objects that can be iterated over. They implement the iterator protocol with __iter__ and __next__ methods. Iterators allow you to process large datasets efficiently by yielding one item at a time instead of loading everything into memory.",
+          "key_points": [
+            "Objects that can be iterated over",
+            "Implement __iter__ and __next__ methods",
+            "Process one item at a time",
+            "Memory efficient for large datasets"
+          ]
+        },
+        {
+          "topic_id": "5.2.2",
+          "title": "Generator Functions",
+          "content": "Generator functions are a simple way to create iterators. They use the yield keyword to return values one at a time. When a generator function is called, it returns a generator object that can be iterated over. Generators are memory efficient and lazy.",
+          "key_points": [
+            "Use yield keyword",
+            "Return generator object",
+            "Memory efficient and lazy",
+            "Simple way to create iterators"
+          ]
+        },
+        {
+          "topic_id": "5.2.3",
+          "title": "Generator Expressions",
+          "content": "Generator expressions are similar to list comprehensions but create generators instead of lists. They use parentheses instead of square brackets and are memory efficient for large datasets. Generator expressions are often used in data processing pipelines.",
+          "key_points": [
+            "Similar to list comprehensions",
+            "Use parentheses instead of brackets",
+            "Memory efficient for large datasets",
+            "Common in data processing"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "practice",
+          "title": "Generator Creation",
+          "description": "Create generator functions for various scenarios"
+        },
+        {
+          "type": "expression",
+          "title": "Generator Expressions",
+          "description": "Practice using generator expressions"
+        }
+      ]
+    },
+    {
+      "lesson_id": "5.3",
+      "title": "Functional Programming",
+      "duration": "95 minutes",
+      "topics": [
+        {
+          "topic_id": "5.3.1",
+          "title": "Lambda Functions",
+          "content": "Lambda functions are small, anonymous functions defined using the lambda keyword. They can take any number of arguments but can only have one expression. Lambda functions are often used with higher-order functions like map(), filter(), and reduce().",
+          "key_points": [
+            "Small, anonymous functions",
+            "Use lambda keyword",
+            "Single expression only",
+            "Common with higher-order functions"
+          ]
+        },
+        {
+          "topic_id": "5.3.2",
+          "title": "Map, Filter, and Reduce",
+          "content": "map(), filter(), and reduce() are built-in functions that implement functional programming concepts. map() applies a function to every item in an iterable, filter() selects items based on a condition, and reduce() combines all items using a function.",
+          "key_points": [
+            "map() applies function to all items",
+            "filter() selects items by condition",
+            "reduce() combines all items",
+            "Implement functional programming concepts"
+          ]
+        },
+        {
+          "topic_id": "5.3.3",
+          "title": "List Comprehensions vs Functional Programming",
+          "content": "List comprehensions and functional programming approaches can often achieve the same results. List comprehensions are often more readable and Pythonic, while functional programming approaches can be more explicit about the operations being performed.",
+          "key_points": [
+            "Both can achieve same results",
+            "List comprehensions more Pythonic",
+            "Functional programming more explicit",
+            "Choose based on readability and context"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "functional",
+          "title": "Functional Programming Practice",
+          "description": "Practice using lambda functions and higher-order functions"
+        },
+        {
+          "type": "comparison",
+          "title": "Approach Comparison",
+          "description": "Compare list comprehensions with functional approaches"
+        }
+      ]
+    },
+    {
+      "lesson_id": "5.4",
+      "title": "Advanced Data Structures",
+      "duration": "90 minutes",
+      "topics": [
+        {
+          "topic_id": "5.4.1",
+          "title": "Collections Module",
+          "content": "The collections module provides specialized data structures beyond the built-in types. It includes namedtuple, defaultdict, Counter, and deque. These data structures are optimized for specific use cases and can improve code performance and readability.",
+          "key_points": [
+            "Specialized data structures",
+            "namedtuple for structured data",
+            "defaultdict for default values",
+            "Counter for counting elements"
+          ]
+        },
+        {
+          "topic_id": "5.4.2",
+          "title": "Named Tuples",
+          "content": "Named tuples are a subclass of tuples with named fields. They provide the immutability of tuples with the readability of dictionaries. Named tuples are useful for representing structured data like database records or configuration settings.",
+          "key_points": [
+            "Tuples with named fields",
+            "Immutable like regular tuples",
+            "Readable like dictionaries",
+            "Good for structured data"
+          ]
+        },
+        {
+          "topic_id": "5.4.3",
+          "title": "Default Dictionaries",
+          "content": "Default dictionaries are dictionaries that automatically provide default values for missing keys. They are useful for counting, grouping, and building complex data structures. Default dictionaries eliminate the need for key existence checks.",
+          "key_points": [
+            "Provide default values for missing keys",
+            "Useful for counting and grouping",
+            "Eliminate key existence checks",
+            "Simplify data structure building"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "collections",
+          "title": "Collections Practice",
+          "description": "Practice using collections module data structures"
+        },
+        {
+          "type": "application",
+          "title": "Real-World Applications",
+          "description": "Apply advanced data structures to real problems"
+        }
+      ]
+    },
+    {
+      "lesson_id": "5.5",
+      "title": "Performance Optimization",
+      "duration": "85 minutes",
+      "topics": [
+        {
+          "topic_id": "5.5.1",
+          "title": "Profiling and Benchmarking",
+          "content": "Performance optimization starts with identifying bottlenecks. Python provides tools like cProfile and timeit for profiling and benchmarking code. Understanding where time is spent helps focus optimization efforts on the most impactful areas.",
+          "key_points": [
+            "Identify bottlenecks first",
+            "Use cProfile for profiling",
+            "Use timeit for benchmarking",
+            "Focus on most impactful areas"
+          ]
+        },
+        {
+          "topic_id": "5.5.2",
+          "title": "Memory Optimization",
+          "content": "Memory optimization involves reducing memory usage and improving memory efficiency. Techniques include using generators instead of lists, using __slots__ for classes, and being mindful of object creation and destruction patterns.",
+          "key_points": [
+            "Use generators for large datasets",
+            "Use __slots__ for memory efficiency",
+            "Be mindful of object creation",
+            "Consider memory usage patterns"
+          ]
+        },
+        {
+          "topic_id": "5.5.3",
+          "title": "Algorithm Optimization",
+          "content": "Algorithm optimization involves choosing the right algorithms and data structures for the problem. Understanding time and space complexity helps make informed decisions. Sometimes a more complex algorithm is faster for large datasets.",
+          "key_points": [
+            "Choose right algorithms",
+            "Understand time/space complexity",
+            "Consider data size impact",
+            "Balance complexity vs performance"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "profiling",
+          "title": "Code Profiling",
+          "description": "Profile code to identify performance bottlenecks"
+        },
+        {
+          "type": "optimization",
+          "title": "Performance Optimization",
+          "description": "Optimize code based on profiling results"
+        }
+      ]
+    },
+    {
+      "lesson_id": "5.6",
+      "title": "Advanced Patterns and Techniques",
+      "duration": "80 minutes",
+      "topics": [
+        {
+          "topic_id": "5.6.1",
+          "title": "Context Managers",
+          "content": "Context managers provide a way to manage resources properly. They can be created using the @contextmanager decorator or by implementing __enter__ and __exit__ methods. Context managers are useful for file handling, database connections, and other resources.",
+          "key_points": [
+            "Manage resources properly",
+            "Use @contextmanager decorator",
+            "Implement __enter__ and __exit__",
+            "Ensure proper cleanup"
+          ]
+        },
+        {
+          "topic_id": "5.6.2",
+          "title": "Metaclasses",
+          "content": "Metaclasses are classes for classes. They allow you to customize class creation and behavior. Metaclasses are advanced and should be used sparingly, but they can be powerful for creating frameworks and APIs.",
+          "key_points": [
+            "Classes for classes",
+            "Customize class creation",
+            "Advanced and powerful",
+            "Use sparingly"
+          ]
+        },
+        {
+          "topic_id": "5.6.3",
+          "title": "Design Patterns in Python",
+          "content": "Design patterns are reusable solutions to common programming problems. Python's dynamic nature makes it easy to implement many design patterns. Common patterns include Singleton, Factory, Observer, and Strategy patterns.",
+          "key_points": [
+            "Reusable solutions to problems",
+            "Python makes implementation easy",
+            "Common patterns: Singleton, Factory, Observer",
+            "Improve code organization"
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "type": "patterns",
+          "title": "Design Pattern Implementation",
+          "description": "Implement common design patterns in Python"
+        },
+        {
+          "type": "advanced",
+          "title": "Advanced Techniques",
+          "description": "Explore advanced Python techniques and patterns"
+        }
+      ]
+    }
+  ],
+  "assessments": [
+    {
+      "assessment_id": "1",
+      "type": "quiz",
+      "title": "Module Five Knowledge Check",
+      "description": "Comprehensive quiz covering advanced Python concepts",
+      "questions": [
+        {
+          "question": "What is a decorator in Python?",
+          "type": "multiple_choice",
+          "options": [
+            "A function that modifies other functions",
+            "A type of data structure",
+            "A way to create classes",
+            "A method for file handling"
+          ],
+          "correct_answer": 0
+        },
+        {
+          "question": "Which keyword is used in generator functions?",
+          "type": "multiple_choice",
+          "options": [
+            "return",
+            "yield",
+            "generate",
+            "iterator"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "What does the map() function do?",
+          "type": "multiple_choice",
+          "options": [
+            "Creates a map data structure",
+            "Applies a function to every item in an iterable",
+            "Filters items based on a condition",
+            "Combines all items using a function"
+          ],
+          "correct_answer": 1
+        },
+        {
+          "question": "Which collections module class is used for counting elements?",
+          "type": "multiple_choice",
+          "options": [
+            "namedtuple",
+            "defaultdict",
+            "Counter",
+            "deque"
+          ],
+          "correct_answer": 2
+        },
+        {
+          "question": "What is the purpose of __slots__ in Python classes?",
+          "type": "multiple_choice",
+          "options": [
+            "To create slots in classes",
+            "To improve memory efficiency",
+            "To add new methods",
+            "To create private attributes"
+          ],
+          "correct_answer": 1
+        }
+      ]
+    },
+    {
+      "assessment_id": "2",
+      "type": "project",
+      "title": "Advanced Python Application",
+      "description": "Create a comprehensive application using advanced Python concepts",
+      "requirements": [
+        "Implement decorators for logging and timing",
+        "Use generators for memory-efficient data processing",
+        "Apply functional programming concepts",
+        "Use advanced data structures from collections module",
+        "Implement performance optimization techniques",
+        "Create custom context managers",
+        "Apply design patterns where appropriate",
+        "Include comprehensive error handling and logging"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "type": "reading",
+      "title": "Python Advanced Tutorial",
+      "author": "Python Documentation",
+      "description": "Official Python tutorial on advanced concepts and techniques"
+    },
+    {
+      "type": "video",
+      "title": "Advanced Python Programming",
+      "source": "Real Python",
+      "description": "Comprehensive video tutorial on advanced Python concepts"
+    },
+    {
+      "type": "article",
+      "title": "Python Performance Optimization",
+      "source": "Python Performance",
+      "description": "Guidelines for optimizing Python code performance"
+    },
+    {
+      "type": "interactive",
+      "title": "Advanced Python Exercises",
+      "source": "Python Practice",
+      "description": "Hands-on exercises for advanced Python concepts"
+    }
+  ],
+  "next_module": "Python Programming - Module Six: Python Career and Future"
+} 

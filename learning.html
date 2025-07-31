@@ -396,6 +396,7 @@
             margin-bottom: 0.5rem;
             background: var(--surface-light);
             color: var(--text-primary);
+            text-align: left;
         }
         
         .chapter-item:hover {
@@ -911,6 +912,14 @@
             color: #f3f4f6 !important;
         }
 
+        /* Custom hover states for dropdown options */
+        .module-option:hover {
+            background-color: #dbeafe; /* Light blue for light mode */
+        }
+
+        [data-theme="dark"] .module-option:hover {
+            background-color: #0F0F23; /* Dark blue for dark mode */
+        }
 
     </style>
 </head>
@@ -990,8 +999,69 @@
             <aside class="mobile-sidebar" role="complementary" aria-label="Course navigation">
                 <div class="mobile-spacing-sm">
                     <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-sm font-medium" style="color: var(--text-primary);">📚 Course Chapters</h2>
-                        <span id="chapterCount" class="text-xs" style="color: var(--text-secondary);">0 chapters</span>
+                        <h2 class="text-sm font-medium" style="color: var(--text-primary);">📚 Course Modules</h2>
+                        <span id="chapterCount" class="text-xs" style="color: var(--text-secondary);">0 modules</span>
+                    </div>
+                    
+                    <!-- Custom Module Selection Dropdown -->
+                    <div class="mb-4">
+                        <label class="block text-xs font-medium mb-2 flex items-center" style="color: var(--text-primary);">
+                            <span class="mr-2">📚</span>
+                            <span>Jump to Module</span>
+                        </label>
+                        <div class="relative">
+                            <!-- Custom Dropdown Button -->
+                            <button id="moduleDropdownBtn" class="w-full px-4 py-3 text-sm border-2 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-between" style="background: var(--surface-light); color: var(--text-primary); border-color: var(--border); text-align: left;">
+                                <span id="selectedModuleText">🎯 Select a module...</span>
+                                <svg id="dropdownArrow" class="w-4 h-4 transition-transform duration-200" style="color: var(--text-secondary);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            
+                            <!-- Custom Dropdown Menu -->
+                            <div id="moduleDropdownMenu" class="absolute top-full left-0 right-0 mt-1 bg-white border-2 border-gray-200 rounded-xl shadow-lg opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50 max-h-64 overflow-y-auto" style="background: var(--surface-light); border-color: var(--border);">
+                                <div class="py-2">
+                                    <div class="module-option px-4 py-3 cursor-pointer transition-colors duration-150 flex items-center" data-value="0" style="color: var(--text-primary);">
+                                        <span class="mr-3 module-icon-0">🧠</span>
+                                        <span class="module-text-0">Module 1: Introduction to AI</span>
+                                    </div>
+                                    <div class="module-option px-4 py-3 cursor-pointer transition-colors duration-150 flex items-center" data-value="1" style="color: var(--text-primary);">
+                                        <span class="mr-3 module-icon-1">🤖</span>
+                                        <span class="module-text-1">Module 2: Machine Learning Fundamentals</span>
+                                    </div>
+                                    <div class="module-option px-4 py-3 cursor-pointer transition-colors duration-150 flex items-center" data-value="2" style="color: var(--text-primary);">
+                                        <span class="mr-3 module-icon-2">🔬</span>
+                                        <span class="module-text-2">Module 3: Deep Learning Fundamentals</span>
+                                    </div>
+                                    <div class="module-option px-4 py-3 cursor-pointer transition-colors duration-150 flex items-center" data-value="3" style="color: var(--text-primary);">
+                                        <span class="mr-3 module-icon-3">⚖️</span>
+                                        <span class="module-text-3">Module 4: AI Ethics and Responsible AI</span>
+                                    </div>
+                                    <div class="module-option px-4 py-3 cursor-pointer transition-colors duration-150 flex items-center" data-value="4" style="color: var(--text-primary);">
+                                        <span class="mr-3 module-icon-4">🏭</span>
+                                        <span class="module-text-4">Module 5: AI Applications and Industry</span>
+                                    </div>
+                                    <div class="module-option px-4 py-3 cursor-pointer transition-colors duration-150 flex items-center" data-value="5" style="color: var(--text-primary);">
+                                        <span class="mr-3 module-icon-5">🚀</span>
+                                        <span class="module-text-5">Module 6: AI Career and Future</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Module Indicator -->
+                    <div class="mb-4 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500" style="background: var(--surface-light); border-color: #3b82f6;">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="text-xs font-medium text-blue-700" style="color: #3b82f6;">Current Module</div>
+                                <div id="currentModuleTitle" class="text-sm font-semibold text-gray-900" style="color: var(--text-primary);">-</div>
+                            </div>
+                            <div class="text-right">
+                                <div id="currentModuleNumber" class="text-lg font-bold text-blue-600">-</div>
+                                <div class="text-xs text-gray-500" style="color: var(--text-secondary);">of <span id="totalModules">-</span></div>
+                            </div>
+                        </div>
                     </div>
                     <div id="chaptersList" class="space-y-2 max-h-96 lg:max-h-none overflow-y-auto">
                         <!-- Chapters will be populated here -->
@@ -1023,15 +1093,15 @@
                 <!-- Chapter Content -->
                 <div class="mobile-card">
                     <div id="chapterHeader" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white mobile-spacing-sm" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);">
-                        <h2 id="chapterTitle" class="mobile-text-lg sm:mobile-text-xl lg:mobile-text-2xl font-bold mb-2 break-words">Select a chapter to begin</h2>
-                        <p id="chapterDescription" class="text-blue-100 mobile-text-sm sm:mobile-text-base break-words" style="color: rgba(255, 255, 255, 0.8);">Choose a chapter from the sidebar to start learning</p>
+                        <h2 id="chapterTitle" class="mobile-text-lg sm:mobile-text-xl lg:mobile-text-2xl font-bold mb-2 break-words">Select a module to begin</h2>
+                        <p id="chapterDescription" class="text-blue-100 mobile-text-sm sm:mobile-text-base break-words" style="color: rgba(255, 255, 255, 0.8);">Choose a module from the sidebar to start learning</p>
                     </div>
 
                     <div id="chapterContent" class="mobile-spacing-sm lg:mobile-spacing-md overflow-x-auto">
                         <div class="text-center py-8 sm:py-12">
                             <div class="text-4xl sm:text-6xl mb-4">📚</div>
                             <h3 class="mobile-text-lg sm:mobile-text-xl font-medium text-gray-600 mb-2" style="color: var(--text-secondary);">Ready to Learn?</h3>
-                            <p class="text-gray-500 mobile-text-sm sm:mobile-text-base" style="color: var(--text-secondary);">Select a chapter from the left sidebar to begin your learning journey</p>
+                            <p class="text-gray-500 mobile-text-sm sm:mobile-text-base" style="color: var(--text-secondary);">Select a module from the left sidebar to begin your learning journey</p>
                         </div>
                     </div>
                 </div>
@@ -1039,10 +1109,10 @@
                 <!-- Navigation Buttons -->
                 <div class="flex flex-col sm:flex-row justify-between mt-6 gap-4">
                     <button id="prevChapterBtn" class="mobile-btn transition disabled:opacity-50 mobile-text-sm sm:mobile-text-base" disabled style="background: var(--surface-light); color: var(--text-primary); border: 1px solid var(--border);">
-                        ← Previous Chapter
+                        ← Previous Module
                     </button>
                     <button id="nextChapterBtn" class="mobile-btn btn-learn text-white transition disabled:opacity-50 mobile-text-sm sm:mobile-text-base" disabled>
-                        <i class="fas fa-arrow-right mr-2"></i>Next Chapter
+                        <i class="fas fa-arrow-right mr-2"></i>Next Module
                     </button>
                 </div>
             </article>
@@ -1154,6 +1224,70 @@
                 nextBtn.addEventListener('click', () => navigateChapter(1));
             }
 
+            // Custom module selection dropdown
+            const moduleDropdownBtn = document.getElementById('moduleDropdownBtn');
+            const moduleDropdownMenu = document.getElementById('moduleDropdownMenu');
+            const dropdownArrow = document.getElementById('dropdownArrow');
+            const selectedModuleText = document.getElementById('selectedModuleText');
+            
+            if (moduleDropdownBtn && moduleDropdownMenu) {
+                // Toggle dropdown
+                moduleDropdownBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const isOpen = moduleDropdownMenu.classList.contains('opacity-100');
+                    
+                    if (isOpen) {
+                        // Close dropdown
+                        moduleDropdownMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                        moduleDropdownMenu.classList.add('opacity-0', 'invisible', '-translate-y-2');
+                        dropdownArrow.classList.remove('rotate-180');
+                    } else {
+                        // Open dropdown
+                        moduleDropdownMenu.classList.remove('opacity-0', 'invisible', '-translate-y-2');
+                        moduleDropdownMenu.classList.add('opacity-100', 'visible', 'translate-y-0');
+                        dropdownArrow.classList.add('rotate-180');
+                    }
+                });
+                
+                // Handle option selection
+                const moduleOptions = document.querySelectorAll('.module-option');
+                moduleOptions.forEach(option => {
+                    option.addEventListener('click', async (e) => {
+                        const value = option.getAttribute('data-value');
+                        const text = option.querySelector('span:last-child').textContent;
+                        
+                        if (value !== '') {
+                            const selectedModuleIndex = parseInt(value);
+                            if (!isNaN(selectedModuleIndex) && selectedModuleIndex >= 0 && selectedModuleIndex < availableModules.length) {
+                                currentModuleIndex = selectedModuleIndex;
+                                await loadModuleContent(availableModules[currentModuleIndex]);
+                                
+                                // Update sidebar chapters after loading new module
+                                renderChapters();
+                                displayChapter(0); // Start with first chapter of new module
+                            }
+                        }
+                        
+                        // Update selected text
+                        selectedModuleText.textContent = text;
+                        
+                        // Close dropdown
+                        moduleDropdownMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                        moduleDropdownMenu.classList.add('opacity-0', 'invisible', '-translate-y-2');
+                        dropdownArrow.classList.remove('rotate-180');
+                    });
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!moduleDropdownBtn.contains(e.target) && !moduleDropdownMenu.contains(e.target)) {
+                        moduleDropdownMenu.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                        moduleDropdownMenu.classList.add('opacity-0', 'invisible', '-translate-y-2');
+                        dropdownArrow.classList.remove('rotate-180');
+                    }
+                });
+            }
+
             // Quiz button - setup after course is loaded
             setupQuizButton();
         }
@@ -1201,55 +1335,61 @@
             // Update course header
             updateCourseHeader();
 
-            // Load course content with timeout protection
+            // Load course content from JSON file
             let contentLoaded = false;
             
             try {
-                // Create script element for the course content
-                const script = document.createElement('script');
-                script.src = `courses/${courseId}/${courseId}_content.js`;
+                // Start with module_one
+                currentModuleIndex = 0;
+                await loadModuleContent(availableModules[currentModuleIndex]);
+                contentLoaded = true;
+            } catch (error) {
+                console.log('Failed to load initial module, trying fallback:', error);
                 
-                // Set a timeout to prevent infinite loading
-                const loadTimeout = setTimeout(() => {
-                    if (!contentLoaded) {
-                        console.log('Course content loading timeout, using demo content');
-                        loadDemoContent(courseId);
-                        contentLoaded = true;
-                    }
-                }, 3000); // 3 second timeout
-                
-                script.onload = function() {
-                    if (!contentLoaded) {
-                        clearTimeout(loadTimeout);
-                        contentLoaded = true;
-                        
-                        // Content should now be available in window.courseContent
-                        if (window.courseContent) {
-                            courseContent = window.courseContent;
-                            initializeCourse();
-                        } else {
-                            console.log('Course content not found in loaded script, using demo content');
+                // Fallback to original loading method
+                try {
+                    const script = document.createElement('script');
+                    script.src = `courses/${courseId}/${courseId}_content.js`;
+                    
+                    const loadTimeout = setTimeout(() => {
+                        if (!contentLoaded) {
+                            console.log('Course content loading timeout, using demo content');
+                            loadDemoContent(courseId);
+                            contentLoaded = true;
+                        }
+                    }, 3000);
+                    
+                    script.onload = function() {
+                        if (!contentLoaded) {
+                            clearTimeout(loadTimeout);
+                            contentLoaded = true;
+                            
+                            if (window.courseContent) {
+                                courseContent = window.courseContent;
+                                initializeCourse();
+                            } else {
+                                console.log('Course content not found in loaded script, using demo content');
+                                loadDemoContent(courseId);
+                            }
+                        }
+                    };
+                    
+                    script.onerror = function() {
+                        if (!contentLoaded) {
+                            clearTimeout(loadTimeout);
+                            contentLoaded = true;
+                            console.log('Failed to load course content, using demo content');
                             loadDemoContent(courseId);
                         }
-                    }
-                };
-                
-                script.onerror = function() {
+                    };
+                    
+                    document.head.appendChild(script);
+                } catch (fallbackError) {
                     if (!contentLoaded) {
-                        clearTimeout(loadTimeout);
                         contentLoaded = true;
-                        console.log('Failed to load course content, using demo content');
+                        console.log('Error loading course content, using demo content');
                         loadDemoContent(courseId);
                     }
-                };
-                
-                document.head.appendChild(script);
-                
-            } catch (error) {
-                if (!contentLoaded) {
-                    contentLoaded = true;
-                    console.log('Error loading course content, using demo content');
-                    loadDemoContent(courseId);
                 }
             }
         }
@@ -1262,58 +1402,114 @@
             document.getElementById('courseModules').textContent = currentCourse.modules;
             document.title = `ShristiLMS - ${currentCourse.name}`;
             
+            // Update dropdown options based on course
+            updateDropdownOptions();
+            
             // Setup quiz button after course is loaded
             setupQuizButton();
         }
 
-        function loadDemoContent(courseId) {
-            // Demo content for AI Foundations
-            if (courseId === 'ai-foundations') {
-                courseContent = {
-                    chapters: [
-                        {
-                            id: 1,
-                            title: 'Introduction to Artificial Intelligence',
-                            description: 'Understanding the fundamentals of AI and its applications',
-                            theory: `
-                                <div class="prose max-w-none">
-                                    <h3 class="mobile-text-lg sm:mobile-text-xl font-bold mb-4">What is Artificial Intelligence?</h3>
-                                    <p class="mobile-text-sm sm:mobile-text-base mb-4">Artificial Intelligence (AI) is the simulation of human intelligence in machines that are programmed to think and learn like humans. AI systems can perform tasks that typically require human intelligence, such as visual perception, speech recognition, decision-making, and language translation.</p>
-                                    
-                                    <h4 class="mobile-text-base sm:mobile-text-lg font-semibold mb-3 mt-6">Brief History of AI</h4>
-                                    <ul class="list-disc pl-6 mb-4 mobile-text-sm sm:mobile-text-base">
-                                        <li><strong>1950s:</strong> Alan Turing proposes the Turing Test</li>
-                                        <li><strong>1956:</strong> Term "Artificial Intelligence" coined at Dartmouth Conference</li>
-                                        <li><strong>1980s:</strong> Expert systems gain popularity</li>
-                                        <li><strong>1990s:</strong> Machine learning algorithms advance</li>
-                                        <li><strong>2010s:</strong> Deep learning revolution begins</li>
-                                        <li><strong>2020s:</strong> Large language models and generative AI emerge</li>
-                                    </ul>
-
-                                    <h4 class="mobile-text-base sm:mobile-text-lg font-semibold mb-3 mt-6">Types of AI</h4>
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-                                        <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                                            <h5 class="font-bold text-blue-800 mobile-text-sm">Narrow AI (ANI)</h5>
-                                            <p class="text-blue-700 mobile-text-xs sm:mobile-text-sm">AI designed for specific tasks. This is what we have today.</p>
-                                            <p class="text-xs text-blue-600 mt-2">Examples: Siri, Chess programs, Image recognition</p>
-                                        </div>
-                                        <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
-                                            <h5 class="font-bold text-yellow-800 mobile-text-sm">General AI (AGI)</h5>
-                                            <p class="text-yellow-700 mobile-text-xs sm:mobile-text-sm">AI with human-level cognitive abilities across all domains.</p>
-                                            <p class="text-xs text-yellow-600 mt-2">Status: Theoretical, not yet achieved</p>
-                                        </div>
-                                        <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-                                            <h5 class="font-bold text-red-800 mobile-text-sm">Super AI (ASI)</h5>
-                                            <p class="text-red-700 mobile-text-xs sm:mobile-text-sm">AI that surpasses human intelligence in all aspects.</p>
-                                            <p class="text-xs text-red-600 mt-2">Status: Hypothetical future possibility</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            `
-                        }
-                    ]
-                };
+        function updateDropdownOptions() {
+            if (currentCourse && currentCourse.id === 'programming-foundations') {
+                // Programming Foundations modules
+                const programmingModules = [
+                    { icon: '', text: 'Module 1: Introduction to Programming' },
+                    { icon: '', text: 'Module 2: Data Structures and Algorithms' },
+                    { icon: '', text: 'Module 3: Object-Oriented Programming' },
+                    { icon: '', text: 'Module 4: Software Development Lifecycle' },
+                    { icon: '', text: 'Module 5: Advanced Programming Concepts' },
+                    { icon: '', text: 'Module 6: Programming Career and Future' }
+                ];
+                
+                programmingModules.forEach((module, index) => {
+                    const iconElement = document.querySelector(`.module-icon-${index}`);
+                    const textElement = document.querySelector(`.module-text-${index}`);
+                    if (iconElement) iconElement.textContent = module.icon;
+                    if (textElement) textElement.textContent = module.text;
+                });
+            } else if (currentCourse && currentCourse.id === 'python-programming') {
+                // Python Programming modules
+                const pythonModules = [
+                    { icon: '', text: 'Module 1: Introduction to Python' },
+                    { icon: '', text: 'Module 2: Data Structures and Collections' },
+                    { icon: '', text: 'Module 3: Object-Oriented Programming' },
+                    { icon: '', text: 'Module 4: File Handling and Exception Management' },
+                    { icon: '', text: 'Module 5: Advanced Python Concepts' },
+                    { icon: '', text: 'Module 6: Python Career and Future' }
+                ];
+                
+                pythonModules.forEach((module, index) => {
+                    const iconElement = document.querySelector(`.module-icon-${index}`);
+                    const textElement = document.querySelector(`.module-text-${index}`);
+                    if (iconElement) iconElement.textContent = module.icon;
+                    if (textElement) textElement.textContent = module.text;
+                });
+            } else {
+                // AI Foundation modules (default)
+                const aiModules = [
+                    { icon: '', text: 'Module 1: Introduction to AI' },
+                    { icon: '', text: 'Module 2: Machine Learning Fundamentals' },
+                    { icon: '', text: 'Module 3: Deep Learning Fundamentals' },
+                    { icon: '', text: 'Module 4: AI Ethics and Responsible AI' },
+                    { icon: '', text: 'Module 5: AI Applications and Industry' },
+                    { icon: '', text: 'Module 6: AI Career and Future' }
+                ];
+                
+                aiModules.forEach((module, index) => {
+                    const iconElement = document.querySelector(`.module-icon-${index}`);
+                    const textElement = document.querySelector(`.module-text-${index}`);
+                    if (iconElement) iconElement.textContent = module.icon;
+                    if (textElement) textElement.textContent = module.text;
+                });
             }
+        }
+
+        function convertJsonToCourseContent(jsonContent) {
+            // Convert JSON structure to course content format
+            const chapters = [];
+            
+            if (jsonContent.lessons) {
+                jsonContent.lessons.forEach((lesson, index) => {
+                    // Build theory content from lesson data
+                    let theoryContent = `<div class="prose max-w-none">`;
+                    theoryContent += `<h3 class="mobile-text-lg sm:mobile-text-xl font-bold mb-4">${lesson.title}</h3>`;
+                    
+                    if (lesson.topics) {
+                        lesson.topics.forEach(topic => {
+                            theoryContent += `<h4 class="mobile-text-base sm:mobile-text-lg font-semibold mb-3 mt-6">${topic.title}</h4>`;
+                            theoryContent += `<p class="mobile-text-sm sm:mobile-text-base mb-4">${topic.content}</p>`;
+                            
+                            if (topic.key_points && topic.key_points.length > 0) {
+                                theoryContent += `<div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 mb-4">`;
+                                theoryContent += `<h5 class="font-bold text-blue-800 mobile-text-sm mb-2">Key Points:</h5>`;
+                                theoryContent += `<ul class="list-disc pl-6 mobile-text-sm sm:mobile-text-base">`;
+                                topic.key_points.forEach(point => {
+                                    theoryContent += `<li class="text-blue-700">${point}</li>`;
+                                });
+                                theoryContent += `</ul></div>`;
+                            }
+                        });
+                    }
+                    
+                    theoryContent += `</div>`;
+                    
+                    chapters.push({
+                        id: index + 1,
+                        title: lesson.title,
+                        description: `Duration: ${lesson.duration}`,
+                        theory: theoryContent
+                    });
+                });
+            }
+            
+            return { chapters };
+        }
+
+        function loadDemoContent(courseId) {
+            // Demo content structure - will be replaced with dynamic content loading
+            courseContent = {
+                chapters: []
+            };
             
             initializeCourse();
         }
@@ -1330,7 +1526,8 @@
             const chaptersList = document.getElementById('chaptersList');
             chaptersList.innerHTML = '';
 
-            document.getElementById('chapterCount').textContent = `${courseContent.chapters.length} chapters`;
+            document.getElementById('chapterCount').textContent = `${availableModules.length} modules`;
+            document.getElementById('totalModules').textContent = availableModules.length;
 
             courseContent.chapters.forEach((chapter, index) => {
                 const chapterItem = document.createElement('div');
@@ -1352,6 +1549,9 @@
                 chapterItem.onclick = () => displayChapter(index);
                 chaptersList.appendChild(chapterItem);
             });
+            
+            // Update current module indicator
+            updateCurrentModuleIndicator();
         }
 
         function displayChapter(chapterIndex) {
@@ -1378,6 +1578,9 @@
             
             // Update chapter styling without re-rendering
             updateChapterStyling();
+            
+            // Update current module indicator
+            updateCurrentModuleIndicator();
 
              // Scroll to top of the page smoothly
             window.scrollTo({ 
@@ -1465,15 +1668,182 @@
             const prevBtn = document.getElementById('prevChapterBtn');
             const nextBtn = document.getElementById('nextChapterBtn');
             
-            prevBtn.disabled = currentChapterIndex === 0;
-            nextBtn.disabled = currentChapterIndex === courseContent.chapters.length - 1;
+            // Previous button logic
+            if (currentChapterIndex === 0 && currentModuleIndex === 0) {
+                // First lesson of first module
+                prevBtn.disabled = true;
+                prevBtn.innerHTML = '← Previous Lesson';
+            } else if (currentChapterIndex === 0) {
+                // First lesson of a module (but not first module)
+                prevBtn.disabled = false;
+                prevBtn.innerHTML = '← Previous Module';
+            } else {
+                // Middle lessons
+                prevBtn.disabled = false;
+                prevBtn.innerHTML = '← Previous Lesson';
+            }
+            
+            // Next button logic
+            if (currentChapterIndex === courseContent.chapters.length - 1) {
+                // Last lesson of current module
+                if (currentModuleIndex < availableModules.length - 1) {
+                    // There are more modules available
+                    nextBtn.disabled = false;
+                    nextBtn.innerHTML = '<i class="fas fa-arrow-right mr-2"></i>Next Module';
+                    // Remove any existing onclick to use default navigation
+                    nextBtn.onclick = null;
+                } else {
+                    // Last lesson of last module (module 6)
+                    nextBtn.disabled = false;
+                    nextBtn.innerHTML = 'Complete Course';
+                    // Set onclick to redirect to home page
+                    nextBtn.onclick = () => {
+                        console.log('Completing course, redirecting to home');
+                        window.location.href = 'index.html';
+                    };
+                }
+            } else {
+                // Middle lessons
+                nextBtn.disabled = false;
+                nextBtn.innerHTML = '<i class="fas fa-arrow-right mr-2"></i>Next Lesson';
+                // Remove any existing onclick to use default navigation
+                nextBtn.onclick = null;
+            }
         }
 
         function navigateChapter(direction) {
             const newIndex = currentChapterIndex + direction;
+            
+            // Check if we're at the end of current module and trying to go to next
+            if (direction === 1 && newIndex >= courseContent.chapters.length) {
+                // Check if this is the last module (module 6)
+                if (currentModuleIndex >= availableModules.length - 1) {
+                    // This is the last module, redirect to home
+                    console.log('Reached end of course, redirecting to home');
+                    window.location.href = 'index.html';
+                    return;
+                }
+                // Try to load next module
+                loadNextModule();
+                return;
+            }
+            
+            // Check if we're at the beginning and trying to go to previous
+            if (direction === -1 && newIndex < 0) {
+                // Try to load previous module
+                loadPreviousModule();
+                return;
+            }
+            
             if (newIndex >= 0 && newIndex < courseContent.chapters.length) {
                 displayChapter(newIndex);
             }
+        }
+
+        let currentModuleIndex = 0; // Track which module we're currently on
+        const availableModules = ['module_one', 'module_two', 'module_three', 'module_four', 'module_five', 'module_six']; // List of available modules
+
+        function updateCurrentModuleIndicator() {
+            if (courseContent && courseContent.chapters && courseContent.chapters.length > 0) {
+                const currentChapter = courseContent.chapters[currentChapterIndex];
+                const currentModuleTitle = document.getElementById('currentModuleTitle');
+                const currentModuleNumber = document.getElementById('currentModuleNumber');
+                const selectedModuleText = document.getElementById('selectedModuleText');
+                
+                if (currentChapter && currentModuleTitle && currentModuleNumber) {
+                    // Show which module we're currently on based on course
+                    let moduleNames, moduleDisplayNames;
+                    
+                    if (currentCourse && currentCourse.id === 'programming-foundations') {
+                        moduleNames = ['Programming Foundations - Module One', 'Programming Foundations - Module Two', 'Programming Foundations - Module Three', 'Programming Foundations - Module Four', 'Programming Foundations - Module Five', 'Programming Foundations - Module Six'];
+                        moduleDisplayNames = ['Module 1: Introduction to Programming', 'Module 2: Data Structures and Algorithms', 'Module 3: Object-Oriented Programming', 'Module 4: Software Development Lifecycle', 'Module 5: Advanced Programming Concepts', 'Module 6: Programming Career and Future'];
+                    } else if (currentCourse && currentCourse.id === 'python-programming') {
+                        moduleNames = ['Python Programming - Module One', 'Python Programming - Module Two', 'Python Programming - Module Three', 'Python Programming - Module Four', 'Python Programming - Module Five', 'Python Programming - Module Six'];
+                        moduleDisplayNames = ['Module 1: Introduction to Python', 'Module 2: Data Structures and Collections', 'Module 3: Object-Oriented Programming', 'Module 4: File Handling and Exception Management', 'Module 5: Advanced Python Concepts', 'Module 6: Python Career and Future'];
+                    } else {
+                        // Default to AI foundation
+                        moduleNames = ['AI Foundation - Module One', 'AI Foundation - Module Two', 'AI Foundation - Module Three', 'AI Foundation - Module Four', 'AI Foundation - Module Five', 'AI Foundation - Module Six'];
+                        moduleDisplayNames = ['Module 1: Introduction to AI', 'Module 2: Machine Learning Fundamentals', 'Module 3: Deep Learning Fundamentals', 'Module 4: AI Ethics and Responsible AI', 'Module 5: AI Applications and Industry', 'Module 6: AI Career and Future'];
+                    }
+                    
+                    const currentModuleName = moduleNames[currentModuleIndex] || 'Unknown Module';
+                    const currentModuleDisplayName = moduleDisplayNames[currentModuleIndex] || 'Unknown Module';
+                    
+                    currentModuleTitle.textContent = currentModuleName;
+                    currentModuleNumber.textContent = currentModuleIndex + 1;
+                    
+                    // Update custom dropdown selected text
+                    if (selectedModuleText) {
+                        selectedModuleText.textContent = currentModuleDisplayName;
+                    }
+                }
+            }
+        }
+
+        async function loadNextModule() {
+            if (currentModuleIndex < availableModules.length - 1) {
+                currentModuleIndex++;
+                await loadModuleContent(availableModules[currentModuleIndex]);
+            } else {
+                // Show completion message
+                showModuleCompletionMessage();
+            }
+        }
+
+        async function loadPreviousModule() {
+            if (currentModuleIndex > 0) {
+                currentModuleIndex--;
+                await loadModuleContent(availableModules[currentModuleIndex]);
+            }
+        }
+
+        async function loadModuleContent(moduleName) {
+            try {
+                // Determine the correct content path based on course ID
+                let contentPath;
+                if (currentCourse && currentCourse.id === 'programming-foundations') {
+                    contentPath = `content/programming_foundations/${moduleName}/content.json`;
+                } else if (currentCourse && currentCourse.id === 'python-programming') {
+                    contentPath = `content/python_programming/${moduleName}/content.json`;
+                } else {
+                    // Default to AI foundation for other courses
+                    contentPath = `content/ai_foundation/${moduleName}/content.json`;
+                }
+                
+                const response = await fetch(contentPath);
+                if (response.ok) {
+                    const jsonContent = await response.json();
+                    console.log(`Loaded ${moduleName} content:`, jsonContent);
+                    
+                    // Convert JSON structure to course content format
+                    courseContent = convertJsonToCourseContent(jsonContent);
+                    currentChapterIndex = 0; // Reset to first chapter of new module
+                    completedChapters.clear(); // Reset completed chapters
+                    
+                    // Update UI
+                    renderChapters();
+                    displayChapter(0);
+                    updateCourseHeader();
+                    updateCurrentModuleIndicator();
+                    updateNavigationButtons();
+                    updateProgress();
+                    
+
+                } else {
+                    console.log(`Module ${moduleName} not found`);
+                    showModuleCompletionMessage();
+                }
+            } catch (error) {
+                console.log(`Error loading module ${moduleName}:`, error);
+                showModuleCompletionMessage();
+            }
+        }
+
+
+
+        function showModuleCompletionMessage() {
+            // Simply stop at the last available module without showing completion message
+            console.log('Reached end of available modules');
         }
 
         function updateProgress() {
