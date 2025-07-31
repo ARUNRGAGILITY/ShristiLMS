@@ -28,7 +28,13 @@
             "AI systems can perform tasks that typically require human intelligence",
             "The goal is to create systems that can reason, learn, and adapt",
             "AI encompasses various technologies and approaches"
-          ]
+          ],
+          "code_example": {
+            "title": "Simple AI Decision Tree Example",
+            "description": "A basic example of how AI can make decisions using a decision tree",
+            "language": "python",
+            "code": "class SimpleAIDecisionTree:\n    def __init__(self):\n        self.temperature = 0\n        self.humidity = 0\n    \n    def set_conditions(self, temperature, humidity):\n        self.temperature = temperature\n        self.humidity = humidity\n    \n    def make_decision(self):\n        # Simple AI decision making based on conditions\n        if self.temperature > 25:\n            if self.humidity > 60:\n                return \"Turn on air conditioning\"\n            else:\n                return \"Open windows for ventilation\"\n        elif self.temperature < 15:\n            return \"Turn on heating\"\n        else:\n            return \"Maintain current temperature\"\n\n# Example usage\nai_system = SimpleAIDecisionTree()\nai_system.set_conditions(28, 70)\ndecision = ai_system.make_decision()\nprint(f\"AI Decision: {decision}\")"
+          }
         },
         {
           "topic_id": "1.1.2",
@@ -215,7 +221,13 @@
             "Machine Learning is a subset of AI focused on learning from data",
             "Deep Learning is a subset of ML using neural networks",
             "Each builds upon the previous level of complexity"
-          ]
+          ],
+          "code_example": {
+            "title": "AI, ML, and DL Relationship Example",
+            "description": "Demonstrating the hierarchy and relationship between AI, ML, and DL",
+            "language": "python",
+            "code": "# AI: Broad field of intelligent systems\nclass ArtificialIntelligence:\n    def __init__(self):\n        self.name = \"AI System\"\n    \n    def solve_problem(self, problem):\n        return f\"AI solving: {problem}\"\n\n# ML: Subset of AI that learns from data\nclass MachineLearning(ArtificialIntelligence):\n    def __init__(self):\n        super().__init__()\n        self.name = \"ML System\"\n        self.training_data = []\n    \n    def train(self, data):\n        self.training_data = data\n        return f\"Trained on {len(data)} samples\"\n    \n    def predict(self, input_data):\n        # Simple prediction based on training data\n        if self.training_data:\n            return f\"ML prediction for: {input_data}\"\n        return \"No training data available\"\n\n# DL: Subset of ML using neural networks\nclass DeepLearning(MachineLearning):\n    def __init__(self):\n        super().__init__()\n        self.name = \"DL System\"\n        self.layers = []\n    \n    def add_layer(self, layer_size):\n        self.layers.append(layer_size)\n        return f\"Added layer with {layer_size} neurons\"\n    \n    def forward_pass(self, input_data):\n        # Simulate neural network forward pass\n        result = input_data\n        for layer_size in self.layers:\n            result = f\"Processed through {layer_size}-neuron layer\"\n        return f\"DL result: {result}\"\n\n# Example usage\ndl_system = DeepLearning()\ndl_system.train([1, 2, 3, 4, 5])\ndl_system.add_layer(10)\ndl_system.add_layer(5)\nprint(dl_system.solve_problem(\"image classification\"))\nprint(dl_system.predict(\"new image\"))\nprint(dl_system.forward_pass(\"input data\"))"
+          }
         },
         {
           "topic_id": "1.5.2",

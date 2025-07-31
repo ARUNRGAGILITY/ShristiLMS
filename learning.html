@@ -1544,6 +1544,20 @@
                                 });
                                 theoryContent += `</ul></div>`;
                             }
+                            
+                            // Handle code examples in topics
+                            if (topic.code_example) {
+                                theoryContent += `<div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">`;
+                                theoryContent += `<div class="flex justify-between items-center mb-2">`;
+                                theoryContent += `<span class="text-gray-300 text-sm">${topic.code_example.title || 'Code Example'}</span>`;
+                                theoryContent += `<button onclick="copyCode(this)" class="text-gray-300 hover:text-white text-sm bg-gray-800 px-2 py-1 rounded">Copy</button>`;
+                                theoryContent += `</div>`;
+                                if (topic.code_example.description) {
+                                    theoryContent += `<p class="text-gray-400 text-sm mb-3">${topic.code_example.description}</p>`;
+                                }
+                                theoryContent += `<pre><code class="language-${topic.code_example.language || 'python'}">${topic.code_example.code}</code></pre>`;
+                                theoryContent += `</div>`;
+                            }
                         });
                     }
                     
