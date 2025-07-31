@@ -34,7 +34,7 @@ const courses = [
             'Develop problem-solving skills',
             'Write efficient and clean code'
         ],
-        instructor: 'Prof. Michael Chen',
+        instructor: 'Emmanuel Muttavanchery',
         rating: 4.9,
         enrollments: 3200
     },
@@ -53,7 +53,7 @@ const courses = [
             'Build real-world Python applications',
             'Understand object-oriented programming in Python'
         ],
-        instructor: 'Emily Rodriguez',
+        instructor: 'Emmanuel Muttavanchery',
         rating: 4.7,
         enrollments: 2800
     },
@@ -72,7 +72,7 @@ const courses = [
             'Work with Java collections and frameworks',
             'Build enterprise-grade applications'
         ],
-        instructor: 'David Kumar',
+        instructor: 'Emmanuel Muttavanchery',
         rating: 4.6,
         enrollments: 2100
     },
@@ -91,7 +91,7 @@ const courses = [
             'Manipulate DOM and handle events',
             'Work with JavaScript frameworks'
         ],
-        instructor: 'Lisa Thompson',
+        instructor: 'Emmanuel Muttavanchery',
         rating: 4.8,
         enrollments: 3500
     },
@@ -110,7 +110,7 @@ const courses = [
             'Use advanced TypeScript features',
             'Build scalable applications with TypeScript'
         ],
-        instructor: 'Ryan Wilson',
+        instructor: 'Emmanuel Muttavanchery',
         rating: 4.5,
         enrollments: 1800
     },
@@ -129,7 +129,7 @@ const courses = [
             'Work with databases and APIs',
             'Deploy applications to production'
         ],
-        instructor: 'Alex Martinez',
+        instructor: 'Emmanuel Muttavanchery',
         rating: 4.9,
         enrollments: 1500
     },
@@ -148,7 +148,7 @@ const courses = [
             'Work with containers and orchestration',
             'Deploy applications to cloud platforms'
         ],
-        instructor: 'Sophie Brown',
+        instructor: 'Emmanuel Muttavanchery',
         rating: 4.7,
         enrollments: 1200
     },
@@ -169,7 +169,7 @@ const courses = [
             'Conduct A/B testing and hypothesis testing',
             'Deploy data science projects to production'
         ],
-        instructor: 'Samanta Green',
+        instructor: 'Emmanuel Muttavanchery',
         rating: 4.9,
         enrollments: 1850
     }
