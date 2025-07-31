@@ -1,0 +1,253 @@
+{
+  "module": {
+    "title": "Introduction to TypeScript",
+    "description": "Learn the fundamentals of TypeScript, its relationship with JavaScript, and basic syntax",
+    "lessons": [
+      {
+        "id": "ts-1-1",
+        "title": "What is TypeScript?",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "TypeScript is a superset of JavaScript that adds static typing to the language. It was developed by Microsoft and provides better tooling, error detection, and code organization compared to plain JavaScript."
+            },
+            {
+              "type": "text",
+              "content": "Key benefits of TypeScript:",
+              "subsections": [
+                "Static type checking at compile time",
+                "Better IDE support with autocomplete and refactoring",
+                "Enhanced error detection before runtime",
+                "Improved code documentation through types",
+                "Better support for large-scale applications"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "typescript",
+              "content": "// JavaScript code\nfunction add(a, b) {\n    return a + b;\n}\n\n// TypeScript equivalent\nfunction add(a: number, b: number): number {\n    return a + b;\n}"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ts-1-2",
+        "title": "Setting Up TypeScript",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "To get started with TypeScript, you need to install the TypeScript compiler and set up your development environment."
+            },
+            {
+              "type": "text",
+              "content": "Installation steps:",
+              "subsections": [
+                "Install Node.js (if not already installed)",
+                "Install TypeScript globally: npm install -g typescript",
+                "Create a TypeScript configuration file (tsconfig.json)",
+                "Set up your preferred code editor (VS Code recommended)"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "content": "# Install TypeScript globally\nnpm install -g typescript\n\n# Check TypeScript version\ntsc --version\n\n# Initialize a new TypeScript project\ntsc --init"
+            },
+            {
+              "type": "code",
+              "language": "json",
+              "content": "{\n  \"compilerOptions\": {\n    \"target\": \"es2020\",\n    \"module\": \"commonjs\",\n    \"strict\": true,\n    \"esModuleInterop\": true,\n    \"skipLibCheck\": true,\n    \"forceConsistentCasingInFileNames\": true\n  },\n  \"include\": [\"src/**/*\"],\n  \"exclude\": [\"node_modules\"]\n}"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ts-1-3",
+        "title": "Basic Types",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "TypeScript provides several basic types that you can use to annotate your variables, parameters, and return values."
+            },
+            {
+              "type": "code",
+              "language": "typescript",
+              "content": "// Number type\nlet age: number = 25;\nlet price: number = 19.99;\n\n// String type\nlet name: string = \"John Doe\";\nlet message: string = `Hello, ${name}!`;\n\n// Boolean type\nlet isActive: boolean = true;\nlet isComplete: boolean = false;\n\n// Array types\nlet numbers: number[] = [1, 2, 3, 4, 5];\nlet names: Array<string> = [\"Alice\", \"Bob\", \"Charlie\"];\n\n// Tuple type\nlet person: [string, number] = [\"John\", 30];\n\n// Any type (use sparingly)\nlet dynamicValue: any = \"This can be anything\";\n\n// Void type (for functions that don't return anything)\nfunction logMessage(): void {\n    console.log(\"This function returns nothing\");\n}"
+            },
+            {
+              "type": "text",
+              "content": "Type annotations help catch errors at compile time and provide better documentation for your code."
+            }
+          ]
+        }
+      },
+      {
+        "id": "ts-1-4",
+        "title": "Functions and Type Annotations",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "TypeScript allows you to add type annotations to function parameters and return values, making your code more predictable and easier to debug."
+            },
+            {
+              "type": "code",
+              "language": "typescript",
+              "content": "// Function with parameter and return type annotations\nfunction add(a: number, b: number): number {\n    return a + b;\n}\n\n// Function with optional parameters\nfunction greet(name: string, greeting?: string): string {\n    const defaultGreeting = greeting || \"Hello\";\n    return `${defaultGreeting}, ${name}!`;\n}\n\n// Function with default parameters\nfunction createUser(name: string, age: number = 18): object {\n    return { name, age };\n}\n\n// Function with rest parameters\nfunction sum(...numbers: number[]): number {\n    return numbers.reduce((total, num) => total + num, 0);\n}\n\n// Arrow functions with types\nconst multiply = (a: number, b: number): number => a * b;\n\n// Function type\nlet mathOperation: (a: number, b: number) => number;\nmathOperation = add; // Valid\nmathOperation = multiply; // Valid"
+            },
+            {
+              "type": "text",
+              "content": "Type annotations in functions help ensure that the correct types are passed and returned, reducing runtime errors."
+            }
+          ]
+        }
+      },
+      {
+        "id": "ts-1-5",
+        "title": "Interfaces",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Interfaces in TypeScript define the structure of objects and provide a way to create contracts for your code."
+            },
+            {
+              "type": "code",
+              "language": "typescript",
+              "content": "// Basic interface\ninterface Person {\n    name: string;\n    age: number;\n    email?: string; // Optional property\n}\n\n// Using the interface\nconst person: Person = {\n    name: \"John Doe\",\n    age: 30\n    // email is optional, so we can omit it\n};\n\n// Interface with readonly properties\ninterface Point {\n    readonly x: number;\n    readonly y: number;\n}\n\nconst point: Point = { x: 10, y: 20 };\n// point.x = 15; // Error: Cannot assign to 'x' because it is a read-only property\n\n// Interface extending another interface\ninterface Employee extends Person {\n    employeeId: string;\n    department: string;\n}\n\nconst employee: Employee = {\n    name: \"Jane Smith\",\n    age: 28,\n    employeeId: \"EMP001\",\n    department: \"Engineering\"\n};\n\n// Interface for function types\ninterface MathFunction {\n    (a: number, b: number): number;\n}\n\nconst add: MathFunction = (a, b) => a + b;\nconst multiply: MathFunction = (a, b) => a * b;"
+            },
+            {
+              "type": "text",
+              "content": "Interfaces are powerful tools for defining contracts and ensuring type safety in your TypeScript applications."
+            }
+          ]
+        }
+      },
+      {
+        "id": "ts-1-6",
+        "title": "Classes and Object-Oriented Programming",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "TypeScript provides enhanced support for object-oriented programming with classes, including access modifiers and inheritance."
+            },
+            {
+              "type": "code",
+              "language": "typescript",
+              "content": "// Basic class\nclass Animal {\n    private name: string;\n    protected species: string;\n    public age: number;\n\n    constructor(name: string, species: string, age: number) {\n        this.name = name;\n        this.species = species;\n        this.age = age;\n    }\n\n    public makeSound(): void {\n        console.log(\"Some animal sound\");\n    }\n\n    protected getInfo(): string {\n        return `${this.name} is a ${this.species}`;\n    }\n}\n\n// Extending a class\nclass Dog extends Animal {\n    private breed: string;\n\n    constructor(name: string, breed: string, age: number) {\n        super(name, \"Canis familiaris\", age);\n        this.breed = breed;\n    }\n\n    public makeSound(): void {\n        console.log(\"Woof!\");\n    }\n\n    public getBreedInfo(): string {\n        return `${this.getInfo()} of breed ${this.breed}`;\n    }\n}\n\n// Using the classes\nconst myDog = new Dog(\"Buddy\", \"Golden Retriever\", 3);\nmyDog.makeSound(); // Output: Woof!\nconsole.log(myDog.getBreedInfo()); // Output: Buddy is a Canis familiaris of breed Golden Retriever\n\n// Abstract classes\nabstract class Vehicle {\n    protected brand: string;\n    protected model: string;\n\n    constructor(brand: string, model: string) {\n        this.brand = brand;\n        this.model = model;\n    }\n\n    abstract start(): void;\n\n    public getInfo(): string {\n        return `${this.brand} ${this.model}`;\n    }\n}\n\nclass Car extends Vehicle {\n    constructor(brand: string, model: string) {\n        super(brand, model);\n    }\n\n    public start(): void {\n        console.log(`${this.getInfo()} is starting...`);\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "TypeScript classes provide better encapsulation and type safety compared to JavaScript classes, with features like access modifiers and abstract classes."
+            }
+          ]
+        }
+      },
+      {
+        "id": "ts-1-7",
+        "title": "Generics",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Generics allow you to create reusable components that can work with different types while maintaining type safety."
+            },
+            {
+              "type": "code",
+              "language": "typescript",
+              "content": "// Generic function\nfunction identity<T>(arg: T): T {\n    return arg;\n}\n\n// Using the generic function\nlet stringResult = identity<string>(\"Hello\");\nlet numberResult = identity<number>(42);\n\n// TypeScript can infer the type\nlet inferredString = identity(\"Hello\"); // TypeScript knows this is string\nlet inferredNumber = identity(42); // TypeScript knows this is number\n\n// Generic interface\ninterface Container<T> {\n    value: T;\n    getValue(): T;\n}\n\nclass NumberContainer implements Container<number> {\n    constructor(public value: number) {}\n\n    getValue(): number {\n        return this.value;\n    }\n}\n\nclass StringContainer implements Container<string> {\n    constructor(public value: string) {}\n\n    getValue(): string {\n        return this.value;\n    }\n}\n\n// Generic class\nclass Stack<T> {\n    private items: T[] = [];\n\n    push(item: T): void {\n        this.items.push(item);\n    }\n\n    pop(): T | undefined {\n        return this.items.pop();\n    }\n\n    peek(): T | undefined {\n        return this.items[this.items.length - 1];\n    }\n\n    isEmpty(): boolean {\n        return this.items.length === 0;\n    }\n\n    size(): number {\n        return this.items.length;\n    }\n}\n\n// Using the generic Stack class\nconst numberStack = new Stack<number>();\nnumberStack.push(1);\nnumberStack.push(2);\nnumberStack.push(3);\nconsole.log(numberStack.pop()); // Output: 3\n\nconst stringStack = new Stack<string>();\nstringStack.push(\"Hello\");\nstringStack.push(\"World\");\nconsole.log(stringStack.peek()); // Output: World"
+            },
+            {
+              "type": "text",
+              "content": "Generics are essential for creating reusable, type-safe code that can work with different data types without losing type information."
+            }
+          ]
+        }
+      },
+      {
+        "id": "ts-1-8",
+        "title": "Type Guards and Type Assertions",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "TypeScript provides mechanisms to narrow down types and assert type information when needed."
+            },
+            {
+              "type": "code",
+              "language": "typescript",
+              "content": "// Type guards using typeof\nfunction processValue(value: string | number): string {\n    if (typeof value === \"string\") {\n        return value.toUpperCase();\n    } else {\n        return value.toString();\n    }\n}\n\n// Type guards using instanceof\nclass Car {\n    drive() {\n        console.log(\"Driving car...\");\n    }\n}\n\nclass Truck {\n    drive() {\n        console.log(\"Driving truck...\");\n    }\n\n    loadCargo() {\n        console.log(\"Loading cargo...\");\n    }\n}\n\nfunction driveVehicle(vehicle: Car | Truck): void {\n    vehicle.drive();\n    \n    if (vehicle instanceof Truck) {\n        vehicle.loadCargo(); // TypeScript knows this is a Truck\n    }\n}\n\n// Custom type guards\ninterface Bird {\n    fly(): void;\n    layEggs(): void;\n}\n\ninterface Fish {\n    swim(): void;\n    layEggs(): void;\n}\n\nfunction isBird(animal: Bird | Fish): animal is Bird {\n    return 'fly' in animal;\n}\n\nfunction moveAnimal(animal: Bird | Fish): void {\n    if (isBird(animal)) {\n        animal.fly(); // TypeScript knows this is a Bird\n    } else {\n        animal.swim(); // TypeScript knows this is a Fish\n    }\n}\n\n// Type assertions\nlet someValue: any = \"This is a string\";\nlet strLength: number = (someValue as string).length;\n\n// Alternative syntax\nlet strLength2: number = (<string>someValue).length;\n\n// Type assertions with unknown\nfunction processUnknown(value: unknown): string {\n    if (typeof value === \"string\") {\n        return value.toUpperCase();\n    }\n    \n    if (typeof value === \"number\") {\n        return value.toString();\n    }\n    \n    return \"Unknown type\";\n}"
+            },
+            {
+              "type": "text",
+              "content": "Type guards and type assertions help you work with union types and unknown types safely, ensuring type safety while maintaining flexibility."
+            }
+          ]
+        }
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "question": "What is TypeScript?",
+          "options": [
+            "A completely new programming language",
+            "A superset of JavaScript that adds static typing",
+            "A framework for building web applications",
+            "A database management system"
+          ],
+          "correct": 1,
+          "explanation": "TypeScript is a superset of JavaScript that adds static typing and other features to JavaScript."
+        },
+        {
+          "question": "Which of the following is NOT a benefit of TypeScript?",
+          "options": [
+            "Static type checking",
+            "Better IDE support",
+            "Faster runtime performance",
+            "Enhanced error detection"
+          ],
+          "correct": 2,
+          "explanation": "TypeScript doesn't necessarily provide faster runtime performance, but it does provide compile-time type checking and better development experience."
+        },
+        {
+          "question": "How do you declare a variable with a specific type in TypeScript?",
+          "options": [
+            "let name = \"John\";",
+            "let name: string = \"John\";",
+            "let name = string(\"John\");",
+            "let name = new String(\"John\");"
+          ],
+          "correct": 1,
+          "explanation": "In TypeScript, you use a colon followed by the type name to declare a variable with a specific type."
+        },
+        {
+          "question": "What is the purpose of interfaces in TypeScript?",
+          "options": [
+            "To create new classes",
+            "To define the structure of objects and create contracts",
+            "To import external modules",
+            "To handle asynchronous operations"
+          ],
+          "correct": 1,
+          "explanation": "Interfaces define the structure of objects and provide contracts for your code, ensuring type safety."
+        },
+        {
+          "question": "Which access modifier makes a class member accessible only within the class?",
+          "options": [
+            "public",
+            "private",
+            "protected",
+            "static"
+          ],
+          "correct": 1,
+          "explanation": "The private access modifier makes a class member accessible only within the class itself."
+        }
+      ]
+    }
+  }
+} 

@@ -1,0 +1,254 @@
+{
+  "module": {
+    "title": "Introduction to JavaScript",
+    "description": "Learn the fundamentals of JavaScript, its role in web development, and basic programming concepts",
+    "lessons": [
+      {
+        "id": "js-1-1",
+        "title": "What is JavaScript?",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "JavaScript is a high-level, interpreted programming language that was originally designed to add interactivity to web pages. It has evolved into a versatile language used for both frontend and backend development."
+            },
+            {
+              "type": "text",
+              "content": "Key characteristics of JavaScript:",
+              "subsections": [
+                "Dynamic typing - variables can hold different types of data",
+                "Object-oriented with prototype-based inheritance",
+                "Functional programming capabilities",
+                "Event-driven and asynchronous",
+                "Runs in browsers and on servers (Node.js)"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "javascript",
+              "content": "// Simple JavaScript example\nconsole.log(\"Hello, World!\");\n\n// Variables can hold different types\nlet message = \"Hello\";\nlet number = 42;\nlet isActive = true;\n\nconsole.log(message, number, isActive);"
+            }
+          ]
+        }
+      },
+      {
+        "id": "js-1-2",
+        "title": "Setting Up Your Development Environment",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "To start programming in JavaScript, you need to set up a proper development environment with the right tools and editors."
+            },
+            {
+              "type": "text",
+              "content": "Essential tools for JavaScript development:",
+              "subsections": [
+                "Code editor (VS Code, Sublime Text, Atom)",
+                "Web browser with developer tools",
+                "Node.js for server-side development",
+                "Git for version control",
+                "Package manager (npm or yarn)"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "content": "# Install Node.js (download from nodejs.org)\n# Check if Node.js is installed\nnode --version\nnpm --version\n\n# Create a new project\nmkdir my-javascript-project\ncd my-javascript-project\nnpm init -y\n\n# Install development dependencies\nnpm install --save-dev nodemon"
+            },
+            {
+              "type": "code",
+              "language": "html",
+              "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>JavaScript Practice</title>\n</head>\n<body>\n    <h1>JavaScript Practice</h1>\n    <div id=\"output\"></div>\n    \n    <script src=\"script.js\"></script>\n</body>\n</html>"
+            }
+          ]
+        }
+      },
+      {
+        "id": "js-1-3",
+        "title": "Variables and Data Types",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "JavaScript has several ways to declare variables and supports various data types. Understanding these fundamentals is crucial for writing effective JavaScript code."
+            },
+            {
+              "type": "code",
+              "language": "javascript",
+              "content": "// Variable declaration\nlet message = \"Hello\"; // Block-scoped variable\nconst PI = 3.14159; // Constant, cannot be reassigned\nvar oldWay = \"Legacy\"; // Function-scoped (avoid in modern JS)\n\n// Data types\nlet string = \"Hello World\"; // String\nlet number = 42; // Number (both integer and float)\nlet boolean = true; // Boolean\nlet nullValue = null; // Null\nlet undefinedValue = undefined; // Undefined\nlet symbol = Symbol('description'); // Symbol (ES6)\nlet bigInt = 9007199254740991n; // BigInt (ES2020)\n\n// Objects and Arrays\nlet object = { name: \"John\", age: 30 }; // Object\nlet array = [1, 2, 3, 4, 5]; // Array\nlet function = function() { return \"Hello\"; }; // Function\n\n// Type checking\nconsole.log(typeof string); // \"string\"\nconsole.log(typeof number); // \"number\"\nconsole.log(typeof boolean); // \"boolean\"\nconsole.log(typeof nullValue); // \"object\" (this is a known quirk)\nconsole.log(typeof undefinedValue); // \"undefined\"\nconsole.log(typeof object); // \"object\"\nconsole.log(typeof array); // \"object\"\nconsole.log(typeof function); // \"function\"\n\n// Array type checking\nconsole.log(Array.isArray(array)); // true\nconsole.log(Array.isArray(object)); // false"
+            },
+            {
+              "type": "text",
+              "content": "JavaScript is dynamically typed, meaning variables can change their type during execution. Use `let` for variables that will be reassigned and `const` for values that won't change."
+            }
+          ]
+        }
+      },
+      {
+        "id": "js-1-4",
+        "title": "Operators and Expressions",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "JavaScript provides various operators for performing operations on values and variables. Understanding these operators is essential for writing expressions and controlling program flow."
+            },
+            {
+              "type": "code",
+              "language": "javascript",
+              "content": "// Arithmetic operators\nlet a = 10;\nlet b = 3;\n\nconsole.log(a + b); // 13 (addition)\nconsole.log(a - b); // 7 (subtraction)\nconsole.log(a * b); // 30 (multiplication)\nconsole.log(a / b); // 3.333... (division)\nconsole.log(a % b); // 1 (modulus/remainder)\nconsole.log(a ** b); // 1000 (exponentiation)\nconsole.log(a++); // 10 (post-increment)\nconsole.log(++a); // 12 (pre-increment)\n\n// Assignment operators\nlet x = 5;\nx += 3; // Same as x = x + 3\nx -= 2; // Same as x = x - 2\nx *= 4; // Same as x = x * 4\nx /= 2; // Same as x = x / 2\n\n// Comparison operators\nconsole.log(5 == \"5\"); // true (loose equality)\nconsole.log(5 === \"5\"); // false (strict equality)\nconsole.log(5 != \"5\"); // false\nconsole.log(5 !== \"5\"); // true\nconsole.log(5 > 3); // true\nconsole.log(5 >= 5); // true\nconsole.log(5 < 3); // false\nconsole.log(5 <= 5); // true\n\n// Logical operators\nlet isTrue = true;\nlet isFalse = false;\n\nconsole.log(isTrue && isFalse); // false (AND)\nconsole.log(isTrue || isFalse); // true (OR)\nconsole.log(!isTrue); // false (NOT)\n\n// String concatenation\nlet firstName = \"John\";\nlet lastName = \"Doe\";\nlet fullName = firstName + \" \" + lastName; // \"John Doe\"\nlet templateLiteral = `${firstName} ${lastName}`; // \"John Doe\"\n\n// Type coercion examples\nconsole.log(\"5\" + 3); // \"53\" (string concatenation)\nconsole.log(\"5\" - 3); // 2 (numeric subtraction)\nconsole.log(\"5\" * 3); // 15 (numeric multiplication)\nconsole.log(\"5\" / 3); // 1.666... (numeric division)"
+            },
+            {
+              "type": "text",
+              "content": "Understanding type coercion is crucial in JavaScript. The language automatically converts types in certain contexts, which can lead to unexpected results if not handled carefully."
+            }
+          ]
+        }
+      },
+      {
+        "id": "js-1-5",
+        "title": "Control Flow and Conditional Statements",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Control flow statements allow you to make decisions and repeat code based on conditions. These are fundamental building blocks of any programming language."
+            },
+            {
+              "type": "code",
+              "language": "javascript",
+              "content": "// If statement\nlet age = 18;\n\nif (age >= 18) {\n    console.log(\"You are an adult\");\n} else {\n    console.log(\"You are a minor\");\n}\n\n// If-else if-else\nlet score = 85;\n\nif (score >= 90) {\n    console.log(\"Grade: A\");\n} else if (score >= 80) {\n    console.log(\"Grade: B\");\n} else if (score >= 70) {\n    console.log(\"Grade: C\");\n} else {\n    console.log(\"Grade: F\");\n}\n\n// Switch statement\nlet day = \"Monday\";\n\nswitch (day) {\n    case \"Monday\":\n        console.log(\"Start of work week\");\n        break;\n    case \"Friday\":\n        console.log(\"TGIF!\");\n        break;\n    case \"Saturday\":\n    case \"Sunday\":\n        console.log(\"Weekend!\");\n        break;\n    default:\n        console.log(\"Regular work day\");\n}\n\n// Ternary operator (conditional operator)\nlet isAdult = age >= 18 ? \"Adult\" : \"Minor\";\nconsole.log(isAdult);\n\n// Truthy and falsy values\nlet falsyValues = [false, 0, \"\", null, undefined, NaN];\nlet truthyValues = [true, 1, \"hello\", [], {}, function() {}];\n\n// Short-circuit evaluation\nlet name = \"\";\nlet displayName = name || \"Anonymous\"; // \"Anonymous\"\n\nlet user = {\n    name: \"John\",\n    preferences: {\n        theme: \"dark\"\n    }\n};\n\n// Optional chaining (ES2020)\nlet theme = user?.preferences?.theme || \"light\";\nconsole.log(theme); // \"dark\""
+            },
+            {
+              "type": "text",
+              "content": "JavaScript has several falsy values: false, 0, \"\", null, undefined, and NaN. Everything else is considered truthy. This is important for conditional statements."
+            }
+          ]
+        }
+      },
+      {
+        "id": "js-1-6",
+        "title": "Loops and Iteration",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Loops allow you to execute code repeatedly. JavaScript provides several types of loops for different iteration scenarios."
+            },
+            {
+              "type": "code",
+              "language": "javascript",
+              "content": "// For loop\nfor (let i = 0; i < 5; i++) {\n    console.log(`Iteration ${i}`);\n}\n\n// While loop\nlet count = 0;\nwhile (count < 3) {\n    console.log(`Count: ${count}`);\n    count++;\n}\n\n// Do-while loop\nlet num = 0;\ndo {\n    console.log(`Number: ${num}`);\n    num++;\n} while (num < 3);\n\n// For...of loop (ES6) - for iterating over values\nlet colors = [\"red\", \"green\", \"blue\"];\nfor (let color of colors) {\n    console.log(color);\n}\n\n// For...in loop - for iterating over object properties\nlet person = {\n    name: \"John\",\n    age: 30,\n    city: \"New York\"\n};\n\nfor (let key in person) {\n    console.log(`${key}: ${person[key]}`);\n}\n\n// Array methods for iteration\nlet numbers = [1, 2, 3, 4, 5];\n\n// forEach\nnumbers.forEach((number, index) => {\n    console.log(`Number ${index}: ${number}`);\n});\n\n// map - creates a new array\nlet doubled = numbers.map(num => num * 2);\nconsole.log(doubled); // [2, 4, 6, 8, 10]\n\n// filter - creates a new array with filtered elements\nlet evenNumbers = numbers.filter(num => num % 2 === 0);\nconsole.log(evenNumbers); // [2, 4]\n\n// reduce - reduces array to a single value\nlet sum = numbers.reduce((total, num) => total + num, 0);\nconsole.log(sum); // 15\n\n// Break and continue\nfor (let i = 0; i < 10; i++) {\n    if (i === 5) {\n        break; // Exit the loop\n    }\n    if (i === 2) {\n        continue; // Skip this iteration\n    }\n    console.log(i); // 0, 1, 3, 4\n}"
+            },
+            {
+              "type": "text",
+              "content": "Modern JavaScript provides powerful array methods like map, filter, and reduce that make iteration more functional and readable than traditional loops."
+            }
+          ]
+        }
+      },
+      {
+        "id": "js-1-7",
+        "title": "Functions",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Functions are reusable blocks of code that can accept inputs (parameters) and return outputs. They are fundamental to JavaScript programming."
+            },
+            {
+              "type": "code",
+              "language": "javascript",
+              "content": "// Function declaration\nfunction greet(name) {\n    return `Hello, ${name}!`;\n}\n\n// Function expression\nconst greet2 = function(name) {\n    return `Hello, ${name}!`;\n};\n\n// Arrow function (ES6)\nconst greet3 = (name) => `Hello, ${name}!`;\n\n// Arrow function with multiple parameters\nconst add = (a, b) => a + b;\n\n// Arrow function with multiple statements\nconst multiply = (a, b) => {\n    const result = a * b;\n    return result;\n};\n\n// Default parameters\nfunction createUser(name, age = 18, city = \"Unknown\") {\n    return { name, age, city };\n}\n\n// Rest parameters\nfunction sum(...numbers) {\n    return numbers.reduce((total, num) => total + num, 0);\n}\n\nconsole.log(sum(1, 2, 3, 4, 5)); // 15\n\n// Function scope and closures\nfunction outerFunction(x) {\n    return function(y) {\n        return x + y; // x is captured from outer scope\n    };\n}\n\nconst addFive = outerFunction(5);\nconsole.log(addFive(3)); // 8\n\n// Immediately Invoked Function Expression (IIFE)\n(function() {\n    console.log(\"This function runs immediately\");\n})();\n\n// Higher-order functions\nfunction withLogging(func) {\n    return function(...args) {\n        console.log(`Calling function with arguments:`, args);\n        const result = func(...args);\n        console.log(`Function returned:`, result);\n        return result;\n    };\n}\n\nconst loggedAdd = withLogging(add);\nloggedAdd(2, 3); // Logs the function call and result\n\n// Callback functions\nfunction processArray(arr, callback) {\n    const result = [];\n    for (let i = 0; i < arr.length; i++) {\n        result.push(callback(arr[i], i));\n    }\n    return result;\n}\n\nconst numbers = [1, 2, 3, 4, 5];\nconst squared = processArray(numbers, (num) => num * num);\nconsole.log(squared); // [1, 4, 9, 16, 25]"
+            },
+            {
+              "type": "text",
+              "content": "Functions in JavaScript are first-class citizens, meaning they can be assigned to variables, passed as arguments, and returned from other functions. This enables powerful functional programming patterns."
+            }
+          ]
+        }
+      },
+      {
+        "id": "js-1-8",
+        "title": "Arrays and Objects",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Arrays and objects are the primary data structures in JavaScript. Understanding how to work with them effectively is crucial for JavaScript development."
+            },
+            {
+              "type": "code",
+              "language": "javascript",
+              "content": "// Arrays\nlet fruits = [\"apple\", \"banana\", \"orange\"];\n\n// Array methods\nfruits.push(\"grape\"); // Add to end\nfruits.unshift(\"strawberry\"); // Add to beginning\nfruits.pop(); // Remove from end\nfruits.shift(); // Remove from beginning\n\n// Array destructuring\nlet [first, second, ...rest] = fruits;\nconsole.log(first, second, rest);\n\n// Array spread operator\nlet moreFruits = [...fruits, \"mango\", \"pineapple\"];\n\n// Array methods for transformation\nlet numbers = [1, 2, 3, 4, 5];\n\n// map\nlet doubled = numbers.map(num => num * 2);\n\n// filter\nlet evens = numbers.filter(num => num % 2 === 0);\n\n// reduce\nlet sum = numbers.reduce((total, num) => total + num, 0);\n\n// find and findIndex\nlet firstEven = numbers.find(num => num % 2 === 0);\nlet firstEvenIndex = numbers.findIndex(num => num % 2 === 0);\n\n// some and every\nlet hasEven = numbers.some(num => num % 2 === 0);\nlet allPositive = numbers.every(num => num > 0);\n\n// Objects\nlet person = {\n    name: \"John Doe\",\n    age: 30,\n    city: \"New York\",\n    greet() {\n        return `Hello, I'm ${this.name}`;\n    }\n};\n\n// Object property access\nconsole.log(person.name); // Dot notation\nconsole.log(person[\"age\"]); // Bracket notation\n\n// Object destructuring\nlet { name, age, ...otherProps } = person;\nconsole.log(name, age, otherProps);\n\n// Object spread operator\nlet updatedPerson = { ...person, age: 31, occupation: \"Developer\" };\n\n// Object methods\nlet keys = Object.keys(person);\nlet values = Object.values(person);\nlet entries = Object.entries(person);\n\n// Object.assign\nlet newPerson = Object.assign({}, person, { age: 31 });\n\n// Computed property names\nlet propertyName = \"age\";\nlet dynamicObject = {\n    [propertyName]: 25,\n    [`${propertyName}InYears`]: 25\n};\n\n// Nested objects and arrays\nlet complexData = {\n    users: [\n        { id: 1, name: \"Alice\", roles: [\"admin\", \"user\"] },\n        { id: 2, name: \"Bob\", roles: [\"user\"] }\n    ],\n    metadata: {\n        totalUsers: 2,\n        lastUpdated: new Date()\n    }\n};\n\n// Accessing nested data\nlet firstUser = complexData.users[0];\nlet firstUserRoles = complexData.users[0].roles;\n\n// Optional chaining (ES2020)\nlet userRole = complexData.users[0]?.roles?.[0] || \"guest\";"
+            },
+            {
+              "type": "text",
+              "content": "Arrays and objects are mutable by default in JavaScript. When you need immutability, use methods that return new arrays/objects or use libraries like Immutable.js."
+            }
+          ]
+        }
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "question": "What is JavaScript?",
+          "options": [
+            "A markup language for web pages",
+            "A high-level, interpreted programming language",
+            "A database management system",
+            "A server-side framework"
+          ],
+          "correct": 1,
+          "explanation": "JavaScript is a high-level, interpreted programming language originally designed for web browsers but now used for both frontend and backend development."
+        },
+        {
+          "question": "Which of the following is NOT a JavaScript data type?",
+          "options": [
+            "string",
+            "number",
+            "boolean",
+            "integer"
+          ],
+          "correct": 3,
+          "explanation": "JavaScript doesn't have a separate 'integer' type. All numbers are stored as floating-point values."
+        },
+        {
+          "question": "What is the difference between == and === in JavaScript?",
+          "options": [
+            "There is no difference",
+            "== performs type coercion, === does not",
+            "=== is faster than ==",
+            "== is newer syntax than ==="
+          ],
+          "correct": 1,
+          "explanation": "== performs loose equality with type coercion, while === performs strict equality without type coercion."
+        },
+        {
+          "question": "Which loop is best for iterating over array values?",
+          "options": [
+            "for...in",
+            "for...of",
+            "while",
+            "do...while"
+          ],
+          "correct": 1,
+          "explanation": "for...of is designed specifically for iterating over iterable objects like arrays and provides the values directly."
+        },
+        {
+          "question": "What is a closure in JavaScript?",
+          "options": [
+            "A function that closes the browser window",
+            "A function that has access to variables in its outer scope",
+            "A way to close database connections",
+            "A method to end loops early"
+          ],
+          "correct": 1,
+          "explanation": "A closure is a function that has access to variables in its outer (enclosing) scope, even after the outer function has returned."
+        }
+      ]
+    }
+  }
+} 

@@ -15,7 +15,7 @@ const courses = [
             'Explore neural networks and deep learning basics',
             'Hands-on experience with AI tools and frameworks'
         ],
-        instructor: 'Dr. Sarah Johnson',
+        instructor: 'Emmanuel Muttavanchery',
         rating: 4.8,
         enrollments: 2500
     },
@@ -64,7 +64,7 @@ const courses = [
         duration: '12 weeks',
         type: 'Programming',
         difficulty: 'Intermediate',
-        modules: 0,
+        modules: 6,
         prerequisites: ['programming-foundations'],
         learningOutcomes: [
             'Master Java programming fundamentals',
@@ -83,7 +83,7 @@ const courses = [
         duration: '8 weeks',
         type: 'Programming',
         difficulty: 'Intermediate',
-        modules: 0,
+        modules: 6,
         prerequisites: ['programming-foundations'],
         learningOutcomes: [
             'Master modern JavaScript features',
@@ -102,7 +102,7 @@ const courses = [
         duration: '6 weeks',
         type: 'Programming',
         difficulty: 'Advanced',
-        modules: 0,
+        modules: 6,
         prerequisites: ['javascript-programming'],
         learningOutcomes: [
             'Understand TypeScript type system',

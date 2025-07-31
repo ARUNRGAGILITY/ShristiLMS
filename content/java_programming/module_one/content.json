@@ -1,0 +1,254 @@
+{
+  "module": {
+    "title": "Introduction to Java",
+    "description": "Learn the fundamentals of Java programming, object-oriented concepts, and basic syntax",
+    "lessons": [
+      {
+        "id": "java-1-1",
+        "title": "What is Java?",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Java is a high-level, object-oriented programming language developed by Sun Microsystems (now Oracle) in 1995. It's designed to be platform-independent, meaning Java programs can run on any device that has a Java Virtual Machine (JVM)."
+            },
+            {
+              "type": "text",
+              "content": "Key features of Java:",
+              "subsections": [
+                "Platform independent - Write once, run anywhere",
+                "Object-oriented programming language",
+                "Strongly typed with static type checking",
+                "Automatic memory management (garbage collection)",
+                "Rich standard library and ecosystem",
+                "Secure and robust"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "// Simple Java program\npublic class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}"
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-1-2",
+        "title": "Setting Up Java Development Environment",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "To start programming in Java, you need to set up the Java Development Kit (JDK) and an Integrated Development Environment (IDE)."
+            },
+            {
+              "type": "text",
+              "content": "Setup steps:",
+              "subsections": [
+                "Download and install JDK (Java Development Kit)",
+                "Set up JAVA_HOME environment variable",
+                "Install an IDE (Eclipse, IntelliJ IDEA, or VS Code)",
+                "Verify installation with command line tools"
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "content": "# Check Java version\njava -version\njavac -version\n\n# Set JAVA_HOME (Windows)\nset JAVA_HOME=C:\\Program Files\\Java\\jdk-17\n\n# Set JAVA_HOME (macOS/Linux)\nexport JAVA_HOME=/usr/lib/jvm/java-17-openjdk\n\n# Add Java to PATH\n# Windows: %JAVA_HOME%\\bin\n# macOS/Linux: $JAVA_HOME/bin"
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "// First Java program\npublic class FirstProgram {\n    public static void main(String[] args) {\n        System.out.println(\"Welcome to Java Programming!\");\n        \n        // Print Java version\n        System.out.println(\"Java Version: \" + System.getProperty(\"java.version\"));\n    }\n}"
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-1-3",
+        "title": "Basic Syntax and Data Types",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Java is a strongly-typed language, meaning every variable must have a declared type. Understanding the basic syntax and data types is fundamental to Java programming."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "public class DataTypes {\n    public static void main(String[] args) {\n        // Primitive data types\n        byte byteValue = 127; // 8-bit signed integer\n        short shortValue = 32767; // 16-bit signed integer\n        int intValue = 2147483647; // 32-bit signed integer\n        long longValue = 9223372036854775807L; // 64-bit signed integer\n        \n        float floatValue = 3.14f; // 32-bit floating point\n        double doubleValue = 3.14159265359; // 64-bit floating point\n        \n        char charValue = 'A'; // 16-bit Unicode character\n        boolean booleanValue = true; // true or false\n        \n        // Reference data types\n        String stringValue = \"Hello, Java!\";\n        Integer integerObject = 100;\n        Double doubleObject = 3.14;\n        \n        // Arrays\n        int[] numbers = {1, 2, 3, 4, 5};\n        String[] names = {\"Alice\", \"Bob\", \"Charlie\"};\n        \n        // Printing values\n        System.out.println(\"Byte: \" + byteValue);\n        System.out.println(\"Short: \" + shortValue);\n        System.out.println(\"Int: \" + intValue);\n        System.out.println(\"Long: \" + longValue);\n        System.out.println(\"Float: \" + floatValue);\n        System.out.println(\"Double: \" + doubleValue);\n        System.out.println(\"Char: \" + charValue);\n        System.out.println(\"Boolean: \" + booleanValue);\n        System.out.println(\"String: \" + stringValue);\n        \n        // Type conversion (casting)\n        int intFromDouble = (int) doubleValue;\n        double doubleFromInt = intValue;\n        \n        System.out.println(\"Int from double: \" + intFromDouble);\n        System.out.println(\"Double from int: \" + doubleFromInt);\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "Java has two categories of data types: primitive types (stored directly in memory) and reference types (stored as references to objects). Understanding the difference is crucial for memory management and performance."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-1-4",
+        "title": "Variables and Operators",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Variables in Java must be declared with a specific type and can be initialized with values. Java provides various operators for performing operations on variables and values."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "public class VariablesAndOperators {\n    public static void main(String[] args) {\n        // Variable declaration and initialization\n        int age = 25;\n        String name = \"John Doe\";\n        double salary = 50000.0;\n        \n        // Constants (final keyword)\n        final double PI = 3.14159;\n        final String COMPANY_NAME = \"TechCorp\";\n        \n        // Arithmetic operators\n        int a = 10;\n        int b = 3;\n        \n        System.out.println(\"Addition: \" + (a + b)); // 13\n        System.out.println(\"Subtraction: \" + (a - b)); // 7\n        System.out.println(\"Multiplication: \" + (a * b)); // 30\n        System.out.println(\"Division: \" + (a / b)); // 3\n        System.out.println(\"Modulus: \" + (a % b)); // 1\n        \n        // Increment and decrement\n        int count = 5;\n        System.out.println(\"Original count: \" + count);\n        System.out.println(\"Post-increment: \" + count++); // 5\n        System.out.println(\"After post-increment: \" + count); // 6\n        System.out.println(\"Pre-increment: \" + ++count); // 7\n        \n        // Assignment operators\n        int x = 10;\n        x += 5; // Same as x = x + 5\n        x -= 3; // Same as x = x - 3\n        x *= 2; // Same as x = x * 2\n        x /= 4; // Same as x = x / 4\n        \n        System.out.println(\"Final x: \" + x);\n        \n        // Comparison operators\n        int num1 = 10;\n        int num2 = 20;\n        \n        System.out.println(\"num1 == num2: \" + (num1 == num2)); // false\n        System.out.println(\"num1 != num2: \" + (num1 != num2)); // true\n        System.out.println(\"num1 < num2: \" + (num1 < num2)); // true\n        System.out.println(\"num1 > num2: \" + (num1 > num2)); // false\n        System.out.println(\"num1 <= num2: \" + (num1 <= num2)); // true\n        System.out.println(\"num1 >= num2: \" + (num1 >= num2)); // false\n        \n        // Logical operators\n        boolean isTrue = true;\n        boolean isFalse = false;\n        \n        System.out.println(\"AND: \" + (isTrue && isFalse)); // false\n        System.out.println(\"OR: \" + (isTrue || isFalse)); // true\n        System.out.println(\"NOT: \" + (!isTrue)); // false\n        \n        // String concatenation\n        String firstName = \"John\";\n        String lastName = \"Doe\";\n        String fullName = firstName + \" \" + lastName;\n        System.out.println(\"Full name: \" + fullName);\n        \n        // String formatting\n        String formatted = String.format(\"Name: %s, Age: %d, Salary: %.2f\", \n                                       name, age, salary);\n        System.out.println(formatted);\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "Java operators follow precedence rules. Understanding operator precedence helps avoid unexpected results in complex expressions."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-1-5",
+        "title": "Control Flow Statements",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Control flow statements allow you to control the execution of your program based on conditions and loops. These are essential for creating dynamic and responsive applications."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "public class ControlFlow {\n    public static void main(String[] args) {\n        // If statement\n        int age = 18;\n        \n        if (age >= 18) {\n            System.out.println(\"You are an adult\");\n        } else {\n            System.out.println(\"You are a minor\");\n        }\n        \n        // If-else if-else\n        int score = 85;\n        \n        if (score >= 90) {\n            System.out.println(\"Grade: A\");\n        } else if (score >= 80) {\n            System.out.println(\"Grade: B\");\n        } else if (score >= 70) {\n            System.out.println(\"Grade: C\");\n        } else {\n            System.out.println(\"Grade: F\");\n        }\n        \n        // Switch statement\n        int day = 1;\n        String dayName;\n        \n        switch (day) {\n            case 1:\n                dayName = \"Monday\";\n                break;\n            case 2:\n                dayName = \"Tuesday\";\n                break;\n            case 3:\n                dayName = \"Wednesday\";\n                break;\n            case 4:\n                dayName = \"Thursday\";\n                break;\n            case 5:\n                dayName = \"Friday\";\n                break;\n            case 6:\n            case 7:\n                dayName = \"Weekend\";\n                break;\n            default:\n                dayName = \"Invalid day\";\n        }\n        \n        System.out.println(\"Day: \" + dayName);\n        \n        // Ternary operator\n        String status = (age >= 18) ? \"Adult\" : \"Minor\";\n        System.out.println(\"Status: \" + status);\n        \n        // For loop\n        System.out.println(\"\\nFor loop:\");\n        for (int i = 0; i < 5; i++) {\n            System.out.println(\"Iteration \" + i);\n        }\n        \n        // While loop\n        System.out.println(\"\\nWhile loop:\");\n        int count = 0;\n        while (count < 3) {\n            System.out.println(\"Count: \" + count);\n            count++;\n        }\n        \n        // Do-while loop\n        System.out.println(\"\\nDo-while loop:\");\n        int num = 0;\n        do {\n            System.out.println(\"Number: \" + num);\n            num++;\n        } while (num < 3);\n        \n        // Enhanced for loop (for arrays)\n        System.out.println(\"\\nEnhanced for loop:\");\n        String[] colors = {\"Red\", \"Green\", \"Blue\"};\n        for (String color : colors) {\n            System.out.println(\"Color: \" + color);\n        }\n        \n        // Break and continue\n        System.out.println(\"\\nBreak and continue:\");\n        for (int i = 0; i < 10; i++) {\n            if (i == 5) {\n                break; // Exit the loop\n            }\n            if (i == 2) {\n                continue; // Skip this iteration\n            }\n            System.out.println(\"i = \" + i);\n        }\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "Control flow statements are fundamental to programming logic. Understanding when to use each type of statement helps create efficient and readable code."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-1-6",
+        "title": "Methods and Functions",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Methods in Java are blocks of code that perform specific tasks. They help organize code, promote reusability, and make programs more modular."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "public class Methods {\n    // Method with no parameters and no return value\n    public static void greet() {\n        System.out.println(\"Hello, World!\");\n    }\n    \n    // Method with parameters and return value\n    public static int add(int a, int b) {\n        return a + b;\n    }\n    \n    // Method with multiple parameters\n    public static String createFullName(String firstName, String lastName) {\n        return firstName + \" \" + lastName;\n    }\n    \n    // Method with default parameter (using method overloading)\n    public static int multiply(int a, int b) {\n        return a * b;\n    }\n    \n    public static int multiply(int a, int b, int c) {\n        return a * b * c;\n    }\n    \n    // Method with array parameter\n    public static int sumArray(int[] numbers) {\n        int sum = 0;\n        for (int number : numbers) {\n            sum += number;\n        }\n        return sum;\n    }\n    \n    // Method with variable arguments (varargs)\n    public static int sum(int... numbers) {\n        int total = 0;\n        for (int number : numbers) {\n            total += number;\n        }\n        return total;\n    }\n    \n    // Recursive method\n    public static int factorial(int n) {\n        if (n <= 1) {\n            return 1;\n        }\n        return n * factorial(n - 1);\n    }\n    \n    // Method with different return types\n    public static boolean isEven(int number) {\n        return number % 2 == 0;\n    }\n    \n    public static double calculateArea(double radius) {\n        return Math.PI * radius * radius;\n    }\n    \n    public static void main(String[] args) {\n        // Calling methods\n        greet();\n        \n        int result = add(5, 3);\n        System.out.println(\"Sum: \" + result);\n        \n        String fullName = createFullName(\"John\", \"Doe\");\n        System.out.println(\"Full name: \" + fullName);\n        \n        // Method overloading\n        System.out.println(\"Multiply 2 numbers: \" + multiply(2, 3));\n        System.out.println(\"Multiply 3 numbers: \" + multiply(2, 3, 4));\n        \n        // Array parameter\n        int[] numbers = {1, 2, 3, 4, 5};\n        System.out.println(\"Sum of array: \" + sumArray(numbers));\n        \n        // Variable arguments\n        System.out.println(\"Sum of 1,2,3: \" + sum(1, 2, 3));\n        System.out.println(\"Sum of 1,2,3,4,5: \" + sum(1, 2, 3, 4, 5));\n        \n        // Recursive method\n        System.out.println(\"Factorial of 5: \" + factorial(5));\n        \n        // Different return types\n        System.out.println(\"Is 6 even? \" + isEven(6));\n        System.out.println(\"Area of circle with radius 3: \" + calculateArea(3));\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "Methods are essential for code organization and reusability. Understanding method signatures, parameters, and return types is crucial for effective Java programming."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-1-7",
+        "title": "Classes and Objects",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Java is an object-oriented programming language. Classes are blueprints for creating objects, and objects are instances of classes that contain data and behavior."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "// Simple class definition\npublic class Person {\n    // Instance variables (attributes)\n    private String name;\n    private int age;\n    private String email;\n    \n    // Constructor\n    public Person(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n    \n    // Constructor with default values\n    public Person() {\n        this.name = \"Unknown\";\n        this.age = 0;\n    }\n    \n    // Getter methods\n    public String getName() {\n        return name;\n    }\n    \n    public int getAge() {\n        return age;\n    }\n    \n    public String getEmail() {\n        return email;\n    }\n    \n    // Setter methods\n    public void setName(String name) {\n        this.name = name;\n    }\n    \n    public void setAge(int age) {\n        if (age >= 0) {\n            this.age = age;\n        }\n    }\n    \n    public void setEmail(String email) {\n        this.email = email;\n    }\n    \n    // Instance method\n    public void introduce() {\n        System.out.println(\"Hello, I'm \" + name + \" and I'm \" + age + \" years old.\");\n    }\n    \n    // Method with parameters\n    public void greet(String greeting) {\n        System.out.println(greeting + \", I'm \" + name);\n    }\n    \n    // Method that returns a value\n    public boolean isAdult() {\n        return age >= 18;\n    }\n    \n    // Override toString method\n    @Override\n    public String toString() {\n        return \"Person{name='\" + name + \"', age=\" + age + \", email='\" + email + \"'}\";\n    }\n}\n\n// Main class to demonstrate object creation\npublic class ObjectOrientedDemo {\n    public static void main(String[] args) {\n        // Creating objects\n        Person person1 = new Person(\"John Doe\", 25);\n        Person person2 = new Person(\"Jane Smith\", 30);\n        Person person3 = new Person(); // Uses default constructor\n        \n        // Setting properties\n        person3.setName(\"Bob Johnson\");\n        person3.setAge(35);\n        person3.setEmail(\"bob@example.com\");\n        \n        // Calling methods\n        person1.introduce();\n        person2.greet(\"Good morning\");\n        \n        // Using getter methods\n        System.out.println(\"Person 1 name: \" + person1.getName());\n        System.out.println(\"Person 2 age: \" + person2.getAge());\n        \n        // Using boolean method\n        System.out.println(\"Is person1 adult? \" + person1.isAdult());\n        System.out.println(\"Is person3 adult? \" + person3.isAdult());\n        \n        // Using toString method\n        System.out.println(\"Person 3: \" + person3);\n        \n        // Creating an array of objects\n        Person[] people = {person1, person2, person3};\n        \n        System.out.println(\"\\nAll people:\");\n        for (Person person : people) {\n            person.introduce();\n        }\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "Classes and objects are the foundation of object-oriented programming in Java. Understanding encapsulation, constructors, and method design is essential for creating robust applications."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-1-8",
+        "title": "Arrays and Collections",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Arrays and collections are used to store and manage groups of data. Java provides various data structures for different use cases."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "import java.util.Arrays;\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.HashSet;\n\npublic class ArraysAndCollections {\n    public static void main(String[] args) {\n        // Arrays\n        int[] numbers = {1, 2, 3, 4, 5};\n        String[] names = {\"Alice\", \"Bob\", \"Charlie\"};\n        \n        // Array declaration and initialization\n        int[] scores = new int[5];\n        scores[0] = 85;\n        scores[1] = 92;\n        scores[2] = 78;\n        scores[3] = 95;\n        scores[4] = 88;\n        \n        // Accessing array elements\n        System.out.println(\"First number: \" + numbers[0]);\n        System.out.println(\"Last name: \" + names[names.length - 1]);\n        \n        // Array length\n        System.out.println(\"Numbers array length: \" + numbers.length);\n        \n        // Iterating through arrays\n        System.out.println(\"\\nNumbers:\");\n        for (int i = 0; i < numbers.length; i++) {\n            System.out.println(\"Index \" + i + \": \" + numbers[i]);\n        }\n        \n        System.out.println(\"\\nNames:\");\n        for (String name : names) {\n            System.out.println(name);\n        }\n        \n        // Multi-dimensional arrays\n        int[][] matrix = {\n            {1, 2, 3},\n            {4, 5, 6},\n            {7, 8, 9}\n        };\n        \n        System.out.println(\"\\nMatrix:\");\n        for (int i = 0; i < matrix.length; i++) {\n            for (int j = 0; j < matrix[i].length; j++) {\n                System.out.print(matrix[i][j] + \" \");\n            }\n            System.out.println();\n        }\n        \n        // ArrayList (dynamic array)\n        ArrayList<String> fruits = new ArrayList<>();\n        fruits.add(\"Apple\");\n        fruits.add(\"Banana\");\n        fruits.add(\"Orange\");\n        fruits.add(\"Grape\");\n        \n        System.out.println(\"\\nFruits: \" + fruits);\n        System.out.println(\"Size: \" + fruits.size());\n        \n        // ArrayList operations\n        fruits.remove(\"Banana\");\n        fruits.add(1, \"Mango\");\n        \n        System.out.println(\"After modifications: \" + fruits);\n        \n        // Iterating through ArrayList\n        System.out.println(\"\\nFruits list:\");\n        for (String fruit : fruits) {\n            System.out.println(fruit);\n        }\n        \n        // HashMap (key-value pairs)\n        HashMap<String, Integer> ages = new HashMap<>();\n        ages.put(\"John\", 25);\n        ages.put(\"Jane\", 30);\n        ages.put(\"Bob\", 35);\n        \n        System.out.println(\"\\nAges: \" + ages);\n        System.out.println(\"John's age: \" + ages.get(\"John\"));\n        \n        // HashMap operations\n        ages.put(\"John\", 26); // Update existing key\n        ages.remove(\"Bob\");\n        \n        System.out.println(\"After modifications: \" + ages);\n        \n        // HashSet (unique elements)\n        HashSet<String> uniqueNames = new HashSet<>();\n        uniqueNames.add(\"Alice\");\n        uniqueNames.add(\"Bob\");\n        uniqueNames.add(\"Alice\"); // Duplicate, won't be added\n        uniqueNames.add(\"Charlie\");\n        \n        System.out.println(\"\\nUnique names: \" + uniqueNames);\n        \n        // Array utility methods\n        int[] unsorted = {5, 2, 8, 1, 9, 3};\n        System.out.println(\"\\nOriginal array: \" + Arrays.toString(unsorted));\n        \n        Arrays.sort(unsorted);\n        System.out.println(\"Sorted array: \" + Arrays.toString(unsorted));\n        \n        // Searching in sorted array\n        int searchKey = 8;\n        int index = Arrays.binarySearch(unsorted, searchKey);\n        System.out.println(\"Index of \" + searchKey + \": \" + index);\n        \n        // Array copying\n        int[] original = {1, 2, 3, 4, 5};\n        int[] copy = Arrays.copyOf(original, original.length);\n        System.out.println(\"\\nOriginal: \" + Arrays.toString(original));\n        System.out.println(\"Copy: \" + Arrays.toString(copy));\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "Arrays are fixed-size collections, while ArrayList and other collections provide dynamic sizing and additional functionality. Choose the appropriate data structure based on your specific needs."
+            }
+          ]
+        }
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "question": "What is Java?",
+          "options": [
+            "A markup language for web pages",
+            "A high-level, object-oriented programming language",
+            "A database management system",
+            "A web browser"
+          ],
+          "correct": 1,
+          "explanation": "Java is a high-level, object-oriented programming language developed by Sun Microsystems (now Oracle) that is platform-independent."
+        },
+        {
+          "question": "Which of the following is NOT a primitive data type in Java?",
+          "options": [
+            "int",
+            "double",
+            "String",
+            "boolean"
+          ],
+          "correct": 2,
+          "explanation": "String is a reference type in Java, not a primitive type. The primitive types are byte, short, int, long, float, double, char, and boolean."
+        },
+        {
+          "question": "What is the purpose of the 'final' keyword in Java?",
+          "options": [
+            "To end a program",
+            "To make a variable constant (unchangeable)",
+            "To create a loop",
+            "To define a method"
+          ],
+          "correct": 1,
+          "explanation": "The 'final' keyword makes a variable constant, meaning its value cannot be changed after initialization."
+        },
+        {
+          "question": "Which loop is best for iterating through an array when you need the index?",
+          "options": [
+            "for-each loop",
+            "while loop",
+            "traditional for loop",
+            "do-while loop"
+          ],
+          "correct": 2,
+          "explanation": "The traditional for loop with an index variable is best when you need to know the position of elements in an array."
+        },
+        {
+          "question": "What is encapsulation in Java?",
+          "options": [
+            "Combining multiple classes into one",
+            "Hiding data and methods within a class",
+            "Creating multiple objects from a class",
+            "Inheriting from another class"
+          ],
+          "correct": 1,
+          "explanation": "Encapsulation is the bundling of data and methods that operate on that data within a single unit (class) and hiding the internal state."
+        }
+      ]
+    }
+  }
+} 
