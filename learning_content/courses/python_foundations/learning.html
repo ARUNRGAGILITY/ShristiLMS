@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>ShristiLMS - Interactive Learning Platform | Master AI, Programming & Data Science</title>
+    <meta name="title" content="ShristiLMS - Interactive Learning Platform | Master AI, Programming & Data Science">
+    <meta name="description" content="Learn AI, programming, and data science with hands-on courses, real projects, and interactive quizzes. Master future-proof skills with our comprehensive learning management system.">
+    <meta name="keywords" content="learning management system, online courses, AI courses, programming courses, data science, machine learning, web development, coding tutorials, interactive learning, skill development, tech education, online learning platform">
+    <meta name="author" content="ShristiLMS">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/logo.png">
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+    
+    <style>
+        /* Enhanced readability theme with minimal colors and high progress visibility */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #10b981;
+            --bg-color: #fefefe;
+            --surface-color: #ffffff;
+            --surface-light: #f8fafc;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --border-color: #e5e7eb;
+            --sidebar-width: 320px;
+            --header-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-1px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: var(--header-height);
+            right: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--header-height));
+            background: var(--surface-color);
+            border-left: 1px solid var(--border-color);
+            overflow-y: auto;
+            z-index: 999;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--surface-light);
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .progress-circle {
+            width: 48px;
+            height: 48px;
+            position: relative;
+        }
+
+        .progress-circle svg {
+            width: 48px;
+            height: 48px;
+            transform: rotate(-90deg);
+        }
+
+        .progress-circle .progress-bg {
+            fill: none;
+            stroke: var(--border-color);
+            stroke-width: 3;
+        }
+
+        .progress-circle .progress-bar {
+            fill: none;
+            stroke: var(--primary-color);
+            stroke-width: 3;
+            stroke-linecap: round;
+            transition: stroke-dasharray 0.5s ease;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .progress-info {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .topics-list {
+            padding: 1rem 0;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            padding: 0.875rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .topic-item:hover {
+            background-color: var(--surface-light);
+            border-left-color: var(--primary-color);
+        }
+
+        .topic-item.active {
+            background-color: #eff6ff;
+            border-left-color: var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .topic-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--surface-light);
+            color: var(--text-secondary);
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.875rem;
+            flex-shrink: 0;
+            border: 2px solid var(--border-color);
+        }
+
+        .topic-item.active .topic-number {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .topic-item.completed .topic-number {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .topic-item.completed .topic-number::after {
+            content: '✓';
+            font-size: 0.7rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-top: var(--header-height);
+            margin-right: var(--sidebar-width);
+            padding: 2rem;
+            max-width: calc(100vw - var(--sidebar-width) - 4rem);
+        }
+
+        .content-wrapper {
+            background: var(--surface-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .content-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+        }
+
+        .content-header h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .content-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .content-body {
+            padding: 2.5rem;
+            line-height: 1.8;
+        }
+
+        /* Enhanced content styling for readability */
+        .content-body h1 {
+            color: var(--primary-color);
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .content-body h2 {
+            color: var(--text-primary);
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 1.25rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .content-body h3 {
+            color: var(--text-primary);
+            font-size: 1.375rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .content-body p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1rem;
+            text-align: justify;
+        }
+
+        .content-body ul, .content-body ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .content-body li {
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Enhanced code blocks */
+        .content-body pre {
+            background: #1e293b;
+            border-radius: 10px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+            position: relative;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .content-body code {
+            font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .content-body p code {
+            background: #f1f5f9;
+            color: var(--primary-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Copy button styling */
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .copy-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Navigation at bottom */
+        .content-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--surface-light);
+        }
+
+        .nav-btn-large {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn-large:hover:not(:disabled) {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .nav-btn-large:disabled {
+            background: var(--border-color);
+            color: var(--text-secondary);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Course info styling */
+        .course-info {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--surface-light);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .course-info h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .course-info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .course-info-item:last-child {
+            border-bottom: none;
+        }
+
+        .course-info-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .course-info-value {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            :root {
+                --sidebar-width: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                order: -1;
+                border-left: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .main-content {
+                margin-right: 0;
+                padding: 1rem;
+                margin-top: 0;
+            }
+
+            .header {
+                position: static;
+            }
+
+            .nav-buttons {
+                display: none;
+            }
+
+            .content-body {
+                padding: 1.5rem;
+            }
+
+            .content-body h1 {
+                font-size: 1.75rem;
+            }
+
+            .content-body h2 {
+                font-size: 1.5rem;
+            }
+
+            .content-body h3 {
+                font-size: 1.25rem;
+            }
+
+            .content-body pre {
+                padding: 1rem;
+            }
+
+            .copy-btn {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Scrollbar styling */
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: var(--surface-light);
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 3px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+
+        /* Loading state */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(37, 99, 235, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Error message styling */
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #dc2626;
+            margin: 2rem 0;
+        }
+
+        .error-message h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .error-message ul {
+            margin: 0;
+            padding-left: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .error-message code {
+            background: #fecaca;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1 id="courseTitle">Loading Course...</h1>
+        <div class="nav-buttons">
+            <button class="nav-btn" id="prevBtn" onclick="navigateTopic(-1)">← Previous</button>
+            <button class="nav-btn" id="nextBtn" onclick="navigateTopic(1)">Next →</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="content-header">
+                    <h2 id="topicTitle">Welcome to Your Course</h2>
+                    <p id="topicDescription">Start your learning journey</p>
+                </div>
+                <div class="content-body" id="contentBody">
+                    <div style="text-align: center; padding: 3rem 0;">
+                        <div class="loading"></div>
+                        <h3 style="margin-top: 1rem; font-size: 1.2rem;">Loading course content...</h3>
+                        <p style="margin-top: 0.5rem; color: var(--text-secondary);">Please wait while we prepare your learning materials</p>
+                    </div>
+                </div>
+                <div class="content-nav">
+                    <button class="nav-btn-large" id="prevBtnBottom" onclick="navigateTopic(-1)" disabled>
+                        ← Previous Topic
+                    </button>
+                    <button class="nav-btn-large" id="nextBtnBottom" onclick="navigateTopic(1)" disabled>
+                        Next Topic →
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Course Contents</h2>
+                <div class="progress-container">
+                    <div class="progress-circle">
+                        <svg viewBox="0 0 36 36">
+                            <circle class="progress-bg" cx="18" cy="18" r="16"></circle>
+                            <circle class="progress-bar" cx="18" cy="18" r="16" stroke-dasharray="0 100"></circle>
+                        </svg>
+                        <div class="progress-text">0%</div>
+                    </div>
+                    <div class="progress-info">
+                        <div id="progressText">Loading topics...</div>
+                        <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">Keep going!</div>
+                    </div>
+                </div>
+            </div>
+            <nav class="topics-list" id="topicsList">
+                <div style="padding: 2rem; text-align: center; color: var(--text-secondary);">
+                    <div class="loading" style="margin: 0 auto 1rem;"></div>
+                    <p>Loading topics...</p>
+                </div>
+            </nav>
+            
+            <!-- Course Info Section -->
+            <div class="course-info" id="courseInfo" style="display: none;">
+                <h3>📊 Course Details</h3>
+                <div class="course-info-item">
+                    <span class="course-info-label">Course:</span>
+                    <span class="course-info-value" id="courseInfoName">-</span>
+                </div>
+                <div class="course-info-item">
+                    <span class="course-info-label">Topics:</span>
+                    <span class="course-info-value" id="courseInfoTopics">-</span>
+                </div>
+                <div class="course-info-item">
+                    <span class="course-info-label">Status:</span>
+                    <span class="course-info-value" id="courseInfoStatus">In Progress</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // Global variables
+        let currentTopicIndex = -1;
+        let completedTopics = new Set();
+        let courseTopics = [];
+        let markdownContent = '';
+        let courseName = '';
+
+        // Course configuration mapping
+        const courseConfig = {
+            'python-basics': {
+                title: 'Python Basics Course',
+                filename: 'python-basics-content.md',
+                description: 'Master Python programming from basics to advanced'
+            },
+            'javascript-fundamentals': {
+                title: 'JavaScript Fundamentals',
+                filename: 'javascript-fundamentals-content.md',
+                description: 'Learn JavaScript from ground up'
+            },
+            'web-development': {
+                title: 'Web Development Course',
+                filename: 'web-development-content.md',
+                description: 'Complete web development guide'
+            },
+            'data-science': {
+                title: 'Data Science Foundations',
+                filename: 'data-science-content.md',
+                description: 'Introduction to data science and analytics'
+            },
+            'machine-learning': {
+                title: 'Machine Learning Course',
+                filename: 'machine-learning-content.md',
+                description: 'Comprehensive machine learning guide'
+            }
+        };
+
+        // Load markdown file using XMLHttpRequest
+        function loadMarkdownFile(filePath) {
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', filePath, true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            resolve(xhr.responseText);
+                        } else {
+                            reject(new Error(`Failed to load ${filePath}: ${xhr.status}`));
+                        }
+                    }
+                };
+                xhr.send();
+            });
+        }
+
+        // Extract topics from markdown content
+        function extractTopicsFromMarkdown(content) {
+            const topics = [];
+            const lines = content.split('\n');
+            
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                
+                // Look for ## headers (main topics)
+                if (line.startsWith('## ') && !line.startsWith('### ')) {
+                    const title = line.substring(3).trim();
+                    
+                    // Skip the main title or other meta headers
+                    if (title.toLowerCase().includes('complete course') || 
+                        title.toLowerCase().includes('table of contents') ||
+                        title.length < 3) {
+                        continue;
+                    }
+                    
+                    // Generate ID from title
+                    const id = title.toLowerCase()
+                        .replace(/[^\w\s-]/g, '')
+                        .replace(/\s+/g, '-')
+                        .replace(/-+/g, '-')
+                        .trim();
+                    
+                    // Get description (first paragraph after the header)
+                    let description = '';
+                    for (let j = i + 1; j < lines.length; j++) {
+                        const nextLine = lines[j].trim();
+                        if (nextLine === '') continue;
+                        if (nextLine.startsWith('#')) break;
+                        if (nextLine.length > 0) {
+                            description = nextLine.length > 100 ? 
+                                nextLine.substring(0, 100) + '...' : 
+                                nextLine;
+                            break;
+                        }
+                    }
+                    
+                    topics.push({
+                        id: id,
+                        title: title,
+                        description: description || `Learn about ${title}`
+                    });
+                }
+            }
+            
+            return topics;
+        }
+
+        // Extract specific topic content from markdown
+        function extractTopicContent(content, topicId) {
+            const sections = content.split(/^## /m);
+            
+            // Find the section that matches our topic
+            const topic = courseTopics.find(t => t.id === topicId);
+            if (!topic) return generateFallbackContent(topicId);
+            
+            const section = sections.find(s => s.trim().startsWith(topic.title));
+            if (section) {
+                return '## ' + section;
+            }
+            
+            return generateFallbackContent(topicId);
+        }
+
+        // Generate fallback content when topic not found
+        function generateFallbackContent(topicId) {
+            const topic = courseTopics.find(t => t.id === topicId);
+            const title = topic ? topic.title : 'Topic';
+            
+            return `# ${title}
+
+This topic covers important concepts in ${courseName}.
+
+## Overview
+Content for this topic is being loaded...
+
+## Key Points
+- Important concept 1
+- Important concept 2  
+- Important concept 3
+
+## Example
+\`\`\`python
+# Example code will be shown here
+print("Learning ${title}")
+\`\`\`
+`;
+        }
+
+        // Get course name from URL parameters
+        function getCourseFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('course') || 'python-basics'; // default to python-basics
+        }
+
+        // Initialize the application
+        async function init() {
+            try {
+                console.log('Initializing learning platform...');
+                
+                // Get course name from URL
+                courseName = getCourseFromURL();
+                console.log('Course name from URL:', courseName);
+                
+                // Get course configuration
+                const config = courseConfig[courseName];
+                if (!config) {
+                    throw new Error(`Course "${courseName}" not found in configuration`);
+                }
+                
+                // Update page title and header
+                document.title = `${config.title} - ShristiLMS`;
+                document.getElementById('courseTitle').textContent = config.title;
+                
+                // Load markdown content
+                console.log('Loading markdown file:', config.filename);
+                markdownContent = await loadMarkdownFile(config.filename);
+                console.log('Markdown loaded successfully, length:', markdownContent.length);
+                
+                // Extract topics from markdown
+                courseTopics = extractTopicsFromMarkdown(markdownContent);
+                console.log('Extracted topics:', courseTopics.length);
+                
+                if (courseTopics.length === 0) {
+                    throw new Error('No topics found in markdown file');
+                }
+                
+                // Update course info
+                document.getElementById('courseInfoName').textContent = config.title;
+                document.getElementById('courseInfoTopics').textContent = courseTopics.length;
+                document.getElementById('courseInfo').style.display = 'block';
+                
+                // Update the progress text with actual count
+                document.getElementById('progressText').textContent = `0 of ${courseTopics.length} topics completed`;
+                
+                // Render topics list
+                renderTopicsList();
+                updateProgress();
+                
+                // Load first topic by default
+                if (courseTopics.length > 0) {
+                    loadTopic(0);
+                }
+                
+            } catch (error) {
+                console.error('Failed to initialize:', error);
+                showErrorMessage(error.message);
+            }
+        }
+
+        // Show error message when content fails to load
+        function showErrorMessage(errorMsg) {
+            const contentBody = document.getElementById('contentBody');
+            contentBody.innerHTML = `
+                <div class="error-message">
+                    <h3>⚠️ Content Loading Error</h3>
+                    <p style="margin-bottom: 1rem;">
+                        ${errorMsg}
+                    </p>
+                    <h4 style="margin-bottom: 0.5rem;">🔧 Troubleshooting:</h4>
+                    <ul>
+                        <li>Make sure the markdown file <code>${courseConfig[courseName]?.filename || 'content file'}</code> exists in the same directory</li>
+                        <li>Check that the file name matches exactly (case-sensitive)</li>
+                        <li>Ensure the markdown file contains <code>## Topic Name</code> headers</li>
+                        <li>Verify the course parameter: <code>?course=${courseName}</code></li>
+                        <li>Try refreshing the page</li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        // Render topics list in sidebar
+        function renderTopicsList() {
+            const topicsList = document.getElementById('topicsList');
+            topicsList.innerHTML = '';
+
+            if (courseTopics.length === 0) {
+                topicsList.innerHTML = '<div style="padding: 2rem; text-align: center; color: var(--text-secondary);">No topics found</div>';
+                return;
+            }
+
+            courseTopics.forEach((topic, index) => {
+                const topicElement = document.createElement('div');
+                topicElement.className = `topic-item ${index === currentTopicIndex ? 'active' : ''} ${completedTopics.has(index) ? 'completed' : ''}`;
+                topicElement.onclick = () => loadTopic(index);
+
+                topicElement.innerHTML = `
+                    <span class="topic-number">${index + 1}</span>
+                    <div style="flex: 1; min-width: 0;">
+                        <div style="font-weight: 600; margin-bottom: 0.25rem;">${topic.title}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.3;">${topic.description}</div>
+                    </div>
+                `;
+
+                topicsList.appendChild(topicElement);
+            });
+        }
+
+        // Load topic content
+        async function loadTopic(index) {
+            if (index < 0 || index >= courseTopics.length) return;
+
+            currentTopicIndex = index;
+            const topic = courseTopics[index];
+
+            // Update header
+            document.getElementById('topicTitle').textContent = topic.title;
+            document.getElementById('topicDescription').textContent = topic.description;
+
+            try {
+                // Extract topic content from loaded markdown
+                const topicContent = extractTopicContent(markdownContent, topic.id);
+                const htmlContent = marked.parse(topicContent);
+                
+                document.getElementById('contentBody').innerHTML = htmlContent;
+                
+                // Add copy buttons to code blocks
+                addCopyButtons();
+                
+                // Highlight code with error handling
+                if (typeof Prism !== 'undefined') {
+                    setTimeout(() => {
+                        try {
+                            Prism.highlightAll();
+                        } catch (error) {
+                            console.warn('Prism highlighting failed:', error);
+                        }
+                    }, 100);
+                }
+                
+            } catch (error) {
+                console.warn('Failed to load topic content:', error);
+                document.getElementById('contentBody').innerHTML = generatePlaceholderContent(topic);
+            }
+
+            // Mark as completed
+            completedTopics.add(index);
+
+            // Update UI
+            renderTopicsList();
+            updateProgress();
+            updateNavigationButtons();
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add copy buttons to code blocks
+        function addCopyButtons() {
+            const codeBlocks = document.querySelectorAll('pre code');
+            codeBlocks.forEach(codeBlock => {
+                const pre = codeBlock.parentElement;
+                
+                if (pre.querySelector('.copy-btn')) return;
+                
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'copy-btn';
+                copyBtn.textContent = 'Copy';
+                copyBtn.onclick = (e) => {
+                    e.preventDefault();
+                    copyCode(copyBtn);
+                };
+                
+                pre.style.position = 'relative';
+                pre.appendChild(copyBtn);
+            });
+        }
+
+        // Copy code functionality
+        function copyCode(button) {
+            const pre = button.parentElement;
+            const codeBlock = pre.querySelector('code');
+            const text = codeBlock.textContent || codeBlock.innerText;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopySuccess(button);
+                }).catch(() => {
+                    fallbackCopyText(text, button);
+                });
+            } else {
+                fallbackCopyText(text, button);
+            }
+        }
+
+        // Fallback copy method
+        function fallbackCopyText(text, button) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess(button);
+            } catch (err) {
+                console.error('Copy failed:', err);
+                button.textContent = 'Copy Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Show copy success animation
+        function showCopySuccess(button) {
+            const originalText = button.textContent;
+            button.textContent = '✓ Copied!';
+            button.style.background = 'var(--accent-color)';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = 'var(--primary-color)';
+            }, 2000);
+        }
+
+        // Navigate between topics
+        function navigateTopic(direction) {
+            if (courseTopics.length === 0) return;
+            
+            const newIndex = currentTopicIndex + direction;
+            if (newIndex >= 0 && newIndex < courseTopics.length) {
+                loadTopic(newIndex);
+            }
+        }
+
+        // Update navigation buttons
+        function updateNavigationButtons() {
+            const prevBtns = [document.getElementById('prevBtn'), document.getElementById('prevBtnBottom')];
+            const nextBtns = [document.getElementById('nextBtn'), document.getElementById('nextBtnBottom')];
+
+            prevBtns.forEach(btn => {
+                btn.disabled = currentTopicIndex <= 0;
+            });
+
+            nextBtns.forEach(btn => {
+                btn.disabled = currentTopicIndex >= courseTopics.length - 1;
+            });
+        }
+
+        // Update progress
+        function updateProgress() {
+            if (courseTopics.length === 0) return;
+            
+            const progress = completedTopics.size / courseTopics.length;
+            const progressPercent = Math.round(progress * 100);
+            
+            // Update circular progress
+            const progressBar = document.querySelector('.progress-bar');
+            const circumference = 2 * Math.PI * 16; // radius = 16
+            const dashArray = progress * circumference;
+            progressBar.style.strokeDasharray = `${dashArray} ${circumference}`;
+            
+            // Update progress text
+            document.querySelector('.progress-text').textContent = `${progressPercent}%`;
+            document.getElementById('progressText').textContent = `${completedTopics.size} of ${courseTopics.length} topics completed`;
+            
+            // Update course status
+            const statusElement = document.getElementById('courseInfoStatus');
+            if (progressPercent === 100) {
+                statusElement.textContent = 'Completed';
+                statusElement.style.color = 'var(--accent-color)';
+            } else if (progressPercent > 0) {
+                statusElement.textContent = 'In Progress';
+                statusElement.style.color = 'var(--primary-color)';
+            } else {
+                statusElement.textContent = 'Not Started';
+                statusElement.style.color = 'var(--text-secondary)';
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentTopicIndex > 0) {
+                navigateTopic(-1);
+            } else if (e.key === 'ArrowRight' && currentTopicIndex < courseTopics.length - 1) {
+                navigateTopic(1);
+            }
+        });
+    </script>
+</body>
+</html>
