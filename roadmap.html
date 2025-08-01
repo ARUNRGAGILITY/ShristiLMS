@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Roadmap - ShristiLMS</title>
+    <title>Learning Roadmap - Shristi</title>
     
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
@@ -11,344 +11,265 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/logo.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/logo.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/logo.png">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              // Sea theme colors
-              'sea': {
-                'background': '#e0f7fa',
-                'surface': '#b2ebf2',
-                'surface-light': '#80deea',
-                'text-primary': '#01579b',
-                'text-secondary': '#0277bd',
-                'border': '#4dd0e1',
-                'accent-primary': '#00acc1',
-                'accent-secondary': '#00bcd4',
-              },
-              // Earth theme colors
-              'earth': {
-                'background': '#f1f8e9',
-                'surface': '#c5e1a5',
-                'surface-light': '#aed581',
-                'text-primary': '#33691e',
-                'text-secondary': '#558b2f',
-                'border': '#8bc34a',
-                'accent-primary': '#8bc34a',
-                'accent-secondary': '#9ccc65',
-              },
-              // Sunset theme colors
-              'sunset': {
-                'background': '#fff3e0',
-                'surface': '#ffe0b2',
-                'surface-light': '#ffcc80',
-                'text-primary': '#e65100',
-                'text-secondary': '#c62828',
-                'border': '#ffab91',
-                'accent-primary': '#ff7043',
-                'accent-secondary': '#ab47bc',
-              }
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        // Sea theme colors
+                        'sea': {
+                            'background': '#e0f7fa',
+                            'surface': '#b2ebf2',
+                            'surface-light': '#80deea',
+                            'text-primary': '#01579b',
+                            'text-secondary': '#0277bd',
+                            'border': '#4dd0e1',
+                            'accent-primary': '#00acc1',
+                            'accent-secondary': '#00bcd4',
+                        },
+                        // Earth theme colors
+                        'earth': {
+                            'background': '#f1f8e9',
+                            'surface': '#c5e1a5',
+                            'surface-light': '#aed581',
+                            'text-primary': '#33691e',
+                            'text-secondary': '#558b2f',
+                            'border': '#8bc34a',
+                            'accent-primary': '#8bc34a',
+                            'accent-secondary': '#9ccc65',
+                        },
+                        // Sunset theme colors
+                        'sunset': {
+                            'background': '#fff3e0',
+                            'surface': '#ffe0b2',
+                            'surface-light': '#ffcc80',
+                            'text-primary': '#e65100',
+                            'text-secondary': '#c62828',
+                            'border': '#ffab91',
+                            'accent-primary': '#ff7043',
+                            'accent-secondary': '#ab47bc',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'slide-in-left': 'slideInLeft 0.6s ease-out',
+                        'slide-in-right': 'slideInRight 0.6s ease-out',
+                        'shimmer': 'shimmer 3s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        slideInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(50px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' }
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%) translateY(-100%) rotate(45deg)' },
+                            '100%': { transform: 'translateX(100%) translateY(100%) rotate(45deg)' }
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     </script>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Global CSS -->
     <link rel="stylesheet" href="global.css" />
     
     <style>
-        /* Roadmap specific styles */
-        .roadmap-container {
-            position: relative;
-            overflow-x: auto;
-            padding: 2rem 0;
+        /* Theme-specific icon colors for goal cards */
+        [data-theme="sea"] .goal-selector .text-4xl {
+            color: #01579b !important;
+        }
+        
+        [data-theme="earth"] .goal-selector .text-4xl {
+            color: #33691e !important;
+        }
+        
+        [data-theme="sunset"] .goal-selector .text-4xl {
+            color: #e65100 !important;
+        }
+        
+        /* Light and dark mode icon colors */
+        [data-theme="light"] .goal-selector .text-4xl {
+            color: #000000 !important;
+        }
+        
+        [data-theme="dark"] .goal-selector .text-4xl {
+            color: #ffffff !important;
         }
 
-        .roadmap-path {
-            position: relative;
-            min-height: 600px;
-        }
-
-        .roadmap-level {
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .level-line {
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #e5e7eb 0%, #9ca3af 50%, #e5e7eb 100%);
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .course-node {
-            position: relative;
-            background: white;
-            border: 3px solid #e5e7eb;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin: 0 1rem;
-            min-width: 280px;
-            max-width: 320px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .course-node:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            border-color: #2563eb;
-        }
-
-        .course-node.foundation {
-            border-color: #10b981;
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        }
-
-        .course-node.programming {
-            border-color: #3b82f6;
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        }
-
-        .course-node.specialization {
-            border-color: #8b5cf6;
-            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
-        }
-
-        .course-node.completed {
-            border-color: #059669;
-            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-        }
-
-        .course-node.locked {
-            border-color: #9ca3af;
-            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .course-icon {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-        }
-
-        .foundation .course-icon {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-        }
-
-        .programming .course-icon {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: white;
-        }
-
-        .specialization .course-icon {
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-            color: white;
-        }
-
-        .dependency-line {
-            position: absolute;
-            background: #9ca3af;
-            z-index: 1;
-        }
-
-        .dependency-arrow {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 12px solid #9ca3af;
-        }
-
-        .goal-card {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid #f59e0b;
-            border-radius: 1rem;
-            padding: 2rem;
-            margin: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .goal-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
-        .progress-ring {
-            width: 60px;
-            height: 60px;
-            transform: rotate(-90deg);
-        }
-
-        .progress-ring-circle {
-            fill: none;
-            stroke-width: 4;
-            stroke-linecap: round;
-        }
-
-        .progress-ring-background {
-            stroke: #e5e7eb;
-        }
-
-        .progress-ring-progress {
-            stroke: #10b981;
-            stroke-dasharray: 157;
-            stroke-dashoffset: 157;
-            transition: stroke-dashoffset 0.5s ease;
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .roadmap-level {
-                margin-bottom: 2rem;
-            }
-            
-            .course-node {
-                min-width: 250px;
-                max-width: 280px;
-                margin: 0 0.5rem;
-                padding: 1rem;
-            }
-            
-            .goal-card {
-                margin: 1rem 0;
-                padding: 1.5rem;
-            }
-        }
-
-        /* Theme integration */
-        [data-theme="dark"] .course-node {
+        /* Footer theme styles */
+        .footer-theme {
             background: var(--surface);
             color: var(--text-primary);
+            border-top: 1px solid var(--border);
         }
 
-        [data-theme="dark"] .level-line {
-            background: linear-gradient(90deg, var(--border) 0%, var(--text-secondary) 50%, var(--border) 100%);
+        .text-footer-secondary {
+            color: var(--text-secondary);
         }
 
         /* Animation classes */
-        .fade-in-up {
+        .animate-fade-in-up {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.6s ease;
+            transition: all 0.6s ease-out;
         }
 
-        .fade-in-up.animate {
+        .animate-fade-in-up.animate {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .slide-in-left {
+        .animate-slide-in-left {
             opacity: 0;
             transform: translateX(-50px);
-            transition: all 0.6s ease;
+            transition: all 0.6s ease-out;
         }
 
-        .slide-in-left.animate {
+        .animate-slide-in-left.animate {
             opacity: 1;
             transform: translateX(0);
         }
 
-        .slide-in-right {
+        .animate-slide-in-right {
             opacity: 0;
             transform: translateX(50px);
-            transition: all 0.6s ease;
+            transition: all 0.6s ease-out;
         }
 
-        .slide-in-right.animate {
+        .animate-slide-in-right.animate {
             opacity: 1;
             transform: translateX(0);
         }
 
+        /* Initially hide the career goal section completely */
+        .career-goal-section {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .career-goal-section.animate {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Theme dropdown styling */
+        /* Theme dropdown dark mode overrides */
+        [data-theme="dark"] .custom-theme-option i {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="dark"] .custom-theme-option span {
+            color: #ffffff !important;
+        }
+        
+        /* Theme dropdown light mode overrides */
+        [data-theme="light"] .custom-theme-option i {
+            color: #000000 !important;
+        }
+        
+        [data-theme="light"] .custom-theme-option span {
+            color: #000000 !important;
+        }
+        
+        /* Theme dropdown custom theme overrides */
+        [data-theme="sea"] .custom-theme-option i {
+            color: #01579b !important;
+        }
+        
+        [data-theme="sea"] .custom-theme-option span {
+            color: #01579b !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option i {
+            color: #33691e !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option span {
+            color: #33691e !important;
+        }
+        
+        [data-theme="sunset"] .custom-theme-option i {
+            color: #e65100 !important;
+        }
+        
+        [data-theme="sunset"] .custom-theme-option span {
+            color: #e65100 !important;
+        }
+        
+        /* Force consistent border colors for all themes */
+        [data-theme="sea"] .custom-theme-option,
+        [data-theme="earth"] .custom-theme-option,
+        [data-theme="sunset"] .custom-theme-option {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        /* Specific overrides for Sea and Earth themes */
+        [data-theme="sea"] .custom-theme-option.border-b {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option.border-b {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        /* Force all borders to be white/20 in all themes */
+        #customThemeDropdown .custom-theme-option {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        /* Theme-aware career goal cards */
         .goal-selector {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 0.75rem;
-            padding: 1rem;
-            margin: 0.5rem;
-            cursor: pointer;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            color: var(--text-primary);
             transition: all 0.3s ease;
-            text-align: center;
         }
 
         .goal-selector:hover {
-            border-color: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .goal-selector.active {
-            border-color: #2563eb;
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-        }
-
-        .timeline-connector {
-            position: absolute;
-            width: 2px;
-            background: #d1d5db;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-
-        .floating-stats {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: white;
-            border-radius: 1rem;
-            padding: 1rem;
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            z-index: 1000;
-            min-width: 200px;
         }
 
-        @media (max-width: 768px) {
-            .floating-stats {
-                position: relative;
-                bottom: auto;
-                right: auto;
-                margin: 2rem 1rem;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            }
+        .goal-selector .text-4xl {
+            color: var(--accent-primary);
+        }
+
+        .goal-selector h3 {
+            color: var(--text-primary);
+        }
+
+        .goal-selector p {
+            color: var(--text-secondary);
         }
     </style>
 </head>
+
 <body data-theme="light" class="min-h-screen">
     <!-- Navigation -->
     <nav class="navbar-theme text-white shadow-lg">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
                 <div class="flex items-center space-x-2">
                     <a href="index.html" class="cursor-pointer hover:opacity-80 transition-opacity">
-                        <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-12 h-12 object-contain theme-logo">
+                        <img src="assets/logo.png" alt="Shristi Logo" class="w-12 h-12 object-contain theme-logo">
                     </a>
                 </div>
                 
@@ -363,7 +284,7 @@
                     <a href="#about" class="px-4 py-2 nav-link rounded-lg transition">
                         About
                     </a>
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">t 
                         <i class="fas fa-sun" id="themeIcon"></i>
                     </button>
                     <button class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-2 cursor-pointer transition-all duration-300 flex items-center justify-center w-10 h-10 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-500 hover:scale-105 hover:shadow-lg active:scale-95 relative z-[999998]" id="customThemeToggle" aria-label="Custom themes">
@@ -421,98 +342,123 @@
     </div>
 
     <!-- Hero Section -->
-    <div class="hero-section py-16">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 leading-tight fade-in-up">Your Learning Journey</h1>
-            <p class="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto px-2 fade-in-up">
-                Choose your career goal and follow a structured path to success. Each roadmap is carefully designed to build skills progressively.
+    <div class="hero-section py-4 flex items-center justify-center min-h-[30vh]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight animate-fade-in-up" data-delay="0">
+                Your Roadmap to Success
+            </h1>
+            <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-6 max-w-4xl mx-auto animate-fade-in-up" data-delay="300">
+                Discover your perfect career path and unlock a structured learning journey tailored to your goals. Our comprehensive roadmaps guide you from beginner to professional, with hands-on projects, real-world applications, and industry-relevant skills that employers value.
             </p>
         </div>
     </div>
 
     <!-- Goal Selection -->
-    <div class="container mx-auto px-4 py-8">
-        <div class="text-center mb-12 fade-in-up">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Choose Your Career Goal</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Select a career path to see the recommended learning sequence
-            </p>
-        </div>
+    <div class="hero-section py-4 flex items-center justify-center min-h-[40vh] career-goal-section" data-delay="1200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3 animate-fade-in-up" data-delay="1200">
+                    Choose Your Career Goal
+                </h2>
+                <p class="text-base text-gray-600 dark:text-gray-300 max-w-2xl mx-auto animate-fade-in-up" data-delay="1300">
+                    Select a career path to see the recommended learning sequence
+                </p>
+            </div>
 
-        <!-- Goal Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            <div class="goal-selector fade-in-up" data-goal="full-stack" data-delay="0">
-                <div class="text-4xl mb-4">🚀</div>
-                <h3 class="font-bold mb-2">Full-Stack Developer</h3>
-                <p class="text-sm text-gray-600">Build complete web applications</p>
+            <!-- Goal Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="goal-selector rounded-xl p-4 cursor-pointer text-center animate-fade-in-up" data-goal="full-stack" data-delay="1400" onclick="navigateToLearning('full-stack')">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Full-Stack Developer</h3>
+                    <p class="text-sm">Build complete web applications</p>
+                </div>
+                
+                <div class="goal-selector rounded-xl p-4 cursor-pointer text-center animate-fade-in-up" data-goal="ai-specialist" data-delay="1500" onclick="navigateToLearning('ai-specialist')">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">AI Specialist</h3>
+                    <p class="text-sm">Work with artificial intelligence</p>
+                </div>
+                
+                <div class="goal-selector rounded-xl p-4 cursor-pointer text-center animate-fade-in-up" data-goal="data-scientist" data-delay="1600" onclick="navigateToLearning('data-scientist')">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Data Scientist</h3>
+                    <p class="text-sm">Analyze and interpret data</p>
+                </div>
+                
+                <div class="goal-selector rounded-xl p-4 cursor-pointer text-center animate-fade-in-up" data-goal="devops" data-delay="1700" onclick="navigateToLearning('devops')">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">DevOps Engineer</h3>
+                    <p class="text-sm">Streamline development workflows</p>
+                </div>
             </div>
-            <div class="goal-selector fade-in-up" data-goal="ai-specialist" data-delay="100">
-                <div class="text-4xl mb-4">🤖</div>
-                <h3 class="font-bold mb-2">AI Specialist</h3>
-                <p class="text-sm text-gray-600">Work with artificial intelligence</p>
-            </div>
-            <div class="goal-selector fade-in-up" data-goal="data-scientist" data-delay="200">
-                <div class="text-4xl mb-4">📊</div>
-                <h3 class="font-bold mb-2">Data Scientist</h3>
-                <p class="text-sm text-gray-600">Analyze and interpret data</p>
-            </div>
-            <div class="goal-selector fade-in-up" data-goal="devops" data-delay="300">
-                <div class="text-4xl mb-4">⚙️</div>
-                <h3 class="font-bold mb-2">DevOps Engineer</h3>
-                <p class="text-sm text-gray-600">Streamline development workflows</p>
-            </div>
-        </div>
 
-        <!-- Roadmap Display -->
-        <div id="roadmapDisplay" class="hidden">
-            <!-- Dynamic roadmap content will be inserted here -->
-        </div>
-
-        <!-- Default Message -->
-        <div id="defaultMessage" class="text-center py-16 fade-in-up">
-            <div class="text-6xl mb-6">🎯</div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-4">Select a Goal to Begin</h3>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Choose one of the career paths above to see a detailed learning roadmap with course dependencies and recommendations.
-            </p>
-        </div>
-    </div>
-
-    <!-- Floating Progress Stats -->
-    <div class="floating-stats hidden" id="floatingStats">
-        <div class="flex items-center justify-between mb-3">
-            <h4 class="font-bold text-sm">Your Progress</h4>
-            <svg class="progress-ring" viewBox="0 0 60 60">
-                <circle class="progress-ring-background progress-ring-circle" cx="30" cy="30" r="25"></circle>
-                <circle class="progress-ring-progress progress-ring-circle" cx="30" cy="30" r="25" id="progressCircle"></circle>
-            </svg>
-        </div>
-        <div class="space-y-2 text-sm">
-            <div class="flex justify-between">
-                <span>Completed:</span>
-                <span id="completedCount">0/8</span>
-            </div>
-            <div class="flex justify-between">
-                <span>In Progress:</span>
-                <span id="inProgressCount">0</span>
-            </div>
-            <div class="flex justify-between">
-                <span>Remaining:</span>
-                <span id="remainingCount">8</span>
+            <!-- Roadmap Display -->
+            <div id="roadmapDisplay" class="hidden">
+                <!-- Dynamic roadmap content will be inserted here -->
             </div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer-theme py-8">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex items-center justify-center space-x-2 mb-4">
-                <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-8 h-8 object-contain theme-logo">
+        <!-- Mobile Footer (Simple) -->
+        <div class="md:hidden">
+            <div class="container mx-auto px-4 text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <img src="assets/logo.png" alt="Shristi Logo" class="w-8 h-8 object-contain theme-logo">
+                </div>
+                                  <p class="text-footer-secondary">© 2025 Shristi. Empowering learners worldwide.</p>
             </div>
-            <p class="text-footer-secondary">© 2025 ShristiLMS. Empowering learners worldwide.</p>
+        </div>
+        
+        <!-- Desktop Footer (Detailed) -->
+        <div class="hidden md:block">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div>
+                                            <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">About Shristi</h3>
+                    <p class="text-sm" style="color: var(--text-secondary);">
+                        Shristi is an interactive learning platform designed to help you master AI, programming, and data science skills through hands-on projects and real-world applications.
+                    </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">Learning Features</h3>
+                        <ul class="text-sm space-y-2" style="color: var(--text-secondary);">
+                            <li>• Interactive Course Content</li>
+                            <li>• Hands-on Projects</li>
+                            <li>• Progress Tracking</li>
+                            <li>• Quiz Assessments</li>
+                            <li>• Real-world Applications</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">Course Categories</h3>
+                        <ul class="text-sm space-y-2" style="color: var(--text-secondary);">
+                            <li>• AI Foundations</li>
+                            <li>• Data Science</li>
+                            <li>• Programming Languages</li>
+                            <li>• Web Development</li>
+                            <li>• Machine Learning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t mt-8 pt-8 text-center" style="border-color: var(--border);">
+                                    <p class="text-sm" style="color: var(--text-secondary);">
+                    © 2025 Shristi. All rights reserved. | Interactive Learning Platform for AI, Programming & Data Science
+                </p>
+                </div>
+            </div>
         </div>
     </footer>
-
+    <!-- Scripts -->
     <script src="js/courses.js"></script>
     <script src="config.js"></script>
     <script>
@@ -653,7 +599,6 @@
         });
 
         function initializeTheme() {
-            // Theme toggle logic (same as index.html)
             const themeToggle = document.getElementById("themeToggle");
             const themeIcon = document.getElementById("themeIcon");
             const themeToggleMobile = document.getElementById("themeToggleMobile");
@@ -662,7 +607,7 @@
             const customThemeToggleMobile = document.getElementById("customThemeToggleMobile");
             const customThemeDropdown = document.getElementById("customThemeDropdown");
             const customThemeOptions = document.querySelectorAll(".custom-theme-option");
-            const hamburgerMenu = document.getElementById("hamburgerMenu");
+            const mobileMenuButton = document.getElementById("mobileMenuButton");
             const mobileMenu = document.getElementById("mobileMenu");
 
             const savedTheme = localStorage.getItem("theme") || "light";
@@ -709,43 +654,43 @@
                 });
             });
 
-            function setTheme(theme) {
-                document.body.setAttribute("data-theme", theme);
-                localStorage.setItem("theme", theme);
-                
-                if (themeIcon) {
-                    themeIcon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
-                }
-                if (themeIconMobile) {
-                    themeIconMobile.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
-                }
+                    function setTheme(theme) {
+            document.body.setAttribute("data-theme", theme);
+            localStorage.setItem("theme", theme);
+            
+            if (themeIcon) {
+                themeIcon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+            }
+            if (themeIconMobile) {
+                themeIconMobile.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+            }
 
-                updateHamburgerColors(theme);
-                
-                customThemeOptions.forEach(option => {
-                    option.classList.remove("active");
-                    if (option.getAttribute("data-theme") === theme) {
-                        option.classList.add("active");
-                    }
-                });
+            updateHamburgerColors(theme);
+            
+            customThemeOptions.forEach(option => {
+                option.classList.remove("active");
+                if (option.getAttribute("data-theme") === theme) {
+                    option.classList.add("active");
+                }
+            });
+        }
+        
+        function updateHamburgerColors(theme) {
+            const hamburgerLines = document.querySelectorAll('.hamburger-line');
+            let color;
+            
+            switch(theme) {
+                case 'dark': color = '#ffffff'; break;
+                case 'sea': color = '#01579b'; break;
+                case 'earth': color = '#33691e'; break;
+                case 'sunset': color = '#e65100'; break;
+                default: color = '#000000'; break;
             }
             
-            function updateHamburgerColors(theme) {
-                const hamburgerLines = document.querySelectorAll('.hamburger-line');
-                let color;
-                
-                switch(theme) {
-                    case 'dark': color = '#ffffff'; break;
-                    case 'sea': color = '#01579b'; break;
-                    case 'earth': color = '#33691e'; break;
-                    case 'sunset': color = '#e65100'; break;
-                    default: color = '#000000'; break;
-                }
-                
-                hamburgerLines.forEach(line => {
-                    line.style.backgroundColor = color;
-                });
-            }
+            hamburgerLines.forEach(line => {
+                line.style.backgroundColor = color;
+            });
+        }
         }
 
         function initializeGoalSelectors() {
@@ -756,9 +701,12 @@
             goalSelectors.forEach(selector => {
                 selector.addEventListener('click', function() {
                     // Remove active class from all selectors
-                    goalSelectors.forEach(s => s.classList.remove('active'));
+                    goalSelectors.forEach(s => {
+                        s.classList.remove('border-blue-500', 'dark:border-blue-400', 'bg-blue-50', 'dark:bg-blue-900/20');
+                    });
+                    
                     // Add active class to clicked selector
-                    this.classList.add('active');
+                    this.classList.add('border-blue-500', 'dark:border-blue-400', 'bg-blue-50', 'dark:bg-blue-900/20');
                     
                     const goalId = this.getAttribute('data-goal');
                     displayRoadmap(goalId);
@@ -767,8 +715,7 @@
                     defaultMessage.classList.add('hidden');
                     roadmapDisplay.classList.remove('hidden');
                     
-                    // Show floating stats
-                    document.getElementById('floatingStats').classList.remove('hidden');
+
                     
                     // Scroll to roadmap
                     setTimeout(() => {
@@ -785,48 +732,47 @@
             const roadmapDisplay = document.getElementById('roadmapDisplay');
             
             roadmapDisplay.innerHTML = `
-                <div class="goal-card fade-in-up mb-12">
-                    <div class="text-center relative z-10">
-                        <h2 class="text-3xl font-bold mb-4">${roadmap.title}</h2>
-                        <p class="text-lg mb-6">${roadmap.description}</p>
+                <div class="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 rounded-2xl p-8 mb-12 relative overflow-hidden animate-fade-in-up">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-100/50 to-indigo-100/50 dark:from-blue-800/20 dark:to-indigo-800/20 animate-shimmer"></div>
+                    <div class="relative z-10 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">${roadmap.title}</h2>
+                        <p class="text-lg text-gray-900 dark:text-gray-300 mb-6">${roadmap.description}</p>
                         <div class="flex flex-wrap justify-center gap-6 text-sm">
-                            <div class="flex items-center space-x-2">
-                                <i class="fas fa-clock text-yellow-600"></i>
-                                <span><strong>Duration:</strong> ${roadmap.estimatedTime}</span>
+                            <div class="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 px-4 py-2 rounded-lg shadow-sm">
+                                <i class="fas fa-clock text-blue-600"></i>
+                                <span class="text-gray-900 dark:text-white"><strong>Duration:</strong> ${roadmap.estimatedTime}</span>
                             </div>
-                            <div class="flex items-center space-x-2">
-                                <i class="fas fa-graduation-cap text-yellow-600"></i>
-                                <span><strong>Courses:</strong> ${roadmap.courses.reduce((total, phase) => total + phase.courses.length, 0)}</span>
+                            <div class="flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 px-4 py-2 rounded-lg shadow-sm">
+                                <i class="fas fa-graduation-cap text-blue-600"></i>
+                                <span class="text-gray-900 dark:text-white"><strong>Courses:</strong> ${roadmap.courses.reduce((total, phase) => total + phase.courses.length, 0)}</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="roadmap-container">
-                    <div class="roadmap-path">
-                        ${roadmap.courses.map((phase, phaseIndex) => `
-                            <div class="roadmap-level slide-in-${phaseIndex % 2 === 0 ? 'left' : 'right'}">
-                                <div class="level-line"></div>
-                                <div class="text-center mb-8">
-                                    <h3 class="text-xl font-bold text-gray-800 mb-2">Level ${phase.level}: ${phase.title}</h3>
-                                    <p class="text-gray-600 text-sm">Complete ${phase.courses.length === 1 ? 'this course' : 'these courses'} to progress</p>
-                                </div>
-                                <div class="flex flex-wrap justify-center gap-6">
-                                    ${phase.courses.map(courseId => renderCourseNode(courseId, phase.level, phaseIndex)).join('')}
-                                </div>
+                <div class="space-y-16">
+                    ${roadmap.courses.map((phase, phaseIndex) => `
+                        <div class="relative animate-${phaseIndex % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}">
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-gray-200 to-gray-300 dark:from-gray-600 dark:to-gray-700"></div>
+                            <div class="text-center mb-8">
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Level ${phase.level}: ${phase.title}</h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm">Complete ${phase.courses.length === 1 ? 'this course' : 'these courses'} to progress</p>
                             </div>
-                        `).join('')}
-                    </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${phase.courses.length} gap-6">
+                                ${phase.courses.map(courseId => renderCourseNode(courseId, phase.level, phaseIndex)).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
                 </div>
 
-                <div class="goal-card fade-in-up mt-12">
-                    <div class="text-center relative z-10">
-                        <h3 class="text-2xl font-bold mb-6">What You'll Achieve</h3>
+                <div class="bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 rounded-2xl p-8 mt-12 animate-fade-in-up">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">What You'll Achieve</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             ${roadmap.goals.map(goal => `
-                                <div class="flex items-center space-x-3">
+                                <div class="flex items-center space-x-3 bg-gray-50 dark:bg-gray-700 p-3 rounded-lg shadow-sm">
                                     <i class="fas fa-check-circle text-green-600 text-xl"></i>
-                                    <span>${goal}</span>
+                                    <span class="text-gray-900 dark:text-white">${goal}</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -837,7 +783,6 @@
             // Animate elements
             setTimeout(() => {
                 initializeAnimations();
-                updateProgressStats(goalId);
             }, 100);
         }
 
@@ -848,37 +793,45 @@
             const isCompleted = localStorage.getItem(`course_${courseId}_completed`) === 'true';
             const isInProgress = localStorage.getItem(`course_${courseId}_progress`) > 0;
             
-            let nodeClass = course.type.toLowerCase();
-            if (isCompleted) nodeClass += ' completed';
-            else if (level > 1 && !hasCompletedPrerequisites(courseId, level)) nodeClass += ' locked';
+            let nodeClasses = 'bg-white dark:bg-gray-700 border-2 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer';
+            let borderClasses = 'border-gray-200 dark:border-gray-600';
+            
+            if (isCompleted) {
+                borderClasses = 'border-green-500 dark:border-green-400';
+            } else if (isInProgress) {
+                borderClasses = 'border-blue-500 dark:border-blue-400';
+            } else if (level > 1 && !hasCompletedPrerequisites(courseId, level)) {
+                borderClasses = 'border-gray-300 dark:border-gray-500';
+                nodeClasses += ' opacity-60 cursor-not-allowed';
+            }
 
             const iconClass = courseIcons[courseId] || 'fas fa-book';
 
             return `
-                <div class="course-node ${nodeClass} fade-in-up" 
+                <div class="${nodeClasses} ${borderClasses}" 
                      data-course="${courseId}" 
                      data-delay="${phaseIndex * 200}"
                      onclick="handleCourseClick('${courseId}', ${level})">
-                    <div class="course-icon">
-                        <i class="${iconClass}"></i>
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="${iconClass} text-white text-lg"></i>
                     </div>
-                    <h4 class="font-bold text-lg mb-2 text-center">${course.name}</h4>
-                    <p class="text-sm text-gray-600 mb-4 text-center">${course.instructor}</p>
+                    <h4 class="font-bold text-lg mb-2 text-center text-gray-900 dark:text-white">${course.name}</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4 text-center">${course.instructor}</p>
                     <div class="space-y-2 text-xs">
                         <div class="flex justify-between">
-                            <span>Duration:</span>
-                            <span class="font-medium">${course.duration}</span>
+                            <span class="text-gray-600 dark:text-gray-300">Duration:</span>
+                            <span class="font-medium text-gray-900 dark:text-white">${course.duration}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span>Difficulty:</span>
-                            <span class="font-medium">${course.difficulty}</span>
+                            <span class="text-gray-600 dark:text-gray-300">Difficulty:</span>
+                            <span class="font-medium text-gray-900 dark:text-white">${course.difficulty}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span>Modules:</span>
-                            <span class="font-medium">${course.modules}</span>
+                            <span class="text-gray-600 dark:text-gray-300">Modules:</span>
+                            <span class="font-medium text-gray-900 dark:text-white">${course.modules}</span>
                         </div>
                     </div>
-                    <div class="mt-4 pt-4 border-t border-gray-200">
+                    <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
                         ${getNodeStatus(courseId, level)}
                     </div>
                 </div>
@@ -913,7 +866,7 @@
                 `;
             } else {
                 return `
-                    <div class="flex items-center justify-center space-x-2 text-gray-600">
+                    <div class="flex items-center justify-center space-x-2 text-gray-600 dark:text-gray-300">
                         <i class="fas fa-play-circle"></i>
                         <span class="text-xs font-medium">Start Now</span>
                     </div>
@@ -922,10 +875,8 @@
         }
 
         function hasCompletedPrerequisites(courseId, level) {
-            // Simple prerequisite logic - for level 2+, check if any level 1 course is completed
             if (level <= 1) return true;
             
-            // Check if at least one foundation course is completed
             const foundationCourses = ['ai-foundations', 'programming-foundations'];
             return foundationCourses.some(id => 
                 localStorage.getItem(`course_${id}_completed`) === 'true'
@@ -938,62 +889,42 @@
                 return;
             }
             
-            // Navigate to course
             window.location.href = `learning.html?course=${courseId}`;
         }
 
-        function updateProgressStats(goalId) {
-            const roadmap = roadmaps[goalId];
-            if (!roadmap) return;
 
-            const allCourses = roadmap.courses.reduce((acc, phase) => [...acc, ...phase.courses], []);
-            
-            let completed = 0;
-            let inProgress = 0;
-            let remaining = 0;
-
-            allCourses.forEach(courseId => {
-                if (localStorage.getItem(`course_${courseId}_completed`) === 'true') {
-                    completed++;
-                } else if (localStorage.getItem(`course_${courseId}_progress`) > 0) {
-                    inProgress++;
-                } else {
-                    remaining++;
-                }
-            });
-
-            document.getElementById('completedCount').textContent = `${completed}/${allCourses.length}`;
-            document.getElementById('inProgressCount').textContent = inProgress.toString();
-            document.getElementById('remainingCount').textContent = remaining.toString();
-
-            // Update progress ring
-            const progressPercent = (completed / allCourses.length) * 100;
-            const circumference = 157; // 2 * π * 25
-            const offset = circumference - (progressPercent * circumference) / 100;
-            document.getElementById('progressCircle').style.strokeDashoffset = offset;
-        }
 
         function initializeAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const element = entry.target;
-                        const delay = element.getAttribute('data-delay') || 0;
-                        
-                        setTimeout(() => {
-                            element.classList.add('animate');
-                        }, parseInt(delay));
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+            // Get all animated elements
+            const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-slide-in-left, .animate-slide-in-right, .career-goal-section');
+            
+            // Trigger animations in sequence based on data-delay
+            animatedElements.forEach(element => {
+                const delay = parseInt(element.getAttribute('data-delay')) || 0;
+                
+                setTimeout(() => {
+                    element.classList.add('animate');
+                }, delay);
             });
+        }
 
-            // Observe all animation elements
-            document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right').forEach(el => {
-                observer.observe(el);
-            });
+        // Navigation function for career goal cards
+        function navigateToLearning(careerGoal) {
+            // Map career goals to appropriate course IDs
+            const courseMapping = {
+                'full-stack': 'fullstack-development',
+                'ai-specialist': 'ai-foundations',
+                'data-scientist': 'data-science-foundations',
+                'devops': 'devops-foundations'
+            };
+            
+            const courseId = courseMapping[careerGoal];
+            if (courseId) {
+                window.location.href = `learning.html?course=${courseId}`;
+            } else {
+                // Fallback to a general course if mapping not found
+                window.location.href = `learning.html?course=ai-foundations`;
+            }
         }
     </script>
 </body>

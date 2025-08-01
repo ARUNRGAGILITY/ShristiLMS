@@ -1,7 +1,7 @@
-// Shared Navigation Component for ShristiLMS
+// Shared Navigation Component for Shristi
 // This ensures consistent navigation behavior across all pages
 
-class ShristiLMSNavigation {
+class ShristiNavigation {
     constructor() {
         this.init();
     }

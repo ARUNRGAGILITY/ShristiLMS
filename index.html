@@ -546,11 +546,53 @@
 
     <!-- Footer -->
     <footer class="footer-theme py-8">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex items-center justify-center space-x-2 mb-4">
-                <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-8 h-8 object-contain theme-logo">
+        <!-- Mobile Footer (Simple) -->
+        <div class="md:hidden">
+            <div class="container mx-auto px-4 text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-8 h-8 object-contain theme-logo">
+                </div>
+                <p class="text-footer-secondary">© 2025 ShristiLMS. Empowering learners worldwide.</p>
             </div>
-            <p class="text-footer-secondary">© 2025 ShristiLMS. Empowering learners worldwide.</p>
+        </div>
+        
+        <!-- Desktop Footer (Detailed) -->
+        <div class="hidden md:block">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">About ShristiLMS</h3>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                            ShristiLMS is an interactive learning platform designed to help you master AI, programming, and data science skills through hands-on projects and real-world applications.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">Learning Features</h3>
+                        <ul class="text-sm space-y-2" style="color: var(--text-secondary);">
+                            <li>• Interactive Course Content</li>
+                            <li>• Hands-on Projects</li>
+                            <li>• Progress Tracking</li>
+                            <li>• Quiz Assessments</li>
+                            <li>• Real-world Applications</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">Course Categories</h3>
+                        <ul class="text-sm space-y-2" style="color: var(--text-secondary);">
+                            <li>• AI Foundations</li>
+                            <li>• Data Science</li>
+                            <li>• Programming Languages</li>
+                            <li>• Web Development</li>
+                            <li>• Machine Learning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t mt-8 pt-8 text-center" style="border-color: var(--border);">
+                    <p class="text-sm" style="color: var(--text-secondary);">
+                        © 2025 ShristiLMS. All rights reserved. | Interactive Learning Platform for AI, Programming & Data Science
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 
