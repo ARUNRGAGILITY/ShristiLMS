@@ -358,7 +358,9 @@
                         <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-12 h-12 object-contain theme-logo">
                     </a>
                 </div>
-                <div class="flex items-center space-x-4">
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-4">
                     <a href="index.html" class="px-4 py-2 nav-link rounded-lg transition">
                         Home
                     </a>
@@ -368,51 +370,77 @@
                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                         <i class="fas fa-sun" id="themeIcon"></i>
                     </button>
-                    <div class="relative">
-                        <button class="custom-theme-toggle" id="customThemeToggle" aria-label="Custom themes">
-                            <i class="fas fa-palette"></i>
-                        </button>
-                        <div class="custom-theme-dropdown hidden" id="customThemeDropdown">
-                            <div class="custom-theme-option" data-theme="sea">
-                                <i class="fas fa-water"></i>
-                                <span>Sea</span>
-                            </div>
-                            <div class="custom-theme-option" data-theme="earth">
-                                <i class="fas fa-leaf"></i>
-                                <span>Earth</span>
-                            </div>
-                            <div class="custom-theme-option" data-theme="sunset">
-                                <i class="fas fa-sun"></i>
-                                <span>Sunset</span>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-2 cursor-pointer transition-all duration-300 flex items-center justify-center w-10 h-10 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-500 hover:scale-105 hover:shadow-lg active:scale-95 relative z-[999998]" id="customThemeToggle" aria-label="Custom themes">
+                        <i class="fas fa-palette text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Menu Button -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <button class="theme-toggle mr-2" id="themeToggleMobile" aria-label="Toggle theme">
+                        <i class="fas fa-sun" id="themeIconMobile"></i>
+                    </button>
+                    <button class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-2 cursor-pointer transition-all duration-300 flex items-center justify-center w-10 h-10 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-500 hover:scale-105 hover:shadow-lg active:scale-95 relative z-[999998]" id="customThemeToggleMobile" aria-label="Custom themes">
+                        <i class="fas fa-palette text-sm"></i>
+                    </button>
+                    <button class="hamburger-menu p-2 rounded-lg transition-all duration-300 hover:bg-white/10" id="hamburgerMenu" aria-label="Toggle mobile menu">
+                        <div class="w-6 h-0.5 hamburger-line mb-1.5 transition-all duration-300"></div>
+                        <div class="w-6 h-0.5 hamburger-line mb-1.5 transition-all duration-300"></div>
+                        <div class="w-6 h-0.5 hamburger-line transition-all duration-300"></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="md:hidden mt-4 pb-4 border-t border-white/20 hidden" id="mobileMenu">
+                <div class="flex flex-col space-y-2 pt-4">
+                    <a href="index.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                        Home
+                    </a>
+                    <a href="#about" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                        About
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
+    <!-- Custom Theme Dropdown (moved to body level) -->
+    <div class="fixed top-[70px] md:right-0 right-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl shadow-2xl z-[999999] min-w-[160px] overflow-hidden hidden" id="customThemeDropdown">
+        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="sea">
+            <i class="fas fa-water w-4 mr-3 text-sm"></i>
+            <span class="text-sm font-medium">Sea</span>
+        </div>
+        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="earth">
+            <i class="fas fa-leaf w-4 mr-3 text-sm"></i>
+            <span class="text-sm font-medium">Earth</span>
+        </div>
+        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="sunset">
+            <i class="fas fa-sun w-4 mr-3 text-sm"></i>
+            <span class="text-sm font-medium">Sunset</span>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <div class="hero-section py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-5xl font-bold mb-6 hero-title">Become a Future-Proof Developer</h1>
-            <p class="text-xl mb-8 max-w-3xl mx-auto hero-subtitle">
-                <span class="hero-line-1">No fluff. Just the skills that get you hired — or help you build your own product.</span>
-                <br><br>
-                <span class="hero-line-2">Master AI, full-stack dev, and modern tech with hands-on courses, real coding projects, and certifications that prove you're job-ready.</span>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 hero-title leading-tight">Become a Future-Proof Developer</h1>
+            <p class="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto hero-subtitle px-2">
+                <span class="hero-line-1 block mb-4">No fluff. Just the skills that get you hired — or help you build your own product.</span>
+                <span class="hero-line-2 block">Master AI, full-stack dev, and modern tech with hands-on courses, real coding projects, and certifications that prove you're job-ready.</span>
             </p>
-            <div class="flex justify-center space-x-4 fade-in">
-                <div class="stat-card px-6 py-3 rounded-lg">
-                    <div class="text-2xl font-bold stat-number" data-target="8">0</div>
-                    <div class="text-sm">Courses</div>
+            <div class="flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-4 sm:space-y-0 fade-in px-2">
+                <div class="stat-card px-4 sm:px-6 py-3 rounded-lg w-full sm:w-auto">
+                    <div class="text-xl sm:text-2xl font-bold stat-number" data-target="8">0</div>
+                    <div class="text-xs sm:text-sm">Courses</div>
                 </div>
-                <div class="stat-card px-6 py-3 rounded-lg">
-                    <div class="text-2xl font-bold stat-number" data-target="100">0</div>
-                    <div class="text-sm">Lessons</div>
+                <div class="stat-card px-4 sm:px-6 py-3 rounded-lg w-full sm:w-auto">
+                    <div class="text-xl sm:text-2xl font-bold stat-number" data-target="100">0</div>
+                    <div class="text-xs sm:text-sm">Lessons</div>
                 </div>
-                <div class="stat-card px-6 py-3 rounded-lg">
-                    <div class="text-2xl font-bold stat-number" data-target="1000">0</div>
-                    <div class="text-sm">Students</div>
+                <div class="stat-card px-4 sm:px-6 py-3 rounded-lg w-full sm:w-auto">
+                    <div class="text-xl sm:text-2xl font-bold stat-number" data-target="1000">0</div>
+                    <div class="text-xs sm:text-sm">Students</div>
                 </div>
             </div>
         </div>
@@ -431,11 +459,11 @@
         <!-- Controls Section -->
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
             <!-- Filter Buttons -->
-            <div class="bg-white rounded-lg shadow p-2 flex flex-wrap gap-2 w-full sm:w-auto justify-center sm:justify-start">
-                <button onclick="filterCourses('all')" class="filter-btn active px-3 py-2 rounded-md transition text-xs sm:text-sm lg:text-base whitespace-nowrap">All</button>
-                <button onclick="filterCourses('Foundation')" class="filter-btn px-3 py-2 rounded-md transition text-xs sm:text-sm lg:text-base whitespace-nowrap">Foundation</button>
-                <button onclick="filterCourses('Programming')" class="filter-btn px-3 py-2 rounded-md transition text-xs sm:text-sm lg:text-base whitespace-nowrap">Programming</button>
-                <button onclick="filterCourses('Specialization')" class="filter-btn px-3 py-2 rounded-md transition text-xs sm:text-sm lg:text-base whitespace-nowrap">Specialization</button>
+            <div class="bg-white rounded-lg shadow p-3 sm:p-2 flex flex-wrap gap-2 w-full sm:w-auto justify-center sm:justify-start">
+                <button onclick="filterCourses('all')" class="filter-btn active px-4 py-3 sm:px-3 sm:py-2 rounded-md transition text-sm sm:text-sm lg:text-base whitespace-nowrap flex-1 sm:flex-none min-w-[80px] sm:min-w-0">All</button>
+                <button onclick="filterCourses('Foundation')" class="filter-btn px-4 py-3 sm:px-3 sm:py-2 rounded-md transition text-sm sm:text-sm lg:text-base whitespace-nowrap flex-1 sm:flex-none min-w-[80px] sm:min-w-0">Foundation</button>
+                <button onclick="filterCourses('Programming')" class="filter-btn px-4 py-3 sm:px-3 sm:py-2 rounded-md transition text-sm sm:text-sm lg:text-base whitespace-nowrap flex-1 sm:flex-none min-w-[80px] sm:min-w-0">Programming</button>
+                <button onclick="filterCourses('Specialization')" class="filter-btn px-4 py-3 sm:px-3 sm:py-2 rounded-md transition text-sm sm:text-sm lg:text-base whitespace-nowrap flex-1 sm:flex-none min-w-[80px] sm:min-w-0">Specialization</button>
             </div>
 
             <!-- View Toggle -->
@@ -533,11 +561,20 @@
             // Light/Dark theme toggle logic
             const themeToggle = document.getElementById("themeToggle");
             const themeIcon = document.getElementById("themeIcon");
+            
+            // Mobile theme toggle
+            const themeToggleMobile = document.getElementById("themeToggleMobile");
+            const themeIconMobile = document.getElementById("themeIconMobile");
 
             // Custom theme dropdown logic
             const customThemeToggle = document.getElementById("customThemeToggle");
+            const customThemeToggleMobile = document.getElementById("customThemeToggleMobile");
             const customThemeDropdown = document.getElementById("customThemeDropdown");
             const customThemeOptions = document.querySelectorAll(".custom-theme-option");
+            
+            // Mobile menu logic
+            const hamburgerMenu = document.getElementById("hamburgerMenu");
+            const mobileMenu = document.getElementById("mobileMenu");
 
             // Load saved theme or default to light
             const savedTheme = localStorage.getItem("theme") || "light";
@@ -545,6 +582,15 @@
 
             // Light/Dark toggle (only between light and dark)
             themeToggle?.addEventListener("click", () => {
+                console.log('Desktop theme toggle clicked');
+                const currentTheme = document.body.getAttribute("data-theme");
+                const newTheme = currentTheme === "dark" ? "light" : "dark";
+                setTheme(newTheme);
+            });
+            
+            // Mobile theme toggle
+            themeToggleMobile?.addEventListener("click", () => {
+                console.log('Mobile theme toggle clicked');
                 const currentTheme = document.body.getAttribute("data-theme");
                 const newTheme = currentTheme === "dark" ? "light" : "dark";
                 setTheme(newTheme);
@@ -552,13 +598,27 @@
 
             // Custom theme dropdown toggle
             customThemeToggle?.addEventListener("click", (e) => {
+                console.log('Desktop custom theme toggle clicked');
                 e.stopPropagation();
                 customThemeDropdown.classList.toggle("hidden");
+            });
+            
+            // Mobile custom theme dropdown toggle
+            customThemeToggleMobile?.addEventListener("click", (e) => {
+                console.log('Mobile custom theme toggle clicked');
+                e.stopPropagation();
+                customThemeDropdown.classList.toggle("hidden");
+            });
+            
+            // Mobile hamburger menu toggle
+            hamburgerMenu?.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+                hamburgerMenu.classList.toggle("active");
             });
 
             // Close dropdown when clicking outside
             document.addEventListener("click", (e) => {
-                if (!customThemeToggle?.contains(e.target) && !customThemeDropdown?.contains(e.target)) {
+                if (!customThemeToggle?.contains(e.target) && !customThemeToggleMobile?.contains(e.target) && !customThemeDropdown?.contains(e.target)) {
                     customThemeDropdown?.classList.add("hidden");
                 }
             });
@@ -573,13 +633,22 @@
             });
 
             function setTheme(theme) {
+                console.log('Setting theme to:', theme);
                 document.body.setAttribute("data-theme", theme);
                 localStorage.setItem("theme", theme);
                 
-                // Update light/dark toggle icon
+                // Update light/dark toggle icon (desktop)
                 if (themeIcon) {
                     themeIcon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
                 }
+                
+                // Update light/dark toggle icon (mobile)
+                if (themeIconMobile) {
+                    themeIconMobile.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+                }
+                
+                // Update hamburger menu colors based on theme
+                updateHamburgerColors(theme);
                 
                 // Update active state in dropdown
                 customThemeOptions.forEach(option => {
@@ -587,6 +656,33 @@
                     if (option.getAttribute("data-theme") === theme) {
                         option.classList.add("active");
                     }
+                });
+            }
+            
+            function updateHamburgerColors(theme) {
+                const hamburgerLines = document.querySelectorAll('.hamburger-line');
+                let color;
+                
+                switch(theme) {
+                    case 'dark':
+                        color = '#ffffff';
+                        break;
+                    case 'sea':
+                        color = '#01579b';
+                        break;
+                    case 'earth':
+                        color = '#33691e';
+                        break;
+                    case 'sunset':
+                        color = '#e65100';
+                        break;
+                    default: // light theme
+                        color = '#000000';
+                        break;
+                }
+                
+                hamburgerLines.forEach(line => {
+                    line.style.backgroundColor = color;
                 });
             }
 
@@ -1125,6 +1221,74 @@
         
         [data-theme="dark"] .view-btn:hover:not(.active) {
             background-color: var(--surface-light);
+        }
+        
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            transition: all 0.3s ease;
+        }
+        
+        /* Hamburger line colors for different themes */
+        .hamburger-line {
+            background-color: #000000; /* Default black for light theme */
+        }
+        
+        /* Dark theme */
+        [data-theme="dark"] .hamburger-line {
+            background-color: #ffffff;
+        }
+        
+        /* Sea theme */
+        [data-theme="sea"] .hamburger-line {
+            background-color: #01579b;
+        }
+        
+        /* Earth theme */
+        [data-theme="earth"] .hamburger-line {
+            background-color: #33691e;
+        }
+        
+        /* Sunset theme */
+        [data-theme="sunset"] .hamburger-line {
+            background-color: #e65100;
+        }
+        
+        .hamburger-menu.active .w-6:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger-menu.active .w-6:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-menu.active .w-6:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Mobile menu animation */
+        #mobileMenu {
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        #mobileMenu:not(.hidden) {
+            max-height: 200px;
+        }
+        
+        /* Mobile navigation link styles */
+        #mobileMenu .nav-link {
+            transition: all 0.2s ease;
+        }
+        
+        #mobileMenu .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+        
+        /* Ensure mobile menu is properly styled in dark mode */
+        [data-theme="dark"] #mobileMenu .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.05);
         }
     </style>
 </body>
