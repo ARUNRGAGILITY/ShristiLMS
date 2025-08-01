@@ -1,0 +1,269 @@
+{
+  "module": {
+    "title": "Collections Framework",
+    "description": "Master Java Collections Framework including Lists, Sets, Maps, and utility classes",
+    "lessons": [
+      {
+        "id": "java-3-1",
+        "title": "List Interface and Implementations",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "The List interface represents an ordered collection of elements. ArrayList and LinkedList are the most commonly used implementations."
+            },
+            {
+              "type": "text",
+              "content": "The List interface is one of the most fundamental collection types in Java, representing an ordered sequence of elements. Unlike sets, lists allow duplicate elements and maintain insertion order, making them ideal for scenarios where element order matters."
+            },
+            {
+              "type": "text",
+              "content": "Key characteristics of List:",
+              "subsections": [
+                "Ordered Collection: Elements maintain their insertion order",
+                "Indexed Access: Elements can be accessed by their position (index)",
+                "Duplicate Elements: Lists allow multiple occurrences of the same element",
+                "Dynamic Sizing: Lists can grow and shrink as needed",
+                "Null Elements: Lists can contain null values"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Common List implementations:",
+              "subsections": [
+                "ArrayList: Resizable array implementation with fast random access",
+                "LinkedList: Doubly-linked list implementation with fast insertions/deletions",
+                "Vector: Thread-safe legacy implementation similar to ArrayList",
+                "Stack: LIFO (Last-In-First-Out) implementation extending Vector"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "When choosing between ArrayList and LinkedList, consider that ArrayList provides O(1) random access but slower insertions/deletions, while LinkedList provides fast insertions/deletions but slower random access."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "import java.util.*;\n\npublic class ListDemo {\n    public static void main(String[] args) {\n        // ArrayList - dynamic array\n        List<String> arrayList = new ArrayList<>();\n        arrayList.add(\"Apple\");\n        arrayList.add(\"Banana\");\n        arrayList.add(\"Orange\");\n        arrayList.add(1, \"Mango\"); // Insert at index 1\n        \n        System.out.println(\"ArrayList: \" + arrayList);\n        System.out.println(\"Size: \" + arrayList.size());\n        System.out.println(\"Contains 'Apple': \" + arrayList.contains(\"Apple\"));\n        \n        // LinkedList - doubly linked list\n        List<Integer> linkedList = new LinkedList<>();\n        linkedList.add(10);\n        linkedList.add(20);\n        linkedList.add(30);\n        linkedList.addFirst(5);\n        linkedList.addLast(40);\n        \n        System.out.println(\"\\nLinkedList: \" + linkedList);\n        \n        // Vector - thread-safe dynamic array\n        List<Double> vector = new Vector<>();\n        vector.add(1.5);\n        vector.add(2.5);\n        vector.add(3.5);\n        \n        System.out.println(\"\\nVector: \" + vector);\n        \n        // Common List operations\n        List<String> fruits = new ArrayList<>();\n        fruits.addAll(Arrays.asList(\"Apple\", \"Banana\", \"Orange\", \"Grape\"));\n        \n        // Iterating through List\n        System.out.println(\"\\n=== Iterating through List ===\");\n        for (int i = 0; i < fruits.size(); i++) {\n            System.out.println(\"Index \" + i + \": \" + fruits.get(i));\n        }\n        \n        // Enhanced for loop\n        System.out.println(\"\\nEnhanced for loop:\");\n        for (String fruit : fruits) {\n            System.out.println(fruit);\n        }\n        \n        // Iterator\n        System.out.println(\"\\nIterator:\");\n        Iterator<String> iterator = fruits.iterator();\n        while (iterator.hasNext()) {\n            System.out.println(iterator.next());\n        }\n        \n        // ListIterator (bidirectional)\n        System.out.println(\"\\nListIterator (forward):\");\n        ListIterator<String> listIterator = fruits.listIterator();\n        while (listIterator.hasNext()) {\n            System.out.println(listIterator.next());\n        }\n        \n        System.out.println(\"\\nListIterator (backward):\");\n        while (listIterator.hasPrevious()) {\n            System.out.println(listIterator.previous());\n        }\n        \n        // List operations\n        System.out.println(\"\\n=== List Operations ===\");\n        fruits.set(1, \"Blueberry\");\n        System.out.println(\"After set: \" + fruits);\n        \n        fruits.remove(2);\n        System.out.println(\"After remove: \" + fruits);\n        \n        fruits.remove(\"Apple\");\n        System.out.println(\"After remove object: \" + fruits);\n        \n        // Sublist\n        List<String> subList = fruits.subList(0, 2);\n        System.out.println(\"SubList: \" + subList);\n        \n        // Sorting\n        Collections.sort(fruits);\n        System.out.println(\"After sorting: \" + fruits);\n        \n        // Custom sorting\n        fruits.sort((a, b) -> b.compareTo(a)); // Reverse order\n        System.out.println(\"After reverse sorting: \" + fruits);\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "ArrayList provides fast random access but slower insertions/deletions. LinkedList provides fast insertions/deletions but slower random access. Choose based on your primary operations."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-3-2",
+        "title": "Set Interface and Implementations",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "The Set interface represents a collection that contains no duplicate elements. HashSet, LinkedHashSet, and TreeSet are the main implementations."
+            },
+            {
+              "type": "text",
+              "content": "The Set interface represents a collection that contains no duplicate elements, making it perfect for scenarios where you need to maintain a unique collection of items. Sets are commonly used for removing duplicates, checking membership, and mathematical set operations."
+            },
+            {
+              "type": "text",
+              "content": "Key characteristics of Set:",
+              "subsections": [
+                "No Duplicates: Each element can appear only once in the set",
+                "Unordered (HashSet): Elements have no guaranteed order",
+                "Ordered (LinkedHashSet): Elements maintain insertion order",
+                "Sorted (TreeSet): Elements are automatically sorted",
+                "Null Elements: Most sets allow one null element"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Common Set implementations:",
+              "subsections": [
+                "HashSet: Fastest implementation with no ordering guarantee",
+                "LinkedHashSet: Maintains insertion order with HashSet performance",
+                "TreeSet: Sorted implementation with O(log n) operations",
+                "EnumSet: Specialized set for enum types with excellent performance"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Set operations include union, intersection, and difference, which can be performed using methods like addAll(), retainAll(), and removeAll(). Sets are essential for algorithms that require unique element collections."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "import java.util.*;\n\npublic class SetDemo {\n    public static void main(String[] args) {\n        // HashSet - unordered, no duplicates\n        Set<String> hashSet = new HashSet<>();\n        hashSet.add(\"Apple\");\n        hashSet.add(\"Banana\");\n        hashSet.add(\"Apple\"); // Duplicate, won't be added\n        hashSet.add(\"Orange\");\n        hashSet.add(\"Grape\");\n        \n        System.out.println(\"HashSet: \" + hashSet);\n        System.out.println(\"Size: \" + hashSet.size());\n        \n        // LinkedHashSet - maintains insertion order\n        Set<String> linkedHashSet = new LinkedHashSet<>();\n        linkedHashSet.add(\"First\");\n        linkedHashSet.add(\"Second\");\n        linkedHashSet.add(\"Third\");\n        linkedHashSet.add(\"First\"); // Duplicate\n        \n        System.out.println(\"\\nLinkedHashSet: \" + linkedHashSet);\n        \n        // TreeSet - sorted order\n        Set<Integer> treeSet = new TreeSet<>();\n        treeSet.add(5);\n        treeSet.add(2);\n        treeSet.add(8);\n        treeSet.add(1);\n        treeSet.add(3);\n        \n        System.out.println(\"\\nTreeSet: \" + treeSet);\n        \n        // Custom objects in Set\n        Set<Student> studentSet = new HashSet<>();\n        studentSet.add(new Student(\"Alice\", 101));\n        studentSet.add(new Student(\"Bob\", 102));\n        studentSet.add(new Student(\"Alice\", 101)); // Duplicate\n        \n        System.out.println(\"\\nStudent Set: \" + studentSet);\n        \n        // Set operations\n        Set<String> set1 = new HashSet<>(Arrays.asList(\"A\", \"B\", \"C\", \"D\"));\n        Set<String> set2 = new HashSet<>(Arrays.asList(\"C\", \"D\", \"E\", \"F\"));\n        \n        System.out.println(\"\\nSet 1: \" + set1);\n        System.out.println(\"Set 2: \" + set2);\n        \n        // Union\n        Set<String> union = new HashSet<>(set1);\n        union.addAll(set2);\n        System.out.println(\"Union: \" + union);\n        \n        // Intersection\n        Set<String> intersection = new HashSet<>(set1);\n        intersection.retainAll(set2);\n        System.out.println(\"Intersection: \" + intersection);\n        \n        // Difference\n        Set<String> difference = new HashSet<>(set1);\n        difference.removeAll(set2);\n        System.out.println(\"Difference (set1 - set2): \" + difference);\n        \n        // TreeSet with custom comparator\n        Set<Person> personSet = new TreeSet<>((p1, p2) -> {\n            int ageCompare = Integer.compare(p1.getAge(), p2.getAge());\n            if (ageCompare != 0) return ageCompare;\n            return p1.getName().compareTo(p2.getName());\n        });\n        \n        personSet.add(new Person(\"Alice\", 25));\n        personSet.add(new Person(\"Bob\", 30));\n        personSet.add(new Person(\"Charlie\", 25));\n        personSet.add(new Person(\"David\", 20));\n        \n        System.out.println(\"\\nSorted Person Set:\");\n        for (Person person : personSet) {\n            System.out.println(person);\n        }\n    }\n}\n\n// Student class for Set demonstration\nclass Student {\n    private String name;\n    private int id;\n    \n    public Student(String name, int id) {\n        this.name = name;\n        this.id = id;\n    }\n    \n    @Override\n    public boolean equals(Object obj) {\n        if (this == obj) return true;\n        if (obj == null || getClass() != obj.getClass()) return false;\n        Student student = (Student) obj;\n        return id == student.id && Objects.equals(name, student.name);\n    }\n    \n    @Override\n    public int hashCode() {\n        return Objects.hash(name, id);\n    }\n    \n    @Override\n    public String toString() {\n        return \"Student{name='\" + name + \"', id=\" + id + '}';\n    }\n}\n\n// Person class for TreeSet demonstration\nclass Person {\n    private String name;\n    private int age;\n    \n    public Person(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n    \n    public String getName() { return name; }\n    public int getAge() { return age; }\n    \n    @Override\n    public String toString() {\n        return \"Person{name='\" + name + \"', age=\" + age + '}';\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "HashSet provides O(1) average time complexity for add/remove/contains. TreeSet provides sorted order but O(log n) time complexity. LinkedHashSet maintains insertion order with HashSet performance."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-3-3",
+        "title": "Map Interface and Implementations",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "The Map interface represents a key-value pair collection. HashMap, LinkedHashMap, and TreeMap are the main implementations."
+            },
+            {
+              "type": "text",
+              "content": "The Map interface represents a collection of key-value pairs, where each key maps to exactly one value. Maps are essential for scenarios where you need to associate data with unique identifiers, such as user profiles, configuration settings, or database records."
+            },
+            {
+              "type": "text",
+              "content": "Key characteristics of Map:",
+              "subsections": [
+                "Key-Value Pairs: Each entry consists of a key and its associated value",
+                "Unique Keys: No two entries can have the same key",
+                "Fast Lookup: O(1) average time complexity for get/put operations (HashMap)",
+                "Null Support: Most maps allow one null key and multiple null values",
+                "Dynamic Sizing: Maps can grow and shrink as needed"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Common Map implementations:",
+              "subsections": [
+                "HashMap: Fastest implementation with no ordering guarantee",
+                "LinkedHashMap: Maintains insertion order with HashMap performance",
+                "TreeMap: Sorted implementation with keys in natural order",
+                "Hashtable: Thread-safe legacy implementation",
+                "ConcurrentHashMap: Thread-safe implementation for concurrent access"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Maps are widely used in real-world applications for caching, configuration management, database operations, and any scenario requiring efficient key-based data retrieval."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "import java.util.*;\n\npublic class MapDemo {\n    public static void main(String[] args) {\n        // HashMap - unordered key-value pairs\n        Map<String, Integer> hashMap = new HashMap<>();\n        hashMap.put(\"Apple\", 5);\n        hashMap.put(\"Banana\", 3);\n        hashMap.put(\"Orange\", 7);\n        hashMap.put(\"Apple\", 6); // Overwrites previous value\n        \n        System.out.println(\"HashMap: \" + hashMap);\n        System.out.println(\"Apple count: \" + hashMap.get(\"Apple\"));\n        System.out.println(\"Contains 'Grape': \" + hashMap.containsKey(\"Grape\"));\n        \n        // LinkedHashMap - maintains insertion order\n        Map<String, String> linkedHashMap = new LinkedHashMap<>();\n        linkedHashMap.put(\"First\", \"Value1\");\n        linkedHashMap.put(\"Second\", \"Value2\");\n        linkedHashMap.put(\"Third\", \"Value3\");\n        \n        System.out.println(\"\\nLinkedHashMap: \" + linkedHashMap);\n        \n        // TreeMap - sorted by keys\n        Map<String, Double> treeMap = new TreeMap<>();\n        treeMap.put(\"Zebra\", 100.0);\n        treeMap.put(\"Apple\", 50.0);\n        treeMap.put(\"Banana\", 75.0);\n        \n        System.out.println(\"\\nTreeMap: \" + treeMap);\n        \n        // Map operations\n        Map<String, Integer> scores = new HashMap<>();\n        scores.put(\"Alice\", 85);\n        scores.put(\"Bob\", 92);\n        scores.put(\"Charlie\", 78);\n        scores.put(\"David\", 95);\n        \n        System.out.println(\"\\n=== Map Operations ===\");\n        System.out.println(\"Scores: \" + scores);\n        \n        // Iterating through Map\n        System.out.println(\"\\nKey-Value pairs:\");\n        for (Map.Entry<String, Integer> entry : scores.entrySet()) {\n            System.out.println(entry.getKey() + \": \" + entry.getValue());\n        }\n        \n        // Iterating through keys\n        System.out.println(\"\\nKeys:\");\n        for (String key : scores.keySet()) {\n            System.out.println(key);\n        }\n        \n        // Iterating through values\n        System.out.println(\"\\nValues:\");\n        for (Integer value : scores.values()) {\n            System.out.println(value);\n        }\n        \n        // Map utility methods\n        System.out.println(\"\\n=== Map Utilities ===\");\n        scores.putIfAbsent(\"Alice\", 90); // Won't overwrite\n        scores.putIfAbsent(\"Eve\", 88); // Will add\n        System.out.println(\"After putIfAbsent: \" + scores);\n        \n        // Compute methods\n        scores.compute(\"Alice\", (key, value) -> value + 5);\n        System.out.println(\"After compute: \" + scores);\n        \n        scores.computeIfPresent(\"Bob\", (key, value) -> value * 2);\n        scores.computeIfAbsent(\"Frank\", key -> 70);\n        System.out.println(\"After computeIfPresent/Absent: \" + scores);\n        \n        // Merge method\n        scores.merge(\"Alice\", 10, (oldValue, newValue) -> oldValue + newValue);\n        System.out.println(\"After merge: \" + scores);\n        \n        // Remove method\n        scores.remove(\"Charlie\");\n        System.out.println(\"After remove: \" + scores);\n        \n        // Custom object as key\n        Map<Student, String> studentGrades = new HashMap<>();\n        Student alice = new Student(\"Alice\", 101);\n        Student bob = new Student(\"Bob\", 102);\n        \n        studentGrades.put(alice, \"A\");\n        studentGrades.put(bob, \"B\");\n        \n        System.out.println(\"\\nStudent Grades: \" + studentGrades);\n        \n        // Nested Map\n        Map<String, Map<String, Integer>> nestedMap = new HashMap<>();\n        \n        Map<String, Integer> mathScores = new HashMap<>();\n        mathScores.put(\"Alice\", 85);\n        mathScores.put(\"Bob\", 92);\n        \n        Map<String, Integer> scienceScores = new HashMap<>();\n        scienceScores.put(\"Alice\", 90);\n        scienceScores.put(\"Bob\", 88);\n        \n        nestedMap.put(\"Math\", mathScores);\n        nestedMap.put(\"Science\", scienceScores);\n        \n        System.out.println(\"\\nNested Map: \" + nestedMap);\n        \n        // Accessing nested values\n        System.out.println(\"Alice's Math score: \" + nestedMap.get(\"Math\").get(\"Alice\"));\n    }\n}\n\n// Student class (reused from previous example)\nclass Student {\n    private String name;\n    private int id;\n    \n    public Student(String name, int id) {\n        this.name = name;\n        this.id = id;\n    }\n    \n    @Override\n    public boolean equals(Object obj) {\n        if (this == obj) return true;\n        if (obj == null || getClass() != obj.getClass()) return false;\n        Student student = (Student) obj;\n        return id == student.id && Objects.equals(name, student.name);\n    }\n    \n    @Override\n    public int hashCode() {\n        return Objects.hash(name, id);\n    }\n    \n    @Override\n    public String toString() {\n        return \"Student{name='\" + name + \"', id=\" + id + '}';\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "HashMap provides O(1) average time complexity for get/put operations. TreeMap provides sorted keys but O(log n) time complexity. LinkedHashMap maintains insertion order with HashMap performance."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-3-4",
+        "title": "Queue and Deque",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Queue represents a collection designed for holding elements prior to processing. Deque extends Queue to allow insertion and removal at both ends."
+            },
+            {
+              "type": "text",
+              "content": "Queue and Deque interfaces represent collections designed for holding elements prior to processing. They are fundamental data structures used in various algorithms and real-world applications like task scheduling, breadth-first search, and producer-consumer patterns."
+            },
+            {
+              "type": "text",
+              "content": "Key characteristics of Queue:",
+              "subsections": [
+                "FIFO (First-In-First-Out): Elements are processed in the order they were added",
+                "Blocking Operations: Some implementations provide blocking methods for thread safety",
+                "Priority Queues: Elements can be ordered by priority rather than insertion order",
+                "Bounded Queues: Some implementations have fixed capacity",
+                "Thread Safety: Concurrent implementations are available for multi-threaded applications"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Common Queue implementations:",
+              "subsections": [
+                "LinkedList: General-purpose queue implementation",
+                "PriorityQueue: Orders elements by natural ordering or custom comparator",
+                "ArrayBlockingQueue: Thread-safe bounded queue backed by an array",
+                "LinkedBlockingQueue: Thread-safe unbounded queue backed by linked nodes",
+                "ConcurrentLinkedQueue: Thread-safe unbounded queue for high concurrency"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Deque (Double-Ended Queue) extends Queue functionality by allowing insertion and removal at both ends, making it suitable for implementing both stacks and queues efficiently."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "import java.util.*;\n\npublic class QueueDequeDemo {\n    public static void main(String[] args) {\n        // PriorityQueue - elements ordered by priority\n        Queue<Integer> priorityQueue = new PriorityQueue<>();\n        priorityQueue.offer(5);\n        priorityQueue.offer(2);\n        priorityQueue.offer(8);\n        priorityQueue.offer(1);\n        priorityQueue.offer(3);\n        \n        System.out.println(\"PriorityQueue: \" + priorityQueue);\n        System.out.println(\"Peek: \" + priorityQueue.peek());\n        \n        System.out.println(\"\\nRemoving elements:\");\n        while (!priorityQueue.isEmpty()) {\n            System.out.print(priorityQueue.poll() + \" \");\n        }\n        System.out.println();\n        \n        // Custom comparator for PriorityQueue\n        Queue<String> stringPriorityQueue = new PriorityQueue<>((a, b) -> b.compareTo(a));\n        stringPriorityQueue.offer(\"Apple\");\n        stringPriorityQueue.offer(\"Banana\");\n        stringPriorityQueue.offer(\"Orange\");\n        \n        System.out.println(\"\\nString PriorityQueue (reverse order): \" + stringPriorityQueue);\n        \n        // LinkedList as Queue\n        Queue<String> linkedListQueue = new LinkedList<>();\n        linkedListQueue.offer(\"First\");\n        linkedListQueue.offer(\"Second\");\n        linkedListQueue.offer(\"Third\");\n        \n        System.out.println(\"\\nLinkedList Queue: \" + linkedListQueue);\n        System.out.println(\"Peek: \" + linkedListQueue.peek());\n        System.out.println(\"Poll: \" + linkedListQueue.poll());\n        System.out.println(\"After poll: \" + linkedListQueue);\n        \n        // Deque (Double-ended queue)\n        Deque<String> deque = new LinkedList<>();\n        \n        // Adding elements\n        deque.addFirst(\"First\");\n        deque.addLast(\"Last\");\n        deque.offerFirst(\"NewFirst\");\n        deque.offerLast(\"NewLast\");\n        \n        System.out.println(\"\\nDeque: \" + deque);\n        \n        // Accessing elements\n        System.out.println(\"First element: \" + deque.getFirst());\n        System.out.println(\"Last element: \" + deque.getLast());\n        System.out.println(\"Peek first: \" + deque.peekFirst());\n        System.out.println(\"Peek last: \" + deque.peekLast());\n        \n        // Removing elements\n        System.out.println(\"Remove first: \" + deque.removeFirst());\n        System.out.println(\"Remove last: \" + deque.removeLast());\n        System.out.println(\"After removals: \" + deque);\n        \n        // ArrayDeque - more efficient than LinkedList for Deque operations\n        Deque<Integer> arrayDeque = new ArrayDeque<>();\n        arrayDeque.addFirst(1);\n        arrayDeque.addLast(2);\n        arrayDeque.addFirst(0);\n        arrayDeque.addLast(3);\n        \n        System.out.println(\"\\nArrayDeque: \" + arrayDeque);\n        \n        // Stack operations using Deque\n        Deque<String> stack = new ArrayDeque<>();\n        stack.push(\"First\");\n        stack.push(\"Second\");\n        stack.push(\"Third\");\n        \n        System.out.println(\"\\nStack: \" + stack);\n        System.out.println(\"Pop: \" + stack.pop());\n        System.out.println(\"Peek: \" + stack.peek());\n        \n        // Queue simulation with Deque\n        Deque<String> queue = new ArrayDeque<>();\n        queue.offer(\"Task1\");\n        queue.offer(\"Task2\");\n        queue.offer(\"Task3\");\n        \n        System.out.println(\"\\nQueue: \" + queue);\n        System.out.println(\"Process: \" + queue.poll());\n        System.out.println(\"Next: \" + queue.peek());\n        \n        // PriorityQueue with custom objects\n        Queue<Task> taskQueue = new PriorityQueue<>((t1, t2) -> {\n            if (t1.getPriority() != t2.getPriority()) {\n                return Integer.compare(t2.getPriority(), t1.getPriority()); // Higher priority first\n            }\n            return t1.getName().compareTo(t2.getName());\n        });\n        \n        taskQueue.offer(new Task(\"Low Priority Task\", 1));\n        taskQueue.offer(new Task(\"High Priority Task\", 5));\n        taskQueue.offer(new Task(\"Medium Priority Task\", 3));\n        taskQueue.offer(new Task(\"Another High Priority\", 5));\n        \n        System.out.println(\"\\nTask Queue:\");\n        while (!taskQueue.isEmpty()) {\n            Task task = taskQueue.poll();\n            System.out.println(\"Processing: \" + task.getName() + \" (Priority: \" + task.getPriority() + \")\");\n        }\n    }\n}\n\n// Task class for PriorityQueue demonstration\nclass Task {\n    private String name;\n    private int priority;\n    \n    public Task(String name, int priority) {\n        this.name = name;\n        this.priority = priority;\n    }\n    \n    public String getName() { return name; }\n    public int getPriority() { return priority; }\n    \n    @Override\n    public String toString() {\n        return \"Task{name='\" + name + \"', priority=\" + priority + '}';\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "PriorityQueue orders elements by natural ordering or custom comparator. Deque provides double-ended queue operations. ArrayDeque is more efficient than LinkedList for Deque operations."
+            }
+          ]
+        }
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "question": "Which List implementation provides the best performance for random access?",
+          "options": [
+            "LinkedList",
+            "ArrayList",
+            "Vector",
+            "Stack"
+          ],
+          "correct": 1,
+          "explanation": "ArrayList provides O(1) random access time complexity, making it the best choice for frequent random access operations."
+        },
+        {
+          "question": "What is the main difference between HashSet and TreeSet?",
+          "options": [
+            "HashSet allows duplicates, TreeSet doesn't",
+            "HashSet is unordered, TreeSet maintains sorted order",
+            "HashSet is thread-safe, TreeSet is not",
+            "HashSet is faster, TreeSet is slower"
+          ],
+          "correct": 1,
+          "explanation": "HashSet provides no guarantee about the order of elements, while TreeSet maintains elements in sorted order."
+        },
+        {
+          "question": "Which Map implementation maintains insertion order?",
+          "options": [
+            "HashMap",
+            "TreeMap",
+            "LinkedHashMap",
+            "Hashtable"
+          ],
+          "correct": 2,
+          "explanation": "LinkedHashMap maintains the insertion order of elements, unlike HashMap which provides no ordering guarantee."
+        },
+        {
+          "question": "What is the time complexity of HashMap's get and put operations?",
+          "options": [
+            "O(n)",
+            "O(log n)",
+            "O(1)",
+            "O(n²)"
+          ],
+          "correct": 2,
+          "explanation": "HashMap provides O(1) average time complexity for get and put operations, making it very efficient for most use cases."
+        },
+        {
+          "question": "Which collection is best for implementing a stack?",
+          "options": [
+            "ArrayList",
+            "LinkedList",
+            "ArrayDeque",
+            "PriorityQueue"
+          ],
+          "correct": 2,
+          "explanation": "ArrayDeque is the recommended choice for implementing a stack as it provides efficient push and pop operations."
+        }
+      ]
+    }
+  }
+} 

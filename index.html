@@ -406,17 +406,17 @@
     </nav>
 
     <!-- Custom Theme Dropdown (moved to body level) -->
-    <div class="fixed top-[70px] md:right-0 right-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl shadow-2xl z-[999999] min-w-[160px] overflow-hidden hidden" id="customThemeDropdown">
-        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="sea">
-            <i class="fas fa-water w-4 mr-3 text-sm"></i>
+    <div class="fixed top-[70px] md:right-2 right-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl shadow-2xl z-[999999] min-w-[160px] overflow-hidden hidden" id="customThemeDropdown">
+        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white border-b border-gray-200 dark:border-white/20 hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="sea">
+            <i class="fas fa-water w-4 mr-3 text-sm text-gray-900 dark:text-white"></i>
             <span class="text-sm font-medium">Sea</span>
         </div>
-        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="earth">
-            <i class="fas fa-leaf w-4 mr-3 text-sm"></i>
+        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white border-b border-gray-200 dark:border-white/20 hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="earth">
+            <i class="fas fa-leaf w-4 mr-3 text-sm text-gray-900 dark:text-white"></i>
             <span class="text-sm font-medium">Earth</span>
         </div>
         <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="sunset">
-            <i class="fas fa-sun w-4 mr-3 text-sm"></i>
+            <i class="fas fa-sun w-4 mr-3 text-sm text-gray-900 dark:text-white"></i>
             <span class="text-sm font-medium">Sunset</span>
         </div>
     </div>
@@ -467,7 +467,7 @@
             </div>
 
             <!-- View Toggle -->
-            <div class="bg-white rounded-lg shadow p-2 flex gap-2 w-full sm:w-auto justify-center sm:justify-start">
+            <div class="hidden lg:block bg-white rounded-lg shadow p-2 flex flex-row gap-2 w-full sm:w-auto justify-center sm:justify-start">
                 <button onclick="toggleView('card')" id="cardViewBtn" class="view-btn active px-3 py-2 rounded-md transition flex items-center gap-2 text-xs sm:text-sm lg:text-base whitespace-nowrap">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
@@ -684,6 +684,29 @@
                 hamburgerLines.forEach(line => {
                     line.style.backgroundColor = color;
                 });
+                
+                // Update theme dropdown colors for dark mode
+                updateThemeDropdownColors(theme);
+            }
+            
+            function updateThemeDropdownColors(theme) {
+                const themeOptions = document.querySelectorAll('.custom-theme-option');
+                const isDarkMode = document.body.getAttribute('data-theme') === 'dark';
+                
+                themeOptions.forEach(option => {
+                    const icon = option.querySelector('i');
+                    const text = option.querySelector('span');
+                    
+                    if (isDarkMode) {
+                        // Force white colors in dark mode
+                        if (icon) icon.style.color = '#ffffff';
+                        if (text) text.style.color = '#ffffff';
+                    } else {
+                        // Reset to default colors in light mode
+                        if (icon) icon.style.removeProperty('color');
+                        if (text) text.style.removeProperty('color');
+                    }
+                });
             }
 
             renderCourses();
@@ -847,10 +870,26 @@
 
         function truncateDescription(description, wordLimit = 25) {
             const words = description.split(' ');
-            if (words.length <= wordLimit) {
+            
+            // Check screen width for mobile devices
+            const isMobile = window.innerWidth <= 640; // sm breakpoint
+            const isSmallMobile = window.innerWidth <= 320;
+            const isTablet = window.innerWidth >= 768 && window.innerWidth <= 1024; // md to lg breakpoint
+            
+            // Use much smaller word limit for very small screens
+            let actualWordLimit = wordLimit;
+            if (isSmallMobile) {
+                actualWordLimit = 18; // More text for 320px screens
+            } else if (isMobile) {
+                actualWordLimit = 15; // Short for mobile screens
+            } else if (isTablet) {
+                actualWordLimit = 20; // Reduced for tablet screens
+            }
+            
+            if (words.length <= actualWordLimit) {
                 return description;
             }
-            return words.slice(0, wordLimit).join(' ') + '...';
+            return words.slice(0, actualWordLimit).join(' ') + '...';
         }
 
         function renderCourses(filter = 'all') {
@@ -929,7 +968,7 @@
                 'Specialization': '<i class="fas fa-bullseye text-2xl course-icon"></i>'
             };
 
-            const truncatedDescription = truncateDescription(course.description, 25);
+            const truncatedDescription = truncateDescription(course.description, 35);
 
             card.innerHTML = `
                 <div class="p-6 flex flex-col h-full">
@@ -943,7 +982,7 @@
                     <div class="course-description text-gray-600 mb-4 text-sm leading-relaxed flex-grow">
                         ${truncatedDescription}
                     </div>
-                    <div class="flex justify-between items-center text-sm text-gray-500 mb-6 mt-auto">
+                    <div class="hidden course-details-mobile flex justify-between items-center text-sm text-gray-500 mb-6 mt-auto">
                         <div class="flex items-center space-x-1">
                             <i class="fas fa-calendar-alt"></i>
                             <span>${course.duration}</span>
@@ -1289,6 +1328,94 @@
         /* Ensure mobile menu is properly styled in dark mode */
         [data-theme="dark"] #mobileMenu .nav-link:hover {
             background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Custom breakpoint for course details */
+        @media (min-width: 375px) {
+            .course-details-mobile {
+                display: flex !important;
+            }
+        }
+        
+        /* Theme dropdown dark mode overrides */
+        [data-theme="dark"] .custom-theme-option i {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="dark"] .custom-theme-option span {
+            color: #ffffff !important;
+        }
+        
+        /* Theme dropdown light mode overrides */
+        [data-theme="light"] .custom-theme-option i {
+            color: #000000 !important;
+        }
+        
+        [data-theme="light"] .custom-theme-option span {
+            color: #000000 !important;
+        }
+        
+        /* Theme dropdown custom theme overrides */
+        [data-theme="sea"] .custom-theme-option i {
+            color: #01579b !important;
+        }
+        
+        [data-theme="sea"] .custom-theme-option span {
+            color: #01579b !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option i {
+            color: #33691e !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option span {
+            color: #33691e !important;
+        }
+        
+        [data-theme="sunset"] .custom-theme-option i {
+            color: #e65100 !important;
+        }
+        
+        [data-theme="sunset"] .custom-theme-option span {
+            color: #e65100 !important;
+        }
+        
+        /* Force consistent border colors for all themes */
+        [data-theme="sea"] .custom-theme-option,
+        [data-theme="earth"] .custom-theme-option,
+        [data-theme="sunset"] .custom-theme-option {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        /* Specific overrides for Sea and Earth themes */
+        [data-theme="sea"] .custom-theme-option.border-b {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option.border-b {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        /* Force all borders to be white/20 in all themes */
+        #customThemeDropdown .custom-theme-option {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        /* Force view toggle buttons to be side by side */
+        .view-btn {
+            flex-shrink: 0 !important;
+            width: auto !important;
+        }
+        
+        /* Force the view toggle container to display buttons horizontally */
+        #cardViewBtn, #tableViewBtn {
+            display: inline-flex !important;
+            flex-direction: row !important;
+        }
+        
+        /* Override any flex direction issues */
+        .hidden.lg\:block {
+            flex-direction: row !important;
         }
     </style>
 </body>

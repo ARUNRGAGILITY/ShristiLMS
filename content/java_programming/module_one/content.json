@@ -74,6 +74,33 @@
               "content": "Java is a strongly-typed language, meaning every variable must have a declared type. Understanding the basic syntax and data types is fundamental to Java programming."
             },
             {
+              "type": "text",
+              "content": "Java's type system is designed to catch errors at compile time rather than runtime, making programs more reliable and efficient. Every variable, parameter, and return value must have a specific type declared, which helps prevent type-related bugs and improves code readability."
+            },
+            {
+              "type": "text",
+              "content": "Java data types are categorized into two main groups:",
+              "subsections": [
+                "Primitive Types: Basic data types stored directly in memory (byte, short, int, long, float, double, char, boolean)",
+                "Reference Types: Complex types that store references to objects (classes, interfaces, arrays, enums)"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Key characteristics of Java's type system:",
+              "subsections": [
+                "Static Typing: Types are checked at compile time",
+                "Type Safety: Prevents incompatible type assignments",
+                "Memory Efficiency: Primitive types use minimal memory",
+                "Object-Oriented: Reference types support inheritance and polymorphism",
+                "Automatic Boxing: Automatic conversion between primitives and wrapper classes"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Understanding data types is crucial for memory management, performance optimization, and writing maintainable code. Choosing the right data type can significantly impact your program's efficiency and correctness."
+            },
+            {
               "type": "code",
               "language": "java",
               "content": "public class DataTypes {\n    public static void main(String[] args) {\n        // Primitive data types\n        byte byteValue = 127; // 8-bit signed integer\n        short shortValue = 32767; // 16-bit signed integer\n        int intValue = 2147483647; // 32-bit signed integer\n        long longValue = 9223372036854775807L; // 64-bit signed integer\n        \n        float floatValue = 3.14f; // 32-bit floating point\n        double doubleValue = 3.14159265359; // 64-bit floating point\n        \n        char charValue = 'A'; // 16-bit Unicode character\n        boolean booleanValue = true; // true or false\n        \n        // Reference data types\n        String stringValue = \"Hello, Java!\";\n        Integer integerObject = 100;\n        Double doubleObject = 3.14;\n        \n        // Arrays\n        int[] numbers = {1, 2, 3, 4, 5};\n        String[] names = {\"Alice\", \"Bob\", \"Charlie\"};\n        \n        // Printing values\n        System.out.println(\"Byte: \" + byteValue);\n        System.out.println(\"Short: \" + shortValue);\n        System.out.println(\"Int: \" + intValue);\n        System.out.println(\"Long: \" + longValue);\n        System.out.println(\"Float: \" + floatValue);\n        System.out.println(\"Double: \" + doubleValue);\n        System.out.println(\"Char: \" + charValue);\n        System.out.println(\"Boolean: \" + booleanValue);\n        System.out.println(\"String: \" + stringValue);\n        \n        // Type conversion (casting)\n        int intFromDouble = (int) doubleValue;\n        double doubleFromInt = intValue;\n        \n        System.out.println(\"Int from double: \" + intFromDouble);\n        System.out.println(\"Double from int: \" + doubleFromInt);\n    }\n}"
@@ -81,6 +108,52 @@
             {
               "type": "text",
               "content": "Java has two categories of data types: primitive types (stored directly in memory) and reference types (stored as references to objects). Understanding the difference is crucial for memory management and performance."
+            },
+            {
+              "type": "text",
+              "content": "Primitive data types are the building blocks of Java programming. They represent simple values and are stored directly in memory, making them very efficient for basic operations. Each primitive type has a specific size and range of values it can hold."
+            },
+            {
+              "type": "text",
+              "content": "Integer primitive types (in order of size):",
+              "subsections": [
+                "byte: 8-bit signed integer (-128 to 127), used for small numbers to save memory",
+                "short: 16-bit signed integer (-32,768 to 32,767), used for medium-sized numbers",
+                "int: 32-bit signed integer (-2^31 to 2^31-1), most commonly used integer type",
+                "long: 64-bit signed integer (-2^63 to 2^63-1), used for very large numbers"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Floating-point primitive types:",
+              "subsections": [
+                "float: 32-bit floating point, 6-7 decimal digits precision, suffix 'f' required",
+                "double: 64-bit floating point, 15-16 decimal digits precision, default for decimals"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Other primitive types:",
+              "subsections": [
+                "char: 16-bit Unicode character, represents a single character",
+                "boolean: true or false value, used for logical operations and conditions"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Reference types include arrays, classes, interfaces, and enums. They are stored as references (memory addresses) pointing to objects in the heap. Arrays are special reference types that can hold multiple values of the same type."
+            },
+            {
+              "type": "text",
+              "content": "Type conversion (casting) is necessary when assigning values between different types. Implicit conversion happens when no data loss occurs, while explicit casting is required when there's potential for data loss."
+            },
+            {
+              "type": "text",
+              "content": "Wrapper classes (Integer, Double, Boolean, etc.) provide object representations of primitive types. They are useful when you need to store primitives in collections or when working with generics."
+            },
+            {
+              "type": "text",
+              "content": "Memory considerations: Primitive types are stored on the stack and are very memory-efficient, while reference types are stored on the heap and require more memory due to object overhead."
             }
           ]
         }
@@ -95,6 +168,36 @@
               "content": "Variables in Java must be declared with a specific type and can be initialized with values. Java provides various operators for performing operations on variables and values."
             },
             {
+              "type": "text",
+              "content": "Variables are fundamental building blocks in Java programming that allow you to store and manipulate data. They serve as named containers for values that can change during program execution. Understanding variables and operators is essential for writing effective Java programs."
+            },
+            {
+              "type": "text",
+              "content": "Variable declaration and initialization:",
+              "subsections": [
+                "Declaration: Specifying the variable type and name (e.g., int age;)",
+                "Initialization: Assigning an initial value to the variable (e.g., int age = 25;)",
+                "Declaration and Initialization: Combining both in one statement",
+                "Constants: Using final keyword to create immutable variables",
+                "Scope: Understanding where variables can be accessed"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Variable naming conventions in Java:",
+              "subsections": [
+                "Camel Case: Use camelCase for variable names (e.g., firstName, totalAmount)",
+                "Descriptive Names: Choose names that clearly indicate the variable's purpose",
+                "Avoid Keywords: Don't use Java reserved words as variable names",
+                "Start with Letter: Variable names must start with a letter, underscore, or dollar sign",
+                "Case Sensitive: Java is case-sensitive, so age and Age are different variables"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Java operators are symbols that perform operations on operands (variables, literals, or expressions). They are categorized into different types based on their functionality and the number of operands they work with."
+            },
+            {
               "type": "code",
               "language": "java",
               "content": "public class VariablesAndOperators {\n    public static void main(String[] args) {\n        // Variable declaration and initialization\n        int age = 25;\n        String name = \"John Doe\";\n        double salary = 50000.0;\n        \n        // Constants (final keyword)\n        final double PI = 3.14159;\n        final String COMPANY_NAME = \"TechCorp\";\n        \n        // Arithmetic operators\n        int a = 10;\n        int b = 3;\n        \n        System.out.println(\"Addition: \" + (a + b)); // 13\n        System.out.println(\"Subtraction: \" + (a - b)); // 7\n        System.out.println(\"Multiplication: \" + (a * b)); // 30\n        System.out.println(\"Division: \" + (a / b)); // 3\n        System.out.println(\"Modulus: \" + (a % b)); // 1\n        \n        // Increment and decrement\n        int count = 5;\n        System.out.println(\"Original count: \" + count);\n        System.out.println(\"Post-increment: \" + count++); // 5\n        System.out.println(\"After post-increment: \" + count); // 6\n        System.out.println(\"Pre-increment: \" + ++count); // 7\n        \n        // Assignment operators\n        int x = 10;\n        x += 5; // Same as x = x + 5\n        x -= 3; // Same as x = x - 3\n        x *= 2; // Same as x = x * 2\n        x /= 4; // Same as x = x / 4\n        \n        System.out.println(\"Final x: \" + x);\n        \n        // Comparison operators\n        int num1 = 10;\n        int num2 = 20;\n        \n        System.out.println(\"num1 == num2: \" + (num1 == num2)); // false\n        System.out.println(\"num1 != num2: \" + (num1 != num2)); // true\n        System.out.println(\"num1 < num2: \" + (num1 < num2)); // true\n        System.out.println(\"num1 > num2: \" + (num1 > num2)); // false\n        System.out.println(\"num1 <= num2: \" + (num1 <= num2)); // true\n        System.out.println(\"num1 >= num2: \" + (num1 >= num2)); // false\n        \n        // Logical operators\n        boolean isTrue = true;\n        boolean isFalse = false;\n        \n        System.out.println(\"AND: \" + (isTrue && isFalse)); // false\n        System.out.println(\"OR: \" + (isTrue || isFalse)); // true\n        System.out.println(\"NOT: \" + (!isTrue)); // false\n        \n        // String concatenation\n        String firstName = \"John\";\n        String lastName = \"Doe\";\n        String fullName = firstName + \" \" + lastName;\n        System.out.println(\"Full name: \" + fullName);\n        \n        // String formatting\n        String formatted = String.format(\"Name: %s, Age: %d, Salary: %.2f\", \n                                       name, age, salary);\n        System.out.println(formatted);\n    }\n}"
@@ -102,6 +205,46 @@
             {
               "type": "text",
               "content": "Java operators follow precedence rules. Understanding operator precedence helps avoid unexpected results in complex expressions."
+            },
+            {
+              "type": "text",
+              "content": "Arithmetic operators perform mathematical operations on numeric values. They include addition (+), subtraction (-), multiplication (*), division (/), and modulus (%). The modulus operator returns the remainder of a division operation and is useful for determining if a number is even or odd."
+            },
+            {
+              "type": "text",
+              "content": "Increment and decrement operators (++ and --) are used to increase or decrease a variable's value by 1. They can be used in prefix (++x) or postfix (x++) form. The difference is when the increment/decrement occurs relative to the expression evaluation."
+            },
+            {
+              "type": "text",
+              "content": "Assignment operators combine assignment with arithmetic operations. They provide a shorthand way to modify variables. Common assignment operators include +=, -=, *=, /=, and %=. These operators are more efficient than separate arithmetic and assignment operations."
+            },
+            {
+              "type": "text",
+              "content": "Comparison operators are used to compare values and return boolean results. They include equality (==), inequality (!=), less than (<), greater than (>), less than or equal (<=), and greater than or equal (>=). These operators are essential for conditional statements and loops."
+            },
+            {
+              "type": "text",
+              "content": "Logical operators work with boolean values and are used in conditional expressions. The AND operator (&&) returns true only if both operands are true. The OR operator (||) returns true if at least one operand is true. The NOT operator (!) inverts the boolean value."
+            },
+            {
+              "type": "text",
+              "content": "String concatenation uses the + operator to join strings together. Java automatically converts non-string values to strings when concatenating. The String.format() method provides more control over string formatting with placeholders for different data types."
+            },
+            {
+              "type": "text",
+              "content": "Operator precedence determines the order in which operations are performed. Understanding precedence is crucial for writing correct expressions. Parentheses can be used to override the default precedence and make expressions more readable."
+            },
+            {
+              "type": "text",
+              "content": "Best practices for variables and operators:",
+              "subsections": [
+                "Use meaningful variable names that clearly indicate their purpose",
+                "Initialize variables when declaring them to avoid undefined behavior",
+                "Use constants (final) for values that should not change",
+                "Be careful with floating-point arithmetic due to precision issues",
+                "Use parentheses to clarify complex expressions and avoid precedence confusion",
+                "Choose appropriate data types to optimize memory usage and performance"
+              ]
             }
           ]
         }
@@ -116,6 +259,40 @@
               "content": "Control flow statements allow you to control the execution of your program based on conditions and loops. These are essential for creating dynamic and responsive applications."
             },
             {
+              "type": "text",
+              "content": "Control flow statements are the backbone of program logic, enabling you to make decisions and repeat actions based on conditions. They transform static code into dynamic, responsive applications that can adapt to different situations and user inputs."
+            },
+            {
+              "type": "text",
+              "content": "Types of control flow statements in Java:",
+              "subsections": [
+                "Conditional Statements: if, if-else, if-else-if-else for decision making",
+                "Switch Statements: Multi-way branching based on a single variable",
+                "Loop Statements: for, while, do-while for repetitive execution",
+                "Jump Statements: break, continue, return for flow control",
+                "Ternary Operator: Shorthand conditional expression"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Conditional statements evaluate boolean expressions and execute different code blocks based on the result. They enable programs to respond differently to various conditions, making applications interactive and intelligent."
+            },
+            {
+              "type": "text",
+              "content": "Loop statements allow you to execute a block of code multiple times. They are essential for processing collections of data, implementing algorithms, and creating interactive programs. Each loop type has specific use cases and advantages."
+            },
+            {
+              "type": "text",
+              "content": "Understanding control flow is crucial for:",
+              "subsections": [
+                "User Input Processing: Responding to different user choices",
+                "Data Validation: Checking input values and data integrity",
+                "Algorithm Implementation: Creating complex computational logic",
+                "Error Handling: Managing different error conditions",
+                "Performance Optimization: Controlling program execution efficiently"
+              ]
+            },
+            {
               "type": "code",
               "language": "java",
               "content": "public class ControlFlow {\n    public static void main(String[] args) {\n        // If statement\n        int age = 18;\n        \n        if (age >= 18) {\n            System.out.println(\"You are an adult\");\n        } else {\n            System.out.println(\"You are a minor\");\n        }\n        \n        // If-else if-else\n        int score = 85;\n        \n        if (score >= 90) {\n            System.out.println(\"Grade: A\");\n        } else if (score >= 80) {\n            System.out.println(\"Grade: B\");\n        } else if (score >= 70) {\n            System.out.println(\"Grade: C\");\n        } else {\n            System.out.println(\"Grade: F\");\n        }\n        \n        // Switch statement\n        int day = 1;\n        String dayName;\n        \n        switch (day) {\n            case 1:\n                dayName = \"Monday\";\n                break;\n            case 2:\n                dayName = \"Tuesday\";\n                break;\n            case 3:\n                dayName = \"Wednesday\";\n                break;\n            case 4:\n                dayName = \"Thursday\";\n                break;\n            case 5:\n                dayName = \"Friday\";\n                break;\n            case 6:\n            case 7:\n                dayName = \"Weekend\";\n                break;\n            default:\n                dayName = \"Invalid day\";\n        }\n        \n        System.out.println(\"Day: \" + dayName);\n        \n        // Ternary operator\n        String status = (age >= 18) ? \"Adult\" : \"Minor\";\n        System.out.println(\"Status: \" + status);\n        \n        // For loop\n        System.out.println(\"\\nFor loop:\");\n        for (int i = 0; i < 5; i++) {\n            System.out.println(\"Iteration \" + i);\n        }\n        \n        // While loop\n        System.out.println(\"\\nWhile loop:\");\n        int count = 0;\n        while (count < 3) {\n            System.out.println(\"Count: \" + count);\n            count++;\n        }\n        \n        // Do-while loop\n        System.out.println(\"\\nDo-while loop:\");\n        int num = 0;\n        do {\n            System.out.println(\"Number: \" + num);\n            num++;\n        } while (num < 3);\n        \n        // Enhanced for loop (for arrays)\n        System.out.println(\"\\nEnhanced for loop:\");\n        String[] colors = {\"Red\", \"Green\", \"Blue\"};\n        for (String color : colors) {\n            System.out.println(\"Color: \" + color);\n        }\n        \n        // Break and continue\n        System.out.println(\"\\nBreak and continue:\");\n        for (int i = 0; i < 10; i++) {\n            if (i == 5) {\n                break; // Exit the loop\n            }\n            if (i == 2) {\n                continue; // Skip this iteration\n            }\n            System.out.println(\"i = \" + i);\n        }\n    }\n}"
@@ -123,6 +300,62 @@
             {
               "type": "text",
               "content": "Control flow statements are fundamental to programming logic. Understanding when to use each type of statement helps create efficient and readable code."
+            },
+            {
+              "type": "text",
+              "content": "If statements are the most basic form of conditional execution. They evaluate a boolean expression and execute the code block only if the condition is true. The if-else structure provides an alternative path when the condition is false."
+            },
+            {
+              "type": "text",
+              "content": "If-else-if-else chains allow for multiple conditions to be evaluated in sequence. Each condition is checked only if all previous conditions were false. This structure is useful for handling multiple mutually exclusive scenarios."
+            },
+            {
+              "type": "text",
+              "content": "Switch statements provide an efficient way to handle multiple possible values of a single variable. They are more readable than long if-else chains when comparing a variable against multiple constants. The break statement prevents fall-through to subsequent cases."
+            },
+            {
+              "type": "text",
+              "content": "The ternary operator (condition ? value1 : value2) is a concise way to assign values based on a condition. It's equivalent to a simple if-else statement but more compact. Use it for simple conditional assignments, but prefer if-else for complex logic."
+            },
+            {
+              "type": "text",
+              "content": "For loops are ideal when you know the number of iterations in advance. They consist of initialization, condition, and increment/decrement expressions. The enhanced for loop (for-each) simplifies iteration over arrays and collections."
+            },
+            {
+              "type": "text",
+              "content": "While loops continue executing as long as a condition remains true. They're useful when you don't know the number of iterations beforehand. Always ensure the loop condition will eventually become false to avoid infinite loops."
+            },
+            {
+              "type": "text",
+              "content": "Do-while loops execute the loop body at least once before checking the condition. They're useful when you need to perform an action before evaluating whether to continue. This guarantees at least one execution of the loop body."
+            },
+            {
+              "type": "text",
+              "content": "Break and continue statements provide fine-grained control over loop execution. Break exits the loop entirely, while continue skips the rest of the current iteration and continues with the next one. These statements are essential for optimizing loop performance."
+            },
+            {
+              "type": "text",
+              "content": "Best practices for control flow:",
+              "subsections": [
+                "Use meaningful boolean expressions that clearly express intent",
+                "Avoid deeply nested if statements - consider using early returns or switch statements",
+                "Always use braces {} for control flow blocks, even for single statements",
+                "Choose the appropriate loop type based on your specific needs",
+                "Be careful with infinite loops - ensure loop conditions will eventually become false",
+                "Use break and continue judiciously to improve code readability",
+                "Consider performance implications when choosing between different control structures"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Common control flow patterns include:",
+              "subsections": [
+                "Input Validation: Using if statements to check user input",
+                "Menu Systems: Using switch statements for user choice processing",
+                "Data Processing: Using loops to iterate through collections",
+                "Error Handling: Using conditional statements to manage exceptions",
+                "State Machines: Using switch statements to manage program states"
+              ]
             }
           ]
         }

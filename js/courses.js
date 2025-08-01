@@ -3,7 +3,7 @@ const courses = [
     {
         id: 'ai-foundations',
         name: 'AI Foundations',
-        description: 'Learn the fundamentals of Artificial Intelligence including machine learning, neural networks, and deep learning concepts. Perfect for beginners starting their AI journey.',
+        description: 'Master AI fundamentals, machine learning, and neural networks. Build a solid foundation for your AI career with hands-on projects and real-world applications.',
         duration: '8 weeks',
         type: 'Foundation',
         difficulty: 'Beginner',
@@ -22,7 +22,7 @@ const courses = [
     {
         id: 'programming-foundations',
         name: 'Programming Foundations',
-        description: 'Master the core concepts of programming including algorithms, data structures, and problem-solving techniques. Essential foundation for any programming language.',
+        description: 'Learn core programming concepts, algorithms, and problem-solving techniques. Essential foundation for any programming language with practical coding exercises.',
         duration: '6 weeks',
         type: 'Foundation',
         difficulty: 'Beginner',
@@ -41,7 +41,7 @@ const courses = [
     {
         id: 'python-programming',
         name: 'Python Programming',
-        description: 'Comprehensive Python course covering syntax, libraries, frameworks, and real-world applications. From basics to advanced Python development.',
+        description: 'Master Python from basics to advanced development with real-world applications. Learn syntax, libraries, and build practical projects that showcase your skills.',
         duration: '10 weeks',
         type: 'Programming',
         difficulty: 'Intermediate',
@@ -60,7 +60,7 @@ const courses = [
     {
         id: 'java-programming',
         name: 'Java Programming',
-        description: 'Learn Java from basics to advanced concepts including OOP, collections, and enterprise development. Industry-standard programming language.',
+        description: 'Learn Java from basics to enterprise development with industry-standard practices. Master OOP, collections, and build scalable applications.',
         duration: '12 weeks',
         type: 'Programming',
         difficulty: 'Intermediate',
@@ -79,7 +79,7 @@ const courses = [
     {
         id: 'javascript-programming',
         name: 'JavaScript Programming',
-        description: 'Master modern JavaScript including ES6+, DOM manipulation, async programming, and frameworks. Essential for web development.',
+        description: 'Master modern JavaScript with ES6+, DOM manipulation, and async programming. Essential for web development and dynamic applications.',
         duration: '8 weeks',
         type: 'Programming',
         difficulty: 'Intermediate',
@@ -98,7 +98,7 @@ const courses = [
     {
         id: 'typescript-programming',
         name: 'TypeScript Programming',
-        description: 'Learn TypeScript for type-safe JavaScript development with advanced features and tooling. Perfect for large-scale applications.',
+        description: 'Learn TypeScript for type-safe JavaScript development and scalable applications. Master advanced features and enterprise-level coding practices.',
         duration: '6 weeks',
         type: 'Programming',
         difficulty: 'Advanced',
@@ -117,7 +117,7 @@ const courses = [
     {
         id: 'fullstack-development',
         name: 'Full Stack Development',
-        description: 'Complete web development course covering frontend, backend, databases, and deployment. Build modern web applications end-to-end.',
+        description: 'Build complete web applications from frontend to backend with deployment. Master databases, APIs, and modern web technologies.',
         duration: '16 weeks',
         type: 'Specialization',
         difficulty: 'Advanced',
@@ -136,7 +136,7 @@ const courses = [
     {
         id: 'devops',
         name: 'DevOps',
-        description: 'Learn DevOps practices including CI/CD, containerization, orchestration, and cloud deployment. Modern software development lifecycle.',
+        description: 'Master DevOps practices including CI/CD, containerization, and cloud deployment. Streamline software development and deployment processes.',
         duration: '12 weeks',
         type: 'Specialization',
         difficulty: 'Advanced',
@@ -155,7 +155,7 @@ const courses = [
     {
         id: 'data-science',
         name: 'Data Science Foundations',
-        description: 'Master the complete data science pipeline from statistics to machine learning. Learn to extract insights from data, build predictive models, and make data-driven decisions using Python, statistics, and real-world projects.',
+        description: 'Master data science from statistics to machine learning for data-driven decisions. Learn to extract insights and build predictive models.',
         duration: '12 weeks',
         type: 'Foundation',
         difficulty: 'Intermediate',

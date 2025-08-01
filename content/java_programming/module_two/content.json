@@ -1,0 +1,265 @@
+{
+  "module": {
+    "title": "Object-Oriented Programming",
+    "description": "Master inheritance, polymorphism, abstraction, and encapsulation in Java",
+    "lessons": [
+      {
+        "id": "java-2-1",
+        "title": "Inheritance",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Inheritance is a fundamental concept in object-oriented programming that allows a class to inherit properties and methods from another class. This promotes code reuse and establishes a hierarchical relationship between classes."
+            },
+            {
+              "type": "text",
+              "content": "Inheritance is one of the four pillars of Object-Oriented Programming (OOP), along with encapsulation, polymorphism, and abstraction. It enables you to create a new class that is based on an existing class, inheriting all its properties and methods while adding new ones or overriding existing ones."
+            },
+            {
+              "type": "text",
+              "content": "Key concepts of inheritance:",
+              "subsections": [
+                "Base Class (Parent/Superclass): The class being inherited from",
+                "Derived Class (Child/Subclass): The class that inherits from the base class",
+                "Code Reuse: Subclasses can use methods and properties from the parent class",
+                "Method Overriding: Subclasses can provide their own implementation of inherited methods",
+                "Single Inheritance: Java supports single inheritance (one parent class per child class)"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Benefits of inheritance include code reuse, establishing relationships between classes, and supporting polymorphism. The 'extends' keyword is used to create inheritance relationships, and 'super()' is used to call the parent class constructor."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "// Base class (parent class)\npublic class Animal {\n    protected String name;\n    protected int age;\n    \n    public Animal(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n    \n    public void eat() {\n        System.out.println(name + \" is eating.\");\n    }\n    \n    public void sleep() {\n        System.out.println(name + \" is sleeping.\");\n    }\n    \n    public void makeSound() {\n        System.out.println(name + \" makes a sound.\");\n    }\n    \n    public String getName() {\n        return name;\n    }\n    \n    public int getAge() {\n        return age;\n    }\n}\n\n// Derived class (child class)\npublic class Dog extends Animal {\n    private String breed;\n    \n    public Dog(String name, int age, String breed) {\n        super(name, age); // Call parent constructor\n        this.breed = breed;\n    }\n    \n    // Override parent method\n    @Override\n    public void makeSound() {\n        System.out.println(name + \" barks: Woof! Woof!\");\n    }\n    \n    // New method specific to Dog\n    public void fetch() {\n        System.out.println(name + \" is fetching the ball.\");\n    }\n    \n    public String getBreed() {\n        return breed;\n    }\n}\n\n// Another derived class\npublic class Cat extends Animal {\n    private boolean isIndoor;\n    \n    public Cat(String name, int age, boolean isIndoor) {\n        super(name, age);\n        this.isIndoor = isIndoor;\n    }\n    \n    @Override\n    public void makeSound() {\n        System.out.println(name + \" meows: Meow!\");\n    }\n    \n    public void climb() {\n        System.out.println(name + \" is climbing a tree.\");\n    }\n    \n    public boolean isIndoor() {\n        return isIndoor;\n    }\n}\n\n// Main class to demonstrate inheritance\npublic class InheritanceDemo {\n    public static void main(String[] args) {\n        // Creating objects of different types\n        Animal animal = new Animal(\"Generic Animal\", 5);\n        Dog dog = new Dog(\"Buddy\", 3, \"Golden Retriever\");\n        Cat cat = new Cat(\"Whiskers\", 2, true);\n        \n        // Demonstrating inheritance\n        System.out.println(\"=== Animal ===\");\n        animal.eat();\n        animal.sleep();\n        animal.makeSound();\n        \n        System.out.println(\"\\n=== Dog ===\");\n        dog.eat(); // Inherited method\n        dog.sleep(); // Inherited method\n        dog.makeSound(); // Overridden method\n        dog.fetch(); // Dog-specific method\n        \n        System.out.println(\"\\n=== Cat ===\");\n        cat.eat(); // Inherited method\n        cat.sleep(); // Inherited method\n        cat.makeSound(); // Overridden method\n        cat.climb(); // Cat-specific method\n        \n        // Polymorphism: treating derived classes as base class\n        System.out.println(\"\\n=== Polymorphism ===\");\n        Animal[] animals = {animal, dog, cat};\n        \n        for (Animal a : animals) {\n            a.makeSound(); // Each calls its own version\n        }\n        \n        // Accessing inherited properties\n        System.out.println(\"\\n=== Properties ===\");\n        System.out.println(\"Dog name: \" + dog.getName());\n        System.out.println(\"Dog age: \" + dog.getAge());\n        System.out.println(\"Dog breed: \" + dog.getBreed());\n        \n        System.out.println(\"Cat name: \" + cat.getName());\n        System.out.println(\"Cat age: \" + cat.getAge());\n        System.out.println(\"Cat is indoor: \" + cat.isIndoor());\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "Inheritance allows code reuse and establishes an 'is-a' relationship. The 'extends' keyword is used to inherit from a parent class, and 'super()' is used to call the parent constructor."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-2-2",
+        "title": "Polymorphism",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables flexibility and extensibility in object-oriented design."
+            },
+            {
+              "type": "text",
+              "content": "Polymorphism, derived from Greek words meaning 'many forms,' is a core concept in object-oriented programming that allows objects to take on multiple forms. It enables you to write code that can work with objects of different types through a common interface."
+            },
+            {
+              "type": "text",
+              "content": "Types of polymorphism in Java:",
+              "subsections": [
+                "Runtime Polymorphism (Method Overriding): When a subclass provides a specific implementation of a method that is already defined in its parent class",
+                "Compile-time Polymorphism (Method Overloading): When multiple methods have the same name but different parameters",
+                "Interface Polymorphism: When objects implement interfaces and can be treated as the interface type"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Polymorphism provides several advantages including code flexibility, extensibility, and the ability to write more generic code. It's essential for creating maintainable and scalable applications."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "// Shape hierarchy for polymorphism demonstration\npublic abstract class Shape {\n    protected String color;\n    \n    public Shape(String color) {\n        this.color = color;\n    }\n    \n    // Abstract method - must be implemented by subclasses\n    public abstract double calculateArea();\n    \n    // Abstract method\n    public abstract double calculatePerimeter();\n    \n    // Concrete method\n    public String getColor() {\n        return color;\n    }\n    \n    public void setColor(String color) {\n        this.color = color;\n    }\n}\n\n// Concrete implementation\npublic class Circle extends Shape {\n    private double radius;\n    \n    public Circle(String color, double radius) {\n        super(color);\n        this.radius = radius;\n    }\n    \n    @Override\n    public double calculateArea() {\n        return Math.PI * radius * radius;\n    }\n    \n    @Override\n    public double calculatePerimeter() {\n        return 2 * Math.PI * radius;\n    }\n    \n    public double getRadius() {\n        return radius;\n    }\n}\n\n// Another concrete implementation\npublic class Rectangle extends Shape {\n    private double width;\n    private double height;\n    \n    public Rectangle(String color, double width, double height) {\n        super(color);\n        this.width = width;\n        this.height = height;\n    }\n    \n    @Override\n    public double calculateArea() {\n        return width * height;\n    }\n    \n    @Override\n    public double calculatePerimeter() {\n        return 2 * (width + height);\n    }\n    \n    public double getWidth() {\n        return width;\n    }\n    \n    public double getHeight() {\n        return height;\n    }\n}\n\n// Triangle implementation\npublic class Triangle extends Shape {\n    private double sideA;\n    private double sideB;\n    private double sideC;\n    \n    public Triangle(String color, double sideA, double sideB, double sideC) {\n        super(color);\n        this.sideA = sideA;\n        this.sideB = sideB;\n        this.sideC = sideC;\n    }\n    \n    @Override\n    public double calculateArea() {\n        // Using Heron's formula\n        double s = (sideA + sideB + sideC) / 2;\n        return Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));\n    }\n    \n    @Override\n    public double calculatePerimeter() {\n        return sideA + sideB + sideC;\n    }\n}\n\n// Main class to demonstrate polymorphism\npublic class PolymorphismDemo {\n    public static void main(String[] args) {\n        // Creating different shapes\n        Shape circle = new Circle(\"Red\", 5.0);\n        Shape rectangle = new Rectangle(\"Blue\", 4.0, 6.0);\n        Shape triangle = new Triangle(\"Green\", 3.0, 4.0, 5.0);\n        \n        // Polymorphic behavior\n        System.out.println(\"=== Circle ===\");\n        System.out.println(\"Color: \" + circle.getColor());\n        System.out.println(\"Area: \" + circle.calculateArea());\n        System.out.println(\"Perimeter: \" + circle.calculatePerimeter());\n        \n        System.out.println(\"\\n=== Rectangle ===\");\n        System.out.println(\"Color: \" + rectangle.getColor());\n        System.out.println(\"Area: \" + rectangle.calculateArea());\n        System.out.println(\"Perimeter: \" + rectangle.calculatePerimeter());\n        \n        System.out.println(\"\\n=== Triangle ===\");\n        System.out.println(\"Color: \" + triangle.getColor());\n        System.out.println(\"Area: \" + triangle.calculateArea());\n        System.out.println(\"Perimeter: \" + triangle.calculatePerimeter());\n        \n        // Polymorphic array\n        Shape[] shapes = {circle, rectangle, triangle};\n        \n        System.out.println(\"\\n=== Processing all shapes ===\");\n        for (Shape shape : shapes) {\n            System.out.println(\"Shape color: \" + shape.getColor());\n            System.out.println(\"Area: \" + shape.calculateArea());\n            System.out.println(\"Perimeter: \" + shape.calculatePerimeter());\n            System.out.println();\n        }\n        \n        // Method overloading (compile-time polymorphism)\n        System.out.println(\"=== Method Overloading ===\");\n        Calculator calc = new Calculator();\n        \n        System.out.println(\"Add 2 ints: \" + calc.add(5, 3));\n        System.out.println(\"Add 3 ints: \" + calc.add(5, 3, 2));\n        System.out.println(\"Add 2 doubles: \" + calc.add(5.5, 3.3));\n        System.out.println(\"Add 2 strings: \" + calc.add(\"Hello\", \" World\"));\n    }\n}\n\n// Method overloading example\nclass Calculator {\n    public int add(int a, int b) {\n        return a + b;\n    }\n    \n    public int add(int a, int b, int c) {\n        return a + b + c;\n    }\n    \n    public double add(double a, double b) {\n        return a + b;\n    }\n    \n    public String add(String a, String b) {\n        return a + b;\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "Polymorphism comes in two forms: runtime polymorphism (method overriding) and compile-time polymorphism (method overloading). It allows for flexible and extensible code design."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-2-3",
+        "title": "Abstraction",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Abstraction is the process of hiding complex implementation details and showing only the necessary features. In Java, this is achieved through abstract classes and interfaces."
+            },
+            {
+              "type": "text",
+              "content": "Abstraction is a fundamental principle of object-oriented programming that helps manage complexity by hiding unnecessary details and exposing only what is essential. It allows developers to focus on what an object does rather than how it does it."
+            },
+            {
+              "type": "text",
+              "content": "Abstraction in Java is implemented through:",
+              "subsections": [
+                "Abstract Classes: Classes that cannot be instantiated and may contain abstract methods",
+                "Interfaces: Pure abstraction that defines a contract for implementing classes",
+                "Abstract Methods: Methods declared without implementation that must be implemented by subclasses",
+                "Concrete Methods: Methods with complete implementation that can be inherited"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Benefits of abstraction include simplified code, better organization, and the ability to change implementation details without affecting the rest of the system. It promotes loose coupling and high cohesion in software design."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "// Abstract class example\npublic abstract class BankAccount {\n    protected String accountNumber;\n    protected double balance;\n    protected String accountHolder;\n    \n    public BankAccount(String accountNumber, String accountHolder, double initialBalance) {\n        this.accountNumber = accountNumber;\n        this.accountHolder = accountHolder;\n        this.balance = initialBalance;\n    }\n    \n    // Abstract methods - must be implemented by subclasses\n    public abstract void deposit(double amount);\n    public abstract void withdraw(double amount);\n    public abstract double calculateInterest();\n    \n    // Concrete methods\n    public double getBalance() {\n        return balance;\n    }\n    \n    public String getAccountNumber() {\n        return accountNumber;\n    }\n    \n    public String getAccountHolder() {\n        return accountHolder;\n    }\n    \n    public void displayAccountInfo() {\n        System.out.println(\"Account Number: \" + accountNumber);\n        System.out.println(\"Account Holder: \" + accountHolder);\n        System.out.println(\"Balance: $\" + balance);\n    }\n}\n\n// Concrete implementation\npublic class SavingsAccount extends BankAccount {\n    private double interestRate;\n    \n    public SavingsAccount(String accountNumber, String accountHolder, \n                        double initialBalance, double interestRate) {\n        super(accountNumber, accountHolder, initialBalance);\n        this.interestRate = interestRate;\n    }\n    \n    @Override\n    public void deposit(double amount) {\n        if (amount > 0) {\n            balance += amount;\n            System.out.println(\"Deposited: $\" + amount);\n        } else {\n            System.out.println(\"Invalid deposit amount.\");\n        }\n    }\n    \n    @Override\n    public void withdraw(double amount) {\n        if (amount > 0 && amount <= balance) {\n            balance -= amount;\n            System.out.println(\"Withdrawn: $\" + amount);\n        } else {\n            System.out.println(\"Invalid withdrawal amount or insufficient funds.\");\n        }\n    }\n    \n    @Override\n    public double calculateInterest() {\n        return balance * interestRate;\n    }\n    \n    public void addInterest() {\n        double interest = calculateInterest();\n        balance += interest;\n        System.out.println(\"Interest added: $\" + interest);\n    }\n}\n\n// Another concrete implementation\npublic class CheckingAccount extends BankAccount {\n    private double overdraftLimit;\n    \n    public CheckingAccount(String accountNumber, String accountHolder, \n                         double initialBalance, double overdraftLimit) {\n        super(accountNumber, accountHolder, initialBalance);\n        this.overdraftLimit = overdraftLimit;\n    }\n    \n    @Override\n    public void deposit(double amount) {\n        if (amount > 0) {\n            balance += amount;\n            System.out.println(\"Deposited: $\" + amount);\n        } else {\n            System.out.println(\"Invalid deposit amount.\");\n        }\n    }\n    \n    @Override\n    public void withdraw(double amount) {\n        if (amount > 0 && (balance - amount) >= -overdraftLimit) {\n            balance -= amount;\n            System.out.println(\"Withdrawn: $\" + amount);\n        } else {\n            System.out.println(\"Invalid withdrawal amount or exceeds overdraft limit.\");\n        }\n    }\n    \n    @Override\n    public double calculateInterest() {\n        // Checking accounts typically don't earn interest\n        return 0.0;\n    }\n}\n\n// Interface example\npublic interface Payable {\n    double calculatePayment();\n    void processPayment();\n}\n\n// Class implementing interface\npublic class Employee implements Payable {\n    private String name;\n    private double hourlyRate;\n    private int hoursWorked;\n    \n    public Employee(String name, double hourlyRate) {\n        this.name = name;\n        this.hourlyRate = hourlyRate;\n        this.hoursWorked = 0;\n    }\n    \n    public void setHoursWorked(int hours) {\n        this.hoursWorked = hours;\n    }\n    \n    @Override\n    public double calculatePayment() {\n        return hourlyRate * hoursWorked;\n    }\n    \n    @Override\n    public void processPayment() {\n        double payment = calculatePayment();\n        System.out.println(name + \" will be paid: $\" + payment);\n    }\n}\n\n// Main class to demonstrate abstraction\npublic class AbstractionDemo {\n    public static void main(String[] args) {\n        // Creating different types of accounts\n        BankAccount savings = new SavingsAccount(\"SA001\", \"John Doe\", 1000.0, 0.05);\n        BankAccount checking = new CheckingAccount(\"CA001\", \"Jane Smith\", 500.0, 200.0);\n        \n        // Using abstraction - treating different account types uniformly\n        System.out.println(\"=== Savings Account ===\");\n        savings.displayAccountInfo();\n        savings.deposit(500.0);\n        savings.withdraw(200.0);\n        ((SavingsAccount) savings).addInterest();\n        savings.displayAccountInfo();\n        \n        System.out.println(\"\\n=== Checking Account ===\");\n        checking.displayAccountInfo();\n        checking.deposit(300.0);\n        checking.withdraw(800.0); // Should work due to overdraft\n        checking.displayAccountInfo();\n        \n        // Interface demonstration\n        System.out.println(\"\\n=== Employee Payment ===\");\n        Employee emp = new Employee(\"Alice Johnson\", 25.0);\n        emp.setHoursWorked(40);\n        emp.processPayment();\n        \n        // Polymorphic array of bank accounts\n        BankAccount[] accounts = {savings, checking};\n        \n        System.out.println(\"\\n=== Processing all accounts ===\");\n        for (BankAccount account : accounts) {\n            account.displayAccountInfo();\n            System.out.println(\"Interest: $\" + account.calculateInterest());\n            System.out.println();\n        }\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "Abstraction helps manage complexity by hiding implementation details. Abstract classes can have both abstract and concrete methods, while interfaces define contracts that implementing classes must fulfill."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-2-4",
+        "title": "Encapsulation",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Encapsulation is the bundling of data and methods that operate on that data within a single unit (class) and hiding the internal state. It's achieved through access modifiers and getter/setter methods."
+            },
+            {
+              "type": "text",
+              "content": "Encapsulation is a fundamental principle of object-oriented programming that combines data and the methods that operate on that data into a single unit, while hiding the internal implementation details from the outside world."
+            },
+            {
+              "type": "text",
+              "content": "Key components of encapsulation:",
+              "subsections": [
+                "Data Hiding: Making fields private to prevent direct access from outside the class",
+                "Access Modifiers: Using private, protected, and public to control access levels",
+                "Getter Methods: Public methods that provide read access to private fields",
+                "Setter Methods: Public methods that provide write access to private fields with validation",
+                "Business Logic: Methods that implement the class's behavior and rules"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Encapsulation provides several benefits including data security, code maintainability, and the ability to change internal implementation without affecting external code. It's essential for creating robust and secure applications."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "// Student class demonstrating encapsulation\npublic class Student {\n    // Private fields - data hiding\n    private String name;\n    private int studentId;\n    private double gpa;\n    private String major;\n    private int age;\n    \n    // Constructor\n    public Student(String name, int studentId, String major, int age) {\n        this.name = name;\n        this.studentId = studentId;\n        this.major = major;\n        this.age = age;\n        this.gpa = 0.0; // Default GPA\n    }\n    \n    // Getter methods (read-only access)\n    public String getName() {\n        return name;\n    }\n    \n    public int getStudentId() {\n        return studentId;\n    }\n    \n    public double getGpa() {\n        return gpa;\n    }\n    \n    public String getMajor() {\n        return major;\n    }\n    \n    public int getAge() {\n        return age;\n    }\n    \n    // Setter methods with validation\n    public void setName(String name) {\n        if (name != null && !name.trim().isEmpty()) {\n            this.name = name.trim();\n        } else {\n            System.out.println(\"Invalid name provided.\");\n        }\n    }\n    \n    public void setGpa(double gpa) {\n        if (gpa >= 0.0 && gpa <= 4.0) {\n            this.gpa = gpa;\n        } else {\n            System.out.println(\"GPA must be between 0.0 and 4.0.\");\n        }\n    }\n    \n    public void setMajor(String major) {\n        if (major != null && !major.trim().isEmpty()) {\n            this.major = major.trim();\n        } else {\n            System.out.println(\"Invalid major provided.\");\n        }\n    }\n    \n    public void setAge(int age) {\n        if (age >= 16 && age <= 100) {\n            this.age = age;\n        } else {\n            System.out.println(\"Age must be between 16 and 100.\");\n        }\n    }\n    \n    // Business logic methods\n    public void addGrade(double grade) {\n        if (grade >= 0.0 && grade <= 4.0) {\n            // Simple GPA calculation (in real scenario, you'd track all grades)\n            gpa = (gpa + grade) / 2.0;\n            System.out.println(\"Grade added. New GPA: \" + gpa);\n        } else {\n            System.out.println(\"Invalid grade. Must be between 0.0 and 4.0.\");\n        }\n    }\n    \n    public boolean isEligibleForGraduation() {\n        return gpa >= 2.0 && age >= 18;\n    }\n    \n    public String getAcademicStatus() {\n        if (gpa >= 3.5) {\n            return \"Dean's List\";\n        } else if (gpa >= 3.0) {\n            return \"Good Standing\";\n        } else if (gpa >= 2.0) {\n            return \"Academic Warning\";\n        } else {\n            return \"Academic Probation\";\n        }\n    }\n    \n    // Override toString for better object representation\n    @Override\n    public String toString() {\n        return \"Student{\" +\n               \"name='\" + name + '\\'' +\n               \", studentId=\" + studentId +\n               \", gpa=\" + gpa +\n               \", major='\" + major + '\\'' +\n               \", age=\" + age +\n               '}';\n    }\n}\n\n// Bank account with enhanced encapsulation\npublic class SecureBankAccount {\n    private String accountNumber;\n    private double balance;\n    private String accountHolder;\n    private String pin;\n    private boolean isLocked;\n    private int failedAttempts;\n    \n    public SecureBankAccount(String accountNumber, String accountHolder, \n                           double initialBalance, String pin) {\n        this.accountNumber = accountNumber;\n        this.accountHolder = accountHolder;\n        this.balance = initialBalance;\n        this.pin = pin;\n        this.isLocked = false;\n        this.failedAttempts = 0;\n    }\n    \n    // Private helper method\n    private boolean validatePin(String inputPin) {\n        if (isLocked) {\n            System.out.println(\"Account is locked due to too many failed attempts.\");\n            return false;\n        }\n        \n        if (pin.equals(inputPin)) {\n            failedAttempts = 0; // Reset failed attempts\n            return true;\n        } else {\n            failedAttempts++;\n            if (failedAttempts >= 3) {\n                isLocked = true;\n                System.out.println(\"Account locked due to too many failed attempts.\");\n            } else {\n                System.out.println(\"Invalid PIN. Attempts remaining: \" + (3 - failedAttempts));\n            }\n            return false;\n        }\n    }\n    \n    // Public methods with security\n    public boolean withdraw(double amount, String pin) {\n        if (!validatePin(pin)) {\n            return false;\n        }\n        \n        if (amount > 0 && amount <= balance) {\n            balance -= amount;\n            System.out.println(\"Withdrawn: $\" + amount);\n            return true;\n        } else {\n            System.out.println(\"Invalid amount or insufficient funds.\");\n            return false;\n        }\n    }\n    \n    public boolean deposit(double amount, String pin) {\n        if (!validatePin(pin)) {\n            return false;\n        }\n        \n        if (amount > 0) {\n            balance += amount;\n            System.out.println(\"Deposited: $\" + amount);\n            return true;\n        } else {\n            System.out.println(\"Invalid deposit amount.\");\n            return false;\n        }\n    }\n    \n    public double getBalance(String pin) {\n        if (validatePin(pin)) {\n            return balance;\n        }\n        return -1; // Indicates authentication failure\n    }\n    \n    public String getAccountNumber() {\n        return accountNumber;\n    }\n    \n    public String getAccountHolder() {\n        return accountHolder;\n    }\n    \n    public boolean isLocked() {\n        return isLocked;\n    }\n}\n\n// Main class to demonstrate encapsulation\npublic class EncapsulationDemo {\n    public static void main(String[] args) {\n        // Student encapsulation example\n        System.out.println(\"=== Student Encapsulation ===\");\n        Student student = new Student(\"Alice Johnson\", 12345, \"Computer Science\", 20);\n        \n        System.out.println(\"Initial student info:\");\n        System.out.println(student);\n        \n        // Using setter methods with validation\n        student.setGpa(3.8);\n        student.addGrade(4.0);\n        student.setAge(21);\n        \n        System.out.println(\"\\nAfter updates:\");\n        System.out.println(student);\n        System.out.println(\"Academic status: \" + student.getAcademicStatus());\n        System.out.println(\"Eligible for graduation: \" + student.isEligibleForGraduation());\n        \n        // Testing validation\n        student.setGpa(5.0); // Invalid GPA\n        student.setAge(15); // Invalid age\n        \n        // Secure bank account example\n        System.out.println(\"\\n=== Secure Bank Account ===\");\n        SecureBankAccount account = new SecureBankAccount(\"123456789\", \"Bob Smith\", 1000.0, \"1234\");\n        \n        // Valid operations\n        account.deposit(500.0, \"1234\");\n        System.out.println(\"Balance: $\" + account.getBalance(\"1234\"));\n        account.withdraw(200.0, \"1234\");\n        System.out.println(\"Balance: $\" + account.getBalance(\"1234\"));\n        \n        // Invalid PIN attempts\n        account.withdraw(100.0, \"0000\");\n        account.withdraw(100.0, \"0000\");\n        account.withdraw(100.0, \"0000\"); // Should lock account\n        \n        // Try to access locked account\n        account.deposit(100.0, \"1234\");\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "Encapsulation provides data hiding and protection through access modifiers (private, protected, public). Getter and setter methods control access to private fields, allowing validation and business logic."
+            }
+          ]
+        }
+      },
+      {
+        "id": "java-2-5",
+        "title": "Interfaces",
+        "content": {
+          "sections": [
+            {
+              "type": "text",
+              "content": "Interfaces in Java define a contract that implementing classes must follow. They provide a way to achieve multiple inheritance and define common behavior across different classes."
+            },
+            {
+              "type": "text",
+              "content": "Interfaces are a powerful feature in Java that provide a way to achieve abstraction and define a contract that classes must implement. They serve as a blueprint for classes, specifying what methods must be implemented without providing the implementation details."
+            },
+            {
+              "type": "text",
+              "content": "Key characteristics of interfaces:",
+              "subsections": [
+                "Contract Definition: Interfaces define what methods implementing classes must provide",
+                "Multiple Implementation: A class can implement multiple interfaces",
+                "Pure Abstraction: Interfaces contain only method signatures (before Java 8)",
+                "Default Methods: Java 8+ allows interfaces to have default method implementations",
+                "Static Methods: Interfaces can contain static methods (Java 8+)",
+                "Constants: Interfaces can contain public static final constants"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Interfaces provide several advantages including loose coupling, support for multiple inheritance, and the ability to create pluggable components. They are essential for creating flexible and extensible software architectures."
+            },
+            {
+              "type": "code",
+              "language": "java",
+              "content": "// Interface for vehicles\npublic interface Vehicle {\n    void start();\n    void stop();\n    void accelerate(double speed);\n    void brake();\n    String getVehicleType();\n}\n\n// Interface for electric vehicles\npublic interface ElectricVehicle {\n    void charge();\n    double getBatteryLevel();\n    void setBatteryLevel(double level);\n}\n\n// Interface for maintenance\npublic interface Maintainable {\n    void performMaintenance();\n    boolean needsMaintenance();\n    String getLastMaintenanceDate();\n}\n\n// Car class implementing Vehicle interface\npublic class Car implements Vehicle, Maintainable {\n    private String brand;\n    private String model;\n    private double currentSpeed;\n    private boolean isRunning;\n    private String lastMaintenance;\n    \n    public Car(String brand, String model) {\n        this.brand = brand;\n        this.model = model;\n        this.currentSpeed = 0.0;\n        this.isRunning = false;\n        this.lastMaintenance = \"Never\";\n    }\n    \n    @Override\n    public void start() {\n        if (!isRunning) {\n            isRunning = true;\n            System.out.println(brand + \" \" + model + \" started.\");\n        } else {\n            System.out.println(\"Car is already running.\");\n        }\n    }\n    \n    @Override\n    public void stop() {\n        if (isRunning) {\n            isRunning = false;\n            currentSpeed = 0.0;\n            System.out.println(brand + \" \" + model + \" stopped.\");\n        } else {\n            System.out.println(\"Car is already stopped.\");\n        }\n    }\n    \n    @Override\n    public void accelerate(double speed) {\n        if (isRunning) {\n            currentSpeed += speed;\n            System.out.println(\"Accelerated to \" + currentSpeed + \" mph.\");\n        } else {\n            System.out.println(\"Cannot accelerate. Car is not running.\");\n        }\n    }\n    \n    @Override\n    public void brake() {\n        if (currentSpeed > 0) {\n            currentSpeed = Math.max(0, currentSpeed - 10);\n            System.out.println(\"Braked. Current speed: \" + currentSpeed + \" mph.\");\n        } else {\n            System.out.println(\"Car is already stopped.\");\n        }\n    }\n    \n    @Override\n    public String getVehicleType() {\n        return \"Car\";\n    }\n    \n    @Override\n    public void performMaintenance() {\n        lastMaintenance = \"Today\";\n        System.out.println(\"Maintenance performed on \" + brand + \" \" + model);\n    }\n    \n    @Override\n    public boolean needsMaintenance() {\n        // Simple logic - in real scenario, you'd check actual maintenance schedule\n        return lastMaintenance.equals(\"Never\") || lastMaintenance.equals(\"Old\");\n    }\n    \n    @Override\n    public String getLastMaintenanceDate() {\n        return lastMaintenance;\n    }\n}\n\n// Electric car implementing multiple interfaces\npublic class ElectricCar implements Vehicle, ElectricVehicle, Maintainable {\n    private String brand;\n    private String model;\n    private double currentSpeed;\n    private boolean isRunning;\n    private double batteryLevel;\n    private String lastMaintenance;\n    \n    public ElectricCar(String brand, String model) {\n        this.brand = brand;\n        this.model = model;\n        this.currentSpeed = 0.0;\n        this.isRunning = false;\n        this.batteryLevel = 100.0;\n        this.lastMaintenance = \"Never\";\n    }\n    \n    @Override\n    public void start() {\n        if (!isRunning && batteryLevel > 10) {\n            isRunning = true;\n            System.out.println(brand + \" \" + model + \" (Electric) started.\");\n        } else if (batteryLevel <= 10) {\n            System.out.println(\"Cannot start. Battery too low.\");\n        } else {\n            System.out.println(\"Car is already running.\");\n        }\n    }\n    \n    @Override\n    public void stop() {\n        if (isRunning) {\n            isRunning = false;\n            currentSpeed = 0.0;\n            System.out.println(brand + \" \" + model + \" stopped.\");\n        } else {\n            System.out.println(\"Car is already stopped.\");\n        }\n    }\n    \n    @Override\n    public void accelerate(double speed) {\n        if (isRunning && batteryLevel > 5) {\n            currentSpeed += speed;\n            batteryLevel -= 0.1; // Battery consumption\n            System.out.println(\"Accelerated to \" + currentSpeed + \" mph. Battery: \" + batteryLevel + \"%\");\n        } else if (batteryLevel <= 5) {\n            System.out.println(\"Cannot accelerate. Battery too low.\");\n        } else {\n            System.out.println(\"Cannot accelerate. Car is not running.\");\n        }\n    }\n    \n    @Override\n    public void brake() {\n        if (currentSpeed > 0) {\n            currentSpeed = Math.max(0, currentSpeed - 10);\n            System.out.println(\"Braked. Current speed: \" + currentSpeed + \" mph.\");\n        } else {\n            System.out.println(\"Car is already stopped.\");\n        }\n    }\n    \n    @Override\n    public String getVehicleType() {\n        return \"Electric Car\";\n    }\n    \n    @Override\n    public void charge() {\n        if (batteryLevel < 100) {\n            batteryLevel = Math.min(100, batteryLevel + 20);\n            System.out.println(\"Charging... Battery level: \" + batteryLevel + \"%\");\n        } else {\n            System.out.println(\"Battery is already full.\");\n        }\n    }\n    \n    @Override\n    public double getBatteryLevel() {\n        return batteryLevel;\n    }\n    \n    @Override\n    public void setBatteryLevel(double level) {\n        if (level >= 0 && level <= 100) {\n            batteryLevel = level;\n        } else {\n            System.out.println(\"Invalid battery level.\");\n        }\n    }\n    \n    @Override\n    public void performMaintenance() {\n        lastMaintenance = \"Today\";\n        System.out.println(\"Maintenance performed on \" + brand + \" \" + model + \" (Electric)\");\n    }\n    \n    @Override\n    public boolean needsMaintenance() {\n        return lastMaintenance.equals(\"Never\") || lastMaintenance.equals(\"Old\");\n    }\n    \n    @Override\n    public String getLastMaintenanceDate() {\n        return lastMaintenance;\n    }\n}\n\n// Main class to demonstrate interfaces\npublic class InterfaceDemo {\n    public static void main(String[] args) {\n        // Creating different types of vehicles\n        Vehicle car = new Car(\"Toyota\", \"Camry\");\n        Vehicle electricCar = new ElectricCar(\"Tesla\", \"Model 3\");\n        \n        // Using vehicles polymorphically\n        System.out.println(\"=== Regular Car ===\");\n        car.start();\n        car.accelerate(30);\n        car.brake();\n        car.stop();\n        \n        System.out.println(\"\\n=== Electric Car ===\");\n        electricCar.start();\n        electricCar.accelerate(40);\n        electricCar.brake();\n        electricCar.stop();\n        \n        // Using electric vehicle specific methods\n        ElectricCar tesla = (ElectricCar) electricCar;\n        System.out.println(\"\\n=== Electric Car Features ===\");\n        System.out.println(\"Battery level: \" + tesla.getBatteryLevel() + \"%\");\n        tesla.charge();\n        tesla.setBatteryLevel(50);\n        System.out.println(\"Battery level after setting: \" + tesla.getBatteryLevel() + \"%\");\n        \n        // Using maintainable interface\n        Maintainable carMaintenance = (Car) car;\n        Maintainable teslaMaintenance = (ElectricCar) electricCar;\n        \n        System.out.println(\"\\n=== Maintenance ===\");\n        System.out.println(\"Car needs maintenance: \" + carMaintenance.needsMaintenance());\n        carMaintenance.performMaintenance();\n        \n        System.out.println(\"Tesla needs maintenance: \" + teslaMaintenance.needsMaintenance());\n        teslaMaintenance.performMaintenance();\n        \n        // Array of vehicles\n        Vehicle[] vehicles = {car, electricCar};\n        \n        System.out.println(\"\\n=== All Vehicles ===\");\n        for (Vehicle vehicle : vehicles) {\n            System.out.println(\"Vehicle type: \" + vehicle.getVehicleType());\n            vehicle.start();\n            vehicle.accelerate(20);\n            vehicle.stop();\n            System.out.println();\n        }\n    }\n}"
+            },
+            {
+              "type": "text",
+              "content": "Interfaces provide a way to define common behavior across different classes. A class can implement multiple interfaces, achieving a form of multiple inheritance. Interfaces help create loosely coupled, extensible code."
+            }
+          ]
+        }
+      }
+    ],
+    "quiz": {
+      "questions": [
+        {
+          "question": "What is inheritance in Java?",
+          "options": [
+            "A way to create multiple objects from a class",
+            "A mechanism that allows a class to inherit properties and methods from another class",
+            "A way to hide data within a class",
+            "A method to create abstract classes"
+          ],
+          "correct": 1,
+          "explanation": "Inheritance allows a class to inherit properties and methods from a parent class, promoting code reuse and establishing hierarchical relationships."
+        },
+        {
+          "question": "Which keyword is used to inherit from a parent class?",
+          "options": [
+            "implements",
+            "extends",
+            "inherits",
+            "super"
+          ],
+          "correct": 1,
+          "explanation": "The 'extends' keyword is used to inherit from a parent class in Java."
+        },
+        {
+          "question": "What is polymorphism?",
+          "options": [
+            "The ability to create multiple objects",
+            "The ability of different objects to respond to the same method call in different ways",
+            "The process of hiding implementation details",
+            "The bundling of data and methods"
+          ],
+          "correct": 1,
+          "explanation": "Polymorphism allows objects of different classes to be treated as objects of a common superclass and respond to method calls differently."
+        },
+        {
+          "question": "What is the purpose of the 'abstract' keyword?",
+          "options": [
+            "To create a final class",
+            "To create a class that cannot be instantiated and may contain abstract methods",
+            "To create a private class",
+            "To create a static class"
+          ],
+          "correct": 1,
+          "explanation": "The 'abstract' keyword creates a class that cannot be instantiated and may contain abstract methods that must be implemented by subclasses."
+        },
+        {
+          "question": "What is encapsulation?",
+          "options": [
+            "The process of creating multiple classes",
+            "The bundling of data and methods that operate on that data within a single unit",
+            "The process of inheriting from multiple classes",
+            "The creation of abstract methods"
+          ],
+          "correct": 1,
+          "explanation": "Encapsulation is the bundling of data and methods that operate on that data within a single unit (class) and hiding the internal state."
+        }
+      ]
+    }
+  }
+} 
