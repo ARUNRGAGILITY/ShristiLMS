@@ -217,7 +217,7 @@
             border: 1px solid var(--border);
             border-radius: 1.5rem;
             padding: 2.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0s ease;
             cursor: pointer;
             aspect-ratio: 1;
             display: flex;
@@ -229,26 +229,9 @@
             min-height: 450px;
         }
 
-        .instructor-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
         .instructor-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-            border-color: var(--accent-primary);
-        }
-
-        .instructor-card:hover::before {
-            transform: scaleX(1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
 
@@ -409,7 +392,7 @@
         .fade-in {
             opacity: 1;
             transform: translateY(30px);
-            transition: all 0.8s ease;
+            transition: all 0.4s ease;
         }
 
         .fade-in.animate {
@@ -526,6 +509,96 @@
         .view-profile-btn:active, .contact-instructor-btn:active {
             transform: translateY(0);
         }
+
+        /* Theme dropdown dark mode overrides */
+        [data-theme="dark"] .custom-theme-option i {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="dark"] .custom-theme-option span {
+            color: #ffffff !important;
+        }
+        
+        /* Theme dropdown light mode overrides */
+        [data-theme="light"] .custom-theme-option i {
+            color: #000000 !important;
+        }
+        
+        [data-theme="light"] .custom-theme-option span {
+            color: #000000 !important;
+        }
+        
+        /* Theme dropdown custom theme overrides */
+        [data-theme="sea"] .custom-theme-option i {
+            color: #01579b !important;
+        }
+        
+        [data-theme="sea"] .custom-theme-option span {
+            color: #01579b !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option i {
+            color: #33691e !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option span {
+            color: #33691e !important;
+        }
+        
+        [data-theme="sunset"] .custom-theme-option i {
+            color: #e65100 !important;
+        }
+        
+        [data-theme="sunset"] .custom-theme-option span {
+            color: #e65100 !important;
+        }
+        
+        /* Force consistent border colors for all themes */
+        [data-theme="sea"] .custom-theme-option,
+        [data-theme="earth"] .custom-theme-option,
+        [data-theme="sunset"] .custom-theme-option {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        /* Specific overrides for Sea and Earth themes */
+        [data-theme="sea"] .custom-theme-option.border-b {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option.border-b {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        /* Force all borders to be white/20 in all themes */
+        #customThemeDropdown .custom-theme-option {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        /* Mobile Menu Fixes */
+        #mobileMenu {
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #mobileMenu .flex {
+            min-height: fit-content;
+        }
+
+        /* Ensure mobile menu items don't get cut off */
+        @media (max-width: 768px) {
+            #mobileMenu {
+                position: relative;
+                z-index: 50;
+            }
+            
+            #mobileMenu .nav-link {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body data-theme="light" class="min-h-screen">
@@ -544,10 +617,13 @@
                     <a href="index.html" class="px-4 py-2 nav-link rounded-lg transition">
                         Home
                     </a>
+                    <a href="index.html#courses" class="px-4 py-2 nav-link rounded-lg transition">
+                        Courses
+                    </a>
                     <a href="roadmap.html" class="px-4 py-2 nav-link rounded-lg transition">
                         Roadmap
                     </a>
-                    <a href="instructors.html" class="px-4 py-2 nav-link rounded-lg transition bg-white/20">
+                    <a href="instructors.html" class="px-4 py-2 nav-link rounded-lg transition nav-instructors">
                         Instructors
                     </a>
                     <a href="about.html" class="px-4 py-2 nav-link rounded-lg transition">
@@ -578,15 +654,18 @@
             </div>
 
             <!-- Mobile Navigation Menu -->
-            <div class="md:hidden mt-4 pb-4 border-t border-white/20 hidden" id="mobileMenu">
+            <div class="md:hidden mt-4 pb-4 border-t border-white/20 hidden max-h-screen overflow-y-auto" id="mobileMenu">
                 <div class="flex flex-col space-y-2 pt-4">
                     <a href="index.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
                         Home
                     </a>
+                    <a href="index.html#courses" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                        Courses
+                    </a>
                     <a href="roadmap.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
                         Roadmap
                     </a>
-                    <a href="instructors.html" class="px-4 py-3 nav-link rounded-lg transition text-center bg-white/20">
+                    <a href="instructors.html" class="px-4 py-3 nav-link rounded-lg transition text-center nav-instructors">
                         Instructors
                     </a>
                     <a href="about.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
@@ -852,7 +931,7 @@
         function createInstructorCard(instructor, index) {
 
             return `
-                <div class="instructor-card fade-in" data-instructor="${instructor.id}" data-delay="${index * 150}">
+                <div class="instructor-card fade-in" data-instructor="${instructor.id}" data-delay="0">
                     <div class="instructor-avatar">
                         <img src="${instructor.image}" alt="${instructor.name}" class="instructor-image">
                     </div>
@@ -1193,6 +1272,24 @@
                 window.location.href = `mailto:${instructor.email}?subject=Inquiry about courses from ShristiLMS`;
             }
         }
+
+        // Smart Navigation - Hide current page's nav button
+        function setupSmartNavigation() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navButtons = document.querySelectorAll('.nav-home, .nav-courses, .nav-roadmap, .nav-instructors, .nav-about');
+            
+            navButtons.forEach(button => {
+                const href = button.getAttribute('href');
+                if (href && href.includes(currentPage)) {
+                    button.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize smart navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            setupSmartNavigation();
+        });
     </script>
 </body>
 </html>
