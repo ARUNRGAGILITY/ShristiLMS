@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Inline Config for Testing -->
+    <script>
+        const CONFIG = {
+            brandName: 'ShristiLMS',
+            brandLogo: 'S',
+            defaultTheme: 'light',
+            homeUrl: 'index.html'
+        };
+        window.CONFIG = CONFIG;
+    </script>
+    
+    <!-- Inline Theme CSS for Testing -->
+    <style>
+        :root {
+            --bg-primary: #f9fafb;
+            --bg-secondary: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --brand-primary: #2563eb;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --brand-primary: #3b82f6;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-primary {
+            background: linear-gradient(135deg, var(--brand-primary), #7c3aed);
+        }
+
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background-color: #d1d5db;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: 2px solid #e5e7eb;
+        }
+
+        .theme-toggle.active {
+            background-color: var(--brand-primary);
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle.active::before {
+            transform: translateX(28px);
+        }
+
+        .theme-toggle-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            transition: opacity 0.3s ease;
+        }
+
+        .theme-toggle .sun-icon {
+            left: 6px;
+            opacity: 1;
+        }
+
+        .theme-toggle .moon-icon {
+            right: 6px;
+            opacity: 0;
+        }
+
+        .theme-toggle.active .sun-icon {
+            opacity: 0;
+        }
+
+        .theme-toggle.active .moon-icon {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Test Navigation -->
+    <nav class="nav-primary text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-blue-600 font-bold text-lg">S</span>
+                    </div>
+                    <h1 class="text-xl font-bold">ShristiLMS Test</h1>
+                </div>
+                <div class="flex items-center space-x-4" id="navActions">
+                    <span class="text-sm">Theme Test:</span>
+                    <!-- Theme toggle will be added here -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Test Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <h1 class="text-2xl font-bold mb-4">Theme Toggle Debug Test</h1>
+            <p class="mb-4">This page tests if the theme toggle is working properly.</p>
+            
+            <div class="space-y-4">
+                <div>
+                    <strong>Status:</strong>
+                    <span id="status">Checking...</span>
+                </div>
+                
+                <div>
+                    <strong>Current Theme:</strong>
+                    <span id="currentTheme">Unknown</span>
+                </div>
+                
+                <div>
+                    <strong>Config Loaded:</strong>
+                    <span id="configStatus">Checking...</span>
+                </div>
+                
+                <div>
+                    <strong>Toggle Element:</strong>
+                    <span id="toggleStatus">Checking...</span>
+                </div>
+            </div>
+
+            <!-- Manual Theme Toggle Button for Testing -->
+            <div class="mt-6">
+                <button id="manualToggle" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Manual Theme Toggle
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inline Theme JS for Testing -->
+    <script>
+        console.log('=== THEME TOGGLE DEBUG TEST ===');
+        
+        // Update status function
+        function updateStatus(elementId, text, isGood = true) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = text;
+                element.style.color = isGood ? 'green' : 'red';
+            }
+        }
+
+        // Simple Theme Manager for Testing
+        class SimpleThemeManager {
+            constructor() {
+                this.currentTheme = localStorage.getItem('shristilms-theme') || 'light';
+                this.init();
+            }
+
+            init() {
+                console.log('Initializing Simple Theme Manager');
+                this.applyTheme(this.currentTheme);
+                this.createThemeToggle();
+                this.setupManualToggle();
+                this.updateDebugInfo();
+            }
+
+            applyTheme(theme) {
+                console.log('Applying theme:', theme);
+                document.documentElement.setAttribute('data-theme', theme);
+                document.body.setAttribute('data-theme', theme);
+                this.currentTheme = theme;
+                localStorage.setItem('shristilms-theme', theme);
+                this.updateThemeToggle();
+                this.updateDebugInfo();
+            }
+
+            toggleTheme() {
+                console.log('Toggling theme from:', this.currentTheme);
+                const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+                this.applyTheme(newTheme);
+            }
+
+            createThemeToggle() {
+                console.log('Creating theme toggle');
+                const navActions = document.getElementById('navActions');
+                
+                if (!navActions) {
+                    console.error('navActions element not found!');
+                    updateStatus('toggleStatus', 'navActions not found!', false);
+                    return;
+                }
+
+                // Check if toggle already exists
+                if (document.getElementById('themeToggle')) {
+                    console.log('Theme toggle already exists');
+                    updateStatus('toggleStatus', 'Already exists', true);
+                    return;
+                }
+
+                const toggleWrapper = document.createElement('div');
+                toggleWrapper.className = 'flex items-center space-x-2';
+                toggleWrapper.innerHTML = `
+                    <span class="text-xs text-white opacity-75">Theme</span>
+                    <div id="themeToggle" class="theme-toggle" title="Toggle theme">
+                        <span class="theme-toggle-icon sun-icon">☀️</span>
+                        <span class="theme-toggle-icon moon-icon">🌙</span>
+                    </div>
+                `;
+
+                navActions.appendChild(toggleWrapper);
+                
+                // Add click event
+                const toggle = document.getElementById('themeToggle');
+                if (toggle) {
+                    toggle.addEventListener('click', () => {
+                        console.log('Theme toggle clicked!');
+                        this.toggleTheme();
+                    });
+                    console.log('Theme toggle created and event added!');
+                    updateStatus('toggleStatus', 'Created successfully!', true);
+                } else {
+                    console.error('Failed to create theme toggle');
+                    updateStatus('toggleStatus', 'Creation failed!', false);
+                }
+            }
+
+            updateThemeToggle() {
+                const toggle = document.getElementById('themeToggle');
+                if (toggle) {
+                    if (this.currentTheme === 'dark') {
+                        toggle.classList.add('active');
+                    } else {
+                        toggle.classList.remove('active');
+                    }
+                }
+            }
+
+            setupManualToggle() {
+                const manualBtn = document.getElementById('manualToggle');
+                if (manualBtn) {
+                    manualBtn.addEventListener('click', () => {
+                        console.log('Manual toggle clicked!');
+                        this.toggleTheme();
+                    });
+                }
+            }
+
+            updateDebugInfo() {
+                updateStatus('currentTheme', this.currentTheme, true);
+                updateStatus('configStatus', window.CONFIG ? 'Loaded' : 'Missing', !!window.CONFIG);
+                
+                const toggleExists = !!document.getElementById('themeToggle');
+                if (toggleExists) {
+                    updateStatus('status', 'Theme toggle working!', true);
+                } else {
+                    updateStatus('status', 'Theme toggle not found', false);
+                }
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing test theme manager');
+            
+            setTimeout(() => {
+                try {
+                    window.simpleThemeManager = new SimpleThemeManager();
+                    console.log('Simple Theme Manager initialized successfully');
+                } catch (error) {
+                    console.error('Error initializing theme manager:', error);
+                    updateStatus('status', 'Error: ' + error.message, false);
+                }
+            }, 100);
+        });
+
+        // Log all errors
+        window.addEventListener('error', function(e) {
+            console.error('JavaScript Error:', e.error);
+            updateStatus('status', 'JavaScript Error: ' + e.message, false);
+        });
+    </script>
+</body>
+</html>
