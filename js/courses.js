@@ -34,7 +34,7 @@ const courses = [
             'Develop problem-solving skills',
             'Write efficient and clean code'
         ],
-        instructor: 'Emmanuel Muttavanchery',
+        instructor: 'Arun R G, Emmanuel Muttavanchery',
         rating: 4.9,
         enrollments: 3200
     },
@@ -169,7 +169,7 @@ const courses = [
             'Conduct A/B testing and hypothesis testing',
             'Deploy data science projects to production'
         ],
-        instructor: 'Emmanuel Muttavanchery',
+        instructor: 'Arun R G, Emmanuel Muttavanchery',
         rating: 4.9,
         enrollments: 1850
     }
