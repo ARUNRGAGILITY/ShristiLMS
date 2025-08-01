@@ -403,10 +403,75 @@
             transform: translateX(4px);
             background: var(--surface);
         }
+
+        /* Theme-specific hover states */
+        [data-theme="light"] .chapter-item:hover {
+            transform: translateX(4px);
+            background: #f3f4f6;
+        }
+
+        [data-theme="dark"] .chapter-item:hover {
+            transform: translateX(4px);
+            background: #374151;
+        }
+
+        [data-theme="sea"] .chapter-item:hover {
+            transform: translateX(4px);
+            background: #e0f7fa;
+        }
+
+        [data-theme="earth"] .chapter-item:hover {
+            transform: translateX(4px);
+            background: #f1f8e9;
+        }
+
+        [data-theme="sunset"] .chapter-item:hover {
+            transform: translateX(4px);
+            background: #fff3e0;
+        }
         
         .chapter-item.active {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            background: var(--accent-primary);
             color: white;
+            font-weight: 600;
+        }
+
+        /* Light mode specific active state */
+        [data-theme="light"] .chapter-item.active {
+            background: #000000;
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dark mode specific active state */
+        [data-theme="dark"] .chapter-item.active {
+            background: #60a5fa;
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(96, 165, 250, 0.3);
+        }
+
+        /* Custom theme active states */
+        [data-theme="sea"] .chapter-item.active {
+            background: #00acc1;
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 172, 193, 0.2);
+        }
+
+        [data-theme="earth"] .chapter-item.active {
+            background: #8bc34a;
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(139, 195, 74, 0.2);
+        }
+
+        [data-theme="sunset"] .chapter-item.active {
+            background: #ff7043;
+            color: #ffffff;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(255, 112, 67, 0.2);
         }
         
         /* Content section styles */
@@ -430,63 +495,31 @@
             transition: all 0.3s ease;
         }
 
-        /* Enhanced button styles with shine effect */
+        /* Enhanced button styles - Theme Responsive */
         .btn-learn {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            background: var(--accent-primary);
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-        }
-
-        .btn-learn::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            transition: transform 0.6s ease;
-        }
-
-        .btn-learn:hover::before {
-            transform: translateX(100%) translateY(100%) rotate(45deg);
         }
 
         .btn-learn:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            background: var(--accent-secondary);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .btn-quiz {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: var(--accent-secondary);
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .btn-quiz::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            transition: transform 0.6s ease;
-        }
-
-        .btn-quiz:hover::before {
-            transform: translateX(100%) translateY(100%) rotate(45deg);
-        }
-
         .btn-quiz:hover {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            background: var(--accent-primary);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
 
@@ -594,20 +627,12 @@
         }
 
         /* Additional theme-specific styles */
-        [data-theme="dark"] .bg-blue-50 {
-            background-color: rgba(59, 130, 246, 0.1) !important;
-        }
-
         [data-theme="dark"] .bg-yellow-50 {
             background-color: rgba(245, 158, 11, 0.1) !important;
         }
 
         [data-theme="dark"] .bg-red-50 {
             background-color: rgba(239, 68, 68, 0.1) !important;
-        }
-
-        [data-theme="dark"] .text-blue-800 {
-            color: #93c5fd !important;
         }
 
         [data-theme="dark"] .text-yellow-800 {
@@ -618,20 +643,12 @@
             color: #fca5a5 !important;
         }
 
-        [data-theme="dark"] .text-blue-700 {
-            color: #93c5fd !important;
-        }
-
         [data-theme="dark"] .text-yellow-700 {
             color: #fbbf24 !important;
         }
 
         [data-theme="dark"] .text-red-700 {
             color: #fca5a5 !important;
-        }
-
-        [data-theme="dark"] .text-blue-600 {
-            color: #60a5fa !important;
         }
 
         [data-theme="dark"] .text-yellow-600 {
@@ -644,22 +661,7 @@
 
 
 
-        /* Progress circle theme styles */
-        [data-theme="dark"] #progressCircle {
-            stroke: #60a5fa;
-        }
 
-        [data-theme="light"] #progressCircle {
-            stroke: #3b82f6;
-        }
-
-        [data-theme="dark"] #progressPercent {
-            color: #60a5fa;
-        }
-
-        [data-theme="light"] #progressPercent {
-            color: #3b82f6;
-        }
 
         /* Dark mode text color fixes for course content */
         [data-theme="dark"] .text-gray-700 {
@@ -921,35 +923,488 @@
             background-color: #0F0F23; /* Dark blue for dark mode */
         }
 
+        /* Theme dropdown dark mode overrides */
+        [data-theme="dark"] .custom-theme-option i {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="dark"] .custom-theme-option span {
+            color: #ffffff !important;
+        }
+        
+        /* Theme dropdown light mode overrides */
+        [data-theme="light"] .custom-theme-option i {
+            color: #000000 !important;
+        }
+        
+        [data-theme="light"] .custom-theme-option span {
+            color: #000000 !important;
+        }
+        
+        /* Theme dropdown custom theme overrides */
+        [data-theme="sea"] .custom-theme-option i {
+            color: #01579b !important;
+        }
+        
+        [data-theme="sea"] .custom-theme-option span {
+            color: #01579b !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option i {
+            color: #33691e !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option span {
+            color: #33691e !important;
+        }
+        
+        [data-theme="sunset"] .custom-theme-option i {
+            color: #e65100 !important;
+        }
+        
+        [data-theme="sunset"] .custom-theme-option span {
+            color: #e65100 !important;
+        }
+        
+        /* Force consistent border colors for all themes */
+        [data-theme="sea"] .custom-theme-option,
+        [data-theme="earth"] .custom-theme-option,
+        [data-theme="sunset"] .custom-theme-option {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        /* Specific overrides for Sea and Earth themes */
+        [data-theme="sea"] .custom-theme-option.border-b {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option.border-b {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        /* Force all borders to be white/20 in all themes */
+        #customThemeDropdown .custom-theme-option {
+            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        /* Chapter Header Theme Responsive Styles */
+        .chapter-header {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .chapter-description {
+            opacity: 0.8;
+            transition: color 0.3s ease;
+        }
+
+        /* Light Mode Chapter Header */
+        [data-theme="light"] .chapter-header {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        [data-theme="light"] .chapter-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Dark Mode Chapter Header */
+        [data-theme="dark"] .chapter-header {
+            background-color: #0F0F23;
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .chapter-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Sea Theme Chapter Header */
+        [data-theme="sea"] .chapter-header {
+            background-color: #01579b;
+            color: #ffffff;
+        }
+
+        [data-theme="sea"] .chapter-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Earth Theme Chapter Header */
+        [data-theme="earth"] .chapter-header {
+            background-color: #33691e;
+            color: #ffffff;
+        }
+
+        [data-theme="earth"] .chapter-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Sunset Theme Chapter Header */
+        [data-theme="sunset"] .chapter-header {
+            background-color: #e65100;
+            color: #ffffff;
+        }
+
+        [data-theme="sunset"] .chapter-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Current Module Indicator Theme Responsive Styles */
+        .current-module-indicator {
+            transition: all 0.3s ease;
+        }
+
+        .current-module-label {
+            transition: color 0.3s ease;
+        }
+
+        .current-module-number {
+            transition: color 0.3s ease;
+        }
+
+        /* Current Module Indicator - Theme Responsive */
+        .current-module-indicator {
+            background-color: var(--surface-light);
+            border-color: var(--accent-primary);
+        }
+
+        .current-module-label {
+            color: var(--accent-primary);
+        }
+
+        .current-module-number {
+            color: var(--accent-primary);
+        }
+
+        /* Light Mode - Use blue accent instead of black */
+        [data-theme="light"] .current-module-indicator {
+            background-color: #e3f2fd;
+            border-color: #3b82f6;
+        }
+
+        [data-theme="light"] .current-module-label {
+            color: #3b82f6;
+        }
+
+        [data-theme="light"] .current-module-number {
+            color: #3b82f6;
+        }
+
+        /* Dark Mode - Use light blue accent instead of white */
+        [data-theme="dark"] .current-module-indicator {
+            background-color: #1e3a8a;
+            border-color: #60a5fa;
+        }
+
+        [data-theme="dark"] .current-module-label {
+            color: #60a5fa;
+        }
+
+        [data-theme="dark"] .current-module-number {
+            color: #60a5fa;
+        }
+
+        /* Progress Circle Theme Responsive Styles */
+        .progress-text {
+            color: var(--accent-primary);
+        }
+
+        /* Content Filter Checkbox Theme Responsive Styles */
+        .content-filter-checkbox {
+            accent-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background-color: var(--surface);
+            border-color: var(--border);
+        }
+
+        /* Theme-specific checkbox colors to match sidebar active states */
+        [data-theme="light"] .content-filter-checkbox {
+            accent-color: #000000;
+            color: #000000;
+        }
+
+        [data-theme="dark"] .content-filter-checkbox {
+            accent-color: #60a5fa;
+            color: #60a5fa;
+        }
+
+        [data-theme="sea"] .content-filter-checkbox {
+            accent-color: #00acc1;
+            color: #00acc1;
+        }
+
+        [data-theme="earth"] .content-filter-checkbox {
+            accent-color: #8bc34a;
+            color: #8bc34a;
+        }
+
+        [data-theme="sunset"] .content-filter-checkbox {
+            accent-color: #ff7043;
+            color: #ff7043;
+        }
+
+        /* Content Filter Label Theme Responsive Styles */
+        .content-filter-label {
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .content-filter-label:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu:hover {
+            color: var(--accent-primary);
+            background-color: var(--surface-light);
+        }
+
+        .hamburger-line {
+            background-color: currentColor;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hamburger menu animation */
+        .hamburger-menu.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Theme Info Box Styles */
+        .theme-info-box {
+            background-color: var(--surface-light);
+            border-color: var(--accent-primary);
+        }
+
+        .theme-info-title {
+            color: var(--accent-primary);
+        }
+
+        .theme-info-text {
+            color: var(--text-secondary);
+        }
+
+        /* Completion Status Theme Responsive Styles */
+        .completion-checkmark {
+            color: var(--accent-secondary);
+            font-weight: bold;
+        }
+
+        .completion-circle {
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        /* Coming Soon Message Theme Responsive Styles */
+        .coming-soon-message {
+            transition: all 0.3s ease;
+        }
+
+        .coming-soon-text {
+            transition: color 0.3s ease;
+        }
+
+        /* Light Mode Coming Soon Message */
+        [data-theme="light"] .coming-soon-message {
+            background-color: #f3f4f6;
+            border-color: #000000;
+        }
+
+        [data-theme="light"] .coming-soon-text {
+            color: #000000;
+        }
+
+        /* Dark Mode Coming Soon Message */
+        [data-theme="dark"] .coming-soon-message {
+            background-color: #1f2937;
+            border-color: #ffffff;
+        }
+
+        [data-theme="dark"] .coming-soon-text {
+            color: #ffffff;
+        }
+
+        /* Sea Theme Coming Soon Message */
+        [data-theme="sea"] .coming-soon-message {
+            background-color: #e3f2fd;
+            border-color: #01579b;
+        }
+
+        [data-theme="sea"] .coming-soon-text {
+            color: #01579b;
+        }
+
+        /* Earth Theme Coming Soon Message */
+        [data-theme="earth"] .coming-soon-message {
+            background-color: #f1f8e9;
+            border-color: #33691e;
+        }
+
+        [data-theme="earth"] .coming-soon-text {
+            color: #33691e;
+        }
+
+        /* Sunset Theme Coming Soon Message */
+        [data-theme="sunset"] .coming-soon-message {
+            background-color: #fff3e0;
+            border-color: #e65100;
+        }
+
+        [data-theme="sunset"] .coming-soon-text {
+            color: #e65100;
+        }
+
+        /* Mobile Menu Fixes */
+        #mobileMenu {
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #mobileMenu .flex {
+            min-height: fit-content;
+        }
+
+        /* Ensure mobile menu items don't get cut off */
+        @media (max-width: 768px) {
+            #mobileMenu {
+                position: relative;
+                z-index: 50;
+            }
+            
+            #mobileMenu .nav-link {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body data-theme="light" class="min-h-screen">
-    <!-- Standard Navigation -->
-    <header>
-        <nav class="navbar-theme text-white shadow-lg">
-            <div class="container mx-auto px-4 py-3">
-                <div class="flex items-center justify-between">
+    <!-- Navigation -->
+    <nav class="navbar-theme text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="cursor-pointer hover:opacity-80 transition-opacity">
+                        <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-12 h-12 object-contain theme-logo">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="index.html" class="px-4 py-2 nav-link rounded-lg transition nav-home">
+                        Home
+                    </a>
+                    <a href="index.html#courses" class="px-4 py-2 nav-link rounded-lg transition nav-courses">
+                        Courses
+                    </a>
+                    <a href="roadmap.html" class="px-4 py-2 nav-link rounded-lg transition nav-roadmap">
+                        Roadmap
+                    </a>
+                    <a href="instructors.html" class="px-4 py-2 nav-link rounded-lg transition nav-instructors">
+                        Instructors
+                    </a>
+                    <a href="about.html" class="px-4 py-2 nav-link rounded-lg transition nav-about">
+                        About
+                    </a>
+                    <button class="px-4 py-2 nav-link rounded-lg transition nav-quiz" id="quizBtn">
+                        Quiz
+                    </button>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-sun" id="themeIcon"></i>
+                    </button>
+                    <button class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-2 cursor-pointer transition-all duration-300 flex items-center justify-center w-10 h-10 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-500 hover:scale-105 hover:shadow-lg active:scale-95 relative z-[999998]" id="customThemeToggle" aria-label="Custom themes">
+                        <i class="fas fa-palette text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Navigation -->
+                <div class="md:hidden flex items-center justify-between w-full">
+                    <!-- Left side - Empty for balance -->
+                    <div class="w-20"></div>
+                    
+                    <!-- Right side - Theme toggles and Hamburger Menu -->
                     <div class="flex items-center space-x-2">
-                        <a href="index.html" class="cursor-pointer hover:opacity-80 transition-opacity">
-                            <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-12 h-12 object-contain">
-                        </a>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <a href="index.html" class="px-4 py-2 nav-link rounded-lg transition">
-                            Home
-                        </a>
-                        <button class="px-4 py-2 nav-link rounded-lg transition" id="quizBtn">
-                            Quiz
+                        <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle theme">
+                            <i class="fas fa-sun" id="themeIconMobile"></i>
                         </button>
-                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                            <i class="fas fa-sun" id="themeIcon"></i>
+                        <button class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-2 cursor-pointer transition-all duration-300 flex items-center justify-center w-10 h-10 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-500 hover:scale-105 hover:shadow-lg active:scale-95 relative z-[999998]" id="customThemeToggleMobile" aria-label="Custom themes">
+                            <i class="fas fa-palette text-sm"></i>
+                        </button>
+                        <button class="hamburger-menu p-2 rounded-lg transition-all duration-300 hover:bg-white/10" id="hamburgerMenu" aria-label="Toggle mobile menu">
+                            <div class="w-6 h-0.5 hamburger-line mb-1.5 transition-all duration-300"></div>
+                            <div class="w-6 h-0.5 hamburger-line mb-1.5 transition-all duration-300"></div>
+                            <div class="w-6 h-0.5 hamburger-line transition-all duration-300"></div>
                         </button>
                     </div>
                 </div>
             </div>
-        </nav>
-    
-        </header>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="md:hidden mt-4 pb-4 border-t border-white/20 hidden max-h-screen overflow-y-auto" id="mobileMenu">
+                <div class="flex flex-col space-y-2 pt-4 pb-4">
+                    <a href="index.html" class="px-4 py-3 nav-link rounded-lg transition text-center nav-home-mobile">
+                        Home
+                    </a>
+                    <a href="index.html#courses" class="px-4 py-3 nav-link rounded-lg transition text-center nav-courses-mobile">
+                        Courses
+                    </a>
+                    <a href="roadmap.html" class="px-4 py-3 nav-link rounded-lg transition text-center nav-roadmap-mobile">
+                        Roadmap
+                    </a>
+                    <a href="instructors.html" class="px-4 py-3 nav-link rounded-lg transition text-center nav-instructors-mobile">
+                        Instructors
+                    </a>
+                    <a href="about.html" class="px-4 py-3 nav-link rounded-lg transition text-center nav-about-mobile">
+                        About
+                    </a>
+                    <button class="px-4 py-3 nav-link rounded-lg transition text-center w-full nav-quiz-mobile" id="quizBtnMobile">
+                        Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom Theme Dropdown -->
+    <div class="fixed top-[70px] md:right-2 right-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl shadow-2xl z-[999999] min-w-[160px] overflow-hidden hidden" id="customThemeDropdown">
+        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white border-b border-gray-200 dark:border-white/20 hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="sea">
+            <i class="fas fa-water w-4 mr-3 text-sm text-gray-900 dark:text-white"></i>
+            <span class="text-sm font-medium">Sea</span>
+        </div>
+        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white border-b border-gray-200 dark:border-white/20 hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="earth">
+            <i class="fas fa-leaf w-4 mr-3 text-sm text-gray-900 dark:text-white"></i>
+            <span class="text-sm font-medium">Earth</span>
+        </div>
+        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="sunset">
+            <i class="fas fa-sun w-4 mr-3 text-sm text-gray-900 dark:text-white"></i>
+            <span class="text-sm font-medium">Sunset</span>
+        </div>
+    </div>
 
     <!-- Mobile-First Course Header -->
     <main>
@@ -964,27 +1419,27 @@
                     <!-- Progress Circle -->
                     <div class="relative w-12 h-12 sm:w-16 sm:h-16">
                         <svg class="w-12 h-12 sm:w-16 sm:h-16 transform -rotate-90" viewBox="0 0 64 64">
-                            <circle cx="32" cy="32" r="28" fill="none" stroke="#e5e7eb" stroke-width="4"/>
-                            <circle id="progressCircle" cx="32" cy="32" r="28" fill="none" stroke="#3b82f6" 
+                            <circle cx="32" cy="32" r="28" fill="none" stroke="var(--border)" stroke-width="4"/>
+                            <circle id="progressCircle" cx="32" cy="32" r="28" fill="none" stroke="var(--accent-primary)" 
                                     stroke-width="4" stroke-dasharray="0 176" class="progress-circle"/>
                         </svg>
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <span id="progressPercent" class="mobile-text-xs sm:mobile-text-sm font-bold text-blue-600">0%</span>
+                            <span id="progressPercent" class="mobile-text-xs sm:mobile-text-sm font-bold progress-text">0%</span>
                         </div>
                     </div>
                     <!-- Content Filters -->
-                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 lg:gap-4 bg-gray-100 px-3 sm:px-4 py-2 rounded-lg" style="background: var(--surface-light);">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 lg:gap-4 px-3 sm:px-4 py-2 rounded-lg" style="background: var(--surface-light);">
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" id="showTheory" checked class="rounded text-blue-600 w-4 h-4 sm:w-5 sm:h-5 accent-blue-600">
-                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap">📖 Theory</span>
+                            <input type="checkbox" id="showTheory" checked class="rounded w-4 h-4 sm:w-5 sm:h-5 content-filter-checkbox">
+                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap content-filter-label">Theory</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" id="showCode" checked class="rounded text-blue-600 w-4 h-4 sm:w-5 sm:h-5 accent-blue-600">
-                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap">💻 Code</span>
+                            <input type="checkbox" id="showCode" checked class="rounded w-4 h-4 sm:w-5 sm:h-5 content-filter-checkbox">
+                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap content-filter-label">Code</span>
                         </label>
                         <label class="flex items-center space-x-2 cursor-pointer">
-                            <input type="checkbox" id="showTips" checked class="rounded text-blue-600 w-4 h-4 sm:w-5 sm:h-5 accent-blue-600">
-                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap">💡 Tips</span>
+                            <input type="checkbox" id="showTips" checked class="rounded w-4 h-4 sm:w-5 sm:h-5 content-filter-checkbox">
+                            <span class="mobile-text-xs sm:mobile-text-sm font-medium whitespace-nowrap content-filter-label">Tips</span>
                         </label>
                     </div>
                 </div>
@@ -1048,15 +1503,15 @@
                     </div>
 
                     <!-- Current Module Indicator -->
-                    <div class="mb-4 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500" style="background: var(--surface-light); border-color: #3b82f6;">
+                    <div class="mb-4 p-3 rounded-lg border-l-4 current-module-indicator">
                         <div class="flex items-center justify-between">
                             <div>
-                                <div class="text-xs font-medium text-blue-700" style="color: #3b82f6;">Current Module</div>
-                                <div id="currentModuleTitle" class="text-sm font-semibold text-gray-900" style="color: var(--text-primary);">-</div>
+                                <div class="text-xs font-medium current-module-label">Current Module</div>
+                                <div id="currentModuleTitle" class="text-sm font-semibold" style="color: var(--text-primary);">-</div>
                             </div>
                             <div class="text-right">
-                                <div id="currentModuleNumber" class="text-lg font-bold text-blue-600">-</div>
-                                <div class="text-xs text-gray-500" style="color: var(--text-secondary);">of <span id="totalModules">-</span></div>
+                                <div id="currentModuleNumber" class="text-lg font-bold current-module-number">-</div>
+                                <div class="text-xs" style="color: var(--text-secondary);">of <span id="totalModules">-</span></div>
                             </div>
                         </div>
                     </div>
@@ -1089,9 +1544,9 @@
             <article class="mobile-content" role="main">
                 <!-- Chapter Content -->
                 <div class="mobile-card">
-                    <div id="chapterHeader" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white mobile-spacing-sm" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);">
+                    <div id="chapterHeader" class="mobile-spacing-sm chapter-header">
                         <h2 id="chapterTitle" class="mobile-text-lg sm:mobile-text-xl lg:mobile-text-2xl font-bold mb-2 break-words">Select a module to begin</h2>
-                        <p id="chapterDescription" class="text-blue-100 mobile-text-sm sm:mobile-text-base break-words" style="color: rgba(255, 255, 255, 0.8);">Choose a module from the sidebar to start learning</p>
+                        <p id="chapterDescription" class="mobile-text-sm sm:mobile-text-base break-words chapter-description">Choose a module from the sidebar to start learning</p>
                     </div>
 
                     <div id="chapterContent" class="mobile-spacing-sm lg:mobile-spacing-md overflow-x-auto">
@@ -1497,7 +1952,7 @@
                                 if (section.subsections && section.subsections.length > 0) {
                                     theoryContent += `<ul class="list-disc pl-6 mobile-text-sm sm:mobile-text-base mb-4">`;
                                     section.subsections.forEach(subsection => {
-                                        theoryContent += `<li class="text-gray-700 mb-1">${subsection}</li>`;
+                                        theoryContent += `<li class="mb-1" style="color: var(--text-secondary);">${subsection}</li>`;
                                     });
                                     theoryContent += `</ul>`;
                                 }
@@ -1536,11 +1991,11 @@
                             theoryContent += `<p class="mobile-text-sm sm:mobile-text-base mb-4">${topic.content}</p>`;
                             
                             if (topic.key_points && topic.key_points.length > 0) {
-                                theoryContent += `<div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 mb-4">`;
-                                theoryContent += `<h5 class="font-bold text-blue-800 mobile-text-sm mb-2">Key Points:</h5>`;
+                                theoryContent += `<div class="theme-info-box p-4 rounded-lg border-l-4 mb-4">`;
+                                theoryContent += `<h5 class="font-bold mobile-text-sm mb-2 theme-info-title">Key Points:</h5>`;
                                 theoryContent += `<ul class="list-disc pl-6 mobile-text-sm sm:mobile-text-base">`;
                                 topic.key_points.forEach(point => {
-                                    theoryContent += `<li class="text-blue-700">${point}</li>`;
+                                    theoryContent += `<li class="theme-info-text">${point}</li>`;
                                 });
                                 theoryContent += `</ul></div>`;
                             }
@@ -1597,7 +2052,7 @@
                 
                 courseContent.chapters.forEach((chapter, index) => {
                     const chapterItem = document.createElement('div');
-                    chapterItem.className = `chapter-item ${index === currentChapterIndex ? 'active' : 'hover:bg-gray-100 text-gray-700'}`;
+                    chapterItem.className = `chapter-item ${index === currentChapterIndex ? 'active' : 'hover:bg-gray-100'}`;
                     
                     const isCompleted = completedChapters.has(index);
                     chapterItem.innerHTML = `
@@ -1607,7 +2062,7 @@
                                 <div class="text-xs opacity-75 mt-1 break-words">${chapter.description}</div>
                             </div>
                             <div class="text-right ml-2">
-                                ${isCompleted ? '<span class="text-green-500">✓</span>' : '<span class="text-gray-400">○</span>'}
+                                ${isCompleted ? '<span class="completion-checkmark">✓</span>' : '<span class="completion-circle">○</span>'}
                             </div>
                         </div>
                     `;
@@ -1678,14 +2133,14 @@
                 if (index === currentChapterIndex) {
                     item.className = 'chapter-item active';
                 } else {
-                    item.className = 'chapter-item hover:bg-gray-100 text-gray-700';
+                    item.className = 'chapter-item hover:bg-gray-100';
                 }
                 
                 // Update completion status
                 const isCompleted = completedChapters.has(index);
                 const statusSpan = item.querySelector('.text-right span');
                 if (statusSpan) {
-                    statusSpan.className = isCompleted ? 'text-green-500' : 'text-gray-400';
+                    statusSpan.className = isCompleted ? 'completion-checkmark' : 'completion-circle';
                     statusSpan.textContent = isCompleted ? '✓' : '○';
                 }
             });
@@ -1982,8 +2437,8 @@
                         <div class="text-6xl mb-4">🚧</div>
                         <h3 class="mobile-text-lg sm:mobile-text-xl font-medium text-gray-600 mb-2" style="color: var(--text-secondary);">Coming Soon!</h3>
                         <p class="text-gray-500 mobile-text-sm sm:mobile-text-base mb-4" style="color: var(--text-secondary);">This module is currently under development. We're working hard to bring you the best learning experience.</p>
-                        <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500" style="background: var(--surface-light); border-color: #3b82f6;">
-                            <p class="text-blue-700 mobile-text-sm" style="color: #3b82f6;">Check back soon for updates!</p>
+                        <div class="p-4 rounded-lg border-l-4 coming-soon-message">
+                            <p class="mobile-text-sm coming-soon-text">Check back soon for updates!</p>
                         </div>
                     </div>
                 `;
@@ -2039,8 +2494,163 @@
             }, 2000);
         }
 
-        // Theme management is handled by shared-nav.js
-        // No need for duplicate implementation here
+        // Theme toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const themeToggle = document.getElementById("themeToggle");
+            const themeToggleMobile = document.getElementById("themeToggleMobile");
+            const themeIcon = document.getElementById("themeIcon");
+            const themeIconMobile = document.getElementById("themeIconMobile");
+
+            // Load saved theme or default to light
+            const savedTheme = localStorage.getItem("theme") || "light";
+            document.body.setAttribute("data-theme", savedTheme);
+            updateThemeIcons(savedTheme);
+
+            // Desktop theme toggle
+            if (themeToggle && themeIcon) {
+                themeToggle.addEventListener("click", function() {
+                    const currentTheme = document.body.getAttribute("data-theme");
+                    const newTheme = currentTheme === "dark" ? "light" : "dark";
+                    document.body.setAttribute("data-theme", newTheme);
+                    localStorage.setItem("theme", newTheme);
+                    updateThemeIcons(newTheme);
+                });
+            }
+
+            // Mobile theme toggle
+            if (themeToggleMobile && themeIconMobile) {
+                themeToggleMobile.addEventListener("click", function() {
+                    const currentTheme = document.body.getAttribute("data-theme");
+                    const newTheme = currentTheme === "dark" ? "light" : "dark";
+                    document.body.setAttribute("data-theme", newTheme);
+                    localStorage.setItem("theme", newTheme);
+                    updateThemeIcons(newTheme);
+                });
+            }
+
+            // Function to update theme icons
+            function updateThemeIcons(theme) {
+                const iconClass = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+                if (themeIcon) themeIcon.className = iconClass;
+                if (themeIconMobile) themeIconMobile.className = iconClass;
+            }
+
+            // Additional theme dropdown and mobile menu functionality
+            // Theme dropdown functionality
+            const customThemeToggle = document.getElementById("customThemeToggle");
+            const customThemeToggleMobile = document.getElementById("customThemeToggleMobile");
+            const customThemeDropdown = document.getElementById("customThemeDropdown");
+
+            if (customThemeToggle) {
+                customThemeToggle.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    customThemeDropdown.classList.toggle("hidden");
+                });
+            }
+
+            if (customThemeToggleMobile) {
+                customThemeToggleMobile.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    customThemeDropdown.classList.toggle("hidden");
+                });
+            }
+
+            // Mobile menu functionality
+            const hamburgerMenu = document.getElementById("hamburgerMenu");
+            const mobileMenu = document.getElementById("mobileMenu");
+
+            if (hamburgerMenu && mobileMenu) {
+                hamburgerMenu.addEventListener("click", function() {
+                    mobileMenu.classList.toggle("hidden");
+                    hamburgerMenu.classList.toggle("active");
+                });
+
+                // Close mobile menu when clicking on navigation links
+                const mobileNavLinks = mobileMenu.querySelectorAll('a, button');
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener("click", function() {
+                        // Close mobile menu
+                        mobileMenu.classList.add("hidden");
+                        hamburgerMenu.classList.remove("active");
+                    });
+                });
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener("click", function(e) {
+                if (!customThemeToggle?.contains(e.target) && !customThemeToggleMobile?.contains(e.target) && !customThemeDropdown?.contains(e.target)) {
+                    customThemeDropdown?.classList.add("hidden");
+                }
+            });
+
+            // Theme option selection
+            const themeOptions = document.querySelectorAll('.custom-theme-option');
+            themeOptions.forEach(option => {
+                option.addEventListener("click", function() {
+                    const selectedTheme = option.getAttribute("data-theme");
+                    document.body.setAttribute("data-theme", selectedTheme);
+                    localStorage.setItem("theme", selectedTheme);
+                    customThemeDropdown.classList.add("hidden");
+                    
+                    // Update active state
+                    themeOptions.forEach(opt => opt.classList.remove("active"));
+                    option.classList.add("active");
+                });
+            });
+
+            // Set active theme option on load
+            const currentTheme = document.body.getAttribute("data-theme");
+            themeOptions.forEach(option => {
+                if (option.getAttribute("data-theme") === currentTheme) {
+                    option.classList.add("active");
+                }
+            });
+
+            // Mobile quiz button functionality
+            const quizBtnMobile = document.getElementById("quizBtnMobile");
+            if (quizBtnMobile) {
+                quizBtnMobile.addEventListener("click", function() {
+                    // Navigate to quiz page with current course
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const course = urlParams.get('course');
+                    if (course) {
+                        window.location.href = `quiz.html?course=${course}`;
+                    } else {
+                        window.location.href = 'quiz.html';
+                    }
+                });
+            }
+
+            // Smart Navigation - Hide current page button but always show Courses
+            function setupSmartNavigation() {
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                
+                // Define page-to-button mapping
+                const pageButtonMap = {
+                    'index.html': ['nav-home', 'nav-home-mobile'],
+                    'roadmap.html': ['nav-roadmap', 'nav-roadmap-mobile'],
+                    'instructors.html': ['nav-instructors', 'nav-instructors-mobile'],
+                    'about.html': ['nav-about', 'nav-about-mobile'],
+                    'quiz.html': ['nav-quiz', 'nav-quiz-mobile'],
+                    'learning.html': ['nav-learning', 'nav-learning-mobile']
+                };
+
+                // Hide current page buttons (but never hide Courses)
+                const currentButtons = pageButtonMap[currentPage];
+                if (currentButtons) {
+                    currentButtons.forEach(className => {
+                        const elements = document.querySelectorAll('.' + className);
+                        elements.forEach(element => {
+                            element.style.display = 'none';
+                        });
+                    });
+                }
+            }
+
+            // Initialize smart navigation
+            setupSmartNavigation();
+        });
     </script>
 </body>
 </html>

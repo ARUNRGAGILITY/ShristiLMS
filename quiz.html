@@ -203,38 +203,136 @@
             box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
         }
 
+        /* Mobile Menu Fixes */
+        #mobileMenu {
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #mobileMenu .flex {
+            min-height: fit-content;
+        }
+
+        /* Ensure mobile menu items don't get cut off */
+        @media (max-width: 768px) {
+            #mobileMenu {
+                position: relative;
+                z-index: 50;
+            }
+            
+            #mobileMenu .nav-link {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
 
     </style>
 </head>
 <body data-theme="light" class="min-h-screen">
-    <!-- Standard Navigation -->
-    <header>
-        <nav class="navbar-theme text-white shadow-lg sticky top-0 z-50" role="navigation" aria-label="Main navigation">
-            <div class="container mx-auto px-4 py-3">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
-                                        <a href="index.html" class="cursor-pointer hover:opacity-80 transition-opacity" aria-label="Return to Shristi homepage">
-                    <img src="assets/logo.png" alt="Shristi - Interactive Learning Platform Logo" class="w-12 h-12 sm:w-14 sm:h-14 object-contain">
-                        </a>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <a href="index.html" class="px-4 py-2 nav-link rounded-lg transition">
-                            Home
-                        </a>
-                        <button id="learningBtn" class="px-4 py-2 nav-link rounded-lg transition">
-                            <i class="fas fa-book mr-1"></i>Learning
-                        </button>
-                        <button id="quizBtn" class="px-4 py-2 nav-link rounded-lg transition">
-                            <i class="fas fa-clipboard-check mr-1"></i>Take Quiz
-                        </button>
-                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                            <i class="fas fa-moon" id="themeIcon"></i>
-                        </button>
-                    </div>
+    <!-- Navigation -->
+    <nav class="navbar-theme text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="cursor-pointer hover:opacity-80 transition-opacity">
+                        <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-12 h-12 object-contain theme-logo">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="index.html" class="px-4 py-2 nav-link rounded-lg transition">
+                        Home
+                    </a>
+                    <a href="index.html#courses" class="px-4 py-2 nav-link rounded-lg transition">
+                        Courses
+                    </a>
+                    <a href="roadmap.html" class="px-4 py-2 nav-link rounded-lg transition">
+                        Roadmap
+                    </a>
+                    <a href="instructors.html" class="px-4 py-2 nav-link rounded-lg transition">
+                        Instructors
+                    </a>
+                    <a href="about.html" class="px-4 py-2 nav-link rounded-lg transition">
+                        About
+                    </a>
+                    <button id="learningBtn" class="px-4 py-2 nav-link rounded-lg transition">
+                        <i class="fas fa-book mr-1"></i>Learning
+                    </button>
+                    <button id="quizBtn" class="px-4 py-2 nav-link rounded-lg transition">
+                        <i class="fas fa-clipboard-check mr-1"></i>Take Quiz
+                    </button>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon" id="themeIcon"></i>
+                    </button>
+                    <button class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-2 cursor-pointer transition-all duration-300 flex items-center justify-center w-10 h-10 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-500 hover:scale-105 hover:shadow-lg active:scale-95 relative z-[999998]" id="customThemeToggle" aria-label="Custom themes">
+                        <i class="fas fa-palette text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Menu Button -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <button class="theme-toggle mr-2" id="themeToggleMobile" aria-label="Toggle theme">
+                        <i class="fas fa-moon" id="themeIconMobile"></i>
+                    </button>
+                    <button class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl p-2 cursor-pointer transition-all duration-300 flex items-center justify-center w-10 h-10 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-300 dark:hover:border-gray-500 hover:scale-105 hover:shadow-lg active:scale-95 relative z-[999998]" id="customThemeToggleMobile" aria-label="Custom themes">
+                        <i class="fas fa-palette text-sm"></i>
+                    </button>
+                    <button class="hamburger-menu p-2 rounded-lg transition-all duration-300 hover:bg-white/10" id="hamburgerMenu" aria-label="Toggle mobile menu">
+                        <div class="w-6 h-0.5 hamburger-line mb-1.5 transition-all duration-300"></div>
+                        <div class="w-6 h-0.5 hamburger-line mb-1.5 transition-all duration-300"></div>
+                        <div class="w-6 h-0.5 hamburger-line transition-all duration-300"></div>
+                    </button>
                 </div>
             </div>
-        </nav>
-        </header>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="md:hidden mt-4 pb-4 border-t border-white/20 hidden max-h-screen overflow-y-auto" id="mobileMenu">
+                <div class="flex flex-col space-y-2 pt-4">
+                    <a href="index.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                        Home
+                    </a>
+                    <a href="index.html#courses" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                        Courses
+                    </a>
+                    <a href="roadmap.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                        Roadmap
+                    </a>
+                    <a href="instructors.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                        Instructors
+                    </a>
+                    <a href="about.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                        About
+                    </a>
+                    <button id="learningBtnMobile" class="px-4 py-3 nav-link rounded-lg transition text-center w-full">
+                        <i class="fas fa-book mr-1"></i>Learning
+                    </button>
+                    <button id="quizBtnMobile" class="px-4 py-3 nav-link rounded-lg transition text-center w-full">
+                        <i class="fas fa-clipboard-check mr-1"></i>Take Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom Theme Dropdown -->
+    <div class="fixed top-[70px] md:right-2 right-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl shadow-2xl z-[999999] min-w-[160px] overflow-hidden hidden" id="customThemeDropdown">
+        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white border-b border-gray-200 dark:border-white/20 hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="sea">
+            <i class="fas fa-water w-4 mr-3 text-sm text-gray-900 dark:text-white"></i>
+            <span class="text-sm font-medium">Sea</span>
+        </div>
+        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white border-b border-gray-200 dark:border-white/20 hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="earth">
+            <i class="fas fa-leaf w-4 mr-3 text-sm text-gray-900 dark:text-white"></i>
+            <span class="text-sm font-medium">Earth</span>
+        </div>
+        <div class="custom-theme-option flex items-center px-4 py-3 cursor-pointer transition-all duration-200 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700" data-theme="sunset">
+            <i class="fas fa-sun w-4 mr-3 text-sm text-gray-900 dark:text-white"></i>
+            <span class="text-sm font-medium">Sunset</span>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8">
@@ -1325,6 +1423,150 @@
             const fileName = `${quizState.studentName.replace(/\s+/g, '_')}_${currentCourse.name.replace(/\s+/g, '_')}_Certificate_${currentDate.replace(/\s+/g, '_')}.pdf`;
             doc.save(fileName);
         }
+
+        // Mobile menu and theme dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const themeToggle = document.getElementById("themeToggle");
+            const themeToggleMobile = document.getElementById("themeToggleMobile");
+            const themeIcon = document.getElementById("themeIcon");
+            const themeIconMobile = document.getElementById("themeIconMobile");
+
+            // Load saved theme or default to light
+            const savedTheme = localStorage.getItem("theme") || "light";
+            document.body.setAttribute("data-theme", savedTheme);
+            updateThemeIcons(savedTheme);
+
+            // Desktop theme toggle
+            if (themeToggle && themeIcon) {
+                themeToggle.addEventListener("click", function() {
+                    const currentTheme = document.body.getAttribute("data-theme");
+                    const newTheme = currentTheme === "dark" ? "light" : "dark";
+                    document.body.setAttribute("data-theme", newTheme);
+                    localStorage.setItem("theme", newTheme);
+                    updateThemeIcons(newTheme);
+                });
+            }
+
+            // Mobile theme toggle
+            if (themeToggleMobile && themeIconMobile) {
+                themeToggleMobile.addEventListener("click", function() {
+                    const currentTheme = document.body.getAttribute("data-theme");
+                    const newTheme = currentTheme === "dark" ? "light" : "dark";
+                    document.body.setAttribute("data-theme", newTheme);
+                    localStorage.setItem("theme", newTheme);
+                    updateThemeIcons(newTheme);
+                });
+            }
+
+            // Function to update theme icons
+            function updateThemeIcons(theme) {
+                const iconClass = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+                if (themeIcon) themeIcon.className = iconClass;
+                if (themeIconMobile) themeIconMobile.className = iconClass;
+            }
+
+            // Theme dropdown functionality
+            const customThemeToggle = document.getElementById("customThemeToggle");
+            const customThemeToggleMobile = document.getElementById("customThemeToggleMobile");
+            const customThemeDropdown = document.getElementById("customThemeDropdown");
+
+            if (customThemeToggle) {
+                customThemeToggle.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    customThemeDropdown.classList.toggle("hidden");
+                });
+            }
+
+            if (customThemeToggleMobile) {
+                customThemeToggleMobile.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    customThemeDropdown.classList.toggle("hidden");
+                });
+            }
+
+            // Mobile menu functionality
+            const hamburgerMenu = document.getElementById("hamburgerMenu");
+            const mobileMenu = document.getElementById("mobileMenu");
+
+            if (hamburgerMenu && mobileMenu) {
+                hamburgerMenu.addEventListener("click", function() {
+                    mobileMenu.classList.toggle("hidden");
+                    
+                    // Animate hamburger menu
+                    const lines = hamburgerMenu.querySelectorAll('.hamburger-line');
+                    lines.forEach((line, index) => {
+                        if (mobileMenu.classList.contains("hidden")) {
+                            line.style.transform = "none";
+                        } else {
+                            if (index === 0) line.style.transform = "rotate(45deg) translate(5px, 5px)";
+                            if (index === 1) line.style.opacity = "0";
+                            if (index === 2) line.style.transform = "rotate(-45deg) translate(7px, -6px)";
+                        }
+                    });
+                });
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener("click", function(e) {
+                if (!customThemeToggle?.contains(e.target) && !customThemeToggleMobile?.contains(e.target) && !customThemeDropdown?.contains(e.target)) {
+                    customThemeDropdown?.classList.add("hidden");
+                }
+            });
+
+            // Theme option selection
+            const themeOptions = document.querySelectorAll('.custom-theme-option');
+            themeOptions.forEach(option => {
+                option.addEventListener("click", function() {
+                    const selectedTheme = option.getAttribute("data-theme");
+                    document.body.setAttribute("data-theme", selectedTheme);
+                    localStorage.setItem("theme", selectedTheme);
+                    customThemeDropdown.classList.add("hidden");
+                    
+                    // Update active state
+                    themeOptions.forEach(opt => opt.classList.remove("active"));
+                    option.classList.add("active");
+                });
+            });
+
+            // Set active theme option on load
+            const currentTheme = document.body.getAttribute("data-theme");
+            themeOptions.forEach(option => {
+                if (option.getAttribute("data-theme") === currentTheme) {
+                    option.classList.add("active");
+                }
+            });
+
+            // Mobile button functionality
+            const learningBtnMobile = document.getElementById("learningBtnMobile");
+            const quizBtnMobile = document.getElementById("quizBtnMobile");
+
+            if (learningBtnMobile) {
+                learningBtnMobile.addEventListener("click", function() {
+                    // Navigate to learning page with current course
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const course = urlParams.get('course');
+                    if (course) {
+                        window.location.href = `learning.html?course=${course}`;
+                    } else {
+                        window.location.href = 'learning.html';
+                    }
+                });
+            }
+
+            if (quizBtnMobile) {
+                quizBtnMobile.addEventListener("click", function() {
+                    // Navigate to quiz page with current course
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const course = urlParams.get('course');
+                    if (course) {
+                        window.location.href = `quiz.html?course=${course}`;
+                    } else {
+                        window.location.href = 'quiz.html';
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
