@@ -6,6 +6,7 @@
       {
         "id": "java-5-1",
         "title": "Thread Basics",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {
@@ -57,6 +58,7 @@
       {
         "id": "java-5-2",
         "title": "Thread Synchronization",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {
@@ -108,6 +110,7 @@
       {
         "id": "java-5-3",
         "title": "Concurrent Collections",
+        "duration": "45 minutes",
         "content": {
           "sections": [
             {
@@ -159,6 +162,7 @@
       {
         "id": "java-5-4",
         "title": "Executor Framework",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {

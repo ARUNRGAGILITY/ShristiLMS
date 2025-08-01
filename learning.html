@@ -1518,7 +1518,7 @@
                     chapters.push({
                         id: index + 1,
                         title: lesson.title,
-                        description: `Lesson ${index + 1}`,
+                        description: lesson.duration ? `Duration: ${lesson.duration}` : `Lesson ${index + 1}`,
                         theory: theoryContent
                     });
                 });

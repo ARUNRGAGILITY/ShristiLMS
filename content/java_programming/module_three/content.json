@@ -6,6 +6,7 @@
       {
         "id": "java-3-1",
         "title": "List Interface and Implementations",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {
@@ -56,6 +57,7 @@
       {
         "id": "java-3-2",
         "title": "Set Interface and Implementations",
+        "duration": "45 minutes",
         "content": {
           "sections": [
             {
@@ -106,6 +108,7 @@
       {
         "id": "java-3-3",
         "title": "Map Interface and Implementations",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {
@@ -157,6 +160,7 @@
       {
         "id": "java-3-4",
         "title": "Queue and Deque",
+        "duration": "45 minutes",
         "content": {
           "sections": [
             {

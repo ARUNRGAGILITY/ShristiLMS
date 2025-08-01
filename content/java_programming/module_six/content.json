@@ -2,10 +2,12 @@
   "module": {
     "title": "Advanced Java Features",
     "description": "Master advanced Java features including generics, annotations, reflection, and modern Java features",
+    "duration": "120 minutes",
     "lessons": [
       {
         "id": "java-6-1",
         "title": "Generics",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {
@@ -57,6 +59,7 @@
       {
         "id": "java-6-2",
         "title": "Annotations",
+        "duration": "45 minutes",
         "content": {
           "sections": [
             {
@@ -78,6 +81,7 @@
       {
         "id": "java-6-3",
         "title": "Reflection",
+        "duration": "45 minutes",
         "content": {
           "sections": [
             {
@@ -99,6 +103,7 @@
       {
         "id": "java-6-4",
         "title": "Modern Java Features",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {

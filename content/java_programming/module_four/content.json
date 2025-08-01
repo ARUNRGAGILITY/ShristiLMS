@@ -6,6 +6,7 @@
       {
         "id": "java-4-1",
         "title": "Exception Handling Basics",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {
@@ -55,6 +56,7 @@
       {
         "id": "java-4-2",
         "title": "File Operations",
+        "duration": "45 minutes",
         "content": {
           "sections": [
             {
@@ -106,6 +108,7 @@
       {
         "id": "java-4-3",
         "title": "Input/Output Streams",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {
@@ -157,6 +160,7 @@
       {
         "id": "java-4-4",
         "title": "NIO.2 (Modern File Operations)",
+        "duration": "45 minutes",
         "content": {
           "sections": [
             {

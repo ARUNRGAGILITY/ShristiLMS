@@ -6,6 +6,7 @@
       {
         "id": "java-1-1",
         "title": "What is Java?",
+        "duration": "30 minutes",
         "content": {
           "sections": [
             {
@@ -35,6 +36,7 @@
       {
         "id": "java-1-2",
         "title": "Setting Up Java Development Environment",
+        "duration": "45 minutes",
         "content": {
           "sections": [
             {
@@ -67,6 +69,7 @@
       {
         "id": "java-1-3",
         "title": "Basic Syntax and Data Types",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {
@@ -103,7 +106,7 @@
             {
               "type": "code",
               "language": "java",
-              "content": "public class DataTypes {\n    public static void main(String[] args) {\n        // Primitive data types\n        byte byteValue = 127; // 8-bit signed integer\n        short shortValue = 32767; // 16-bit signed integer\n        int intValue = 2147483647; // 32-bit signed integer\n        long longValue = 9223372036854775807L; // 64-bit signed integer\n        \n        float floatValue = 3.14f; // 32-bit floating point\n        double doubleValue = 3.14159265359; // 64-bit floating point\n        \n        char charValue = 'A'; // 16-bit Unicode character\n        boolean booleanValue = true; // true or false\n        \n        // Reference data types\n        String stringValue = \"Hello, Java!\";\n        Integer integerObject = 100;\n        Double doubleObject = 3.14;\n        \n        // Arrays\n        int[] numbers = {1, 2, 3, 4, 5};\n        String[] names = {\"Alice\", \"Bob\", \"Charlie\"};\n        \n        // Printing values\n        System.out.println(\"Byte: \" + byteValue);\n        System.out.println(\"Short: \" + shortValue);\n        System.out.println(\"Int: \" + intValue);\n        System.out.println(\"Long: \" + longValue);\n        System.out.println(\"Float: \" + floatValue);\n        System.out.println(\"Double: \" + doubleValue);\n        System.out.println(\"Char: \" + charValue);\n        System.out.println(\"Boolean: \" + booleanValue);\n        System.out.println(\"String: \" + stringValue);\n        \n        // Type conversion (casting)\n        int intFromDouble = (int) doubleValue;\n        double doubleFromInt = intValue;\n        \n        System.out.println(\"Int from double: \" + intFromDouble);\n        System.out.println(\"Double from int: \" + doubleFromInt);\n    }\n}"
+              "content": "public class DataTypes {\n    public static void main(String[] args) {\n        // Primitive data types\n        int intValue = 42;\n        double doubleValue = 3.14;\n        char charValue = 'A';\n        boolean booleanValue = true;\n        \n        // Reference data types\n        String stringValue = \"Hello, Java!\";\n        \n        // Arrays\n        int[] numbers = {1, 2, 3};\n        \n        // Printing values\n        System.out.println(\"Int: \" + intValue);\n        System.out.println(\"Double: \" + doubleValue);\n        System.out.println(\"Char: \" + charValue);\n        System.out.println(\"Boolean: \" + booleanValue);\n        System.out.println(\"String: \" + stringValue);\n        \n        // Type conversion\n        int intFromDouble = (int) doubleValue;\n        System.out.println(\"Int from double: \" + intFromDouble);\n    }\n}"
             },
             {
               "type": "text",
@@ -161,6 +164,7 @@
       {
         "id": "java-1-4",
         "title": "Variables and Operators",
+        "duration": "45 minutes",
         "content": {
           "sections": [
             {
@@ -200,7 +204,7 @@
             {
               "type": "code",
               "language": "java",
-              "content": "public class VariablesAndOperators {\n    public static void main(String[] args) {\n        // Variable declaration and initialization\n        int age = 25;\n        String name = \"John Doe\";\n        double salary = 50000.0;\n        \n        // Constants (final keyword)\n        final double PI = 3.14159;\n        final String COMPANY_NAME = \"TechCorp\";\n        \n        // Arithmetic operators\n        int a = 10;\n        int b = 3;\n        \n        System.out.println(\"Addition: \" + (a + b)); // 13\n        System.out.println(\"Subtraction: \" + (a - b)); // 7\n        System.out.println(\"Multiplication: \" + (a * b)); // 30\n        System.out.println(\"Division: \" + (a / b)); // 3\n        System.out.println(\"Modulus: \" + (a % b)); // 1\n        \n        // Increment and decrement\n        int count = 5;\n        System.out.println(\"Original count: \" + count);\n        System.out.println(\"Post-increment: \" + count++); // 5\n        System.out.println(\"After post-increment: \" + count); // 6\n        System.out.println(\"Pre-increment: \" + ++count); // 7\n        \n        // Assignment operators\n        int x = 10;\n        x += 5; // Same as x = x + 5\n        x -= 3; // Same as x = x - 3\n        x *= 2; // Same as x = x * 2\n        x /= 4; // Same as x = x / 4\n        \n        System.out.println(\"Final x: \" + x);\n        \n        // Comparison operators\n        int num1 = 10;\n        int num2 = 20;\n        \n        System.out.println(\"num1 == num2: \" + (num1 == num2)); // false\n        System.out.println(\"num1 != num2: \" + (num1 != num2)); // true\n        System.out.println(\"num1 < num2: \" + (num1 < num2)); // true\n        System.out.println(\"num1 > num2: \" + (num1 > num2)); // false\n        System.out.println(\"num1 <= num2: \" + (num1 <= num2)); // true\n        System.out.println(\"num1 >= num2: \" + (num1 >= num2)); // false\n        \n        // Logical operators\n        boolean isTrue = true;\n        boolean isFalse = false;\n        \n        System.out.println(\"AND: \" + (isTrue && isFalse)); // false\n        System.out.println(\"OR: \" + (isTrue || isFalse)); // true\n        System.out.println(\"NOT: \" + (!isTrue)); // false\n        \n        // String concatenation\n        String firstName = \"John\";\n        String lastName = \"Doe\";\n        String fullName = firstName + \" \" + lastName;\n        System.out.println(\"Full name: \" + fullName);\n        \n        // String formatting\n        String formatted = String.format(\"Name: %s, Age: %d, Salary: %.2f\", \n                                       name, age, salary);\n        System.out.println(formatted);\n    }\n}"
+              "content": "public class VariablesAndOperators {\n    public static void main(String[] args) {\n        // Variable declaration\n        int age = 25;\n        String name = \"John\";\n        \n        // Constants\n        final double PI = 3.14;\n        \n        // Arithmetic operators\n        int a = 10;\n        int b = 3;\n        \n        System.out.println(\"Addition: \" + (a + b));\n        System.out.println(\"Division: \" + (a / b));\n        \n        // Comparison operators\n        System.out.println(\"a < b: \" + (a < b));\n        \n        // Logical operators\n        boolean isTrue = true;\n        boolean isFalse = false;\n        System.out.println(\"AND: \" + (isTrue && isFalse));\n        \n        // String concatenation\n        String fullName = name + \" Doe\";\n        System.out.println(\"Full name: \" + fullName);\n    }\n}"
             },
             {
               "type": "text",
@@ -252,6 +256,7 @@
       {
         "id": "java-1-5",
         "title": "Control Flow Statements",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {
@@ -295,7 +300,7 @@
             {
               "type": "code",
               "language": "java",
-              "content": "public class ControlFlow {\n    public static void main(String[] args) {\n        // If statement\n        int age = 18;\n        \n        if (age >= 18) {\n            System.out.println(\"You are an adult\");\n        } else {\n            System.out.println(\"You are a minor\");\n        }\n        \n        // If-else if-else\n        int score = 85;\n        \n        if (score >= 90) {\n            System.out.println(\"Grade: A\");\n        } else if (score >= 80) {\n            System.out.println(\"Grade: B\");\n        } else if (score >= 70) {\n            System.out.println(\"Grade: C\");\n        } else {\n            System.out.println(\"Grade: F\");\n        }\n        \n        // Switch statement\n        int day = 1;\n        String dayName;\n        \n        switch (day) {\n            case 1:\n                dayName = \"Monday\";\n                break;\n            case 2:\n                dayName = \"Tuesday\";\n                break;\n            case 3:\n                dayName = \"Wednesday\";\n                break;\n            case 4:\n                dayName = \"Thursday\";\n                break;\n            case 5:\n                dayName = \"Friday\";\n                break;\n            case 6:\n            case 7:\n                dayName = \"Weekend\";\n                break;\n            default:\n                dayName = \"Invalid day\";\n        }\n        \n        System.out.println(\"Day: \" + dayName);\n        \n        // Ternary operator\n        String status = (age >= 18) ? \"Adult\" : \"Minor\";\n        System.out.println(\"Status: \" + status);\n        \n        // For loop\n        System.out.println(\"\\nFor loop:\");\n        for (int i = 0; i < 5; i++) {\n            System.out.println(\"Iteration \" + i);\n        }\n        \n        // While loop\n        System.out.println(\"\\nWhile loop:\");\n        int count = 0;\n        while (count < 3) {\n            System.out.println(\"Count: \" + count);\n            count++;\n        }\n        \n        // Do-while loop\n        System.out.println(\"\\nDo-while loop:\");\n        int num = 0;\n        do {\n            System.out.println(\"Number: \" + num);\n            num++;\n        } while (num < 3);\n        \n        // Enhanced for loop (for arrays)\n        System.out.println(\"\\nEnhanced for loop:\");\n        String[] colors = {\"Red\", \"Green\", \"Blue\"};\n        for (String color : colors) {\n            System.out.println(\"Color: \" + color);\n        }\n        \n        // Break and continue\n        System.out.println(\"\\nBreak and continue:\");\n        for (int i = 0; i < 10; i++) {\n            if (i == 5) {\n                break; // Exit the loop\n            }\n            if (i == 2) {\n                continue; // Skip this iteration\n            }\n            System.out.println(\"i = \" + i);\n        }\n    }\n}"
+              "content": "public class ControlFlow {\n    public static void main(String[] args) {\n        // If statement\n        int age = 18;\n        \n        if (age >= 18) {\n            System.out.println(\"You are an adult\");\n        } else {\n            System.out.println(\"You are a minor\");\n        }\n        \n        // Switch statement\n        int day = 1;\n        String dayName;\n        \n        switch (day) {\n            case 1:\n                dayName = \"Monday\";\n                break;\n            case 2:\n                dayName = \"Tuesday\";\n                break;\n            default:\n                dayName = \"Other day\";\n        }\n        \n        System.out.println(\"Day: \" + dayName);\n        \n        // For loop\n        System.out.println(\"\\nFor loop:\");\n        for (int i = 0; i < 3; i++) {\n            System.out.println(\"Iteration \" + i);\n        }\n        \n        // While loop\n        System.out.println(\"\\nWhile loop:\");\n        int count = 0;\n        while (count < 2) {\n            System.out.println(\"Count: \" + count);\n            count++;\n        }\n        \n        // Enhanced for loop\n        System.out.println(\"\\nEnhanced for loop:\");\n        String[] colors = {\"Red\", \"Green\"};\n        for (String color : colors) {\n            System.out.println(\"Color: \" + color);\n        }\n    }\n}"
             },
             {
               "type": "text",
@@ -363,6 +368,7 @@
       {
         "id": "java-1-6",
         "title": "Methods and Functions",
+        "duration": "45 minutes",
         "content": {
           "sections": [
             {
@@ -370,13 +376,121 @@
               "content": "Methods in Java are blocks of code that perform specific tasks. They help organize code, promote reusability, and make programs more modular."
             },
             {
+              "type": "text",
+              "content": "Methods are fundamental building blocks of Java programming that encapsulate functionality into reusable units. They enable code organization, reduce duplication, and make programs easier to understand and maintain. Methods are essential for creating modular, scalable applications."
+            },
+            {
+              "type": "text",
+              "content": "Key benefits of using methods:",
+              "subsections": [
+                "Code Reusability: Write once, use many times across your program",
+                "Modularity: Break complex problems into smaller, manageable pieces",
+                "Maintainability: Easier to update and debug specific functionality",
+                "Readability: Code becomes more self-documenting and easier to understand",
+                "Testing: Individual methods can be tested in isolation",
+                "Abstraction: Hide implementation details behind a simple interface"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Method components and structure:",
+              "subsections": [
+                "Access Modifier: Controls visibility (public, private, protected, default)",
+                "Return Type: Data type of the value returned (void for no return)",
+                "Method Name: Descriptive name following camelCase convention",
+                "Parameters: Input values the method needs to perform its task",
+                "Method Body: The actual code that performs the operation",
+                "Return Statement: Sends a value back to the calling code"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Types of methods in Java:",
+              "subsections": [
+                "Instance Methods: Belong to objects and can access instance variables",
+                "Static Methods: Belong to classes and can be called without creating objects",
+                "Constructor Methods: Special methods for initializing objects",
+                "Getter/Setter Methods: Access and modify object properties",
+                "Utility Methods: Perform common operations and calculations"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Method overloading allows you to define multiple methods with the same name but different parameters. This enables you to provide different ways to call the same functionality, making your API more flexible and user-friendly."
+            },
+            {
+              "type": "text",
+              "content": "Variable arguments (varargs) allow methods to accept a variable number of arguments. This is useful for methods that need to handle different numbers of inputs, such as mathematical operations or utility functions."
+            },
+            {
               "type": "code",
               "language": "java",
-              "content": "public class Methods {\n    // Method with no parameters and no return value\n    public static void greet() {\n        System.out.println(\"Hello, World!\");\n    }\n    \n    // Method with parameters and return value\n    public static int add(int a, int b) {\n        return a + b;\n    }\n    \n    // Method with multiple parameters\n    public static String createFullName(String firstName, String lastName) {\n        return firstName + \" \" + lastName;\n    }\n    \n    // Method with default parameter (using method overloading)\n    public static int multiply(int a, int b) {\n        return a * b;\n    }\n    \n    public static int multiply(int a, int b, int c) {\n        return a * b * c;\n    }\n    \n    // Method with array parameter\n    public static int sumArray(int[] numbers) {\n        int sum = 0;\n        for (int number : numbers) {\n            sum += number;\n        }\n        return sum;\n    }\n    \n    // Method with variable arguments (varargs)\n    public static int sum(int... numbers) {\n        int total = 0;\n        for (int number : numbers) {\n            total += number;\n        }\n        return total;\n    }\n    \n    // Recursive method\n    public static int factorial(int n) {\n        if (n <= 1) {\n            return 1;\n        }\n        return n * factorial(n - 1);\n    }\n    \n    // Method with different return types\n    public static boolean isEven(int number) {\n        return number % 2 == 0;\n    }\n    \n    public static double calculateArea(double radius) {\n        return Math.PI * radius * radius;\n    }\n    \n    public static void main(String[] args) {\n        // Calling methods\n        greet();\n        \n        int result = add(5, 3);\n        System.out.println(\"Sum: \" + result);\n        \n        String fullName = createFullName(\"John\", \"Doe\");\n        System.out.println(\"Full name: \" + fullName);\n        \n        // Method overloading\n        System.out.println(\"Multiply 2 numbers: \" + multiply(2, 3));\n        System.out.println(\"Multiply 3 numbers: \" + multiply(2, 3, 4));\n        \n        // Array parameter\n        int[] numbers = {1, 2, 3, 4, 5};\n        System.out.println(\"Sum of array: \" + sumArray(numbers));\n        \n        // Variable arguments\n        System.out.println(\"Sum of 1,2,3: \" + sum(1, 2, 3));\n        System.out.println(\"Sum of 1,2,3,4,5: \" + sum(1, 2, 3, 4, 5));\n        \n        // Recursive method\n        System.out.println(\"Factorial of 5: \" + factorial(5));\n        \n        // Different return types\n        System.out.println(\"Is 6 even? \" + isEven(6));\n        System.out.println(\"Area of circle with radius 3: \" + calculateArea(3));\n    }\n}"
+              "content": "public class Methods {\n    // Method with no parameters and no return value\n    public static void greet() {\n        System.out.println(\"Hello, World!\");\n    }\n    \n    // Method with parameters and return value\n    public static int add(int a, int b) {\n        return a + b;\n    }\n    \n    // Method overloading\n    public static int multiply(int a, int b) {\n        return a * b;\n    }\n    \n    public static int multiply(int a, int b, int c) {\n        return a * b * c;\n    }\n    \n    // Method with different return types\n    public static boolean isEven(int number) {\n        return number % 2 == 0;\n    }\n    \n    public static void main(String[] args) {\n        // Calling methods\n        greet();\n        \n        int result = add(5, 3);\n        System.out.println(\"Sum: \" + result);\n        \n        // Method overloading\n        System.out.println(\"Multiply 2 numbers: \" + multiply(2, 3));\n        System.out.println(\"Multiply 3 numbers: \" + multiply(2, 3, 4));\n        \n        // Different return types\n        System.out.println(\"Is 6 even? \" + isEven(6));\n    }\n}"
             },
             {
               "type": "text",
               "content": "Methods are essential for code organization and reusability. Understanding method signatures, parameters, and return types is crucial for effective Java programming."
+            },
+            {
+              "type": "text",
+              "content": "Method signatures define the contract that callers must follow. They include the method name, parameter types, and return type. A well-designed method signature makes the method's purpose clear and easy to use correctly."
+            },
+            {
+              "type": "text",
+              "content": "Parameters allow methods to receive input data from the calling code. They enable methods to be flexible and reusable with different inputs. Parameters are passed by value in Java, meaning the method receives a copy of the original value."
+            },
+            {
+              "type": "text",
+              "content": "Return types specify what kind of data the method sends back to the caller. The void return type indicates that the method doesn't return any value. Choosing appropriate return types helps make methods more useful and predictable."
+            },
+            {
+              "type": "text",
+              "content": "Method overloading is a form of polymorphism that allows multiple methods with the same name but different parameter lists. The compiler determines which method to call based on the arguments provided. This technique improves API design and code readability."
+            },
+            {
+              "type": "text",
+              "content": "Variable arguments (varargs) use the ellipsis (...) syntax to accept any number of arguments of the same type. The arguments are automatically packaged into an array within the method. Varargs must be the last parameter in the method signature."
+            },
+            {
+              "type": "text",
+              "content": "Recursive methods call themselves to solve problems that can be broken down into smaller, similar subproblems. They require a base case to prevent infinite recursion. Recursion is elegant for certain algorithms but can be less efficient than iterative solutions."
+            },
+            {
+              "type": "text",
+              "content": "Method design principles:",
+              "subsections": [
+                "Single Responsibility: Each method should do one thing well",
+                "Descriptive Names: Method names should clearly indicate their purpose",
+                "Appropriate Parameters: Pass only the data the method needs",
+                "Return Values: Return meaningful results that callers can use",
+                "Error Handling: Consider what happens when parameters are invalid",
+                "Documentation: Comment complex methods to explain their behavior"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Common method patterns:",
+              "subsections": [
+                "Utility Methods: Static methods for common operations",
+                "Factory Methods: Create and return objects with specific configurations",
+                "Validation Methods: Check if data meets certain criteria",
+                "Conversion Methods: Transform data from one format to another",
+                "Calculation Methods: Perform mathematical or logical operations",
+                "Accessor Methods: Get and set object properties safely"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Best practices for method design:",
+              "subsections": [
+                "Keep methods short and focused on a single task",
+                "Use meaningful parameter and variable names",
+                "Avoid side effects - methods should do what their name suggests",
+                "Consider performance implications of method calls",
+                "Use appropriate access modifiers to control visibility",
+                "Test methods independently to ensure reliability",
+                "Document complex algorithms and business logic"
+              ]
             }
           ]
         }
@@ -384,6 +498,7 @@
       {
         "id": "java-1-7",
         "title": "Classes and Objects",
+        "duration": "60 minutes",
         "content": {
           "sections": [
             {
@@ -391,13 +506,129 @@
               "content": "Java is an object-oriented programming language. Classes are blueprints for creating objects, and objects are instances of classes that contain data and behavior."
             },
             {
+              "type": "text",
+              "content": "Object-Oriented Programming (OOP) is a programming paradigm that organizes code around objects rather than functions and logic. In Java, everything is built around classes and objects, making it a pure object-oriented language."
+            },
+            {
+              "type": "text",
+              "content": "Classes serve as templates or blueprints that define the structure and behavior of objects. They encapsulate data (attributes) and methods (behavior) into a single unit. Classes provide a way to model real-world entities in code."
+            },
+            {
+              "type": "text",
+              "content": "Objects are instances of classes that contain actual data and can perform actions. Each object has its own state (values of attributes) but shares the same behavior (methods) defined in the class. Objects represent specific instances of the class concept."
+            },
+            {
+              "type": "text",
+              "content": "Key concepts of classes and objects:",
+              "subsections": [
+                "Encapsulation: Bundling data and methods that operate on that data",
+                "Data Hiding: Using access modifiers to control visibility of class members",
+                "Instance Variables: Data that belongs to individual objects",
+                "Instance Methods: Behavior that operates on object data",
+                "Constructors: Special methods for initializing new objects",
+                "Getters and Setters: Methods for accessing and modifying object state"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Class structure and components:",
+              "subsections": [
+                "Class Declaration: Access modifier, class name, and inheritance",
+                "Instance Variables: Fields that store object data",
+                "Constructors: Methods that initialize new objects",
+                "Instance Methods: Behavior that operates on object data",
+                "Accessor Methods: Getters and setters for controlled access",
+                "toString Method: String representation of the object"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Benefits of object-oriented programming:",
+              "subsections": [
+                "Modularity: Code is organized into logical, reusable units",
+                "Reusability: Classes can be used to create multiple objects",
+                "Maintainability: Changes to one object don't affect others",
+                "Scalability: Easy to extend and modify existing classes",
+                "Abstraction: Complex systems can be simplified through objects",
+                "Polymorphism: Objects can be treated as instances of their parent class"
+              ]
+            },
+            {
               "type": "code",
               "language": "java",
-              "content": "// Simple class definition\npublic class Person {\n    // Instance variables (attributes)\n    private String name;\n    private int age;\n    private String email;\n    \n    // Constructor\n    public Person(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n    \n    // Constructor with default values\n    public Person() {\n        this.name = \"Unknown\";\n        this.age = 0;\n    }\n    \n    // Getter methods\n    public String getName() {\n        return name;\n    }\n    \n    public int getAge() {\n        return age;\n    }\n    \n    public String getEmail() {\n        return email;\n    }\n    \n    // Setter methods\n    public void setName(String name) {\n        this.name = name;\n    }\n    \n    public void setAge(int age) {\n        if (age >= 0) {\n            this.age = age;\n        }\n    }\n    \n    public void setEmail(String email) {\n        this.email = email;\n    }\n    \n    // Instance method\n    public void introduce() {\n        System.out.println(\"Hello, I'm \" + name + \" and I'm \" + age + \" years old.\");\n    }\n    \n    // Method with parameters\n    public void greet(String greeting) {\n        System.out.println(greeting + \", I'm \" + name);\n    }\n    \n    // Method that returns a value\n    public boolean isAdult() {\n        return age >= 18;\n    }\n    \n    // Override toString method\n    @Override\n    public String toString() {\n        return \"Person{name='\" + name + \"', age=\" + age + \", email='\" + email + \"'}\";\n    }\n}\n\n// Main class to demonstrate object creation\npublic class ObjectOrientedDemo {\n    public static void main(String[] args) {\n        // Creating objects\n        Person person1 = new Person(\"John Doe\", 25);\n        Person person2 = new Person(\"Jane Smith\", 30);\n        Person person3 = new Person(); // Uses default constructor\n        \n        // Setting properties\n        person3.setName(\"Bob Johnson\");\n        person3.setAge(35);\n        person3.setEmail(\"bob@example.com\");\n        \n        // Calling methods\n        person1.introduce();\n        person2.greet(\"Good morning\");\n        \n        // Using getter methods\n        System.out.println(\"Person 1 name: \" + person1.getName());\n        System.out.println(\"Person 2 age: \" + person2.getAge());\n        \n        // Using boolean method\n        System.out.println(\"Is person1 adult? \" + person1.isAdult());\n        System.out.println(\"Is person3 adult? \" + person3.isAdult());\n        \n        // Using toString method\n        System.out.println(\"Person 3: \" + person3);\n        \n        // Creating an array of objects\n        Person[] people = {person1, person2, person3};\n        \n        System.out.println(\"\\nAll people:\");\n        for (Person person : people) {\n            person.introduce();\n        }\n    }\n}"
+              "content": "public class Person {\n    // Instance variables\n    private String name;\n    private int age;\n    \n    // Constructor\n    public Person(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n    \n    // Getter methods\n    public String getName() {\n        return name;\n    }\n    \n    public int getAge() {\n        return age;\n    }\n    \n    // Instance method\n    public void introduce() {\n        System.out.println(\"Hello, I'm \" + name + \" and I'm \" + age + \" years old.\");\n    }\n    \n    // Method that returns a value\n    public boolean isAdult() {\n        return age >= 18;\n    }\n}\n\npublic class ObjectOrientedDemo {\n    public static void main(String[] args) {\n        // Creating objects\n        Person person1 = new Person(\"John Doe\", 25);\n        Person person2 = new Person(\"Jane Smith\", 30);\n        \n        // Calling methods\n        person1.introduce();\n        \n        // Using getter methods\n        System.out.println(\"Person 1 name: \" + person1.getName());\n        \n        // Using boolean method\n        System.out.println(\"Is person1 adult? \" + person1.isAdult());\n    }\n}"
             },
             {
               "type": "text",
               "content": "Classes and objects are the foundation of object-oriented programming in Java. Understanding encapsulation, constructors, and method design is essential for creating robust applications."
+            },
+            {
+              "type": "text",
+              "content": "Instance variables (also called fields or attributes) store the data that belongs to each object. They define the state of the object and are declared at the class level. Each object gets its own copy of these variables, allowing objects to have different states."
+            },
+            {
+              "type": "text",
+              "content": "Constructors are special methods that initialize new objects. They have the same name as the class and are called automatically when a new object is created. Constructors can be overloaded to provide different ways of initializing objects."
+            },
+            {
+              "type": "text",
+              "content": "Access modifiers control the visibility of class members. Private members can only be accessed within the class, while public members can be accessed from anywhere. This encapsulation helps maintain data integrity and provides a clean interface."
+            },
+            {
+              "type": "text",
+              "content": "Getter and setter methods provide controlled access to private instance variables. Getters return the value of a field, while setters modify it, often including validation logic. This pattern ensures data integrity and provides a clean API."
+            },
+            {
+              "type": "text",
+              "content": "The toString() method provides a string representation of an object. It's automatically called when an object is printed or concatenated with a string. Overriding toString() makes debugging easier and provides meaningful object descriptions."
+            },
+            {
+              "type": "text",
+              "content": "Object creation and lifecycle:",
+              "subsections": [
+                "Instantiation: Creating new objects using the new keyword",
+                "Initialization: Setting up object state through constructors",
+                "Object State: The current values of all instance variables",
+                "Method Calls: Invoking behavior on objects",
+                "Garbage Collection: Automatic cleanup of unused objects"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Class design principles:",
+              "subsections": [
+                "Single Responsibility: Each class should have one clear purpose",
+                "Encapsulation: Hide internal state and provide controlled access",
+                "Cohesion: Class members should be closely related",
+                "Coupling: Minimize dependencies between classes",
+                "Abstraction: Hide complex implementation details",
+                "Information Hiding: Expose only what's necessary"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Common class patterns:",
+              "subsections": [
+                "Entity Classes: Represent real-world objects (Person, Product)",
+                "Utility Classes: Provide static methods for common operations",
+                "Service Classes: Handle business logic and operations",
+                "Data Transfer Objects (DTOs): Carry data between layers",
+                "Value Objects: Immutable objects representing values",
+                "Builder Classes: Create complex objects step by step"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Best practices for class design:",
+              "subsections": [
+                "Use meaningful class names that clearly indicate purpose",
+                "Keep classes focused and avoid god classes with too many responsibilities",
+                "Use appropriate access modifiers to control visibility",
+                "Provide constructors that ensure objects are in a valid state",
+                "Override equals(), hashCode(), and toString() when appropriate",
+                "Document complex classes and methods with clear comments",
+                "Follow the principle of least privilege for access control"
+              ]
             }
           ]
         }
@@ -405,6 +636,7 @@
       {
         "id": "java-1-8",
         "title": "Arrays and Collections",
+        "duration": "45 minutes",
         "content": {
           "sections": [
             {
@@ -412,13 +644,120 @@
               "content": "Arrays and collections are used to store and manage groups of data. Java provides various data structures for different use cases."
             },
             {
+              "type": "text",
+              "content": "Data structures are fundamental to programming as they allow you to organize and manage collections of related data efficiently. Arrays and collections provide different approaches to storing multiple values, each with their own advantages and use cases."
+            },
+            {
+              "type": "text",
+              "content": "Arrays are the most basic data structure in Java. They store multiple values of the same type in contiguous memory locations, providing fast access to elements through indexing. Arrays have a fixed size that must be declared when they are created."
+            },
+            {
+              "type": "text",
+              "content": "The Collections Framework is a comprehensive set of interfaces and classes that provide more sophisticated data structures. It includes dynamic collections that can grow and shrink as needed, offering greater flexibility than arrays."
+            },
+            {
+              "type": "text",
+              "content": "Key characteristics of arrays:",
+              "subsections": [
+                "Fixed Size: Length is determined at creation and cannot be changed",
+                "Indexed Access: Elements are accessed using zero-based indices",
+                "Contiguous Memory: Elements are stored in adjacent memory locations",
+                "Type Safety: All elements must be of the same type",
+                "Fast Access: O(1) time complexity for random access",
+                "Memory Efficiency: Minimal overhead for storing data"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Types of collections in the Collections Framework:",
+              "subsections": [
+                "Lists: Ordered collections that allow duplicates (ArrayList, LinkedList)",
+                "Sets: Collections that do not allow duplicates (HashSet, TreeSet)",
+                "Maps: Key-value pairs for associative data (HashMap, TreeMap)",
+                "Queues: Collections for processing elements in order (PriorityQueue)",
+                "Stacks: Last-in-first-out collections (Stack class)"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "When to use arrays vs collections:",
+              "subsections": [
+                "Use Arrays: When you know the size in advance and need maximum performance",
+                "Use Collections: When you need dynamic sizing or specialized functionality",
+                "Use Arrays: For primitive types when memory efficiency is critical",
+                "Use Collections: When you need built-in methods for searching, sorting, or filtering",
+                "Use Arrays: For simple, straightforward data storage",
+                "Use Collections: For complex data manipulation and algorithm implementation"
+              ]
+            },
+            {
               "type": "code",
               "language": "java",
-              "content": "import java.util.Arrays;\nimport java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.HashSet;\n\npublic class ArraysAndCollections {\n    public static void main(String[] args) {\n        // Arrays\n        int[] numbers = {1, 2, 3, 4, 5};\n        String[] names = {\"Alice\", \"Bob\", \"Charlie\"};\n        \n        // Array declaration and initialization\n        int[] scores = new int[5];\n        scores[0] = 85;\n        scores[1] = 92;\n        scores[2] = 78;\n        scores[3] = 95;\n        scores[4] = 88;\n        \n        // Accessing array elements\n        System.out.println(\"First number: \" + numbers[0]);\n        System.out.println(\"Last name: \" + names[names.length - 1]);\n        \n        // Array length\n        System.out.println(\"Numbers array length: \" + numbers.length);\n        \n        // Iterating through arrays\n        System.out.println(\"\\nNumbers:\");\n        for (int i = 0; i < numbers.length; i++) {\n            System.out.println(\"Index \" + i + \": \" + numbers[i]);\n        }\n        \n        System.out.println(\"\\nNames:\");\n        for (String name : names) {\n            System.out.println(name);\n        }\n        \n        // Multi-dimensional arrays\n        int[][] matrix = {\n            {1, 2, 3},\n            {4, 5, 6},\n            {7, 8, 9}\n        };\n        \n        System.out.println(\"\\nMatrix:\");\n        for (int i = 0; i < matrix.length; i++) {\n            for (int j = 0; j < matrix[i].length; j++) {\n                System.out.print(matrix[i][j] + \" \");\n            }\n            System.out.println();\n        }\n        \n        // ArrayList (dynamic array)\n        ArrayList<String> fruits = new ArrayList<>();\n        fruits.add(\"Apple\");\n        fruits.add(\"Banana\");\n        fruits.add(\"Orange\");\n        fruits.add(\"Grape\");\n        \n        System.out.println(\"\\nFruits: \" + fruits);\n        System.out.println(\"Size: \" + fruits.size());\n        \n        // ArrayList operations\n        fruits.remove(\"Banana\");\n        fruits.add(1, \"Mango\");\n        \n        System.out.println(\"After modifications: \" + fruits);\n        \n        // Iterating through ArrayList\n        System.out.println(\"\\nFruits list:\");\n        for (String fruit : fruits) {\n            System.out.println(fruit);\n        }\n        \n        // HashMap (key-value pairs)\n        HashMap<String, Integer> ages = new HashMap<>();\n        ages.put(\"John\", 25);\n        ages.put(\"Jane\", 30);\n        ages.put(\"Bob\", 35);\n        \n        System.out.println(\"\\nAges: \" + ages);\n        System.out.println(\"John's age: \" + ages.get(\"John\"));\n        \n        // HashMap operations\n        ages.put(\"John\", 26); // Update existing key\n        ages.remove(\"Bob\");\n        \n        System.out.println(\"After modifications: \" + ages);\n        \n        // HashSet (unique elements)\n        HashSet<String> uniqueNames = new HashSet<>();\n        uniqueNames.add(\"Alice\");\n        uniqueNames.add(\"Bob\");\n        uniqueNames.add(\"Alice\"); // Duplicate, won't be added\n        uniqueNames.add(\"Charlie\");\n        \n        System.out.println(\"\\nUnique names: \" + uniqueNames);\n        \n        // Array utility methods\n        int[] unsorted = {5, 2, 8, 1, 9, 3};\n        System.out.println(\"\\nOriginal array: \" + Arrays.toString(unsorted));\n        \n        Arrays.sort(unsorted);\n        System.out.println(\"Sorted array: \" + Arrays.toString(unsorted));\n        \n        // Searching in sorted array\n        int searchKey = 8;\n        int index = Arrays.binarySearch(unsorted, searchKey);\n        System.out.println(\"Index of \" + searchKey + \": \" + index);\n        \n        // Array copying\n        int[] original = {1, 2, 3, 4, 5};\n        int[] copy = Arrays.copyOf(original, original.length);\n        System.out.println(\"\\nOriginal: \" + Arrays.toString(original));\n        System.out.println(\"Copy: \" + Arrays.toString(copy));\n    }\n}"
+              "content": "import java.util.ArrayList;\nimport java.util.HashMap;\n\npublic class ArraysAndCollections {\n    public static void main(String[] args) {\n        // Arrays\n        int[] numbers = {1, 2, 3};\n        String[] names = {\"Alice\", \"Bob\"};\n        \n        // Accessing array elements\n        System.out.println(\"First number: \" + numbers[0]);\n        System.out.println(\"Array length: \" + numbers.length);\n        \n        // Iterating through arrays\n        for (int number : numbers) {\n            System.out.println(\"Number: \" + number);\n        }\n        \n        // ArrayList\n        ArrayList<String> fruits = new ArrayList<>();\n        fruits.add(\"Apple\");\n        fruits.add(\"Banana\");\n        \n        System.out.println(\"Fruits: \" + fruits);\n        \n        // HashMap\n        HashMap<String, Integer> ages = new HashMap<>();\n        ages.put(\"John\", 25);\n        ages.put(\"Jane\", 30);\n        \n        System.out.println(\"John's age: \" + ages.get(\"John\"));\n    }\n}"
             },
             {
               "type": "text",
               "content": "Arrays are fixed-size collections, while ArrayList and other collections provide dynamic sizing and additional functionality. Choose the appropriate data structure based on your specific needs."
+            },
+            {
+              "type": "text",
+              "content": "Array operations include declaration, initialization, access, and iteration. Arrays provide the fastest access to elements but lack flexibility in size management. They are ideal for scenarios where the size is known and performance is critical."
+            },
+            {
+              "type": "text",
+              "content": "Multi-dimensional arrays store data in a grid-like structure. They are useful for representing matrices, tables, and spatial data. Each dimension can have different lengths, allowing for irregular structures."
+            },
+            {
+              "type": "text",
+              "content": "ArrayList is the most commonly used collection in Java. It provides dynamic sizing, automatic resizing, and a rich set of methods for manipulation. ArrayList is backed by an array internally, providing a good balance of performance and flexibility."
+            },
+            {
+              "type": "text",
+              "content": "HashMap provides key-value storage with fast lookup times. It uses hashing to achieve O(1) average time complexity for get and put operations. HashMap is ideal for scenarios where you need to associate data with unique identifiers."
+            },
+            {
+              "type": "text",
+              "content": "HashSet ensures that each element appears only once in the collection. It uses hashing for fast membership testing and is ideal for removing duplicates from data sets. HashSet does not maintain insertion order."
+            },
+            {
+              "type": "text",
+              "content": "Array utility methods in the Arrays class provide common operations like sorting, searching, copying, and filling. These methods are optimized and handle edge cases, making them preferable to custom implementations."
+            },
+            {
+              "type": "text",
+              "content": "Collection iteration patterns:",
+              "subsections": [
+                "Traditional for loop: When you need the index or want to modify elements",
+                "Enhanced for loop (for-each): For read-only iteration over all elements",
+                "Iterator: When you need to remove elements during iteration",
+                "Stream API: For functional programming style operations",
+                "forEach method: For simple operations on each element"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Performance considerations:",
+              "subsections": [
+                "Arrays: Fastest access but fixed size and limited functionality",
+                "ArrayList: Good balance of performance and flexibility",
+                "LinkedList: Fast insertions/deletions but slower random access",
+                "HashMap: Fast lookups but uses more memory",
+                "HashSet: Fast membership testing but no ordering",
+                "TreeMap/TreeSet: Ordered but slower than hash-based collections"
+              ]
+            },
+            {
+              "type": "text",
+              "content": "Best practices for data structures:",
+              "subsections": [
+                "Choose the right collection based on your access patterns",
+                "Use generics to ensure type safety",
+                "Initialize collections with appropriate initial capacity when possible",
+                "Consider thread safety for concurrent applications",
+                "Use utility methods instead of custom implementations",
+                "Profile performance-critical code to choose optimal data structures",
+                "Document the choice of data structure and its rationale"
+              ]
             }
           ]
         }
