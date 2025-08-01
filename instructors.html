@@ -59,140 +59,93 @@
     <link rel="stylesheet" href="global.css" />
     
     <style>
-        /* Instructors page specific styles */
+
+
+        /* Modern Instructor Card Styles */
         .instructor-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 1rem;
+            border-radius: 1.5rem;
             padding: 2rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            height: 100%;
+            aspect-ratio: 1;
             display: flex;
             flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+        }
+
+        .instructor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
         .instructor-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
             border-color: var(--accent-primary);
         }
 
-        .instructor-avatar {
-            width: 5rem;
-            height: 5rem;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            font-weight: bold;
-            position: relative;
-            overflow: hidden;
+        .instructor-card:hover::before {
+            transform: scaleX(1);
         }
 
-        .instructor-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
 
-        .instructor-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
 
-        .stat-item {
+
+
+        .instructor-info {
             text-align: center;
-            padding: 0.75rem;
-            background: var(--background);
-            border-radius: 0.5rem;
-            border: 1px solid var(--border);
-        }
-
-        .stat-number {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--accent-primary);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-top: 0.25rem;
-        }
-
-        .rating-stars {
-            color: #fbbf24;
-            margin: 0 0.5rem;
-        }
-
-        .specialization-tag {
-            display: inline-block;
-            background: var(--surface-light);
-            color: var(--text-primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.75rem;
-            margin: 0.25rem;
-            border: 1px solid var(--border);
-        }
-
-        .search-section {
-            background: var(--surface);
-            border-radius: 1rem;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            border: 1px solid var(--border);
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--border);
-            border-radius: 0.75rem;
-            background: var(--background);
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .filter-buttons {
+            flex: 1;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--border);
-            background: var(--background);
+        .instructor-name {
+            font-size: 1.25rem;
+            font-weight: 700;
             color: var(--text-primary);
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
 
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--accent-primary);
-            color: white;
-            border-color: var(--accent-primary);
+        .instructor-title {
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
         }
+
+        .instructor-bio {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+            flex: 1;
+        }
+
+
+
+
+
+
+
+
+
+
 
         .social-links {
             display: flex;
@@ -304,7 +257,7 @@
 
         /* Animation classes */
         .fade-in {
-            opacity: 0;
+            opacity: 1;
             transform: translateY(30px);
             transition: all 0.8s ease;
         }
@@ -315,7 +268,7 @@
         }
 
         .slide-in-up {
-            opacity: 0;
+            opacity: 1;
             transform: translateY(50px);
             transition: all 0.6s ease;
         }
@@ -349,64 +302,9 @@
             }
         }
 
-        /* Availability indicator */
-        .availability-indicator {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 1.25rem;
-            height: 1.25rem;
-            border-radius: 50%;
-            border: 2px solid white;
-        }
 
-        .available {
-            background: #10b981;
-        }
 
-        .busy {
-            background: #f59e0b;
-        }
 
-        .on-leave {
-            background: #ef4444;
-        }
-
-        /* Stats overview */
-        .stats-overview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .overview-stat {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 1rem;
-            text-align: center;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .overview-stat:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .overview-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--accent-primary);
-            display: block;
-            line-height: 1;
-        }
-
-        .overview-label {
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
-        }
 
         /* Contact instructor button */
         .contact-btn {
@@ -430,6 +328,52 @@
         .contact-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer theme styles */
+        .footer-theme {
+            background: var(--surface);
+            color: var(--text-primary);
+            border-top: 1px solid var(--border);
+        }
+
+        .text-footer-secondary {
+            color: var(--text-secondary);
+        }
+
+        /* Instructor Card Buttons - Using nav-link style */
+        .instructor-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .view-profile-btn, .contact-instructor-btn {
+            flex: 1;
+            background: var(--nav-link-bg);
+            color: var(--nav-link-color);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-profile-btn:hover, .contact-instructor-btn:hover {
+            background: var(--nav-link-bg-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .view-profile-btn:active, .contact-instructor-btn:active {
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -519,10 +463,10 @@
     </div>
 
     <!-- Hero Section -->
-    <div class="hero-section py-16">
+    <div class="hero-section py-12">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight fade-in">Meet Our Expert Instructors</h1>
-            <p class="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed fade-in">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight slide-in-up" data-delay="100">Meet Our Expert Instructors</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed slide-in-up" data-delay="200">
                 Learn from industry professionals with real-world experience and passion for teaching.
             </p>
         </div>
@@ -530,40 +474,8 @@
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-12">
-        <!-- Stats Overview -->
-        <div class="stats-overview fade-in" id="statsOverview">
-            <!-- Stats will be populated by JavaScript -->
-        </div>
-
-        <!-- Search and Filter Section -->
-        <div class="search-section fade-in">
-            <div class="text-center mb-6">
-                <h2 class="text-2xl font-bold mb-2">Find Your Perfect Instructor</h2>
-                <p class="text-gray-600">Search by name, expertise, or filter by specialization</p>
-            </div>
-            
-            <div class="relative mb-4">
-                <input 
-                    type="text" 
-                    id="searchInput" 
-                    class="search-input" 
-                    placeholder="Search instructors by name or expertise..."
-                >
-                <i class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-            </div>
-            
-            <div class="filter-buttons" id="filterButtons">
-                <button class="filter-btn active" data-filter="all">All Instructors</button>
-                <button class="filter-btn" data-filter="available">Available Now</button>
-                <button class="filter-btn" data-filter="ai">AI & ML</button>
-                <button class="filter-btn" data-filter="programming">Programming</button>
-                <button class="filter-btn" data-filter="devops">DevOps</button>
-                <button class="filter-btn" data-filter="data-science">Data Science</button>
-            </div>
-        </div>
-
         <!-- Instructors Grid -->
-        <div id="instructorsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div id="instructorsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             <!-- Instructors will be populated here -->
         </div>
 
@@ -595,11 +507,53 @@
 
     <!-- Footer -->
     <footer class="footer-theme py-8">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex items-center justify-center space-x-2 mb-4">
-                <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-8 h-8 object-contain theme-logo">
+        <!-- Mobile Footer (Simple) -->
+        <div class="md:hidden">
+            <div class="container mx-auto px-4 text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-8 h-8 object-contain theme-logo">
+                </div>
+                <p class="text-footer-secondary">© 2025 ShristiLMS. Empowering learners worldwide.</p>
             </div>
-            <p class="text-footer-secondary">© 2025 ShristiLMS. Empowering learners worldwide.</p>
+        </div>
+        
+        <!-- Desktop Footer (Detailed) -->
+        <div class="hidden md:block">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">About ShristiLMS</h3>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                            ShristiLMS is an interactive learning platform designed to help you master AI, programming, and data science skills through hands-on projects and real-world applications.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">Learning Features</h3>
+                        <ul class="text-sm space-y-2" style="color: var(--text-secondary);">
+                            <li>• Interactive Course Content</li>
+                            <li>• Hands-on Projects</li>
+                            <li>• Progress Tracking</li>
+                            <li>• Quiz Assessments</li>
+                            <li>• Real-world Applications</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">Course Categories</h3>
+                        <ul class="text-sm space-y-2" style="color: var(--text-secondary);">
+                            <li>• AI Foundations</li>
+                            <li>• Data Science</li>
+                            <li>• Programming Languages</li>
+                            <li>• Web Development</li>
+                            <li>• Machine Learning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t mt-8 pt-8 text-center" style="border-color: var(--border);">
+                    <p class="text-sm" style="color: var(--text-secondary);">
+                        © 2025 ShristiLMS. All rights reserved. | Interactive Learning Platform for AI, Programming & Data Science
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -612,10 +566,7 @@
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             initializeTheme();
-            renderStatsOverview();
             renderInstructors();
-            initializeSearch();
-            initializeFilters();
             initializeModal();
             initializeAnimations();
         });
@@ -716,34 +667,7 @@
             }
         }
 
-        function renderStatsOverview() {
-            const stats = InstructorUtils.getInstructorStats();
-            const statsContainer = document.getElementById('statsOverview');
-            
-            statsContainer.innerHTML = `
-                <div class="overview-stat slide-in-up" data-delay="100">
-                    <span class="overview-number counter" data-target="${stats.totalInstructors}">0</span>
-                    <div class="overview-label">Expert Instructors</div>
-                </div>
-                <div class="overview-stat slide-in-up" data-delay="200">
-                    <span class="overview-number counter" data-target="${stats.totalStudents}">0</span>
-                    <div class="overview-label">Students Taught</div>
-                </div>
-                <div class="overview-stat slide-in-up" data-delay="300">
-                    <span class="overview-number counter" data-target="${stats.totalCourses}">0</span>
-                    <div class="overview-label">Courses Offered</div>
-                </div>
-                <div class="overview-stat slide-in-up" data-delay="400">
-                    <span class="overview-number counter" data-target="${Math.round(stats.averageRating * 10) / 10}">0</span>
-                    <div class="overview-label">Average Rating</div>
-                </div>
-            `;
 
-            // Initialize counters
-            setTimeout(() => {
-                initializeCounters();
-            }, 500);
-        }
 
         function renderInstructors() {
             const instructors = getFilteredInstructors();
@@ -775,78 +699,31 @@
         }
 
         function createInstructorCard(instructor, index) {
-            const availabilityClass = instructor.availability.status;
-            const availabilityText = {
-                'available': 'Available',
-                'busy': 'Busy',
-                'on-leave': 'On Leave'
-            };
 
             return `
                 <div class="instructor-card fade-in" data-instructor="${instructor.id}" data-delay="${index * 150}">
-                    <div class="instructor-avatar">
-                        ${instructor.image ? 
-                            `<img src="${instructor.image}" alt="${instructor.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                             <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">${instructor.avatar}</div>` : 
-                            instructor.avatar
-                        }
-                        <div class="availability-indicator ${availabilityClass}" title="${availabilityText[availabilityClass]}"></div>
-                    </div>
-                    
-                    <div class="text-center mb-4">
-                        <h3 class="text-xl font-bold mb-1">${instructor.name}</h3>
-                        <p class="text-sm text-gray-600 mb-2">${instructor.title}</p>
-                        <div class="flex items-center justify-center mb-2">
-                            <div class="rating-stars">
-                                ${generateStars(instructor.rating)}
-                            </div>
-                            <span class="text-sm font-medium">${instructor.rating}</span>
-                        </div>
-                        <p class="text-sm">${instructor.bio.short}</p>
-                    </div>
-
-                    <div class="instructor-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">${instructor.studentsCount}+</span>
-                            <div class="stat-label">Students</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">${instructor.coursesCount}</span>
-                            <div class="stat-label">Courses</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">${instructor.experience}</span>
-                            <div class="stat-label">Experience</div>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">${instructor.languages.length}</span>
-                            <div class="stat-label">Languages</div>
+                    <div class="instructor-info">
+                        <h3 class="instructor-name">${instructor.name}</h3>
+                        <p class="instructor-title">${instructor.title}</p>
+                        <p class="instructor-bio">${instructor.bio.short}</p>
+                        
+                        <div class="instructor-actions mt-4">
+                            <button class="view-profile-btn" onclick="openInstructorModal('${instructor.id}')">
+                                <i class="fas fa-user mr-2"></i>
+                                View Profile
+                            </button>
+                            <button class="contact-instructor-btn" onclick="contactInstructor('${instructor.id}')">
+                                <i class="fas fa-envelope mr-2"></i>
+                                Contact
+                            </button>
                         </div>
                     </div>
 
-                    <div class="mt-auto">
-                        <div class="text-center mb-4">
-                            <h4 class="text-sm font-medium mb-2">Specializations</h4>
-                            <div class="flex flex-wrap justify-center">
-                                ${instructor.specializations.map(spec => 
-                                    `<span class="specialization-tag">${spec}</span>`
-                                ).join('')}
-                            </div>
-                        </div>
 
-                        <button class="contact-btn" onclick="openInstructorModal('${instructor.id}')">
-                            <i class="fas fa-user-circle"></i>
-                            View Profile
-                        </button>
 
-                        <div class="social-links">
-                            ${Object.entries(instructor.social_links).map(([platform, url]) => 
-                                `<a href="${url}" class="social-link" target="_blank" rel="noopener noreferrer" title="${platform}">
-                                    <i class="fab fa-${platform === 'website' ? 'globe' : platform === 'scholar' ? 'google' : platform === 'researchgate' ? 'researchgate' : platform}"></i>
-                                </a>`
-                            ).join('')}
-                        </div>
-                    </div>
+
+
+
                 </div>
             `;
         }
@@ -863,60 +740,11 @@
 
         function getFilteredInstructors() {
             let instructors = InstructorUtils.getAllInstructors();
-
-            // Apply search filter
-            if (currentSearchTerm) {
-                instructors = InstructorUtils.searchInstructors(currentSearchTerm);
-            }
-
-            // Apply category filter
-            if (currentFilter !== 'all') {
-                if (currentFilter === 'available') {
-                    instructors = instructors.filter(instructor => 
-                        instructor.availability.status === 'available'
-                    );
-                } else {
-                    instructors = instructors.filter(instructor =>
-                        instructor.specializations.some(spec => 
-                            spec.toLowerCase().includes(currentFilter.toLowerCase()) ||
-                            currentFilter.toLowerCase().includes(spec.toLowerCase())
-                        )
-                    );
-                }
-            }
-
             // Sort by rating
             return instructors.sort((a, b) => b.rating - a.rating);
         }
 
-        function initializeSearch() {
-            const searchInput = document.getElementById('searchInput');
-            
-            let searchTimeout;
-            searchInput.addEventListener('input', function(e) {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    currentSearchTerm = e.target.value.trim();
-                    renderInstructors();
-                }, 300);
-            });
-        }
 
-        function initializeFilters() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Update active state
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update filter and render
-                    currentFilter = this.getAttribute('data-filter');
-                    renderInstructors();
-                });
-            });
-        }
 
         function initializeModal() {
             const modal = document.getElementById('instructorModal');
@@ -981,14 +809,7 @@
                                     <i class="fas fa-map-marker-alt w-4 mr-3"></i>
                                     <span>${instructor.location}</span>
                                 </div>
-                                <div class="flex items-center">
-                                    <i class="fas fa-clock w-4 mr-3"></i>
-                                    <span>${instructor.availability.office_hours}</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <i class="fas fa-reply w-4 mr-3"></i>
-                                    <span>Responds within ${instructor.availability.response_time}</span>
-                                </div>
+
                             </div>
                         </div>
 
@@ -1208,8 +1029,16 @@
             }, 16);
         }
 
-        // Make openInstructorModal globally accessible
+        // Make functions globally accessible
         window.openInstructorModal = openInstructorModal;
+        window.contactInstructor = contactInstructor;
+
+        function contactInstructor(instructorId) {
+            const instructor = INSTRUCTORS[instructorId];
+            if (instructor && instructor.email) {
+                window.location.href = `mailto:${instructor.email}?subject=Inquiry about courses from ShristiLMS`;
+            }
+        }
     </script>
 </body>
 </html>

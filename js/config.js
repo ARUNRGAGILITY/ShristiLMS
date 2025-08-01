@@ -1,7 +1,7 @@
 // LMS Configuration
 const CONFIG = {
     // Branding
-    brandName: 'ShristiLMS',
+    brandName: 'Shristi',
     brandLogo: 'S', // Single letter for the logo circle
     tagline: 'Empowering learners worldwide',
     
@@ -16,7 +16,7 @@ const CONFIG = {
     defaultPassingScore: 60, // Percentage
     
     // Footer
-    footerText: '© 2025 ShristiLMS. Empowering learners worldwide.',
+    footerText: '© 2025 Shristi. Empowering learners worldwide.',
     
     // Certificate
     certificatePrefix: 'SLM', // Used in certificate IDs: SLM-COURSE-TIMESTAMP
