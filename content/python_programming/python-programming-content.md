@@ -19,7 +19,7 @@ year = 1991
 print(f"{name} was created in {year}")
 ```
 
-## Why Python?
+## Why Pythonx?
 
 Python has gained massive popularity due to several compelling reasons that make it an excellent choice for both beginners and experienced developers. First and foremost, Python's syntax is incredibly clean and readable, resembling natural English more than traditional programming languages. This readability reduces the cost of program maintenance and makes it easier for teams to collaborate on projects.
 
