@@ -1063,6 +1063,9 @@
                         <button onclick="startLearning('${course.id}')" class="flex-1 btn-learn text-white py-2 px-4 rounded-lg font-medium">
                             <i class="fas fa-graduation-cap mr-2"></i>Learn
                         </button>
+                        <button onclick="startLearningTEST('${course.id}')" class="flex-1 btn-learn text-white py-2 px-4 rounded-lg font-medium">
+                            <i class="fas fa-graduation-cap mr-2"></i>TEST
+                        </button>
                         <button onclick="startQuiz('${course.id}')" class="flex-1 btn-quiz text-white py-2 px-4 rounded-lg font-medium">
                             <i class="fas fa-clipboard-check mr-2"></i>Quiz
                         </button>
@@ -1132,6 +1135,9 @@
                     <div class="flex space-x-2">
                         <button onclick="startLearning('${course.id}')" class="btn-learn text-white px-3 py-1 rounded">
                             <i class="fas fa-graduation-cap mr-1"></i>Learn
+                        </button>
+                        <button onclick="startLearningTEST('${course.id}')" class="btn-learn text-white px-3 py-1 rounded">
+                            <i class="fas fa-graduation-cap mr-1"></i>TEST
                         </button>
                         <button onclick="startQuiz('${course.id}')" class="btn-quiz text-white px-3 py-1 rounded">
                             <i class="fas fa-clipboard-check mr-1"></i>Quiz
@@ -1227,6 +1233,11 @@
         function startLearning(courseId) {
             // Navigate to learning page
             window.location.href = `learning.html?course=${courseId}`;
+        }
+
+        function startLearningTEST(courseId) {
+            // Navigate to learning page
+            window.location.href = `display_learning.html?course=${courseId}`;
         }
 
         function startQuiz(courseId) {
