@@ -68,11 +68,12 @@
             transition: all 0.3s ease;
             background: var(--surface);
             border: 1px solid var(--border);
+            cursor: pointer;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .feature-icon {
@@ -98,8 +99,8 @@
         }
 
         .stat-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .stat-number {
@@ -147,6 +148,190 @@
             border: 3px solid var(--surface);
         }
 
+        /* Journey card animations */
+        .journey-card {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .journey-card.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Values icons theme-responsive */
+        .values-icon {
+            color: #000000;
+            transition: color 0.3s ease;
+        }
+
+        [data-theme="dark"] .values-icon {
+            color: #ffffff;
+        }
+
+        [data-theme="sea"] .values-icon {
+            color: #ffffff;
+        }
+
+        [data-theme="earth"] .values-icon {
+            color: #ffffff;
+        }
+
+        [data-theme="sunset"] .values-icon {
+            color: #ffffff;
+        }
+
+        /* Contact icons theme-responsive */
+        .contact-icon-i {
+            color: #000000;
+            transition: color 0.3s ease;
+        }
+
+        [data-theme="dark"] .contact-icon-i {
+            color: #ffffff;
+        }
+
+        [data-theme="sea"] .contact-icon-i {
+            color: #ffffff;
+        }
+
+        [data-theme="earth"] .contact-icon-i {
+            color: #ffffff;
+        }
+
+        [data-theme="sunset"] .contact-icon-i {
+            color: #ffffff;
+        }
+
+        /* Theme dropdown styling */
+        /* Theme dropdown dark mode overrides */
+        [data-theme="dark"] .custom-theme-option i {
+            color: #ffffff !important;
+        }
+        
+        [data-theme="dark"] .custom-theme-option span {
+            color: #ffffff !important;
+        }
+        
+        /* Theme dropdown light mode overrides */
+        [data-theme="light"] .custom-theme-option i {
+            color: #000000 !important;
+        }
+        
+        [data-theme="light"] .custom-theme-option span {
+            color: #000000 !important;
+        }
+        
+        /* Theme dropdown custom theme overrides */
+        [data-theme="sea"] .custom-theme-option i {
+            color: #01579b !important;
+        }
+        
+        [data-theme="sea"] .custom-theme-option span {
+            color: #01579b !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option i {
+            color: #33691e !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option span {
+            color: #33691e !important;
+        }
+        
+        [data-theme="sunset"] .custom-theme-option i {
+            color: #e65100 !important;
+        }
+        
+        [data-theme="sunset"] .custom-theme-option span {
+            color: #e65100 !important;
+        }
+        
+        /* Active state styling */
+        [data-theme="sea"] .custom-theme-option,
+        [data-theme="earth"] .custom-theme-option,
+        [data-theme="sunset"] .custom-theme-option {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        [data-theme="sea"] .custom-theme-option.border-b {
+            border-color: #01579b !important;
+        }
+        
+        [data-theme="earth"] .custom-theme-option.border-b {
+            border-color: #33691e !important;
+        }
+        
+        [data-theme="sunset"] .custom-theme-option.border-b {
+            border-color: #e65100 !important;
+        }
+        
+        #customThemeDropdown .custom-theme-option {
+            transition: all 0.2s ease;
+        }
+
+        /* Contact links theme-responsive */
+        .contact-link {
+            color: var(--accent-primary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+
+        /* Theme-specific contact link colors */
+        [data-theme="light"] .contact-link {
+            color: #000000;
+        }
+
+        [data-theme="light"] .contact-link:hover {
+            color: #374151;
+        }
+
+        [data-theme="dark"] .contact-link {
+            color: #60a5fa;
+        }
+
+        [data-theme="dark"] .contact-link:hover {
+            color: #93c5fd;
+        }
+
+        [data-theme="sea"] .contact-link {
+            color: #00acc1;
+        }
+
+        [data-theme="sea"] .contact-link:hover {
+            color: #00bcd4;
+        }
+
+        [data-theme="earth"] .contact-link {
+            color: #8bc34a;
+        }
+
+        [data-theme="earth"] .contact-link:hover {
+            color: #9ccc65;
+        }
+
+        [data-theme="sunset"] .contact-link {
+            color: #ff7043;
+        }
+
+        [data-theme="sunset"] .contact-link:hover {
+            color: #ab47bc;
+        }
+
+        /* Footer background */
+        .footer-theme {
+            background: var(--surface-light);
+            border-top: 1px solid var(--border);
+        }
+
         .team-member {
             background: var(--surface);
             border-radius: 1rem;
@@ -154,11 +339,12 @@
             text-align: center;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .team-avatar {
@@ -239,6 +425,18 @@
             transform: translateY(0);
         }
 
+        /* Scroll reveal animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .slide-in-left {
             opacity: 0;
             transform: translateX(-50px);
@@ -314,11 +512,12 @@
             border: 1px solid var(--border);
             text-align: center;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .contact-icon {
@@ -390,6 +589,41 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
+        /* Vision card theme adaptation */
+        .vision-card {
+            transition: all 0.3s ease;
+        }
+
+        /* Light theme vision card */
+        [data-theme="light"] .vision-card {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+            color: white !important;
+        }
+
+        /* Dark theme vision card */
+        [data-theme="dark"] .vision-card {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6) !important;
+            color: white !important;
+        }
+
+        /* Sea theme vision card */
+        [data-theme="sea"] .vision-card {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)) !important;
+            color: white !important;
+        }
+
+        /* Earth theme vision card */
+        [data-theme="earth"] .vision-card {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)) !important;
+            color: white !important;
+        }
+
+        /* Sunset theme vision card */
+        [data-theme="sunset"] .vision-card {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)) !important;
+            color: white !important;
+        }
+
         /* Mobile Menu Fixes */
         #mobileMenu {
             max-height: calc(100vh - 200px);
@@ -419,7 +653,7 @@
 </head>
 <body data-theme="light" class="min-h-screen">
     <!-- Navigation -->
-    <nav class="navbar-theme text-white shadow-lg">
+    <nav class="navbar-theme shadow-lg">
         <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-2">
@@ -508,148 +742,101 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <div class="hero-section py-16">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">About ShristiLMS</h1>
-                <p class="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed">
-                    Empowering the next generation of developers with practical, industry-relevant skills through innovative learning experiences.
-                </p>
-            </div>
-
-            <!-- Stats Section -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                <div class="stat-item fade-in" data-delay="100">
-                    <span class="stat-number counter" data-target="8">0</span>
-                    <div class="text-sm font-medium opacity-75">Courses</div>
-                </div>
-                <div class="stat-item fade-in" data-delay="200">
-                    <span class="stat-number counter" data-target="1000">0</span>
-                    <div class="text-sm font-medium opacity-75">Students</div>
-                </div>
-                <div class="stat-item fade-in" data-delay="300">
-                    <span class="stat-number counter" data-target="95">0</span>
-                    <div class="text-sm font-medium opacity-75">Success Rate</div>
-                </div>
-                <div class="stat-item fade-in" data-delay="400">
-                    <span class="stat-number counter" data-target="24">0</span>
-                    <div class="text-sm font-medium opacity-75">Support Hours</div>
+            <!-- Hero Section -->
+        <section class="py-20" style="background: var(--background);">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight scroll-reveal" style="color: var(--text-primary);">
+                        About Shristi
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-12 leading-relaxed scroll-reveal" style="color: var(--text-secondary);" data-delay="200">
+                        We help future developers level up with real-world skills that matter — through hands-on, fun, and modern learning experiences.
+                    </p>
+                
+                <!-- Stats Grid -->
+                <div class="flex flex-col sm:flex-row justify-center items-center sm:space-x-4 space-y-4 sm:space-y-0 fade-in px-2">
+                    <div class="stat-card px-4 sm:px-6 py-3 rounded-lg w-full sm:w-auto animate">
+                        <div class="text-xl sm:text-2xl font-bold counter" data-target="8">0</div>
+                        <div class="text-xs sm:text-sm">Courses</div>
+                    </div>
+                    <div class="stat-card px-4 sm:px-6 py-3 rounded-lg w-full sm:w-auto animate">
+                        <div class="text-xl sm:text-2xl font-bold counter" data-target="100">0</div>
+                        <div class="text-xs sm:text-sm">Lessons</div>
+                    </div>
+                    <div class="stat-card px-4 sm:px-6 py-3 rounded-lg w-full sm:w-auto animate">
+                        <div class="text-xl sm:text-2xl font-bold counter" data-target="1000">0</div>
+                        <div class="text-xs sm:text-sm">Students</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-12">
         <!-- Mission Section -->
-        <section class="mb-20">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="slide-in-left">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
-                    <p class="text-lg mb-6 leading-relaxed">
-                        At ShristiLMS, we believe that quality education should be accessible to everyone. Our mission is to bridge the gap between traditional education and industry requirements by providing hands-on, practical learning experiences.
-                    </p>
-                    <p class="text-lg leading-relaxed">
-                        We focus on building future-ready developers who can adapt to the rapidly evolving tech landscape through AI integration, modern development practices, and real-world project experience.
-                    </p>
-                </div>
-                <div class="slide-in-right">
-                    <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-8 text-white text-center">
-                        <div class="text-6xl mb-4">🎯</div>
-                        <h3 class="text-2xl font-bold mb-4">Our Vision</h3>
-                        <p class="text-lg">
-                            To create a world where anyone can become a skilled developer regardless of their background, location, or previous experience.
+        <section class="py-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-8 scroll-reveal" style="color: var(--text-primary);">Our Mission</h2>
+                        <p class="text-lg mb-6 leading-relaxed scroll-reveal" style="color: var(--text-secondary);" data-delay="200">
+                            At ShristiLMS, we believe that quality education should be accessible to everyone. Our mission is to bridge the gap between traditional education and industry requirements by providing hands-on, practical learning experiences.
                         </p>
+                        <p class="text-lg leading-relaxed scroll-reveal" style="color: var(--text-secondary);" data-delay="400">
+                            We focus on building future-ready developers who can adapt to the rapidly evolving tech landscape through AI integration, modern development practices, and real-world project experience.
+                        </p>
+                    </div>
+                    <div class="relative scroll-reveal" data-delay="600">
+                        <div class="rounded-3xl p-10 text-center shadow-2xl vision-card" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); color: white;">
+                            <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+                                <i class="fas fa-bullseye text-3xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Our Vision</h3>
+                            <p class="text-lg">
+                                To create a world where anyone can become a skilled developer regardless of their background, location, or previous experience.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Values Section -->
-        <section class="mb-20">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
-                <p class="text-lg max-w-3xl mx-auto">
-                    These core principles guide everything we do and shape the learning experience we provide.
-                </p>
-            </div>
 
-            <div class="values-grid">
-                <div class="value-card fade-in" data-delay="100">
-                    <div class="value-icon">🚀</div>
-                    <h3 class="text-xl font-bold mb-3">Innovation</h3>
-                    <p>We constantly evolve our curriculum to include the latest technologies and industry best practices.</p>
-                </div>
-                <div class="value-card fade-in" data-delay="200">
-                    <div class="value-icon">🤝</div>
-                    <h3 class="text-xl font-bold mb-3">Community</h3>
-                    <p>Learning is better together. We foster a supportive community of learners and mentors.</p>
-                </div>
-                <div class="value-card fade-in" data-delay="300">
-                    <div class="value-icon">💡</div>
-                    <h3 class="text-xl font-bold mb-3">Practical Learning</h3>
-                    <p>Every lesson is designed to be immediately applicable in real-world scenarios.</p>
-                </div>
-                <div class="value-card fade-in" data-delay="400">
-                    <div class="value-icon">🌍</div>
-                    <h3 class="text-xl font-bold mb-3">Accessibility</h3>
-                    <p>Quality education should be available to everyone, everywhere, at any time.</p>
-                </div>
-            </div>
-        </section>
 
         <!-- Features Section -->
-        <section class="mb-20">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose ShristiLMS?</h2>
-                <p class="text-lg max-w-3xl mx-auto">
+        <section class="mb-20 mt-20">
+            <div class="text-center mb-12 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--text-primary);">Why Choose ShristiLMS?</h2>
+                <p class="text-lg max-w-3xl mx-auto" data-delay="200" style="color: var(--text-secondary);">
                     We offer a unique learning experience designed for the modern developer.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="feature-card rounded-xl p-6 scale-in" data-delay="100">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">AI-Integrated Learning</h3>
-                    <p>Learn how to work with AI tools and integrate them into your development workflow from day one.</p>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--text-primary);">AI-Integrated Learning</h3>
+                    <p style="color: var(--text-secondary);">Learn how to work with AI tools and integrate them into your development workflow from day one.</p>
                 </div>
                 <div class="feature-card rounded-xl p-6 scale-in" data-delay="200">
-                    <div class="feature-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Hands-On Projects</h3>
-                    <p>Build real applications that you can showcase in your portfolio and demonstrate to potential employers.</p>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--text-primary);">Hands-On Projects</h3>
+                    <p style="color: var(--text-secondary);">Build real applications that you can showcase in your portfolio and demonstrate to potential employers.</p>
                 </div>
                 <div class="feature-card rounded-xl p-6 scale-in" data-delay="300">
-                    <div class="feature-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Industry-Recognized Certificates</h3>
-                    <p>Earn certificates that validate your skills and are respected by employers in the tech industry.</p>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--text-primary);">Industry-Recognized Certificates</h3>
+                    <p style="color: var(--text-secondary);">Earn certificates that validate your skills and are respected by employers in the tech industry.</p>
                 </div>
                 <div class="feature-card rounded-xl p-6 scale-in" data-delay="400">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Expert Mentorship</h3>
-                    <p>Get guidance from industry professionals who have built successful careers in technology.</p>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--text-primary);">Expert Mentorship</h3>
+                    <p style="color: var(--text-secondary);">Get guidance from industry professionals who have built successful careers in technology.</p>
                 </div>
                 <div class="feature-card rounded-xl p-6 scale-in" data-delay="500">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Progress Tracking</h3>
-                    <p>Monitor your learning journey with detailed analytics and personalized recommendations.</p>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--text-primary);">Progress Tracking</h3>
+                    <p style="color: var(--text-secondary);">Monitor your learning journey with detailed analytics and personalized recommendations.</p>
                 </div>
                 <div class="feature-card rounded-xl p-6 scale-in" data-delay="600">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Learn Anywhere</h3>
-                    <p>Access your courses from any device, whether you're at home, in the office, or on the go.</p>
+                    <h3 class="text-xl font-bold mb-3" style="color: var(--text-primary);">Learn Anywhere</h3>
+                    <p style="color: var(--text-secondary);">Access your courses from any device, whether you're at home, in the office, or on the go.</p>
                 </div>
             </div>
         </section>
@@ -657,97 +844,71 @@
         <!-- Timeline Section -->
         <section class="mb-20">
             <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Journey</h2>
-                <p class="text-lg max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--text-primary);">Our Journey</h2>
+                <p class="text-lg max-w-3xl mx-auto" style="color: var(--text-secondary);">
                     From a small idea to empowering thousands of developers worldwide.
                 </p>
             </div>
 
-            <div class="timeline slide-in-left">
-                <div class="timeline-item">
-                    <h3 class="text-xl font-bold mb-2">2024 - The Beginning</h3>
-                    <p class="mb-2">Founded with a vision to make quality programming education accessible to everyone.</p>
-                    <span class="text-sm opacity-75">January 2024</span>
+            <div class="timeline">
+                <div class="timeline-item journey-card" data-delay="100">
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--text-primary);">2024 - The Beginning</h3>
+                    <p class="mb-2" style="color: var(--text-secondary);">Founded with a vision to make quality programming education accessible to everyone.</p>
+                    <span class="text-sm opacity-75" style="color: var(--text-secondary);">January 2024</span>
                 </div>
-                <div class="timeline-item">
-                    <h3 class="text-xl font-bold mb-2">First Courses Launch</h3>
-                    <p class="mb-2">Launched our foundation courses focusing on AI integration and modern programming practices.</p>
-                    <span class="text-sm opacity-75">March 2024</span>
+                <div class="timeline-item journey-card" data-delay="200">
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--text-primary);">First Courses Launch</h3>
+                    <p class="mb-2" style="color: var(--text-secondary);">Launched our foundation courses focusing on AI integration and modern programming practices.</p>
+                    <span class="text-sm opacity-75" style="color: var(--text-secondary);">March 2024</span>
                 </div>
-                <div class="timeline-item">
-                    <h3 class="text-xl font-bold mb-2">100 Students Milestone</h3>
-                    <p class="mb-2">Reached our first major milestone with students from over 20 countries.</p>
-                    <span class="text-sm opacity-75">June 2024</span>
+                <div class="timeline-item journey-card" data-delay="300">
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--text-primary);">100 Students Milestone</h3>
+                    <p class="mb-2" style="color: var(--text-secondary);">Reached our first major milestone with students from over 20 countries.</p>
+                    <span class="text-sm opacity-75" style="color: var(--text-secondary);">June 2024</span>
                 </div>
-                <div class="timeline-item">
-                    <h3 class="text-xl font-bold mb-2">Specialization Tracks</h3>
-                    <p class="mb-2">Introduced specialized learning paths for different career goals and industries.</p>
-                    <span class="text-sm opacity-75">September 2024</span>
+                <div class="timeline-item journey-card" data-delay="400">
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--text-primary);">Specialization Tracks</h3>
+                    <p class="mb-2" style="color: var(--text-secondary);">Introduced specialized learning paths for different career goals and industries.</p>
+                    <span class="text-sm opacity-75" style="color: var(--text-secondary);">September 2024</span>
                 </div>
-                <div class="timeline-item">
-                    <h3 class="text-xl font-bold mb-2">1000+ Students</h3>
-                    <p class="mb-2">Celebrating over 1000 students and 500+ course completions with 95% success rate.</p>
-                    <span class="text-sm opacity-75">December 2024</span>
+                <div class="timeline-item journey-card" data-delay="500">
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--text-primary);">1000+ Students</h3>
+                    <p class="mb-2" style="color: var(--text-secondary);">Celebrating over 1000 students and 500+ course completions with 95% success rate.</p>
+                    <span class="text-sm opacity-75" style="color: var(--text-secondary);">December 2024</span>
                 </div>
             </div>
         </section>
 
         <!-- Team Section -->
-        <section class="mb-20">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
-                <p class="text-lg max-w-3xl mx-auto">
-                    Passionate educators and industry experts dedicated to your success.
-                </p>
-            </div>
+        <section class="py-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-reveal" style="color: var(--text-primary);">Meet Our Team</h2>
+                    <p class="text-xl max-w-3xl mx-auto scroll-reveal" style="color: var(--text-secondary);" data-delay="200">
+                        Passionate educators and industry experts dedicated to your success.
+                    </p>
+                </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="team-member scale-in" data-delay="100">
-                    <div class="team-avatar">SJ</div>
-                    <h3 class="text-xl font-bold mb-2">Shristi Jain</h3>
-                    <p class="text-sm opacity-75 mb-3">Founder & Lead Instructor</p>
-                    <p class="text-sm mb-4">10+ years in software development, specializing in AI integration and full-stack development.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+                <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                    <div class="text-center p-8 rounded-3xl shadow-xl scroll-reveal" style="background: var(--surface); border: 1px solid var(--border);" data-delay="200">
+                        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6">
+                            <img src="assets/instructor_img/arun-rg.png" alt="Arun RG" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);">Arun RG</h3>
+                        <p class="text-lg mb-4" style="color: var(--accent-primary);">Senior Developer & Mentor</p>
+                        <p class="text-base mb-6" style="color: var(--text-secondary);">
+                            Founder and thought leader in AI-driven transformation, directing innovations in Data Science, MLOps, LLMs, and Agentic AI. With deep experience across startups and enterprises, he blends automation and agile systems to solve real-world problems and scale impact.
+                        </p>
                     </div>
-                </div>
-                <div class="team-member scale-in" data-delay="200">
-                    <div class="team-avatar">AK</div>
-                    <h3 class="text-xl font-bold mb-2">Arjun Kumar</h3>
-                    <p class="text-sm opacity-75 mb-3">Senior Developer & Mentor</p>
-                    <p class="text-sm mb-4">Expert in DevOps and cloud technologies, helping students build scalable applications.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="team-member scale-in" data-delay="300">
-                    <div class="team-avatar">PS</div>
-                    <h3 class="text-xl font-bold mb-2">Priya Sharma</h3>
-                    <p class="text-sm opacity-75 mb-3">Data Science Instructor</p>
-                    <p class="text-sm mb-4">PhD in Machine Learning, passionate about making AI accessible to everyone.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Research">
-                            <i class="fas fa-graduation-cap"></i>
-                        </a>
+                    <div class="text-center p-8 rounded-3xl shadow-xl scroll-reveal" style="background: var(--surface); border: 1px solid var(--border);" data-delay="400">
+                        <div class="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6">
+                            <img src="assets/instructor_img/QYgAIibq_400x400.jpg" alt="Emmanuel Muttavanchery" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3" style="color: var(--text-primary);">Emmanuel Muttavanchery</h3>
+                        <p class="text-lg mb-4" style="color: var(--accent-primary);">Founder & SWE</p>
+                        <p class="text-base mb-6" style="color: var(--text-secondary);">
+                            Obsessed with building the future, Emmanuel is a relentless tech entrepreneur and Computer Science student at CUNY Baruch. With experience in AI, SaaS, and full-stack development, he's on a mission to disrupt industries and scale ideas fast.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -755,69 +916,93 @@
 
         <!-- Contact Section -->
         <section class="mb-20">
-            <div class="text-center mb-12 fade-in">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
-                <p class="text-lg max-w-3xl mx-auto">
+            <div class="text-center mb-12 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--text-primary);">Get in Touch</h2>
+                <p class="text-lg max-w-3xl mx-auto" data-delay="200" style="color: var(--text-secondary);">
                     Have questions? We'd love to hear from you. Reach out anytime.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="contact-card scale-in" data-delay="100">
+                <div class="contact-card scroll-reveal" data-delay="200">
                     <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope contact-icon-i"></i>
                     </div>
                     <h3 class="font-bold mb-2">Email Us</h3>
                     <p class="text-sm mb-3">Get in touch for any inquiries</p>
-                    <a href="mailto:hello@shristilms.com" class="text-blue-600 hover:underline">hello@shristilms.com</a>
+                    <a href="mailto:hello@shristilms.com" class="contact-link">hello@shristilms.com</a>
                 </div>
-                <div class="contact-card scale-in" data-delay="200">
+                <div class="contact-card scroll-reveal" data-delay="400">
                     <div class="contact-icon">
-                        <i class="fas fa-comments"></i>
+                        <i class="fas fa-comments contact-icon-i"></i>
                     </div>
                     <h3 class="font-bold mb-2">Live Chat</h3>
                     <p class="text-sm mb-3">24/7 support for students</p>
-                    <button class="text-blue-600 hover:underline">Start Chat</button>
+                    <button class="contact-link">Start Chat</button>
                 </div>
-                <div class="contact-card scale-in" data-delay="300">
+                <div class="contact-card scroll-reveal" data-delay="600">
                     <div class="contact-icon">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-users contact-icon-i"></i>
                     </div>
                     <h3 class="font-bold mb-2">Community</h3>
                     <p class="text-sm mb-3">Join our Discord community</p>
-                    <a href="#" class="text-blue-600 hover:underline">Join Discord</a>
+                    <a href="#" class="contact-link">Join Discord</a>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="cta-section fade-in">
-            <div class="cta-content">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Journey?</h2>
-                <p class="text-xl mb-8 max-w-2xl mx-auto">
-                    Join thousands of students who are already building their future with ShristiLMS.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="index.html" class="btn-cta">
-                        <i class="fas fa-graduation-cap"></i>
-                        Browse Courses
-                    </a>
-                    <a href="roadmap.html" class="btn-cta">
-                        <i class="fas fa-route"></i>
-                        View Roadmap
-                    </a>
-                </div>
-            </div>
-        </section>
+
     </div>
 
     <!-- Footer -->
     <footer class="footer-theme py-8">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex items-center justify-center space-x-2 mb-4">
-                <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-8 h-8 object-contain theme-logo">
+        <!-- Mobile Footer (Simple) -->
+        <div class="md:hidden">
+            <div class="container mx-auto px-4 text-center">
+                <div class="flex items-center justify-center space-x-2 mb-4">
+                    <img src="assets/logo.png" alt="ShristiLMS Logo" class="w-8 h-8 object-contain theme-logo">
+                </div>
+                <p class="text-footer-secondary">© 2025 ShristiLMS. Empowering learners worldwide.</p>
             </div>
-            <p class="text-footer-secondary">© 2025 ShristiLMS. Empowering learners worldwide.</p>
+        </div>
+        
+        <!-- Desktop Footer (Detailed) -->
+        <div class="hidden md:block">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">About ShristiLMS</h3>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                            ShristiLMS is an interactive learning platform designed to help you master AI, programming, and data science skills through hands-on projects and real-world applications.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">Learning Features</h3>
+                        <ul class="text-sm space-y-2" style="color: var(--text-secondary);">
+                            <li>• Interactive Course Content</li>
+                            <li>• Hands-on Projects</li>
+                            <li>• Progress Tracking</li>
+                            <li>• Quiz Assessments</li>
+                            <li>• Real-world Applications</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4" style="color: var(--text-primary);">Course Categories</h3>
+                        <ul class="text-sm space-y-2" style="color: var(--text-secondary);">
+                            <li>• AI Foundations</li>
+                            <li>• Data Science</li>
+                            <li>• Programming Languages</li>
+                            <li>• Web Development</li>
+                            <li>• Machine Learning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t mt-8 pt-8 text-center" style="border-color: var(--border);">
+                    <p class="text-sm" style="color: var(--text-secondary);">
+                        © 2025 ShristiLMS. All rights reserved. | Interactive Learning Platform for AI, Programming & Data Science
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -946,6 +1131,50 @@
             // Observe all animation elements
             document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
                 observer.observe(el);
+            });
+
+            // Journey cards animation
+            const journeyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const delay = parseInt(element.getAttribute('data-delay') || 0);
+                        
+                        setTimeout(() => {
+                            element.classList.add('reveal');
+                        }, delay);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+
+            // Observe journey cards
+            document.querySelectorAll('.journey-card').forEach(card => {
+                journeyObserver.observe(card);
+            });
+
+            // Scroll reveal animation
+            const scrollRevealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const delay = parseInt(element.getAttribute('data-delay') || 0);
+                        
+                        setTimeout(() => {
+                            element.classList.add('reveal');
+                        }, delay);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+
+            // Observe scroll reveal elements
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                scrollRevealObserver.observe(el);
             });
         }
 
