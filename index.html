@@ -361,21 +361,22 @@
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <a href="index.html" class="px-4 py-2 nav-link rounded-lg transition nav-home">
+                    <a href="index.html" class="px-4 py-2 nav-link nav-home current-page rounded-lg transition">
                         Home
                     </a>
-                    <a href="index.html#courses" class="px-4 py-2 nav-link rounded-lg transition nav-courses">
+                    <a href="index.html#courses" class="px-4 py-2 nav-link nav-courses rounded-lg transition">
                         Courses
                     </a>
-                    <a href="roadmap.html" class="px-4 py-2 nav-link rounded-lg transition nav-roadmap">
+                    <a href="roadmap.html" class="px-4 py-2 nav-link nav-roadmap rounded-lg transition">
                         Roadmap
                     </a>
-                    <a href="instructors.html" class="px-4 py-2 nav-link rounded-lg transition nav-instructors">
+                    <a href="instructors.html" class="px-4 py-2 nav-link nav-instructors rounded-lg transition">
                         Instructors
                     </a>
-                    <a href="about.html" class="px-4 py-2 nav-link rounded-lg transition nav-about">
+                    <a href="about.html" class="px-4 py-2 nav-link nav-about rounded-lg transition">
                         About
                     </a>
+                    <!-- theme toggles remain the same -->
                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                         <i class="fas fa-sun" id="themeIcon"></i>
                     </button>
@@ -403,19 +404,19 @@
             <!-- Mobile Navigation Menu -->
             <div class="md:hidden mt-4 pb-4 border-t border-white/20 hidden max-h-screen overflow-y-auto" id="mobileMenu">
                 <div class="flex flex-col space-y-2 pt-4">
-                    <a href="index.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                    <a href="index.html" class="px-4 py-3 nav-link nav-home current-page rounded-lg transition text-center">
                         Home
                     </a>
-                    <a href="index.html#courses" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                    <a href="index.html#courses" class="px-4 py-3 nav-link nav-courses rounded-lg transition text-center">
                         Courses
                     </a>
-                    <a href="roadmap.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                    <a href="roadmap.html" class="px-4 py-3 nav-link nav-roadmap rounded-lg transition text-center">
                         Roadmap
                     </a>
-                    <a href="instructors.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                    <a href="instructors.html" class="px-4 py-3 nav-link nav-instructors rounded-lg transition text-center">
                         Instructors
                     </a>
-                    <a href="about.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
+                    <a href="about.html" class="px-4 py-3 nav-link nav-about rounded-lg transition text-center">
                         About
                     </a>
                 </div>
@@ -1245,400 +1246,9 @@
             window.location.href = `quiz.html?course=${courseId}`;
         }
 
-        // Smart Navigation - Hide current page button but always show Courses
-        function setupSmartNavigation() {
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            
-            // Define page-to-button mapping
-            const pageButtonMap = {
-                'index.html': ['nav-home', 'nav-home-mobile'],
-                'roadmap.html': ['nav-roadmap', 'nav-roadmap-mobile'],
-                'instructors.html': ['nav-instructors', 'nav-instructors-mobile'],
-                'about.html': ['nav-about', 'nav-about-mobile'],
-                'quiz.html': ['nav-quiz', 'nav-quiz-mobile'],
-                'learning.html': ['nav-learning', 'nav-learning-mobile']
-            };
-
-            // Hide current page buttons (but never hide Courses)
-            const currentButtons = pageButtonMap[currentPage];
-            if (currentButtons) {
-                currentButtons.forEach(className => {
-                    const elements = document.querySelectorAll('.' + className);
-                    elements.forEach(element => {
-                        element.style.display = 'none';
-                    });
-                });
-            }
-        }
-
-        // Initialize smart navigation
-        setupSmartNavigation();
+ 
     </script>
 
-    <style>
-        /* Mobile responsive controls section */
-        .filter-btn {
-            color: #6b7280;
-            transition: all 0.3s ease;
-            min-width: fit-content;
-        }
-        .filter-btn.active {
-            background-color: #2563eb;
-            color: white;
-        }
-        .filter-btn:hover:not(.active) {
-            background-color: #f3f4f6;
-        }
-        
-        .view-btn {
-            color: #6b7280;
-            transition: all 0.3s ease;
-            min-width: fit-content;
-        }
-        .view-btn.active {
-            background-color: #2563eb;
-            color: white;
-        }
-        .view-btn:hover:not(.active) {
-            background-color: #f3f4f6;
-        }
-        
-        /* Mobile-specific improvements */
-        @media (max-width: 640px) {
-            .filter-btn, .view-btn {
-                font-size: 0.75rem;
-                padding: 0.375rem 0.5rem;
-                border-radius: 0.375rem;
-            }
-            
-            /* Ensure buttons don't wrap awkwardly */
-            .filter-btn, .view-btn {
-                flex-shrink: 0;
-            }
-            
-            /* Improve touch targets on mobile */
-            .filter-btn, .view-btn {
-                min-height: 2.25rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-        }
-        
-        /* Tablet improvements */
-        @media (min-width: 641px) and (max-width: 1023px) {
-            .filter-btn, .view-btn {
-                font-size: 0.875rem;
-                padding: 0.625rem 1rem;
-            }
-        }
-        
-        /* Ensure proper spacing in flex containers */
-        .flex.flex-wrap.gap-2 > * {
-            margin: 0;
-        }
-        
-        /* Dark mode support for controls */
-        [data-theme="dark"] .filter-btn {
-            color: var(--text-secondary);
-        }
-        
-        [data-theme="dark"] .filter-btn.active {
-            background-color: #3b82f6;
-            color: white;
-        }
-        
-        [data-theme="dark"] .filter-btn:hover:not(.active) {
-            background-color: var(--surface-light);
-        }
-        
-        [data-theme="dark"] .view-btn {
-            color: var(--text-secondary);
-        }
-        
-        [data-theme="dark"] .view-btn.active {
-            background-color: #3b82f6;
-            color: white;
-        }
-        
-        [data-theme="dark"] .view-btn:hover:not(.active) {
-            background-color: var(--surface-light);
-        }
-        
-        /* Hamburger Menu Styles */
-        .hamburger-menu {
-            transition: all 0.3s ease;
-        }
-        
-        /* Hamburger line colors for different themes */
-        .hamburger-line {
-            background-color: #000000; /* Default black for light theme */
-        }
-        
-        /* Dark theme */
-        [data-theme="dark"] .hamburger-line {
-            background-color: #ffffff;
-        }
-        
-        /* Sea theme */
-        [data-theme="sea"] .hamburger-line {
-            background-color: #01579b;
-        }
-        
-        /* Earth theme */
-        [data-theme="earth"] .hamburger-line {
-            background-color: #33691e;
-        }
-        
-        /* Sunset theme */
-        [data-theme="sunset"] .hamburger-line {
-            background-color: #e65100;
-        }
-        
-        .hamburger-menu.active .w-6:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        
-        .hamburger-menu.active .w-6:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger-menu.active .w-6:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
-        
-        /* Mobile menu animation */
-        #mobileMenu {
-            transition: all 0.3s ease;
-            max-height: 0;
-            overflow: hidden;
-        }
-        
-        #mobileMenu:not(.hidden) {
-            max-height: 200px;
-        }
-        
-        /* Mobile navigation link styles */
-        #mobileMenu .nav-link {
-            transition: all 0.2s ease;
-        }
-        
-        #mobileMenu .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateX(5px);
-        }
-        
-        /* Ensure mobile menu is properly styled in dark mode */
-        [data-theme="dark"] #mobileMenu .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        
-        /* Custom breakpoint for course details */
-        @media (min-width: 375px) {
-            .course-details-mobile {
-                display: flex !important;
-            }
-        }
-        
-        /* Theme dropdown dark mode overrides */
-        [data-theme="dark"] .custom-theme-option i {
-            color: #ffffff !important;
-        }
-        
-        [data-theme="dark"] .custom-theme-option span {
-            color: #ffffff !important;
-        }
-        
-        /* Theme dropdown light mode overrides */
-        [data-theme="light"] .custom-theme-option i {
-            color: #000000 !important;
-        }
-        
-        [data-theme="light"] .custom-theme-option span {
-            color: #000000 !important;
-        }
-        
-        /* Theme dropdown custom theme overrides */
-        [data-theme="sea"] .custom-theme-option i {
-            color: #01579b !important;
-        }
-        
-        [data-theme="sea"] .custom-theme-option span {
-            color: #01579b !important;
-        }
-        
-        [data-theme="earth"] .custom-theme-option i {
-            color: #33691e !important;
-        }
-        
-        [data-theme="earth"] .custom-theme-option span {
-            color: #33691e !important;
-        }
-        
-        [data-theme="sunset"] .custom-theme-option i {
-            color: #e65100 !important;
-        }
-        
-        [data-theme="sunset"] .custom-theme-option span {
-            color: #e65100 !important;
-        }
-        
-        /* Force consistent border colors for all themes */
-        [data-theme="sea"] .custom-theme-option,
-        [data-theme="earth"] .custom-theme-option,
-        [data-theme="sunset"] .custom-theme-option {
-            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
-        }
-        
-        /* Specific overrides for Sea and Earth themes */
-        [data-theme="sea"] .custom-theme-option.border-b {
-            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
-        }
-        
-        [data-theme="earth"] .custom-theme-option.border-b {
-            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
-        }
-        
-        /* Force all borders to be white/20 in all themes */
-        #customThemeDropdown .custom-theme-option {
-            border-bottom-color: rgba(255, 255, 255, 0.2) !important;
-        }
-        
-        /* Force view toggle buttons to be side by side */
-        .view-btn {
-            flex-shrink: 0 !important;
-            width: auto !important;
-        }
-        
-        /* Force the view toggle container to display buttons horizontally */
-        #cardViewBtn, #tableViewBtn {
-            display: inline-flex !important;
-            flex-direction: row !important;
-        }
-        
-        /* Override any flex direction issues */
-        .hidden.lg\:block {
-            flex-direction: row !important;
-        }
-
-        /* Difficulty Badge Styles - Theme Responsive */
-        .difficulty-badge {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border-radius: 9999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        /* Light Mode Difficulty Badges */
-        [data-theme="light"] .difficulty-beginner {
-            background-color: #000000;
-            color: #ffffff;
-        }
-
-        [data-theme="light"] .difficulty-intermediate {
-            background-color: #000000;
-            color: #ffffff;
-        }
-
-        [data-theme="light"] .difficulty-advanced {
-            background-color: #000000;
-            color: #ffffff;
-        }
-
-        /* Dark Mode Difficulty Badges */
-        [data-theme="dark"] .difficulty-beginner {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        [data-theme="dark"] .difficulty-intermediate {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        [data-theme="dark"] .difficulty-advanced {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        /* Sea Theme Difficulty Badges */
-        [data-theme="sea"] .difficulty-beginner {
-            background-color: #01579b;
-            color: #ffffff;
-        }
-
-        [data-theme="sea"] .difficulty-intermediate {
-            background-color: #0277bd;
-            color: #ffffff;
-        }
-
-        [data-theme="sea"] .difficulty-advanced {
-            background-color: #0288d1;
-            color: #ffffff;
-        }
-
-        /* Earth Theme Difficulty Badges */
-        [data-theme="earth"] .difficulty-beginner {
-            background-color: #33691e;
-            color: #ffffff;
-        }
-
-        [data-theme="earth"] .difficulty-intermediate {
-            background-color: #558b2f;
-            color: #ffffff;
-        }
-
-        [data-theme="earth"] .difficulty-advanced {
-            background-color: #689f38;
-            color: #ffffff;
-        }
-
-        /* Sunset Theme Difficulty Badges */
-        [data-theme="sunset"] .difficulty-beginner {
-            background-color: #e65100;
-            color: #ffffff;
-        }
-
-        [data-theme="sunset"] .difficulty-intermediate {
-            background-color: #f57c00;
-            color: #ffffff;
-        }
-
-        [data-theme="sunset"] .difficulty-advanced {
-            background-color: #ff9800;
-            color: #ffffff;
-        }
-
-        /* Mobile Menu Fixes */
-        #mobileMenu {
-            max-height: calc(100vh - 200px);
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        #mobileMenu .flex {
-            min-height: fit-content;
-        }
-
-        /* Ensure mobile menu items don't get cut off */
-        @media (max-width: 768px) {
-            #mobileMenu {
-                position: relative;
-                z-index: 50;
-            }
-            
-            #mobileMenu .nav-link {
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-        }
-    </style>
 </body>
 </html>
 <!-- End of index.html -->

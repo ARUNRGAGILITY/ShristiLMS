@@ -290,7 +290,7 @@
 <body data-theme="light" class="min-h-screen">
     <!-- Navigation -->
     <nav class="navbar-theme text-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 py-3">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <div class="flex items-center space-x-2">
@@ -307,7 +307,7 @@
                     <a href="index.html#courses" class="px-4 py-2 nav-link rounded-lg transition">
                         Courses
                     </a>
-                    <a href="roadmap.html" class="px-4 py-2 nav-link rounded-lg transition nav-roadmap">
+                    <a href="roadmap.html" class="px-4 py-2 nav-link rounded-lg transition nav-roadmap current-page">
                         Roadmap
                     </a>
                     <a href="instructors.html" class="px-4 py-2 nav-link rounded-lg transition text-center">
@@ -349,7 +349,7 @@
                     <a href="index.html#courses" class="px-4 py-3 nav-link rounded-lg transition text-center">
                         Courses
                     </a>
-                    <a href="roadmap.html" class="px-4 py-3 nav-link rounded-lg transition text-center nav-roadmap">
+                    <a href="roadmap.html" class="px-4 py-3 nav-link rounded-lg transition text-center nav-roadmap current-page">
                         Roadmap
                     </a>
                     <a href="instructors.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
@@ -965,23 +965,7 @@
             }
         }
 
-        // Smart Navigation - Hide current page's nav button
-        function setupSmartNavigation() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const navButtons = document.querySelectorAll('.nav-home, .nav-courses, .nav-roadmap, .nav-instructors, .nav-about');
-            
-            navButtons.forEach(button => {
-                const href = button.getAttribute('href');
-                if (href && href.includes(currentPage)) {
-                    button.style.display = 'none';
-                }
-            });
-        }
-
-        // Initialize smart navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            setupSmartNavigation();
-        });
+        
     </script>
 </body>
 </html>

@@ -230,7 +230,56 @@ body[data-theme] {
     transition: all 0.3s ease;
     z-index: 1;
 }
+/* Active/Current Page Navigation Styles */
+.nav-link.current-page {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: grey;
+    cursor: default;
+    pointer-events: none;
+    font-weight: 600;
+    position: relative;
+}
 
+.nav-link.current-page::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 1px;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .nav-link.current-page {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Theme-specific current page styles */
+[data-theme="sea"] .nav-link.current-page {
+    background-color: rgba(1, 87, 155, 0.3);
+}
+
+[data-theme="earth"] .nav-link.current-page {
+    background-color: rgba(51, 105, 30, 0.3);
+}
+
+[data-theme="sunset"] .nav-link.current-page {
+    background-color: rgba(230, 81, 0, 0.3);
+}
+
+/* Mobile current page styles */
+#mobileMenu .nav-link.current-page {
+    background-color: rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+}
+
+#mobileMenu .nav-link.current-page:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: none;
+}
 /* Custom theme dropdown styles - Now using Tailwind classes */
 
 /* Custom theme dropdown styles - Now using Tailwind classes */

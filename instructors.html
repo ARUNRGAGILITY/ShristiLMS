@@ -623,7 +623,7 @@
                     <a href="roadmap.html" class="px-4 py-2 nav-link rounded-lg transition">
                         Roadmap
                     </a>
-                    <a href="instructors.html" class="px-4 py-2 nav-link rounded-lg transition nav-instructors">
+                    <a href="instructors.html" class="px-4 py-2 nav-link rounded-lg transition nav-instructors current-page">
                         Instructors
                     </a>
                     <a href="about.html" class="px-4 py-2 nav-link rounded-lg transition">
@@ -665,7 +665,7 @@
                     <a href="roadmap.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
                         Roadmap
                     </a>
-                    <a href="instructors.html" class="px-4 py-3 nav-link rounded-lg transition text-center nav-instructors">
+                    <a href="instructors.html" class="px-4 py-3 nav-link rounded-lg transition text-center nav-instructors current-page">
                         Instructors
                     </a>
                     <a href="about.html" class="px-4 py-3 nav-link rounded-lg transition text-center">
@@ -1273,23 +1273,7 @@
             }
         }
 
-        // Smart Navigation - Hide current page's nav button
-        function setupSmartNavigation() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const navButtons = document.querySelectorAll('.nav-home, .nav-courses, .nav-roadmap, .nav-instructors, .nav-about');
-            
-            navButtons.forEach(button => {
-                const href = button.getAttribute('href');
-                if (href && href.includes(currentPage)) {
-                    button.style.display = 'none';
-                }
-            });
-        }
-
-        // Initialize smart navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            setupSmartNavigation();
-        });
+      
     </script>
 </body>
 </html>
