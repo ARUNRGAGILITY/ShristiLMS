@@ -1060,12 +1060,9 @@
                             <span>${course.type}</span>
                         </div>
                     </div>
-                    <div class="flex space-x-3">
-                        <button onclick="startLearning('${course.id}')" class="flex-1 btn-learn text-white py-2 px-4 rounded-lg font-medium">
+                    <div class="flex space-x-3">                       
+                        <button onclick="startLearningNow('${course.id}')" class="flex-1 btn-learn text-white py-2 px-4 rounded-lg font-medium">
                             <i class="fas fa-graduation-cap mr-2"></i>Learn
-                        </button>
-                        <button onclick="startLearningTEST('${course.id}')" class="flex-1 btn-learn text-white py-2 px-4 rounded-lg font-medium">
-                            <i class="fas fa-graduation-cap mr-2"></i>TEST
                         </button>
                         <button onclick="startQuiz('${course.id}')" class="flex-1 btn-quiz text-white py-2 px-4 rounded-lg font-medium">
                             <i class="fas fa-clipboard-check mr-2"></i>Quiz
@@ -1134,11 +1131,8 @@
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div class="flex space-x-2">
-                        <button onclick="startLearning('${course.id}')" class="btn-learn text-white px-3 py-1 rounded">
+                        <button onclick="startLearningNow('${course.id}')" class="btn-learn text-white px-3 py-1 rounded">
                             <i class="fas fa-graduation-cap mr-1"></i>Learn
-                        </button>
-                        <button onclick="startLearningTEST('${course.id}')" class="btn-learn text-white px-3 py-1 rounded">
-                            <i class="fas fa-graduation-cap mr-1"></i>TEST
                         </button>
                         <button onclick="startQuiz('${course.id}')" class="btn-quiz text-white px-3 py-1 rounded">
                             <i class="fas fa-clipboard-check mr-1"></i>Quiz
@@ -1236,7 +1230,7 @@
             window.location.href = `learning.html?course=${courseId}`;
         }
 
-        function startLearningTEST(courseId) {
+        function startLearningNow(courseId) {
             // Navigate to learning page
             window.location.href = `display_learning.html?course=${courseId}`;
         }
